@@ -179,7 +179,7 @@ impl<'de> Deserialize<'de> for HexString {
         D: Deserializer<'de>,
     {
         let s = String::deserialize(deserializer)?;
-        if s.starts_with("0x") && s[2..].chars().all(|c| c.is_digit(16)) {
+        if s.starts_with("0x") && s[2..].chars().all(|c| c.is_ascii_hexdigit()) {
             let value = u64::from_str_radix(&s[2..], 16).unwrap();
             Ok(HexString {
                 value,
@@ -231,7 +231,7 @@ struct State {
 #[derive(Serialize, Deserialize)]
 #[serde(untagged)]
 enum StateOrStateList {
-    State(State),
+    State(Box<State>),
     StateList(Vec<State>),
 }
 

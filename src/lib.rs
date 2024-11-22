@@ -27,7 +27,7 @@ pub fn read() {
 fn read_initials(nvram_file: &mut File, location: u64) -> String {
     nvram_file.seek(SeekFrom::Start(location)).unwrap();
     let mut buff = [0; 3];
-    nvram_file.read(&mut buff).unwrap();
+    nvram_file.read_exact(&mut buff).unwrap();
     // TODO is utf8 the right encoding? I would expect ASCII which is a subset of UTF8
     std::str::from_utf8(&buff).unwrap().to_string()
 }
