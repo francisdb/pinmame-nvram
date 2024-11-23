@@ -6,7 +6,8 @@ use std::fmt;
 struct Checksum16 {
     pub start: String,
     pub end: String,
-    pub label: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub label: Option<String>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -23,20 +24,26 @@ struct Adjustment {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _note: Option<String>,
     pub label: String,
-    pub start: Start,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub short_label: Option<String>,
+    pub start: HexOrInteger,
     pub encoding: String,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub default: Option<StringOrNumber>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub values: Option<Vec<String>>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub min: Option<i64>,
+    pub min: Option<u64>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub max: Option<i64>,
+    pub max: Option<u64>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub multiple_of: Option<i64>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub length: Option<u64>,
+    // TODO fix in original database
+    #[deprecated = "use length instead"]
+    #[serde(rename = "Length", skip_serializing_if = "Option::is_none")]
+    pub length_capitalized: Option<u64>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub suffix: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -45,8 +52,9 @@ struct Adjustment {
     pub nibble: Option<Nibble>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub scale: Option<i64>,
+    // can be negative
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub offset: Option<u64>,
+    pub offset: Option<i64>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -63,26 +71,35 @@ struct Audit {
     pub scale: Option<i64>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub nibble: Option<Nibble>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub min: Option<u64>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub max: Option<u64>,
 }
 
 #[derive(Serialize, Deserialize)]
 struct Score {
-    pub start: Start,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub start: Option<HexOrInteger>,
     pub encoding: String,
-    pub length: u64,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub length: Option<u64>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub suffix: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub nibble: Option<Nibble>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub scale: Option<i64>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub offsets: Option<Vec<HexOrInteger>>,
 }
 
 // TODO is this the same as HighScore?
 #[derive(Serialize, Deserialize)]
 struct ModeChampion {
     pub label: String,
-    pub short_label: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub short_label: Option<String>,
     pub initials: Initials,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub score: Option<Score>,
@@ -90,12 +107,18 @@ struct ModeChampion {
     pub timestamp: Option<LastGame>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _note: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub counter: Option<LastGame>,
+    #[serde(rename = "nth time", skip_serializing_if = "Option::is_none")]
+    pub nth_time: Option<LastGame>,
 }
 
 #[derive(Serialize, Deserialize)]
 struct HighScore {
-    pub label: String,
-    pub short_label: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub label: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub short_label: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub initials: Option<Initials>,
     pub score: Score,
@@ -103,18 +126,20 @@ struct HighScore {
 
 #[derive(Serialize, Deserialize)]
 #[serde(untagged)]
-enum Start {
+enum HexOrInteger {
     Hex(HexString),
     Integer(i64),
 }
 
 #[derive(Serialize, Deserialize)]
 struct LastGame {
-    pub start: Start,
+    pub start: HexOrInteger,
     pub encoding: String,
     pub length: u64,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub nibble: Option<Nibble>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub label: Option<String>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -133,7 +158,7 @@ enum Endian {
 
 #[derive(Serialize, Deserialize)]
 struct Initials {
-    pub start: Start,
+    pub start: HexOrInteger,
     pub encoding: String,
     pub length: u64,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -141,7 +166,7 @@ struct Initials {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub nibble: Option<Nibble>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub mask: Option<HexString>,
+    pub mask: Option<HexOrInteger>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -211,7 +236,7 @@ struct State {
     length: Option<usize>,
     #[serde(skip_serializing_if = "Option::is_none")]
     nibble: Option<Nibble>,
-    start: Start,
+    start: HexOrInteger,
     #[serde(skip_serializing_if = "Option::is_none")]
     mask: Option<HexString>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -254,7 +279,12 @@ struct NvramMap {
     pub _notes: Notes,
     pub _copyright: String,
     pub _license: String,
-    pub _endian: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub _endian: Option<Endian>,
+    // TODO remove these cases from original database
+    #[deprecated = "use _endian instead"]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub endian: Option<Endian>,
     pub _roms: Vec<String>,
     pub _fileformat: f64,
     pub _version: f64,
@@ -263,12 +293,18 @@ struct NvramMap {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _game: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
+    pub _history: Option<Vec<String>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub _char_map: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub last_played: Option<LastGame>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub last_game: Option<Vec<LastGame>>,
     pub high_scores: Vec<HighScore>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub mode_champions: Option<Vec<ModeChampion>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub more_mode_champions: Option<Vec<ModeChampion>>,
     // keys are nomrally numbers except for notes, which as value are strings
     #[serde(skip_serializing_if = "Option::is_none")]
     pub audits: Option<HashMap<String, HashMap<String, AuditOrNote>>>,
@@ -282,6 +318,8 @@ struct NvramMap {
     pub limits: Option<HashMap<String, String>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub game_state: Option<HashMap<String, StateOrStateList>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub replay_score: Option<Score>,
 }
 
 // test: read file write file and compare
