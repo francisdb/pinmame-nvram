@@ -1,0 +1,4 @@
+[submodule "pinmame-nvram-maps"]
+	path = pinmame-nvram-maps
+	url = git@github.com:francisdb/pinmame-nvram-maps.git
+	branch = chore/cleanup

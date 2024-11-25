@@ -372,7 +372,7 @@ mod tests {
     #[test]
     fn read_all_nvram_maps() {
         // read all ../pinmame-nvram-maps/*.json
-        for file in std::fs::read_dir("../pinmame-nvram-maps").unwrap() {
+        for file in std::fs::read_dir("pinmame-nvram-maps").unwrap() {
             let file = file.unwrap();
             let path = file.path();
             let file_name = path.file_name().unwrap().to_str().unwrap().to_owned();
