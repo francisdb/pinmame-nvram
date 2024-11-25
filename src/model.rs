@@ -40,10 +40,6 @@ struct Adjustment {
     pub multiple_of: Option<i64>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub length: Option<u64>,
-    // TODO fix in original database
-    #[deprecated = "use length instead"]
-    #[serde(rename = "Length", skip_serializing_if = "Option::is_none")]
-    pub length_capitalized: Option<u64>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub suffix: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -94,7 +90,6 @@ struct Score {
     pub offsets: Option<Vec<HexOrInteger>>,
 }
 
-// TODO is this the same as HighScore?
 #[derive(Serialize, Deserialize)]
 struct ModeChampion {
     pub label: String,
@@ -167,6 +162,8 @@ struct Initials {
     pub nibble: Option<Nibble>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub mask: Option<HexOrInteger>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub _note: Option<String>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -222,6 +219,43 @@ impl fmt::Display for HexString {
     }
 }
 
+enum IntegerOrFloat {
+    Integer(i64),
+    Float(f64),
+}
+
+impl Serialize for IntegerOrFloat {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: Serializer,
+    {
+        match self {
+            IntegerOrFloat::Integer(i) => serializer.serialize_i64(*i),
+            IntegerOrFloat::Float(f) => serializer.serialize_f64(*f),
+        }
+    }
+}
+
+impl<'de> Deserialize<'de> for IntegerOrFloat {
+    fn deserialize<D>(deserializer: D) -> Result<IntegerOrFloat, D::Error>
+    where
+        D: Deserializer<'de>,
+    {
+        match serde_json::Value::deserialize(deserializer)? {
+            serde_json::Value::Number(n) => {
+                if let Some(i) = n.as_i64() {
+                    Ok(IntegerOrFloat::Integer(i))
+                } else if let Some(f) = n.as_f64() {
+                    Ok(IntegerOrFloat::Float(f))
+                } else {
+                    Err(serde::de::Error::custom("invalid number"))
+                }
+            }
+            _ => Err(serde::de::Error::custom("expected number")),
+        }
+    }
+}
+
 #[derive(Serialize, Deserialize)]
 struct State {
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -242,7 +276,7 @@ struct State {
     #[serde(skip_serializing_if = "Option::is_none")]
     endian: Option<Endian>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    scale: Option<f64>,
+    scale: Option<IntegerOrFloat>,
     #[serde(skip_serializing_if = "Option::is_none")]
     suffix: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -276,7 +310,10 @@ enum AuditOrNote {
 
 #[derive(Serialize, Deserialize)]
 struct NvramMap {
-    pub _notes: Notes,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub _notes: Option<Notes>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub _todo: Option<Notes>,
     pub _copyright: String,
     pub _license: String,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -320,6 +357,8 @@ struct NvramMap {
     pub game_state: Option<HashMap<String, StateOrStateList>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub replay_score: Option<Score>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub buyin_high_scores: Option<Vec<HighScore>>,
 }
 
 // test: read file write file and compare
