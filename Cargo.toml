@@ -9,3 +9,4 @@ serde_json = "1.0.133"
 
 [dev-dependencies]
 pretty_assertions = "1.4.1"
+testdir = "0.9.1"

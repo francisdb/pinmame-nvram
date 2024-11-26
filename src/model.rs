@@ -2,25 +2,25 @@ use serde::{Deserialize, Deserializer, Serialize, Serializer};
 use std::collections::HashMap;
 use std::fmt;
 
-#[derive(Serialize, Deserialize)]
-struct Checksum16 {
-    pub start: String,
-    pub end: String,
+#[derive(Serialize, Deserialize, Debug, PartialEq)]
+pub struct Checksum16 {
+    pub start: HexOrInteger,
+    pub end: HexOrInteger,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub label: Option<String>,
 }
 
 #[derive(Serialize, Deserialize)]
-struct Checksum8 {
-    pub start: String,
-    pub end: String,
+pub struct Checksum8 {
+    pub start: HexOrInteger,
+    pub end: HexOrInteger,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub groupings: Option<u64>,
     pub label: String,
 }
 
 #[derive(Serialize, Deserialize)]
-struct Adjustment {
+pub struct Adjustment {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _note: Option<String>,
     pub label: String,
@@ -54,7 +54,7 @@ struct Adjustment {
 }
 
 #[derive(Serialize, Deserialize)]
-struct Audit {
+pub struct Audit {
     pub label: String,
     pub start: String,
     pub encoding: String,
@@ -74,7 +74,8 @@ struct Audit {
 }
 
 #[derive(Serialize, Deserialize)]
-struct Score {
+pub struct Score {
+    // TODO when is this None? How do we then read it?
     #[serde(skip_serializing_if = "Option::is_none")]
     pub start: Option<HexOrInteger>,
     pub encoding: String,
@@ -91,7 +92,7 @@ struct Score {
 }
 
 #[derive(Serialize, Deserialize)]
-struct ModeChampion {
+pub struct ModeChampion {
     pub label: String,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub short_label: Option<String>,
@@ -109,7 +110,7 @@ struct ModeChampion {
 }
 
 #[derive(Serialize, Deserialize)]
-struct HighScore {
+pub struct HighScore {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub label: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -119,15 +120,23 @@ struct HighScore {
     pub score: Score,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, PartialEq)]
 #[serde(untagged)]
-enum HexOrInteger {
+pub enum HexOrInteger {
     Hex(HexString),
     Integer(i64),
 }
+impl From<&HexOrInteger> for u64 {
+    fn from(h: &HexOrInteger) -> u64 {
+        match h {
+            HexOrInteger::Hex(h) => h.value,
+            HexOrInteger::Integer(i) => *i as u64,
+        }
+    }
+}
 
 #[derive(Serialize, Deserialize)]
-struct LastGame {
+pub struct LastGame {
     pub start: HexOrInteger,
     pub encoding: String,
     pub length: u64,
@@ -139,20 +148,20 @@ struct LastGame {
 
 #[derive(Serialize, Deserialize)]
 #[serde(rename_all = "lowercase")]
-enum Nibble {
+pub enum Nibble {
     High,
     Low,
 }
 
 #[derive(Serialize, Deserialize)]
 #[serde(rename_all = "lowercase")]
-enum Endian {
+pub enum Endian {
     Big,
     Little,
 }
 
 #[derive(Serialize, Deserialize)]
-struct Initials {
+pub struct Initials {
     pub start: HexOrInteger,
     pub encoding: String,
     pub length: u64,
@@ -168,20 +177,20 @@ struct Initials {
 
 #[derive(Serialize, Deserialize)]
 #[serde(untagged)]
-enum Notes {
+pub enum Notes {
     Single(String),
     Multiple(Vec<String>),
 }
 
 #[derive(Serialize, Deserialize)]
 #[serde(untagged)]
-enum Adjustments {
+pub enum Adjustments {
     Anonymous(Vec<Adjustment>),
     Named(HashMap<String, Adjustment>),
 }
 
-#[derive(Debug)]
-struct HexString {
+#[derive(Debug, PartialEq)]
+pub struct HexString {
     pub value: u64,
     pub serialized: String,
 }
@@ -257,7 +266,7 @@ impl<'de> Deserialize<'de> for IntegerOrFloat {
 }
 
 #[derive(Serialize, Deserialize)]
-struct State {
+pub struct State {
     #[serde(skip_serializing_if = "Option::is_none")]
     _note: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -289,27 +298,27 @@ struct State {
 
 #[derive(Serialize, Deserialize)]
 #[serde(untagged)]
-enum StateOrStateList {
+pub enum StateOrStateList {
     State(Box<State>),
     StateList(Vec<State>),
 }
 
 #[derive(Serialize, Deserialize)]
 #[serde(untagged)]
-enum StringOrNumber {
+pub enum StringOrNumber {
     String(String),
     Number(u64),
 }
 
 #[derive(Serialize, Deserialize)]
 #[serde(untagged)]
-enum AuditOrNote {
+pub enum AuditOrNote {
     Audit(Audit),
     Note(String),
 }
 
 #[derive(Serialize, Deserialize)]
-struct NvramMap {
+pub struct NvramMap {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _notes: Option<Notes>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -377,7 +386,7 @@ mod tests {
             let path = file.path();
             let file_name = path.file_name().unwrap().to_str().unwrap().to_owned();
             if file_name.ends_with(".nv.json") {
-                println!("Reading {}", file_name);
+                // println!("Reading {}", file_name);
                 let json = std::fs::read_to_string(path).unwrap();
                 let nvram_map: NvramMap = serde_json::from_str(&json).unwrap();
                 let json2 = serde_json::to_string_pretty(&nvram_map).unwrap();
