@@ -73,12 +73,32 @@ pub struct Audit {
     pub max: Option<u64>,
 }
 
+// "enum": An enumerated type where the byte at start is used as an index into a list of strings provided in values.
+// "int": A (possibly) multibyte integer, where each byte is multiplied by a power of 256. The byte sequence 0x12 0x34 would translate to the decimal value 4660.
+// "bits": Same decoding as "int", but used to sum select integers from the list in values.
+// "bcd": A binary-coded decimal value, where each byte represents two decimal digits of a number. The byte sequence 0x12 0x34 would translate to the decimal value 1234.
+// "ch": A sequence of 7-bit ASCII characters. If the JSON file has a _char_map key, use bytes from the NV file as indexes into that string instead of interpreting them as 7-bit ASCII.
+// "raw": A series of raw bytes, useful for extracting data yet to be decoded or that requires custom processing.
+// "wpc_rtc"
+#[derive(Serialize, Deserialize, Debug, PartialEq)]
+#[serde(rename_all = "lowercase")]
+pub enum Encoding {
+    Enum,
+    Int,
+    Bits,
+    Bcd,
+    Ch,
+    Raw,
+    #[serde(rename = "wpc_rtc")]
+    WpcRtc,
+}
+
 #[derive(Serialize, Deserialize)]
 pub struct Score {
     // TODO when is this None? How do we then read it?
     #[serde(skip_serializing_if = "Option::is_none")]
     pub start: Option<HexOrInteger>,
-    pub encoding: String,
+    pub encoding: Encoding,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub length: Option<u64>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -138,7 +158,7 @@ impl From<&HexOrInteger> for u64 {
 #[derive(Serialize, Deserialize)]
 pub struct LastGame {
     pub start: HexOrInteger,
-    pub encoding: String,
+    pub encoding: Encoding,
     pub length: u64,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub nibble: Option<Nibble>,
@@ -153,7 +173,7 @@ pub enum Nibble {
     Low,
 }
 
-#[derive(Serialize, Deserialize, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Copy, Clone)]
 #[serde(rename_all = "lowercase")]
 pub enum Endian {
     Big,
@@ -368,6 +388,15 @@ pub struct NvramMap {
     pub replay_score: Option<Score>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub buyin_high_scores: Option<Vec<HighScore>>,
+}
+
+impl NvramMap {
+    pub fn endianness(&self) -> Endian {
+        match self._endian {
+            Some(endian) => endian,
+            None => Endian::Big,
+        }
+    }
 }
 
 // test: read file write file and compare

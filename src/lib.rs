@@ -1,6 +1,6 @@
 mod model;
 
-use crate::model::{Checksum16, Endian, Nibble, NvramMap};
+use crate::model::{Checksum16, Encoding, Endian, Nibble, NvramMap};
 use include_dir::{include_dir, Dir};
 use std::ffi::OsStr;
 use std::fs::OpenOptions;
@@ -10,14 +10,20 @@ use std::path::{Path, PathBuf};
 
 static MAPS: Dir = include_dir!("pinmame-nvram-maps");
 
-fn de_nibble(length: usize, buff: &Vec<u8>, nibble: &Nibble) -> Vec<u8> {
+fn de_nibble(length: usize, buff: &[u8], nibble: &Nibble) -> io::Result<Vec<u8>> {
+    if nibble == &Nibble::High && length % 2 != 0 {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidInput,
+            "Length should be even when reading the high nibble",
+        ));
+    }
     // TODO make this more efficient
     let resulting_length = (length + 1) / 2;
     let mut result = vec![0; resulting_length];
-    let mut buffer = buff.clone();
+    let mut buffer = buff.to_owned();
     if length % 2 != 0 {
         // prepend 0
-        buffer = vec![0].into_iter().chain(buffer.into_iter()).collect();
+        buffer = vec![0].into_iter().chain(buffer).collect();
     };
     let mut iter = buffer.into_iter();
     for b in result.iter_mut() {
@@ -29,7 +35,52 @@ fn de_nibble(length: usize, buff: &Vec<u8>, nibble: &Nibble) -> Vec<u8> {
             Nibble::Low => ((high & 0x0F) << 4) | (low & 0x0F),
         };
     }
-    result
+    Ok(result)
+}
+
+fn do_nibble(length: usize, buff: &[u8], nibble: &Nibble) -> io::Result<Vec<u8>> {
+    if nibble == &Nibble::High && length % 2 != 0 {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidInput,
+            "Length should be even when writing the high nibble",
+        ));
+    }
+    if nibble == &Nibble::Low && length % 2 != 0 && buff[0] > 0x0F {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidInput,
+            "When writing the low nibble for an uneven length the first nibble should be 0",
+        ));
+    }
+    if length < buff.len() * 2 - 1 {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidInput,
+            "Length should be at least twice the length of the buffer minus 1",
+        ));
+    }
+    if length > buff.len() * 2 {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidInput,
+            "Length should be at most twice the length of the buffer",
+        ));
+    }
+    let mut result = Vec::with_capacity(length);
+    for b in buff.iter() {
+        match nibble {
+            Nibble::High => {
+                result.push(b & 0xF0);
+                result.push((b & 0x0F) << 4);
+            }
+            Nibble::Low => {
+                result.push((b & 0xF0) >> 4);
+                result.push(b & 0x0F);
+            }
+        }
+    }
+    // remove the first byte if the length is uneven
+    if length % 2 != 0 {
+        result.remove(0);
+    }
+    Ok(result)
 }
 
 fn read_ch<A: Read + Seek>(
@@ -46,7 +97,7 @@ fn read_ch<A: Read + Seek>(
     stream.read_exact(&mut buff)?;
 
     if let Some(nibble) = nibble {
-        let result = de_nibble(length, &mut buff, nibble);
+        let result = de_nibble(length, &buff, nibble)?;
         // filter out zero bytes
         let result = result.into_iter().filter(|&b| b != 0).collect::<Vec<u8>>();
         return String::from_utf8(result.to_vec())
@@ -100,8 +151,18 @@ fn write_ch<A: Write + Seek>(
             format!("String is too long: {} > {}", buff.len(), length),
         ));
     }
+
+    if let Some(nibble) = nibble {
+        buff = do_nibble(length, &buff, nibble)?;
+    }
+
     stream.write_all(&buff)?;
     Ok(())
+}
+
+pub enum Location {
+    Continuous { start: u64, length: usize },
+    Discontinuous { offsets: Vec<u64> },
 }
 
 /// Read a binary coded decimal number from the nvram file
@@ -114,17 +175,36 @@ fn write_ch<A: Write + Seek>(
 /// * `length` - The number of bytes to read
 fn read_bcd<A: Read + Seek>(
     stream: &mut A,
-    location: u64,
-    length: usize,
+    location: Location,
     nibble: &Option<Nibble>,
     scale: u64,
+    endian: Endian,
 ) -> io::Result<u64> {
-    stream.seek(SeekFrom::Start(location))?;
-    let mut buff = vec![0; length];
-    stream.read_exact(&mut buff)?;
+    let mut buff = match location {
+        Location::Continuous { start, length } => {
+            stream.seek(SeekFrom::Start(start))?;
+            let mut buff = vec![0; length];
+            stream.read_exact(&mut buff)?;
+            buff
+        }
+        Location::Discontinuous { offsets } => {
+            let mut buff = vec![0; offsets.len()];
+            for offset in offsets.iter() {
+                stream.seek(SeekFrom::Start(*offset))?;
+                let mut byte = [0; 1];
+                stream.read_exact(&mut byte)?;
+                buff.push(byte[0]);
+            }
+            buff
+        }
+    };
+
+    if endian == Endian::Little {
+        buff.reverse();
+    }
 
     if let Some(nibble) = nibble {
-        buff = de_nibble(length, &mut buff, nibble);
+        buff = de_nibble(buff.len(), &buff, nibble)?;
     }
 
     let mut score = 0;
@@ -140,17 +220,50 @@ fn write_bcd<A: Write + Seek>(
     stream: &mut A,
     location: u64,
     length: usize,
+    nibble: &Option<Nibble>,
     value: u64,
 ) -> io::Result<()> {
     stream.seek(SeekFrom::Start(location))?;
-    let mut buff = vec![0; length];
+    // the nibble function will validate the length
+    let buff_len = if nibble.is_some() {
+        (length + 1) / 2
+    } else {
+        length
+    };
+    let mut buff = vec![0; buff_len];
     let mut score = value;
     for b in buff.iter_mut() {
         *b = ((score % 10) + ((score / 10) << 4)) as u8;
         score /= 100;
     }
+
+    if let Some(nibble) = nibble {
+        buff = do_nibble(length, &buff, nibble)?;
+    }
+
     stream.write_all(&buff)?;
     Ok(())
+}
+
+fn read_int<T: Read + Seek>(
+    nvram_file: &mut &mut T,
+    endian: Endian,
+    start: u64,
+    length: usize,
+) -> io::Result<u64> {
+    nvram_file.seek(SeekFrom::Start(start))?;
+    let mut buff = vec![0; length];
+    nvram_file.read_exact(&mut buff)?;
+    let score = match endian {
+        Endian::Big => buff
+            .iter()
+            .fold(0u64, |acc, &x| acc.wrapping_shl(8).wrapping_add(x as u64)),
+        Endian::Little => buff
+            .iter()
+            .rev()
+            .fold(0u64, |acc, &x| acc.wrapping_shl(8).wrapping_add(x as u64)),
+    };
+    Ok(score)
 }
 
 #[derive(Debug, PartialEq)]
@@ -243,7 +356,7 @@ fn read_highscores<T: Read + Seek>(
     let scores: Result<Vec<HighScore>, io::Error> = map
         .high_scores
         .iter()
-        .map(|hs| read_highscore(&mut nvram_file, hs, &map._char_map))
+        .map(|hs| read_highscore(&mut nvram_file, hs, &map._char_map, map.endianness()))
         .collect();
     scores
 }
@@ -252,8 +365,9 @@ fn read_highscore<T: Read + Seek>(
     mut nvram_file: &mut T,
     hs: &model::HighScore,
     char_map: &Option<String>,
+    endian: Endian,
 ) -> io::Result<HighScore> {
-    let mut initials = "???".to_string();
+    let mut initials = "".to_string();
     if let Some(map_initials) = &hs.initials {
         initials = read_ch(
             &mut nvram_file,
@@ -264,16 +378,40 @@ fn read_highscore<T: Read + Seek>(
             &map_initials.nibble,
         )?;
     }
-    let mut score = 0;
-    if let Some(map_score_start) = &hs.score.start {
-        score = read_bcd(
-            &mut nvram_file,
-            map_score_start.into(),
-            hs.score.length.unwrap_or(0) as usize,
-            &hs.score.nibble,
-            hs.score.scale.unwrap_or(1u64),
-        )?;
-    }
+    let score = match &hs.score.encoding {
+        Encoding::Bcd => {
+            let location = match &hs.score.offsets.as_ref() {
+                None => Location::Continuous {
+                    start: hs.score.start.as_ref().unwrap().into(),
+                    length: hs.score.length.unwrap_or(0) as usize,
+                },
+                Some(offsets) => Location::Discontinuous {
+                    offsets: offsets.iter().map(|o| o.into()).collect(),
+                },
+            };
+            read_bcd(
+                &mut nvram_file,
+                location,
+                &hs.score.nibble,
+                hs.score.scale.unwrap_or(1u64),
+                endian,
+            )?
+        }
+        Encoding::Int => {
+            if let Some(map_score_start) = &hs.score.start {
+                read_int(
+                    &mut nvram_file,
+                    endian,
+                    map_score_start.into(),
+                    hs.score.length.unwrap_or(0) as usize,
+                )?
+            } else {
+                todo!("Int requires start")
+            }
+        }
+        other => todo!("Encoding not implemented: {:?}", other),
+    };
+
     Ok(HighScore {
         label: hs.label.clone(),
         short_label: hs.short_label.clone(),
@@ -291,7 +429,7 @@ fn clear_highscores<T: Write + Seek>(mut nvram_file: &mut T, map: &NvramMap) -> 
                 map_initials.length as usize,
                 "AAA".to_string(),
                 &map._char_map,
-                &None,
+                &map_initials.nibble,
             )?;
         }
         if let Some(map_score_start) = &hs.score.start {
@@ -299,6 +437,7 @@ fn clear_highscores<T: Write + Seek>(mut nvram_file: &mut T, map: &NvramMap) -> 
                 &mut nvram_file,
                 map_score_start.into(),
                 hs.score.length.unwrap_or(0) as usize,
+                &hs.score.nibble,
                 0,
             )?;
         }
@@ -442,7 +581,11 @@ mod tests {
     #[test]
     fn test_read_bcd() -> io::Result<()> {
         let mut cursor = io::Cursor::new(vec![0x12, 0x34, 0x56, 0x78, 0x90]);
-        let score = read_bcd(&mut cursor, 0x0000, 5, &None, 1)?;
+        let location = Location::Continuous {
+            start: 0,
+            length: 5,
+        };
+        let score = read_bcd(&mut cursor, location, &None, 1, Endian::Big)?;
         Ok(assert_eq!(score, 1_234_567_890))
     }
 
@@ -499,16 +642,53 @@ mod tests {
     }
 
     #[test]
-    fn tstest_de_nibble_even() {
-        let buff = vec![0x04, 0x01, 0x04, 0x02, 0x04, 0x03];
-        let result = de_nibble(6, &buff, &Nibble::Low);
+    fn test_do_nibble_even() {
+        let buff = vec![0x41, 0x42, 0x43];
+        let result = do_nibble(6, &buff, &Nibble::Low).unwrap();
+        assert_eq!(result, vec![0x04, 0x01, 0x04, 0x02, 0x04, 0x03]);
+    }
+
+    #[test]
+    fn test_do_nibble_uneven() {
+        let buff = vec![0x01, 0x42, 0x43];
+        let result = do_nibble(5, &buff, &Nibble::Low).unwrap();
+        assert_eq!(result, vec![0x01, 0x04, 0x02, 0x04, 0x03]);
+    }
+
+    #[test]
+    #[should_panic(
+        expected = "When writing the low nibble for an uneven length the first nibble should be 0"
+    )]
+    fn test_do_nibble_uneven_fail_drop() {
+        let buff = vec![0x11, 0x42, 0x43];
+        do_nibble(5, &buff, &Nibble::Low).unwrap();
+    }
+
+    #[test]
+    #[should_panic(expected = "Length should be at most twice the length of the buffer")]
+    fn test_do_nibble_uneven_fail_length() {
+        let buff = vec![0x01, 0x42];
+        do_nibble(6, &buff, &Nibble::Low).unwrap();
+    }
+
+    #[test]
+    #[should_panic(expected = "Length should be at least twice the length of the buffer minus 1")]
+    fn test_do_nibble_uneven_fail_length2() {
+        let buff = vec![0x01, 0x42, 0x43];
+        do_nibble(2, &buff, &Nibble::Low).unwrap();
+    }
+
+    #[test]
+    fn test_de_nibble_even() {
+        let buff = vec![0x40, 0x10, 0x40, 0x20, 0x40, 0x30];
+        let result = de_nibble(6, &buff, &Nibble::High).unwrap();
         assert_eq!(result, vec![0x41, 0x42, 0x43]);
     }
 
     #[test]
     fn test_de_nibble_uneven() {
         let buff = vec![0x04, 0x01, 0x04, 0x02, 0x04];
-        let result = de_nibble(5, &buff, &Nibble::Low);
+        let result = de_nibble(5, &buff, &Nibble::Low).unwrap();
         assert_eq!(result, vec![0x04, 0x14, 0x24]);
     }
 
