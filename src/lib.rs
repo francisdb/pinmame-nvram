@@ -1,10 +1,13 @@
 mod model;
 
 use crate::model::{Checksum16, Endian, NvramMap};
-use std::fs::{File, OpenOptions};
+use include_dir::{include_dir, Dir};
+use std::fs::OpenOptions;
 use std::io;
 use std::io::{Read, Seek, SeekFrom, Write};
 use std::path::{Path, PathBuf};
+
+static MAPS: Dir = include_dir!("pinmame-nvram-maps");
 
 fn read_ch<A: Read + Seek>(stream: &mut A, location: u64, length: usize) -> io::Result<String> {
     stream.seek(SeekFrom::Start(location))?;
@@ -52,10 +55,10 @@ fn read_bcd<A: Read + Seek>(stream: &mut A, location: u64, length: usize) -> io:
     let mut buff = vec![0; length];
     stream.read_exact(&mut buff)?;
     let mut score = 0;
-    for i in 0..length {
+    for item in buff.iter() {
         score *= 100;
-        score += (buff[i] & 0x0F) as u64;
-        score += ((buff[i] & 0xF0) >> 4) as u64 * 10;
+        score += (item & 0x0F) as u64;
+        score += ((item & 0xF0) >> 4) as u64 * 10;
     }
     Ok(score)
 }
@@ -69,8 +72,8 @@ fn write_bcd<A: Write + Seek>(
     stream.seek(SeekFrom::Start(location))?;
     let mut buff = vec![0; length];
     let mut score = value;
-    for i in 0..length {
-        buff[i] = ((score % 10) + ((score / 10) << 4)) as u8;
+    for b in buff.iter_mut() {
+        *b = ((score % 10) + ((score / 10) << 4)) as u8;
         score /= 100;
     }
     stream.write_all(&buff)?;
@@ -111,12 +114,18 @@ impl Nvram {
         }
         // can we read this rom file?
         // TODO some of the files can read multiple roms, we need an index
-        if !PathBuf::from(format!("pinmame-nvram-maps/{}.nv.json", rom_name)).exists() {
+        // if !PathBuf::from(format!("pinmame-nvram-maps/{}.nv.json", rom_name)).exists() {
+        //     return Ok(None);
+        // }
+        if !MAPS.contains(format!("{}.nv.json", rom_name)) {
             return Ok(None);
         }
 
-        let map_file = File::open(format!("pinmame-nvram-maps/{}.nv.json", rom_name))?;
-        let map: NvramMap = serde_json::from_reader(map_file)?;
+        // let map_file = File::open(format!("pinmame-nvram-maps/{}.nv.json", rom_name))?;
+        // let map: NvramMap = serde_json::from_reader(map_file)?;
+        let map_file = MAPS.get_file(format!("{}.nv.json", rom_name)).unwrap();
+        let cursor = io::Cursor::new(map_file.contents());
+        let map: NvramMap = serde_json::from_reader(cursor)?;
         Ok(Some(Nvram {
             map,
             nv_path: nv_path.to_path_buf(),
@@ -138,7 +147,7 @@ impl Nvram {
         update_all_checksum16(&mut rw_file, &self.map)
     }
 
-    pub fn verify_checksum16(&mut self) -> io::Result<Vec<ChecksumMismatch<u16>>> {
+    pub fn verify_all_checksum16(&mut self) -> io::Result<Vec<ChecksumMismatch<u16>>> {
         let mut file = OpenOptions::new().read(true).open(&self.nv_path)?;
         verify_all_checksum16(&mut file, &self.map)
     }
@@ -249,7 +258,7 @@ fn verify_all_checksum16<T: Read + Seek>(
     mut nvram_file: &mut T,
     map: &NvramMap,
 ) -> io::Result<Vec<ChecksumMismatch<u16>>> {
-    let endian = map._endian.as_ref().or(map.endian.as_ref()).unwrap();
+    let endian = map._endian.as_ref().unwrap();
     map.checksum16
         .iter()
         .flatten()
@@ -296,18 +305,18 @@ fn update_all_checksum16<T: Read + Seek + Write>(
     mut nvram_file: &mut T,
     map: &NvramMap,
 ) -> io::Result<()> {
-    let endian = map._endian.as_ref().or(map.endian.as_ref()).unwrap();
+    let endian = map._endian.as_ref().unwrap();
     map.checksum16
         .iter()
         .flatten()
-        .map(|cs| update_checksum16(&mut nvram_file, cs, endian))
-        .collect()
+        .try_for_each(|cs| update_checksum16(&mut nvram_file, cs, endian))
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
     use pretty_assertions::assert_eq;
+    use std::fs::File;
     use testdir::testdir;
 
     #[test]
@@ -423,10 +432,24 @@ mod tests {
 
         assert_eq!(expected, scores);
 
-        let checksum_failures = nvram.verify_checksum16()?;
+        let checksum_failures = nvram.verify_all_checksum16()?;
         Ok(assert_eq!(
             Vec::<ChecksumMismatch<u16>>::new(),
             checksum_failures
         ))
+    }
+
+    #[test]
+    fn test_read_bcd() -> io::Result<()> {
+        let mut cursor = io::Cursor::new(vec![0x12, 0x34, 0x56, 0x78, 0x90]);
+        let score = read_bcd(&mut cursor, 0x0000, 5)?;
+        Ok(assert_eq!(score, 1_234_567_890))
+    }
+
+    #[test]
+    fn test_read_ch() -> io::Result<()> {
+        let mut cursor = io::Cursor::new(vec![0x41, 0x42, 0x43, 0x44, 0x45]);
+        let score = read_ch(&mut cursor, 0x0000, 5)?;
+        Ok(assert_eq!(score, "ABCDE"))
     }
 }
