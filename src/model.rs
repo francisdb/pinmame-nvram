@@ -86,7 +86,7 @@ pub struct Score {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub nibble: Option<Nibble>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub scale: Option<i64>,
+    pub scale: Option<u64>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub offsets: Option<Vec<HexOrInteger>>,
 }
@@ -146,14 +146,14 @@ pub struct LastGame {
     pub label: Option<String>,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, PartialEq)]
 #[serde(rename_all = "lowercase")]
 pub enum Nibble {
     High,
     Low,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, PartialEq)]
 #[serde(rename_all = "lowercase")]
 pub enum Endian {
     Big,

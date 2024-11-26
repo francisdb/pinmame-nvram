@@ -1,6 +1,6 @@
 mod model;
 
-use crate::model::{Checksum16, Endian, NvramMap};
+use crate::model::{Checksum16, Endian, Nibble, NvramMap};
 use include_dir::{include_dir, Dir};
 use std::ffi::OsStr;
 use std::fs::OpenOptions;
@@ -10,16 +10,49 @@ use std::path::{Path, PathBuf};
 
 static MAPS: Dir = include_dir!("pinmame-nvram-maps");
 
+fn de_nibble(length: usize, buff: &Vec<u8>, nibble: &Nibble) -> Vec<u8> {
+    // TODO make this more efficient
+    let resulting_length = (length + 1) / 2;
+    let mut result = vec![0; resulting_length];
+    let mut buffer = buff.clone();
+    if length % 2 != 0 {
+        // prepend 0
+        buffer = vec![0].into_iter().chain(buffer.into_iter()).collect();
+    };
+    let mut iter = buffer.into_iter();
+    for b in result.iter_mut() {
+        // if uneven the high byte should be 0
+        let high = iter.next().unwrap();
+        let low = iter.next().unwrap();
+        *b = match nibble {
+            Nibble::High => (high & 0xF0) | ((low & 0xF0) >> 4),
+            Nibble::Low => ((high & 0x0F) << 4) | (low & 0x0F),
+        };
+    }
+    result
+}
+
 fn read_ch<A: Read + Seek>(
     stream: &mut A,
     location: u64,
     length: usize,
     mask: Option<u64>,
     char_map: &Option<String>,
+    nibble: &Option<Nibble>,
 ) -> io::Result<String> {
     stream.seek(SeekFrom::Start(location))?;
+
     let mut buff = vec![0; length];
     stream.read_exact(&mut buff)?;
+
+    if let Some(nibble) = nibble {
+        let result = de_nibble(length, &mut buff, nibble);
+        // filter out zero bytes
+        let result = result.into_iter().filter(|&b| b != 0).collect::<Vec<u8>>();
+        return String::from_utf8(result.to_vec())
+            .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e));
+    }
+
     // apply mask if set
     if let Some(mask) = mask {
         for b in buff.iter_mut() {
@@ -44,6 +77,7 @@ fn write_ch<A: Write + Seek>(
     length: usize,
     value: String,
     char_map: &Option<String>,
+    nibble: &Option<Nibble>,
 ) -> io::Result<()> {
     stream.seek(SeekFrom::Start(location))?;
     // if buffer contains non-ASCII characters, fail
@@ -78,17 +112,28 @@ fn write_ch<A: Write + Seek>(
 /// * `nvram_file` - The file to read from
 /// * `location` - The location in the file to start reading from
 /// * `length` - The number of bytes to read
-fn read_bcd<A: Read + Seek>(stream: &mut A, location: u64, length: usize) -> io::Result<u64> {
+fn read_bcd<A: Read + Seek>(
+    stream: &mut A,
+    location: u64,
+    length: usize,
+    nibble: &Option<Nibble>,
+    scale: u64,
+) -> io::Result<u64> {
     stream.seek(SeekFrom::Start(location))?;
     let mut buff = vec![0; length];
     stream.read_exact(&mut buff)?;
+
+    if let Some(nibble) = nibble {
+        buff = de_nibble(length, &mut buff, nibble);
+    }
+
     let mut score = 0;
     for item in buff.iter() {
         score *= 100;
         score += (item & 0x0F) as u64;
         score += ((item & 0xF0) >> 4) as u64 * 10;
     }
-    Ok(score)
+    Ok(score * scale)
 }
 
 fn write_bcd<A: Write + Seek>(
@@ -216,6 +261,7 @@ fn read_highscore<T: Read + Seek>(
             map_initials.length as usize,
             map_initials.mask.as_ref().map(|m| m.into()),
             char_map,
+            &map_initials.nibble,
         )?;
     }
     let mut score = 0;
@@ -224,6 +270,8 @@ fn read_highscore<T: Read + Seek>(
             &mut nvram_file,
             map_score_start.into(),
             hs.score.length.unwrap_or(0) as usize,
+            &hs.score.nibble,
+            hs.score.scale.unwrap_or(1u64),
         )?;
     }
     Ok(HighScore {
@@ -243,6 +291,7 @@ fn clear_highscores<T: Write + Seek>(mut nvram_file: &mut T, map: &NvramMap) -> 
                 map_initials.length as usize,
                 "AAA".to_string(),
                 &map._char_map,
+                &None,
             )?;
         }
         if let Some(map_score_start) = &hs.score.start {
@@ -393,14 +442,14 @@ mod tests {
     #[test]
     fn test_read_bcd() -> io::Result<()> {
         let mut cursor = io::Cursor::new(vec![0x12, 0x34, 0x56, 0x78, 0x90]);
-        let score = read_bcd(&mut cursor, 0x0000, 5)?;
+        let score = read_bcd(&mut cursor, 0x0000, 5, &None, 1)?;
         Ok(assert_eq!(score, 1_234_567_890))
     }
 
     #[test]
     fn test_read_ch() -> io::Result<()> {
         let mut cursor = io::Cursor::new(vec![0x41, 0x42, 0x43, 0x44, 0x45]);
-        let score = read_ch(&mut cursor, 0x0000, 5, None, &None)?;
+        let score = read_ch(&mut cursor, 0x0000, 5, None, &None, &None)?;
         Ok(assert_eq!(score, "ABCDE"))
     }
 
@@ -408,14 +457,14 @@ mod tests {
     fn test_read_ch_with_charmap() -> io::Result<()> {
         let char_map = Some("???????????ABCDEFGHIJKLMNOPQRSTUVWXYZ".to_string());
         let mut cursor = io::Cursor::new(vec![0x0B, 0x0C, 0x0D, 0x0E, 0x0F]);
-        let score = read_ch(&mut cursor, 0x0000, 5, None, &char_map)?;
+        let score = read_ch(&mut cursor, 0x0000, 5, None, &char_map, &None)?;
         Ok(assert_eq!(score, "ABCDE"))
     }
 
     #[test]
     fn test_write_ch() -> io::Result<()> {
         let mut cursor = io::Cursor::new(vec![0x00, 0x00, 0x00, 0x00, 0x00]);
-        write_ch(&mut cursor, 0x0000, 5, "ABCDE".to_string(), &None)?;
+        write_ch(&mut cursor, 0x0000, 5, "ABCDE".to_string(), &None, &None)?;
         Ok(assert_eq!(
             cursor.into_inner(),
             vec![0x41, 0x42, 0x43, 0x44, 0x45]
@@ -426,11 +475,41 @@ mod tests {
     fn test_write_ch_with_charmap() -> io::Result<()> {
         let char_map = Some("???????????ABCDEFGHIJKLMNOPQRSTUVWXYZ".to_string());
         let mut cursor = io::Cursor::new(vec![0x00, 0x00, 0x00, 0x00, 0x00]);
-        write_ch(&mut cursor, 0x0000, 5, "ABCDE".to_string(), &char_map)?;
+        write_ch(
+            &mut cursor,
+            0x0000,
+            5,
+            "ABCDE".to_string(),
+            &char_map,
+            &None,
+        )?;
         Ok(assert_eq!(
             cursor.into_inner(),
             vec![0x0B, 0x0C, 0x0D, 0x0E, 0x0F]
         ))
+    }
+
+    #[test]
+    fn test_read_ch_with_nibble() -> io::Result<()> {
+        // Nibble: where the sequence 0x04 0x01 0x04 0x02 0x04 0x03
+        // translates to 0x41 0x42 0x43 which is the string "ABC"
+        let mut cursor = io::Cursor::new(vec![0x04, 0x01, 0x04, 0x02, 0x04, 0x03]);
+        let score = read_ch(&mut cursor, 0x0000, 6, None, &None, &Some(Nibble::Low))?;
+        Ok(assert_eq!(score, "ABC"))
+    }
+
+    #[test]
+    fn tstest_de_nibble_even() {
+        let buff = vec![0x04, 0x01, 0x04, 0x02, 0x04, 0x03];
+        let result = de_nibble(6, &buff, &Nibble::Low);
+        assert_eq!(result, vec![0x41, 0x42, 0x43]);
+    }
+
+    #[test]
+    fn test_de_nibble_uneven() {
+        let buff = vec![0x04, 0x01, 0x04, 0x02, 0x04];
+        let result = de_nibble(5, &buff, &Nibble::Low);
+        assert_eq!(result, vec![0x04, 0x14, 0x24]);
     }
 
     #[test]
