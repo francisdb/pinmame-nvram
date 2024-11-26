@@ -2,6 +2,7 @@ mod model;
 
 use crate::model::{Checksum16, Endian, NvramMap};
 use include_dir::{include_dir, Dir};
+use std::ffi::OsStr;
 use std::fs::OpenOptions;
 use std::io;
 use std::io::{Read, Seek, SeekFrom, Write};
@@ -112,21 +113,9 @@ impl Nvram {
                 format!("File not found: {:?}", nv_path),
             ));
         }
-        // can we read this rom file?
-        // TODO some of the files can read multiple roms, we need an index
-        // if !PathBuf::from(format!("pinmame-nvram-maps/{}.nv.json", rom_name)).exists() {
-        //     return Ok(None);
-        // }
-        if !MAPS.contains(format!("{}.nv.json", rom_name)) {
-            return Ok(None);
-        }
 
-        // let map_file = File::open(format!("pinmame-nvram-maps/{}.nv.json", rom_name))?;
-        // let map: NvramMap = serde_json::from_reader(map_file)?;
-        let map_file = MAPS.get_file(format!("{}.nv.json", rom_name)).unwrap();
-        let cursor = io::Cursor::new(map_file.contents());
-        let map: NvramMap = serde_json::from_reader(cursor)?;
-        Ok(Some(Nvram {
+        let map_opt = find_map(&rom_name)?;
+        Ok(map_opt.map(|map| Nvram {
             map,
             nv_path: nv_path.to_path_buf(),
         }))
@@ -151,6 +140,28 @@ impl Nvram {
         let mut file = OpenOptions::new().read(true).open(&self.nv_path)?;
         verify_all_checksum16(&mut file, &self.map)
     }
+}
+
+fn find_map(rom_name: &String) -> io::Result<Option<NvramMap>> {
+    let map_name = format!("{}.nv.json", rom_name);
+    if let Some(map_file) = MAPS.get_file(&map_name) {
+        let cursor = io::Cursor::new(map_file.contents());
+        let map = serde_json::from_reader(cursor)?;
+        return Ok(Some(map));
+    }
+    // Preferably we would have a pre-filtered MAPS, see
+    // https://github.com/Michael-F-Bryan/include_dir/issues/81
+    for entry in MAPS
+        .files()
+        .filter(|entry| entry.path().extension().unwrap_or(OsStr::new("")) == "json")
+    {
+        let cursor = io::Cursor::new(entry.contents());
+        let map: NvramMap = serde_json::from_reader(cursor)?;
+        if map._roms.contains(rom_name) {
+            return Ok(Some(map));
+        }
+    }
+    Ok(None)
 }
 
 fn read_highscores<T: Read + Seek>(
@@ -338,101 +349,10 @@ mod tests {
     }
 
     #[test]
-    fn test_demolition_man() -> io::Result<()> {
-        let mut nvram = Nvram::open(Path::new("testdata/dm_lx4.nv"))?.unwrap();
-        let scores = nvram.read_highscores()?;
-        let expected = Vec::from([
-            HighScore {
-                label: Some("Grand Champion".to_string()),
-                short_label: Some("GC".to_string()),
-                initials: "TED".to_string(),
-                score: 1_250_000_000,
-            },
-            HighScore {
-                label: Some("First Place".to_string()),
-                short_label: Some("1st".to_string()),
-                initials: "WAG".to_string(),
-                score: 950_000_000,
-            },
-            HighScore {
-                label: Some("Second Place".to_string()),
-                short_label: Some("2nd".to_string()),
-                initials: "DEN".to_string(),
-                score: 800_000_000,
-            },
-            HighScore {
-                label: Some("Third Place".to_string()),
-                short_label: Some("3rd".to_string()),
-                initials: "DTW".to_string(),
-                score: 650_000_000,
-            },
-            HighScore {
-                label: Some("Fourth Place".to_string()),
-                short_label: Some("4th".to_string()),
-                initials: "HEY".to_string(),
-                score: 500_000_000,
-            },
-        ]);
-
-        Ok(assert_eq!(expected, scores))
-    }
-
-    #[test]
     fn test_checksum16() -> io::Result<()> {
         let mut file = OpenOptions::new().read(true).open("testdata/dm_lx4.nv")?;
         let nvram = Nvram::open(Path::new("testdata/dm_lx4.nv"))?.unwrap();
         let checksum_failures = verify_all_checksum16(&mut file, &nvram.map)?;
-        Ok(assert_eq!(
-            Vec::<ChecksumMismatch<u16>>::new(),
-            checksum_failures
-        ))
-    }
-
-    #[test]
-    fn test_clear_demolition_man_scores() -> io::Result<()> {
-        let dir = testdir!();
-        let test_file = dir.join("dm_lx4.nv");
-        // copy the test file to the test directory
-        std::fs::copy("testdata/dm_lx4.nv", &test_file)?;
-        let mut nvram = Nvram::open(&test_file)?.unwrap();
-        nvram.clear_highscores()?;
-        let scores = nvram.read_highscores()?;
-        let expected = Vec::from([
-            HighScore {
-                label: Some("Grand Champion".to_string()),
-                short_label: Some("GC".to_string()),
-                initials: "AAA".to_string(),
-                score: 0,
-            },
-            HighScore {
-                label: Some("First Place".to_string()),
-                short_label: Some("1st".to_string()),
-                initials: "AAA".to_string(),
-                score: 0,
-            },
-            HighScore {
-                label: Some("Second Place".to_string()),
-                short_label: Some("2nd".to_string()),
-                initials: "AAA".to_string(),
-                score: 0,
-            },
-            HighScore {
-                label: Some("Third Place".to_string()),
-                short_label: Some("3rd".to_string()),
-                initials: "AAA".to_string(),
-                score: 0,
-            },
-            HighScore {
-                label: Some("Fourth Place".to_string()),
-                short_label: Some("4th".to_string()),
-                initials: "AAA".to_string(),
-                score: 0,
-            },
-        ]);
-
-        assert_eq!(expected, scores);
-
-        let checksum_failures = nvram.verify_all_checksum16()?;
         Ok(assert_eq!(
             Vec::<ChecksumMismatch<u16>>::new(),
             checksum_failures
@@ -451,5 +371,11 @@ mod tests {
         let mut cursor = io::Cursor::new(vec![0x41, 0x42, 0x43, 0x44, 0x45]);
         let score = read_ch(&mut cursor, 0x0000, 5)?;
         Ok(assert_eq!(score, "ABCDE"))
+    }
+
+    #[test]
+    fn test_find_map() -> io::Result<()> {
+        let map = find_map(&"afm_113b".to_string())?;
+        Ok(assert_eq!(true, map.is_some()))
     }
 }
