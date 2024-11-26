@@ -10,11 +10,31 @@ use std::path::{Path, PathBuf};
 
 static MAPS: Dir = include_dir!("pinmame-nvram-maps");
 
-fn read_ch<A: Read + Seek>(stream: &mut A, location: u64, length: usize) -> io::Result<String> {
+fn read_ch<A: Read + Seek>(
+    stream: &mut A,
+    location: u64,
+    length: usize,
+    mask: Option<u64>,
+    char_map: &Option<String>,
+) -> io::Result<String> {
     stream.seek(SeekFrom::Start(location))?;
     let mut buff = vec![0; length];
     stream.read_exact(&mut buff)?;
-    // TODO is utf8 the right encoding? I would expect ASCII which is a subset of UTF8
+    // apply mask if set
+    if let Some(mask) = mask {
+        for b in buff.iter_mut() {
+            *b &= mask as u8;
+        }
+    }
+    // if char_map is set, convert the buffer to a string
+    if let Some(char_map) = char_map {
+        let mut result = String::new();
+        for b in buff.iter() {
+            result.push(char_map.chars().nth(*b as usize).unwrap_or('?'));
+        }
+        return Ok(result);
+    }
+
     String::from_utf8(buff.to_vec()).map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))
 }
 
@@ -23,6 +43,7 @@ fn write_ch<A: Write + Seek>(
     location: u64,
     length: usize,
     value: String,
+    char_map: &Option<String>,
 ) -> io::Result<()> {
     stream.seek(SeekFrom::Start(location))?;
     // if buffer contains non-ASCII characters, fail
@@ -32,7 +53,13 @@ fn write_ch<A: Write + Seek>(
             format!("String is not ASCII: {}", value),
         ));
     }
-    let buff = value.as_bytes().to_vec();
+    let mut buff = value.as_bytes().to_vec();
+    if let Some(char_map) = char_map {
+        for b in buff.iter_mut() {
+            let idx = char_map.find(*b as char).unwrap_or(0);
+            *b = idx as u8;
+        }
+    }
     if buff.len() > length {
         return Err(io::Error::new(
             io::ErrorKind::InvalidInput,
@@ -171,7 +198,7 @@ fn read_highscores<T: Read + Seek>(
     let scores: Result<Vec<HighScore>, io::Error> = map
         .high_scores
         .iter()
-        .map(|hs| read_highscore(&mut nvram_file, hs))
+        .map(|hs| read_highscore(&mut nvram_file, hs, &map._char_map))
         .collect();
     scores
 }
@@ -179,6 +206,7 @@ fn read_highscores<T: Read + Seek>(
 fn read_highscore<T: Read + Seek>(
     mut nvram_file: &mut T,
     hs: &model::HighScore,
+    char_map: &Option<String>,
 ) -> io::Result<HighScore> {
     let mut initials = "???".to_string();
     if let Some(map_initials) = &hs.initials {
@@ -186,6 +214,8 @@ fn read_highscore<T: Read + Seek>(
             &mut nvram_file,
             (&map_initials.start).into(),
             map_initials.length as usize,
+            map_initials.mask.as_ref().map(|m| m.into()),
+            char_map,
         )?;
     }
     let mut score = 0;
@@ -212,6 +242,7 @@ fn clear_highscores<T: Write + Seek>(mut nvram_file: &mut T, map: &NvramMap) -> 
                 (&map_initials.start).into(),
                 map_initials.length as usize,
                 "AAA".to_string(),
+                &map._char_map,
             )?;
         }
         if let Some(map_score_start) = &hs.score.start {
@@ -369,8 +400,37 @@ mod tests {
     #[test]
     fn test_read_ch() -> io::Result<()> {
         let mut cursor = io::Cursor::new(vec![0x41, 0x42, 0x43, 0x44, 0x45]);
-        let score = read_ch(&mut cursor, 0x0000, 5)?;
+        let score = read_ch(&mut cursor, 0x0000, 5, None, &None)?;
         Ok(assert_eq!(score, "ABCDE"))
+    }
+
+    #[test]
+    fn test_read_ch_with_charmap() -> io::Result<()> {
+        let char_map = Some("???????????ABCDEFGHIJKLMNOPQRSTUVWXYZ".to_string());
+        let mut cursor = io::Cursor::new(vec![0x0B, 0x0C, 0x0D, 0x0E, 0x0F]);
+        let score = read_ch(&mut cursor, 0x0000, 5, None, &char_map)?;
+        Ok(assert_eq!(score, "ABCDE"))
+    }
+
+    #[test]
+    fn test_write_ch() -> io::Result<()> {
+        let mut cursor = io::Cursor::new(vec![0x00, 0x00, 0x00, 0x00, 0x00]);
+        write_ch(&mut cursor, 0x0000, 5, "ABCDE".to_string(), &None)?;
+        Ok(assert_eq!(
+            cursor.into_inner(),
+            vec![0x41, 0x42, 0x43, 0x44, 0x45]
+        ))
+    }
+
+    #[test]
+    fn test_write_ch_with_charmap() -> io::Result<()> {
+        let char_map = Some("???????????ABCDEFGHIJKLMNOPQRSTUVWXYZ".to_string());
+        let mut cursor = io::Cursor::new(vec![0x00, 0x00, 0x00, 0x00, 0x00]);
+        write_ch(&mut cursor, 0x0000, 5, "ABCDE".to_string(), &char_map)?;
+        Ok(assert_eq!(
+            cursor.into_inner(),
+            vec![0x0B, 0x0C, 0x0D, 0x0E, 0x0F]
+        ))
     }
 
     #[test]

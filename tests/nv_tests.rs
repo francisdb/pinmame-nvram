@@ -220,3 +220,162 @@ fn test_dirty_harry() -> io::Result<()> {
 
     Ok(assert_eq!(expected, scores))
 }
+
+#[test]
+fn test_diner() -> io::Result<()> {
+    let mut nvram = Nvram::open(Path::new("testdata/diner_l4.nv"))?.unwrap();
+    let scores = nvram.read_highscores()?;
+    let expected = Vec::from([
+        HighScore {
+            label: Some("Highest Score #1".to_string()),
+            short_label: Some("#1".to_string()),
+            initials: "TTR".to_string(),
+            score: 8_000_000,
+        },
+        HighScore {
+            label: Some("Highest Score #2".to_string()),
+            short_label: Some("#2".to_string()),
+            initials: "RMR".to_string(),
+            score: 7_500_000,
+        },
+        HighScore {
+            label: Some("Highest Score #3".to_string()),
+            short_label: Some("#3".to_string()),
+            initials: "ABG".to_string(),
+            score: 7_000_000,
+        },
+        HighScore {
+            label: Some("Highest Score #4".to_string()),
+            short_label: Some("#4".to_string()),
+            initials: "CDG".to_string(),
+            score: 6_500_000,
+        },
+    ]);
+
+    Ok(assert_eq!(expected, scores))
+}
+
+#[test]
+fn test_diner_clear_scores() -> io::Result<()> {
+    let dir = testdir!();
+    let test_file = dir.join("diner_l4.nv");
+    // copy the test file to the test directory
+    std::fs::copy("testdata/diner_l4.nv", &test_file)?;
+    let mut nvram = Nvram::open(&test_file)?.unwrap();
+    nvram.clear_highscores()?;
+    let scores = nvram.read_highscores()?;
+    let expected = Vec::from([
+        HighScore {
+            label: Some("Highest Score #1".to_string()),
+            short_label: Some("#1".to_string()),
+            initials: "AAA".to_string(),
+            score: 0,
+        },
+        HighScore {
+            label: Some("Highest Score #2".to_string()),
+            short_label: Some("#2".to_string()),
+            initials: "AAA".to_string(),
+            score: 0,
+        },
+        HighScore {
+            label: Some("Highest Score #3".to_string()),
+            short_label: Some("#3".to_string()),
+            initials: "AAA".to_string(),
+            score: 0,
+        },
+        HighScore {
+            label: Some("Highest Score #4".to_string()),
+            short_label: Some("#4".to_string()),
+            initials: "AAA".to_string(),
+            score: 0,
+        },
+    ]);
+
+    assert_eq!(expected, scores);
+
+    let checksum_failures = nvram.verify_all_checksum16()?;
+    Ok(assert_eq!(
+        Vec::<ChecksumMismatch<u16>>::new(),
+        checksum_failures
+    ))
+}
+
+#[test]
+fn test_bram_strokers_dracula() -> io::Result<()> {
+    let mut nvram = Nvram::open(Path::new("testdata/drac_l1.nv"))?.unwrap();
+    let scores = nvram.read_highscores()?;
+    let expected = Vec::from([
+        HighScore {
+            label: Some("Greatest Vampire Hunter".to_string()),
+            short_label: Some("GVP".to_string()),
+            initials: "CD".to_string(),
+            score: 300_000_000,
+        },
+        HighScore {
+            label: Some("Best Hunter #1".to_string()),
+            short_label: Some("".to_string()),
+            initials: "BSO".to_string(),
+            score: 250_000_000,
+        },
+        HighScore {
+            label: Some("Best Hunter #2".to_string()),
+            short_label: None,
+            initials: "BIL".to_string(),
+            score: 200_000_000,
+        },
+        HighScore {
+            label: Some("Best Hunter #3".to_string()),
+            short_label: None,
+            initials: "P H".to_string(),
+            score: 150_000_000,
+        },
+        HighScore {
+            label: Some("Best Hunter #4".to_string()),
+            short_label: None,
+            initials: "S  ".to_string(),
+            score: 100_000_000,
+        },
+    ]);
+
+    Ok(assert_eq!(expected, scores))
+}
+
+#[test]
+fn test_doctor_who() -> io::Result<()> {
+    let mut nvram = Nvram::open(Path::new("testdata/dw_l2.nv"))?.unwrap();
+    let scores = nvram.read_highscores()?;
+    let expected = Vec::from([
+        HighScore {
+            label: Some("Grand Champion".to_string()),
+            short_label: Some("GC".to_string()),
+            initials: "WHO".to_string(),
+            score: 300_000_000,
+        },
+        HighScore {
+            label: Some("First Place".to_string()),
+            short_label: Some("1st".to_string()),
+            initials: "BSO".to_string(),
+            score: 250_000_000,
+        },
+        HighScore {
+            label: Some("Second Place".to_string()),
+            short_label: Some("2nd".to_string()),
+            initials: "BIL".to_string(),
+            score: 200_000_000,
+        },
+        HighScore {
+            label: Some("Third Place".to_string()),
+            short_label: Some("3rd".to_string()),
+            initials: "HEY".to_string(),
+            score: 150_000_000,
+        },
+        HighScore {
+            label: Some("Fourth Place".to_string()),
+            short_label: Some("4th".to_string()),
+            initials: "S  ".to_string(),
+            score: 100_000_000,
+        },
+    ]);
+
+    Ok(assert_eq!(expected, scores))
+}
