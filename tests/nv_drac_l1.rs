@@ -1,4 +1,4 @@
-use pinmame_nvram::{HighScore, Nvram};
+use pinmame_nvram::{HighScore, ModeChampion, Nvram};
 use pretty_assertions::assert_eq;
 use std::io;
 use std::path::Path;
@@ -6,6 +6,18 @@ use std::path::Path;
 #[test]
 fn test_bram_strokers_dracula() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/drac_l1.nv"))?.unwrap();
+
+    let champions = nvram.read_mode_champions()?;
+    let expected = Vec::from([ModeChampion {
+        label: Some("Loop Champion".to_string()),
+        short_label: Some("LC".to_string()),
+        initials: "CD ".to_string(),
+        score: Some(6),
+        suffix: None,
+        timestamp: None,
+    }]);
+    assert_eq!(Some(expected), champions);
+
     let scores = nvram.read_highscores()?;
     let expected = Vec::from([
         HighScore {

@@ -1,10 +1,106 @@
-use pinmame_nvram::{HighScore, Nvram};
+use pinmame_nvram::{HighScore, ModeChampion, Nvram};
+use pretty_assertions::assert_eq;
 use std::io;
 use std::path::Path;
 
 #[test]
 fn test_johnny_mnemonic() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/jm_12r.nv"))?.unwrap();
+
+    let champions = nvram.read_mode_champions()?;
+    let expected = Vec::from([
+        ModeChampion {
+            label: Some("Cyberpunk".to_string()),
+            short_label: Some("Cyberpunk".to_string()),
+            initials: "TWU".to_string(),
+            score: None,
+            suffix: None,
+            timestamp: None,
+        },
+        ModeChampion {
+            label: Some("Masters of Powerdown #1".to_string()),
+            short_label: Some("Powerdown #1".to_string()),
+            initials: "ROG".to_string(),
+            score: Some(100_000_000),
+            suffix: None,
+            timestamp: None,
+        },
+        ModeChampion {
+            label: Some("Masters of Powerdown #2".to_string()),
+            short_label: Some("Powerdown #2".to_string()),
+            initials: "LED".to_string(),
+            score: Some(100_000_000),
+            suffix: None,
+            timestamp: None,
+        },
+        ModeChampion {
+            label: Some("Masters of Powerdown #3".to_string()),
+            short_label: Some("Powerdown #3".to_string()),
+            initials: "LFS".to_string(),
+            score: Some(100_000_000),
+            suffix: None,
+            timestamp: None,
+        },
+        ModeChampion {
+            label: Some("Masters of Powerdown #4".to_string()),
+            short_label: Some("Powerdown #4".to_string()),
+            initials: "JAP".to_string(),
+            score: Some(100_000_000),
+            suffix: None,
+            timestamp: None,
+        },
+        // below are not shown as the initials are "   "
+        ModeChampion {
+            label: Some("Masters of Powerdown #5".to_string()),
+            short_label: Some("Powerdown #5".to_string()),
+            initials: "   ".to_string(),
+            score: Some(100_000_000),
+            suffix: None,
+            timestamp: None,
+        },
+        ModeChampion {
+            label: Some("Masters of Powerdown #6".to_string()),
+            short_label: Some("Powerdown #6".to_string()),
+            initials: "   ".to_string(),
+            score: Some(100_000_000),
+            suffix: None,
+            timestamp: None,
+        },
+        ModeChampion {
+            label: Some("Masters of Powerdown #7".to_string()),
+            short_label: Some("Powerdown #7".to_string()),
+            initials: "   ".to_string(),
+            score: Some(100_000_000),
+            suffix: None,
+            timestamp: None,
+        },
+        ModeChampion {
+            label: Some("Masters of Powerdown #8".to_string()),
+            short_label: Some("Powerdown #8".to_string()),
+            initials: "   ".to_string(),
+            score: Some(100_000_000),
+            suffix: None,
+            timestamp: None,
+        },
+        ModeChampion {
+            label: Some("Masters of Powerdown #9".to_string()),
+            short_label: Some("Powerdown #9".to_string()),
+            initials: "   ".to_string(),
+            score: Some(100_000_000),
+            suffix: None,
+            timestamp: None,
+        },
+        ModeChampion {
+            label: Some("Masters of Powerdown #10".to_string()),
+            short_label: Some("Powerdown #10".to_string()),
+            initials: "   ".to_string(),
+            score: Some(100_000_000),
+            suffix: None,
+            timestamp: None,
+        },
+    ]);
+    assert_eq!(Some(expected), champions);
+
     let scores = nvram.read_highscores()?;
     let expected = Vec::from([
         HighScore {
@@ -39,5 +135,5 @@ fn test_johnny_mnemonic() -> io::Result<()> {
         },
     ]);
 
-    Ok(pretty_assertions::assert_eq!(expected, scores))
+    Ok(assert_eq!(expected, scores))
 }

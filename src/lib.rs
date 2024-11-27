@@ -266,12 +266,53 @@ fn read_int<T: Read + Seek>(
     Ok(score)
 }
 
+/// A special type for a real-time clock value from a WPC game,
+/// stored as a sequence of 7 bytes:
+/// * two-byte year (2015 is 0x07 0xDF),
+/// * month (1-12),
+/// * day of month (1-31),
+/// * day of the week (0-6, 0=Sunday),
+/// * hour (0-23)
+/// * minute (0-59).
+///
+fn read_wpc_rtc<T: Read + Seek>(
+    nvram_file: &mut &mut T,
+    start: u64,
+    length: usize,
+) -> io::Result<String> {
+    nvram_file.seek(SeekFrom::Start(start))?;
+    let mut buff = vec![0; length];
+    nvram_file.read_exact(&mut buff)?;
+    let year = (buff[0] as u16) << 8 | buff[1] as u16;
+    let month = buff[2];
+    let day = buff[3];
+    let _dow = buff[4];
+    let hour = buff[5];
+    let minute = buff[6];
+    // output as "YYYY-MM-DD HH:MM"
+    Ok(format!(
+        "{:04}-{:02}-{:02} {:02}:{:02}",
+        year, month, day, hour, minute
+    ))
+}
+
 #[derive(Debug, PartialEq)]
 pub struct HighScore {
     pub label: Option<String>,
     pub short_label: Option<String>,
     pub initials: String,
     pub score: u64,
+}
+
+#[derive(Debug, PartialEq)]
+// probably one of both, score or timestamp
+pub struct ModeChampion {
+    pub label: Option<String>,
+    pub short_label: Option<String>,
+    pub initials: String,
+    pub score: Option<u64>,
+    pub suffix: Option<String>,
+    pub timestamp: Option<String>,
 }
 
 pub struct Nvram {
@@ -319,6 +360,11 @@ impl Nvram {
             .open(&self.nv_path)?;
         clear_highscores(&mut rw_file, &self.map)?;
         update_all_checksum16(&mut rw_file, &self.map)
+    }
+
+    pub fn read_mode_champions(&mut self) -> io::Result<Option<Vec<ModeChampion>>> {
+        let mut file = OpenOptions::new().read(true).open(&self.nv_path)?;
+        read_mode_champions(&mut file, &self.map)
     }
 
     pub fn verify_all_checksum16(&mut self) -> io::Result<Vec<ChecksumMismatch<u16>>> {
@@ -443,6 +489,96 @@ fn clear_highscores<T: Write + Seek>(mut nvram_file: &mut T, map: &NvramMap) -> 
         }
     }
     Ok(())
+}
+
+fn read_mode_champion<T: Read + Seek>(
+    mut nvram_file: &mut T,
+    mc: &model::ModeChampion,
+    char_map: &Option<String>,
+    endian: Endian,
+) -> io::Result<ModeChampion> {
+    let initials = read_ch(
+        &mut nvram_file,
+        (&mc.initials.start).into(),
+        mc.initials.length as usize,
+        mc.initials.mask.as_ref().map(|m| m.into()),
+        char_map,
+        &mc.initials.nibble,
+    )?;
+    let score = if let Some(score) = &mc.score.as_ref() {
+        match &score.encoding {
+            Encoding::Bcd => {
+                let location = match score.offsets.as_ref() {
+                    None => Location::Continuous {
+                        start: score.start.as_ref().unwrap().into(),
+                        length: score.length.unwrap_or(0) as usize,
+                    },
+                    Some(offsets) => Location::Discontinuous {
+                        offsets: offsets.iter().map(|o| o.into()).collect(),
+                    },
+                };
+                let result = read_bcd(
+                    &mut nvram_file,
+                    location,
+                    &score.nibble,
+                    score.scale.unwrap_or(1u64),
+                    endian,
+                )?;
+                Some(result)
+            }
+            Encoding::Int => {
+                if let Some(map_score_start) = &score.start {
+                    let result = read_int(
+                        &mut nvram_file,
+                        endian,
+                        map_score_start.into(),
+                        score.length.unwrap_or(0) as usize,
+                    )?;
+                    Some(result)
+                } else {
+                    todo!("Int requires start")
+                }
+            }
+            other => todo!("Encoding not implemented: {:?}", other),
+        }
+    } else {
+        None
+    };
+
+    let timestamp = mc
+        .timestamp
+        .as_ref()
+        .map(|ts| match &ts.encoding {
+            Encoding::WpcRtc => {
+                read_wpc_rtc(&mut nvram_file, (&ts.start).into(), ts.length as usize)
+            }
+            other => todo!("Timestamp encoding not implemented: {:?}", other),
+        })
+        .transpose()?;
+
+    Ok(ModeChampion {
+        label: Some(mc.label.clone()),
+        short_label: mc.short_label.clone(),
+        initials,
+        score,
+        suffix: mc.score.as_ref().and_then(|s| s.suffix.clone()),
+        timestamp,
+    })
+}
+
+fn read_mode_champions<T: Read + Seek>(
+    mut nvram_file: &mut T,
+    map: &NvramMap,
+) -> io::Result<Option<Vec<ModeChampion>>> {
+    if let Some(mode_champions) = &map.mode_champions {
+        let champions: Result<Vec<ModeChampion>, io::Error> = mode_champions
+            .iter()
+            .map(|mc| read_mode_champion(&mut nvram_file, mc, &map._char_map, map.endianness()))
+            .collect();
+        Ok(Some(champions?))
+    } else {
+        Ok(None)
+    }
 }
 
 #[derive(Debug, PartialEq)]

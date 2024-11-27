@@ -1,4 +1,5 @@
 use pinmame_nvram::{HighScore, Nvram};
+use pretty_assertions::assert_eq;
 use std::io;
 use std::path::Path;
 use testdir::testdir;
@@ -17,7 +18,7 @@ fn test_seawitch_default() -> io::Result<()> {
         score: 0,
     }]);
 
-    Ok(pretty_assertions::assert_eq!(expected, scores))
+    Ok(assert_eq!(expected, scores))
 }
 
 #[test]
@@ -31,5 +32,5 @@ fn test_seawitch() -> io::Result<()> {
         score: 8170,
     }]);
 
-    Ok(pretty_assertions::assert_eq!(expected, scores))
+    Ok(assert_eq!(expected, scores))
 }

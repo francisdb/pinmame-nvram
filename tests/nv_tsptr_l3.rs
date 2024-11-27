@@ -4,33 +4,33 @@ use std::io;
 use std::path::Path;
 
 #[test]
-fn test_f14() -> io::Result<()> {
-    let mut nvram = Nvram::open(Path::new("testdata/f14_l1.nv"))?.unwrap();
+fn test_transporter_the_rescue() -> io::Result<()> {
+    let mut nvram = Nvram::open(Path::new("testdata/tsptr_l3.nv"))?.unwrap();
     let scores = nvram.read_highscores()?;
     let expected = Vec::from([
         HighScore {
             label: Some("First Place".to_string()),
             short_label: Some("1st".to_string()),
-            initials: "EJB".to_string(),
-            score: 4_000_000,
+            initials: "COL".to_string(),
+            score: 7_000_000,
         },
         HighScore {
             label: Some("Second Place".to_string()),
             short_label: Some("2nd".to_string()),
-            initials: "CLF".to_string(),
-            score: 3_800_000,
+            initials: "DAN".to_string(),
+            score: 6_500_000,
         },
         HighScore {
             label: Some("Third Place".to_string()),
             short_label: Some("3rd".to_string()),
-            initials: "JCD".to_string(),
-            score: 3_600_000,
+            initials: "TIM".to_string(),
+            score: 6_000_000,
         },
         HighScore {
             label: Some("Fourth Place".to_string()),
             short_label: Some("4th".to_string()),
-            initials: "KWD".to_string(),
-            score: 3_400_000,
+            initials: "R/J".to_string(),
+            score: 5_500_000,
         },
     ]);
 

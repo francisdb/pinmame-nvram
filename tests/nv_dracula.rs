@@ -1,4 +1,5 @@
 use pinmame_nvram::{HighScore, Nvram};
+use pretty_assertions::assert_eq;
 use std::io;
 use std::path::Path;
 
@@ -13,5 +14,5 @@ fn test_dracula() -> io::Result<()> {
         score: 440_040,
     }]);
 
-    Ok(pretty_assertions::assert_eq!(expected, scores))
+    Ok(assert_eq!(expected, scores))
 }

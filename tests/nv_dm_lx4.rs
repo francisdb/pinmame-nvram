@@ -1,4 +1,4 @@
-use pinmame_nvram::{ChecksumMismatch, HighScore, Nvram};
+use pinmame_nvram::{ChecksumMismatch, HighScore, ModeChampion, Nvram};
 use pretty_assertions::assert_eq;
 use std::io;
 use std::path::Path;
@@ -7,6 +7,18 @@ use testdir::testdir;
 #[test]
 fn test_demolition_man() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/dm_lx4.nv"))?.unwrap();
+
+    let champions = nvram.read_mode_champions()?;
+    let expected = Vec::from([ModeChampion {
+        label: Some("Demolition Time Champion".to_string()),
+        short_label: Some("Demo Time".to_string()),
+        initials: "WIN".to_string(),
+        score: Some(500_000_000),
+        suffix: None,
+        timestamp: None,
+    }]);
+    assert_eq!(Some(expected), champions);
+
     let scores = nvram.read_highscores()?;
     let expected = Vec::from([
         HighScore {

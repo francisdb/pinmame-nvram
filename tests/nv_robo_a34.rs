@@ -1,10 +1,23 @@
-use pinmame_nvram::{HighScore, Nvram};
+use pinmame_nvram::{HighScore, ModeChampion, Nvram};
+use pretty_assertions::assert_eq;
 use std::io;
 use std::path::Path;
 
 #[test]
 fn test_robocop() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/robo_a34.nv"))?.unwrap();
+
+    let champions = nvram.read_mode_champions()?;
+    let expected = Vec::from([ModeChampion {
+        label: Some("Jump Master".to_string()),
+        short_label: Some("Jump Master".to_string()),
+        initials: "MJW".to_string(),
+        score: Some(5),
+        suffix: Some(" Jumps".to_string()),
+        timestamp: None,
+    }]);
+    assert_eq!(Some(expected), champions);
+
     let scores = nvram.read_highscores()?;
     let expected = Vec::from([
         HighScore {
@@ -33,5 +46,5 @@ fn test_robocop() -> io::Result<()> {
         },
     ]);
 
-    Ok(pretty_assertions::assert_eq!(expected, scores))
+    Ok(assert_eq!(expected, scores))
 }

@@ -1,10 +1,33 @@
-use pinmame_nvram::{HighScore, Nvram};
+use pinmame_nvram::{HighScore, ModeChampion, Nvram};
+use pretty_assertions::assert_eq;
 use std::io;
 use std::path::Path;
 
 #[test]
 fn test_transformers() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/tf_180.nv"))?.unwrap();
+
+    let champions = nvram.read_mode_champions()?;
+    let expected = Vec::from([
+        ModeChampion {
+            label: Some("Combo".into()),
+            short_label: Some("Combo".into()),
+            initials: "LON".into(),
+            score: Some(20),
+            suffix: None,
+            timestamp: None,
+        },
+        ModeChampion {
+            label: Some("Best Combo Champion".into()),
+            short_label: Some("Best Combo".into()),
+            initials: "LON".into(),
+            score: Some(327681),
+            suffix: Some("-WAY".into()),
+            timestamp: None,
+        },
+    ]);
+    assert_eq!(Some(expected), champions);
+
     let scores = nvram.read_highscores()?;
     let expected = Vec::from([
         HighScore {
@@ -69,5 +92,5 @@ fn test_transformers() -> io::Result<()> {
         },
     ]);
 
-    Ok(pretty_assertions::assert_eq!(expected, scores))
+    Ok(assert_eq!(expected, scores))
 }
