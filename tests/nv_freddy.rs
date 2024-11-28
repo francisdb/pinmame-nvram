@@ -1,4 +1,4 @@
-use pinmame_nvram::{HighScore, Nvram};
+use pinmame_nvram::{HighScore, LastGamePlayer, Nvram};
 use pretty_assertions::assert_eq;
 use std::io;
 use std::path::Path;
@@ -6,6 +6,28 @@ use std::path::Path;
 #[test]
 fn test_freddy_a_nightmare_on_elm_street() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/freddy.nv"))?.unwrap();
+
+    let last_game = nvram.read_last_game()?;
+    let expected = Vec::from([
+        LastGamePlayer {
+            score: 0,
+            label: None,
+        },
+        LastGamePlayer {
+            score: 0,
+            label: None,
+        },
+        LastGamePlayer {
+            score: 0,
+            label: None,
+        },
+        LastGamePlayer {
+            score: 0,
+            label: None,
+        },
+    ]);
+    assert_eq!(Some(expected), last_game);
+
     let scores = nvram.read_highscores()?;
     let expected = Vec::from([
         HighScore {
@@ -38,7 +60,7 @@ fn test_freddy_a_nightmare_on_elm_street() -> io::Result<()> {
             initials: "GIL".to_string(),
             // score: 80_000_000,
             // FIXME https://github.com/tomlogic/pinmame-nvram-maps/pull/20
-            score: 8_000_000_021,
+            score: 8_000_000_010,
         },
     ]);
 

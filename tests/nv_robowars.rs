@@ -12,6 +12,10 @@ fn test_robo_war() -> io::Result<()> {
     //     in the second byte as high value
 
     let mut nvram = Nvram::open(Path::new("testdata/robowars.nv"))?.unwrap();
+
+    let last_game = nvram.read_last_game()?;
+    assert_eq!(None, last_game);
+
     let scores = nvram.read_highscores()?;
     let expected = Vec::from([
         HighScore {

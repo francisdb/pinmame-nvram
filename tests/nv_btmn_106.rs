@@ -1,11 +1,40 @@
-use pinmame_nvram::{HighScore, Nvram};
+use pinmame_nvram::{HighScore, LastGamePlayer, Nvram};
 use pretty_assertions::assert_eq;
 use std::io;
 use std::path::Path;
 
 #[test]
+#[ignore = "Not sure where this goes wrong"]
+fn test_batman_last_game() -> io::Result<()> {
+    let mut nvram = Nvram::open(Path::new("testdata/btmn_106.nv"))?.unwrap();
+
+    // FIXME this is pobably wrong my last game was 41_180?
+    let last_game = nvram.read_last_game()?;
+    let expected = Vec::from([
+        LastGamePlayer {
+            score: 41_180,
+            label: None,
+        },
+        LastGamePlayer {
+            score: 0,
+            label: None,
+        },
+        LastGamePlayer {
+            score: 0,
+            label: None,
+        },
+        LastGamePlayer {
+            score: 0,
+            label: None,
+        },
+    ]);
+    Ok(assert_eq!(Some(expected), last_game))
+}
+
+#[test]
 fn test_batman() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/btmn_106.nv"))?.unwrap();
+
     let scores = nvram.read_highscores()?;
     let expected = Vec::from([
         HighScore {

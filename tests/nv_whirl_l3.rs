@@ -1,4 +1,4 @@
-use pinmame_nvram::{HighScore, Nvram};
+use pinmame_nvram::{HighScore, LastGamePlayer, Nvram};
 use pretty_assertions::assert_eq;
 use std::io;
 use std::path::Path;
@@ -6,6 +6,30 @@ use std::path::Path;
 #[test]
 fn test_whirlwind() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/whirl_l3.nv"))?.unwrap();
+
+    let replay_score = nvram.read_replay_score()?;
+    assert_eq!(None, replay_score);
+
+    let last_game = nvram.read_last_game()?;
+    let expected = Vec::from([
+        LastGamePlayer {
+            score: 0,
+            label: None,
+        },
+        LastGamePlayer {
+            score: 0,
+            label: None,
+        },
+        LastGamePlayer {
+            score: 0,
+            label: None,
+        },
+        LastGamePlayer {
+            score: 0,
+            label: None,
+        },
+    ]);
+    assert_eq!(Some(expected), last_game);
 
     let champions = nvram.read_mode_champions()?;
     assert_eq!(None, champions);

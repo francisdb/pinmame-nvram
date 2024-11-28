@@ -1,4 +1,4 @@
-use pinmame_nvram::{ChecksumMismatch, HighScore, Nvram};
+use pinmame_nvram::{ChecksumMismatch, HighScore, LastGamePlayer, Nvram};
 use pretty_assertions::assert_eq;
 use std::io;
 use std::path::Path;
@@ -7,6 +7,28 @@ use testdir::testdir;
 #[test]
 fn test_diner() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/diner_l4.nv"))?.unwrap();
+
+    let last_game = nvram.read_last_game()?;
+    let expected = Vec::from([
+        LastGamePlayer {
+            score: 284_510,
+            label: None,
+        },
+        LastGamePlayer {
+            score: 0,
+            label: None,
+        },
+        LastGamePlayer {
+            score: 0,
+            label: None,
+        },
+        LastGamePlayer {
+            score: 0,
+            label: None,
+        },
+    ]);
+    assert_eq!(Some(expected), last_game);
+
     let scores = nvram.read_highscores()?;
     let expected = Vec::from([
         HighScore {

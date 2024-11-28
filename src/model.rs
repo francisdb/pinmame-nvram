@@ -120,13 +120,13 @@ pub struct ModeChampion {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub score: Option<Score>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub timestamp: Option<LastGame>,
+    pub timestamp: Option<LastGamePlayer>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _note: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub counter: Option<LastGame>,
+    pub counter: Option<LastGamePlayer>,
     #[serde(rename = "nth time", skip_serializing_if = "Option::is_none")]
-    pub nth_time: Option<LastGame>,
+    pub nth_time: Option<LastGamePlayer>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -156,7 +156,7 @@ impl From<&HexOrInteger> for u64 {
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct LastGame {
+pub struct LastGamePlayer {
     pub start: HexOrInteger,
     pub encoding: Encoding,
     pub length: u64,
@@ -363,9 +363,9 @@ pub struct NvramMap {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _char_map: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub last_played: Option<LastGame>,
+    pub last_played: Option<LastGamePlayer>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub last_game: Option<Vec<LastGame>>,
+    pub last_game: Option<Vec<LastGamePlayer>>,
     pub high_scores: Vec<HighScore>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub mode_champions: Option<Vec<ModeChampion>>,
@@ -384,6 +384,7 @@ pub struct NvramMap {
     pub limits: Option<HashMap<String, String>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub game_state: Option<HashMap<String, StateOrStateList>>,
+    /// TODO this should probably be removed as it is an adjustment and only used in ww_l5.nv.json
     #[serde(skip_serializing_if = "Option::is_none")]
     pub replay_score: Option<Score>,
     #[serde(skip_serializing_if = "Option::is_none")]

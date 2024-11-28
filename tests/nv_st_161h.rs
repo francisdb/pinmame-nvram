@@ -1,12 +1,34 @@
-use pinmame_nvram::{HighScore, Nvram};
+use pinmame_nvram::{HighScore, LastGamePlayer, Nvram};
 use pretty_assertions::assert_eq;
 use std::io;
 use std::path::Path;
 
 #[test]
-#[ignore = "Only st_162h.nv is available"]
+#[ignore = "Only st_162h.nv is available and incompatible"]
 fn test_star_trek_stern() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/st_161h.nv"))?.unwrap();
+
+    let last_game = nvram.read_last_game()?;
+    let expected = Vec::from([
+        LastGamePlayer {
+            score: 691_690,
+            label: None,
+        },
+        LastGamePlayer {
+            score: 0,
+            label: None,
+        },
+        LastGamePlayer {
+            score: 0,
+            label: None,
+        },
+        LastGamePlayer {
+            score: 0,
+            label: None,
+        },
+    ]);
+    assert_eq!(Some(expected), last_game);
+
     let scores = nvram.read_highscores()?;
     let expected = Vec::from([
         HighScore {

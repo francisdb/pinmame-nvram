@@ -6,6 +6,10 @@ use std::path::Path;
 #[test]
 fn test_sorcerer() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/sorcr_l1.nv"))?.unwrap();
+
+    let last_game = nvram.read_last_game()?;
+    assert_eq!(None, last_game);
+
     let scores = nvram.read_highscores()?;
     let expected = Vec::from([
         HighScore {

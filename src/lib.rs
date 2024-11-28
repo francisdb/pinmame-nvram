@@ -1,6 +1,6 @@
 mod model;
 
-use crate::model::{Checksum16, Encoding, Endian, Nibble, NvramMap};
+use crate::model::{Checksum16, Encoding, Endian, Nibble, NvramMap, Score};
 use include_dir::{include_dir, Dir};
 use std::ffi::OsStr;
 use std::fs::OpenOptions;
@@ -210,10 +210,19 @@ fn read_bcd<A: Read + Seek>(
     let mut score = 0;
     for item in buff.iter() {
         score *= 100;
-        score += (item & 0x0F) as u64;
-        score += ((item & 0xF0) >> 4) as u64 * 10;
+        score += cap_bcd(item & 0x0F) as u64;
+        score += cap_bcd((item & 0xF0) >> 4) as u64 * 10;
     }
     Ok(score * scale)
+}
+
+/// Ignore nibbles 0xA to 0xF (0xF = blank on Dracula/Wild Fyre) (prefix)
+fn cap_bcd(value: u8) -> u8 {
+    if value > 9 {
+        0
+    } else {
+        value
+    }
 }
 
 fn write_bcd<A: Write + Seek>(
@@ -315,12 +324,27 @@ pub struct ModeChampion {
     pub timestamp: Option<String>,
 }
 
+/// Score of the last game played
+/// For each player that played during the last game, the score is stored.
+#[derive(Debug, PartialEq)]
+pub struct LastGamePlayer {
+    pub score: u64,
+    pub label: Option<String>,
+}
+
+/// Main interface to read and write data from a NVRAM file
 pub struct Nvram {
     pub map: NvramMap,
     pub nv_path: PathBuf,
 }
 
 impl Nvram {
+    /// Open a NVRAM file
+    ///
+    /// # Returns
+    ///
+    /// * `Ok(Some(Nvram))` if the file was found and a map was found for the ROM
+    /// * `Ok(None)` if the file was found but no map was found for the ROM
     pub fn open(nv_path: &Path) -> io::Result<Option<Nvram>> {
         // get the rom name from the file name
         let rom_name = nv_path
@@ -367,9 +391,19 @@ impl Nvram {
         read_mode_champions(&mut file, &self.map)
     }
 
+    pub fn read_last_game(&mut self) -> io::Result<Option<Vec<LastGamePlayer>>> {
+        let mut file = OpenOptions::new().read(true).open(&self.nv_path)?;
+        read_last_game(&mut file, &self.map)
+    }
+
     pub fn verify_all_checksum16(&mut self) -> io::Result<Vec<ChecksumMismatch<u16>>> {
         let mut file = OpenOptions::new().read(true).open(&self.nv_path)?;
         verify_all_checksum16(&mut file, &self.map)
+    }
+
+    pub fn read_replay_score(&mut self) -> io::Result<Option<u64>> {
+        let mut file = OpenOptions::new().read(true).open(&self.nv_path)?;
+        read_replay_score(&mut file, &self.map)
     }
 }
 
@@ -508,15 +542,7 @@ fn read_mode_champion<T: Read + Seek>(
     let score = if let Some(score) = &mc.score.as_ref() {
         match &score.encoding {
             Encoding::Bcd => {
-                let location = match score.offsets.as_ref() {
-                    None => Location::Continuous {
-                        start: score.start.as_ref().unwrap().into(),
-                        length: score.length.unwrap_or(0) as usize,
-                    },
-                    Some(offsets) => Location::Discontinuous {
-                        offsets: offsets.iter().map(|o| o.into()).collect(),
-                    },
-                };
+                let location = location_for(score);
                 let result = read_bcd(
                     &mut nvram_file,
                     location,
@@ -566,6 +592,51 @@ fn read_mode_champion<T: Read + Seek>(
     })
 }
 
+fn read_last_game_player<T: Read + Seek>(
+    mut nvram_file: &mut T,
+    lg: &model::LastGamePlayer,
+    endian: Endian,
+) -> io::Result<LastGamePlayer> {
+    let score = match &lg.encoding {
+        Encoding::Int => read_int(
+            &mut nvram_file,
+            endian,
+            (&lg.start).into(),
+            lg.length as usize,
+        )?,
+        Encoding::Bcd => read_bcd(
+            &mut nvram_file,
+            Location::Continuous {
+                start: (&lg.start).into(),
+                length: lg.length as usize,
+            },
+            &lg.nibble,
+            1,
+            endian,
+        )?,
+        other => todo!("Encoding not implemented: {:?}", other),
+    };
+    Ok(LastGamePlayer {
+        score,
+        label: lg.label.clone(),
+    })
+}
+
+fn read_last_game<T: Read + Seek>(
+    mut nvram_file: &mut T,
+    map: &NvramMap,
+) -> io::Result<Option<Vec<LastGamePlayer>>> {
+    if let Some(lg) = &map.last_game {
+        let last_games: Result<Vec<LastGamePlayer>, io::Error> = lg
+            .iter()
+            .map(|lg| read_last_game_player(&mut nvram_file, lg, map.endianness()))
+            .collect();
+        Ok(Some(last_games?))
+    } else {
+        Ok(None)
+    }
+}
+
 fn read_mode_champions<T: Read + Seek>(
     mut nvram_file: &mut T,
     map: &NvramMap,
@@ -578,6 +649,55 @@ fn read_mode_champions<T: Read + Seek>(
         Ok(Some(champions?))
     } else {
         Ok(None)
+    }
+}
+
+fn read_replay_score<T: Read + Seek>(
+    mut nvram_file: &mut T,
+    map: &NvramMap,
+) -> io::Result<Option<u64>> {
+    if let Some(replay_score) = &map.replay_score {
+        match &replay_score.encoding {
+            Encoding::Int => {
+                if let Some(map_score_start) = &replay_score.start {
+                    let score = read_int(
+                        &mut nvram_file,
+                        map.endianness(),
+                        map_score_start.into(),
+                        replay_score.length.unwrap_or(0) as usize,
+                    )?;
+                    Ok(Some(score))
+                } else {
+                    todo!("Int requires start")
+                }
+            }
+            Encoding::Bcd => {
+                let location = location_for(replay_score);
+                let score = read_bcd(
+                    &mut nvram_file,
+                    location,
+                    &replay_score.nibble,
+                    replay_score.scale.unwrap_or(1u64),
+                    map.endianness(),
+                )?;
+                Ok(Some(score))
+            }
+            other => todo!("Encoding not implemented: {:?}", other),
+        }
+    } else {
+        Ok(None)
+    }
+}
+
+fn location_for(score: &Score) -> Location {
+    match score.offsets.as_ref() {
+        None => Location::Continuous {
+            start: score.start.as_ref().unwrap().into(),
+            length: score.length.unwrap_or(0) as usize,
+        },
+        Some(offsets) => Location::Discontinuous {
+            offsets: offsets.iter().map(|o| o.into()).collect(),
+        },
     }
 }
 

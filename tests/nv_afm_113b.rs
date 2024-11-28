@@ -1,4 +1,4 @@
-use pinmame_nvram::{HighScore, ModeChampion, Nvram};
+use pinmame_nvram::{HighScore, LastGamePlayer, ModeChampion, Nvram};
 use pretty_assertions::assert_eq;
 use std::io;
 use std::path::Path;
@@ -6,6 +6,27 @@ use std::path::Path;
 #[test]
 fn test_attack_from_mars() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/afm_113b.nv"))?.unwrap();
+
+    let last_game = nvram.read_last_game()?;
+    let expected = Vec::from([
+        LastGamePlayer {
+            score: 51_477_300,
+            label: None,
+        },
+        LastGamePlayer {
+            score: 0,
+            label: None,
+        },
+        LastGamePlayer {
+            score: 0,
+            label: None,
+        },
+        LastGamePlayer {
+            score: 0,
+            label: None,
+        },
+    ]);
+    assert_eq!(Some(expected), last_game);
 
     let champions = nvram.read_mode_champions()?;
     let expected = Vec::from([

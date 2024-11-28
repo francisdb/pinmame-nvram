@@ -1,4 +1,4 @@
-use pinmame_nvram::{HighScore, Nvram};
+use pinmame_nvram::{HighScore, LastGamePlayer, Nvram};
 use pretty_assertions::assert_eq;
 use std::io;
 use std::path::Path;
@@ -6,6 +6,28 @@ use std::path::Path;
 #[test]
 fn test_f14() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/f14_l1.nv"))?.unwrap();
+
+    let last_game = nvram.read_last_game()?;
+    let expected = Vec::from([
+        LastGamePlayer {
+            score: 13_460,
+            label: None,
+        },
+        LastGamePlayer {
+            score: 0,
+            label: None,
+        },
+        LastGamePlayer {
+            score: 0,
+            label: None,
+        },
+        LastGamePlayer {
+            score: 0,
+            label: None,
+        },
+    ]);
+    assert_eq!(Some(expected), last_game);
+
     let scores = nvram.read_highscores()?;
     let expected = Vec::from([
         HighScore {

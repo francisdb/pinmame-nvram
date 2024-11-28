@@ -1,10 +1,11 @@
-use pinmame_nvram::{HighScore, ModeChampion, Nvram};
+use pinmame_nvram::{HighScore, LastGamePlayer, ModeChampion, Nvram};
 use pretty_assertions::assert_eq;
 use std::io;
 use std::path::Path;
 
 #[test]
-fn test_the_shadow() -> io::Result<()> {
+#[ignore = "see https://github.com/tomlogic/pinmame-nvram-maps/issues/27"]
+fn test_the_shadow_lx5() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/ts_lx5.nv"))?.unwrap();
 
     let champions = nvram.read_mode_champions()?;
@@ -12,11 +13,37 @@ fn test_the_shadow() -> io::Result<()> {
         label: Some("Shadow Loop Champ".to_string()),
         short_label: Some("SLC".to_string()),
         initials: "TEX".to_string(),
-        score: Some(365),
-        suffix: None,
+        score: Some(2),
+        suffix: None, // TODO should be " loops"
         timestamp: None,
     }]);
-    assert_eq!(Some(expected), champions);
+    Ok(assert_eq!(Some(expected), champions))
+}
+
+#[test]
+fn test_the_shadow() -> io::Result<()> {
+    let mut nvram = Nvram::open(Path::new("testdata/ts_lx5.nv"))?.unwrap();
+
+    let last_game = nvram.read_last_game()?;
+    let expected = Vec::from([
+        LastGamePlayer {
+            score: 142239830,
+            label: None,
+        },
+        LastGamePlayer {
+            score: 0,
+            label: None,
+        },
+        LastGamePlayer {
+            score: 0,
+            label: None,
+        },
+        LastGamePlayer {
+            score: 0,
+            label: None,
+        },
+    ]);
+    assert_eq!(Some(expected), last_game);
 
     let scores = nvram.read_highscores()?;
     let expected = Vec::from([
