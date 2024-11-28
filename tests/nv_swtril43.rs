@@ -75,6 +75,7 @@ fn test_star_wars_trilogy() -> io::Result<()> {
             score: 15_000_000,
         },
     ]);
+    assert_eq!(expected, scores);
 
-    Ok(assert_eq!(expected, scores))
+    Ok(())
 }

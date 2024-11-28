@@ -58,11 +58,10 @@ fn test_freddy_a_nightmare_on_elm_street() -> io::Result<()> {
             label: Some("Dream Warriors".to_string()),
             short_label: Some("#5".to_string()),
             initials: "GIL".to_string(),
-            // score: 80_000_000,
-            // FIXME https://github.com/tomlogic/pinmame-nvram-maps/pull/20
-            score: 8_000_000_010,
+            score: 80_000_000,
         },
     ]);
+    assert_eq!(expected, scores);
 
-    Ok(assert_eq!(expected, scores))
+    Ok(())
 }

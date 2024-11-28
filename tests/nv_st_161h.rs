@@ -62,6 +62,7 @@ fn test_star_trek_stern() -> io::Result<()> {
             score: 18_000_000,
         },
     ]);
+    assert_eq!(expected, scores);
 
-    Ok(assert_eq!(expected, scores))
+    Ok(())
 }

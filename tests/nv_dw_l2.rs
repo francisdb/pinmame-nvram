@@ -82,6 +82,7 @@ fn test_doctor_who() -> io::Result<()> {
             score: 100_000_000,
         },
     ]);
+    assert_eq!(expected, scores);
 
-    Ok(assert_eq!(expected, scores))
+    Ok(())
 }

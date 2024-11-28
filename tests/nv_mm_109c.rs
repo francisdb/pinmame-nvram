@@ -154,6 +154,7 @@ fn test_medieval_madness() -> io::Result<()> {
             score: 32_000_000,
         },
     ]);
+    assert_eq!(expected, scores);
 
-    Ok(assert_eq!(expected, scores))
+    Ok(())
 }

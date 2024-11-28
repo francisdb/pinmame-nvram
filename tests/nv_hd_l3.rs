@@ -61,6 +61,7 @@ fn test_harley_davidson() -> io::Result<()> {
             score: 9_000_000,
         },
     ]);
+    assert_eq!(expected, scores);
 
-    Ok(assert_eq!(expected, scores))
+    Ok(())
 }

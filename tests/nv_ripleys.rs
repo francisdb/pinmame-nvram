@@ -61,6 +61,7 @@ fn test_ripleys_believe_it_or_not() -> io::Result<()> {
             score: 18_000_000,
         },
     ]);
+    assert_eq!(expected, scores);
 
-    Ok(assert_eq!(expected, scores))
+    Ok(())
 }

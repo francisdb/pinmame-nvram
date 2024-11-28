@@ -156,5 +156,6 @@ fn test_johnny_mnemonic() -> io::Result<()> {
         },
     ]);
 
-    Ok(assert_eq!(expected, scores))
+    assert_eq!(expected, scores);
+    Ok(())
 }

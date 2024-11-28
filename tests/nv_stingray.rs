@@ -35,6 +35,7 @@ fn test_stingray() -> io::Result<()> {
         initials: "".to_string(),
         score: 820_710,
     }]);
+    assert_eq!(expected, scores);
 
-    Ok(assert_eq!(expected, scores))
+    Ok(())
 }

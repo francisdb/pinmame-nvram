@@ -17,8 +17,9 @@ fn test_seawitch_default() -> io::Result<()> {
         initials: "".to_string(),
         score: 0,
     }]);
+    assert_eq!(expected, scores);
 
-    Ok(assert_eq!(expected, scores))
+    Ok(())
 }
 
 #[test]
@@ -35,6 +36,7 @@ fn test_seawitch() -> io::Result<()> {
         initials: "".to_string(),
         score: 8170,
     }]);
+    assert_eq!(expected, scores);
 
-    Ok(assert_eq!(expected, scores))
+    Ok(())
 }

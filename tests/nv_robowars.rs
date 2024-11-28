@@ -52,7 +52,8 @@ fn test_robo_war() -> io::Result<()> {
         },
     ]);
 
-    Ok(assert_eq!(expected, scores))
+    assert_eq!(expected, scores);
+    Ok(())
 }
 
 #[test]
@@ -101,7 +102,8 @@ fn test_robo_war_default() -> io::Result<()> {
         },
     ]);
 
-    Ok(assert_eq!(expected, scores))
+    assert_eq!(expected, scores);
+    Ok(())
 }
 
 #[test]
@@ -150,5 +152,6 @@ fn test_robo_wars_clear_highscores() -> io::Result<()> {
         },
     ]);
 
-    Ok(assert_eq!(expected, scores))
+    assert_eq!(expected, scores);
+    Ok(())
 }

@@ -61,6 +61,7 @@ fn test_tales_of_the_arabian_nights() -> io::Result<()> {
             score: 8_000_000,
         },
     ]);
+    assert_eq!(expected, scores);
 
-    Ok(assert_eq!(expected, scores))
+    Ok(())
 }

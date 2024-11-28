@@ -55,6 +55,7 @@ fn test_f14() -> io::Result<()> {
             score: 3_400_000,
         },
     ]);
+    assert_eq!(expected, scores);
 
-    Ok(assert_eq!(expected, scores))
+    Ok(())
 }

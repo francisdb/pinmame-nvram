@@ -17,7 +17,9 @@ fn test_the_shadow_lx5() -> io::Result<()> {
         suffix: None, // TODO should be " loops"
         timestamp: None,
     }]);
-    Ok(assert_eq!(Some(expected), champions))
+    assert_eq!(Some(expected), champions);
+
+    Ok(())
 }
 
 #[test]
@@ -108,6 +110,7 @@ fn test_the_shadow() -> io::Result<()> {
             score: 700_000_000,
         },
     ]);
+    assert_eq!(expected, scores);
 
-    Ok(assert_eq!(expected, scores))
+    Ok(())
 }

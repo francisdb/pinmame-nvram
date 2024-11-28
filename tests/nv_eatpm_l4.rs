@@ -55,6 +55,7 @@ fn test_elvira_and_the_party_monsters() -> io::Result<()> {
             score: 5_000_000,
         },
     ]);
+    assert_eq!(expected, scores);
 
-    Ok(assert_eq!(expected, scores))
+    Ok(())
 }

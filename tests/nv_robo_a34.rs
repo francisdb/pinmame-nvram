@@ -67,5 +67,6 @@ fn test_robocop() -> io::Result<()> {
         },
     ]);
 
-    Ok(assert_eq!(expected, scores))
+    assert_eq!(expected, scores);
+    Ok(())
 }

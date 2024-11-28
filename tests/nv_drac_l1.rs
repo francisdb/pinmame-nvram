@@ -73,5 +73,6 @@ fn test_bram_strokers_dracula() -> io::Result<()> {
         },
     ]);
 
-    Ok(assert_eq!(expected, scores))
+    assert_eq!(expected, scores);
+    Ok(())
 }

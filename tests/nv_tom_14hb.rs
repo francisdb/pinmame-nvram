@@ -4,17 +4,17 @@ use std::io;
 use std::path::Path;
 
 #[test]
-fn test_attack_from_mars() -> io::Result<()> {
-    let mut nvram = Nvram::open(Path::new("testdata/afm_113b.nv"))?.unwrap();
+fn test_ripleys_believe_it_or_not() -> io::Result<()> {
+    let mut nvram = Nvram::open(Path::new("testdata/tom_14hb.nv"))?.unwrap();
 
     let last_game = nvram.read_last_game()?;
     let expected = Vec::from([
         LastGamePlayer {
-            score: 51_477_300,
+            score: 9_950_010,
             label: None,
         },
         LastGamePlayer {
-            score: 0,
+            score: 9_210_280,
             label: None,
         },
         LastGamePlayer {
@@ -31,20 +31,36 @@ fn test_attack_from_mars() -> io::Result<()> {
     let champions = nvram.read_mode_champions()?;
     let expected = Vec::from([
         ModeChampion {
-            label: Some("Martian Champion".to_string()),
-            short_label: Some("Martian Champ".to_string()),
-            initials: "LFS".to_string(),
-            score: Some(20),
-            suffix: Some(" Martians Destroyed".to_string()),
+            label: Some("BUY-IN SCORE #1".into()),
+            short_label: Some("BIS-1".into()),
+            initials: "WWW".into(),
+            score: Some(1_000_000_000),
+            suffix: None,
             timestamp: None,
         },
         ModeChampion {
-            label: Some("Ruler of the Universe".to_string()),
-            short_label: Some("Rule the Universe".to_string()),
-            initials: "TEX".to_string(),
-            score: None,
+            label: Some("BUY-IN SCORE #2".into()),
+            short_label: Some("BIS-2".into()),
+            initials: "BMC".into(),
+            score: Some(980_000_000),
             suffix: None,
-            timestamp: Some("2023-11-07 00:14".to_string()),
+            timestamp: None,
+        },
+        ModeChampion {
+            label: Some("BUY-IN SCORE #3".into()),
+            short_label: Some("BIS-3".into()),
+            initials: "CMJ".into(),
+            score: Some(960_000_000),
+            suffix: None,
+            timestamp: None,
+        },
+        ModeChampion {
+            label: Some("BUY-IN SCORE #4".into()),
+            short_label: Some("BIS-4".into()),
+            initials: "ASR".into(),
+            score: Some(940_000_000),
+            suffix: None,
+            timestamp: None,
         },
     ]);
     assert_eq!(Some(expected), champions);
@@ -54,32 +70,32 @@ fn test_attack_from_mars() -> io::Result<()> {
         HighScore {
             label: Some("Grand Champion".to_string()),
             short_label: Some("GC".to_string()),
-            initials: "SLL".to_string(),
-            score: 7_500_000_000,
+            initials: "JBJ".to_string(),
+            score: 800_000_000,
         },
         HighScore {
             label: Some("First Place".to_string()),
             short_label: Some("1st".to_string()),
-            initials: "BRE".to_string(),
-            score: 7_000_000_000,
+            initials: "POP".to_string(),
+            score: 640_000_000,
         },
         HighScore {
             label: Some("Second Place".to_string()),
             short_label: Some("2nd".to_string()),
-            initials: "LFS".to_string(),
-            score: 6_500_000_000,
+            initials: "ZAB".to_string(),
+            score: 630_000_000,
         },
         HighScore {
             label: Some("Third Place".to_string()),
             short_label: Some("3rd".to_string()),
-            initials: "RCF".to_string(),
-            score: 6_000_000_000,
+            initials: "JWS".to_string(),
+            score: 620_000_000,
         },
         HighScore {
             label: Some("Fourth Place".to_string()),
             short_label: Some("4th".to_string()),
-            initials: "DTW".to_string(),
-            score: 5_500_000_000,
+            initials: "LTD".to_string(),
+            score: 610_000_000,
         },
     ]);
     assert_eq!(expected, scores);

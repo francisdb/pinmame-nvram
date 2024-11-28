@@ -1,7 +1,8 @@
 mod model;
 
-use crate::model::{Checksum16, Encoding, Endian, Nibble, NvramMap, Score};
+use crate::model::{Checksum16, Encoding, Endian, Nibble, NvramMap, Score, StateOrStateList};
 use include_dir::{include_dir, Dir};
+use std::collections::HashMap;
 use std::ffi::OsStr;
 use std::fs::OpenOptions;
 use std::io;
@@ -401,9 +402,15 @@ impl Nvram {
         verify_all_checksum16(&mut file, &self.map)
     }
 
+    // TODO we probably want to remove this
     pub fn read_replay_score(&mut self) -> io::Result<Option<u64>> {
         let mut file = OpenOptions::new().read(true).open(&self.nv_path)?;
         read_replay_score(&mut file, &self.map)
+    }
+
+    pub fn read_game_state(&mut self) -> io::Result<Option<HashMap<String, String>>> {
+        let mut file = OpenOptions::new().read(true).open(&self.nv_path)?;
+        read_game_state(&mut file, &self.map)
     }
 }
 
@@ -652,6 +659,81 @@ fn read_mode_champions<T: Read + Seek>(
     }
 }
 
+fn read_game_state_item<T: Read + Seek>(
+    mut nvram_file: &mut T,
+    state: &model::State,
+    char_map: &Option<String>,
+    endian: Endian,
+) -> io::Result<String> {
+    match &state.encoding {
+        Encoding::Ch => read_ch(
+            &mut nvram_file,
+            (&state.start).into(),
+            state.length.unwrap_or(0),
+            state.mask.as_ref().map(|m| m.into()),
+            char_map,
+            &state.nibble,
+        ),
+        Encoding::Int => {
+            let score = read_int(
+                &mut nvram_file,
+                endian,
+                (&state.start).into(),
+                state.length.unwrap_or(0),
+            )?;
+            Ok(score.to_string())
+        }
+        Encoding::Bcd => {
+            let score = read_bcd(
+                &mut nvram_file,
+                Location::Continuous {
+                    start: (&state.start).into(),
+                    length: state.length.unwrap_or(0),
+                },
+                &state.nibble,
+                1,
+                endian,
+            )?;
+            Ok(score.to_string())
+        }
+        Encoding::Bits => Ok("Bits encoding not implemented".to_string()),
+        other => todo!("Encoding not implemented: {:?}", other),
+    }
+}
+
+fn read_game_state<T: Read + Seek>(
+    mut nvram_file: &mut T,
+    map: &NvramMap,
+) -> io::Result<Option<HashMap<String, String>>> {
+    if let Some(game_state) = &map.game_state {
+        // map the hashmap values to a new hashmap with the values read from the nvram file
+        let state: Result<HashMap<String, String>, io::Error> = game_state
+            .iter()
+            .flat_map(|(key, v)| match v {
+                StateOrStateList::State(s) => {
+                    let r =
+                        read_game_state_item(&mut nvram_file, s, &map._char_map, map.endianness())
+                            .map(|r| (key.clone(), r));
+                    vec![r]
+                }
+                StateOrStateList::StateList(sl) => sl
+                    .iter()
+                    .enumerate()
+                    .map(|(index, s)| {
+                        let compund_key = format!("{}.{}", key, index);
+                        read_game_state_item(&mut nvram_file, s, &map._char_map, map.endianness())
+                            .map(|r| (compund_key, r))
+                    })
+                    .collect(),
+            })
+            .collect();
+
+        Ok(Some(state?))
+    } else {
+        Ok(None)
+    }
+}
+
 fn read_replay_score<T: Read + Seek>(
     mut nvram_file: &mut T,
     map: &NvramMap,
@@ -820,7 +902,8 @@ mod tests {
         let test_file = dir.join("unknown_rom.nv");
         let _ = File::create(&test_file)?;
         let nvram = Nvram::open(&test_file)?;
-        Ok(assert_eq!(true, nvram.is_none()))
+        assert_eq!(true, nvram.is_none());
+        Ok(())
     }
 
     #[test]
@@ -828,10 +911,8 @@ mod tests {
         let mut file = OpenOptions::new().read(true).open("testdata/dm_lx4.nv")?;
         let nvram = Nvram::open(Path::new("testdata/dm_lx4.nv"))?.unwrap();
         let checksum_failures = verify_all_checksum16(&mut file, &nvram.map)?;
-        Ok(assert_eq!(
-            Vec::<ChecksumMismatch<u16>>::new(),
-            checksum_failures
-        ))
+        assert_eq!(Vec::<ChecksumMismatch<u16>>::new(), checksum_failures);
+        Ok(())
     }
 
     #[test]
@@ -842,14 +923,16 @@ mod tests {
             length: 5,
         };
         let score = read_bcd(&mut cursor, location, &None, 1, Endian::Big)?;
-        Ok(assert_eq!(score, 1_234_567_890))
+        assert_eq!(score, 1_234_567_890);
+        Ok(())
     }
 
     #[test]
     fn test_read_ch() -> io::Result<()> {
         let mut cursor = io::Cursor::new(vec![0x41, 0x42, 0x43, 0x44, 0x45]);
         let score = read_ch(&mut cursor, 0x0000, 5, None, &None, &None)?;
-        Ok(assert_eq!(score, "ABCDE"))
+        assert_eq!(score, "ABCDE");
+        Ok(())
     }
 
     #[test]
@@ -857,17 +940,16 @@ mod tests {
         let char_map = Some("???????????ABCDEFGHIJKLMNOPQRSTUVWXYZ".to_string());
         let mut cursor = io::Cursor::new(vec![0x0B, 0x0C, 0x0D, 0x0E, 0x0F]);
         let score = read_ch(&mut cursor, 0x0000, 5, None, &char_map, &None)?;
-        Ok(assert_eq!(score, "ABCDE"))
+        assert_eq!(score, "ABCDE");
+        Ok(())
     }
 
     #[test]
     fn test_write_ch() -> io::Result<()> {
         let mut cursor = io::Cursor::new(vec![0x00, 0x00, 0x00, 0x00, 0x00]);
         write_ch(&mut cursor, 0x0000, 5, "ABCDE".to_string(), &None, &None)?;
-        Ok(assert_eq!(
-            cursor.into_inner(),
-            vec![0x41, 0x42, 0x43, 0x44, 0x45]
-        ))
+        assert_eq!(cursor.into_inner(), vec![0x41, 0x42, 0x43, 0x44, 0x45]);
+        Ok(())
     }
 
     #[test]
@@ -882,10 +964,8 @@ mod tests {
             &char_map,
             &None,
         )?;
-        Ok(assert_eq!(
-            cursor.into_inner(),
-            vec![0x0B, 0x0C, 0x0D, 0x0E, 0x0F]
-        ))
+        assert_eq!(cursor.into_inner(), vec![0x0B, 0x0C, 0x0D, 0x0E, 0x0F]);
+        Ok(())
     }
 
     #[test]
@@ -894,7 +974,8 @@ mod tests {
         // translates to 0x41 0x42 0x43 which is the string "ABC"
         let mut cursor = io::Cursor::new(vec![0x04, 0x01, 0x04, 0x02, 0x04, 0x03]);
         let score = read_ch(&mut cursor, 0x0000, 6, None, &None, &Some(Nibble::Low))?;
-        Ok(assert_eq!(score, "ABC"))
+        assert_eq!(score, "ABC");
+        Ok(())
     }
 
     #[test]
@@ -951,6 +1032,7 @@ mod tests {
     #[test]
     fn test_find_map() -> io::Result<()> {
         let map = find_map(&"afm_113b".to_string())?;
-        Ok(assert_eq!(true, map.is_some()))
+        assert_eq!(true, map.is_some());
+        Ok(())
     }
 }

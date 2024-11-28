@@ -4,67 +4,68 @@ use std::io;
 use std::path::Path;
 
 #[test]
-fn test_whirlwind() -> io::Result<()> {
-    let mut nvram = Nvram::open(Path::new("testdata/whirl_l3.nv"))?.unwrap();
-
-    let replay_score = nvram.read_replay_score()?;
-    assert_eq!(None, replay_score);
+fn test_the_whos_tommy_pinball_wizard() -> io::Result<()> {
+    let mut nvram = Nvram::open(Path::new("testdata/tomy_500.nv"))?.unwrap();
 
     let last_game = nvram.read_last_game()?;
+    // TODO pretty sure this is wrong, is that because 500 is not compatible with 400?
     let expected = Vec::from([
         LastGamePlayer {
-            score: 0,
+            score: 4_702_109_630,
             label: None,
         },
         LastGamePlayer {
-            score: 0,
+            score: 4_349_414_040,
             label: None,
         },
         LastGamePlayer {
-            score: 0,
+            score: 4_152_202_031,
             label: None,
         },
         LastGamePlayer {
-            score: 0,
+            score: 3_720_203_230,
             label: None,
         },
     ]);
     assert_eq!(Some(expected), last_game);
 
-    let champions = nvram.read_mode_champions()?;
-    assert_eq!(None, champions);
-
     let scores = nvram.read_highscores()?;
     let expected = Vec::from([
         HighScore {
-            label: Some("Champion".to_string()),
-            short_label: Some("Champ".to_string()),
-            initials: "HHR".to_string(),
-            score: 10_000_000,
-        },
-        HighScore {
             label: Some("1st".to_string()),
             short_label: Some("#1".to_string()),
-            initials: "JCY".to_string(),
-            score: 6_000_000,
+            initials: "CNH".to_string(),
+            score: 1_000_000_000,
         },
         HighScore {
             label: Some("2nd".to_string()),
             short_label: Some("#2".to_string()),
-            initials: "JRK".to_string(),
-            score: 5_500_000,
+            initials: "IVE".to_string(),
+            score: 900_000_000,
         },
         HighScore {
             label: Some("3rd".to_string()),
             short_label: Some("#3".to_string()),
-            initials: "CPG".to_string(),
-            score: 5_000_000,
+            initials: "ED ".to_string(),
+            score: 800_000_000,
         },
         HighScore {
             label: Some("4th".to_string()),
             short_label: Some("#4".to_string()),
-            initials: "PFZ".to_string(),
-            score: 4_500_000,
+            initials: "DAN".to_string(),
+            score: 700_000_000,
+        },
+        HighScore {
+            label: Some("5th".to_string()),
+            short_label: Some("#5".to_string()),
+            initials: "MCS".to_string(),
+            score: 600_000_000,
+        },
+        HighScore {
+            label: Some("6th".to_string()),
+            short_label: Some("#6".to_string()),
+            initials: "JEN".to_string(),
+            score: 500_000_000,
         },
     ]);
     assert_eq!(expected, scores);

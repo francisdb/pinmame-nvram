@@ -27,7 +27,7 @@ pub struct Adjustment {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub short_label: Option<String>,
     pub start: HexOrInteger,
-    pub encoding: String,
+    pub encoding: Encoding,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub default: Option<StringOrNumber>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -57,7 +57,7 @@ pub struct Adjustment {
 pub struct Audit {
     pub label: String,
     pub start: String,
-    pub encoding: String,
+    pub encoding: Encoding,
     pub length: u64,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub units: Option<String>,
@@ -183,7 +183,7 @@ pub enum Endian {
 #[derive(Serialize, Deserialize)]
 pub struct Initials {
     pub start: HexOrInteger,
-    pub encoding: String,
+    pub encoding: Encoding,
     pub length: u64,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub default: Option<String>,
@@ -213,6 +213,12 @@ pub enum Adjustments {
 pub struct HexString {
     pub value: u64,
     pub serialized: String,
+}
+
+impl From<&HexString> for u64 {
+    fn from(h: &HexString) -> u64 {
+        h.value
+    }
 }
 
 impl Serialize for HexString {
@@ -248,7 +254,7 @@ impl fmt::Display for HexString {
     }
 }
 
-enum IntegerOrFloat {
+pub enum IntegerOrFloat {
     Integer(i64),
     Float(f64),
 }
@@ -291,29 +297,29 @@ pub struct State {
     _note: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     _note2: Option<String>,
-    encoding: String,
-    label: String,
+    pub encoding: Encoding,
+    pub label: String,
     #[serde(skip_serializing_if = "Option::is_none")]
-    short_label: Option<String>,
+    pub short_label: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    length: Option<usize>,
+    pub length: Option<usize>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    nibble: Option<Nibble>,
-    start: HexOrInteger,
+    pub nibble: Option<Nibble>,
+    pub start: HexOrInteger,
     #[serde(skip_serializing_if = "Option::is_none")]
-    mask: Option<HexString>,
+    pub mask: Option<HexString>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    endian: Option<Endian>,
+    pub endian: Option<Endian>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    scale: Option<IntegerOrFloat>,
+    pub scale: Option<IntegerOrFloat>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    suffix: Option<String>,
+    pub suffix: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    values: Option<Vec<u64>>,
+    pub values: Option<Vec<u64>>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    offset: Option<u64>,
+    pub offset: Option<u64>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    special_values: Option<HashMap<String, String>>,
+    pub special_values: Option<HashMap<String, String>>,
 }
 
 #[derive(Serialize, Deserialize)]

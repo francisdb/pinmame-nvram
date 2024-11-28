@@ -62,5 +62,6 @@ fn test_no_fear_dangerous_sports() -> io::Result<()> {
         },
     ]);
 
-    Ok(assert_eq!(expected, scores))
+    assert_eq!(expected, scores);
+    Ok(())
 }

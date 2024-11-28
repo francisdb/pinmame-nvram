@@ -73,8 +73,9 @@ fn test_demolition_man() -> io::Result<()> {
             score: 500_000_000,
         },
     ]);
+    assert_eq!(expected, scores);
 
-    Ok(assert_eq!(expected, scores))
+    Ok(())
 }
 
 #[test]
@@ -122,8 +123,6 @@ fn test_demolition_man_clear_scores() -> io::Result<()> {
     assert_eq!(expected, scores);
 
     let checksum_failures = nvram.verify_all_checksum16()?;
-    Ok(assert_eq!(
-        Vec::<ChecksumMismatch<u16>>::new(),
-        checksum_failures
-    ))
+    assert_eq!(Vec::<ChecksumMismatch<u16>>::new(), checksum_failures);
+    Ok(())
 }

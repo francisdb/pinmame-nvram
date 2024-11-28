@@ -61,6 +61,7 @@ fn test_dirty_harry() -> io::Result<()> {
             score: 500_000_000,
         },
     ]);
+    assert_eq!(expected, scores);
 
-    Ok(assert_eq!(expected, scores))
+    Ok(())
 }

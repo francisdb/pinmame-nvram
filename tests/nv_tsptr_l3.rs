@@ -55,6 +55,7 @@ fn test_transporter_the_rescue() -> io::Result<()> {
             score: 5_500_000,
         },
     ]);
+    assert_eq!(expected, scores);
 
-    Ok(assert_eq!(expected, scores))
+    Ok(())
 }

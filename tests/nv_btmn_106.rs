@@ -28,7 +28,9 @@ fn test_batman_last_game() -> io::Result<()> {
             label: None,
         },
     ]);
-    Ok(assert_eq!(Some(expected), last_game))
+    assert_eq!(Some(expected), last_game);
+
+    Ok(())
 }
 
 #[test]
@@ -74,6 +76,7 @@ fn test_batman() -> io::Result<()> {
             score: 14_000_000,
         },
     ]);
+    assert_eq!(expected, scores);
 
-    Ok(assert_eq!(expected, scores))
+    Ok(())
 }

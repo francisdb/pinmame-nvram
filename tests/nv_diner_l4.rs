@@ -57,7 +57,8 @@ fn test_diner() -> io::Result<()> {
         },
     ]);
 
-    Ok(assert_eq!(expected, scores))
+    assert_eq!(expected, scores);
+    Ok(())
 }
 
 #[test]
@@ -99,8 +100,6 @@ fn test_diner_clear_scores() -> io::Result<()> {
     assert_eq!(expected, scores);
 
     let checksum_failures = nvram.verify_all_checksum16()?;
-    Ok(assert_eq!(
-        Vec::<ChecksumMismatch<u16>>::new(),
-        checksum_failures
-    ))
+    assert_eq!(Vec::<ChecksumMismatch<u16>>::new(), checksum_failures);
+    Ok(())
 }

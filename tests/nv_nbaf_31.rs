@@ -298,6 +298,7 @@ fn test_nba_fastbreak() -> io::Result<()> {
             score: 70,
         },
     ]);
+    assert_eq!(expected, scores);
 
-    Ok(assert_eq!(expected, scores))
+    Ok(())
 }

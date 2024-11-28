@@ -56,6 +56,7 @@ fn test_funhouse() -> io::Result<()> {
             score: 3_400_000,
         },
     ]);
+    assert_eq!(expected, scores);
 
-    Ok(assert_eq!(expected, scores))
+    Ok(())
 }

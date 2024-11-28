@@ -73,6 +73,7 @@ fn test_south_park() -> io::Result<()> {
             score: 175_000_000,
         },
     ]);
+    assert_eq!(expected, scores);
 
-    Ok(assert_eq!(expected, scores))
+    Ok(())
 }

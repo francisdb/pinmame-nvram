@@ -37,6 +37,7 @@ fn test_sorcerer() -> io::Result<()> {
             score: 1_100_000,
         },
     ]);
+    assert_eq!(expected, scores);
 
-    Ok(assert_eq!(expected, scores))
+    Ok(())
 }
