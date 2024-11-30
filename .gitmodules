@@ -1,3 +1,4 @@
 [submodule "pinmame-nvram-maps"]
 	path = pinmame-nvram-maps
 	url = https://github.com/tomlogic/pinmame-nvram-maps.git
+	update = merge
