@@ -418,7 +418,19 @@ fn find_map(rom_name: &String) -> io::Result<Option<NvramMap>> {
     let map_name = format!("{}.nv.json", rom_name);
     if let Some(map_file) = MAPS.get_file(&map_name) {
         let cursor = io::Cursor::new(map_file.contents());
-        let map = serde_json::from_reader(cursor)?;
+        let map: NvramMap = serde_json::from_reader(cursor)?;
+        // check that the rom name is in the map
+        if !map._roms.contains(rom_name) {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidData,
+                format!(
+                    "Map for {}.nv.json found but {} not in _roms list: {}",
+                    rom_name,
+                    rom_name,
+                    map._roms.join(", ")
+                ),
+            ));
+        }
         return Ok(Some(map));
     }
     // Preferably we would have a pre-filtered MAPS, see
