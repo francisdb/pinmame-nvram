@@ -5,16 +5,16 @@ use std::path::Path;
 
 #[test]
 fn test_theatre_of_magic() -> io::Result<()> {
-    let mut nvram = Nvram::open(Path::new("testdata/tom_14hb.nv"))?.unwrap();
+    let mut nvram = Nvram::open(Path::new("testdata/tom_13.nv"))?.unwrap();
 
     let last_game = nvram.read_last_game()?;
     let expected = Vec::from([
         LastGamePlayer {
-            score: 9_950_010,
+            score: 91_050_050,
             label: None,
         },
         LastGamePlayer {
-            score: 9_210_280,
+            score: 0,
             label: None,
         },
         LastGamePlayer {
