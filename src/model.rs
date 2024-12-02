@@ -254,43 +254,6 @@ impl fmt::Display for HexString {
     }
 }
 
-pub enum IntegerOrFloat {
-    Integer(i64),
-    Float(f64),
-}
-
-impl Serialize for IntegerOrFloat {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: Serializer,
-    {
-        match self {
-            IntegerOrFloat::Integer(i) => serializer.serialize_i64(*i),
-            IntegerOrFloat::Float(f) => serializer.serialize_f64(*f),
-        }
-    }
-}
-
-impl<'de> Deserialize<'de> for IntegerOrFloat {
-    fn deserialize<D>(deserializer: D) -> Result<IntegerOrFloat, D::Error>
-    where
-        D: Deserializer<'de>,
-    {
-        match serde_json::Value::deserialize(deserializer)? {
-            serde_json::Value::Number(n) => {
-                if let Some(i) = n.as_i64() {
-                    Ok(IntegerOrFloat::Integer(i))
-                } else if let Some(f) = n.as_f64() {
-                    Ok(IntegerOrFloat::Float(f))
-                } else {
-                    Err(serde::de::Error::custom("invalid number"))
-                }
-            }
-            _ => Err(serde::de::Error::custom("expected number")),
-        }
-    }
-}
-
 #[derive(Serialize, Deserialize)]
 pub struct State {
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -311,7 +274,7 @@ pub struct State {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub endian: Option<Endian>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub scale: Option<IntegerOrFloat>,
+    pub scale: Option<serde_json::Number>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub suffix: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
