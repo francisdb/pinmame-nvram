@@ -4,6 +4,7 @@ use std::collections::HashMap;
 use std::io;
 use std::path::Path;
 
+#[ignore = "https://github.com/tomlogic/pinmame-nvram-maps/pull/30"]
 #[test]
 fn test_jokerz() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/jokrz_l6.nv"))?.unwrap();
