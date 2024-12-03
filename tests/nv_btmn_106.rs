@@ -11,8 +11,6 @@ fn test_batman() -> io::Result<()> {
     // let expected = HashMap::from([("credits".into(), "11".into())]);
     // assert_eq!(Some(expected), game_state);
 
-    let mut nvram = Nvram::open(Path::new("testdata/btmn_106.nv"))?.unwrap();
-
     let last_game = nvram.read_last_game()?;
     let expected = Vec::from([
         LastGamePlayer {
