@@ -4,19 +4,23 @@ use std::io;
 use std::path::Path;
 
 #[test]
-#[ignore = "Not sure where this goes wrong"]
-fn test_batman_last_game() -> io::Result<()> {
+fn test_batman() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/btmn_106.nv"))?.unwrap();
 
-    // FIXME this is pobably wrong my last game was 41_180?
+    // let game_state = nvram.read_game_state()?;
+    // let expected = HashMap::from([("credits".into(), "11".into())]);
+    // assert_eq!(Some(expected), game_state);
+
+    let mut nvram = Nvram::open(Path::new("testdata/btmn_106.nv"))?.unwrap();
+
     let last_game = nvram.read_last_game()?;
     let expected = Vec::from([
         LastGamePlayer {
-            score: 41_180,
+            score: 339_930,
             label: None,
         },
         LastGamePlayer {
-            score: 0,
+            score: 1_868_230,
             label: None,
         },
         LastGamePlayer {
@@ -29,13 +33,6 @@ fn test_batman_last_game() -> io::Result<()> {
         },
     ]);
     assert_eq!(Some(expected), last_game);
-
-    Ok(())
-}
-
-#[test]
-fn test_batman() -> io::Result<()> {
-    let mut nvram = Nvram::open(Path::new("testdata/btmn_106.nv"))?.unwrap();
 
     let scores = nvram.read_highscores()?;
     let expected = Vec::from([
