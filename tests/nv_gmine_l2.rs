@@ -14,6 +14,7 @@ use testdir::testdir;
 //       "encoding": "bcd"
 //     }
 
+#[ignore = "https://github.com/tomlogic/pinmame-nvram-maps/pull/30"]
 #[test]
 fn test_gold_mine() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/gmine_l2.nv"))?.unwrap();
@@ -66,6 +67,7 @@ fn test_gold_mine() -> io::Result<()> {
     Ok(())
 }
 
+#[ignore = "https://github.com/tomlogic/pinmame-nvram-maps/pull/30"]
 #[test]
 fn test_gold_mine_6players() -> io::Result<()> {
     let test_dir = testdir!();
