@@ -1,6 +1,6 @@
 # pinmame-nvram
 
-Reading PinMAME nvram files in Rust
+Rust library handling PinMAME NVRAM files.
 
 ## Usage
 

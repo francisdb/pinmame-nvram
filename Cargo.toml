@@ -1,5 +1,13 @@
 [package]
 name = "pinmame-nvram"
+description = "Rust library handling PinMAME NVRAM files"
+license = "MIT"
+repository = "https://github.com/francisdb/pinmame-nvram"
+readme = "README.md"
+documentation = "https://docs.rs/vpin"
+
+keywords = ["pinmame", "emulation", "mame", "virtual-pinball"]
+categories = ["game-engines", "game-development"]
 version = "0.1.0"
 edition = "2021"
 
