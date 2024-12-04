@@ -1,15 +1,14 @@
 mod model;
 
 use crate::model::{Checksum16, Encoding, Endian, Nibble, NvramMap, Score, StateOrStateList};
-use include_dir::{include_dir, Dir};
+use include_dir::{include_dir, Dir, File};
 use std::collections::HashMap;
-use std::ffi::OsStr;
 use std::fs::OpenOptions;
 use std::io;
 use std::io::{Read, Seek, SeekFrom, Write};
 use std::path::{Path, PathBuf};
 
-static MAPS: Dir = include_dir!("pinmame-nvram-maps");
+static MAPS: Dir = include_dir!("$OUT_DIR/maps.brotli");
 
 fn de_nibble(length: usize, buff: &[u8], nibble: &Nibble) -> io::Result<Vec<u8>> {
     if nibble == &Nibble::High && length % 2 != 0 {
@@ -415,10 +414,9 @@ impl Nvram {
 }
 
 fn find_map(rom_name: &String) -> io::Result<Option<NvramMap>> {
-    let map_name = format!("{}.nv.json", rom_name);
+    let map_name = format!("{}.json.brotli", rom_name);
     if let Some(map_file) = MAPS.get_file(&map_name) {
-        let cursor = io::Cursor::new(map_file.contents());
-        let map: NvramMap = serde_json::from_reader(cursor)?;
+        let map = read_compressed_map(map_file)?;
         // check that the rom name is in the map
         if !map._roms.contains(rom_name) {
             return Err(io::Error::new(
@@ -433,19 +431,20 @@ fn find_map(rom_name: &String) -> io::Result<Option<NvramMap>> {
         }
         return Ok(Some(map));
     }
-    // Preferably we would have a pre-filtered MAPS, see
-    // https://github.com/Michael-F-Bryan/include_dir/issues/81
-    for entry in MAPS
-        .files()
-        .filter(|entry| entry.path().extension().unwrap_or(OsStr::new("")) == "json")
-    {
-        let cursor = io::Cursor::new(entry.contents());
-        let map: NvramMap = serde_json::from_reader(cursor)?;
+    for entry in MAPS.files() {
+        let map = read_compressed_map(entry)?;
         if map._roms.contains(rom_name) {
             return Ok(Some(map));
         }
     }
     Ok(None)
+}
+
+fn read_compressed_map(map_file: &File) -> io::Result<NvramMap> {
+    let mut cursor = io::Cursor::new(map_file.contents());
+    let reader = brotli::Decompressor::new(&mut cursor, 4096);
+    let map: NvramMap = serde_json::from_reader(reader)?;
+    Ok(map)
 }
 
 fn read_highscores<T: Read + Seek>(
