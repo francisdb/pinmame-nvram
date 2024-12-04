@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1](https://github.com/francisdb/pinmame-nvram/compare/v0.1.0...v0.1.1) - 2024-12-04
+
+### Added
+
+- compressed nvram maps ([#4](https://github.com/francisdb/pinmame-nvram/pull/4))
+
+### Other
+
+- strapids
+- hod
+- release v0.1.0 ([#1](https://github.com/francisdb/pinmame-nvram/pull/1))
+
 ## [0.1.0](https://github.com/francisdb/pinmame-nvram/releases/tag/v0.1.0) - 2024-12-04
 
 ### Added
