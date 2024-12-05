@@ -134,8 +134,9 @@ pub fn resolve(nv_path: &Path) -> io::Result<Option<Value>> {
             .get("_char_map")
             .and_then(|v| v.as_str())
             .map(|s| s.to_string());
+        let endian: Endian = serde_json::from_value(map["_endian"].clone())?;
         let mut rom = OpenOptions::new().read(true).open(nv_path)?;
-        Some(resolve_recursive(map, &char_map, &mut rom)?)
+        Some(resolve_recursive(map, &char_map, &endian, &mut rom)?)
     } else {
         None
     };
@@ -145,6 +146,7 @@ pub fn resolve(nv_path: &Path) -> io::Result<Option<Value>> {
 fn resolve_recursive<T: Read + Seek>(
     value: &Value,
     char_map: &Option<String>,
+    endian: &Endian,
     rom: &mut T,
 ) -> io::Result<Value> {
     let result: Value = match value {
@@ -154,7 +156,6 @@ fn resolve_recursive<T: Read + Seek>(
             if let Some(encoding) = map.get("encoding") {
                 let encoding: Encoding = serde_json::from_value(encoding.clone())?;
                 let value = resolve_value(rom, map, encoding, char_map)?;
-
                 let mut resolved_map = Map::new();
                 resolved_map.insert("value".to_string(), value);
                 if let Some(label) = map.get("label") {
@@ -165,8 +166,14 @@ fn resolve_recursive<T: Read + Seek>(
             } else {
                 let mut resolved_map = Map::new();
                 for (key, value) in map.iter() {
-                    if key.eq("_fileformat") || !key.starts_with('_') {
-                        resolved_map.insert(key.clone(), resolve_recursive(value, char_map, rom)?);
+                    if key.eq("checksum16") {
+                        let checksum_result = resolve_checksum16(endian, rom, value)?;
+                        resolved_map.insert(key.clone(), checksum_result);
+                    } else if key.eq("_fileformat") || !key.starts_with('_') {
+                        resolved_map.insert(
+                            key.clone(),
+                            resolve_recursive(value, char_map, endian, rom)?,
+                        );
                     }
                 }
                 Value::Object(resolved_map)
@@ -175,13 +182,46 @@ fn resolve_recursive<T: Read + Seek>(
         Value::Array(array) => {
             let resolved_array: Vec<Value> = array
                 .iter()
-                .map(|v| resolve_recursive(v, char_map, rom))
+                .map(|v| resolve_recursive(v, char_map, endian, rom))
                 .collect::<Result<Vec<_>, _>>()?;
             Value::Array(resolved_array)
         }
         other => other.clone(),
     };
     Ok(result)
+}
+
+fn resolve_checksum16<T: Read + Seek>(
+    endian: &Endian,
+    rom: &mut T,
+    value: &Value,
+) -> io::Result<Value> {
+    // go over the checksum16 array and verify the checksum
+    let mut checksum_result: Vec<Value> = Vec::new();
+    for checksum in value.as_array().unwrap() {
+        let checksum16: Checksum16 = serde_json::from_value(checksum.clone())?;
+        let checksum_failure = verify_checksum16(rom, &checksum16, endian)?;
+        let mut map = Map::new();
+        if let Some(label) = checksum.get("label") {
+            map.insert("label".to_string(), label.clone());
+        }
+        if let Some(checksum_failure) = checksum_failure {
+            map.insert("value".to_string(), Value::String("mismatch".to_string()));
+            map.insert(
+                "checksum_mismatch_expected".to_string(),
+                Value::Number(checksum_failure.expected.into()),
+            );
+            map.insert(
+                "checksum_mismatch_calculated".to_string(),
+                Value::Number(checksum_failure.calculated.into()),
+            );
+            checksum_result.push(Value::Object(map));
+        } else {
+            map.insert("value".to_string(), Value::String("valid".to_string()));
+            checksum_result.push(Value::Object(map));
+        }
+    }
+    Ok(Value::Array(checksum_result))
 }
 
 fn resolve_value<T: Read + Seek>(

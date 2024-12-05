@@ -440,44 +440,38 @@
   },
   "checksum16": [
     {
-      "end": "0x1CA4",
       "label": "Adjustments",
-      "start": "0x1B95"
+      "value": "valid"
     },
     {
-      "end": "0x1D0A",
       "label": "Timestamps",
-      "start": "0x1CA7"
+      "value": "valid"
     },
     {
-      "end": "0x1D30",
       "label": "High Scores",
-      "start": "0x1D0B"
+      "value": "valid"
     },
     {
-      "end": "0x1D3B",
       "label": "Grand Champion",
-      "start": "0x1D31"
+      "value": "valid"
     },
     {
-      "end": "0x1D41",
       "label": "HSTD Reset",
-      "start": "0x1D3C"
+      "value": "valid"
     },
     {
-      "end": "0x1E2F",
       "label": "?? replay level",
-      "start": "0x1D5A"
+      "value": "valid"
     },
     {
-      "end": "0x1EF2",
       "label": "Custom Message",
-      "start": "0x1E30"
+      "value": "valid"
     },
     {
-      "end": "0x1FAB",
+      "checksum_mismatch_calculated": 62999,
+      "checksum_mismatch_expected": 65294,
       "label": "Mode Champions",
-      "start": "0x1F70"
+      "value": "mismatch"
     }
   ],
   "checksum8": [

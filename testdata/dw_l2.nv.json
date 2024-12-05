@@ -174,9 +174,10 @@
   },
   "checksum16": [
     {
-      "end": "0x1CB1",
+      "checksum_mismatch_calculated": 63731,
+      "checksum_mismatch_expected": 60671,
       "label": "Adjustments",
-      "start": "0x1B83"
+      "value": "mismatch"
     }
   ],
   "checksum8": [

@@ -762,66 +762,53 @@
   },
   "checksum16": [
     {
-      "end": "0x1BFA",
       "label": "Adjustments",
-      "start": "0x1B1D"
+      "value": "valid"
     },
     {
-      "end": "0x1C60",
       "label": "Timestamps",
-      "start": "0x1BFD"
+      "value": "valid"
     },
     {
-      "end": "0x1C86",
       "label": "High Scores",
-      "start": "0x1C61"
+      "value": "valid"
     },
     {
-      "end": "0x1C91",
       "label": "Grand Champion",
-      "start": "0x1C87"
+      "value": "valid"
     },
     {
-      "end": "0x1C97",
       "label": "HSTD Reset",
-      "start": "0x1C92"
+      "value": "valid"
     },
     {
-      "end": "0x1CA0",
       "label": "Credits?",
-      "start": "0x1C98"
+      "value": "valid"
     },
     {
-      "end": "0x1CA3",
       "label": "Volume",
-      "start": "0x1CA1"
+      "value": "valid"
     },
     {
-      "end": "0x1CAE",
-      "start": "0x1CA4"
+      "value": "valid"
     },
     {
-      "end": "0x1D84",
-      "start": "0x1CAF"
+      "value": "valid"
     },
     {
-      "end": "0x1E47",
       "label": "Custom Message",
-      "start": "0x1D85"
+      "value": "valid"
     },
     {
-      "end": "0x1ECB",
       "label": "Custom Message 2?",
-      "start": "0x1E48"
+      "value": "valid"
     },
     {
-      "end": "0x1ED6",
       "label": "Mode Champions",
-      "start": "0x1ECC"
+      "value": "valid"
     },
     {
-      "end": "0x1EDC",
-      "start": "0x1ED7"
+      "value": "valid"
     }
   ],
   "checksum8": [
