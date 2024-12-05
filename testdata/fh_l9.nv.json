@@ -316,44 +316,36 @@
   },
   "checksum16": [
     {
-      "end": "0x1BFA",
       "label": "Adjustments",
-      "start": "0x1B1E"
+      "value": "valid"
     },
     {
-      "end": "0x1C60",
       "label": "Timestamps",
-      "start": "0x1BFD"
+      "value": "valid"
     },
     {
-      "end": "0x1C82",
       "label": "High Scores",
-      "start": "0x1C61"
+      "value": "valid"
     },
     {
-      "end": "0x1C8C",
       "label": "Grand Champion",
-      "start": "0x1C83"
+      "value": "valid"
     },
     {
-      "end": "0x1C92",
       "label": "HSTD Reset",
-      "start": "0x1C8D"
+      "value": "valid"
     },
     {
-      "end": "0x1D7F",
       "label": "?? replay level",
-      "start": "0x1CAA"
+      "value": "valid"
     },
     {
-      "end": "0x1E42",
       "label": "Custom Message",
-      "start": "0x1D80"
+      "value": "valid"
     },
     {
-      "end": "0x1EC6",
       "label": "Custom Message 2?",
-      "start": "0x1E43"
+      "value": "valid"
     }
   ],
   "checksum8": [

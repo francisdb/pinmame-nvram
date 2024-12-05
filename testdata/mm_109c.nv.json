@@ -316,79 +316,64 @@
   },
   "checksum16": [
     {
-      "end": "0x1CB4",
       "label": "Adjustments",
-      "start": "0x1B8F"
+      "value": "valid"
     },
     {
-      "end": "0x1D28",
       "label": "Timestamps",
-      "start": "0x1CB7"
+      "value": "valid"
     },
     {
-      "end": "0x1D4A",
       "label": "High Scores",
-      "start": "0x1D29"
+      "value": "valid"
     },
     {
-      "end": "0x1D54",
       "label": "Grand Champion",
-      "start": "0x1D4B"
+      "value": "valid"
     },
     {
-      "end": "0x1D5A",
       "label": "HSTD Reset",
-      "start": "0x1D55"
+      "value": "valid"
     },
     {
-      "end": "0x1E48",
       "label": "?? replay level",
-      "start": "0x1D73"
+      "value": "valid"
     },
     {
-      "end": "0x1F0B",
       "label": "Custom Message",
-      "start": "0x1E49"
+      "value": "valid"
     },
     {
-      "end": "0x1F92",
       "label": "Castle Champion",
-      "start": "0x1F89"
+      "value": "valid"
     },
     {
-      "end": "0x1F9C",
       "label": "Joust Champion",
-      "start": "0x1F93"
+      "value": "valid"
     },
     {
-      "end": "0x1FA6",
       "label": "Catapult Champion",
-      "start": "0x1F9D"
+      "value": "valid"
     },
     {
-      "end": "0x1FB0",
       "label": "Peasant Champion",
-      "start": "0x1FA7"
+      "value": "valid"
     },
     {
-      "end": "0x1FBA",
       "label": "Damsel Champion",
-      "start": "0x1FB1"
+      "value": "valid"
     },
     {
-      "end": "0x1FC4",
       "label": "Troll Champion",
-      "start": "0x1FBB"
+      "value": "valid"
     },
     {
-      "end": "0x1FCE",
       "label": "Madness Champion",
-      "start": "0x1FC5"
+      "value": "valid"
     },
     {
-      "end": "0x1FF0",
       "label": "King of the Realm",
-      "start": "0x1FCF"
+      "value": "valid"
     }
   ],
   "checksum8": [

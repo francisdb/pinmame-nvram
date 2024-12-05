@@ -718,74 +718,59 @@
   },
   "checksum16": [
     {
-      "end": "0x1BFA",
       "label": "Adjustments",
-      "start": "0x1B1D"
+      "value": "valid"
     },
     {
-      "end": "0x1C60",
       "label": "Timestamps",
-      "start": "0x1BFD"
+      "value": "valid"
     },
     {
-      "end": "0x1C86",
       "label": "High Scores",
-      "start": "0x1C61"
+      "value": "valid"
     },
     {
-      "end": "0x1C91",
       "label": "Grand Champion",
-      "start": "0x1C87"
+      "value": "valid"
     },
     {
-      "end": "0x1C97",
       "label": "HSTD Reset",
-      "start": "0x1C92"
+      "value": "valid"
     },
     {
-      "end": "0x1CA1",
       "label": "Credits?",
-      "start": "0x1C98"
+      "value": "valid"
     },
     {
-      "end": "0x1CA4",
       "label": "Volume",
-      "start": "0x1CA2"
+      "value": "valid"
     },
     {
-      "end": "0x1CAF",
-      "start": "0x1CA6"
+      "value": "valid"
     },
     {
-      "end": "0x1D85",
-      "start": "0x1CB0"
+      "value": "valid"
     },
     {
-      "end": "0x1E48",
       "label": "Custom Message",
-      "start": "0x1D86"
+      "value": "valid"
     },
     {
-      "end": "0x1ED0",
       "label": "Cyberpunk",
-      "start": "0x1EC6"
+      "value": "valid"
     },
     {
-      "end": "0x1FE0",
       "label": "Masters of Powerdown",
-      "start": "0x1ED1"
+      "value": "valid"
     },
     {
-      "end": "0x1FE6",
-      "start": "0x1FE1"
+      "value": "valid"
     },
     {
-      "end": "0x1FEC",
-      "start": "0x1FE7"
+      "value": "valid"
     },
     {
-      "end": "0x1FF2",
-      "start": "0x1FED"
+      "value": "valid"
     }
   ],
   "checksum8": [
