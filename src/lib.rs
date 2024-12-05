@@ -245,7 +245,7 @@ fn resolve_value<T: Read + Seek>(
             let nibble: Option<Nibble> = map
                 .get("nibble")
                 .map(|n| serde_json::from_value(n.clone()).unwrap());
-            let value = read_ch(rom, start, length, mask, &char_map, &nibble)?;
+            let value = read_ch(rom, start, length, mask, char_map, &nibble)?;
             Value::String(value)
         }
         Encoding::WpcRtc => {
@@ -867,17 +867,17 @@ mod tests {
                         let actual = serde_json::to_string_pretty(&map)?;
                         assert_eq!(expected, actual);
                     } else {
-                        assert!(false, "Expected file not found: {:?}", json_path);
+                        panic!("Expected file not found: {:?}", json_path);
                     }
                 } else {
-                    assert!(false, "Failed to resolve: {:?}", path);
+                    panic!("Failed to resolve: {:?}", path);
                 }
             }
         }
         Ok(())
     }
 
-    fn path_for_test(test_dir: &PathBuf, nvram_path: &PathBuf) -> io::Result<PathBuf> {
+    fn path_for_test(test_dir: &Path, nvram_path: &PathBuf) -> io::Result<PathBuf> {
         let path = if nvram_path
             .file_name()
             .unwrap()
@@ -895,7 +895,7 @@ mod tests {
                 .next()
                 .unwrap();
             let new_path = test_dir.join(rom_name).with_extension("nv");
-            std::fs::copy(&nvram_path, &new_path)?;
+            std::fs::copy(nvram_path, &new_path)?;
             new_path
         } else {
             nvram_path.clone()
