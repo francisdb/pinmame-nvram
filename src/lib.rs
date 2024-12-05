@@ -141,21 +141,19 @@ pub fn resolve(nv_path: &Path) -> io::Result<Option<Value>> {
 fn resolve_recursive<T: Read + Seek>(value: &Value, rom: &mut T) -> io::Result<Value> {
     let result: Value = match value {
         Value::Object(map) => {
-            // check if the object has and "encoding" property, then resolve it, otherwise resolve all values
-            println!("{:?}", map);
-            println!("{:?}", map.get("encoding"));
+            // println!("{:?}", map);
+            // println!("{:?}", map.get("encoding"));
             if let Some(encoding) = map.get("encoding") {
+                let encoding: Encoding = serde_json::from_value(encoding.clone())?;
                 let value = resolve_value(rom, map, encoding)?;
 
-                // if there is a label property we create a new object, otherwise we return the value
+                let mut resolved_map = Map::new();
+                resolved_map.insert("value".to_string(), value);
                 if let Some(label) = map.get("label") {
-                    let mut resolved_map = Map::new();
-                    resolved_map.insert("value".to_string(), value);
+                    // maybe we should instead remove all properties related to the encoding
                     resolved_map.insert("label".to_string(), label.clone());
-                    Value::Object(resolved_map)
-                } else {
-                    value
                 }
+                Value::Object(resolved_map)
             } else {
                 let mut resolved_map = map.clone();
                 for (key, value) in map.iter() {
@@ -179,89 +177,82 @@ fn resolve_recursive<T: Read + Seek>(value: &Value, rom: &mut T) -> io::Result<V
 fn resolve_value<T: Read + Seek>(
     rom: &mut T,
     map: &Map<String, Value>,
-    encoding: &Value,
+    encoding: Encoding,
 ) -> io::Result<Value> {
     let start = map.get("start").map(json_hex_or_int).transpose()?;
     let length = map
         .get("length")
         .map_or(1, |v| v.as_u64().unwrap() as usize);
     let value = match encoding {
-        Value::String(s) => match s.as_str() {
-            "int" => {
-                let value = read_int(rom, Endian::Big, start.unwrap(), length)?;
-                Value::Number(value.into())
-            }
-            "enum" => {
-                // read a single byte and use it as index in the enum array
-                let index = {
-                    rom.seek(SeekFrom::Start(start.unwrap()))?;
-                    let mut buff = [0; 1];
-                    rom.read_exact(&mut buff)?;
-                    buff[0] as usize
-                };
-                let values = map.get("values").unwrap().as_array().unwrap();
-                let value = values.get(index).unwrap_or(&Value::Null).clone();
-                value
-            }
-            "bcd" => {
-                let location = match map.get("offsets") {
-                    None => {
-                        let start = start.unwrap();
-                        Location::Continuous { start, length }
-                    }
-                    Some(offsets) => {
-                        let offsets: Vec<u64> = offsets
-                            .as_array()
-                            .unwrap()
-                            .iter()
-                            .map(json_hex_or_int)
-                            .collect::<Result<Vec<_>, _>>()?;
-                        Location::Scattered { offsets }
-                    }
-                };
-                let scale = map
-                    .get("scale")
-                    .and_then(|s| s.as_number())
-                    .cloned()
-                    .unwrap_or(Number::from(1));
-                // how can i=avoid the clone() here?
-                let nibble: Option<Nibble> = map
-                    .get("nibble")
-                    .map(|n| serde_json::from_value(n.clone()).unwrap());
-                let value = read_bcd(rom, location, &nibble, &scale, Endian::Big)?;
-                Value::Number(value.into())
-            }
-            "ch" => {
-                let start = json_hex_or_int(map.get("start").unwrap())?;
-                let mask = map.get("mask").map(json_hex_or_int).transpose()?;
-                let char_map = map
-                    .get("_char_map")
-                    .map(|cm| cm.as_str().unwrap().to_string());
-                let nibble: Option<Nibble> = map
-                    .get("nibble")
-                    .map(|n| serde_json::from_value(n.clone()).unwrap());
-                let value = read_ch(rom, start, length, mask, &char_map, &nibble)?;
-                Value::String(value)
-            }
-            "wpc_rtc" => {
-                let value = read_wpc_rtc(rom, start.unwrap(), length)?;
-                Value::String(value)
-            }
-            "bits" => {
-                let value = "Bits encoding not implemented".to_string();
-                Value::String(value)
-            }
-            "raw" => {
-                let mut buff = vec![0; length];
+        Encoding::Int => {
+            let value = read_int(rom, Endian::Big, start.unwrap(), length)?;
+            Value::Number(value.into())
+        }
+        Encoding::Enum => {
+            // read a single byte and use it as index in the enum array
+            let index = {
                 rom.seek(SeekFrom::Start(start.unwrap()))?;
+                let mut buff = [0; 1];
                 rom.read_exact(&mut buff)?;
-                Value::Array(buff.iter().map(|b| Value::Number((*b).into())).collect())
-            }
-            other => todo!("Encoding not implemented: {:?}", other),
-        },
-        other => {
-            println!("Encoding not implemented: {:?}", other);
-            Value::Null
+                buff[0] as usize
+            };
+            let values = map.get("values").unwrap().as_array().unwrap();
+            let value = values.get(index).unwrap_or(&Value::Null).clone();
+            value
+        }
+        Encoding::Bcd => {
+            let location = match map.get("offsets") {
+                None => {
+                    let start = start.unwrap();
+                    Location::Continuous { start, length }
+                }
+                Some(offsets) => {
+                    let offsets: Vec<u64> = offsets
+                        .as_array()
+                        .unwrap()
+                        .iter()
+                        .map(json_hex_or_int)
+                        .collect::<Result<Vec<_>, _>>()?;
+                    Location::Scattered { offsets }
+                }
+            };
+            let scale = map
+                .get("scale")
+                .and_then(|s| s.as_number())
+                .cloned()
+                .unwrap_or(Number::from(1));
+            // how can i=avoid the clone() here?
+            let nibble: Option<Nibble> = map
+                .get("nibble")
+                .map(|n| serde_json::from_value(n.clone()).unwrap());
+            let value = read_bcd(rom, location, &nibble, &scale, Endian::Big)?;
+            Value::Number(value.into())
+        }
+        Encoding::Ch => {
+            let start = json_hex_or_int(map.get("start").unwrap())?;
+            let mask = map.get("mask").map(json_hex_or_int).transpose()?;
+            let char_map = map
+                .get("_char_map")
+                .map(|cm| cm.as_str().unwrap().to_string());
+            let nibble: Option<Nibble> = map
+                .get("nibble")
+                .map(|n| serde_json::from_value(n.clone()).unwrap());
+            let value = read_ch(rom, start, length, mask, &char_map, &nibble)?;
+            Value::String(value)
+        }
+        Encoding::WpcRtc => {
+            let value = read_wpc_rtc(rom, start.unwrap(), length)?;
+            Value::String(value)
+        }
+        Encoding::Bits => {
+            let value = "Bits encoding not implemented".to_string();
+            Value::String(value)
+        }
+        Encoding::Raw => {
+            let mut buff = vec![0; length];
+            rom.seek(SeekFrom::Start(start.unwrap()))?;
+            rom.read_exact(&mut buff)?;
+            Value::Array(buff.iter().map(|b| Value::Number((*b).into())).collect())
         }
     };
     Ok(value)
