@@ -130,22 +130,30 @@ impl ReadRoms for Value {
 pub fn resolve(nv_path: &Path) -> io::Result<Option<Value>> {
     let map: Option<Value> = open_nvram(nv_path)?;
     let result = if let Some(map) = &map {
+        let char_map = map
+            .get("_char_map")
+            .and_then(|v| v.as_str())
+            .map(|s| s.to_string());
         let mut rom = OpenOptions::new().read(true).open(nv_path)?;
-        Some(resolve_recursive(map, &mut rom)?)
+        Some(resolve_recursive(map, &char_map, &mut rom)?)
     } else {
         None
     };
     Ok(result)
 }
 
-fn resolve_recursive<T: Read + Seek>(value: &Value, rom: &mut T) -> io::Result<Value> {
+fn resolve_recursive<T: Read + Seek>(
+    value: &Value,
+    char_map: &Option<String>,
+    rom: &mut T,
+) -> io::Result<Value> {
     let result: Value = match value {
         Value::Object(map) => {
             // println!("{:?}", map);
             // println!("{:?}", map.get("encoding"));
             if let Some(encoding) = map.get("encoding") {
                 let encoding: Encoding = serde_json::from_value(encoding.clone())?;
-                let value = resolve_value(rom, map, encoding)?;
+                let value = resolve_value(rom, map, encoding, char_map)?;
 
                 let mut resolved_map = Map::new();
                 resolved_map.insert("value".to_string(), value);
@@ -155,9 +163,11 @@ fn resolve_recursive<T: Read + Seek>(value: &Value, rom: &mut T) -> io::Result<V
                 }
                 Value::Object(resolved_map)
             } else {
-                let mut resolved_map = map.clone();
+                let mut resolved_map = Map::new();
                 for (key, value) in map.iter() {
-                    resolved_map.insert(key.clone(), resolve_recursive(value, rom)?);
+                    if key.eq("_fileformat") || !key.starts_with('_') {
+                        resolved_map.insert(key.clone(), resolve_recursive(value, char_map, rom)?);
+                    }
                 }
                 Value::Object(resolved_map)
             }
@@ -165,7 +175,7 @@ fn resolve_recursive<T: Read + Seek>(value: &Value, rom: &mut T) -> io::Result<V
         Value::Array(array) => {
             let resolved_array: Vec<Value> = array
                 .iter()
-                .map(|v| resolve_recursive(v, rom))
+                .map(|v| resolve_recursive(v, char_map, rom))
                 .collect::<Result<Vec<_>, _>>()?;
             Value::Array(resolved_array)
         }
@@ -178,6 +188,7 @@ fn resolve_value<T: Read + Seek>(
     rom: &mut T,
     map: &Map<String, Value>,
     encoding: Encoding,
+    char_map: &Option<String>,
 ) -> io::Result<Value> {
     let start = map.get("start").map(json_hex_or_int).transpose()?;
     let length = map
@@ -231,9 +242,6 @@ fn resolve_value<T: Read + Seek>(
         Encoding::Ch => {
             let start = json_hex_or_int(map.get("start").unwrap())?;
             let mask = map.get("mask").map(json_hex_or_int).transpose()?;
-            let char_map = map
-                .get("_char_map")
-                .map(|cm| cm.as_str().unwrap().to_string());
             let nibble: Option<Nibble> = map
                 .get("nibble")
                 .map(|n| serde_json::from_value(n.clone()).unwrap());
@@ -840,33 +848,58 @@ mod tests {
 
         for entry in std::fs::read_dir("testdata")? {
             let entry = entry?;
-            let path = entry.path();
-            if path.extension().unwrap() == "nv" {
-                let path = if path.file_name().unwrap().to_str().unwrap().contains('-') {
-                    // take the file name and remove the - and everything after it
-                    let rom_name = path
-                        .file_name()
-                        .unwrap()
-                        .to_str()
-                        .unwrap()
-                        .split('-')
-                        .next()
-                        .unwrap();
-                    let new_path = test_dir.join(rom_name).with_extension("nv");
-                    std::fs::copy(&path, &new_path)?;
-                    new_path
-                } else {
-                    path
-                };
+            let nvram_path = entry.path();
+            if nvram_path.extension().unwrap() == "nv" {
+                let path = path_for_test(&test_dir, &nvram_path)?;
                 if excludes.contains(&path.file_stem().unwrap().to_str().unwrap()) {
                     println!("Skipping: {:?}", path);
                     continue;
                 }
                 let map = resolve(&path)?;
-                // fail with a message pointing to the file
-                assert!(map.is_some(), "Failed to resolve: {:?}", path);
+
+                if let Some(map) = &map {
+                    let json_path = &nvram_path.with_extension("nv.json");
+                    // Enable this to regenerate the json files
+                    // let json = serde_json::to_string_pretty(&map)?;
+                    // std::fs::write(&json_path, json)?;
+                    if json_path.exists() {
+                        let expected = std::fs::read_to_string(json_path)?;
+                        let actual = serde_json::to_string_pretty(&map)?;
+                        assert_eq!(expected, actual);
+                    } else {
+                        assert!(false, "Expected file not found: {:?}", json_path);
+                    }
+                } else {
+                    assert!(false, "Failed to resolve: {:?}", path);
+                }
             }
         }
         Ok(())
+    }
+
+    fn path_for_test(test_dir: &PathBuf, nvram_path: &PathBuf) -> io::Result<PathBuf> {
+        let path = if nvram_path
+            .file_name()
+            .unwrap()
+            .to_str()
+            .unwrap()
+            .contains('-')
+        {
+            // take the file name and remove the - and everything after it
+            let rom_name = nvram_path
+                .file_name()
+                .unwrap()
+                .to_str()
+                .unwrap()
+                .split('-')
+                .next()
+                .unwrap();
+            let new_path = test_dir.join(rom_name).with_extension("nv");
+            std::fs::copy(&nvram_path, &new_path)?;
+            new_path
+        } else {
+            nvram_path.clone()
+        };
+        Ok(path)
     }
 }

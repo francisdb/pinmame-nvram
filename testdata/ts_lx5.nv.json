@@ -1,0 +1,131 @@
+{
+  "_fileformat": 0.1,
+  "high_scores": [
+    {
+      "initials": {
+        "value": "MAB"
+      },
+      "label": "Grand Champion",
+      "score": {
+        "value": 700000000
+      },
+      "short_label": "GC"
+    },
+    {
+      "initials": {
+        "value": "BRE"
+      },
+      "label": "Best Agent #1",
+      "score": {
+        "value": 650000000
+      },
+      "short_label": "#1"
+    },
+    {
+      "initials": {
+        "value": "BCF"
+      },
+      "label": "Best Agent #2",
+      "score": {
+        "value": 600000000
+      },
+      "short_label": "#2"
+    },
+    {
+      "initials": {
+        "value": "DTW"
+      },
+      "label": "Best Agent #3",
+      "score": {
+        "value": 550000000
+      },
+      "short_label": "#3"
+    },
+    {
+      "initials": {
+        "value": "DWF"
+      },
+      "label": "Best Agent #4",
+      "score": {
+        "value": 500000000
+      },
+      "short_label": "#4"
+    },
+    {
+      "initials": {
+        "value": "BRE"
+      },
+      "label": "Buyin Champion",
+      "score": {
+        "value": 900000000
+      },
+      "short_label": "BIC"
+    },
+    {
+      "initials": {
+        "value": "MAB"
+      },
+      "label": "BuyIn Score #1",
+      "score": {
+        "value": 850000000
+      },
+      "short_label": "BI#1"
+    },
+    {
+      "initials": {
+        "value": "BCF"
+      },
+      "label": "BuyIn Score #2",
+      "score": {
+        "value": 800000000
+      },
+      "short_label": "BI#2"
+    },
+    {
+      "initials": {
+        "value": "TEX"
+      },
+      "label": "BuyIn Score #3",
+      "score": {
+        "value": 750000000
+      },
+      "short_label": "BI#3"
+    },
+    {
+      "initials": {
+        "value": "ASR"
+      },
+      "label": "BuyIn Score #4",
+      "score": {
+        "value": 700000000
+      },
+      "short_label": "BI#4"
+    }
+  ],
+  "last_game": [
+    {
+      "value": 142239830
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    }
+  ],
+  "mode_champions": [
+    {
+      "initials": {
+        "value": "TEX"
+      },
+      "label": "Shadow Loop Champ",
+      "score": {
+        "value": 200
+      },
+      "short_label": "SLC"
+    }
+  ]
+}

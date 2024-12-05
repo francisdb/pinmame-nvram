@@ -1,0 +1,65 @@
+{
+  "_fileformat": 0.1,
+  "game_state": {
+    "credits": {
+      "label": "Credits",
+      "value": 67
+    }
+  },
+  "high_scores": [
+    {
+      "initials": {
+        "value": "MDR"
+      },
+      "label": "First Place",
+      "score": {
+        "value": 3200000
+      },
+      "short_label": "1st"
+    },
+    {
+      "initials": {
+        "value": "PVA"
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 3000000
+      },
+      "short_label": "2nd"
+    },
+    {
+      "initials": {
+        "value": "PFZ"
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 2800000
+      },
+      "short_label": "3rd"
+    },
+    {
+      "initials": {
+        "value": "CPG"
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 2500000
+      },
+      "short_label": "4th"
+    }
+  ],
+  "last_game": [
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    }
+  ]
+}

@@ -1,0 +1,471 @@
+{
+  "_fileformat": 0.1,
+  "adjustments": {
+    "A.1 Standard Adjustments": {
+      "01": {
+        "label": "Balls Per Game",
+        "value": 3
+      },
+      "02": {
+        "label": "Tilt Warnings",
+        "value": 3
+      },
+      "03": {
+        "label": "Max E.B. Count",
+        "value": 4
+      },
+      "04": {
+        "label": "Max E.B. Per B.I.P.",
+        "value": 0
+      },
+      "05": {
+        "label": "Replay System",
+        "value": "Off"
+      },
+      "06": {
+        "label": "Replay Percent",
+        "value": 7
+      },
+      "07": {
+        "label": "Replay Start",
+        "value": 100
+      },
+      "08": {
+        "label": "Replay Levels",
+        "value": 1
+      },
+      "09": {
+        "label": "Replay L1",
+        "value": 100
+      },
+      "10": {
+        "label": "Replay L2",
+        "value": 0
+      },
+      "11": {
+        "label": "Replay L3",
+        "value": 0
+      },
+      "12": {
+        "label": "Replay L4",
+        "value": 0
+      },
+      "13": {
+        "label": "Replay Boost",
+        "value": 1
+      },
+      "14": {
+        "label": "Replay Award",
+        "value": "Credit"
+      },
+      "15": {
+        "label": "Special Award",
+        "value": "Credit"
+      },
+      "16": {
+        "label": "Match Award",
+        "value": "Credit"
+      },
+      "17": {
+        "label": "Ex. Ball Ticket",
+        "value": "NO"
+      },
+      "18": {
+        "label": "Max. Tick./Player",
+        "value": 25
+      },
+      "19": {
+        "label": "Match Feature",
+        "value": 7
+      },
+      "20": {
+        "label": "Custom Message",
+        "value": "ON"
+      },
+      "21": {
+        "label": "Language",
+        "value": "English"
+      },
+      "22": {
+        "label": "Clock Style",
+        "value": "AM/PM"
+      },
+      "23": {
+        "label": "Date Style",
+        "value": "Mmm. DD, YY"
+      },
+      "24": {
+        "label": "Show Time + Date",
+        "value": "NO"
+      },
+      "25": {
+        "label": "Allow Dim. Illum.",
+        "value": "YES"
+      },
+      "26": {
+        "label": "Tournament Play",
+        "value": "NO"
+      },
+      "27": {
+        "label": "Euro. Scr. Format",
+        "value": "NO"
+      },
+      "28": {
+        "label": "Min. Vol. Override",
+        "value": "NO"
+      },
+      "29": {
+        "label": "GI Power Saver",
+        "value": 15
+      },
+      "30": {
+        "label": "Power Save Level",
+        "value": 5
+      },
+      "31": {
+        "label": "Ticket Exp. Board",
+        "value": "NO"
+      },
+      "32": {
+        "label": "No Bonus Flips",
+        "value": "YES"
+      },
+      "33": {
+        "label": "Game Restart",
+        "value": "SLOW"
+      }
+    }
+  },
+  "high_scores": [
+    {
+      "initials": {
+        "value": "GG "
+      },
+      "label": "Grand Champion",
+      "score": {
+        "value": 150
+      },
+      "short_label": "GC"
+    },
+    {
+      "initials": {
+        "value": "TMK"
+      },
+      "label": "First Place",
+      "score": {
+        "value": 130
+      },
+      "short_label": "1st"
+    },
+    {
+      "initials": {
+        "value": "KCQ"
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 110
+      },
+      "short_label": "2nd"
+    },
+    {
+      "initials": {
+        "value": "CAT"
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 90
+      },
+      "short_label": "3rd"
+    },
+    {
+      "initials": {
+        "value": "MAS"
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 70
+      },
+      "short_label": "4th"
+    }
+  ],
+  "last_game": [
+    {
+      "value": 4
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    }
+  ],
+  "last_played": {
+    "value": "2024-06-03 00:01"
+  },
+  "mode_champions": [
+    {
+      "initials": {
+        "value": "TMK"
+      },
+      "label": "BLAZERS",
+      "score": {
+        "value": 51
+      }
+    },
+    {
+      "initials": {
+        "value": "CJS"
+      },
+      "label": "BUCKS",
+      "score": {
+        "value": 48
+      }
+    },
+    {
+      "initials": {
+        "value": "ZAB"
+      },
+      "label": "BULLETS",
+      "score": {
+        "value": 34
+      }
+    },
+    {
+      "initials": {
+        "value": "LED"
+      },
+      "label": "BULLS",
+      "score": {
+        "value": 30136
+      }
+    },
+    {
+      "initials": {
+        "value": "ROG"
+      },
+      "label": "CAVALIERS",
+      "score": {
+        "value": 10084
+      }
+    },
+    {
+      "initials": {
+        "value": "LFS"
+      },
+      "label": "CELTICS",
+      "score": {
+        "value": 20104
+      }
+    },
+    {
+      "initials": {
+        "value": "ASR"
+      },
+      "label": "CLIPPERS",
+      "score": {
+        "value": 52
+      }
+    },
+    {
+      "initials": {
+        "value": "POP"
+      },
+      "label": "GRIZZLIES",
+      "score": {
+        "value": 41
+      }
+    },
+    {
+      "initials": {
+        "value": "JAP"
+      },
+      "label": "HAWKS",
+      "score": {
+        "value": 53
+      }
+    },
+    {
+      "initials": {
+        "value": "VJP"
+      },
+      "label": "HEAT",
+      "score": {
+        "value": 43
+      }
+    },
+    {
+      "initials": {
+        "value": "BRE"
+      },
+      "label": "HORNETS",
+      "score": {
+        "value": 47
+      }
+    },
+    {
+      "initials": {
+        "value": "DJW"
+      },
+      "label": "JAZZ",
+      "score": {
+        "value": 46
+      }
+    },
+    {
+      "initials": {
+        "value": "EAE"
+      },
+      "label": "KINGS",
+      "score": {
+        "value": 49
+      }
+    },
+    {
+      "initials": {
+        "value": "RRR"
+      },
+      "label": "KNICKS",
+      "score": {
+        "value": 50
+      }
+    },
+    {
+      "initials": {
+        "value": "ADG"
+      },
+      "label": "LAKERS",
+      "score": {
+        "value": 10072
+      }
+    },
+    {
+      "initials": {
+        "value": "BCM"
+      },
+      "label": "MAGIC",
+      "score": {
+        "value": 45
+      }
+    },
+    {
+      "initials": {
+        "value": "PML"
+      },
+      "label": "MAVERICKS",
+      "score": {
+        "value": 39
+      }
+    },
+    {
+      "initials": {
+        "value": "TEX"
+      },
+      "label": "NETS",
+      "score": {
+        "value": 58
+      }
+    },
+    {
+      "initials": {
+        "value": "MW "
+      },
+      "label": "NUGGETS",
+      "score": {
+        "value": 35
+      }
+    },
+    {
+      "initials": {
+        "value": "TWU"
+      },
+      "label": "PACERS",
+      "score": {
+        "value": 32
+      }
+    },
+    {
+      "initials": {
+        "value": "XAQ"
+      },
+      "label": "PISTONS",
+      "score": {
+        "value": 10070
+      }
+    },
+    {
+      "initials": {
+        "value": "UTB"
+      },
+      "label": "RAPTORS",
+      "score": {
+        "value": 33
+      }
+    },
+    {
+      "initials": {
+        "value": "GIW"
+      },
+      "label": "ROCKETS",
+      "score": {
+        "value": 31
+      }
+    },
+    {
+      "initials": {
+        "value": "ZAP"
+      },
+      "label": "76ERS",
+      "score": {
+        "value": 55
+      }
+    },
+    {
+      "initials": {
+        "value": "GG "
+      },
+      "label": "SUPERSONICS",
+      "score": {
+        "value": 54
+      }
+    },
+    {
+      "initials": {
+        "value": "KCQ"
+      },
+      "label": "SPURS",
+      "score": {
+        "value": 44
+      }
+    },
+    {
+      "initials": {
+        "value": "MAT"
+      },
+      "label": "SUNS",
+      "score": {
+        "value": 40
+      }
+    },
+    {
+      "initials": {
+        "value": "KOZ"
+      },
+      "label": "T-WOLVES",
+      "score": {
+        "value": 37
+      }
+    },
+    {
+      "initials": {
+        "value": "JIM"
+      },
+      "label": "WARRIORS",
+      "score": {
+        "value": 57
+      }
+    }
+  ]
+}

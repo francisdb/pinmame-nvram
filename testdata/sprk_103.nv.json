@@ -1,0 +1,108 @@
+{
+  "_fileformat": 0.1,
+  "high_scores": [
+    {
+      "initials": {
+        "value": "JEK"
+      },
+      "label": "First Place",
+      "score": {
+        "value": 400000000
+      },
+      "short_label": "1st"
+    },
+    {
+      "initials": {
+        "value": "KIM"
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 375000000
+      },
+      "short_label": "2nd"
+    },
+    {
+      "initials": {
+        "value": "CMK"
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 350000000
+      },
+      "short_label": "3rd"
+    },
+    {
+      "initials": {
+        "value": "DLK"
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 325000000
+      },
+      "short_label": "4th"
+    },
+    {
+      "initials": {
+        "value": "KLK"
+      },
+      "label": "Fifth Place",
+      "score": {
+        "value": 300000000
+      },
+      "short_label": "5th"
+    },
+    {
+      "initials": {
+        "value": "JOE"
+      },
+      "label": "Sixth Place",
+      "score": {
+        "value": 275000000
+      },
+      "short_label": "6th"
+    },
+    {
+      "initials": {
+        "value": "NF "
+      },
+      "label": "Seventh Place",
+      "score": {
+        "value": 250000000
+      },
+      "short_label": "7th"
+    },
+    {
+      "initials": {
+        "value": "DAY"
+      },
+      "label": "Eighth Place",
+      "score": {
+        "value": 225000000
+      },
+      "short_label": "8th"
+    },
+    {
+      "initials": {
+        "value": "KRT"
+      },
+      "label": "Ninth Place",
+      "score": {
+        "value": 200000000
+      },
+      "short_label": "9th"
+    },
+    {
+      "initials": {
+        "value": "RFH"
+      },
+      "label": "Tenth Place",
+      "score": {
+        "value": 175000000
+      },
+      "short_label": "10th"
+    }
+  ],
+  "limits": {
+    "high_score_min": "400000000"
+  }
+}

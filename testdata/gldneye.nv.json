@@ -1,0 +1,68 @@
+{
+  "_fileformat": 0.1,
+  "high_scores": [
+    {
+      "initials": {
+        "value": "WMT"
+      },
+      "label": "First Place",
+      "score": {
+        "value": 2400000000
+      },
+      "short_label": "1st"
+    },
+    {
+      "initials": {
+        "value": "JRP"
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 2100000000
+      },
+      "short_label": "2nd"
+    },
+    {
+      "initials": {
+        "value": "RFH"
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 1950000000
+      },
+      "short_label": "3rd"
+    },
+    {
+      "initials": {
+        "value": "BTB"
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 1800000000
+      },
+      "short_label": "4th"
+    },
+    {
+      "initials": {
+        "value": "NF "
+      },
+      "label": "Fifth Place",
+      "score": {
+        "value": 1650000000
+      },
+      "short_label": "5th"
+    },
+    {
+      "initials": {
+        "value": "DAY"
+      },
+      "label": "Sixth Place",
+      "score": {
+        "value": 1500000000
+      },
+      "short_label": "6th"
+    }
+  ],
+  "limits": {
+    "high_score_min": "24000000"
+  }
+}

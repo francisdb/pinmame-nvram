@@ -1,0 +1,65 @@
+{
+  "_fileformat": 0.1,
+  "game_state": {
+    "credits": {
+      "label": "Credits",
+      "value": 8
+    }
+  },
+  "high_scores": [
+    {
+      "initials": {
+        "value": "SSR"
+      },
+      "label": "Greatest Hero 1",
+      "score": {
+        "value": 5500000
+      },
+      "short_label": "1st"
+    },
+    {
+      "initials": {
+        "value": "EJB"
+      },
+      "label": "Greatest Hero 2",
+      "score": {
+        "value": 5000000
+      },
+      "short_label": "2nd"
+    },
+    {
+      "initials": {
+        "value": "DTW"
+      },
+      "label": "Greatest Hero 3",
+      "score": {
+        "value": 4500000
+      },
+      "short_label": "3rd"
+    },
+    {
+      "initials": {
+        "value": "BLS"
+      },
+      "label": "Greatest Hero 4",
+      "score": {
+        "value": 4000000
+      },
+      "short_label": "4th"
+    }
+  ],
+  "last_game": [
+    {
+      "value": 307040
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    }
+  ]
+}

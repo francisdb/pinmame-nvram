@@ -1,0 +1,65 @@
+{
+  "_fileformat": 0.1,
+  "game_state": {
+    "credits": {
+      "label": "Credits",
+      "value": 7
+    }
+  },
+  "high_scores": [
+    {
+      "initials": {
+        "value": "JON"
+      },
+      "label": "First Place",
+      "score": {
+        "value": 6500000
+      },
+      "short_label": "1st"
+    },
+    {
+      "initials": {
+        "value": "LED"
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 6000000
+      },
+      "short_label": "2nd"
+    },
+    {
+      "initials": {
+        "value": "PJ "
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 5500000
+      },
+      "short_label": "3rd"
+    },
+    {
+      "initials": {
+        "value": "SJO"
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 5000000
+      },
+      "short_label": "4th"
+    }
+  ],
+  "last_game": [
+    {
+      "value": 67020
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    }
+  ]
+}

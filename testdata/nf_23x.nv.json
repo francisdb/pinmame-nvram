@@ -1,0 +1,111 @@
+{
+  "_fileformat": 0.1,
+  "buyin_high_scores": [
+    {
+      "initials": {
+        "value": "XAQ"
+      },
+      "label": "First Place",
+      "score": {
+        "value": 16000000
+      },
+      "short_label": "1st"
+    },
+    {
+      "initials": {
+        "value": "TEX"
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 15000000
+      },
+      "short_label": "2nd"
+    },
+    {
+      "initials": {
+        "value": "LFS"
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 14000000
+      },
+      "short_label": "3rd"
+    },
+    {
+      "initials": {
+        "value": "TED"
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 13000000
+      },
+      "short_label": "4th"
+    }
+  ],
+  "high_scores": [
+    {
+      "initials": {
+        "value": "SSR"
+      },
+      "label": "Grand Champion",
+      "score": {
+        "value": 2000000000
+      },
+      "short_label": "GC"
+    },
+    {
+      "initials": {
+        "value": "MAT"
+      },
+      "label": "First Place",
+      "score": {
+        "value": 1600000000
+      },
+      "short_label": "1st"
+    },
+    {
+      "initials": {
+        "value": "ZAP"
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 1400000000
+      },
+      "short_label": "2nd"
+    },
+    {
+      "initials": {
+        "value": "DAN"
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 1200000000
+      },
+      "short_label": "3rd"
+    },
+    {
+      "initials": {
+        "value": "PJP"
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 1000000000
+      },
+      "short_label": "4th"
+    }
+  ],
+  "last_game": [
+    {
+      "value": 110365920
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    }
+  ]
+}

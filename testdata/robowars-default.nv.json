@@ -1,0 +1,71 @@
+{
+  "_fileformat": 0.2,
+  "adjustments": {
+    "Replay Levels": [
+      {
+        "label": "Replay L1",
+        "value": 0
+      },
+      {
+        "label": "Replay L2",
+        "value": 0
+      },
+      {
+        "label": "Replay L3",
+        "value": 0
+      }
+    ]
+  },
+  "high_scores": [
+    {
+      "initials": {
+        "value": ""
+      },
+      "label": "First Place",
+      "score": {
+        "value": 0
+      },
+      "short_label": "1st"
+    },
+    {
+      "initials": {
+        "value": ""
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 0
+      },
+      "short_label": "2nd"
+    },
+    {
+      "initials": {
+        "value": ""
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 0
+      },
+      "short_label": "3rd"
+    },
+    {
+      "initials": {
+        "value": ""
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 0
+      },
+      "short_label": "4th"
+    },
+    {
+      "initials": {
+        "value": ""
+      },
+      "label": "Fifth Place",
+      "score": {
+        "value": 0
+      },
+      "short_label": "5th"
+    }
+  ]
+}

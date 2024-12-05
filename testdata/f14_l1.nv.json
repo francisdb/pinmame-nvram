@@ -1,0 +1,59 @@
+{
+  "_fileformat": 0.1,
+  "high_scores": [
+    {
+      "initials": {
+        "value": "EJB"
+      },
+      "label": "First Place",
+      "score": {
+        "value": 4000000
+      },
+      "short_label": "1st"
+    },
+    {
+      "initials": {
+        "value": "CLF"
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 3800000
+      },
+      "short_label": "2nd"
+    },
+    {
+      "initials": {
+        "value": "JCD"
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 3600000
+      },
+      "short_label": "3rd"
+    },
+    {
+      "initials": {
+        "value": "KWD"
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 3400000
+      },
+      "short_label": "4th"
+    }
+  ],
+  "last_game": [
+    {
+      "value": 13460
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    }
+  ]
+}

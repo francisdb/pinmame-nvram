@@ -1,0 +1,69 @@
+{
+  "_fileformat": 0.1,
+  "high_scores": [
+    {
+      "initials": {
+        "value": "LED"
+      },
+      "label": "Grand Champion",
+      "score": {
+        "value": 15000000
+      },
+      "short_label": "GC"
+    },
+    {
+      "initials": {
+        "value": "PML"
+      },
+      "label": "First Place",
+      "score": {
+        "value": 12000000
+      },
+      "short_label": "1st"
+    },
+    {
+      "initials": {
+        "value": "EAE"
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 11000000
+      },
+      "short_label": "2nd"
+    },
+    {
+      "initials": {
+        "value": "J K"
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 10000000
+      },
+      "short_label": "3rd"
+    },
+    {
+      "initials": {
+        "value": "HEY"
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 9000000
+      },
+      "short_label": "4th"
+    }
+  ],
+  "last_game": [
+    {
+      "value": 2170790
+    },
+    {
+      "value": 1880850
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    }
+  ]
+}

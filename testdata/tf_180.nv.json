@@ -1,0 +1,141 @@
+{
+  "_fileformat": 0.1,
+  "high_scores": [
+    {
+      "initials": {
+        "value": "OPT"
+      },
+      "label": "Autobot Grand Champion",
+      "score": {
+        "value": 3228071940
+      },
+      "short_label": "AGC"
+    },
+    {
+      "initials": {
+        "value": "JAZ"
+      },
+      "label": "Autobot #1",
+      "score": {
+        "value": 3225110275
+      },
+      "short_label": "A#1"
+    },
+    {
+      "initials": {
+        "value": "PWL"
+      },
+      "label": "Autobot #2",
+      "score": {
+        "value": 5923330
+      },
+      "short_label": "A#2"
+    },
+    {
+      "initials": {
+        "value": "IRN"
+      },
+      "label": "Autobot #3",
+      "score": {
+        "value": 2160314625
+      },
+      "short_label": "A#3"
+    },
+    {
+      "initials": {
+        "value": "BEE"
+      },
+      "label": "Autobot #4",
+      "score": {
+        "value": 1081638145
+      },
+      "short_label": "A#4"
+    },
+    {
+      "initials": {
+        "value": "MEG"
+      },
+      "label": "Decepticon Grand Champion",
+      "score": {
+        "value": 3228071940
+      },
+      "short_label": "DGC"
+    },
+    {
+      "initials": {
+        "value": "STR"
+      },
+      "label": "Decepticon #1",
+      "score": {
+        "value": 3225110275
+      },
+      "short_label": "D#1"
+    },
+    {
+      "initials": {
+        "value": "SND"
+      },
+      "label": "Decepticon #2",
+      "score": {
+        "value": 5923330
+      },
+      "short_label": "D#2"
+    },
+    {
+      "initials": {
+        "value": "SHK"
+      },
+      "label": "Decepticon #3",
+      "score": {
+        "value": 2160314625
+      },
+      "short_label": "D#3"
+    },
+    {
+      "initials": {
+        "value": "BLK"
+      },
+      "label": "Decepticon #4",
+      "score": {
+        "value": 1081638145
+      },
+      "short_label": "D#4"
+    }
+  ],
+  "last_game": [
+    {
+      "value": 4142663680
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    }
+  ],
+  "mode_champions": [
+    {
+      "initials": {
+        "value": "LON"
+      },
+      "label": "Combo",
+      "score": {
+        "value": 335544320
+      },
+      "short_label": "Combo"
+    },
+    {
+      "initials": {
+        "value": "LON"
+      },
+      "label": "Best Combo Champion",
+      "score": {
+        "value": 16778496
+      },
+      "short_label": "Best Combo"
+    }
+  ]
+}

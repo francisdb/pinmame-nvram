@@ -1,0 +1,469 @@
+{
+  "_fileformat": 0.1,
+  "audits": {
+    "B.2 Earnings Audits": {
+      "02": {
+        "label": "Recent Left Slot",
+        "value": 0
+      },
+      "03": {
+        "label": "Recent Cent. Slot",
+        "value": 4
+      },
+      "04": {
+        "label": "Recent Rght. Slot",
+        "value": 9
+      },
+      "05": {
+        "label": "Recent 4th Slot",
+        "value": 0
+      },
+      "06": {
+        "label": "Recent Paid Cred",
+        "value": 11
+      },
+      "07": {
+        "label": "Recent Serv. Cred",
+        "value": 0
+      },
+      "09": {
+        "label": "Total Left Slot",
+        "value": 0
+      },
+      "10": {
+        "label": "Total Cent. Slot",
+        "value": 4
+      },
+      "11": {
+        "label": "Total Rght. Slot",
+        "value": 9
+      },
+      "12": {
+        "label": "Total 4th Slot",
+        "value": 0
+      },
+      "13": {
+        "label": "Total Paid Cred",
+        "value": 11
+      },
+      "14": {
+        "label": "Total Serv. Cred",
+        "value": 0
+      }
+    },
+    "B.3 Standard Audits": {
+      "01": {
+        "label": "Games Started",
+        "value": 3
+      },
+      "02": {
+        "label": "Total Plays",
+        "value": 1
+      },
+      "03": {
+        "label": "Total Free Plays",
+        "value": 1
+      },
+      "05": {
+        "label": "Replay Awards",
+        "value": 0
+      },
+      "07": {
+        "label": "Special Awards",
+        "value": 0
+      },
+      "09": {
+        "label": "Match Awards",
+        "value": 1
+      },
+      "11": {
+        "label": "H.S.T.D. Credits",
+        "value": 0
+      },
+      "13": {
+        "label": "Extra Balls",
+        "value": 0
+      },
+      "15": {
+        "label": "?Tickets Awarded",
+        "value": 0
+      },
+      "17": {
+        "label": "Left Drains",
+        "value": 0
+      },
+      "18": {
+        "label": "Right Drains",
+        "value": 0
+      },
+      "21": {
+        "label": "Play Time",
+        "value": 4
+      },
+      "22": {
+        "label": "Machine On",
+        "value": 25
+      },
+      "23": {
+        "label": "Balls Played",
+        "value": 3
+      },
+      "24": {
+        "label": "Tilts",
+        "value": 0
+      },
+      "25": {
+        "label": "Replay 1 Awards",
+        "value": 0
+      },
+      "26": {
+        "label": "Replay 2 Awards",
+        "value": 0
+      },
+      "27": {
+        "label": "Replay 3 Awards",
+        "value": 0
+      },
+      "28": {
+        "label": "Replay 4 Awards",
+        "value": 0
+      },
+      "29": {
+        "label": "1 Player Games",
+        "value": 1
+      },
+      "30": {
+        "label": "2 Player Games",
+        "value": 0
+      },
+      "31": {
+        "label": "3 Player Games",
+        "value": 0
+      },
+      "32": {
+        "label": "4 Player Games",
+        "value": 0
+      },
+      "33": {
+        "label": "H.S.T.D. Reset Count",
+        "value": 0
+      },
+      "34": {
+        "label": "Burn-in Time",
+        "value": 0
+      },
+      "35": {
+        "label": "1st Replay Level",
+        "value": 707
+      },
+      "36": {
+        "label": "Left Flipper",
+        "value": 178
+      },
+      "37": {
+        "label": "Right Flipper",
+        "value": 170
+      }
+    },
+    "B.4 Feature Audits": {
+      "01": {
+        "label": "Buy-In Ex. Balls",
+        "value": 0
+      }
+    }
+  },
+  "checksum16": [
+    {
+      "end": "0x1CB1",
+      "label": "Adjustments",
+      "start": "0x1B83"
+    }
+  ],
+  "checksum8": [
+    {
+      "end": "0x1B82",
+      "groupings": 6,
+      "label": "Audits",
+      "start": "0x1811"
+    }
+  ],
+  "game_state": {
+    "bonus": {
+      "label": "P1 Bonus",
+      "value": 66000
+    },
+    "bonusX": {
+      "label": "P1 Bonus Multiplier",
+      "value": 2
+    },
+    "current_ball": {
+      "label": "Ball",
+      "value": 3
+    },
+    "current_player": {
+      "label": "Current Player",
+      "value": 1
+    },
+    "docs": {
+      "label": "P1 Doctors",
+      "value": "Bits encoding not implemented"
+    },
+    "escape_a": {
+      "label": "Escape A",
+      "value": [
+        32
+      ]
+    },
+    "escape_b": {
+      "label": "Escape B",
+      "value": [
+        32
+      ]
+    },
+    "escape_cmpl": {
+      "label": "P1 Escape Level",
+      "value": 1
+    },
+    "extra_balls": {
+      "label": "Extra Balls",
+      "value": 0
+    },
+    "mb_round": {
+      "label": "P1 Multiball Round",
+      "value": 0
+    },
+    "pf_x_countdown": {
+      "label": "P1 Playfield X countdown",
+      "value": 0
+    },
+    "player_count": {
+      "label": "Player Count",
+      "value": 1
+    },
+    "playfieldX": {
+      "label": "Playfield X",
+      "value": 0
+    },
+    "repair": {
+      "label": "P1 Repair Millions",
+      "value": 0
+    },
+    "repair_a": {
+      "label": "Repair A",
+      "value": [
+        32
+      ]
+    },
+    "repair_b": {
+      "label": "Repair B",
+      "value": [
+        32
+      ]
+    },
+    "time_factor_A": {
+      "label": "Time Factor A",
+      "value": 0
+    },
+    "time_factor_B": {
+      "label": "Time Factor B",
+      "value": 1
+    },
+    "transmat": {
+      "label": "P1 Transmat Value",
+      "value": 250000
+    },
+    "unk0": {
+      "label": "Pre-P1 bytes?",
+      "value": [
+        0,
+        0,
+        0,
+        0,
+        255,
+        0,
+        4,
+        0,
+        0
+      ]
+    },
+    "unk2": {
+      "label": "P1 Unknown #2",
+      "value": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "unk2a": {
+      "label": "P1 Unknown #2a",
+      "value": [
+        0,
+        0
+      ]
+    },
+    "unk2b": {
+      "label": "P1 Unknown #2b",
+      "value": [
+        1
+      ]
+    },
+    "unk4": {
+      "label": "P1 Unknown #4",
+      "value": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "unk5": {
+      "label": "P1 Unknown #5",
+      "value": [
+        0,
+        0,
+        9
+      ]
+    },
+    "unk5b": {
+      "label": "P1 Unknown #5b",
+      "value": [
+        10,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    "unk6": {
+      "label": "P1 Unknown #6",
+      "value": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "video_bonus": {
+      "label": "P1 Video Mode Bonus",
+      "value": 0
+    },
+    "video_compl": {
+      "label": "P1 Video Round Completed",
+      "value": 0
+    },
+    "video_unk": {
+      "label": "P1 Video Related",
+      "value": [
+        0
+      ]
+    },
+    "who": {
+      "label": "P1 W-H-O",
+      "value": 0
+    }
+  },
+  "high_scores": [
+    {
+      "initials": {
+        "value": "WHO"
+      },
+      "label": "Grand Champion",
+      "score": {
+        "value": 300000000
+      },
+      "short_label": "GC"
+    },
+    {
+      "initials": {
+        "value": "BSO"
+      },
+      "label": "First Place",
+      "score": {
+        "value": 250000000
+      },
+      "short_label": "1st"
+    },
+    {
+      "initials": {
+        "value": "BIL"
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 200000000
+      },
+      "short_label": "2nd"
+    },
+    {
+      "initials": {
+        "value": "HEY"
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 150000000
+      },
+      "short_label": "3rd"
+    },
+    {
+      "initials": {
+        "value": "S  "
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 100000000
+      },
+      "short_label": "4th"
+    }
+  ],
+  "last_game": [
+    {
+      "value": 4262570
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    }
+  ],
+  "last_played": {
+    "value": "2024-01-31 00:01"
+  },
+  "mode_champions": [
+    {
+      "initials": {
+        "value": "WHO"
+      },
+      "label": "Loop Champion",
+      "score": {
+        "value": 6
+      },
+      "short_label": "Loop Champ"
+    },
+    {
+      "initials": {
+        "value": "WHO"
+      },
+      "label": "Highest Davros Wave",
+      "score": {
+        "value": 0
+      },
+      "short_label": "Davros Champ"
+    }
+  ]
+}
