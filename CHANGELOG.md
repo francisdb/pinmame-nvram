@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0](https://github.com/francisdb/pinmame-nvram/compare/v0.1.1...v0.2.0) - 2024-12-05
+
+### Added
+
+- resolve checksum16 ([#7](https://github.com/francisdb/pinmame-nvram/pull/7))
+- map resolve ([#5](https://github.com/francisdb/pinmame-nvram/pull/5))
+
+### Other
+
+- williams system 11B
+
 ## [0.1.1](https://github.com/francisdb/pinmame-nvram/compare/v0.1.0...v0.1.1) - 2024-12-04
 
 ### Added
