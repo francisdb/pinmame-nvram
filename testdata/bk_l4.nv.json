@@ -1,0 +1,39 @@
+{
+  "_fileformat": 0.2,
+  "game_state": {
+    "credits": {
+      "label": "Credits",
+      "value": 28
+    }
+  },
+  "high_scores": [
+    {
+      "label": "First Place",
+      "score": {
+        "value": 2500000
+      },
+      "short_label": "1st"
+    },
+    {
+      "label": "Second Place",
+      "score": {
+        "value": 0
+      },
+      "short_label": "2nd"
+    },
+    {
+      "label": "Third Place",
+      "score": {
+        "value": 0
+      },
+      "short_label": "3rd"
+    },
+    {
+      "label": "Fourth Place",
+      "score": {
+        "value": 0
+      },
+      "short_label": "4th"
+    }
+  ]
+}

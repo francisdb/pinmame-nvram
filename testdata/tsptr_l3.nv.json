@@ -1,0 +1,533 @@
+{
+  "_fileformat": 0.1,
+  "adjustments": {
+    "Adjustments": {
+      "01": {
+        "label": "Auto Replay %",
+        "value": 10
+      },
+      "02a": {
+        "label": "Replay Start",
+        "value": 2500000
+      },
+      "02b": {
+        "label": "Replay Level 1",
+        "value": 2500000
+      },
+      "03a": {
+        "label": "Replay Levels",
+        "value": 0
+      },
+      "03b": {
+        "label": "Replay Level 2",
+        "value": 0
+      },
+      "04b": {
+        "label": "Replay Level 3",
+        "value": 0
+      },
+      "05b": {
+        "label": "Replay Level 4",
+        "value": 0
+      },
+      "06": {
+        "label": "Replay Award",
+        "value": "Credit"
+      },
+      "07": {
+        "label": "Special Award",
+        "value": "Credit"
+      },
+      "08": {
+        "label": "Match Feature",
+        "value": 10
+      },
+      "09": {
+        "label": "Balls Per Game",
+        "value": 3
+      },
+      "10": {
+        "label": "Tilt Warnings",
+        "value": 3
+      },
+      "11": {
+        "label": "Max Extra Balls",
+        "value": 2
+      },
+      "12": {
+        "label": "Max Credits",
+        "value": 10
+      },
+      "13": {
+        "label": "Highest Scores",
+        "value": "On"
+      },
+      "14": {
+        "label": "Backup High Score 1",
+        "value": 7000000
+      },
+      "15": {
+        "label": "Backup High Score 2",
+        "value": 6500000
+      },
+      "16": {
+        "label": "Backup High Score 3",
+        "value": 6000000
+      },
+      "17": {
+        "label": "Backup High Score 4",
+        "value": 5500000
+      },
+      "18": {
+        "label": "High Score 1 Credits",
+        "value": 1
+      },
+      "19": {
+        "label": "High Score 2 Credits",
+        "value": 1
+      },
+      "20": {
+        "label": "High Score 3 Credits",
+        "value": 1
+      },
+      "21": {
+        "label": "High Score 4 Credits",
+        "value": 1
+      },
+      "22": {
+        "label": "HSTD Reset Every",
+        "value": 3000
+      },
+      "23": {
+        "label": "Free Play",
+        "value": "No"
+      },
+      "24": {
+        "label": "Pricing",
+        "value": 1
+      },
+      "25": {
+        "label": "Left Units",
+        "value": 1
+      },
+      "26": {
+        "label": "Center Units",
+        "value": 4
+      },
+      "27": {
+        "label": "Right Units",
+        "value": 1
+      },
+      "28": {
+        "label": "Units/Credit",
+        "value": 1
+      },
+      "29": {
+        "label": "Units/Bonus",
+        "value": 0
+      },
+      "30": {
+        "label": "Minimum Units",
+        "value": 0
+      },
+      "31": {
+        "label": "Spinner On Value",
+        "value": 3
+      },
+      "32": {
+        "label": "Left Kickback",
+        "value": "Yes"
+      },
+      "33": {
+        "label": "Xporter Memory",
+        "value": "Yes"
+      },
+      "34": {
+        "label": "Special Memory",
+        "value": "Yes"
+      },
+      "35": {
+        "label": "Rescue Memory",
+        "value": "Yes"
+      },
+      "36": {
+        "label": "Xporter Bonus Time",
+        "value": "Yes"
+      },
+      "37": {
+        "label": "Top Lane Memory",
+        "value": "Yes"
+      },
+      "38": {
+        "label": "Extra Ball Memory",
+        "value": "Yes"
+      },
+      "39": {
+        "label": "Jackpot Adv. Value",
+        "value": 5
+      },
+      "40": {
+        "label": "Easy Lock (via Ret Lns)",
+        "value": "Yes"
+      },
+      "41": {
+        "label": "Top Lane Change",
+        "value": "Yes"
+      },
+      "42": {
+        "label": "Consol Extra Ball",
+        "value": "Yes"
+      },
+      "43": {
+        "label": "Extra Ball Percent",
+        "value": 33
+      },
+      "44": {
+        "label": "Extra Ball On",
+        "value": "5X"
+      },
+      "45": {
+        "label": "Xcel Memory",
+        "value": "Yes"
+      },
+      "46": {
+        "label": "Not Used",
+        "value": 0
+      },
+      "47": {
+        "label": "Consolation Time",
+        "value": 35
+      },
+      "48": {
+        "label": "Attract Sounds",
+        "value": "None"
+      },
+      "49": {
+        "label": "Custom Message",
+        "value": "On"
+      },
+      "49a": {
+        "label": "Custom Msg Line 1",
+        "value": " G E T    M  E  "
+      },
+      "49b": {
+        "label": "Custom Msg Line 2",
+        "value": "  OUTTA   HERE  "
+      },
+      "49c": {
+        "label": "Custom Msg Line 3",
+        "value": "BEAM ME UP BALLY"
+      },
+      "50": {
+        "label": "Display AU 01 - 04",
+        "value": "Yes"
+      },
+      "51": {
+        "label": "Unused Adjustment",
+        "value": 0
+      },
+      "52": {
+        "label": "Unused Adjustment",
+        "value": 0
+      }
+    }
+  },
+  "audits": {
+    "Audits": {
+      "01": {
+        "label": "Left Coins",
+        "value": 7
+      },
+      "02": {
+        "label": "Center Coins",
+        "value": 5
+      },
+      "03": {
+        "label": "Right Coins",
+        "value": 0
+      },
+      "04": {
+        "label": "Paid Credits",
+        "value": 27
+      },
+      "05": {
+        "label": "Total Plays",
+        "value": 8
+      },
+      "06": {
+        "label": "Total Free",
+        "value": 0
+      },
+      "08": {
+        "label": "Replay Awards",
+        "value": 0
+      },
+      "10": {
+        "label": "Special Awards",
+        "value": 0
+      },
+      "12": {
+        "label": "Match Awards",
+        "value": 0
+      },
+      "13": {
+        "label": "HSTD Credits",
+        "value": 0
+      },
+      "15": {
+        "label": "Extra Balls",
+        "value": 0
+      },
+      "18": {
+        "label": "Minutes of Play",
+        "value": 0
+      },
+      "19": {
+        "label": "Balls Played",
+        "value": 2
+      },
+      "20": {
+        "label": "Replay 1 Awards",
+        "value": 0
+      },
+      "21": {
+        "label": "Replay 2 Awards",
+        "value": 0
+      },
+      "22": {
+        "label": "Replay 3 Awards",
+        "value": 0
+      },
+      "23": {
+        "label": "Replay 4 Awards",
+        "value": 0
+      },
+      "24": {
+        "label": "1 Player Games",
+        "value": 0
+      },
+      "25": {
+        "label": "2 Player Games",
+        "value": 0
+      },
+      "26": {
+        "label": "3 Player Games",
+        "value": 0
+      },
+      "27": {
+        "label": "4 Player Games",
+        "value": 0
+      },
+      "28": {
+        "label": "Burn in Cycles",
+        "value": 0
+      },
+      "29": {
+        "label": "Made Multiball",
+        "value": 0
+      },
+      "30": {
+        "label": "Made Jackpot",
+        "value": 0
+      },
+      "31": {
+        "label": "Made Kickback",
+        "value": 0
+      },
+      "32": {
+        "label": "Made Bonus 5X",
+        "value": 0
+      },
+      "33": {
+        "label": "Xporter 1 Mil. Lit",
+        "value": 0
+      },
+      "34": {
+        "label": "Made Xporter 1 Mil.",
+        "value": 0
+      },
+      "35": {
+        "label": "Excellerator",
+        "value": 0
+      },
+      "36": {
+        "label": "Excellerator 250K Made",
+        "value": 0
+      },
+      "37": {
+        "label": "Extra Ball Lit",
+        "value": 0
+      },
+      "38": {
+        "label": "Rescue Bonus Made",
+        "value": 0
+      },
+      "39": {
+        "label": "HSTD Reset Counter",
+        "value": 2992
+      },
+      "40": {
+        "label": "0.0-0.4 Mil. Score",
+        "value": 0
+      },
+      "41": {
+        "label": "0.5-0.9 Mil. Score",
+        "value": 0
+      },
+      "42": {
+        "label": "1.0-1.4 Mil. Score",
+        "value": 0
+      },
+      "43": {
+        "label": "1.5-1.9 Mil. Score",
+        "value": 0
+      },
+      "44": {
+        "label": "2.0-2.9 Mil. Score",
+        "value": 0
+      },
+      "45": {
+        "label": "3.0-3.9 Mil. Score",
+        "value": 0
+      },
+      "46": {
+        "label": "4.0-4.9 Mil. Score",
+        "value": 0
+      },
+      "47": {
+        "label": "5.0-5.9 Mil. Score",
+        "value": 0
+      },
+      "48": {
+        "label": "6.0-7.9 Mil. Score",
+        "value": 0
+      },
+      "49": {
+        "label": "8.0-9.9 Mil. Score",
+        "value": 0
+      },
+      "50": {
+        "label": "10-99 Mil. Score",
+        "value": 0
+      },
+      "51": {
+        "label": "Av. Min. Game Time",
+        "value": 0
+      },
+      "52": {
+        "label": "Left Drains",
+        "value": 0
+      },
+      "53": {
+        "label": "Right Drains",
+        "value": 0
+      },
+      "54": {
+        "label": "3 Plays/1$",
+        "value": 0
+      }
+    }
+  },
+  "checksum8": [
+    {
+      "end": "0x70A",
+      "groupings": 4,
+      "label": "Audits",
+      "start": "0x6A4"
+    }
+  ],
+  "game_state": {
+    "bonus": {
+      "label": "Bonus",
+      "value": 0
+    },
+    "bonusX": {
+      "label": "Bonus Multiplier",
+      "value": "Bits encoding not implemented"
+    },
+    "current_ball": {
+      "label": "Ball",
+      "value": 0
+    },
+    "current_player": {
+      "label": "Current Player",
+      "value": 0
+    },
+    "jackpot": {
+      "label": "Jackpot Bonus",
+      "value": 530000
+    },
+    "match": {
+      "label": "Match",
+      "value": 0
+    },
+    "player_count": {
+      "label": "Player Count",
+      "value": 0
+    },
+    "playfield_mult": {
+      "label": "Playfield Multiplier",
+      "value": 1
+    },
+    "xcel_value": {
+      "label": "X-Cellerator Value",
+      "value": "Bits encoding not implemented"
+    }
+  },
+  "high_scores": [
+    {
+      "initials": {
+        "value": "COL"
+      },
+      "label": "First Place",
+      "score": {
+        "value": 7000000
+      },
+      "short_label": "1st"
+    },
+    {
+      "initials": {
+        "value": "DAN"
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 6500000
+      },
+      "short_label": "2nd"
+    },
+    {
+      "initials": {
+        "value": "TIM"
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 6000000
+      },
+      "short_label": "3rd"
+    },
+    {
+      "initials": {
+        "value": "R/J"
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 5500000
+      },
+      "short_label": "4th"
+    }
+  ],
+  "last_game": [
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    }
+  ]
+}

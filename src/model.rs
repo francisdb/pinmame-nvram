@@ -1,4 +1,5 @@
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
+use serde_json::Number;
 use std::collections::HashMap;
 use std::fmt;
 
@@ -106,7 +107,7 @@ pub struct Score {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub nibble: Option<Nibble>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub scale: Option<u64>,
+    pub scale: Option<Number>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub offsets: Option<Vec<HexOrInteger>>,
 }

@@ -1,0 +1,65 @@
+{
+  "_fileformat": 0.1,
+  "game_state": {
+    "credits": {
+      "label": "Credits",
+      "value": 12
+    }
+  },
+  "high_scores": [
+    {
+      "initials": {
+        "value": "AMK"
+      },
+      "label": "First Place",
+      "score": {
+        "value": 5000000
+      },
+      "short_label": "1st"
+    },
+    {
+      "initials": {
+        "value": "DKL"
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 4500000
+      },
+      "short_label": "2nd"
+    },
+    {
+      "initials": {
+        "value": "DTW"
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 4000000
+      },
+      "short_label": "3rd"
+    },
+    {
+      "initials": {
+        "value": "BLS"
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 3500000
+      },
+      "short_label": "4th"
+    }
+  ],
+  "last_game": [
+    {
+      "value": 25030
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    }
+  ]
+}

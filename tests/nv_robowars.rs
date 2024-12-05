@@ -63,7 +63,7 @@ fn test_robo_war_default() -> io::Result<()> {
     let test_dir = testdir!();
     let nvram_path = test_dir.join("robowars.nv");
     // copy robowars_default.nv to test_dir/robowars.nv
-    std::fs::copy("testdata/robowars_default.nv", &nvram_path)?;
+    std::fs::copy("testdata/robowars-default.nv", &nvram_path)?;
 
     let mut nvram = Nvram::open(&nvram_path)?.unwrap();
     let scores = nvram.read_highscores()?;

@@ -1,0 +1,81 @@
+{
+  "_fileformat": 0.1,
+  "high_scores": [
+    {
+      "initials": {
+        "value": "MAB"
+      },
+      "label": "RIVER MASTER",
+      "score": {
+        "value": 200000000
+      },
+      "short_label": "GC"
+    },
+    {
+      "initials": {
+        "value": "DEN"
+      },
+      "label": "First Place",
+      "score": {
+        "value": 120000000
+      },
+      "short_label": "1st"
+    },
+    {
+      "initials": {
+        "value": "CG "
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 100000000
+      },
+      "short_label": "2nd"
+    },
+    {
+      "initials": {
+        "value": "TEX"
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 90000000
+      },
+      "short_label": "3rd"
+    },
+    {
+      "initials": {
+        "value": "EJB"
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 80000000
+      },
+      "short_label": "4th"
+    }
+  ],
+  "last_game": [
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    }
+  ],
+  "mode_champions": [
+    {
+      "initials": {
+        "value": "RSM"
+      },
+      "label": "Insanity Record",
+      "score": {
+        "value": 12
+      },
+      "short_label": "InsanityRecord"
+    }
+  ]
+}

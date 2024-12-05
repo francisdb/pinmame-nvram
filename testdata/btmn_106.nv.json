@@ -1,0 +1,79 @@
+{
+  "_fileformat": 0.1,
+  "high_scores": [
+    {
+      "initials": {
+        "value": "TIM"
+      },
+      "label": "Dark Knight",
+      "score": {
+        "value": 30000000
+      },
+      "short_label": "GC"
+    },
+    {
+      "initials": {
+        "value": "DAN"
+      },
+      "label": "1st Place",
+      "score": {
+        "value": 25000000
+      },
+      "short_label": "1st"
+    },
+    {
+      "initials": {
+        "value": "JEK"
+      },
+      "label": "2nd Place",
+      "score": {
+        "value": 20000000
+      },
+      "short_label": "2nd"
+    },
+    {
+      "initials": {
+        "value": " NF"
+      },
+      "label": "3rd Place",
+      "score": {
+        "value": 18000000
+      },
+      "short_label": "3rd"
+    },
+    {
+      "initials": {
+        "value": "BLS"
+      },
+      "label": "4th Place",
+      "score": {
+        "value": 16000000
+      },
+      "short_label": "4th"
+    },
+    {
+      "initials": {
+        "value": "HEC"
+      },
+      "label": "5th Place",
+      "score": {
+        "value": 14000000
+      },
+      "short_label": "5th"
+    }
+  ],
+  "last_game": [
+    {
+      "value": 339930
+    },
+    {
+      "value": 1868230
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    }
+  ]
+}

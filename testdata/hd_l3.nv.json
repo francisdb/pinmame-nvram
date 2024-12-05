@@ -1,0 +1,69 @@
+{
+  "_fileformat": 0.1,
+  "high_scores": [
+    {
+      "initials": {
+        "value": "BSO"
+      },
+      "label": "Grand Champion",
+      "score": {
+        "value": 15000000
+      },
+      "short_label": "GC"
+    },
+    {
+      "initials": {
+        "value": "JRS"
+      },
+      "label": "1st",
+      "score": {
+        "value": 12000000
+      },
+      "short_label": "1"
+    },
+    {
+      "initials": {
+        "value": "DWF"
+      },
+      "label": "2nd",
+      "score": {
+        "value": 11000000
+      },
+      "short_label": "2"
+    },
+    {
+      "initials": {
+        "value": "MWS"
+      },
+      "label": "3rd",
+      "score": {
+        "value": 10000000
+      },
+      "short_label": "3"
+    },
+    {
+      "initials": {
+        "value": "GLH"
+      },
+      "label": "4th",
+      "score": {
+        "value": 9000000
+      },
+      "short_label": "4"
+    }
+  ],
+  "last_game": [
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    }
+  ]
+}

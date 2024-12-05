@@ -1,0 +1,79 @@
+{
+  "_fileformat": 0.1,
+  "high_scores": [
+    {
+      "initials": {
+        "value": "CNH"
+      },
+      "label": "1st",
+      "score": {
+        "value": 1000000000
+      },
+      "short_label": "#1"
+    },
+    {
+      "initials": {
+        "value": "IVE"
+      },
+      "label": "2nd",
+      "score": {
+        "value": 900000000
+      },
+      "short_label": "#2"
+    },
+    {
+      "initials": {
+        "value": "ED "
+      },
+      "label": "3rd",
+      "score": {
+        "value": 800000000
+      },
+      "short_label": "#3"
+    },
+    {
+      "initials": {
+        "value": "DAN"
+      },
+      "label": "4th",
+      "score": {
+        "value": 700000000
+      },
+      "short_label": "#4"
+    },
+    {
+      "initials": {
+        "value": "MCS"
+      },
+      "label": "5th",
+      "score": {
+        "value": 600000000
+      },
+      "short_label": "#5"
+    },
+    {
+      "initials": {
+        "value": "JEN"
+      },
+      "label": "6th",
+      "score": {
+        "value": 500000000
+      },
+      "short_label": "#6"
+    }
+  ],
+  "last_game": [
+    {
+      "value": 4702109630
+    },
+    {
+      "value": 4349414040
+    },
+    {
+      "value": 4152202031
+    },
+    {
+      "value": 3720203230
+    }
+  ]
+}

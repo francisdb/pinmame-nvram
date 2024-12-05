@@ -8,7 +8,7 @@ use testdir::testdir;
 fn test_seawitch_default() -> io::Result<()> {
     let test_dir = testdir!();
     let nvram_path = test_dir.join("seawitch.nv");
-    std::fs::copy("testdata/seawitch_default.nv", &nvram_path)?;
+    std::fs::copy("testdata/seawitch-default.nv", &nvram_path)?;
     let mut nvram = Nvram::open(&nvram_path)?.unwrap();
     let scores = nvram.read_highscores()?;
     let expected = Vec::from([HighScore {

@@ -1,0 +1,65 @@
+{
+  "_fileformat": 0.1,
+  "game_state": {
+    "credits": {
+      "label": "Credits",
+      "value": 6
+    }
+  },
+  "high_scores": [
+    {
+      "initials": {
+        "value": "SOM"
+      },
+      "label": "Baddest Cat 1",
+      "score": {
+        "value": 8697720
+      },
+      "short_label": "1st"
+    },
+    {
+      "initials": {
+        "value": "BSO"
+      },
+      "label": "Baddest Cat 2",
+      "score": {
+        "value": 6000000
+      },
+      "short_label": "2nd"
+    },
+    {
+      "initials": {
+        "value": "PVA"
+      },
+      "label": "Baddest Cat 3",
+      "score": {
+        "value": 5500000
+      },
+      "short_label": "3rd"
+    },
+    {
+      "initials": {
+        "value": "BAD"
+      },
+      "label": "Baddest Cat 4",
+      "score": {
+        "value": 5000000
+      },
+      "short_label": "4th"
+    }
+  ],
+  "last_game": [
+    {
+      "value": 1520990
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    }
+  ]
+}

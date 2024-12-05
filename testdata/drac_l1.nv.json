@@ -1,0 +1,376 @@
+{
+  "_fileformat": 0.1,
+  "adjustments": {
+    "A.1 Standard Adjustments": {
+      "01": {
+        "label": "Balls Per Game",
+        "value": 3
+      },
+      "02": {
+        "label": "Tilt Warnings",
+        "value": 3
+      },
+      "03": {
+        "label": "Max E.B Count",
+        "value": 4
+      },
+      "04": {
+        "label": "Max E.B Per B.I.P",
+        "value": 0
+      },
+      "05": {
+        "label": "Replay System",
+        "value": "Auto %"
+      },
+      "06": {
+        "label": "Replay Percent",
+        "value": 10
+      },
+      "07": {
+        "label": "Replay Start",
+        "value": 200
+      },
+      "08": {
+        "label": "Replay Levels",
+        "value": 1
+      },
+      "13": {
+        "label": "Replay Boost",
+        "value": 50
+      },
+      "14": {
+        "label": "Replay Award",
+        "value": "Credit"
+      },
+      "15": {
+        "label": "Special Award",
+        "value": "Credit"
+      },
+      "16": {
+        "label": "Match Award",
+        "value": "Credit"
+      },
+      "17": {
+        "label": "Ex. Ball Ticket",
+        "value": "NO"
+      },
+      "18": {
+        "label": "Max. Tick,/Player",
+        "value": 25
+      },
+      "19": {
+        "label": "Match Feature",
+        "value": 10
+      },
+      "20": {
+        "label": "Custom Message",
+        "value": "ON"
+      },
+      "21": {
+        "label": "Language",
+        "value": "English"
+      },
+      "22": {
+        "label": "Clock Style",
+        "value": "AM/PM"
+      },
+      "23": {
+        "label": "Date Style",
+        "value": "Mmm. DD YY"
+      },
+      "24": {
+        "label": "Show Time + Date",
+        "value": "NO"
+      },
+      "25": {
+        "label": "Allow Dm. Illum",
+        "value": "YES"
+      },
+      "26": {
+        "label": "Tournament Play",
+        "value": "NO"
+      },
+      "27": {
+        "label": "Euro. Scr Format",
+        "value": "NO"
+      },
+      "28": {
+        "label": "Min. Vol. Override",
+        "value": "NO"
+      },
+      "29": {
+        "label": "GI Power Saver",
+        "value": 15
+      },
+      "30": {
+        "label": "Power Save Level",
+        "value": 5
+      },
+      "31": {
+        "label": "Ticket Exp. Board",
+        "value": "NO"
+      },
+      "32": {
+        "label": "No Bonus Flips",
+        "value": "NO"
+      },
+      "33": {
+        "label": "Game Restart",
+        "value": "SLOW"
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "Ball  Time",
+        "value": 35
+      },
+      "02": {
+        "label": "Auto. %Special&Match",
+        "value": "YES"
+      },
+      "03": {
+        "label": "Ball Saver",
+        "value": 2
+      },
+      "04": {
+        "label": "Auto. Ex.Ball",
+        "value": 20
+      },
+      "05": {
+        "label": "1st ExB. Lit At",
+        "value": 8
+      },
+      "06": {
+        "label": "Next ExB. Lit At",
+        "value": 16
+      },
+      "07": {
+        "label": "V.Mode ExBall At",
+        "value": 2
+      },
+      "08": {
+        "label": "Volume Change",
+        "value": "YES"
+      },
+      "09": {
+        "label": "Pre-lite V.Mode",
+        "value": 0
+      },
+      "10": {
+        "label": "V.Mode Award",
+        "value": 0
+      },
+      "11": {
+        "label": "Bonus 'X' Memory",
+        "value": "YES"
+      },
+      "12": {
+        "label": "Castle Lock Time",
+        "value": 15
+      },
+      "13": {
+        "label": "Castle Jackpot",
+        "value": 20
+      },
+      "14": {
+        "label": "Jet Timer",
+        "value": 10
+      },
+      "15": {
+        "label": "Pre-lite Coffin",
+        "value": 0
+      },
+      "16": {
+        "label": "Coffin Ramp Time",
+        "value": 15
+      },
+      "17": {
+        "label": "Left Ramp Time",
+        "value": 10
+      },
+      "18": {
+        "label": "Mystery Time",
+        "value": 5
+      },
+      "19": {
+        "label": "Mystery Pre-Lit",
+        "value": "Game Start"
+      },
+      "20": {
+        "label": "Myst:Castle Lock",
+        "value": 10
+      },
+      "21": {
+        "label": "Myst:Coffin Lock",
+        "value": 10
+      },
+      "22": {
+        "label": "Myst:V.Mode Lit",
+        "value": 10
+      },
+      "23": {
+        "label": "Myst:Bonus",
+        "value": 25
+      },
+      "24": {
+        "label": "Video Mode Diff.",
+        "value": "Medium"
+      },
+      "25": {
+        "label": "1st Loop Bonus",
+        "value": 6
+      },
+      "26": {
+        "label": "Other Loop Bonus",
+        "value": 6
+      },
+      "27": {
+        "label": "1st Mist M.B. Lit",
+        "value": 5
+      },
+      "28": {
+        "label": "Other Mist M.B",
+        "value": 10
+      },
+      "29": {
+        "label": "1st Bats",
+        "value": 3
+      },
+      "30": {
+        "label": "Other Bats",
+        "value": 10
+      },
+      "31": {
+        "label": "Bats Time",
+        "value": 15
+      },
+      "32": {
+        "label": "Number of Bats",
+        "value": 15
+      },
+      "33": {
+        "label": "Outlane Lit at",
+        "value": 15
+      },
+      "34": {
+        "label": "1st Rats At",
+        "value": 3
+      },
+      "35": {
+        "label": "Next Rats At",
+        "value": 5
+      },
+      "36": {
+        "label": "Number of Rats",
+        "value": 15
+      },
+      "37": {
+        "label": "Rats Timer",
+        "value": 15
+      },
+      "38": {
+        "label": "Timed Plunger",
+        "value": 0
+      },
+      "39": {
+        "label": "Flipped Plunger",
+        "value": "NO"
+      },
+      "40": {
+        "label": "Fancy A. Mode G.I",
+        "value": "YES"
+      },
+      "41": {
+        "label": "Attr. Mode Sounds",
+        "value": "NONE"
+      },
+      "42": {
+        "label": "Magnet",
+        "value": "Enabled"
+      },
+      "43": {
+        "label": "Family Mode",
+        "value": "NO"
+      },
+      "44": {
+        "label": "Game Over Unlock",
+        "value": "NO"
+      }
+    }
+  },
+  "high_scores": [
+    {
+      "initials": {
+        "value": "CD"
+      },
+      "label": "Greatest Vampire Hunter",
+      "score": {
+        "value": 300000000
+      },
+      "short_label": "GVP"
+    },
+    {
+      "initials": {
+        "value": "BSO"
+      },
+      "label": "Best Hunter #1",
+      "score": {
+        "value": 250000000
+      },
+      "short_label": ""
+    },
+    {
+      "initials": {
+        "value": "BIL"
+      },
+      "label": "Best Hunter #2",
+      "score": {
+        "value": 200000000
+      }
+    },
+    {
+      "initials": {
+        "value": "P H"
+      },
+      "label": "Best Hunter #3",
+      "score": {
+        "value": 150000000
+      }
+    },
+    {
+      "initials": {
+        "value": "S  "
+      },
+      "label": "Best Hunter #4",
+      "score": {
+        "value": 100000000
+      }
+    }
+  ],
+  "last_game": [
+    {
+      "value": 595070
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    }
+  ],
+  "mode_champions": [
+    {
+      "initials": {
+        "value": "CD "
+      },
+      "label": "Loop Champion",
+      "score": {
+        "value": 6
+      },
+      "short_label": "LC"
+    }
+  ]
+}

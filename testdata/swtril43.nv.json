@@ -1,0 +1,85 @@
+{
+  "_fileformat": 0.1,
+  "high_scores": [
+    {
+      "initials": {
+        "value": "LON"
+      },
+      "label": "#1 Jedi",
+      "score": {
+        "value": 24000000
+      },
+      "short_label": "#1"
+    },
+    {
+      "initials": {
+        "value": "JOE"
+      },
+      "label": "#2 Jedi",
+      "score": {
+        "value": 21000000
+      },
+      "short_label": "#2"
+    },
+    {
+      "initials": {
+        "value": "DAY"
+      },
+      "label": "#3 Jedi",
+      "score": {
+        "value": 19500000
+      },
+      "short_label": "#3"
+    },
+    {
+      "initials": {
+        "value": "KRT"
+      },
+      "label": "#4 Jedi",
+      "score": {
+        "value": 18000000
+      },
+      "short_label": "#4"
+    },
+    {
+      "initials": {
+        "value": "MAR"
+      },
+      "label": "#5 Jedi",
+      "score": {
+        "value": 16500000
+      },
+      "short_label": "#5"
+    },
+    {
+      "initials": {
+        "value": "JIM"
+      },
+      "label": "#6 Jedi",
+      "score": {
+        "value": 15000000
+      },
+      "short_label": "#6"
+    }
+  ],
+  "last_game": [
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    }
+  ]
+}

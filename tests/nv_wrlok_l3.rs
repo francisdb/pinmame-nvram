@@ -49,7 +49,7 @@ fn test_warlok() -> io::Result<()> {
 fn test_warlok_default_0_credits() -> io::Result<()> {
     let test_dir = testdir!();
     let nvram_path = test_dir.join("wrlok_l3.nv");
-    std::fs::copy("testdata/wrlok_l3_default.nv", &nvram_path)?;
+    std::fs::copy("testdata/wrlok_l3-default.nv", &nvram_path)?;
     let mut nvram = Nvram::open(&nvram_path)?.unwrap();
 
     let game_state = nvram.read_game_state()?;

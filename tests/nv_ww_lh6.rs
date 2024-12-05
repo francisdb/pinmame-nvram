@@ -82,7 +82,7 @@ fn test_white_water() -> io::Result<()> {
 fn test_white_water_default() -> io::Result<()> {
     let testdir = testdir!();
     let rom_path = testdir.join("ww_lh6.nv");
-    std::fs::copy("testdata/ww_lh6_default.nv", &rom_path)?;
+    std::fs::copy("testdata/ww_lh6-default.nv", &rom_path)?;
 
     let mut nvram = Nvram::open(&rom_path)?.unwrap();
 

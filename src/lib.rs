@@ -1,7 +1,11 @@
+mod encoding;
 mod model;
 
+use crate::encoding::{read_bcd, read_ch, read_int, read_wpc_rtc, write_bcd, write_ch, Location};
 use crate::model::{Checksum16, Encoding, Endian, Nibble, NvramMap, Score, StateOrStateList};
 use include_dir::{include_dir, Dir, File};
+use serde::de;
+use serde_json::{Map, Number, Value};
 use std::collections::HashMap;
 use std::fs::OpenOptions;
 use std::io;
@@ -9,301 +13,6 @@ use std::io::{Read, Seek, SeekFrom, Write};
 use std::path::{Path, PathBuf};
 
 static MAPS: Dir = include_dir!("$OUT_DIR/maps.brotli");
-
-fn de_nibble(length: usize, buff: &[u8], nibble: &Nibble) -> io::Result<Vec<u8>> {
-    if nibble == &Nibble::High && length % 2 != 0 {
-        return Err(io::Error::new(
-            io::ErrorKind::InvalidInput,
-            "Length should be even when reading the high nibble",
-        ));
-    }
-    // TODO make this more efficient
-    let resulting_length = (length + 1) / 2;
-    let mut result = vec![0; resulting_length];
-    let mut buffer = buff.to_owned();
-    if length % 2 != 0 {
-        // prepend 0
-        buffer = vec![0].into_iter().chain(buffer).collect();
-    };
-    let mut iter = buffer.into_iter();
-    for b in result.iter_mut() {
-        // if uneven the high byte should be 0
-        let high = iter.next().unwrap();
-        let low = iter.next().unwrap();
-        *b = match nibble {
-            Nibble::High => (high & 0xF0) | ((low & 0xF0) >> 4),
-            Nibble::Low => ((high & 0x0F) << 4) | (low & 0x0F),
-        };
-    }
-    Ok(result)
-}
-
-fn do_nibble(length: usize, buff: &[u8], nibble: &Nibble) -> io::Result<Vec<u8>> {
-    if nibble == &Nibble::High && length % 2 != 0 {
-        return Err(io::Error::new(
-            io::ErrorKind::InvalidInput,
-            "Length should be even when writing the high nibble",
-        ));
-    }
-    if nibble == &Nibble::Low && length % 2 != 0 && buff[0] > 0x0F {
-        return Err(io::Error::new(
-            io::ErrorKind::InvalidInput,
-            "When writing the low nibble for an uneven length the first nibble should be 0",
-        ));
-    }
-    if length < buff.len() * 2 - 1 {
-        return Err(io::Error::new(
-            io::ErrorKind::InvalidInput,
-            "Length should be at least twice the length of the buffer minus 1",
-        ));
-    }
-    if length > buff.len() * 2 {
-        return Err(io::Error::new(
-            io::ErrorKind::InvalidInput,
-            "Length should be at most twice the length of the buffer",
-        ));
-    }
-    let mut result = Vec::with_capacity(length);
-    for b in buff.iter() {
-        match nibble {
-            Nibble::High => {
-                result.push(b & 0xF0);
-                result.push((b & 0x0F) << 4);
-            }
-            Nibble::Low => {
-                result.push((b & 0xF0) >> 4);
-                result.push(b & 0x0F);
-            }
-        }
-    }
-    // remove the first byte if the length is uneven
-    if length % 2 != 0 {
-        result.remove(0);
-    }
-    Ok(result)
-}
-
-fn read_ch<A: Read + Seek>(
-    stream: &mut A,
-    location: u64,
-    length: usize,
-    mask: Option<u64>,
-    char_map: &Option<String>,
-    nibble: &Option<Nibble>,
-) -> io::Result<String> {
-    stream.seek(SeekFrom::Start(location))?;
-
-    let mut buff = vec![0; length];
-    stream.read_exact(&mut buff)?;
-
-    if let Some(nibble) = nibble {
-        let result = de_nibble(length, &buff, nibble)?;
-        // filter out zero bytes
-        let result = result.into_iter().filter(|&b| b != 0).collect::<Vec<u8>>();
-        return String::from_utf8(result.to_vec())
-            .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e));
-    }
-
-    // apply mask if set
-    if let Some(mask) = mask {
-        for b in buff.iter_mut() {
-            *b &= mask as u8;
-        }
-    }
-    // if char_map is set, convert the buffer to a string
-    if let Some(char_map) = char_map {
-        let mut result = String::new();
-        for b in buff.iter() {
-            result.push(char_map.chars().nth(*b as usize).unwrap_or('?'));
-        }
-        return Ok(result);
-    }
-
-    String::from_utf8(buff.to_vec()).map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))
-}
-
-fn write_ch<A: Write + Seek>(
-    stream: &mut A,
-    location: u64,
-    length: usize,
-    value: String,
-    char_map: &Option<String>,
-    nibble: &Option<Nibble>,
-) -> io::Result<()> {
-    stream.seek(SeekFrom::Start(location))?;
-    // if buffer contains non-ASCII characters, fail
-    if !value.is_ascii() {
-        return Err(io::Error::new(
-            io::ErrorKind::InvalidInput,
-            format!("String is not ASCII: {}", value),
-        ));
-    }
-    let mut buff = value.as_bytes().to_vec();
-    if let Some(char_map) = char_map {
-        for b in buff.iter_mut() {
-            let idx = char_map.find(*b as char).unwrap_or(0);
-            *b = idx as u8;
-        }
-    }
-    if buff.len() > length {
-        return Err(io::Error::new(
-            io::ErrorKind::InvalidInput,
-            format!("String is too long: {} > {}", buff.len(), length),
-        ));
-    }
-
-    if let Some(nibble) = nibble {
-        buff = do_nibble(length, &buff, nibble)?;
-    }
-
-    stream.write_all(&buff)?;
-    Ok(())
-}
-
-pub enum Location {
-    Continuous { start: u64, length: usize },
-    Discontinuous { offsets: Vec<u64> },
-}
-
-/// Read a binary coded decimal number from the nvram file
-/// https://en.wikipedia.org/wiki/Binary-coded_decimal
-///
-/// # Arguments
-///
-/// * `nvram_file` - The file to read from
-/// * `location` - The location in the file to start reading from
-/// * `length` - The number of bytes to read
-fn read_bcd<A: Read + Seek>(
-    stream: &mut A,
-    location: Location,
-    nibble: &Option<Nibble>,
-    scale: u64,
-    endian: Endian,
-) -> io::Result<u64> {
-    let mut buff = match location {
-        Location::Continuous { start, length } => {
-            stream.seek(SeekFrom::Start(start))?;
-            let mut buff = vec![0; length];
-            stream.read_exact(&mut buff)?;
-            buff
-        }
-        Location::Discontinuous { offsets } => {
-            let mut buff = vec![0; offsets.len()];
-            for offset in offsets.iter() {
-                stream.seek(SeekFrom::Start(*offset))?;
-                let mut byte = [0; 1];
-                stream.read_exact(&mut byte)?;
-                buff.push(byte[0]);
-            }
-            buff
-        }
-    };
-
-    if endian == Endian::Little {
-        buff.reverse();
-    }
-
-    if let Some(nibble) = nibble {
-        buff = de_nibble(buff.len(), &buff, nibble)?;
-    }
-
-    let mut score = 0;
-    for item in buff.iter() {
-        score *= 100;
-        score += cap_bcd(item & 0x0F) as u64;
-        score += cap_bcd((item & 0xF0) >> 4) as u64 * 10;
-    }
-    Ok(score * scale)
-}
-
-/// Ignore nibbles 0xA to 0xF (0xF = blank on Dracula/Wild Fyre) (prefix)
-fn cap_bcd(value: u8) -> u8 {
-    if value > 9 {
-        0
-    } else {
-        value
-    }
-}
-
-fn write_bcd<A: Write + Seek>(
-    stream: &mut A,
-    location: u64,
-    length: usize,
-    nibble: &Option<Nibble>,
-    value: u64,
-) -> io::Result<()> {
-    stream.seek(SeekFrom::Start(location))?;
-    // the nibble function will validate the length
-    let buff_len = if nibble.is_some() {
-        (length + 1) / 2
-    } else {
-        length
-    };
-    let mut buff = vec![0; buff_len];
-    let mut score = value;
-    for b in buff.iter_mut() {
-        *b = ((score % 10) + ((score / 10) << 4)) as u8;
-        score /= 100;
-    }
-
-    if let Some(nibble) = nibble {
-        buff = do_nibble(length, &buff, nibble)?;
-    }
-
-    stream.write_all(&buff)?;
-    Ok(())
-}
-
-fn read_int<T: Read + Seek>(
-    nvram_file: &mut &mut T,
-    endian: Endian,
-    start: u64,
-    length: usize,
-) -> io::Result<u64> {
-    nvram_file.seek(SeekFrom::Start(start))?;
-    let mut buff = vec![0; length];
-    nvram_file.read_exact(&mut buff)?;
-    let score = match endian {
-        Endian::Big => buff
-            .iter()
-            .fold(0u64, |acc, &x| acc.wrapping_shl(8).wrapping_add(x as u64)),
-        Endian::Little => buff
-            .iter()
-            .rev()
-            .fold(0u64, |acc, &x| acc.wrapping_shl(8).wrapping_add(x as u64)),
-    };
-    Ok(score)
-}
-
-/// A special type for a real-time clock value from a WPC game,
-/// stored as a sequence of 7 bytes:
-/// * two-byte year (2015 is 0x07 0xDF),
-/// * month (1-12),
-/// * day of month (1-31),
-/// * day of the week (0-6, 0=Sunday),
-/// * hour (0-23)
-/// * minute (0-59).
-///
-fn read_wpc_rtc<T: Read + Seek>(
-    nvram_file: &mut &mut T,
-    start: u64,
-    length: usize,
-) -> io::Result<String> {
-    nvram_file.seek(SeekFrom::Start(start))?;
-    let mut buff = vec![0; length];
-    nvram_file.read_exact(&mut buff)?;
-    let year = (buff[0] as u16) << 8 | buff[1] as u16;
-    let month = buff[2];
-    let day = buff[3];
-    let _dow = buff[4];
-    let hour = buff[5];
-    let minute = buff[6];
-    // output as "YYYY-MM-DD HH:MM"
-    Ok(format!(
-        "{:04}-{:02}-{:02} {:02}:{:02}",
-        year, month, day, hour, minute
-    ))
-}
 
 #[derive(Debug, PartialEq)]
 pub struct HighScore {
@@ -346,25 +55,7 @@ impl Nvram {
     /// * `Ok(Some(Nvram))` if the file was found and a map was found for the ROM
     /// * `Ok(None)` if the file was found but no map was found for the ROM
     pub fn open(nv_path: &Path) -> io::Result<Option<Nvram>> {
-        // get the rom name from the file name
-        let rom_name = nv_path
-            .file_name()
-            .unwrap()
-            .to_str()
-            .unwrap()
-            .split('.')
-            .next()
-            .unwrap()
-            .to_string();
-        // check if file exists
-        if !nv_path.exists() {
-            return Err(io::Error::new(
-                io::ErrorKind::NotFound,
-                format!("File not found: {:?}", nv_path),
-            ));
-        }
-
-        let map_opt = find_map(&rom_name)?;
+        let map_opt: Option<NvramMap> = open_nvram(nv_path)?;
         Ok(map_opt.map(|map| Nvram {
             map,
             nv_path: nv_path.to_path_buf(),
@@ -413,38 +104,242 @@ impl Nvram {
     }
 }
 
-fn find_map(rom_name: &String) -> io::Result<Option<NvramMap>> {
+trait ReadRoms {
+    fn roms(&self) -> Vec<String>;
+}
+
+impl ReadRoms for NvramMap {
+    fn roms(&self) -> Vec<String> {
+        // TODO avoid the clone
+        self._roms.clone()
+    }
+}
+
+impl ReadRoms for Value {
+    fn roms(&self) -> Vec<String> {
+        // find "_roms" property and read as string
+        self["_roms"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|v| v.as_str().unwrap().to_string())
+            .collect()
+    }
+}
+
+pub fn resolve(nv_path: &Path) -> io::Result<Option<Value>> {
+    let map: Option<Value> = open_nvram(nv_path)?;
+    let result = if let Some(map) = &map {
+        let char_map = map
+            .get("_char_map")
+            .and_then(|v| v.as_str())
+            .map(|s| s.to_string());
+        let mut rom = OpenOptions::new().read(true).open(nv_path)?;
+        Some(resolve_recursive(map, &char_map, &mut rom)?)
+    } else {
+        None
+    };
+    Ok(result)
+}
+
+fn resolve_recursive<T: Read + Seek>(
+    value: &Value,
+    char_map: &Option<String>,
+    rom: &mut T,
+) -> io::Result<Value> {
+    let result: Value = match value {
+        Value::Object(map) => {
+            // println!("{:?}", map);
+            // println!("{:?}", map.get("encoding"));
+            if let Some(encoding) = map.get("encoding") {
+                let encoding: Encoding = serde_json::from_value(encoding.clone())?;
+                let value = resolve_value(rom, map, encoding, char_map)?;
+
+                let mut resolved_map = Map::new();
+                resolved_map.insert("value".to_string(), value);
+                if let Some(label) = map.get("label") {
+                    // maybe we should instead remove all properties related to the encoding
+                    resolved_map.insert("label".to_string(), label.clone());
+                }
+                Value::Object(resolved_map)
+            } else {
+                let mut resolved_map = Map::new();
+                for (key, value) in map.iter() {
+                    if key.eq("_fileformat") || !key.starts_with('_') {
+                        resolved_map.insert(key.clone(), resolve_recursive(value, char_map, rom)?);
+                    }
+                }
+                Value::Object(resolved_map)
+            }
+        }
+        Value::Array(array) => {
+            let resolved_array: Vec<Value> = array
+                .iter()
+                .map(|v| resolve_recursive(v, char_map, rom))
+                .collect::<Result<Vec<_>, _>>()?;
+            Value::Array(resolved_array)
+        }
+        other => other.clone(),
+    };
+    Ok(result)
+}
+
+fn resolve_value<T: Read + Seek>(
+    rom: &mut T,
+    map: &Map<String, Value>,
+    encoding: Encoding,
+    char_map: &Option<String>,
+) -> io::Result<Value> {
+    let start = map.get("start").map(json_hex_or_int).transpose()?;
+    let length = map
+        .get("length")
+        .map_or(1, |v| v.as_u64().unwrap() as usize);
+    let value = match encoding {
+        Encoding::Int => {
+            let value = read_int(rom, Endian::Big, start.unwrap(), length)?;
+            Value::Number(value.into())
+        }
+        Encoding::Enum => {
+            // read a single byte and use it as index in the enum array
+            let index = {
+                rom.seek(SeekFrom::Start(start.unwrap()))?;
+                let mut buff = [0; 1];
+                rom.read_exact(&mut buff)?;
+                buff[0] as usize
+            };
+            let values = map.get("values").unwrap().as_array().unwrap();
+            let value = values.get(index).unwrap_or(&Value::Null).clone();
+            value
+        }
+        Encoding::Bcd => {
+            let location = match map.get("offsets") {
+                None => {
+                    let start = start.unwrap();
+                    Location::Continuous { start, length }
+                }
+                Some(offsets) => {
+                    let offsets: Vec<u64> = offsets
+                        .as_array()
+                        .unwrap()
+                        .iter()
+                        .map(json_hex_or_int)
+                        .collect::<Result<Vec<_>, _>>()?;
+                    Location::Scattered { offsets }
+                }
+            };
+            let scale = map
+                .get("scale")
+                .and_then(|s| s.as_number())
+                .cloned()
+                .unwrap_or(Number::from(1));
+            // how can i=avoid the clone() here?
+            let nibble: Option<Nibble> = map
+                .get("nibble")
+                .map(|n| serde_json::from_value(n.clone()).unwrap());
+            let value = read_bcd(rom, location, &nibble, &scale, Endian::Big)?;
+            Value::Number(value.into())
+        }
+        Encoding::Ch => {
+            let start = json_hex_or_int(map.get("start").unwrap())?;
+            let mask = map.get("mask").map(json_hex_or_int).transpose()?;
+            let nibble: Option<Nibble> = map
+                .get("nibble")
+                .map(|n| serde_json::from_value(n.clone()).unwrap());
+            let value = read_ch(rom, start, length, mask, char_map, &nibble)?;
+            Value::String(value)
+        }
+        Encoding::WpcRtc => {
+            let value = read_wpc_rtc(rom, start.unwrap(), length)?;
+            Value::String(value)
+        }
+        Encoding::Bits => {
+            let value = "Bits encoding not implemented".to_string();
+            Value::String(value)
+        }
+        Encoding::Raw => {
+            let mut buff = vec![0; length];
+            rom.seek(SeekFrom::Start(start.unwrap()))?;
+            rom.read_exact(&mut buff)?;
+            Value::Array(buff.iter().map(|b| Value::Number((*b).into())).collect())
+        }
+    };
+    Ok(value)
+}
+
+fn json_hex_or_int(s: &Value) -> io::Result<u64> {
+    match s {
+        // TODO deduplicate
+        Value::String(s) => {
+            if s.starts_with("0x") || s.starts_with("0X") {
+                u64::from_str_radix(&s[2..], 16)
+                    .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))
+            } else {
+                panic!("Not implemented: int from string {}", s)
+            }
+        }
+
+        Value::Number(n) => {
+            // TODO proper error handling
+            Ok(n.as_u64().unwrap())
+        }
+        other => todo!("Start not implemented: {:?}", other),
+    }
+}
+
+fn open_nvram<T: ReadRoms + de::DeserializeOwned>(nv_path: &Path) -> io::Result<Option<T>> {
+    // get the rom name from the file name
+    let rom_name = nv_path
+        .file_name()
+        .unwrap()
+        .to_str()
+        .unwrap()
+        .split('.')
+        .next()
+        .unwrap()
+        .to_string();
+    // check if file exists
+    if !nv_path.exists() {
+        return Err(io::Error::new(
+            io::ErrorKind::NotFound,
+            format!("File not found: {:?}", nv_path),
+        ));
+    }
+    find_map(&rom_name)
+}
+
+fn find_map<T: ReadRoms + de::DeserializeOwned>(rom_name: &String) -> io::Result<Option<T>> {
     let map_name = format!("{}.json.brotli", rom_name);
     if let Some(map_file) = MAPS.get_file(&map_name) {
-        let map = read_compressed_map(map_file)?;
+        let map: T = read_compressed_map(map_file)?;
         // check that the rom name is in the map
-        if !map._roms.contains(rom_name) {
+        let roms = map.roms();
+        if !roms.contains(rom_name) {
             return Err(io::Error::new(
                 io::ErrorKind::InvalidData,
                 format!(
                     "Map for {}.nv.json found but {} not in _roms list: {}",
                     rom_name,
                     rom_name,
-                    map._roms.join(", ")
+                    roms.join(", ")
                 ),
             ));
         }
         return Ok(Some(map));
     }
     for entry in MAPS.files() {
-        let map = read_compressed_map(entry)?;
-        if map._roms.contains(rom_name) {
+        let map: T = read_compressed_map(entry)?;
+        if map.roms().contains(rom_name) {
             return Ok(Some(map));
         }
     }
     Ok(None)
 }
 
-fn read_compressed_map(map_file: &File) -> io::Result<NvramMap> {
+fn read_compressed_map<T: de::DeserializeOwned>(map_file: &File) -> io::Result<T> {
     let mut cursor = io::Cursor::new(map_file.contents());
     let reader = brotli::Decompressor::new(&mut cursor, 4096);
-    let map: NvramMap = serde_json::from_reader(reader)?;
-    Ok(map)
+    let data = serde_json::from_reader(reader)?;
+    Ok(data)
 }
 
 fn read_highscores<T: Read + Seek>(
@@ -483,7 +378,7 @@ fn read_highscore<T: Read + Seek>(
                     start: hs.score.start.as_ref().unwrap().into(),
                     length: hs.score.length.unwrap_or(0) as usize,
                 },
-                Some(offsets) => Location::Discontinuous {
+                Some(offsets) => Location::Scattered {
                     offsets: offsets.iter().map(|o| o.into()).collect(),
                 },
             };
@@ -491,7 +386,7 @@ fn read_highscore<T: Read + Seek>(
                 &mut nvram_file,
                 location,
                 &hs.score.nibble,
-                hs.score.scale.unwrap_or(1u64),
+                hs.score.scale.as_ref().unwrap_or(&Number::from(1u64)),
                 endian,
             )?
         }
@@ -565,7 +460,7 @@ fn read_mode_champion<T: Read + Seek>(
                     &mut nvram_file,
                     location,
                     &score.nibble,
-                    score.scale.unwrap_or(1u64),
+                    score.scale.as_ref().unwrap_or(&Number::from(1)),
                     endian,
                 )?;
                 Some(result)
@@ -629,7 +524,7 @@ fn read_last_game_player<T: Read + Seek>(
                 length: lg.length as usize,
             },
             &lg.nibble,
-            1,
+            &Number::from(1),
             endian,
         )?,
         other => todo!("Encoding not implemented: {:?}", other),
@@ -702,7 +597,7 @@ fn read_game_state_item<T: Read + Seek>(
                     length: state.length.unwrap_or(0),
                 },
                 &state.nibble,
-                1,
+                &Number::from(1),
                 endian,
             )?;
             Ok(score.to_string())
@@ -770,7 +665,7 @@ fn read_replay_score<T: Read + Seek>(
                     &mut nvram_file,
                     location,
                     &replay_score.nibble,
-                    replay_score.scale.unwrap_or(1u64),
+                    replay_score.scale.as_ref().unwrap_or(&Number::from(1)),
                     map.endianness(),
                 )?;
                 Ok(Some(score))
@@ -788,7 +683,7 @@ fn location_for(score: &Score) -> Location {
             start: score.start.as_ref().unwrap().into(),
             length: score.length.unwrap_or(0) as usize,
         },
-        Some(offsets) => Location::Discontinuous {
+        Some(offsets) => Location::Scattered {
             offsets: offsets.iter().map(|o| o.into()).collect(),
         },
     }
@@ -927,123 +822,84 @@ mod tests {
     }
 
     #[test]
-    fn test_read_bcd() -> io::Result<()> {
-        let mut cursor = io::Cursor::new(vec![0x12, 0x34, 0x56, 0x78, 0x90]);
-        let location = Location::Continuous {
-            start: 0,
-            length: 5,
-        };
-        let score = read_bcd(&mut cursor, location, &None, 1, Endian::Big)?;
-        assert_eq!(score, 1_234_567_890);
-        Ok(())
-    }
-
-    #[test]
-    fn test_read_ch() -> io::Result<()> {
-        let mut cursor = io::Cursor::new(vec![0x41, 0x42, 0x43, 0x44, 0x45]);
-        let score = read_ch(&mut cursor, 0x0000, 5, None, &None, &None)?;
-        assert_eq!(score, "ABCDE");
-        Ok(())
-    }
-
-    #[test]
-    fn test_read_ch_with_charmap() -> io::Result<()> {
-        let char_map = Some("???????????ABCDEFGHIJKLMNOPQRSTUVWXYZ".to_string());
-        let mut cursor = io::Cursor::new(vec![0x0B, 0x0C, 0x0D, 0x0E, 0x0F]);
-        let score = read_ch(&mut cursor, 0x0000, 5, None, &char_map, &None)?;
-        assert_eq!(score, "ABCDE");
-        Ok(())
-    }
-
-    #[test]
-    fn test_write_ch() -> io::Result<()> {
-        let mut cursor = io::Cursor::new(vec![0x00, 0x00, 0x00, 0x00, 0x00]);
-        write_ch(&mut cursor, 0x0000, 5, "ABCDE".to_string(), &None, &None)?;
-        assert_eq!(cursor.into_inner(), vec![0x41, 0x42, 0x43, 0x44, 0x45]);
-        Ok(())
-    }
-
-    #[test]
-    fn test_write_ch_with_charmap() -> io::Result<()> {
-        let char_map = Some("???????????ABCDEFGHIJKLMNOPQRSTUVWXYZ".to_string());
-        let mut cursor = io::Cursor::new(vec![0x00, 0x00, 0x00, 0x00, 0x00]);
-        write_ch(
-            &mut cursor,
-            0x0000,
-            5,
-            "ABCDE".to_string(),
-            &char_map,
-            &None,
-        )?;
-        assert_eq!(cursor.into_inner(), vec![0x0B, 0x0C, 0x0D, 0x0E, 0x0F]);
-        Ok(())
-    }
-
-    #[test]
-    fn test_read_ch_with_nibble() -> io::Result<()> {
-        // Nibble: where the sequence 0x04 0x01 0x04 0x02 0x04 0x03
-        // translates to 0x41 0x42 0x43 which is the string "ABC"
-        let mut cursor = io::Cursor::new(vec![0x04, 0x01, 0x04, 0x02, 0x04, 0x03]);
-        let score = read_ch(&mut cursor, 0x0000, 6, None, &None, &Some(Nibble::Low))?;
-        assert_eq!(score, "ABC");
-        Ok(())
-    }
-
-    #[test]
-    fn test_do_nibble_even() {
-        let buff = vec![0x41, 0x42, 0x43];
-        let result = do_nibble(6, &buff, &Nibble::Low).unwrap();
-        assert_eq!(result, vec![0x04, 0x01, 0x04, 0x02, 0x04, 0x03]);
-    }
-
-    #[test]
-    fn test_do_nibble_uneven() {
-        let buff = vec![0x01, 0x42, 0x43];
-        let result = do_nibble(5, &buff, &Nibble::Low).unwrap();
-        assert_eq!(result, vec![0x01, 0x04, 0x02, 0x04, 0x03]);
-    }
-
-    #[test]
-    #[should_panic(
-        expected = "When writing the low nibble for an uneven length the first nibble should be 0"
-    )]
-    fn test_do_nibble_uneven_fail_drop() {
-        let buff = vec![0x11, 0x42, 0x43];
-        do_nibble(5, &buff, &Nibble::Low).unwrap();
-    }
-
-    #[test]
-    #[should_panic(expected = "Length should be at most twice the length of the buffer")]
-    fn test_do_nibble_uneven_fail_length() {
-        let buff = vec![0x01, 0x42];
-        do_nibble(6, &buff, &Nibble::Low).unwrap();
-    }
-
-    #[test]
-    #[should_panic(expected = "Length should be at least twice the length of the buffer minus 1")]
-    fn test_do_nibble_uneven_fail_length2() {
-        let buff = vec![0x01, 0x42, 0x43];
-        do_nibble(2, &buff, &Nibble::Low).unwrap();
-    }
-
-    #[test]
-    fn test_de_nibble_even() {
-        let buff = vec![0x40, 0x10, 0x40, 0x20, 0x40, 0x30];
-        let result = de_nibble(6, &buff, &Nibble::High).unwrap();
-        assert_eq!(result, vec![0x41, 0x42, 0x43]);
-    }
-
-    #[test]
-    fn test_de_nibble_uneven() {
-        let buff = vec![0x04, 0x01, 0x04, 0x02, 0x04];
-        let result = de_nibble(5, &buff, &Nibble::Low).unwrap();
-        assert_eq!(result, vec![0x04, 0x14, 0x24]);
-    }
-
-    #[test]
     fn test_find_map() -> io::Result<()> {
-        let map = find_map(&"afm_113b".to_string())?;
+        let map: Option<Value> = find_map(&"afm_113b".to_string())?;
         assert_eq!(true, map.is_some());
         Ok(())
+    }
+
+    #[test]
+    fn test_resolve() -> io::Result<()> {
+        let path = Path::new("testdata/hs_l4.nv");
+        let map: Option<Value> = resolve(path)?;
+        assert!(map.is_some(), "Failed to resolve: {:?}", path);
+
+        // let json = serde_json::to_string_pretty(&map.unwrap())?;
+        // assert_eq!("{}", json);
+        Ok(())
+    }
+
+    #[test]
+    fn test_resolve_all() -> io::Result<()> {
+        // any nvram that contains - in the file name needs to be renamed first
+        let test_dir = testdir!();
+
+        let excludes = ["st_161h"];
+
+        for entry in std::fs::read_dir("testdata")? {
+            let entry = entry?;
+            let nvram_path = entry.path();
+            if nvram_path.extension().unwrap() == "nv" {
+                let path = path_for_test(&test_dir, &nvram_path)?;
+                if excludes.contains(&path.file_stem().unwrap().to_str().unwrap()) {
+                    println!("Skipping: {:?}", path);
+                    continue;
+                }
+                let map = resolve(&path)?;
+
+                if let Some(map) = &map {
+                    let json_path = &nvram_path.with_extension("nv.json");
+                    // Enable this to regenerate the json files
+                    // let json = serde_json::to_string_pretty(&map)?;
+                    // std::fs::write(&json_path, json)?;
+                    if json_path.exists() {
+                        let expected = std::fs::read_to_string(json_path)?;
+                        let actual = serde_json::to_string_pretty(&map)?;
+                        assert_eq!(expected, actual);
+                    } else {
+                        panic!("Expected file not found: {:?}", json_path);
+                    }
+                } else {
+                    panic!("Failed to resolve: {:?}", path);
+                }
+            }
+        }
+        Ok(())
+    }
+
+    fn path_for_test(test_dir: &Path, nvram_path: &PathBuf) -> io::Result<PathBuf> {
+        let path = if nvram_path
+            .file_name()
+            .unwrap()
+            .to_str()
+            .unwrap()
+            .contains('-')
+        {
+            // take the file name and remove the - and everything after it
+            let rom_name = nvram_path
+                .file_name()
+                .unwrap()
+                .to_str()
+                .unwrap()
+                .split('-')
+                .next()
+                .unwrap();
+            let new_path = test_dir.join(rom_name).with_extension("nv");
+            std::fs::copy(nvram_path, &new_path)?;
+            new_path
+        } else {
+            nvram_path.clone()
+        };
+        Ok(path)
     }
 }

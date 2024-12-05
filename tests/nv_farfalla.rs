@@ -52,7 +52,7 @@ fn test_farfalla() -> io::Result<()> {
 fn test_farfalla_default_hs_adjusted() -> io::Result<()> {
     let testdir = testdir!();
     let rom_path = testdir.join("farfalla.nv");
-    std::fs::copy("testdata/farfalla_hs_135.nv", &rom_path)?;
+    std::fs::copy("testdata/farfalla-hs-135.nv", &rom_path)?;
 
     let mut nvram = Nvram::open(&rom_path)?.unwrap();
 
