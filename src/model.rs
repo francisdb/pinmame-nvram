@@ -165,6 +165,8 @@ pub struct LastGamePlayer {
     pub nibble: Option<Nibble>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub label: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub scale: Option<Number>,
 }
 
 #[derive(Serialize, Deserialize, Debug, PartialEq, Copy, Clone)]

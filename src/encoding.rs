@@ -8,7 +8,7 @@ pub(crate) enum Location {
     Scattered { offsets: Vec<u64> },
 }
 
-pub(crate) fn de_nibble(length: usize, buff: &[u8], nibble: &Nibble) -> io::Result<Vec<u8>> {
+pub(crate) fn de_nibble(length: usize, buff: &[u8], nibble: Nibble) -> io::Result<Vec<u8>> {
     // TODO make this more efficient
     let resulting_length = (length + 1) / 2;
     let mut result = vec![0; resulting_length];
@@ -30,14 +30,14 @@ pub(crate) fn de_nibble(length: usize, buff: &[u8], nibble: &Nibble) -> io::Resu
     Ok(result)
 }
 
-pub(crate) fn do_nibble(length: usize, buff: &[u8], nibble: &Nibble) -> io::Result<Vec<u8>> {
-    if nibble == &Nibble::High && length % 2 != 0 {
+pub(crate) fn do_nibble(length: usize, buff: &[u8], nibble: Nibble) -> io::Result<Vec<u8>> {
+    if nibble == Nibble::High && length % 2 != 0 {
         return Err(io::Error::new(
             io::ErrorKind::InvalidInput,
             "Length should be even when writing the high nibble",
         ));
     }
-    if nibble == &Nibble::Low && length % 2 != 0 && buff[0] > 0x0F {
+    if nibble == Nibble::Low && length % 2 != 0 && buff[0] > 0x0F {
         return Err(io::Error::new(
             io::ErrorKind::InvalidInput,
             "When writing the low nibble for an uneven length the first nibble should be 0",
@@ -89,7 +89,7 @@ pub(crate) fn read_ch<A: Read + Seek>(
     stream.read_exact(&mut buff)?;
 
     if let Some(nibble) = nibble {
-        let result = de_nibble(length, &buff, nibble)?;
+        let result = de_nibble(length, &buff, *nibble)?;
         // filter out zero bytes
         let result = result.into_iter().filter(|&b| b != 0).collect::<Vec<u8>>();
         return String::from_utf8(result.to_vec())
@@ -161,7 +161,7 @@ pub(crate) fn write_ch<A: Write + Seek>(
     }
 
     if let Some(nibble) = nibble {
-        buff = do_nibble(length, &buff, nibble)?;
+        buff = do_nibble(length, &buff, *nibble)?;
     }
 
     stream.write_all(&buff)?;
@@ -207,7 +207,7 @@ pub(crate) fn read_bcd<A: Read + Seek>(
     }
 
     if let Some(nibble) = nibble {
-        buff = de_nibble(buff.len(), &buff, nibble)?;
+        buff = de_nibble(buff.len(), &buff, *nibble)?;
     }
 
     let mut score = 0;
@@ -254,7 +254,7 @@ pub(crate) fn write_bcd<A: Write + Seek>(
     }
 
     if let Some(nibble) = nibble {
-        buff = do_nibble(length, &buff, nibble)?;
+        buff = do_nibble(length, &buff, *nibble)?;
     }
 
     stream.write_all(&buff)?;
@@ -384,14 +384,14 @@ mod tests {
     #[test]
     fn test_do_nibble_even() {
         let buff = vec![0x41, 0x42, 0x43];
-        let result = do_nibble(6, &buff, &Nibble::Low).unwrap();
+        let result = do_nibble(6, &buff, Nibble::Low).unwrap();
         pretty_assertions::assert_eq!(result, vec![0x04, 0x01, 0x04, 0x02, 0x04, 0x03]);
     }
 
     #[test]
     fn test_do_nibble_uneven() {
         let buff = vec![0x01, 0x42, 0x43];
-        let result = do_nibble(5, &buff, &Nibble::Low).unwrap();
+        let result = do_nibble(5, &buff, Nibble::Low).unwrap();
         pretty_assertions::assert_eq!(result, vec![0x01, 0x04, 0x02, 0x04, 0x03]);
     }
 
@@ -401,41 +401,41 @@ mod tests {
     )]
     fn test_do_nibble_uneven_fail_drop() {
         let buff = vec![0x11, 0x42, 0x43];
-        do_nibble(5, &buff, &Nibble::Low).unwrap();
+        do_nibble(5, &buff, Nibble::Low).unwrap();
     }
 
     #[test]
     #[should_panic(expected = "Length should be at most twice the length of the buffer")]
     fn test_do_nibble_uneven_fail_length() {
         let buff = vec![0x01, 0x42];
-        do_nibble(6, &buff, &Nibble::Low).unwrap();
+        do_nibble(6, &buff, Nibble::Low).unwrap();
     }
 
     #[test]
     #[should_panic(expected = "Length should be at least twice the length of the buffer minus 1")]
     fn test_do_nibble_uneven_fail_length2() {
         let buff = vec![0x01, 0x42, 0x43];
-        do_nibble(2, &buff, &Nibble::Low).unwrap();
+        do_nibble(2, &buff, Nibble::Low).unwrap();
     }
 
     #[test]
     fn test_de_nibble_high_even() {
         let buff = vec![0x40, 0x10, 0x40, 0x20, 0x40, 0x30];
-        let result = de_nibble(6, &buff, &Nibble::High).unwrap();
+        let result = de_nibble(6, &buff, Nibble::High).unwrap();
         pretty_assertions::assert_eq!(result, vec![0x41, 0x42, 0x43]);
     }
 
     #[test]
     fn test_de_nibble_high_uneven() {
         let buff = vec![0x10, 0x40, 0x20, 0x40, 0x30];
-        let result = de_nibble(5, &buff, &Nibble::High).unwrap();
+        let result = de_nibble(5, &buff, Nibble::High).unwrap();
         pretty_assertions::assert_eq!(result, vec![0x01, 0x42, 0x43]);
     }
 
     #[test]
     fn test_de_nibble_low_uneven() {
         let buff = vec![0x04, 0x01, 0x04, 0x02, 0x04];
-        let result = de_nibble(5, &buff, &Nibble::Low).unwrap();
+        let result = de_nibble(5, &buff, Nibble::Low).unwrap();
         pretty_assertions::assert_eq!(result, vec![0x04, 0x14, 0x24]);
     }
 }

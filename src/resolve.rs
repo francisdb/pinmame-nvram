@@ -253,6 +253,9 @@ mod tests {
                         let actual = serde_json::to_string_pretty(&map)?;
                         assert_eq!(expected, actual, "Mismatch: {:?}", json_path);
                     } else {
+                        // Enable this to regenerate the json files
+                        // let json = serde_json::to_string_pretty(&map)?;
+                        // std::fs::write(&json_path, json)?;
                         panic!("Expected file not found: {:?}", json_path);
                     }
                 } else {
