@@ -16,7 +16,7 @@ pub fn resolve(nv_path: &Path) -> io::Result<Option<Value>> {
             .map(|s| s.to_string());
         let endian: Endian = serde_json::from_value(map["_endian"].clone())?;
         let mut rom = OpenOptions::new().read(true).open(nv_path)?;
-        Some(resolve_recursive(map, &char_map, &endian, &mut rom)?)
+        Some(resolve_recursive(map, &char_map, endian, &mut rom)?)
     } else {
         None
     };
@@ -26,7 +26,7 @@ pub fn resolve(nv_path: &Path) -> io::Result<Option<Value>> {
 fn resolve_recursive<T: Read + Seek>(
     value: &Value,
     char_map: &Option<String>,
-    endian: &Endian,
+    endian: Endian,
     rom: &mut T,
 ) -> io::Result<Value> {
     let result: Value = match value {
@@ -35,7 +35,7 @@ fn resolve_recursive<T: Read + Seek>(
             // println!("{:?}", map.get("encoding"));
             if let Some(encoding) = map.get("encoding") {
                 let encoding: Encoding = serde_json::from_value(encoding.clone())?;
-                let value = resolve_value(rom, map, encoding, char_map)?;
+                let value = resolve_value(rom, map, encoding, endian, char_map)?;
                 let mut resolved_map = Map::new();
                 resolved_map.insert("value".to_string(), value);
                 if let Some(label) = map.get("label") {
@@ -72,7 +72,7 @@ fn resolve_recursive<T: Read + Seek>(
 }
 
 fn resolve_checksum16<T: Read + Seek>(
-    endian: &Endian,
+    endian: Endian,
     rom: &mut T,
     value: &Value,
 ) -> io::Result<Value> {
@@ -108,6 +108,7 @@ fn resolve_value<T: Read + Seek>(
     rom: &mut T,
     map: &Map<String, Value>,
     encoding: Encoding,
+    endian: Endian,
     char_map: &Option<String>,
 ) -> io::Result<Value> {
     let start = map.get("start").map(json_hex_or_int).transpose()?;
@@ -116,7 +117,7 @@ fn resolve_value<T: Read + Seek>(
         .map_or(1, |v| v.as_u64().unwrap() as usize);
     let value = match encoding {
         Encoding::Int => {
-            let value = read_int(rom, Endian::Big, start.unwrap(), length)?;
+            let value = read_int(rom, endian, start.unwrap(), length)?;
             Value::Number(value.into())
         }
         Encoding::Enum => {
@@ -156,7 +157,7 @@ fn resolve_value<T: Read + Seek>(
             let nibble: Option<Nibble> = map
                 .get("nibble")
                 .map(|n| serde_json::from_value(n.clone()).unwrap());
-            let value = read_bcd(rom, location, &nibble, &scale, Endian::Big)?;
+            let value = read_bcd(rom, location, &nibble, &scale, endian)?;
             Value::Number(value.into())
         }
         Encoding::Ch => {
@@ -250,7 +251,7 @@ mod tests {
                     if json_path.exists() {
                         let expected = std::fs::read_to_string(json_path)?;
                         let actual = serde_json::to_string_pretty(&map)?;
-                        assert_eq!(expected, actual);
+                        assert_eq!(expected, actual, "Mismatch: {:?}", json_path);
                     } else {
                         panic!("Expected file not found: {:?}", json_path);
                     }

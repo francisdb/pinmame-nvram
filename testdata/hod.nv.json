@@ -10,17 +10,17 @@
     {
       "label": "High Score",
       "score": {
-        "value": 92750
+        "value": 57290
       },
       "short_label": "HS"
     }
   ],
   "last_game": [
     {
-      "value": 92750
+      "value": 57290
     },
     {
-      "value": 10
+      "value": 10000
     },
     {
       "value": 0

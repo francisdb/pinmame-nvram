@@ -16,7 +16,7 @@
       },
       "04": {
         "label": "High Score",
-        "value": 40044
+        "value": 440040
       }
     }
   },
@@ -28,19 +28,19 @@
       },
       "06": {
         "label": "Total Plays",
-        "value": 914000
+        "value": 419
       },
       "07": {
         "label": "Total Replays",
-        "value": 810000
+        "value": 18
       },
       "08": {
         "label": "HSTD Beaten",
-        "value": 500000
+        "value": 5
       },
       "09": {
         "label": "Coin Chute 2",
-        "value": 700000
+        "value": 7
       },
       "10": {
         "label": "Coin Chute 1",
@@ -48,7 +48,7 @@
       },
       "11": {
         "label": "Coin Chute 3",
-        "value": 604000
+        "value": 406
       }
     }
   },
@@ -59,20 +59,20 @@
     },
     "current_ball": {
       "label": "Ball",
-      "value": 7
+      "value": 70
     },
     "match": {
       "label": "Match",
-      "value": 7
+      "value": 70
     },
     "scores": [
       {
         "label": "P1",
-        "value": 25230
+        "value": 32520
       },
       {
         "label": "P2",
-        "value": 15220
+        "value": 22510
       },
       {
         "label": "P3",
@@ -88,17 +88,17 @@
     {
       "label": "High Score",
       "score": {
-        "value": 40044
+        "value": 440040
       },
       "short_label": "HS"
     }
   ],
   "last_game": [
     {
-      "value": 25230
+      "value": 32520
     },
     {
-      "value": 15220
+      "value": 22510
     },
     {
       "value": 0

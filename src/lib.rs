@@ -543,7 +543,7 @@ pub struct ChecksumMismatch<T> {
 fn verify_checksum16<T: Read + Seek>(
     nvram_file: &mut T,
     checksum16: &Checksum16,
-    endian: &Endian,
+    endian: Endian,
 ) -> io::Result<Option<ChecksumMismatch<u16>>> {
     let start: u64 = (&checksum16.start).into();
     let end: u64 = (&checksum16.end).into();
@@ -578,7 +578,7 @@ fn verify_all_checksum16<T: Read + Seek>(
     map.checksum16
         .iter()
         .flatten()
-        .map(|cs| verify_checksum16(&mut nvram_file, cs, endian))
+        .map(|cs| verify_checksum16(&mut nvram_file, cs, *endian))
         .filter_map(|r| r.transpose())
         .collect()
 }
@@ -586,7 +586,7 @@ fn verify_all_checksum16<T: Read + Seek>(
 fn update_checksum16<T: Read + Seek + Write>(
     nvram_file: &mut T,
     checksum16: &Checksum16,
-    endian: &Endian,
+    endian: Endian,
 ) -> io::Result<()> {
     let start: u64 = (&checksum16.start).into();
     let end: u64 = (&checksum16.end).into();
@@ -625,7 +625,7 @@ fn update_all_checksum16<T: Read + Seek + Write>(
     map.checksum16
         .iter()
         .flatten()
-        .try_for_each(|cs| update_checksum16(&mut nvram_file, cs, endian))
+        .try_for_each(|cs| update_checksum16(&mut nvram_file, cs, *endian))
 }
 
 #[cfg(test)]

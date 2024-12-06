@@ -9,12 +9,6 @@ pub(crate) enum Location {
 }
 
 pub(crate) fn de_nibble(length: usize, buff: &[u8], nibble: &Nibble) -> io::Result<Vec<u8>> {
-    if nibble == &Nibble::High && length % 2 != 0 {
-        return Err(io::Error::new(
-            io::ErrorKind::InvalidInput,
-            "Length should be even when reading the high nibble",
-        ));
-    }
     // TODO make this more efficient
     let resulting_length = (length + 1) / 2;
     let mut result = vec![0; resulting_length];
@@ -425,14 +419,21 @@ mod tests {
     }
 
     #[test]
-    fn test_de_nibble_even() {
+    fn test_de_nibble_high_even() {
         let buff = vec![0x40, 0x10, 0x40, 0x20, 0x40, 0x30];
         let result = de_nibble(6, &buff, &Nibble::High).unwrap();
         pretty_assertions::assert_eq!(result, vec![0x41, 0x42, 0x43]);
     }
 
     #[test]
-    fn test_de_nibble_uneven() {
+    fn test_de_nibble_high_uneven() {
+        let buff = vec![0x10, 0x40, 0x20, 0x40, 0x30];
+        let result = de_nibble(5, &buff, &Nibble::High).unwrap();
+        pretty_assertions::assert_eq!(result, vec![0x01, 0x42, 0x43]);
+    }
+
+    #[test]
+    fn test_de_nibble_low_uneven() {
         let buff = vec![0x04, 0x01, 0x04, 0x02, 0x04];
         let result = de_nibble(5, &buff, &Nibble::Low).unwrap();
         pretty_assertions::assert_eq!(result, vec![0x04, 0x14, 0x24]);

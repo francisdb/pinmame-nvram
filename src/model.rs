@@ -81,7 +81,7 @@ pub struct Audit {
 // "ch": A sequence of 7-bit ASCII characters. If the JSON file has a _char_map key, use bytes from the NV file as indexes into that string instead of interpreting them as 7-bit ASCII.
 // "raw": A series of raw bytes, useful for extracting data yet to be decoded or that requires custom processing.
 // "wpc_rtc"
-#[derive(Serialize, Deserialize, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Copy, Clone)]
 #[serde(rename_all = "lowercase")]
 pub enum Encoding {
     Enum,
@@ -167,7 +167,7 @@ pub struct LastGamePlayer {
     pub label: Option<String>,
 }
 
-#[derive(Serialize, Deserialize, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Copy, Clone)]
 #[serde(rename_all = "lowercase")]
 pub enum Nibble {
     High,
