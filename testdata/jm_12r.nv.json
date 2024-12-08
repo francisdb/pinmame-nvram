@@ -775,10 +775,10 @@
   ],
   "checksum8": [
     {
-      "end": "0x1B04",
+      "end": 6916,
       "groupings": 6,
       "label": "Audits",
-      "start": "0x1811"
+      "start": 6161
     }
   ],
   "high_scores": [

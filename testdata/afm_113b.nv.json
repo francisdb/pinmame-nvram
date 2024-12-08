@@ -468,18 +468,24 @@
       "value": "valid"
     },
     {
-      "checksum_mismatch_calculated": 62999,
-      "checksum_mismatch_expected": 65294,
-      "label": "Mode Champions",
-      "value": "mismatch"
+      "label": "Buy-In Scores",
+      "value": "valid"
+    },
+    {
+      "label": "Martian Champ",
+      "value": "valid"
+    },
+    {
+      "label": "Ruler of the Universe",
+      "value": "valid"
     }
   ],
   "checksum8": [
     {
-      "end": "0x1B7C",
+      "end": 7036,
       "groupings": 6,
       "label": "Audits",
-      "start": "0x1811"
+      "start": 6161
     }
   ],
   "high_scores": [
@@ -532,6 +538,46 @@
         "value": 5500000000
       },
       "short_label": "4th"
+    },
+    {
+      "initials": {
+        "value": "DWF"
+      },
+      "label": "Buy-In Score #1",
+      "score": {
+        "value": 5000000000
+      },
+      "short_label": "BI#1"
+    },
+    {
+      "initials": {
+        "value": "ASR"
+      },
+      "label": "Buy-In Score #2",
+      "score": {
+        "value": 4500000000
+      },
+      "short_label": "BI#2"
+    },
+    {
+      "initials": {
+        "value": "BCM"
+      },
+      "label": "Buy-In Score #3",
+      "score": {
+        "value": 4000000000
+      },
+      "short_label": "BI#3"
+    },
+    {
+      "initials": {
+        "value": "MOO"
+      },
+      "label": "Buy-In Score #4",
+      "score": {
+        "value": 3500000000
+      },
+      "short_label": "BI#4"
     }
   ],
   "last_game": [

@@ -390,15 +390,15 @@
   },
   "checksum8": [
     {
-      "end": "0x724",
+      "end": 1828,
       "groupings": 4,
       "label": "Audits",
-      "start": "0x6A4"
+      "start": 1700
     },
     {
-      "end": "0x75A",
+      "end": 1882,
       "label": "Auto Replay Data",
-      "start": "0x748"
+      "start": 1864
     }
   ],
   "game_state": {

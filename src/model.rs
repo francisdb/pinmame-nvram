@@ -57,7 +57,7 @@ pub struct Adjustment {
 #[derive(Serialize, Deserialize)]
 pub struct Audit {
     pub label: String,
-    pub start: String,
+    pub start: HexOrInteger,
     pub encoding: Encoding,
     pub length: u64,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -390,7 +390,8 @@ mod tests {
             if file_name.ends_with(".nv.json") {
                 // println!("Reading {}", file_name);
                 let json = std::fs::read_to_string(path).unwrap();
-                let nvram_map: NvramMap = serde_json::from_str(&json).unwrap();
+                let nvram_map: NvramMap =
+                    serde_json::from_str(&json).expect(&format!("Failed reading {}", file_name));
                 let json2 = serde_json::to_string_pretty(&nvram_map).unwrap();
 
                 // read json as Value to compare without formatting
