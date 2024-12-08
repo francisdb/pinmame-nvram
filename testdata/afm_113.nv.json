@@ -1,0 +1,622 @@
+{
+  "_fileformat": 0.1,
+  "adjustments": {
+    "A.1 Standard Adjustments": {
+      "01": {
+        "label": "Balls Per Game",
+        "value": 5
+      },
+      "02": {
+        "label": "Tilt Warnings",
+        "value": 3
+      },
+      "03": {
+        "label": "Max E.B. Count",
+        "value": 4
+      },
+      "04": {
+        "label": "Max E.B. Per B.I.P",
+        "value": 0
+      },
+      "05": {
+        "label": "Replay System",
+        "value": "Auto %"
+      },
+      "06": {
+        "label": "Replay Percent",
+        "value": 10
+      },
+      "07": {
+        "label": "Replay Start",
+        "value": 55
+      },
+      "08": {
+        "label": "Replay Levels",
+        "value": 1
+      },
+      "13": {
+        "label": "Replay Boost",
+        "value": 1
+      },
+      "14": {
+        "label": "Replay",
+        "value": "Credit"
+      },
+      "16": {
+        "label": "Match Award",
+        "value": "Credit"
+      },
+      "17": {
+        "label": "Ex. Ball Ticket",
+        "value": "NO"
+      },
+      "18": {
+        "label": "Max Tick/Player",
+        "value": 25
+      },
+      "19": {
+        "label": "Match Feature",
+        "value": 7
+      },
+      "20": {
+        "label": "Custom Message",
+        "value": "ON"
+      },
+      "21": {
+        "label": "Language",
+        "value": "English"
+      },
+      "22": {
+        "label": "Clock Style",
+        "value": "AM/PM"
+      },
+      "23": {
+        "label": "Date Style",
+        "value": "Mmm. DD, YY"
+      },
+      "24": {
+        "label": "Show Time + Date",
+        "value": "NO"
+      },
+      "25": {
+        "label": "Allow Dim. Illum.",
+        "value": "YES"
+      },
+      "26": {
+        "label": "Tournament Play",
+        "value": "NO"
+      },
+      "27": {
+        "label": "Euro. Scr. Format",
+        "value": "NO"
+      },
+      "28": {
+        "label": "Min. Vol. Override",
+        "value": "NO"
+      },
+      "29": {
+        "label": "GI Power Saver",
+        "value": 15
+      },
+      "30": {
+        "label": "Power Save Level",
+        "value": 5
+      },
+      "31": {
+        "label": "Ticket Exp. Board",
+        "value": "NO"
+      },
+      "32": {
+        "label": "No Bonus Flips",
+        "value": "YES"
+      },
+      "33": {
+        "label": "Game Restart",
+        "value": "SLOW"
+      },
+      "34": {
+        "label": "Allow Chase Ball",
+        "value": "YES"
+      }
+    }
+  },
+  "audits": {
+    "B.2 Earnings Audits": {
+      "02": {
+        "label": "Recent Left Slot",
+        "value": 2
+      },
+      "03": {
+        "label": "Recent Cent. Slot",
+        "value": 0
+      },
+      "04": {
+        "label": "Recent Rght. Slot",
+        "value": 2
+      },
+      "05": {
+        "label": "Recent 4th Slot",
+        "value": 0
+      },
+      "06": {
+        "label": "Recent Paid Cred",
+        "value": 2
+      },
+      "07": {
+        "label": "Recent Serv. Cred",
+        "value": 1
+      },
+      "09": {
+        "label": "Total Left Slot",
+        "value": 2
+      },
+      "10": {
+        "label": "Total Cent. Slot",
+        "value": 0
+      },
+      "11": {
+        "label": "Total Rght. Slot",
+        "value": 2
+      },
+      "12": {
+        "label": "Total 4th Slot",
+        "value": 0
+      },
+      "13": {
+        "label": "Total Paid Cred",
+        "value": 2
+      },
+      "14": {
+        "label": "Total Serv. Cred",
+        "value": 1
+      }
+    },
+    "B.3 Standard Audits": {
+      "01": {
+        "label": "Games Started",
+        "value": 32
+      },
+      "02": {
+        "label": "Total Plays",
+        "value": 2
+      },
+      "03": {
+        "label": "Total Free Plays",
+        "value": 0
+      },
+      "05": {
+        "label": "Replay Awards",
+        "value": 0
+      },
+      "09": {
+        "label": "Match Awards",
+        "value": 0
+      },
+      "11": {
+        "label": "H.S.T.D. Credits",
+        "value": 0
+      },
+      "13": {
+        "label": "Extra Balls",
+        "value": 0
+      },
+      "15": {
+        "label": "Tickets Awarded",
+        "value": 0
+      },
+      "17": {
+        "label": "Left Drains",
+        "value": 0
+      },
+      "18": {
+        "label": "Right Drains",
+        "value": 0
+      },
+      "21": {
+        "label": "Play Time",
+        "value": 29
+      },
+      "22": {
+        "label": "Minutes On",
+        "value": 130
+      },
+      "23": {
+        "label": "Balls Played",
+        "value": 10
+      },
+      "24": {
+        "label": "Tilts",
+        "value": 0
+      },
+      "25": {
+        "label": "Replay 1 Awards",
+        "value": 0
+      },
+      "26": {
+        "label": "Replay 2 Awards",
+        "value": 0
+      },
+      "27": {
+        "label": "Replay 3 Awards",
+        "value": 0
+      },
+      "28": {
+        "label": "Replay 4 Awards",
+        "value": 0
+      },
+      "29": {
+        "label": "1 Player Games",
+        "value": 2
+      },
+      "30": {
+        "label": "2 Player Games",
+        "value": 0
+      },
+      "31": {
+        "label": "3 Player Games",
+        "value": 0
+      },
+      "32": {
+        "label": "4 Player Games",
+        "value": 0
+      },
+      "33": {
+        "label": "H.S.T.D. Reset Count",
+        "value": 2998
+      },
+      "34": {
+        "label": "Burn-in Time",
+        "value": 0
+      },
+      "35": {
+        "label": "1st Replay Level",
+        "value": 5500
+      },
+      "36": {
+        "label": "Left Flipper",
+        "value": 181
+      },
+      "37": {
+        "label": "Right Flipper",
+        "value": 197
+      }
+    },
+    "B.5 Histograms": {
+      "01": {
+        "label": "0-199M Score",
+        "value": 0
+      },
+      "02": {
+        "label": "200-399M Score",
+        "value": 0
+      },
+      "03": {
+        "label": "400-599M Score",
+        "value": 0
+      },
+      "04": {
+        "label": "600-799M Score",
+        "value": 1
+      },
+      "05": {
+        "label": "800-999M Score",
+        "value": 0
+      },
+      "06": {
+        "label": "1-1.49B Score",
+        "value": 1
+      },
+      "07": {
+        "label": "1.5B-1.99B Score",
+        "value": 0
+      },
+      "08": {
+        "label": "2-2.99B Score",
+        "value": 0
+      },
+      "09": {
+        "label": "3-3.99B Score",
+        "value": 0
+      },
+      "10": {
+        "label": "4-4.99B Score",
+        "value": 0
+      },
+      "11": {
+        "label": "5-6.99B Score",
+        "value": 0
+      },
+      "12": {
+        "label": "7-8.99B Score",
+        "value": 0
+      },
+      "13": {
+        "label": "Over 9B Score",
+        "value": 0
+      },
+      "14": {
+        "label": "Game Time 0.0-1.0M",
+        "value": 0
+      },
+      "15": {
+        "label": "Game Time 1.0-1.5M",
+        "value": 0
+      },
+      "16": {
+        "label": "Game Time 1.5-2.0M",
+        "value": 0
+      },
+      "17": {
+        "label": "Game Time 2.0-2.5M",
+        "value": 1
+      },
+      "18": {
+        "label": "Game Time 2.5-3.0M",
+        "value": 1
+      },
+      "19": {
+        "label": "Game Time 3.0-3.5M",
+        "value": 0
+      },
+      "20": {
+        "label": "Game Time 3.5-4.0M",
+        "value": 0
+      },
+      "21": {
+        "label": "Game Time 4-5M",
+        "value": 0
+      },
+      "22": {
+        "label": "Game Time 5-6M",
+        "value": 0
+      },
+      "23": {
+        "label": "Game Time 6-8M",
+        "value": 0
+      },
+      "24": {
+        "label": "Game Time 8-10M",
+        "value": 0
+      },
+      "25": {
+        "label": "Game Time 10-15M",
+        "value": 0
+      },
+      "26": {
+        "label": "Game Time > 15M",
+        "value": 0
+      }
+    },
+    "B.6 Timestamps": {
+      "02": {
+        "label": "Totals Cleared",
+        "value": "2017-01-07 20:09"
+      },
+      "03": {
+        "label": "Clock Last Set",
+        "value": "2017-01-07 20:09"
+      },
+      "04": {
+        "label": "Audits Cleared",
+        "value": "2017-01-07 20:09"
+      },
+      "05": {
+        "label": "Coins Cleared",
+        "value": "2017-01-07 20:09"
+      },
+      "06": {
+        "label": "Factory Setting",
+        "value": "2017-01-07 20:09"
+      },
+      "07": {
+        "label": "Last Game Start",
+        "value": "2023-06-17 11:58"
+      },
+      "08": {
+        "label": "Last Replay",
+        "value": "2017-01-07 20:09"
+      },
+      "09": {
+        "label": "Last HSTD Reset",
+        "value": "2017-01-07 20:09"
+      },
+      "10": {
+        "label": "Champion Reset",
+        "value": "2017-01-07 20:09"
+      },
+      "11": {
+        "label": "Last Printout",
+        "value": "2017-01-07 20:09"
+      },
+      "12": {
+        "label": "Last Serv. Cred",
+        "value": "2018-01-28 17:24"
+      },
+      "13": {
+        "label": "R. Universe Won",
+        "value": "2017-01-07 20:09"
+      }
+    }
+  },
+  "checksum16": [
+    {
+      "label": "Adjustments",
+      "value": "valid"
+    },
+    {
+      "label": "Timestamps",
+      "value": "valid"
+    },
+    {
+      "label": "High Scores",
+      "value": "valid"
+    },
+    {
+      "label": "Grand Champion",
+      "value": "valid"
+    },
+    {
+      "label": "HSTD Reset",
+      "value": "valid"
+    },
+    {
+      "label": "?? replay level",
+      "value": "valid"
+    },
+    {
+      "label": "Custom Message",
+      "value": "valid"
+    },
+    {
+      "label": "Buy-In Scores",
+      "value": "valid"
+    },
+    {
+      "label": "Martian Champ",
+      "value": "valid"
+    },
+    {
+      "label": "Ruler of the Universe",
+      "value": "valid"
+    }
+  ],
+  "checksum8": [
+    {
+      "end": 7036,
+      "groupings": 6,
+      "label": "Audits",
+      "start": 6161
+    }
+  ],
+  "high_scores": [
+    {
+      "initials": {
+        "value": "SLL"
+      },
+      "label": "Grand Champion",
+      "score": {
+        "value": 7500000000
+      },
+      "short_label": "GC"
+    },
+    {
+      "initials": {
+        "value": "BRE"
+      },
+      "label": "First Place",
+      "score": {
+        "value": 7000000000
+      },
+      "short_label": "1st"
+    },
+    {
+      "initials": {
+        "value": "LFS"
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 6500000000
+      },
+      "short_label": "2nd"
+    },
+    {
+      "initials": {
+        "value": "RCF"
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 6000000000
+      },
+      "short_label": "3rd"
+    },
+    {
+      "initials": {
+        "value": "DTW"
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 5500000000
+      },
+      "short_label": "4th"
+    },
+    {
+      "initials": {
+        "value": "DWF"
+      },
+      "label": "Buy-In Score #1",
+      "score": {
+        "value": 5000000000
+      },
+      "short_label": "BI#1"
+    },
+    {
+      "initials": {
+        "value": "ASR"
+      },
+      "label": "Buy-In Score #2",
+      "score": {
+        "value": 4500000000
+      },
+      "short_label": "BI#2"
+    },
+    {
+      "initials": {
+        "value": "BCM"
+      },
+      "label": "Buy-In Score #3",
+      "score": {
+        "value": 4000000000
+      },
+      "short_label": "BI#3"
+    },
+    {
+      "initials": {
+        "value": "MOO"
+      },
+      "label": "Buy-In Score #4",
+      "score": {
+        "value": 3500000000
+      },
+      "short_label": "BI#4"
+    }
+  ],
+  "last_game": [
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    }
+  ],
+  "last_played": {
+    "value": "2023-06-17 00:01"
+  },
+  "mode_champions": [
+    {
+      "initials": {
+        "value": "LFS"
+      },
+      "label": "Martian Champion",
+      "score": {
+        "value": 20
+      },
+      "short_label": "Martian Champ"
+    },
+    {
+      "initials": {
+        "value": "TEX"
+      },
+      "label": "Ruler of the Universe",
+      "short_label": "Rule the Universe",
+      "timestamp": {
+        "value": "2017-01-07 20:09"
+      }
+    }
+  ]
+}
