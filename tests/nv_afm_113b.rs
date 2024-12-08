@@ -81,6 +81,30 @@ fn test_attack_from_mars() -> io::Result<()> {
             initials: "DTW".to_string(),
             score: 5_500_000_000,
         },
+        HighScore {
+            label: Some("Buy-In Score #1".into()),
+            short_label: Some("BI#1".into()),
+            initials: "DWF".into(),
+            score: 5000000000,
+        },
+        HighScore {
+            label: Some("Buy-In Score #2".into()),
+            short_label: Some("BI#2".into()),
+            initials: "ASR".into(),
+            score: 4500000000,
+        },
+        HighScore {
+            label: Some("Buy-In Score #3".into()),
+            short_label: Some("BI#3".into()),
+            initials: "BCM".into(),
+            score: 4000000000,
+        },
+        HighScore {
+            label: Some("Buy-In Score #4".into()),
+            short_label: Some("BI#4".into()),
+            initials: "MOO".into(),
+            score: 3500000000,
+        },
     ]);
     assert_eq!(expected, scores);
 

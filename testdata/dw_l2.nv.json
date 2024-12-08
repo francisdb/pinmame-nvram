@@ -174,18 +174,16 @@
   },
   "checksum16": [
     {
-      "checksum_mismatch_calculated": 63731,
-      "checksum_mismatch_expected": 60671,
       "label": "Adjustments",
-      "value": "mismatch"
+      "value": "valid"
     }
   ],
   "checksum8": [
     {
-      "end": "0x1B82",
+      "end": 7042,
       "groupings": 6,
       "label": "Audits",
-      "start": "0x1811"
+      "start": 6161
     }
   ],
   "game_state": {

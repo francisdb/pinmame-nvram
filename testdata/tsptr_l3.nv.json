@@ -430,10 +430,10 @@
   },
   "checksum8": [
     {
-      "end": "0x70A",
+      "end": 1802,
       "groupings": 4,
       "label": "Audits",
-      "start": "0x6A4"
+      "start": 1700
     }
   ],
   "game_state": {
