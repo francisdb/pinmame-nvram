@@ -16,7 +16,15 @@ pub fn resolve(nv_path: &Path) -> io::Result<Option<Value>> {
             .map(|s| s.to_string());
         let endian: Endian = serde_json::from_value(map["_endian"].clone())?;
         let mut rom = OpenOptions::new().read(true).open(nv_path)?;
-        Some(resolve_recursive(map, &char_map, endian, &mut rom)?)
+        match resolve_recursive(map, &char_map, endian, &mut rom) {
+            Ok(resolved) => Some(resolved),
+            Err(e) => {
+                return Err(io::Error::new(
+                    e.kind(),
+                    format!("Failed to resolve: {}: {}", nv_path.display(), e),
+                ))
+            }
+        }
     } else {
         None
     };

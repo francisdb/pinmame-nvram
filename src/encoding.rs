@@ -83,10 +83,8 @@ pub(crate) fn read_ch<A: Read + Seek>(
     char_map: &Option<String>,
     nibble: &Option<Nibble>,
 ) -> io::Result<String> {
-    stream.seek(SeekFrom::Start(location))?;
-
     let mut buff = vec![0; length];
-    stream.read_exact(&mut buff)?;
+    read_exact_at(stream, location, &mut buff)?;
 
     if let Some(nibble) = nibble {
         let result = de_nibble(length, &buff, *nibble)?;
@@ -185,17 +183,15 @@ pub(crate) fn read_bcd<A: Read + Seek>(
 ) -> io::Result<u64> {
     let mut buff = match location {
         Location::Continuous { start, length } => {
-            stream.seek(SeekFrom::Start(start))?;
             let mut buff = vec![0; length];
-            stream.read_exact(&mut buff)?;
+            read_exact_at(stream, start, &mut buff)?;
             buff
         }
         Location::Scattered { offsets } => {
             let mut buff = vec![0; offsets.len()];
             for offset in offsets.iter() {
-                stream.seek(SeekFrom::Start(*offset))?;
                 let mut byte = [0; 1];
-                stream.read_exact(&mut byte)?;
+                read_exact_at(stream, *offset, &mut byte)?;
                 buff.push(byte[0]);
             }
             buff
@@ -269,7 +265,7 @@ pub(crate) fn read_int<T: Read + Seek>(
 ) -> io::Result<u64> {
     nvram_file.seek(SeekFrom::Start(start))?;
     let mut buff = vec![0; length];
-    nvram_file.read_exact(&mut buff)?;
+    read_exact_at(nvram_file, start, &mut buff)?;
     let score = match endian {
         Endian::Big => buff
             .iter()
@@ -280,6 +276,22 @@ pub(crate) fn read_int<T: Read + Seek>(
             .fold(0u64, |acc, &x| acc.wrapping_shl(8).wrapping_add(x as u64)),
     };
     Ok(score)
+}
+
+fn read_exact_at<A: Seek + Read>(stream: &mut A, offset: u64, buff: &mut [u8]) -> io::Result<()> {
+    stream.seek(SeekFrom::Start(offset))?;
+    match stream.read_exact(buff) {
+        Ok(()) => Ok(()),
+        Err(ref e) if e.kind() == io::ErrorKind::UnexpectedEof => Err(io::Error::new(
+            io::ErrorKind::UnexpectedEof,
+            format!(
+                "Unexpected EOF while reading at position {} with length {}",
+                offset,
+                buff.len()
+            ),
+        )),
+        Err(e) => Err(e),
+    }
 }
 
 /// A special type for a real-time clock value from a WPC game,
@@ -296,9 +308,8 @@ pub(crate) fn read_wpc_rtc<T: Read + Seek>(
     start: u64,
     length: usize,
 ) -> io::Result<String> {
-    nvram_file.seek(SeekFrom::Start(start))?;
     let mut buff = vec![0; length];
-    nvram_file.read_exact(&mut buff)?;
+    read_exact_at(nvram_file, start, &mut buff)?;
     let year = (buff[0] as u16) << 8 | buff[1] as u16;
     let month = buff[2];
     let day = buff[3];
