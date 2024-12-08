@@ -278,13 +278,9 @@ pub(crate) fn read_int<T: Read + Seek>(
     Ok(score)
 }
 
-fn read_exact_at<A: Seek + Read>(
-    stream: &mut A,
-    offset: u64,
-    mut buff: &mut [u8],
-) -> io::Result<()> {
+fn read_exact_at<A: Seek + Read>(stream: &mut A, offset: u64, buff: &mut [u8]) -> io::Result<()> {
     stream.seek(SeekFrom::Start(offset))?;
-    match stream.read_exact(&mut buff) {
+    match stream.read_exact(buff) {
         Ok(()) => Ok(()),
         Err(ref e) if e.kind() == io::ErrorKind::UnexpectedEof => Err(io::Error::new(
             io::ErrorKind::UnexpectedEof,
