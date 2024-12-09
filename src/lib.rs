@@ -716,7 +716,7 @@ fn validate_dip_switch_range(switch_count: usize, number: usize) -> io::Result<(
         return Err(io::Error::new(
             io::ErrorKind::InvalidInput,
             format!(
-                "Switch count {} out of range, expected 1-{}",
+                "Switch count {} out of range, expected 0-{}",
                 switch_count, MAX_SWITCH_COUNT
             ),
         ));
@@ -826,7 +826,7 @@ mod tests {
         println!("{:?}", result);
         assert!(matches!(
             result,
-            Err(ref e) if e.kind() == io::ErrorKind::InvalidInput && e.to_string() == "Switch count 49 out of range, expected 1-48"
+            Err(ref e) if e.kind() == io::ErrorKind::InvalidInput && e.to_string() == "Switch count 49 out of range, expected 0-48"
         ));
         Ok(())
     }
