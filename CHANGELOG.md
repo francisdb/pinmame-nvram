@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.2](https://github.com/francisdb/pinmame-nvram/compare/v0.2.1...v0.2.2) - 2024-12-08
+
+### Added
+
+- better error messages (#12)
+
+### Other
+
+- some more afm nvrams
+- update to latest maps (#11)
+- add extra fields for wip maps
+
 ## [0.2.1](https://github.com/francisdb/pinmame-nvram/compare/v0.2.0...v0.2.1) - 2024-12-06
 
 ### Fixed
