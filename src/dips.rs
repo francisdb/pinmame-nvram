@@ -71,7 +71,7 @@ pub fn set_dip_switch<T: Read + Write + Seek>(
 }
 
 pub(crate) fn validate_generic_dip_switch_range(number: usize) -> io::Result<()> {
-    if number < 1 || number > MAX_SWITCH_COUNT {
+    if !(1..=MAX_SWITCH_COUNT).contains(&number) {
         return Err(io::Error::new(
             io::ErrorKind::InvalidInput,
             format!(
@@ -84,7 +84,7 @@ pub(crate) fn validate_generic_dip_switch_range(number: usize) -> io::Result<()>
 }
 
 pub(crate) fn validate_dip_switch_range(switch_count: usize, number: usize) -> io::Result<()> {
-    if switch_count > (MAX_SWITCH_COUNT) as usize {
+    if switch_count > MAX_SWITCH_COUNT {
         return Err(io::Error::new(
             io::ErrorKind::InvalidInput,
             format!(
