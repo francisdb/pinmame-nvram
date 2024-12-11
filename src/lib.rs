@@ -1,16 +1,20 @@
+pub mod checksum;
+mod dips;
 mod encoding;
 mod model;
 pub mod resolve;
 
+use crate::checksum::{update_all_checksum16, verify_all_checksum16, ChecksumMismatch};
+use crate::dips::{get_dip_switch, set_dip_switch, validate_dip_switch_range};
 use crate::encoding::{read_bcd, read_ch, read_int, read_wpc_rtc, write_bcd, write_ch, Location};
-use crate::model::{Checksum16, Encoding, Endian, NvramMap, Score, StateOrStateList};
+use crate::model::{Encoding, Endian, NvramMap, Score, StateOrStateList};
 use include_dir::{include_dir, Dir, File};
 use serde::de;
 use serde_json::{Number, Value};
 use std::collections::HashMap;
 use std::fs::OpenOptions;
 use std::io;
-use std::io::{Read, Seek, SeekFrom, Write};
+use std::io::{Read, Seek, Write};
 use std::path::{Path, PathBuf};
 
 static MAPS: Dir = include_dir!("$OUT_DIR/maps.brotli");
@@ -102,6 +106,43 @@ impl Nvram {
     pub fn read_game_state(&mut self) -> io::Result<Option<HashMap<String, String>>> {
         let mut file = OpenOptions::new().read(true).open(&self.nv_path)?;
         read_game_state(&mut file, &self.map)
+    }
+
+    pub fn dip_switches_len(&self) -> usize {
+        // TODO get the number of dip switches from the map
+        // centaur
+        // 32 default switches
+        // 3 additional switches for the sound board reverb effect
+        32 + 3
+    }
+
+    /// Get the value of a dip switch
+    /// # Arguments
+    /// * `number` - The number of the dip switch to get, 1-based!
+    /// # Returns
+    /// * `Ok(true)` if the dip switch is ON
+    /// * `Ok(false)` if the dip switch is OFF
+    /// * `Err(io::Error)` if the dip switch number is out of range or an IO error occurred
+    pub fn get_dip_switch(&self, number: usize) -> io::Result<bool> {
+        validate_dip_switch_range(self.dip_switches_len(), number)?;
+        let mut file = OpenOptions::new().read(true).open(&self.nv_path)?;
+        get_dip_switch(&mut file, number)
+    }
+
+    /// Set a dip switch to on or off
+    /// # Arguments
+    /// * `number` - The number of the dip switch to set, 1-based!
+    /// * `on` - `true` to set the dip switch to ON, `false` to set it to OFF
+    /// # Returns
+    /// * `Ok(())` if the dip switch was set successfully
+    /// * `Err(io::Error)` if the dip switch number is out of range or an IO error occurred
+    pub fn set_dip_switch(&self, number: usize, on: bool) -> io::Result<()> {
+        validate_dip_switch_range(self.dip_switches_len(), number)?;
+        let mut file = OpenOptions::new()
+            .read(true)
+            .write(true)
+            .open(&self.nv_path)?;
+        set_dip_switch(&mut file, number, on)
     }
 }
 
@@ -531,103 +572,6 @@ fn location_for(score: &Score) -> Location {
     }
 }
 
-#[derive(Debug, PartialEq)]
-pub struct ChecksumMismatch<T> {
-    label: Option<String>,
-    expected: T,
-    calculated: T,
-}
-
-/// checksum16: An array of memory regions protected by a 16-bit checksum. The last two bytes of
-/// the range are set so that adding all other bytes in the range results in a value of 0xFFFF.
-fn verify_checksum16<T: Read + Seek>(
-    nvram_file: &mut T,
-    checksum16: &Checksum16,
-    endian: Endian,
-) -> io::Result<Option<ChecksumMismatch<u16>>> {
-    let start: u64 = (&checksum16.start).into();
-    let end: u64 = (&checksum16.end).into();
-    let length = (1 + end - start) as usize;
-
-    nvram_file.seek(SeekFrom::Start(start))?;
-    let mut buff = vec![0; length];
-    nvram_file.read_exact(&mut buff)?;
-
-    let stored_sum = match endian {
-        Endian::Big => (buff.pop().unwrap() as u16) + ((buff.pop().unwrap() as u16) << 8),
-        Endian::Little => ((buff.pop().unwrap() as u16) << 8) + buff.pop().unwrap() as u16,
-    };
-
-    // adding sum + all other bytes should result in 0xFFFF
-    let calc_sum: u16 = 0xFFFFu16 - buff.iter().fold(0u16, |acc, &x| acc.wrapping_add(x as u16));
-    if calc_sum != stored_sum {
-        return Ok(Some(ChecksumMismatch {
-            label: checksum16.label.clone(),
-            expected: stored_sum,
-            calculated: calc_sum,
-        }));
-    }
-    Ok(None)
-}
-
-fn verify_all_checksum16<T: Read + Seek>(
-    mut nvram_file: &mut T,
-    map: &NvramMap,
-) -> io::Result<Vec<ChecksumMismatch<u16>>> {
-    let endian = map._endian.as_ref().unwrap();
-    map.checksum16
-        .iter()
-        .flatten()
-        .map(|cs| verify_checksum16(&mut nvram_file, cs, *endian))
-        .filter_map(|r| r.transpose())
-        .collect()
-}
-
-fn update_checksum16<T: Read + Seek + Write>(
-    nvram_file: &mut T,
-    checksum16: &Checksum16,
-    endian: Endian,
-) -> io::Result<()> {
-    let start: u64 = (&checksum16.start).into();
-    let end: u64 = (&checksum16.end).into();
-    let length = (1 + end - start) as usize;
-
-    nvram_file.seek(SeekFrom::Start(start))?;
-    let mut buff = vec![0; length - 2];
-    nvram_file.read_exact(&mut buff)?;
-
-    // adding sum + all other bytes should result in 0xFFFF
-    let calc_sum: u16 = 0xFFFFu16 - buff.iter().fold(0u16, |acc, &x| acc.wrapping_add(x as u16));
-
-    // push the calculated sum to the end of the buffer
-    match endian {
-        Endian::Big => {
-            buff.push((calc_sum >> 8) as u8);
-            buff.push((calc_sum & 0xFF) as u8);
-        }
-        Endian::Little => {
-            buff.push((calc_sum & 0xFF) as u8);
-            buff.push((calc_sum >> 8) as u8);
-        }
-    }
-
-    nvram_file.seek(SeekFrom::Start(start))?;
-    nvram_file.write_all(&buff)?;
-
-    Ok(())
-}
-
-fn update_all_checksum16<T: Read + Seek + Write>(
-    mut nvram_file: &mut T,
-    map: &NvramMap,
-) -> io::Result<()> {
-    let endian = map._endian.as_ref().unwrap();
-    map.checksum16
-        .iter()
-        .flatten()
-        .try_for_each(|cs| update_checksum16(&mut nvram_file, cs, *endian))
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -651,15 +595,6 @@ mod tests {
         let _ = File::create(&test_file)?;
         let nvram = Nvram::open(&test_file)?;
         assert_eq!(true, nvram.is_none());
-        Ok(())
-    }
-
-    #[test]
-    fn test_checksum16() -> io::Result<()> {
-        let mut file = OpenOptions::new().read(true).open("testdata/dm_lx4.nv")?;
-        let nvram = Nvram::open(Path::new("testdata/dm_lx4.nv"))?.unwrap();
-        let checksum_failures = verify_all_checksum16(&mut file, &nvram.map)?;
-        assert_eq!(Vec::<ChecksumMismatch<u16>>::new(), checksum_failures);
         Ok(())
     }
 

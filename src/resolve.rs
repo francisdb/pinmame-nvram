@@ -1,6 +1,7 @@
+use crate::checksum::{verify_checksum16, verify_checksum8};
 use crate::encoding::{read_bcd, read_ch, read_int, read_wpc_rtc, Location};
-use crate::model::{Checksum16, Encoding, Endian, Nibble};
-use crate::{open_nvram, verify_checksum16};
+use crate::model::{Checksum16, Checksum8, Encoding, Endian, Nibble};
+use crate::open_nvram;
 use serde_json::{Map, Number, Value};
 use std::fs::OpenOptions;
 use std::io;
@@ -57,6 +58,9 @@ fn resolve_recursive<T: Read + Seek>(
                     if key.eq("checksum16") {
                         let checksum_result = resolve_checksum16(endian, rom, value)?;
                         resolved_map.insert(key.clone(), checksum_result);
+                    } else if key.eq("checksum8") {
+                        let checksum_result = resolve_checksum8(rom, value)?;
+                        resolved_map.insert(key.clone(), checksum_result);
                     } else if key.eq("_fileformat") || !key.starts_with('_') {
                         resolved_map.insert(
                             key.clone(),
@@ -89,6 +93,35 @@ fn resolve_checksum16<T: Read + Seek>(
     for checksum in value.as_array().unwrap() {
         let checksum16: Checksum16 = serde_json::from_value(checksum.clone())?;
         let checksum_failure = verify_checksum16(rom, &checksum16, endian)?;
+        let mut map = Map::new();
+        if let Some(label) = checksum.get("label") {
+            map.insert("label".to_string(), label.clone());
+        }
+        if let Some(checksum_failure) = checksum_failure {
+            map.insert("value".to_string(), Value::String("mismatch".to_string()));
+            map.insert(
+                "checksum_mismatch_expected".to_string(),
+                Value::Number(checksum_failure.expected.into()),
+            );
+            map.insert(
+                "checksum_mismatch_calculated".to_string(),
+                Value::Number(checksum_failure.calculated.into()),
+            );
+            checksum_result.push(Value::Object(map));
+        } else {
+            map.insert("value".to_string(), Value::String("valid".to_string()));
+            checksum_result.push(Value::Object(map));
+        }
+    }
+    Ok(Value::Array(checksum_result))
+}
+
+fn resolve_checksum8<T: Read + Seek>(rom: &mut T, value: &Value) -> io::Result<Value> {
+    // go over the checksum16 array and verify the checksum
+    let mut checksum_result: Vec<Value> = Vec::new();
+    for checksum in value.as_array().unwrap() {
+        let checksum8: Checksum8 = serde_json::from_value(checksum.clone())?;
+        let checksum_failure = verify_checksum8(rom, &checksum8)?;
         let mut map = Map::new();
         if let Some(label) = checksum.get("label") {
             map.insert("label".to_string(), label.clone());

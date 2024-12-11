@@ -1,4 +1,5 @@
-use pinmame_nvram::{ChecksumMismatch, HighScore, LastGamePlayer, Nvram};
+use pinmame_nvram::checksum::ChecksumMismatch;
+use pinmame_nvram::{HighScore, LastGamePlayer, Nvram};
 use pretty_assertions::assert_eq;
 use std::io;
 use std::path::Path;

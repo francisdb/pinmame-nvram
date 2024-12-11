@@ -390,15 +390,12 @@
   },
   "checksum8": [
     {
-      "end": 1828,
-      "groupings": 4,
       "label": "Audits",
-      "start": 1700
+      "value": "valid"
     },
     {
-      "end": 1882,
       "label": "Auto Replay Data",
-      "start": 1864
+      "value": "valid"
     }
   ],
   "game_state": {
