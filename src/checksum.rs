@@ -23,7 +23,6 @@ pub(crate) fn verify_checksum8<T: Read + Seek>(
     let end: u64 = (&checksum8.end).into();
 
     let group_ranges: Vec<[u64; 2]> = groupings_to_ranges(start, end, &checksum8.groupings)?;
-    println!("group_ranges: {:?}", group_ranges);
 
     let checksum_failures_result: io::Result<Vec<ChecksumMismatch<u8>>> = group_ranges
         .iter()
@@ -81,7 +80,6 @@ fn verify_checksum8_range<T: Read + Seek>(
     start: u64,
     end: u64,
 ) -> io::Result<Option<ChecksumMismatch<u8>>> {
-    println!("verify_checksum8_range: {} - {}", start, end);
     nvram_file.seek(SeekFrom::Start(start))?;
     let length = (end - start + 1) as usize;
     let mut buff = vec![0; length];
@@ -89,7 +87,6 @@ fn verify_checksum8_range<T: Read + Seek>(
 
     let stored_sum = buff.pop().unwrap();
     let calc_sum: u8 = 0xFFu8 - buff.iter().fold(0u8, |acc, &x| acc.wrapping_add(x));
-    println!("stored_sum: {}, calc_sum: {}", stored_sum, calc_sum);
     if calc_sum != stored_sum {
         return Ok(Some(ChecksumMismatch {
             label: Some(checksum8.label.clone()),
