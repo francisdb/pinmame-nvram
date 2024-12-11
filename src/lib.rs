@@ -5,7 +5,7 @@ mod model;
 pub mod resolve;
 
 use crate::checksum::{update_all_checksum16, verify_all_checksum16, ChecksumMismatch};
-use crate::dips::{get_dip_switch, set_dip_switch};
+use crate::dips::{get_dip_switch, set_dip_switch, validate_dip_switch_range};
 use crate::encoding::{read_bcd, read_ch, read_int, read_wpc_rtc, write_bcd, write_ch, Location};
 use crate::model::{Encoding, Endian, NvramMap, Score, StateOrStateList};
 use include_dir::{include_dir, Dir, File};
@@ -124,9 +124,9 @@ impl Nvram {
     /// * `Ok(false)` if the dip switch is OFF
     /// * `Err(io::Error)` if the dip switch number is out of range or an IO error occurred
     pub fn get_dip_switch(&self, number: usize) -> io::Result<bool> {
-        let switch_count = self.dip_switches_len();
+        validate_dip_switch_range(self.dip_switches_len(), number)?;
         let mut file = OpenOptions::new().read(true).open(&self.nv_path)?;
-        get_dip_switch(&mut file, switch_count, number)
+        get_dip_switch(&mut file, number)
     }
 
     /// Set a dip switch to on or off
@@ -137,12 +137,12 @@ impl Nvram {
     /// * `Ok(())` if the dip switch was set successfully
     /// * `Err(io::Error)` if the dip switch number is out of range or an IO error occurred
     pub fn set_dip_switch(&self, number: usize, on: bool) -> io::Result<()> {
-        let switch_count = self.dip_switches_len();
+        validate_dip_switch_range(self.dip_switches_len(), number)?;
         let mut file = OpenOptions::new()
             .read(true)
             .write(true)
             .open(&self.nv_path)?;
-        set_dip_switch(&mut file, switch_count, number, on)
+        set_dip_switch(&mut file, number, on)
     }
 }
 
