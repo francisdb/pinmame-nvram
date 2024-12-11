@@ -482,10 +482,8 @@
   ],
   "checksum8": [
     {
-      "end": 7036,
-      "groupings": 6,
       "label": "Audits",
-      "start": 6161
+      "value": "valid"
     }
   ],
   "high_scores": [

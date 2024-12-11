@@ -1,16 +1,20 @@
+pub mod checksum;
+mod dips;
 mod encoding;
 mod model;
 pub mod resolve;
 
+use crate::checksum::{update_all_checksum16, verify_all_checksum16, ChecksumMismatch};
+use crate::dips::{get_dip_switch, set_dip_switch};
 use crate::encoding::{read_bcd, read_ch, read_int, read_wpc_rtc, write_bcd, write_ch, Location};
-use crate::model::{Checksum16, Encoding, Endian, NvramMap, Score, StateOrStateList};
+use crate::model::{Encoding, Endian, NvramMap, Score, StateOrStateList};
 use include_dir::{include_dir, Dir, File};
 use serde::de;
 use serde_json::{Number, Value};
 use std::collections::HashMap;
 use std::fs::OpenOptions;
 use std::io;
-use std::io::{Read, Seek, SeekFrom, Write};
+use std::io::{Read, Seek, Write};
 use std::path::{Path, PathBuf};
 
 static MAPS: Dir = include_dir!("$OUT_DIR/maps.brotli");
@@ -568,171 +572,6 @@ fn location_for(score: &Score) -> Location {
     }
 }
 
-#[derive(Debug, PartialEq)]
-pub struct ChecksumMismatch<T> {
-    label: Option<String>,
-    expected: T,
-    calculated: T,
-}
-
-/// checksum16: An array of memory regions protected by a 16-bit checksum. The last two bytes of
-/// the range are set so that adding all other bytes in the range results in a value of 0xFFFF.
-fn verify_checksum16<T: Read + Seek>(
-    nvram_file: &mut T,
-    checksum16: &Checksum16,
-    endian: Endian,
-) -> io::Result<Option<ChecksumMismatch<u16>>> {
-    let start: u64 = (&checksum16.start).into();
-    let end: u64 = (&checksum16.end).into();
-    let length = (1 + end - start) as usize;
-
-    nvram_file.seek(SeekFrom::Start(start))?;
-    let mut buff = vec![0; length];
-    nvram_file.read_exact(&mut buff)?;
-
-    let stored_sum = match endian {
-        Endian::Big => (buff.pop().unwrap() as u16) + ((buff.pop().unwrap() as u16) << 8),
-        Endian::Little => ((buff.pop().unwrap() as u16) << 8) + buff.pop().unwrap() as u16,
-    };
-
-    // adding sum + all other bytes should result in 0xFFFF
-    let calc_sum: u16 = 0xFFFFu16 - buff.iter().fold(0u16, |acc, &x| acc.wrapping_add(x as u16));
-    if calc_sum != stored_sum {
-        return Ok(Some(ChecksumMismatch {
-            label: checksum16.label.clone(),
-            expected: stored_sum,
-            calculated: calc_sum,
-        }));
-    }
-    Ok(None)
-}
-
-fn verify_all_checksum16<T: Read + Seek>(
-    mut nvram_file: &mut T,
-    map: &NvramMap,
-) -> io::Result<Vec<ChecksumMismatch<u16>>> {
-    let endian = map._endian.as_ref().unwrap();
-    map.checksum16
-        .iter()
-        .flatten()
-        .map(|cs| verify_checksum16(&mut nvram_file, cs, *endian))
-        .filter_map(|r| r.transpose())
-        .collect()
-}
-
-fn update_checksum16<T: Read + Seek + Write>(
-    nvram_file: &mut T,
-    checksum16: &Checksum16,
-    endian: Endian,
-) -> io::Result<()> {
-    let start: u64 = (&checksum16.start).into();
-    let end: u64 = (&checksum16.end).into();
-    let length = (1 + end - start) as usize;
-
-    nvram_file.seek(SeekFrom::Start(start))?;
-    let mut buff = vec![0; length - 2];
-    nvram_file.read_exact(&mut buff)?;
-
-    // adding sum + all other bytes should result in 0xFFFF
-    let calc_sum: u16 = 0xFFFFu16 - buff.iter().fold(0u16, |acc, &x| acc.wrapping_add(x as u16));
-
-    // push the calculated sum to the end of the buffer
-    match endian {
-        Endian::Big => {
-            buff.push((calc_sum >> 8) as u8);
-            buff.push((calc_sum & 0xFF) as u8);
-        }
-        Endian::Little => {
-            buff.push((calc_sum & 0xFF) as u8);
-            buff.push((calc_sum >> 8) as u8);
-        }
-    }
-
-    nvram_file.seek(SeekFrom::Start(start))?;
-    nvram_file.write_all(&buff)?;
-
-    Ok(())
-}
-
-fn update_all_checksum16<T: Read + Seek + Write>(
-    mut nvram_file: &mut T,
-    map: &NvramMap,
-) -> io::Result<()> {
-    let endian = map._endian.as_ref().unwrap();
-    map.checksum16
-        .iter()
-        .flatten()
-        .try_for_each(|cs| update_checksum16(&mut nvram_file, cs, *endian))
-}
-
-/// Number of bytes appended to the NVRAM for dip switches
-///
-/// PinMAME has a maximum of 10 banks with 8 switches each
-/// Somehow only 6 bytes are written to the nvram file
-/// https://github.com/vpinball/pinmame/blob/f14bbc89c48d0ecb0d44d4be7a694730cfbf24e1/src/wpc/core.c#L2303-L2309
-const DIP_SWITCH_BYTES: i64 = 6;
-
-pub fn get_dip_switch<T: Read + Seek>(
-    nvram_file: &mut T,
-    switch_count: usize,
-    number: usize,
-) -> io::Result<bool> {
-    validate_dip_switch_range(switch_count, number)?;
-    let index = number - 1;
-    let register = index / 8;
-    let bit = index % 8;
-    let mut buff = [0; 1];
-    nvram_file.seek(SeekFrom::End(-DIP_SWITCH_BYTES + register as i64))?;
-    nvram_file.read_exact(&mut buff)?;
-    Ok((buff[0] & (1 << bit)) != 0)
-}
-
-pub fn set_dip_switch<T: Read + Write + Seek>(
-    nvram_file: &mut T,
-    switch_count: usize,
-    number: usize,
-    on: bool,
-) -> io::Result<()> {
-    validate_dip_switch_range(switch_count, number)?;
-    let index = number - 1;
-    let register = index / 8;
-    let bit = index % 8;
-    // write single byte with value
-    let mut buff = [0; 1];
-    nvram_file.seek(SeekFrom::End(-DIP_SWITCH_BYTES + register as i64))?;
-    nvram_file.read_exact(&mut buff)?;
-    if on {
-        buff[0] |= 1 << bit;
-    } else {
-        buff[0] &= !(1 << bit);
-    }
-    nvram_file.seek(SeekFrom::End(-DIP_SWITCH_BYTES + register as i64))?;
-    nvram_file.write_all(&buff)
-}
-
-fn validate_dip_switch_range(switch_count: usize, number: usize) -> io::Result<()> {
-    const MAX_SWITCH_COUNT: i64 = DIP_SWITCH_BYTES * 8;
-    if switch_count > (MAX_SWITCH_COUNT) as usize {
-        return Err(io::Error::new(
-            io::ErrorKind::InvalidInput,
-            format!(
-                "Switch count {} out of range, expected 0-{}",
-                switch_count, MAX_SWITCH_COUNT
-            ),
-        ));
-    }
-    if number < 1 || number > switch_count {
-        return Err(io::Error::new(
-            io::ErrorKind::InvalidInput,
-            format!(
-                "Dip switch #{} out of range, expected 1-{}",
-                number, switch_count
-            ),
-        ));
-    }
-    Ok(())
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -760,74 +599,9 @@ mod tests {
     }
 
     #[test]
-    fn test_checksum16() -> io::Result<()> {
-        let mut file = OpenOptions::new().read(true).open("testdata/dm_lx4.nv")?;
-        let nvram = Nvram::open(Path::new("testdata/dm_lx4.nv"))?.unwrap();
-        let checksum_failures = verify_all_checksum16(&mut file, &nvram.map)?;
-        assert_eq!(Vec::<ChecksumMismatch<u16>>::new(), checksum_failures);
-        Ok(())
-    }
-
-    #[test]
     fn test_find_map() -> io::Result<()> {
         let map: Option<Value> = find_map(&"afm_113b".to_string())?;
         assert_eq!(true, map.is_some());
-        Ok(())
-    }
-
-    #[test]
-    fn test_dip_switches() -> io::Result<()> {
-        // cursor with 8 bytes, we always have 6 dip switch bytes
-        let switch_count = 32;
-        let mut cursor = io::Cursor::new(vec![0; 8]);
-        let switch1 = get_dip_switch(&mut cursor, switch_count, 1)?;
-        let switch2 = get_dip_switch(&mut cursor, switch_count, 32)?;
-
-        // switches are OFF
-        assert_eq!(false, switch1);
-        assert_eq!(false, switch2);
-        set_dip_switch(&mut cursor, switch_count, 1, true)?;
-        set_dip_switch(&mut cursor, switch_count, 32, true)?;
-
-        // switches are both ON
-        let switch1 = get_dip_switch(&mut cursor, switch_count, 1)?;
-        let switch2 = get_dip_switch(&mut cursor, switch_count, 32)?;
-        assert_eq!(true, switch1);
-        assert_eq!(true, switch2);
-
-        // the switch data should be written to the cursor
-        let mut buff = [0; 6];
-        cursor.seek(SeekFrom::End(-6))?;
-        cursor.read_exact(&mut buff)?;
-        assert_eq!([1, 0, 0, 128, 0, 0], buff);
-
-        // other data in the cursor should not be changed
-        let mut buff = [0; 2];
-        cursor.seek(SeekFrom::Start(0))?;
-        cursor.read_exact(&mut buff)?;
-        assert_eq!([0, 0], buff);
-        Ok(())
-    }
-
-    #[test]
-    fn test_dip_switch_out_of_range() -> io::Result<()> {
-        let mut cursor = io::Cursor::new(vec![0; 8]);
-        let result = get_dip_switch(&mut cursor, 16, 17);
-        assert!(matches!(
-            result,
-            Err(ref e) if e.kind() == io::ErrorKind::InvalidInput && e.to_string() == "Dip switch #17 out of range, expected 1-16"
-        ));
-        let result = set_dip_switch(&mut cursor, 16, 0, true);
-        assert!(matches!(
-            result,
-            Err(ref e) if e.kind() == io::ErrorKind::InvalidInput && e.to_string() == "Dip switch #0 out of range, expected 1-16"
-        ));
-        let result = set_dip_switch(&mut cursor, 8 * 6 + 1, 1, true);
-        println!("{:?}", result);
-        assert!(matches!(
-            result,
-            Err(ref e) if e.kind() == io::ErrorKind::InvalidInput && e.to_string() == "Switch count 49 out of range, expected 0-48"
-        ));
         Ok(())
     }
 }

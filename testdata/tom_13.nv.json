@@ -599,10 +599,8 @@
   ],
   "checksum8": [
     {
-      "end": 6850,
-      "groupings": 6,
       "label": "Audits",
-      "start": 6161
+      "value": "valid"
     }
   ],
   "game_state": {
