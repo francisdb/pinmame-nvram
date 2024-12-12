@@ -1,6 +1,8 @@
 use crate::checksum::{verify_checksum16, verify_checksum8};
 use crate::encoding::{read_bcd, read_ch, read_int, read_wpc_rtc, Location};
-use crate::model::{Checksum16, Checksum8, Encoding, Endian, Nibble};
+use crate::model::{
+    Checksum16, Checksum8, Encoding, Endian, GlobalSettings, GlobalSettingsImpl, Nibble,
+};
 use crate::open_nvram;
 use serde_json::{Map, Number, Value};
 use std::fs::OpenOptions;
@@ -11,13 +13,17 @@ use std::path::Path;
 pub fn resolve(nv_path: &Path) -> io::Result<Option<Value>> {
     let map: Option<Value> = open_nvram(nv_path)?;
     let result = if let Some(map) = &map {
-        let char_map = map
-            .get("_char_map")
-            .and_then(|v| v.as_str())
-            .map(|s| s.to_string());
-        let endian: Endian = serde_json::from_value(map["_endian"].clone())?;
+        // TODO how can we do this without cloning the whole object?
+        let global_settings: GlobalSettingsImpl =
+            serde_json::from_value(map.clone()).map_err(|e| {
+                io::Error::new(
+                    io::ErrorKind::InvalidData,
+                    format!("Failed to parse global settings: {}", e),
+                )
+            })?;
+
         let mut rom = OpenOptions::new().read(true).open(nv_path)?;
-        match resolve_recursive(map, &char_map, endian, &mut rom) {
+        match resolve_recursive(map, &global_settings, &mut rom) {
             Ok(resolved) => Some(resolved),
             Err(e) => {
                 return Err(io::Error::new(
@@ -32,10 +38,9 @@ pub fn resolve(nv_path: &Path) -> io::Result<Option<Value>> {
     Ok(result)
 }
 
-fn resolve_recursive<T: Read + Seek>(
+fn resolve_recursive<T: Read + Seek, S: GlobalSettings>(
     value: &Value,
-    char_map: &Option<String>,
-    endian: Endian,
+    global_settings: &S,
     rom: &mut T,
 ) -> io::Result<Value> {
     let result: Value = match value {
@@ -44,7 +49,7 @@ fn resolve_recursive<T: Read + Seek>(
             // println!("{:?}", map.get("encoding"));
             if let Some(encoding) = map.get("encoding") {
                 let encoding: Encoding = serde_json::from_value(encoding.clone())?;
-                let value = resolve_value(rom, map, encoding, endian, char_map)?;
+                let value = resolve_value(rom, map, encoding, global_settings)?;
                 let warning = validate_range(map, &value);
                 let mut resolved_map = Map::new();
                 resolved_map.insert("value".to_string(), value);
@@ -60,16 +65,15 @@ fn resolve_recursive<T: Read + Seek>(
                 let mut resolved_map = Map::new();
                 for (key, value) in map.iter() {
                     if key.eq("checksum16") {
-                        let checksum_result = resolve_checksum16(endian, rom, value)?;
+                        let checksum_result =
+                            resolve_checksum16(global_settings.endianness(), rom, value)?;
                         resolved_map.insert(key.clone(), checksum_result);
                     } else if key.eq("checksum8") {
                         let checksum_result = resolve_checksum8(rom, value)?;
                         resolved_map.insert(key.clone(), checksum_result);
                     } else if key.eq("_fileformat") || !key.starts_with('_') {
-                        resolved_map.insert(
-                            key.clone(),
-                            resolve_recursive(value, char_map, endian, rom)?,
-                        );
+                        resolved_map
+                            .insert(key.clone(), resolve_recursive(value, global_settings, rom)?);
                     }
                 }
                 Value::Object(resolved_map)
@@ -78,7 +82,7 @@ fn resolve_recursive<T: Read + Seek>(
         Value::Array(array) => {
             let resolved_array: Vec<Value> = array
                 .iter()
-                .map(|v| resolve_recursive(v, char_map, endian, rom))
+                .map(|v| resolve_recursive(v, global_settings, rom))
                 .collect::<Result<Vec<_>, _>>()?;
             Value::Array(resolved_array)
         }
@@ -171,12 +175,11 @@ fn resolve_checksum8<T: Read + Seek>(rom: &mut T, value: &Value) -> io::Result<V
     Ok(Value::Array(checksum_result))
 }
 
-fn resolve_value<T: Read + Seek>(
+fn resolve_value<T: Read + Seek, U: GlobalSettings>(
     rom: &mut T,
     map: &Map<String, Value>,
     encoding: Encoding,
-    endian: Endian,
-    char_map: &Option<String>,
+    global_settings: &U,
 ) -> io::Result<Value> {
     let start = map.get("start").map(json_hex_or_int).transpose()?;
     let length = map
@@ -184,7 +187,7 @@ fn resolve_value<T: Read + Seek>(
         .map_or(1, |v| v.as_u64().unwrap() as usize);
     let value = match encoding {
         Encoding::Int => {
-            let value = read_int(rom, endian, start.unwrap(), length)?;
+            let value = read_int(rom, global_settings.endianness(), start.unwrap(), length)?;
             Value::Number(value.into())
         }
         Encoding::Enum => {
@@ -221,10 +224,12 @@ fn resolve_value<T: Read + Seek>(
                 .cloned()
                 .unwrap_or(Number::from(1));
             // how can i=avoid the clone() here?
-            let nibble: Option<Nibble> = map
+            let nibble: Nibble = map
                 .get("nibble")
-                .map(|n| serde_json::from_value(n.clone()).unwrap());
-            let value = read_bcd(rom, location, &nibble, &scale, endian)?;
+                .map(|n| serde_json::from_value(n.clone()).unwrap())
+                .unwrap_or(global_settings.nibble());
+
+            let value = read_bcd(rom, location, nibble, &scale, global_settings.endianness())?;
             Value::Number(value.into())
         }
         Encoding::Ch => {
@@ -233,7 +238,14 @@ fn resolve_value<T: Read + Seek>(
             let nibble: Option<Nibble> = map
                 .get("nibble")
                 .map(|n| serde_json::from_value(n.clone()).unwrap());
-            let value = read_ch(rom, start, length, mask, char_map, &nibble)?;
+            let value = read_ch(
+                rom,
+                start,
+                length,
+                mask,
+                global_settings.char_map(),
+                nibble.unwrap_or(global_settings.nibble()),
+            )?;
             Value::String(value)
         }
         Encoding::WpcRtc => {
