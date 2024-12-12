@@ -243,7 +243,7 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
                 start,
                 length,
                 mask,
-                &global_settings.char_map(),
+                global_settings.char_map(),
                 nibble.unwrap_or(global_settings.nibble()),
             )?;
             Value::String(value)

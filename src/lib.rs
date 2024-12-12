@@ -249,7 +249,7 @@ fn read_highscore<T: Read + Seek, S: GlobalSettings>(
             (&map_initials.start).into(),
             map_initials.length as usize,
             map_initials.mask.as_ref().map(|m| m.into()),
-            &global_settings.char_map(),
+            global_settings.char_map(),
             map_initials.nibble.unwrap_or(global_settings.nibble()),
         )?;
     }

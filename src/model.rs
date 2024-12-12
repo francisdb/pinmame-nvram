@@ -376,7 +376,7 @@ impl GlobalSettings for NvramMap {
 }
 
 pub trait GlobalSettings {
-    fn endianness(self: &Self) -> Endian;
+    fn endianness(&self) -> Endian;
     fn nibble(&self) -> Nibble;
     fn char_map(&self) -> &Option<String>;
 }
