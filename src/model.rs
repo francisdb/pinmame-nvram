@@ -172,6 +172,7 @@ pub struct LastGamePlayer {
 #[derive(Serialize, Deserialize, Debug, PartialEq, Copy, Clone)]
 #[serde(rename_all = "lowercase")]
 pub enum Nibble {
+    Both,
     High,
     Low,
 }
@@ -319,10 +320,8 @@ pub struct NvramMap {
     pub _license: String,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _endian: Option<Endian>,
-    // TODO remove these cases from original database
-    #[deprecated = "use _endian instead"]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub endian: Option<Endian>,
+    pub _nibble: Option<Nibble>,
     pub _roms: Vec<String>,
     pub _fileformat: f64,
     pub _version: f64,
@@ -363,12 +362,46 @@ pub struct NvramMap {
     pub buyin_high_scores: Option<Vec<HighScore>>,
 }
 
-impl NvramMap {
-    pub fn endianness(&self) -> Endian {
-        match self._endian {
-            Some(endian) => endian,
-            None => Endian::Big,
-        }
+impl GlobalSettings for NvramMap {
+    fn endianness(&self) -> Endian {
+        self._endian.unwrap_or(Endian::Big)
+    }
+    fn nibble(&self) -> Nibble {
+        self._nibble.unwrap_or(Nibble::Both)
+    }
+
+    fn char_map(&self) -> &Option<String> {
+        &self._char_map
+    }
+}
+
+pub trait GlobalSettings {
+    fn endianness(self: &Self) -> Endian;
+    fn nibble(&self) -> Nibble;
+    fn char_map(&self) -> &Option<String>;
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct GlobalSettingsImpl {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub _endian: Option<Endian>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub _nibble: Option<Nibble>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub _char_map: Option<String>,
+}
+
+impl GlobalSettings for GlobalSettingsImpl {
+    fn endianness(&self) -> Endian {
+        self._endian.unwrap_or(Endian::Big)
+    }
+
+    fn nibble(&self) -> Nibble {
+        self._nibble.unwrap_or(Nibble::Both)
+    }
+
+    fn char_map(&self) -> &Option<String> {
+        &self._char_map
     }
 }
 

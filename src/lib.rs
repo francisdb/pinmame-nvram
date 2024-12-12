@@ -7,7 +7,7 @@ pub mod resolve;
 use crate::checksum::{update_all_checksum16, verify_all_checksum16, ChecksumMismatch};
 use crate::dips::{get_dip_switch, set_dip_switch, validate_dip_switch_range};
 use crate::encoding::{read_bcd, read_ch, read_int, read_wpc_rtc, write_bcd, write_ch, Location};
-use crate::model::{Encoding, Endian, NvramMap, Score, StateOrStateList};
+use crate::model::{Encoding, GlobalSettings, NvramMap, Score, StateOrStateList};
 use include_dir::{include_dir, Dir, File};
 use serde::de;
 use serde_json::{Number, Value};
@@ -232,16 +232,15 @@ fn read_highscores<T: Read + Seek>(
     let scores: Result<Vec<HighScore>, io::Error> = map
         .high_scores
         .iter()
-        .map(|hs| read_highscore(&mut nvram_file, hs, &map._char_map, map.endianness()))
+        .map(|hs| read_highscore(&mut nvram_file, hs, map))
         .collect();
     scores
 }
 
-fn read_highscore<T: Read + Seek>(
+fn read_highscore<T: Read + Seek, S: GlobalSettings>(
     mut nvram_file: &mut T,
     hs: &model::HighScore,
-    char_map: &Option<String>,
-    endian: Endian,
+    global_settings: &S,
 ) -> io::Result<HighScore> {
     let mut initials = "".to_string();
     if let Some(map_initials) = &hs.initials {
@@ -250,8 +249,8 @@ fn read_highscore<T: Read + Seek>(
             (&map_initials.start).into(),
             map_initials.length as usize,
             map_initials.mask.as_ref().map(|m| m.into()),
-            char_map,
-            &map_initials.nibble,
+            &global_settings.char_map(),
+            map_initials.nibble.unwrap_or(global_settings.nibble()),
         )?;
     }
     let score = match &hs.score.encoding {
@@ -268,16 +267,16 @@ fn read_highscore<T: Read + Seek>(
             read_bcd(
                 &mut nvram_file,
                 location,
-                &hs.score.nibble,
+                hs.score.nibble.unwrap_or(global_settings.nibble()),
                 hs.score.scale.as_ref().unwrap_or(&Number::from(1u64)),
-                endian,
+                global_settings.endianness(),
             )?
         }
         Encoding::Int => {
             if let Some(map_score_start) = &hs.score.start {
                 read_int(
                     &mut nvram_file,
-                    endian,
+                    global_settings.endianness(),
                     map_score_start.into(),
                     hs.score.length.unwrap_or(0) as usize,
                 )?
@@ -321,19 +320,18 @@ fn clear_highscores<T: Write + Seek>(mut nvram_file: &mut T, map: &NvramMap) -> 
     Ok(())
 }
 
-fn read_mode_champion<T: Read + Seek>(
+fn read_mode_champion<T: Read + Seek, S: GlobalSettings>(
     mut nvram_file: &mut T,
     mc: &model::ModeChampion,
-    char_map: &Option<String>,
-    endian: Endian,
+    global_settings: &S,
 ) -> io::Result<ModeChampion> {
     let initials = read_ch(
         &mut nvram_file,
         (&mc.initials.start).into(),
         mc.initials.length as usize,
         mc.initials.mask.as_ref().map(|m| m.into()),
-        char_map,
-        &mc.initials.nibble,
+        global_settings.char_map(),
+        mc.initials.nibble.unwrap_or(global_settings.nibble()),
     )?;
     let score = if let Some(score) = &mc.score.as_ref() {
         match &score.encoding {
@@ -342,9 +340,9 @@ fn read_mode_champion<T: Read + Seek>(
                 let result = read_bcd(
                     &mut nvram_file,
                     location,
-                    &score.nibble,
+                    score.nibble.unwrap_or(global_settings.nibble()),
                     score.scale.as_ref().unwrap_or(&Number::from(1)),
-                    endian,
+                    global_settings.endianness(),
                 )?;
                 Some(result)
             }
@@ -352,7 +350,7 @@ fn read_mode_champion<T: Read + Seek>(
                 if let Some(map_score_start) = &score.start {
                     let result = read_int(
                         &mut nvram_file,
-                        endian,
+                        global_settings.endianness(),
                         map_score_start.into(),
                         score.length.unwrap_or(0) as usize,
                     )?;
@@ -388,15 +386,15 @@ fn read_mode_champion<T: Read + Seek>(
     })
 }
 
-fn read_last_game_player<T: Read + Seek>(
+fn read_last_game_player<T: Read + Seek, S: GlobalSettings>(
     mut nvram_file: &mut T,
     lg: &model::LastGamePlayer,
-    endian: Endian,
+    global_settings: &S,
 ) -> io::Result<LastGamePlayer> {
     let score = match &lg.encoding {
         Encoding::Int => read_int(
             &mut nvram_file,
-            endian,
+            global_settings.endianness(),
             (&lg.start).into(),
             lg.length as usize,
         )?,
@@ -406,9 +404,9 @@ fn read_last_game_player<T: Read + Seek>(
                 start: (&lg.start).into(),
                 length: lg.length as usize,
             },
-            &lg.nibble,
+            lg.nibble.unwrap_or(global_settings.nibble()),
             &Number::from(1),
-            endian,
+            global_settings.endianness(),
         )?,
         other => todo!("Encoding not implemented: {:?}", other),
     };
@@ -425,7 +423,7 @@ fn read_last_game<T: Read + Seek>(
     if let Some(lg) = &map.last_game {
         let last_games: Result<Vec<LastGamePlayer>, io::Error> = lg
             .iter()
-            .map(|lg| read_last_game_player(&mut nvram_file, lg, map.endianness()))
+            .map(|lg| read_last_game_player(&mut nvram_file, lg, map))
             .collect();
         Ok(Some(last_games?))
     } else {
@@ -440,7 +438,7 @@ fn read_mode_champions<T: Read + Seek>(
     if let Some(mode_champions) = &map.mode_champions {
         let champions: Result<Vec<ModeChampion>, io::Error> = mode_champions
             .iter()
-            .map(|mc| read_mode_champion(&mut nvram_file, mc, &map._char_map, map.endianness()))
+            .map(|mc| read_mode_champion(&mut nvram_file, mc, map))
             .collect();
         Ok(Some(champions?))
     } else {
@@ -448,11 +446,10 @@ fn read_mode_champions<T: Read + Seek>(
     }
 }
 
-fn read_game_state_item<T: Read + Seek>(
+fn read_game_state_item<T: Read + Seek, S: GlobalSettings>(
     mut nvram_file: &mut T,
     state: &model::State,
-    char_map: &Option<String>,
-    endian: Endian,
+    global_settings: &S,
 ) -> io::Result<String> {
     match &state.encoding {
         Encoding::Ch => read_ch(
@@ -460,13 +457,13 @@ fn read_game_state_item<T: Read + Seek>(
             (&state.start).into(),
             state.length.unwrap_or(0),
             state.mask.as_ref().map(|m| m.into()),
-            char_map,
-            &state.nibble,
+            global_settings.char_map(),
+            state.nibble.unwrap_or(global_settings.nibble()),
         ),
         Encoding::Int => {
             let score = read_int(
                 &mut nvram_file,
-                endian,
+                global_settings.endianness(),
                 (&state.start).into(),
                 state.length.unwrap_or(0),
             )?;
@@ -479,9 +476,9 @@ fn read_game_state_item<T: Read + Seek>(
                     start: (&state.start).into(),
                     length: state.length.unwrap_or(0),
                 },
-                &state.nibble,
+                state.nibble.unwrap_or(global_settings.nibble()),
                 &Number::from(1),
-                endian,
+                global_settings.endianness(),
             )?;
             Ok(score.to_string())
         }
@@ -500,9 +497,7 @@ fn read_game_state<T: Read + Seek>(
             .iter()
             .flat_map(|(key, v)| match v {
                 StateOrStateList::State(s) => {
-                    let r =
-                        read_game_state_item(&mut nvram_file, s, &map._char_map, map.endianness())
-                            .map(|r| (key.clone(), r));
+                    let r = read_game_state_item(&mut nvram_file, s, map).map(|r| (key.clone(), r));
                     vec![r]
                 }
                 StateOrStateList::StateList(sl) => sl
@@ -510,8 +505,7 @@ fn read_game_state<T: Read + Seek>(
                     .enumerate()
                     .map(|(index, s)| {
                         let compund_key = format!("{}.{}", key, index);
-                        read_game_state_item(&mut nvram_file, s, &map._char_map, map.endianness())
-                            .map(|r| (compund_key, r))
+                        read_game_state_item(&mut nvram_file, s, map).map(|r| (compund_key, r))
                     })
                     .collect(),
             })
@@ -547,7 +541,7 @@ fn read_replay_score<T: Read + Seek>(
                 let score = read_bcd(
                     &mut nvram_file,
                     location,
-                    &replay_score.nibble,
+                    replay_score.nibble.unwrap_or(map.nibble()),
                     replay_score.scale.as_ref().unwrap_or(&Number::from(1)),
                     map.endianness(),
                 )?;
