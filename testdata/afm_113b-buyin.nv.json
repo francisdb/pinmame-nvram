@@ -17,7 +17,7 @@
       "04": {
         "label": "Max E.B. Per B.I.P",
         "value": 0,
-        "warning": "Value out of range: 1 < 0 < 10"
+        "warning": "Value out of range: 1 ≤ 0 ≤ 10"
       },
       "05": {
         "label": "Replay System",
@@ -30,7 +30,7 @@
       "07": {
         "label": "Replay Start",
         "value": 40,
-        "warning": "Value out of range: 300 < 40 < 900"
+        "warning": "Value out of range: 300 ≤ 40 ≤ 900"
       },
       "08": {
         "label": "Replay Levels",
@@ -55,7 +55,7 @@
       "18": {
         "label": "Max Tick/Player",
         "value": 25,
-        "warning": "Value out of range: 1 < 25 < 4"
+        "warning": "Value out of range: 1 ≤ 25 ≤ 4"
       },
       "19": {
         "label": "Match Feature",

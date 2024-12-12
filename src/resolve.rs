@@ -107,7 +107,7 @@ fn validate_range(map: &Map<String, Value>, value: &Value) -> Option<String> {
         let min = min.as_u64().unwrap();
         let max = max.as_u64().unwrap();
         if unscaled_value < min || unscaled_value > max {
-            return Some(format!("Value out of range: {} < {} < {}", min, value, max));
+            return Some(format!("Value out of range: {} ≤ {} ≤ {}", min, value, max));
         }
     }
     None
