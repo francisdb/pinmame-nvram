@@ -45,11 +45,15 @@ fn resolve_recursive<T: Read + Seek>(
             if let Some(encoding) = map.get("encoding") {
                 let encoding: Encoding = serde_json::from_value(encoding.clone())?;
                 let value = resolve_value(rom, map, encoding, endian, char_map)?;
+                let warning = validate_range(map, &value);
                 let mut resolved_map = Map::new();
                 resolved_map.insert("value".to_string(), value);
                 if let Some(label) = map.get("label") {
                     // maybe we should instead remove all properties related to the encoding
                     resolved_map.insert("label".to_string(), label.clone());
+                }
+                if let Some(warning) = warning {
+                    resolved_map.insert("warning".to_string(), Value::String(warning));
                 }
                 Value::Object(resolved_map)
             } else {
@@ -81,6 +85,28 @@ fn resolve_recursive<T: Read + Seek>(
         other => other.clone(),
     };
     Ok(result)
+}
+
+/// Validate the value against the min and max range
+/// If the value is out of range a warning is returned
+fn validate_range(map: &Map<String, Value>, value: &Value) -> Option<String> {
+    if let (Some(min), Some(max)) = (map.get("min"), map.get("max")) {
+        // TODO might be better to do this check earlier before the scaling is applied
+        // min and max are unscaled values so we need to unscale the value first
+        let unscaled_value = if let Some(scale) = map.get("scale") {
+            let scale = scale.as_u64().unwrap();
+            value.as_u64().unwrap() / scale
+        } else {
+            value.as_u64().unwrap()
+        };
+
+        let min = min.as_u64().unwrap();
+        let max = max.as_u64().unwrap();
+        if unscaled_value < min || unscaled_value > max {
+            return Some(format!("Value out of range: {} < {} < {}", min, value, max));
+        }
+    }
+    None
 }
 
 fn resolve_checksum16<T: Read + Seek>(
