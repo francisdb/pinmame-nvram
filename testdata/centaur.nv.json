@@ -1,0 +1,126 @@
+{
+  "_fileformat": 0.4,
+  "adjustments": {
+    "Game adjustments": {
+      "16": {
+        "label": "High Score award #1",
+        "value": 0
+      },
+      "17": {
+        "label": "High Score award #2",
+        "value": 0
+      },
+      "18": {
+        "label": "???",
+        "value": 1
+      },
+      "19": {
+        "label": "High Score to date or over 10.000.000 score feature",
+        "value": 0
+      },
+      "20": {
+        "label": "???",
+        "value": 0
+      },
+      "21": {
+        "label": "???",
+        "value": 6
+      }
+    },
+    "High score functions": {
+      "01": {
+        "label": "Extra ball / Free game score level 1",
+        "value": 0
+      },
+      "02": {
+        "label": "Extra ball / Free game score level 2",
+        "value": 0
+      },
+      "03": {
+        "label": "Extra ball / Free game score level 3",
+        "value": 0
+      },
+      "04": {
+        "label": "High score to date",
+        "value": 1146540
+      }
+    }
+  },
+  "audits": {
+    "Bookkeeping functions": {
+      "05": {
+        "label": "Current Credits",
+        "value": 8
+      },
+      "06": {
+        "label": "Total Plays (Played and Free Games)",
+        "value": 26
+      },
+      "07": {
+        "label": "Total Replays (Free Games)",
+        "value": 2
+      },
+      "08": {
+        "label": "Game Percentage",
+        "value": 8
+      },
+      "09": {
+        "label": "Total times 'High Score To Date' is beat",
+        "value": 1
+      },
+      "10": {
+        "label": "Coins Dropped thru Coin Chute #1",
+        "value": 101
+      },
+      "11": {
+        "label": "Coins Dropped thru Coin Chute #2",
+        "value": 5
+      },
+      "12": {
+        "label": "Coins Dropped thru Coin Chute #3",
+        "value": 29
+      },
+      "13": {
+        "label": "Number of Specials awarded from Panel Specials Only",
+        "value": 0
+      },
+      "14": {
+        "label": "Number of minutes of Game Play",
+        "value": 2
+      },
+      "15": {
+        "label": "Number of Service Credits",
+        "value": 0
+      }
+    }
+  },
+  "game_state": {
+    "credits": {
+      "label": "Credits",
+      "value": 8
+    }
+  },
+  "high_scores": [
+    {
+      "label": "High Score",
+      "score": {
+        "value": 1146540
+      },
+      "short_label": "HS"
+    }
+  ],
+  "last_game": [
+    {
+      "value": 52500
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    }
+  ]
+}
