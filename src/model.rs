@@ -6,7 +6,10 @@ use std::fmt;
 #[derive(Serialize, Deserialize, Debug, PartialEq)]
 pub struct Checksum16 {
     pub start: HexOrInteger,
-    pub end: HexOrInteger,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub end: Option<HexOrInteger>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub length: Option<u64>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub label: Option<String>,
 }
@@ -92,6 +95,17 @@ pub enum Encoding {
     Raw,
     #[serde(rename = "wpc_rtc")]
     WpcRtc,
+}
+
+#[derive(Serialize, Deserialize, Debug, PartialEq, Copy, Clone)]
+#[serde(rename_all = "lowercase")]
+pub enum Null {
+    /// Ignore (skip over) null bytes.
+    Ignore,
+    /// A null can shorten the string, but won't be present for strings that fill the allotted space.
+    Truncate,
+    /// Null bytes are always present and terminate the string.
+    Terminate,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -197,6 +211,8 @@ pub struct Initials {
     pub mask: Option<HexOrInteger>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _note: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub null: Option<Null>,
 }
 
 #[derive(Serialize, Deserialize)]

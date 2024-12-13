@@ -1,7 +1,7 @@
 use crate::checksum::{verify_checksum16, verify_checksum8};
 use crate::encoding::{read_bcd, read_ch, read_int, read_wpc_rtc, Location};
 use crate::model::{
-    Checksum16, Checksum8, Encoding, Endian, GlobalSettings, GlobalSettingsImpl, Nibble,
+    Checksum16, Checksum8, Encoding, Endian, GlobalSettings, GlobalSettingsImpl, Nibble, Null,
 };
 use crate::open_nvram;
 use serde_json::{Map, Number, Value};
@@ -252,6 +252,9 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
             let nibble: Option<Nibble> = map
                 .get("nibble")
                 .map(|n| serde_json::from_value(n.clone()).unwrap());
+            let null: Option<Null> = map
+                .get("null")
+                .map(|n| serde_json::from_value(n.clone()).unwrap());
             let value = read_ch(
                 rom,
                 start,
@@ -259,6 +262,7 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
                 mask,
                 global_settings.char_map(),
                 nibble.unwrap_or(global_settings.nibble()),
+                null,
             )?;
             Value::String(value)
         }
