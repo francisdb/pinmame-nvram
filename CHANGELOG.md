@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.2](https://github.com/francisdb/pinmame-nvram/compare/v0.3.1...v0.3.2) - 2024-12-13
+
+### Added
+
+- global _nibble (#18)
+
+### Fixed
+
+- apply int scale (#21)
+
+### Other
+
+- improve centaur dip switch test
+- Bally MPU AS-2518-35 (#22)
+- tweak out of range message
+
 ## [0.3.1](https://github.com/francisdb/pinmame-nvram/compare/v0.3.0...v0.3.1) - 2024-12-12
 
 ### Added
