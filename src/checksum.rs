@@ -105,7 +105,7 @@ pub(crate) fn verify_checksum16<T: Read + Seek>(
     endian: Endian,
 ) -> io::Result<Option<ChecksumMismatch<u16>>> {
     let start: u64 = (&checksum16.start).into();
-    let end = end(&checksum16)?;
+    let end = end(checksum16)?;
     let length = (1 + end - start) as usize;
 
     nvram_file.seek(SeekFrom::Start(start))?;
@@ -134,7 +134,7 @@ fn end(checksum16: &Checksum16) -> io::Result<u64> {
     let end: u64 = if let Some(end) = &checksum16.end {
         end.into()
     } else if let Some(length) = &checksum16.length {
-        (start + length - 1) as u64
+        start + length - 1
     } else {
         return Err(io::Error::new(
             io::ErrorKind::InvalidData,
