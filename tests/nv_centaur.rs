@@ -120,29 +120,73 @@ fn test_centaur() -> io::Result<()> {
     // #define COREPORT_DIPSET(mask,name) \
     //    PORT_DIPSETTING(mask,name)
 
-    // set all dip switches to off
-    for switch_number in 1..=32 {
-        nvram.set_dip_switch(switch_number, false)?;
-    }
+    // // set all dip switches to off
+    // for switch_number in 1..=32 {
+    //     nvram.set_dip_switch(switch_number, false)?;
+    // }
+    //
+    // // enable credits displayed 27
+    // nvram.set_dip_switch(27, true)?;
+    //
+    // // 5 balls per game 32 31
+    // nvram.set_dip_switch(32, false)?;
+    // nvram.set_dip_switch(31, true)?;
+    //
+    // // reverb effect value up to 7 (3 bits)
+    // // 7 = all 3 switches on
+    // nvram.set_dip_switch(33, true)?;
+    // nvram.set_dip_switch(34, true)?;
+    // nvram.set_dip_switch(35, true)?;
 
-    // enable credits displayed 27
-    nvram.set_dip_switch(27, true)?;
-
-    // 5 balls per game 32 31
-    nvram.set_dip_switch(32, false)?;
-    nvram.set_dip_switch(31, true)?;
-
-    // reverb effect value up to 7 (3 bits)
-    // 7 = all 3 switches on
-    nvram.set_dip_switch(33, true)?;
-    nvram.set_dip_switch(34, true)?;
-    nvram.set_dip_switch(35, true)?;
-
+    let mut dip_switch_string = "".to_string();
     for switch_number in 1..=nvram.dip_switches_len() {
         let enabled = nvram.get_dip_switch(switch_number)?;
         let state = if enabled { "ON" } else { "OFF" };
         println!("#{} {}", switch_number, state);
+        dip_switch_string.push_str(&format!("#{} {}\n", switch_number, state));
     }
+
+    // make a string with all dip switches and compare it with the expected
+    let expected = "\
+#1 OFF\n\
+#2 OFF\n\
+#3 OFF\n\
+#4 OFF\n\
+#5 OFF\n\
+#6 OFF\n\
+#7 OFF\n\
+#8 OFF\n\
+#9 OFF\n\
+#10 OFF\n\
+#11 OFF\n\
+#12 OFF\n\
+#13 OFF\n\
+#14 OFF\n\
+#15 OFF\n\
+#16 OFF\n\
+#17 OFF\n\
+#18 OFF\n\
+#19 OFF\n\
+#20 OFF\n\
+#21 OFF\n\
+#22 OFF\n\
+#23 OFF\n\
+#24 OFF\n\
+#25 OFF\n\
+#26 OFF\n\
+#27 ON\n\
+#28 OFF\n\
+#29 OFF\n\
+#30 OFF\n\
+#31 ON\n\
+#32 OFF\n\
+#33 ON\n\
+#34 ON\n\
+#35 ON\n\
+"
+    .to_string();
+
+    assert_eq!(expected, dip_switch_string);
 
     Ok(())
 }
