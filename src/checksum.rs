@@ -105,7 +105,7 @@ pub(crate) fn verify_checksum16<T: Read + Seek>(
     endian: Endian,
 ) -> io::Result<Option<ChecksumMismatch<u16>>> {
     let start: u64 = (&checksum16.start).into();
-    let end: u64 = (&checksum16.end).into();
+    let end = end(checksum16)?;
     let length = (1 + end - start) as usize;
 
     nvram_file.seek(SeekFrom::Start(start))?;
@@ -129,6 +129,21 @@ pub(crate) fn verify_checksum16<T: Read + Seek>(
     Ok(None)
 }
 
+fn end(checksum16: &Checksum16) -> io::Result<u64> {
+    let start: u64 = (&checksum16.start).into();
+    let end: u64 = if let Some(end) = &checksum16.end {
+        end.into()
+    } else if let Some(length) = &checksum16.length {
+        start + length - 1
+    } else {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "Checksum16 must have either end or length",
+        ));
+    };
+    Ok(end)
+}
+
 pub(crate) fn verify_all_checksum16<T: Read + Seek>(
     mut nvram_file: &mut T,
     map: &NvramMap,
@@ -148,7 +163,7 @@ fn update_checksum16<T: Read + Seek + Write>(
     endian: Endian,
 ) -> io::Result<()> {
     let start: u64 = (&checksum16.start).into();
-    let end: u64 = (&checksum16.end).into();
+    let end: u64 = end(checksum16)?;
     let length = (1 + end - start) as usize;
 
     nvram_file.seek(SeekFrom::Start(start))?;

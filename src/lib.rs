@@ -251,6 +251,7 @@ fn read_highscore<T: Read + Seek, S: GlobalSettings>(
             map_initials.mask.as_ref().map(|m| m.into()),
             global_settings.char_map(),
             map_initials.nibble.unwrap_or(global_settings.nibble()),
+            map_initials.null,
         )?;
     }
     let score = match &hs.score.encoding {
@@ -333,6 +334,7 @@ fn read_mode_champion<T: Read + Seek, S: GlobalSettings>(
         mc.initials.mask.as_ref().map(|m| m.into()),
         global_settings.char_map(),
         mc.initials.nibble.unwrap_or(global_settings.nibble()),
+        mc.initials.null,
     )?;
     let score = if let Some(score) = &mc.score.as_ref() {
         match &score.encoding {
@@ -462,6 +464,7 @@ fn read_game_state_item<T: Read + Seek, S: GlobalSettings>(
             state.mask.as_ref().map(|m| m.into()),
             global_settings.char_map(),
             state.nibble.unwrap_or(global_settings.nibble()),
+            None,
         ),
         Encoding::Int => {
             let score = read_int(

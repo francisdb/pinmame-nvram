@@ -1,4 +1,4 @@
-use crate::model::{Endian, Nibble};
+use crate::model::{Endian, Nibble, Null};
 use serde_json::Number;
 use std::io;
 use std::io::{Read, Seek, SeekFrom, Write};
@@ -90,6 +90,7 @@ pub(crate) fn read_ch<A: Read + Seek>(
     mask: Option<u64>,
     char_map: &Option<String>,
     nibble: Nibble,
+    null: Option<Null>,
 ) -> io::Result<String> {
     let mut buff = vec![0; length];
     read_exact_at(stream, location, &mut buff)?;
@@ -117,6 +118,8 @@ pub(crate) fn read_ch<A: Read + Seek>(
         return Ok(result);
     }
 
+    let null_terminated = null == Some(Null::Terminate) || null == Some(Null::Truncate);
+
     //String::from_utf8(buff.to_vec()).map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))
     // TODO we probably need a better solution for this
     // See High Speed where "Custom Msg Line 3" contains invalid characters by default
@@ -124,6 +127,9 @@ pub(crate) fn read_ch<A: Read + Seek>(
     // can we replace any non-utf8 characters with \u00C4 in the string?
     let mut result = String::new();
     for b in buff.iter() {
+        if null_terminated && *b == 0 {
+            break;
+        }
         if *b > 0x80 {
             // use \u escape for non-ASCII characters;
             // this is not perfect as it will cause double encoding for json
@@ -363,7 +369,7 @@ mod tests {
     #[test]
     fn test_read_ch() -> io::Result<()> {
         let mut cursor = io::Cursor::new(vec![0x41, 0x42, 0x43, 0x44, 0x45]);
-        let score = read_ch(&mut cursor, 0x0000, 5, None, &None, Nibble::Both)?;
+        let score = read_ch(&mut cursor, 0x0000, 5, None, &None, Nibble::Both, None)?;
         pretty_assertions::assert_eq!(score, "ABCDE");
         Ok(())
     }
@@ -372,7 +378,7 @@ mod tests {
     fn test_read_ch_with_charmap() -> io::Result<()> {
         let char_map = Some("???????????ABCDEFGHIJKLMNOPQRSTUVWXYZ".to_string());
         let mut cursor = io::Cursor::new(vec![0x0B, 0x0C, 0x0D, 0x0E, 0x0F]);
-        let score = read_ch(&mut cursor, 0x0000, 5, None, &char_map, Nibble::Both)?;
+        let score = read_ch(&mut cursor, 0x0000, 5, None, &char_map, Nibble::Both, None)?;
         pretty_assertions::assert_eq!(score, "ABCDE");
         Ok(())
     }
@@ -406,9 +412,25 @@ mod tests {
         // Nibble: where the sequence 0x04 0x01 0x04 0x02 0x04 0x03
         // translates to 0x41 0x42 0x43 which is the string "ABC"
         let mut cursor = io::Cursor::new(vec![0x04, 0x01, 0x04, 0x02, 0x04, 0x03]);
-        let score = read_ch(&mut cursor, 0x0000, 6, None, &None, Nibble::Low)?;
+        let score = read_ch(&mut cursor, 0x0000, 6, None, &None, Nibble::Low, None)?;
         pretty_assertions::assert_eq!(score, "ABC");
         Ok(())
+    }
+
+    #[test]
+    fn test_null_terminated_ch() {
+        let mut cursor = io::Cursor::new(vec![0x41, 0x42, 0x43, 0x00, 0xFF]);
+        let score = read_ch(
+            &mut cursor,
+            0x0000,
+            5,
+            None,
+            &None,
+            Nibble::Both,
+            Some(Null::Terminate),
+        )
+        .unwrap();
+        pretty_assertions::assert_eq!(score, "ABC");
     }
 
     #[test]
