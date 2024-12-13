@@ -279,6 +279,7 @@ fn read_highscore<T: Read + Seek, S: GlobalSettings>(
                     global_settings.endianness(),
                     map_score_start.into(),
                     hs.score.length.unwrap_or(0) as usize,
+                    &Number::from(1u64),
                 )?
             } else {
                 todo!("Int requires start")
@@ -353,6 +354,7 @@ fn read_mode_champion<T: Read + Seek, S: GlobalSettings>(
                         global_settings.endianness(),
                         map_score_start.into(),
                         score.length.unwrap_or(0) as usize,
+                        score.scale.as_ref().unwrap_or(&Number::from(1u64)),
                     )?;
                     Some(result)
                 } else {
@@ -397,6 +399,7 @@ fn read_last_game_player<T: Read + Seek, S: GlobalSettings>(
             global_settings.endianness(),
             (&lg.start).into(),
             lg.length as usize,
+            lg.scale.as_ref().unwrap_or(&Number::from(1)),
         )?,
         Encoding::Bcd => read_bcd(
             &mut nvram_file,
@@ -466,6 +469,7 @@ fn read_game_state_item<T: Read + Seek, S: GlobalSettings>(
                 global_settings.endianness(),
                 (&state.start).into(),
                 state.length.unwrap_or(0),
+                state.scale.as_ref().unwrap_or(&Number::from(1)),
             )?;
             Ok(score.to_string())
         }
@@ -530,6 +534,7 @@ fn read_replay_score<T: Read + Seek>(
                         map.endianness(),
                         map_score_start.into(),
                         replay_score.length.unwrap_or(0) as usize,
+                        replay_score.scale.as_ref().unwrap_or(&Number::from(1)),
                     )?;
                     Ok(Some(score))
                 } else {

@@ -220,10 +220,14 @@ pub(crate) fn read_bcd<A: Read + Seek>(
         score += cap_bcd(item & 0x0F) as u64;
         score += cap_bcd((item & 0xF0) >> 4) as u64 * 10;
     }
+    Ok(apply_scale(scale, score))
+}
+
+fn apply_scale(scale: &Number, score: u64) -> u64 {
     if scale.is_u64() {
-        Ok((score as f64 * scale.as_u64().unwrap() as f64) as u64)
+        (score as f64 * scale.as_u64().unwrap() as f64) as u64
     } else {
-        Ok((score as f64 * scale.as_f64().unwrap()) as u64)
+        (score as f64 * scale.as_f64().unwrap()) as u64
     }
 }
 
@@ -270,6 +274,7 @@ pub(crate) fn read_int<T: Read + Seek>(
     endian: Endian,
     start: u64,
     length: usize,
+    scale: &Number,
 ) -> io::Result<u64> {
     nvram_file.seek(SeekFrom::Start(start))?;
     let mut buff = vec![0; length];
@@ -283,7 +288,7 @@ pub(crate) fn read_int<T: Read + Seek>(
             .rev()
             .fold(0u64, |acc, &x| acc.wrapping_shl(8).wrapping_add(x as u64)),
     };
-    Ok(score)
+    Ok(apply_scale(scale, score))
 }
 
 fn read_exact_at<A: Seek + Read>(stream: &mut A, offset: u64, buff: &mut [u8]) -> io::Result<()> {
