@@ -9,7 +9,7 @@
       "02a": {
         "label": "Replay Start",
         "value": 2500000,
-        "warning": "Value out of range: 8 ≤ 2500000 ≤ 20"
+        "warning": "Value out of range: 8 ≤ 25 ≤ 20"
       },
       "02b": {
         "label": "Replay Level 1",

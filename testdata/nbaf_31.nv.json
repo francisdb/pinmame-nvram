@@ -40,18 +40,15 @@
       },
       "10": {
         "label": "Replay L2",
-        "value": 0,
-        "warning": "Value out of range: 1 ≤ 0 ≤ 400"
+        "value": 0
       },
       "11": {
         "label": "Replay L3",
-        "value": 0,
-        "warning": "Value out of range: 1 ≤ 0 ≤ 400"
+        "value": 0
       },
       "12": {
         "label": "Replay L4",
-        "value": 0,
-        "warning": "Value out of range: 1 ≤ 0 ≤ 400"
+        "value": 0
       },
       "13": {
         "label": "Replay Boost",

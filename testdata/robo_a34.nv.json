@@ -8,7 +8,7 @@
       },
       "02": {
         "label": "Start Replay",
-        "value": 24
+        "value": 2400000
       },
       "03": {
         "label": "Levels Replay",
@@ -112,24 +112,23 @@
       },
       "30": {
         "label": "Backup HiScore 1",
-        "value": 40
+        "value": 4000000
       },
       "31": {
         "label": "Backup HiScore 2",
-        "value": 35
+        "value": 3500000
       },
       "32": {
         "label": "Backup HiScore 3",
-        "value": 30
+        "value": 3000000
       },
       "33": {
         "label": "Backup HiScore 4",
-        "value": 25
+        "value": 2500000
       },
       "34": {
         "label": "Reset Every",
-        "value": 7,
-        "warning": "Value out of range: 100 ≤ 7 ≤ 900"
+        "value": 700
       },
       "35": {
         "label": "Free Play",

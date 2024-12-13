@@ -107,7 +107,10 @@ fn validate_range(map: &Map<String, Value>, value: &Value) -> Option<String> {
         let min = min.as_u64().unwrap();
         let max = max.as_u64().unwrap();
         if unscaled_value < min || unscaled_value > max {
-            return Some(format!("Value out of range: {} ≤ {} ≤ {}", min, value, max));
+            return Some(format!(
+                "Value out of range: {} ≤ {} ≤ {}",
+                min, unscaled_value, max
+            ));
         }
     }
     None
@@ -187,7 +190,18 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
         .map_or(1, |v| v.as_u64().unwrap() as usize);
     let value = match encoding {
         Encoding::Int => {
-            let value = read_int(rom, global_settings.endianness(), start.unwrap(), length)?;
+            let scale = map
+                .get("scale")
+                .and_then(|s| s.as_number())
+                .cloned()
+                .unwrap_or(Number::from(1));
+            let value = read_int(
+                rom,
+                global_settings.endianness(),
+                start.unwrap(),
+                length,
+                &scale,
+            )?;
             Value::Number(value.into())
         }
         Encoding::Enum => {
