@@ -39,27 +39,27 @@ fn test_star_trek_stern() -> io::Result<()> {
             score: 75_000_000,
         },
         HighScore {
-            label: Some("#1".to_string()),
+            label: Some("High Score #1".to_string()),
             short_label: Some("#1".to_string()),
             initials: "LON".to_string(),
             score: 55_000_000,
         },
         HighScore {
-            label: Some("#2".to_string()),
+            label: Some("High Score #2".to_string()),
             short_label: Some("#2".to_string()),
             initials: "GGF".to_string(),
             score: 40_000_000,
         },
         HighScore {
-            label: Some("#3".to_string()),
+            label: Some("High Score #3".to_string()),
             short_label: Some("#3".to_string()),
             initials: "JMR".to_string(),
             score: 30_000_000,
         },
         HighScore {
-            label: Some("#4".to_string()),
+            label: Some("High Score #4".to_string()),
             short_label: Some("#4".to_string()),
-            initials: "T\0".to_string(),
+            initials: "T".to_string(),
             score: 25_000_000,
         },
     ]);
