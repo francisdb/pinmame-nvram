@@ -327,7 +327,7 @@ mod tests {
         // any nvram that contains - in the file name needs to be renamed first
         let test_dir = testdir!();
 
-        let excludes = ["st_161h"];
+        let excludes = [/*"st_161h"*/];
 
         for entry in std::fs::read_dir("testdata")? {
             let entry = entry?;
