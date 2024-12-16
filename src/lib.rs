@@ -1,5 +1,5 @@
 pub mod checksum;
-mod dips;
+pub mod dips;
 mod encoding;
 mod model;
 pub mod resolve;
