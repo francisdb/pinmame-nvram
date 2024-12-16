@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.3](https://github.com/francisdb/pinmame-nvram/compare/v0.3.2...v0.3.3) - 2024-12-16
+
+### Added
+
+- raw dip switch access (#27)
+- null terminated strings (#23)
+
+### Other
+
+- st_161h (#26)
+
 ## [0.3.2](https://github.com/francisdb/pinmame-nvram/compare/v0.3.1...v0.3.2) - 2024-12-13
 
 ### Added
