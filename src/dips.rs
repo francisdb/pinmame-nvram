@@ -108,7 +108,7 @@ pub fn get_all_dip_switches<T: Read + Seek>(nvram_file: &mut T) -> io::Result<Ve
 ///
 /// # Returns
 /// An io::Result indicating success or failure
-pub fn set_all_dip_switches<T: Read + Write + Seek>(
+pub fn set_dip_switches<T: Read + Write + Seek>(
     nvram_file: &mut T,
     dip_switches: &[DipSwitchState],
 ) -> io::Result<()> {
@@ -227,7 +227,7 @@ mod test {
         for i in (1..=MAX_SWITCH_COUNT).step_by(2) {
             written_switches.push(DipSwitchState { nr: i, on: true });
         }
-        set_all_dip_switches(&mut cursor, &written_switches)?;
+        set_dip_switches(&mut cursor, &written_switches)?;
         let read_switches = get_all_dip_switches(&mut cursor)?;
 
         for (i, dip_switch) in read_switches.iter().enumerate() {
