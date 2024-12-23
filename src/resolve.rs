@@ -198,6 +198,7 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
             let value = read_int(
                 rom,
                 global_settings.endianness(),
+                global_settings.nibble(),
                 start.unwrap(),
                 length,
                 &scale,

@@ -220,13 +220,13 @@ pub(crate) fn read_bcd<A: Read + Seek>(
         buff = de_nibble(buff.len(), &buff, nibble)?;
     }
 
-    let mut score = 0;
+    let mut vaue = 0;
     for item in buff.iter() {
-        score *= 100;
-        score += cap_bcd(item & 0x0F) as u64;
-        score += cap_bcd((item & 0xF0) >> 4) as u64 * 10;
+        vaue *= 100;
+        vaue += cap_bcd(item & 0x0F) as u64;
+        vaue += cap_bcd((item & 0xF0) >> 4) as u64 * 10;
     }
-    Ok(apply_scale(scale, score))
+    Ok(apply_scale(scale, vaue))
 }
 
 fn apply_scale(scale: &Number, score: u64) -> u64 {
@@ -278,6 +278,7 @@ pub(crate) fn write_bcd<A: Write + Seek>(
 pub(crate) fn read_int<T: Read + Seek>(
     nvram_file: &mut T,
     endian: Endian,
+    nibble: Nibble,
     start: u64,
     length: usize,
     scale: &Number,
@@ -285,6 +286,7 @@ pub(crate) fn read_int<T: Read + Seek>(
     nvram_file.seek(SeekFrom::Start(start))?;
     let mut buff = vec![0; length];
     read_exact_at(nvram_file, start, &mut buff)?;
+    buff = de_nibble(length, &buff, nibble)?;
     let score = match endian {
         Endian::Big => buff
             .iter()
@@ -363,6 +365,56 @@ mod tests {
             Endian::Big,
         )?;
         pretty_assertions::assert_eq!(score, 1_234_567_890);
+        Ok(())
+    }
+
+    #[test]
+    fn test_read_bcd_ignore_a_to_f() -> io::Result<()> {
+        let data = vec![0x0, 0xFF];
+        let mut cursor = io::Cursor::new(data);
+        let value = read_bcd(
+            &mut cursor,
+            Location::Continuous {
+                start: 1,
+                length: 1,
+            },
+            Nibble::High,
+            &Number::from(1),
+            Endian::Little,
+        )?;
+        pretty_assertions::assert_eq!(value, 0);
+        Ok(())
+    }
+
+    #[test]
+    fn test_read_int() -> io::Result<()> {
+        let data = vec![0x0, 0xFF];
+        let mut cursor = io::Cursor::new(data);
+        let value = read_int(
+            &mut cursor,
+            Endian::Little,
+            Nibble::Both,
+            1,
+            1,
+            &Number::from(1),
+        )?;
+        pretty_assertions::assert_eq!(value, 255);
+        Ok(())
+    }
+
+    #[test]
+    fn test_read_int_high_nibble() -> io::Result<()> {
+        let data = vec![0x0, 0xFF];
+        let mut cursor = io::Cursor::new(data);
+        let value = read_int(
+            &mut cursor,
+            Endian::Little,
+            Nibble::High,
+            1,
+            1,
+            &Number::from(1),
+        )?;
+        pretty_assertions::assert_eq!(value, 15);
         Ok(())
     }
 

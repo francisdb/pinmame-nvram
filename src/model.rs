@@ -77,6 +77,8 @@ pub struct Audit {
     pub min: Option<u64>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub max: Option<u64>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub null: Option<Null>,
 }
 
 // "enum": An enumerated type where the byte at start is used as an index into a list of strings provided in values.
@@ -281,6 +283,8 @@ pub struct State {
     #[serde(skip_serializing_if = "Option::is_none")]
     _note: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
+    /// TODO this wild growth of fields is not good
+    /// see see https://github.com/tomlogic/pinmame-nvram-maps/issues/71
     _note2: Option<String>,
     pub encoding: Encoding,
     pub label: String,
@@ -332,6 +336,10 @@ pub enum AuditOrNote {
 pub struct NvramMap {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _notes: Option<Notes>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    /// TODO this wild growth of fields is not good
+    /// see https://github.com/tomlogic/pinmame-nvram-maps/issues/71
+    _nibble_note: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _todo: Option<Notes>,
     pub _copyright: String,
