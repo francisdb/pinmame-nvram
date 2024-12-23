@@ -4,6 +4,14 @@ Rust library handling PinMAME NVRAM files.
 
 ## Usage
 
+Add the [pinmame-nvram](https://crates.io/crates/pinmame-nvram) dependency to your project
+
+```
+cargo add pinmame-nvram
+```
+
+Example code for reading scores:
+
 ```rust
 use pinmame_nvram::Nvram;
 
@@ -19,5 +27,5 @@ fn main() {
 
 ## Attributions
 
-This program makes use of content from the [PinMAME NVRAM Maps](https://github.com/tomlogic/pinmame-nvram-maps) project.
+This library makes use of the [PinMAME NVRAM Maps](https://github.com/tomlogic/pinmame-nvram-maps) project.
 The maps are embedded in the library and are used to look up values in the nvram files.
