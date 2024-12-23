@@ -278,6 +278,7 @@ fn read_highscore<T: Read + Seek, S: GlobalSettings>(
                 read_int(
                     &mut nvram_file,
                     global_settings.endianness(),
+                    global_settings.nibble(),
                     map_score_start.into(),
                     hs.score.length.unwrap_or(0) as usize,
                     &Number::from(1u64),
@@ -306,7 +307,7 @@ fn clear_highscores<T: Write + Seek>(mut nvram_file: &mut T, map: &NvramMap) -> 
                 map_initials.length as usize,
                 "AAA".to_string(),
                 &map._char_map,
-                &map_initials.nibble,
+                &map_initials.nibble.or_else(|| Some(map.nibble())),
             )?;
         }
         if let Some(map_score_start) = &hs.score.start {
@@ -314,7 +315,7 @@ fn clear_highscores<T: Write + Seek>(mut nvram_file: &mut T, map: &NvramMap) -> 
                 &mut nvram_file,
                 map_score_start.into(),
                 hs.score.length.unwrap_or(0) as usize,
-                &hs.score.nibble,
+                &hs.score.nibble.or_else(|| Some(map.nibble())),
                 0,
             )?;
         }
@@ -354,6 +355,7 @@ fn read_mode_champion<T: Read + Seek, S: GlobalSettings>(
                     let result = read_int(
                         &mut nvram_file,
                         global_settings.endianness(),
+                        global_settings.nibble(),
                         map_score_start.into(),
                         score.length.unwrap_or(0) as usize,
                         score.scale.as_ref().unwrap_or(&Number::from(1u64)),
@@ -399,6 +401,7 @@ fn read_last_game_player<T: Read + Seek, S: GlobalSettings>(
         Encoding::Int => read_int(
             &mut nvram_file,
             global_settings.endianness(),
+            global_settings.nibble(),
             (&lg.start).into(),
             lg.length as usize,
             lg.scale.as_ref().unwrap_or(&Number::from(1)),
@@ -470,6 +473,7 @@ fn read_game_state_item<T: Read + Seek, S: GlobalSettings>(
             let score = read_int(
                 &mut nvram_file,
                 global_settings.endianness(),
+                global_settings.nibble(),
                 (&state.start).into(),
                 state.length.unwrap_or(0),
                 state.scale.as_ref().unwrap_or(&Number::from(1)),
@@ -535,6 +539,7 @@ fn read_replay_score<T: Read + Seek>(
                     let score = read_int(
                         &mut nvram_file,
                         map.endianness(),
+                        map.nibble(),
                         map_score_start.into(),
                         replay_score.length.unwrap_or(0) as usize,
                         replay_score.scale.as_ref().unwrap_or(&Number::from(1)),

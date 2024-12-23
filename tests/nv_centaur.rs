@@ -76,6 +76,10 @@ fn test_centaur() -> io::Result<()> {
     // #23 Tilt Feature - ON Ball Tilt / OFF Game Tilt
     // #24 Memory on Release - ON The lit release target remains lit. / OFF Target must be qualified on each ball.
     // #25-#26 Maximum credits adjustments
+    //   40 ON  ON
+    //   25 OFF ON
+    //   15 ON  OFF
+    //   10 OFF OFF
     // #27 Credits Displayed - ON Yes / OFF No
     // #28 Match Feature - ON Match ON / OFF Match OFF
     // #29 Number of games replays per game adjustmen - ON Liberal. All relays earned will be collected. / OFF Conservative. Only onne replay per player per game.
