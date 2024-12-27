@@ -28,15 +28,15 @@
       },
       "02": {
         "label": "Right Chute Coins",
-        "value": 11
+        "value": 16
       },
       "03": {
         "label": "Center Chute Coins",
-        "value": 21
+        "value": 15
       },
       "04": {
         "label": "Total Plays",
-        "value": 7
+        "value": 2
       },
       "05": {
         "label": "Total Replays",
@@ -60,7 +60,7 @@
       },
       "14": {
         "label": "Highest Game To Date",
-        "value": 123000
+        "value": 419420
       },
       "14a": {
         "label": "HGTD Initials",
@@ -68,14 +68,14 @@
       },
       "15": {
         "label": "Game Time",
-        "value": 300
+        "value": 100
       }
     }
   },
   "game_state": {
     "credits": {
       "label": "Credits",
-      "value": 7
+      "value": 9
     }
   },
   "high_scores": [
@@ -85,47 +85,47 @@
       },
       "label": "High Score #1",
       "score": {
-        "value": 123000
+        "value": 419420
       },
       "short_label": "1st"
     },
     {
       "initials": {
-        "value": "AAA"
+        "value": ""
       },
       "label": "High Score #2",
       "score": {
-        "value": 122090
+        "value": 0
       },
       "short_label": "2nd"
     },
     {
       "initials": {
-        "value": "DDD"
+        "value": ""
       },
       "label": "High Score #3",
       "score": {
-        "value": 116030
+        "value": 0
       },
       "short_label": "3rd"
     },
     {
       "initials": {
-        "value": "CCC"
+        "value": ""
       },
       "label": "High Score #4",
       "score": {
-        "value": 88210
+        "value": 0
       },
       "short_label": "4th"
     },
     {
       "initials": {
-        "value": "BBB"
+        "value": ""
       },
       "label": "High Score #5",
       "score": {
-        "value": 87000
+        "value": 0
       },
       "short_label": "5th"
     }

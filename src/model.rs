@@ -281,11 +281,7 @@ impl fmt::Display for HexString {
 #[derive(Serialize, Deserialize)]
 pub struct State {
     #[serde(skip_serializing_if = "Option::is_none")]
-    _note: Option<String>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    /// TODO this wild growth of fields is not good
-    /// see see https://github.com/tomlogic/pinmame-nvram-maps/issues/71
-    _note2: Option<String>,
+    _note: Option<Notes>,
     pub encoding: Encoding,
     pub label: String,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -336,10 +332,6 @@ pub enum AuditOrNote {
 pub struct NvramMap {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _notes: Option<Notes>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    /// TODO this wild growth of fields is not good
-    /// see https://github.com/tomlogic/pinmame-nvram-maps/issues/71
-    _nibble_note: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _todo: Option<Notes>,
     pub _copyright: String,
@@ -450,7 +442,7 @@ mod tests {
                 // println!("Reading {}", file_name);
                 let json = std::fs::read_to_string(path).unwrap();
                 let nvram_map: NvramMap = serde_json::from_str(&json)
-                    .unwrap_or_else(|_| panic!("Failed reading {}", file_name));
+                    .unwrap_or_else(|e| panic!("Failed reading {}: {}", file_name, e));
                 let json2 = serde_json::to_string_pretty(&nvram_map).unwrap();
 
                 // read json as Value to compare without formatting

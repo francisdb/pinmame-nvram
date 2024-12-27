@@ -19,7 +19,7 @@ fn test_robo_war() -> io::Result<()> {
     let scores = nvram.read_highscores()?;
     let expected = Vec::from([
         HighScore {
-            label: Some("First Place".to_string()),
+            label: Some("High Score #1".to_string()),
             short_label: Some("1st".to_string()),
             // default is "\0\0\0\0\0\0\0"
             initials: "SOM".to_string(),
@@ -27,25 +27,25 @@ fn test_robo_war() -> io::Result<()> {
             score: 123_000,
         },
         HighScore {
-            label: Some("Second Place".to_string()),
+            label: Some("High Score #2".to_string()),
             short_label: Some("2nd".to_string()),
             initials: "AAA".to_string(),
             score: 122090,
         },
         HighScore {
-            label: Some("Third Place".to_string()),
+            label: Some("High Score #3".to_string()),
             short_label: Some("3rd".to_string()),
             initials: "DDD".to_string(),
             score: 116030,
         },
         HighScore {
-            label: Some("Fourth Place".to_string()),
+            label: Some("High Score #4".to_string()),
             short_label: Some("4th".to_string()),
             initials: "CCC".to_string(),
             score: 88210,
         },
         HighScore {
-            label: Some("Fifth Place".to_string()),
+            label: Some("High Score #5".to_string()),
             short_label: Some("5th".to_string()),
             initials: "BBB".to_string(),
             score: 87000,
@@ -69,7 +69,7 @@ fn test_robo_war_default() -> io::Result<()> {
     let scores = nvram.read_highscores()?;
     let expected = Vec::from([
         HighScore {
-            label: Some("First Place".to_string()),
+            label: Some("High Score #1".to_string()),
             short_label: Some("1st".to_string()),
             // default is "\0\0\0\0\0\0\0"
             initials: "".to_string(),
@@ -77,25 +77,25 @@ fn test_robo_war_default() -> io::Result<()> {
             score: 0,
         },
         HighScore {
-            label: Some("Second Place".to_string()),
+            label: Some("High Score #2".to_string()),
             short_label: Some("2nd".to_string()),
             initials: "".to_string(),
             score: 0,
         },
         HighScore {
-            label: Some("Third Place".to_string()),
+            label: Some("High Score #3".to_string()),
             short_label: Some("3rd".to_string()),
             initials: "".to_string(),
             score: 0,
         },
         HighScore {
-            label: Some("Fourth Place".to_string()),
+            label: Some("High Score #4".to_string()),
             short_label: Some("4th".to_string()),
             initials: "".to_string(),
             score: 0,
         },
         HighScore {
-            label: Some("Fifth Place".to_string()),
+            label: Some("High Score #5".to_string()),
             short_label: Some("5th".to_string()),
             initials: "".to_string(),
             score: 0,
@@ -119,7 +119,7 @@ fn test_robo_wars_clear_highscores() -> io::Result<()> {
     let scores = nvram.read_highscores()?;
     let expected = Vec::from([
         HighScore {
-            label: Some("First Place".to_string()),
+            label: Some("High Score #1".to_string()),
             short_label: Some("1st".to_string()),
             // default is "\0\0\0\0\0\0\0"
             initials: "AAA".to_string(),
@@ -127,25 +127,25 @@ fn test_robo_wars_clear_highscores() -> io::Result<()> {
             score: 0,
         },
         HighScore {
-            label: Some("Second Place".to_string()),
+            label: Some("High Score #2".to_string()),
             short_label: Some("2nd".to_string()),
             initials: "AAA".to_string(),
             score: 0,
         },
         HighScore {
-            label: Some("Third Place".to_string()),
+            label: Some("High Score #3".to_string()),
             short_label: Some("3rd".to_string()),
             initials: "AAA".to_string(),
             score: 0,
         },
         HighScore {
-            label: Some("Fourth Place".to_string()),
+            label: Some("High Score #4".to_string()),
             short_label: Some("4th".to_string()),
             initials: "AAA".to_string(),
             score: 0,
         },
         HighScore {
-            label: Some("Fifth Place".to_string()),
+            label: Some("High Score #5".to_string()),
             short_label: Some("5th".to_string()),
             initials: "AAA".to_string(),
             score: 0,
