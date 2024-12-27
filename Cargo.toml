@@ -8,7 +8,7 @@ documentation = "https://docs.rs/vpin"
 
 keywords = ["pinmame", "emulation", "mame", "virtual-pinball"]
 categories = ["game-engines", "game-development"]
-version = "0.3.5"
+version = "0.3.6"
 edition = "2021"
 
 [dependencies]
