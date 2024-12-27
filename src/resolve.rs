@@ -281,6 +281,9 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
             rom.read_exact(&mut buff)?;
             Value::Array(buff.iter().map(|b| Value::Number((*b).into())).collect())
         }
+        Encoding::Dipsw => {
+            todo!("Dipswitch encoding not implemented")
+        }
     };
     Ok(value)
 }

@@ -26,6 +26,13 @@ pub struct Checksum8 {
 }
 
 #[derive(Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum ValuesOrReference {
+    Values(Vec<String>),
+    Reference(String),
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct Adjustment {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _note: Option<String>,
@@ -37,7 +44,7 @@ pub struct Adjustment {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub default: Option<StringOrNumber>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub values: Option<Vec<String>>,
+    pub values: Option<ValuesOrReference>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub min: Option<u64>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -99,6 +106,8 @@ pub enum Encoding {
     Raw,
     #[serde(rename = "wpc_rtc")]
     WpcRtc,
+    /// Dip switches
+    Dipsw
 }
 
 #[derive(Serialize, Deserialize, Debug, PartialEq, Copy, Clone)]
@@ -378,6 +387,8 @@ pub struct NvramMap {
     pub replay_score: Option<Score>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub buyin_high_scores: Option<Vec<HighScore>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub dip_switches: Option<HashMap<String, Adjustment>>,
 }
 
 impl GlobalSettings for NvramMap {
