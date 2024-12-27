@@ -24,15 +24,15 @@
     "Bookkeeping": {
       "01": {
         "label": "Left Chute Coins",
-        "value": 0
+        "value": 4
       },
       "02": {
         "label": "Right Chute Coins",
-        "value": 11
+        "value": 0
       },
       "03": {
         "label": "Center Chute Coins",
-        "value": 21
+        "value": 7
       },
       "04": {
         "label": "Total Plays",
@@ -56,76 +56,76 @@
       },
       "10": {
         "label": "Times HGTD Awarded",
-        "value": 1
+        "value": 0
       },
       "14": {
         "label": "Highest Game To Date",
-        "value": 123000
+        "value": 283000
       },
       "14a": {
         "label": "HGTD Initials",
-        "value": "SOM"
+        "value": "   "
       },
       "15": {
         "label": "Game Time",
-        "value": 300
+        "value": 250
       }
     }
   },
   "game_state": {
     "credits": {
       "label": "Credits",
-      "value": 7
+      "value": 8
     }
   },
   "high_scores": [
     {
       "initials": {
-        "value": "SOM"
+        "value": "   "
       },
       "label": "High Score #1",
       "score": {
-        "value": 123000
+        "value": 283000
       },
       "short_label": "1st"
     },
     {
       "initials": {
-        "value": "AAA"
+        "value": ""
       },
       "label": "High Score #2",
       "score": {
-        "value": 122090
+        "value": 0
       },
       "short_label": "2nd"
     },
     {
       "initials": {
-        "value": "DDD"
+        "value": ""
       },
       "label": "High Score #3",
       "score": {
-        "value": 116030
+        "value": 0
       },
       "short_label": "3rd"
     },
     {
       "initials": {
-        "value": "CCC"
+        "value": ""
       },
       "label": "High Score #4",
       "score": {
-        "value": 88210
+        "value": 0
       },
       "short_label": "4th"
     },
     {
       "initials": {
-        "value": "BBB"
+        "value": ""
       },
       "label": "High Score #5",
       "score": {
-        "value": 87000
+        "value": 0
       },
       "short_label": "5th"
     }

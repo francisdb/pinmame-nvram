@@ -1,27 +1,89 @@
 {
   "_fileformat": 0.4,
   "adjustments": {
-    "Replay Levels": [
-      {
-        "label": "Replay L1",
+    "Standard Adjustments": {
+      "06": {
+        "label": "Replay Percentage",
         "value": 0
       },
-      {
-        "label": "Replay L2",
+      "11": {
+        "label": "First High Score",
         "value": 0
       },
-      {
-        "label": "Replay L3",
+      "12": {
+        "label": "Second High Score",
+        "value": 0
+      },
+      "13": {
+        "label": "Third High Score",
         "value": 0
       }
-    ]
+    }
+  },
+  "audits": {
+    "Bookkeeping": {
+      "01": {
+        "label": "Left Chute Coins",
+        "value": 0
+      },
+      "02": {
+        "label": "Right Chute Coins",
+        "value": 0
+      },
+      "03": {
+        "label": "Center Chute Coins",
+        "value": 0
+      },
+      "04": {
+        "label": "Total Plays",
+        "value": 0
+      },
+      "05": {
+        "label": "Total Replays",
+        "value": 0
+      },
+      "07": {
+        "label": "Extra Balls",
+        "value": 0
+      },
+      "08": {
+        "label": "Tilts",
+        "value": 0
+      },
+      "09": {
+        "label": "Specials",
+        "value": 0
+      },
+      "10": {
+        "label": "Times HGTD Awarded",
+        "value": 0
+      },
+      "14": {
+        "label": "Highest Game To Date",
+        "value": 0
+      },
+      "14a": {
+        "label": "HGTD Initials",
+        "value": ""
+      },
+      "15": {
+        "label": "Game Time",
+        "value": 0
+      }
+    }
+  },
+  "game_state": {
+    "credits": {
+      "label": "Credits",
+      "value": 0
+    }
   },
   "high_scores": [
     {
       "initials": {
         "value": ""
       },
-      "label": "First Place",
+      "label": "High Score #1",
       "score": {
         "value": 0
       },
@@ -31,7 +93,7 @@
       "initials": {
         "value": ""
       },
-      "label": "Second Place",
+      "label": "High Score #2",
       "score": {
         "value": 0
       },
@@ -41,7 +103,7 @@
       "initials": {
         "value": ""
       },
-      "label": "Third Place",
+      "label": "High Score #3",
       "score": {
         "value": 0
       },
@@ -51,7 +113,7 @@
       "initials": {
         "value": ""
       },
-      "label": "Fourth Place",
+      "label": "High Score #4",
       "score": {
         "value": 0
       },
@@ -61,7 +123,7 @@
       "initials": {
         "value": ""
       },
-      "label": "Fifth Place",
+      "label": "High Score #5",
       "score": {
         "value": 0
       },
