@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.7](https://github.com/francisdb/pinmame-nvram/compare/v0.3.6...v0.3.7) - 2025-01-03
+
+### Added
+
+- maps in subdirs (#44)
+- use nvram index (#42)
+- resolving dip switches (#40)
+
+### Other
+
+- excalibr
+
 ## [0.3.6](https://github.com/francisdb/pinmame-nvram/compare/v0.3.5...v0.3.6) - 2024-12-27
 
 ### Other
