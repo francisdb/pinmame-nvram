@@ -24,18 +24,34 @@ fn main() -> io::Result<()> {
     let quality = 11;
     let lg_window_size = 22;
 
-    // Iterate over all JSON files in the directory
-    for entry in fs::read_dir(json_dir)? {
+    // Process files recursively, keeping the directory structure
+    process_directory(json_dir, &out_path, quality, lg_window_size)?;
+
+    Ok(())
+}
+
+fn process_directory(
+    in_path: &Path,
+    out_path: &Path,
+    quality: u32,
+    lg_window_size: u32,
+) -> io::Result<()> {
+    for entry in fs::read_dir(in_path)? {
         let entry = entry?;
         let path = entry.path();
-        // check if file name ends with .nv.json or equals index.json
-        if path
+        if path.is_dir() {
+            let out_path_deeper = out_path.join(path.file_name().unwrap());
+            process_directory(&path, &out_path_deeper, quality, lg_window_size)?;
+        } else if path
             .file_name()
             .unwrap()
             .to_string_lossy()
             .ends_with(".nv.json")
             || path.file_name() == Some("index.json".as_ref())
         {
+            // Make sure the parent directory exists.
+            // We do this here because we only want directories with JSON files.
+            fs::create_dir_all(out_path)?;
             // Read the JSON file
             let mut file = File::open(&path)?;
             let mut contents = String::new();
@@ -45,14 +61,13 @@ fn main() -> io::Result<()> {
             let json: Value = serde_json::from_str(&contents)?;
             let minified = serde_json::to_string(&json)?;
 
-            // Compress the minified JSON using Brotli
-            // path out file with [file.ext1.ext2].brotli
-            let mut compressed_path = out_path.join(path.file_name().unwrap());
+            let mut compressed_path = out_path.join(entry.file_name());
             compressed_path.set_extension(format!(
                 "{}.brotli",
                 compressed_path.extension().unwrap().to_string_lossy()
             ));
 
+            // Compress the minified JSON using Brotli
             let mut compressed_file = CompressorWriter::new(
                 File::create(&compressed_path)?,
                 4096,
@@ -68,6 +83,5 @@ fn main() -> io::Result<()> {
             );
         }
     }
-
     Ok(())
 }
