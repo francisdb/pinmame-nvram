@@ -107,7 +107,7 @@ pub enum Encoding {
     #[serde(rename = "wpc_rtc")]
     WpcRtc,
     /// Dip switches
-    Dipsw
+    Dipsw,
 }
 
 #[derive(Serialize, Deserialize, Debug, PartialEq, Copy, Clone)]
@@ -361,6 +361,8 @@ pub struct NvramMap {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _char_map: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
+    pub _values: Option<HashMap<String, Vec<String>>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub last_played: Option<LastGamePlayer>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub last_game: Option<Vec<LastGamePlayer>>,
@@ -391,6 +393,13 @@ pub struct NvramMap {
     pub dip_switches: Option<HashMap<String, Adjustment>>,
 }
 
+pub trait GlobalSettings {
+    fn endianness(&self) -> Endian;
+    fn nibble(&self) -> Nibble;
+    fn char_map(&self) -> &Option<String>;
+    fn value(&self, key: &str, index: usize) -> Option<String>;
+}
+
 impl GlobalSettings for NvramMap {
     fn endianness(&self) -> Endian {
         self._endian.unwrap_or(Endian::Big)
@@ -398,16 +407,12 @@ impl GlobalSettings for NvramMap {
     fn nibble(&self) -> Nibble {
         self._nibble.unwrap_or(Nibble::Both)
     }
-
     fn char_map(&self) -> &Option<String> {
         &self._char_map
     }
-}
-
-pub trait GlobalSettings {
-    fn endianness(&self) -> Endian;
-    fn nibble(&self) -> Nibble;
-    fn char_map(&self) -> &Option<String>;
+    fn value(&self, key: &str, index: usize) -> Option<String> {
+        self._values.as_ref()?.get(key)?.get(index).cloned()
+    }
 }
 
 #[derive(Serialize, Deserialize)]
@@ -418,6 +423,8 @@ pub struct GlobalSettingsImpl {
     pub _nibble: Option<Nibble>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _char_map: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub _values: Option<HashMap<String, Vec<String>>>,
 }
 
 impl GlobalSettings for GlobalSettingsImpl {
@@ -431,6 +438,10 @@ impl GlobalSettings for GlobalSettingsImpl {
 
     fn char_map(&self) -> &Option<String> {
         &self._char_map
+    }
+
+    fn value(&self, key: &str, index: usize) -> Option<String> {
+        self._values.as_ref()?.get(key)?.get(index).cloned()
     }
 }
 
