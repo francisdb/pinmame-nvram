@@ -3,7 +3,7 @@ use crate::encoding::{read_bcd, read_ch, read_int, read_wpc_rtc, Location};
 use crate::model::{
     Checksum16, Checksum8, Encoding, Endian, GlobalSettings, GlobalSettingsImpl, Nibble, Null,
 };
-use crate::open_nvram;
+use crate::{dips, open_nvram};
 use serde_json::{Map, Number, Value};
 use std::fs::OpenOptions;
 use std::io;
@@ -280,6 +280,42 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
             rom.seek(SeekFrom::Start(start.unwrap()))?;
             rom.read_exact(&mut buff)?;
             Value::Array(buff.iter().map(|b| Value::Number((*b).into())).collect())
+        }
+        Encoding::Dipsw => {
+            let offsets = map
+                .get("offsets")
+                .unwrap()
+                .as_array()
+                .unwrap()
+                .iter()
+                .map(json_hex_or_int)
+                .collect::<io::Result<Vec<_>>>()?;
+
+            let mut dips = Vec::new();
+            for offset in offsets {
+                let dip_on = dips::get_dip_switch(rom, offset as usize)?;
+                dips.push(dip_on);
+            }
+            // convert the bits to a number, always msb first
+            let mut value = 0;
+            for dip in dips.iter() {
+                value = (value << 1) | if *dip { 1 } else { 0 };
+            }
+
+            let values = map.get("values").expect("Missing values for dip switch");
+            let index = value as usize;
+            match values {
+                Value::Array(array) => array.get(index).unwrap_or(&Value::Null).clone(),
+                Value::String(value_reference) => {
+                    match global_settings.value(value_reference, index) {
+                        Some(value) => Value::String(value),
+                        None => Value::Null,
+                    }
+                }
+                _ => {
+                    panic!("Unexpected dip switch values type: {:?}", values);
+                }
+            }
         }
     };
     Ok(value)
