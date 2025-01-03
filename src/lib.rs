@@ -1,16 +1,19 @@
 pub mod checksum;
 pub mod dips;
 mod encoding;
+mod index;
 mod model;
 pub mod resolve;
 
 use crate::checksum::{update_all_checksum16, verify_all_checksum16, ChecksumMismatch};
 use crate::dips::{get_dip_switch, set_dip_switch, validate_dip_switch_range};
 use crate::encoding::{read_bcd, read_ch, read_int, read_wpc_rtc, write_bcd, write_ch, Location};
+use crate::index::get_index_map;
 use crate::model::{Encoding, GlobalSettings, NvramMap, Score, StateOrStateList};
 use include_dir::{include_dir, Dir, File};
 use serde::de;
-use serde_json::{Number, Value};
+use serde::de::DeserializeOwned;
+use serde_json::Number;
 use std::collections::HashMap;
 use std::fs::OpenOptions;
 use std::io;
@@ -146,30 +149,7 @@ impl Nvram {
     }
 }
 
-trait ReadRoms {
-    fn roms(&self) -> Vec<String>;
-}
-
-impl ReadRoms for NvramMap {
-    fn roms(&self) -> Vec<String> {
-        // TODO avoid the clone
-        self._roms.clone()
-    }
-}
-
-impl ReadRoms for Value {
-    fn roms(&self) -> Vec<String> {
-        // find "_roms" property and read as string
-        self["_roms"]
-            .as_array()
-            .unwrap()
-            .iter()
-            .map(|v| v.as_str().unwrap().to_string())
-            .collect()
-    }
-}
-
-fn open_nvram<T: ReadRoms + de::DeserializeOwned>(nv_path: &Path) -> io::Result<Option<T>> {
+fn open_nvram<T: DeserializeOwned>(nv_path: &Path) -> io::Result<Option<T>> {
     // get the rom name from the file name
     let rom_name = nv_path
         .file_name()
@@ -190,35 +170,24 @@ fn open_nvram<T: ReadRoms + de::DeserializeOwned>(nv_path: &Path) -> io::Result<
     find_map(&rom_name)
 }
 
-fn find_map<T: ReadRoms + de::DeserializeOwned>(rom_name: &String) -> io::Result<Option<T>> {
-    let map_name = format!("{}.json.brotli", rom_name);
-    if let Some(map_file) = MAPS.get_file(&map_name) {
-        let map: T = read_compressed_map(map_file)?;
-        // check that the rom name is in the map
-        let roms = map.roms();
-        if !roms.contains(rom_name) {
-            return Err(io::Error::new(
-                io::ErrorKind::InvalidData,
-                format!(
-                    "Map for {}.nv.json found but {} not in _roms list: {}",
-                    rom_name,
-                    rom_name,
-                    roms.join(", ")
-                ),
-            ));
+fn find_map<T: DeserializeOwned>(rom_name: &String) -> io::Result<Option<T>> {
+    match get_index_map()?.get(rom_name) {
+        Some(map_path) => {
+            let compressed_map_path = format!("{}.brotli", map_path.as_str().unwrap());
+            let map_file = MAPS.get_file(&compressed_map_path).ok_or_else(|| {
+                io::Error::new(
+                    io::ErrorKind::NotFound,
+                    format!("File not found: {}", compressed_map_path),
+                )
+            })?;
+            let map: T = read_compressed_json(map_file)?;
+            Ok(Some(map))
         }
-        return Ok(Some(map));
+        None => Ok(None),
     }
-    for entry in MAPS.files() {
-        let map: T = read_compressed_map(entry)?;
-        if map.roms().contains(rom_name) {
-            return Ok(Some(map));
-        }
-    }
-    Ok(None)
 }
 
-fn read_compressed_map<T: de::DeserializeOwned>(map_file: &File) -> io::Result<T> {
+fn read_compressed_json<T: de::DeserializeOwned>(map_file: &File) -> io::Result<T> {
     let mut cursor = io::Cursor::new(map_file.contents());
     let reader = brotli::Decompressor::new(&mut cursor, 4096);
     let data = serde_json::from_reader(reader)?;
@@ -583,6 +552,7 @@ fn location_for(score: &Score) -> Location {
 mod tests {
     use super::*;
     use pretty_assertions::assert_eq;
+    use serde_json::Value;
     use std::fs::File;
     use testdir::testdir;
 

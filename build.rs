@@ -28,7 +28,14 @@ fn main() -> io::Result<()> {
     for entry in fs::read_dir(json_dir)? {
         let entry = entry?;
         let path = entry.path();
-        if path.extension().and_then(|s| s.to_str()) == Some("json") {
+        // check if file name ends with .nv.json or equals index.json
+        if path
+            .file_name()
+            .unwrap()
+            .to_string_lossy()
+            .ends_with(".nv.json")
+            || path.file_name() == Some("index.json".as_ref())
+        {
             // Read the JSON file
             let mut file = File::open(&path)?;
             let mut contents = String::new();
@@ -39,10 +46,13 @@ fn main() -> io::Result<()> {
             let minified = serde_json::to_string(&json)?;
 
             // Compress the minified JSON using Brotli
-            // path out file with .json.brotli
-            let compressed_path = out_path
-                .join(path.file_stem().unwrap())
-                .with_extension("json.brotli");
+            // path out file with [file.ext1.ext2].brotli
+            let mut compressed_path = out_path.join(path.file_name().unwrap());
+            compressed_path.set_extension(format!(
+                "{}.brotli",
+                compressed_path.extension().unwrap().to_string_lossy()
+            ));
+
             let mut compressed_file = CompressorWriter::new(
                 File::create(&compressed_path)?,
                 4096,
