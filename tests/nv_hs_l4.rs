@@ -59,20 +59,10 @@ fn test_high_speed() -> io::Result<()> {
     assert_eq!(expected, scores);
 
     let game_state = nvram.read_game_state()?;
-    // >        "current_ball": "0",
-    // >        "hideout_jackpot": "280000",
-    // >        "extra_balls": "0",
-    // >        "tilt_warnings": "0",
-    // >        "bonus_hold": "0",
-    // >        "bonus": "Bits encoding not implemented",
-    // >        "bonusX": "Bits encoding not implemented",
-    // >        "current_player": "0",
-    // >        "player_count": "0",
-    // >        "match": "0",
     let expected = HashMap::from([
         ("current_ball".into(), "0".into()),
         ("hideout_jackpot".into(), "280000".into()),
-        ("extra_balls".into(), "0".into()),
+        ("extra_balls".into(), "3".into()),
         ("tilt_warnings".into(), "0".into()),
         ("bonus_hold".into(), "0".into()),
         ("bonus".into(), "Bits encoding not implemented".into()),

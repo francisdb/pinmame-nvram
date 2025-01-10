@@ -3,6 +3,9 @@ use serde_json::{Number, Value};
 use std::collections::HashMap;
 use std::fmt;
 
+pub const DEFAULT_LENGTH: usize = 1;
+pub const DEFAULT_SCALE: i32 = 1;
+
 /// Descriptor for a single value in the NVRAM.
 /// Describing a section of the .nv file and how to interpret it
 ///

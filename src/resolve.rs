@@ -2,6 +2,7 @@ use crate::checksum::{verify_checksum16, verify_checksum8};
 use crate::encoding::{read_bcd, read_ch, read_int, read_wpc_rtc, Location};
 use crate::model::{
     Checksum16, Checksum8, Encoding, Endian, GlobalSettings, GlobalSettingsImpl, Nibble, Null,
+    DEFAULT_LENGTH, DEFAULT_SCALE,
 };
 use crate::{dips, open_nvram};
 use serde_json::{Map, Number, Value};
@@ -187,14 +188,14 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
     let start = map.get("start").map(json_hex_or_int).transpose()?;
     let length = map
         .get("length")
-        .map_or(1, |v| v.as_u64().unwrap() as usize);
+        .map_or(DEFAULT_LENGTH, |v| v.as_u64().unwrap() as usize);
     let value = match encoding {
         Encoding::Int => {
             let scale = map
                 .get("scale")
                 .and_then(|s| s.as_number())
                 .cloned()
-                .unwrap_or(Number::from(1));
+                .unwrap_or(Number::from(DEFAULT_SCALE));
             let value = read_int(
                 rom,
                 global_settings.endianness(),
@@ -237,7 +238,7 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
                 .get("scale")
                 .and_then(|s| s.as_number())
                 .cloned()
-                .unwrap_or(Number::from(1));
+                .unwrap_or(Number::from(DEFAULT_SCALE));
             // how can i=avoid the clone() here?
             let nibble: Nibble = map
                 .get("nibble")
