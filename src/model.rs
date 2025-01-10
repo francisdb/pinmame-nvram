@@ -10,7 +10,7 @@ use std::fmt;
 #[derive(Serialize, Deserialize)]
 pub struct Descriptor {
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub _note: Option<String>,
+    pub _note: Option<Notes>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub label: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]

@@ -12,19 +12,19 @@ fn test_white_water() -> io::Result<()> {
     let expected = Vec::from([
         LastGamePlayer {
             score: 700_330,
-            label: None,
+            label: Some("Player 1".into()),
         },
         LastGamePlayer {
             score: 450_130,
-            label: None,
+            label: Some("Player 2".into()),
         },
         LastGamePlayer {
             score: 835_020,
-            label: None,
+            label: Some("Player 3".into()),
         },
         LastGamePlayer {
             score: 600_220,
-            label: None,
+            label: Some("Player 4".into()),
         },
     ]);
     assert_eq!(Some(expected), last_game);
@@ -90,19 +90,19 @@ fn test_white_water_default() -> io::Result<()> {
     let expected = Vec::from([
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 1".into()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 2".into()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 3".into()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 4".into()),
         },
     ]);
     assert_eq!(Some(expected), last_game);
