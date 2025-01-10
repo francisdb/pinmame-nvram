@@ -121,13 +121,13 @@ pub struct ModeChampion {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub score: Option<Descriptor>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub timestamp: Option<LastGamePlayer>,
+    pub timestamp: Option<Descriptor>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _note: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub counter: Option<LastGamePlayer>,
+    pub counter: Option<Descriptor>,
     #[serde(rename = "nth time", skip_serializing_if = "Option::is_none")]
-    pub nth_time: Option<LastGamePlayer>,
+    pub nth_time: Option<Descriptor>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -154,19 +154,6 @@ impl From<&HexOrInteger> for u64 {
             HexOrInteger::Integer(i) => *i as u64,
         }
     }
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct LastGamePlayer {
-    pub start: HexOrInteger,
-    pub encoding: Encoding,
-    pub length: u64,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub nibble: Option<Nibble>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub label: Option<String>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub scale: Option<Number>,
 }
 
 #[derive(Serialize, Deserialize, Debug, PartialEq, Copy, Clone)]
@@ -307,7 +294,7 @@ pub struct NvramMap {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _values: Option<HashMap<String, Vec<String>>>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub last_played: Option<LastGamePlayer>,
+    pub last_played: Option<Descriptor>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub last_game: Option<Vec<Descriptor>>,
     pub high_scores: Vec<HighScore>,

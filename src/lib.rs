@@ -407,9 +407,14 @@ fn read_mode_champion<T: Read + Seek, S: GlobalSettings>(
         .timestamp
         .as_ref()
         .map(|ts| match &ts.encoding {
-            Encoding::WpcRtc => {
-                read_wpc_rtc(&mut nvram_file, (&ts.start).into(), ts.length as usize)
-            }
+            Encoding::WpcRtc => read_wpc_rtc(
+                &mut nvram_file,
+                ts.start
+                    .as_ref()
+                    .expect("missing start for wpc_rtc encoding")
+                    .into(),
+                ts.length.expect("missing length for wpc_rtc encoding"),
+            ),
             other => todo!("Timestamp encoding not implemented: {:?}", other),
         })
         .transpose()?;
