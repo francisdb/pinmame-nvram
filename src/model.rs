@@ -42,11 +42,13 @@ pub struct Descriptor {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub offset: Option<i64>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub mask: Option<HexString>,
+    pub mask: Option<HexOrInteger>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub endian: Option<Endian>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub offsets: Option<Vec<HexOrInteger>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub null: Option<Null>,
 }
 
 #[derive(Serialize, Deserialize, Debug, PartialEq)]
@@ -117,7 +119,7 @@ pub struct ModeChampion {
     pub label: String,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub short_label: Option<String>,
-    pub initials: Initials,
+    pub initials: Descriptor,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub score: Option<Descriptor>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -137,7 +139,7 @@ pub struct HighScore {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub short_label: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub initials: Option<Initials>,
+    pub initials: Option<Descriptor>,
     pub score: Descriptor,
 }
 
@@ -169,23 +171,6 @@ pub enum Nibble {
 pub enum Endian {
     Big,
     Little,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct Initials {
-    pub start: HexOrInteger,
-    pub encoding: Encoding,
-    pub length: u64,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub default: Option<String>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub nibble: Option<Nibble>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub mask: Option<HexOrInteger>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub _note: Option<String>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub null: Option<Null>,
 }
 
 #[derive(Serialize, Deserialize)]

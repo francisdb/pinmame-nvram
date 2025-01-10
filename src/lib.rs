@@ -278,8 +278,12 @@ fn read_highscore<T: Read + Seek, S: GlobalSettings>(
     if let Some(map_initials) = &hs.initials {
         initials = read_ch(
             &mut nvram_file,
-            (&map_initials.start).into(),
-            map_initials.length as usize,
+            map_initials
+                .start
+                .as_ref()
+                .expect("missing start for ch encoding")
+                .into(),
+            map_initials.length.expect("missing length for ch encoding"),
             map_initials.mask.as_ref().map(|m| m.into()),
             global_settings.char_map(),
             map_initials.nibble.unwrap_or(global_settings.nibble()),
@@ -335,8 +339,12 @@ fn clear_highscores<T: Write + Seek>(mut nvram_file: &mut T, map: &NvramMap) -> 
         if let Some(map_initials) = &hs.initials {
             write_ch(
                 &mut nvram_file,
-                (&map_initials.start).into(),
-                map_initials.length as usize,
+                map_initials
+                    .start
+                    .as_ref()
+                    .expect("missing start for ch encoding")
+                    .into(),
+                map_initials.length.expect("missing length for ch encoding"),
                 "AAA".to_string(),
                 &map._char_map,
                 &map_initials.nibble.or_else(|| Some(map.nibble())),
@@ -362,8 +370,12 @@ fn read_mode_champion<T: Read + Seek, S: GlobalSettings>(
 ) -> io::Result<ModeChampion> {
     let initials = read_ch(
         &mut nvram_file,
-        (&mc.initials.start).into(),
-        mc.initials.length as usize,
+        mc.initials
+            .start
+            .as_ref()
+            .expect("missing start for ch encoding")
+            .into(),
+        mc.initials.length.expect("missing start for ch encoding"),
         mc.initials.mask.as_ref().map(|m| m.into()),
         global_settings.char_map(),
         mc.initials.nibble.unwrap_or(global_settings.nibble()),
