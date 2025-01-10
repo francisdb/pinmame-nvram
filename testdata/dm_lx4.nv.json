@@ -715,48 +715,74 @@
       "12": {
         "label": "Last Serv. Cred",
         "value": "2024-02-16 09:12"
+      },
+      "91": {
+        "label": "Unused Timestamp #1",
+        "value": "2024-02-16 09:12"
+      },
+      "92": {
+        "label": "Unused Timestamp #2",
+        "value": "2024-02-16 09:12"
+      },
+      "93": {
+        "label": "Unused Timestamp #3",
+        "value": "2024-02-16 09:12"
       }
     },
-    "B.X Unidentified": {
+    "B.X Debug": {
       "01": {
-        "label": "? (@0x1901)",
+        "label": "Exec Lockups",
         "value": 0
       },
       "02": {
-        "label": "? (@0x1907)",
+        "label": "Power Ups",
+        "value": 4
+      },
+      "03": {
+        "label": "Slam Tilts",
         "value": 0
       },
       "04": {
-        "label": "? (@0x19BB)",
+        "label": "Plumb-Bob Hits",
         "value": 0
       },
       "05": {
-        "label": "?boot count",
-        "value": 4
+        "label": "Ball Roll Tilts",
+        "value": 0
       },
       "06": {
-        "label": "? (@0x19C7)",
+        "label": "Fatal Errors",
         "value": 0
       },
       "07": {
-        "label": "? (@0x19CD)",
+        "label": "Non-Fatal Errors",
+        "value": 0
+      },
+      "08": {
+        "label": "Lockup 1 Addr",
+        "value": 0
+      },
+      "09": {
+        "label": "Lockup 1 PID/LEF",
         "value": 0
       },
       "10": {
-        "label": "? (@0x1C4A)",
-        "value": "2024-02-16 09:12"
+        "label": "Lockup 2 Addr",
+        "value": 0
       },
       "11": {
-        "label": "? (@0x1C51)",
-        "value": "2024-02-16 09:12"
+        "label": "Lockup 2 PID/LEF",
+        "value": 0
+      }
+    },
+    "B.X Unused Audits": {
+      "91": {
+        "label": "? (@6401)",
+        "value": 0
       },
-      "12": {
-        "label": "? (@0x1C58)",
-        "value": "2024-02-16 09:12"
-      },
-      "13": {
-        "label": "Volume",
-        "value": 27
+      "92": {
+        "label": "? (@6407)",
+        "value": 0
       }
     }
   },
@@ -782,7 +808,7 @@
       "value": "valid"
     },
     {
-      "label": "Credits?",
+      "label": "Credits",
       "value": "valid"
     },
     {
@@ -796,11 +822,11 @@
       "value": "valid"
     },
     {
-      "label": "Custom Message",
+      "label": "Custom Message (3x32)",
       "value": "valid"
     },
     {
-      "label": "Custom Message 2?",
+      "label": "Custom Message (2x32)",
       "value": "valid"
     },
     {
@@ -817,6 +843,46 @@
       "value": "valid"
     }
   ],
+  "game_state": {
+    "credits": {
+      "label": "Credits",
+      "value": 9
+    },
+    "game_id": {
+      "label": "WPC Game ID",
+      "value": "50028"
+    },
+    "player_count": {
+      "label": "Players",
+      "value": 1
+    },
+    "replay": {
+      "label": "Replay",
+      "value": 450000000
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 1421550
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ],
+    "volume": {
+      "label": "Volume",
+      "value": 27
+    }
+  },
   "high_scores": [
     {
       "initials": {
@@ -867,20 +933,6 @@
         "value": 500000000
       },
       "short_label": "4th"
-    }
-  ],
-  "last_game": [
-    {
-      "value": 1421550
-    },
-    {
-      "value": 0
-    },
-    {
-      "value": 0
-    },
-    {
-      "value": 0
     }
   ],
   "last_played": {

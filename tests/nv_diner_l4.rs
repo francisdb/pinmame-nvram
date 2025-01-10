@@ -7,7 +7,7 @@ use testdir::testdir;
 
 #[test]
 fn test_diner() -> io::Result<()> {
-    let mut nvram = Nvram::open(Path::new("testdata/diner_l4.nv"))?.unwrap();
+    let mut nvram = Nvram::open_local(Path::new("testdata/diner_l4.nv"))?.unwrap();
 
     let last_game = nvram.read_last_game()?;
     let expected = Vec::from([
@@ -68,7 +68,7 @@ fn test_diner_clear_scores() -> io::Result<()> {
     let test_file = dir.join("diner_l4.nv");
     // copy the test file to the test directory
     std::fs::copy("testdata/diner_l4.nv", &test_file)?;
-    let mut nvram = Nvram::open(&test_file)?.unwrap();
+    let mut nvram = Nvram::open_local(&test_file)?.unwrap();
     nvram.clear_highscores()?;
     let scores = nvram.read_highscores()?;
     let expected = Vec::from([

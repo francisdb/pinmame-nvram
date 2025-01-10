@@ -11,19 +11,19 @@ fn test_theatre_of_magic() -> io::Result<()> {
     let expected = Vec::from([
         LastGamePlayer {
             score: 9_950_010,
-            label: None,
+            label: Some("Player 1".into()),
         },
         LastGamePlayer {
             score: 9_210_280,
-            label: None,
+            label: Some("Player 2".into()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 3".into()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 4".into()),
         },
     ]);
     assert_eq!(Some(expected), last_game);

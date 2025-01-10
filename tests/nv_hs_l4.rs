@@ -6,7 +6,7 @@ use std::path::Path;
 
 #[test]
 fn test_high_speed() -> io::Result<()> {
-    let mut nvram = Nvram::open(Path::new("testdata/hs_l4.nv"))?.unwrap();
+    let mut nvram = Nvram::open_local(Path::new("testdata/hs_l4.nv"))?.unwrap();
 
     let last_game = nvram.read_last_game()?;
     let expected = Vec::from([

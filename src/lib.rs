@@ -9,11 +9,11 @@ use crate::checksum::{update_all_checksum16, verify_all_checksum16, ChecksumMism
 use crate::dips::{get_dip_switch, set_dip_switch, validate_dip_switch_range};
 use crate::encoding::{read_bcd, read_ch, read_int, read_wpc_rtc, write_bcd, write_ch, Location};
 use crate::index::get_index_map;
-use crate::model::{Encoding, GlobalSettings, NvramMap, Score, StateOrStateList};
+use crate::model::{Descriptor, Encoding, GlobalSettings, NvramMap, StateOrStateList};
 use include_dir::{include_dir, Dir, File};
 use serde::de;
 use serde::de::DeserializeOwned;
-use serde_json::Number;
+use serde_json::{Number, Value};
 use std::collections::HashMap;
 use std::fs::OpenOptions;
 use std::io;
@@ -56,7 +56,7 @@ pub struct Nvram {
 }
 
 impl Nvram {
-    /// Open a NVRAM file
+    /// Open a NVRAM file from the embedded maps
     ///
     /// # Returns
     ///
@@ -64,6 +64,21 @@ impl Nvram {
     /// * `Ok(None)` if the file was found but no map was found for the ROM
     pub fn open(nv_path: &Path) -> io::Result<Option<Nvram>> {
         let map_opt: Option<NvramMap> = open_nvram(nv_path)?;
+        Ok(map_opt.map(|map| Nvram {
+            map,
+            nv_path: nv_path.to_path_buf(),
+        }))
+    }
+
+    /// Open a NVRAM file from the file system using the local maps
+    /// Expects the `pinmame-nvram-maps` folder to exist in the current working directory
+    ///
+    /// # Returns
+    ///
+    /// * `Ok(Some(Nvram))` if the file was found and a map was found for the ROM
+    /// * `Ok(None)` if the file was found but no map was found for the ROM
+    pub fn open_local(nv_path: &Path) -> io::Result<Option<Nvram>> {
+        let map_opt: Option<NvramMap> = open_nvram_local(nv_path)?;
         Ok(map_opt.map(|map| Nvram {
             map,
             nv_path: nv_path.to_path_buf(),
@@ -170,6 +185,27 @@ fn open_nvram<T: DeserializeOwned>(nv_path: &Path) -> io::Result<Option<T>> {
     find_map(&rom_name)
 }
 
+fn open_nvram_local<T: DeserializeOwned>(nv_path: &Path) -> io::Result<Option<T>> {
+    // get the rom name from the file name
+    let rom_name = nv_path
+        .file_name()
+        .unwrap()
+        .to_str()
+        .unwrap()
+        .split('.')
+        .next()
+        .unwrap()
+        .to_string();
+    // check if file exists
+    if !nv_path.exists() {
+        return Err(io::Error::new(
+            io::ErrorKind::NotFound,
+            format!("File not found: {:?}", nv_path),
+        ));
+    }
+    find_map_local(&rom_name)
+}
+
 fn find_map<T: DeserializeOwned>(rom_name: &String) -> io::Result<Option<T>> {
     match get_index_map()?.get(rom_name) {
         Some(map_path) => {
@@ -181,6 +217,33 @@ fn find_map<T: DeserializeOwned>(rom_name: &String) -> io::Result<Option<T>> {
                 )
             })?;
             let map: T = read_compressed_json(map_file)?;
+            Ok(Some(map))
+        }
+        None => Ok(None),
+    }
+}
+
+fn find_map_local<T: DeserializeOwned>(rom_name: &String) -> io::Result<Option<T>> {
+    let index_file = Path::new("pinmame-nvram-maps").join("index.json");
+    if !index_file.exists() {
+        return Err(io::Error::new(
+            io::ErrorKind::NotFound,
+            format!("File not found: {:?}", index_file),
+        ));
+    }
+    let index_file = OpenOptions::new().read(true).open(&index_file)?;
+    let map: Value = serde_json::from_reader(index_file)?;
+    match map.get(rom_name) {
+        Some(map_path) => {
+            let map_file = Path::new("pinmame-nvram-maps").join(map_path.as_str().unwrap());
+            if !map_file.exists() {
+                return Err(io::Error::new(
+                    io::ErrorKind::NotFound,
+                    format!("File not found: {:?}", map_file),
+                ));
+            }
+            let map_file = OpenOptions::new().read(true).open(&map_file)?;
+            let map: T = serde_json::from_reader(map_file)?;
             Ok(Some(map))
         }
         None => Ok(None),
@@ -215,8 +278,12 @@ fn read_highscore<T: Read + Seek, S: GlobalSettings>(
     if let Some(map_initials) = &hs.initials {
         initials = read_ch(
             &mut nvram_file,
-            (&map_initials.start).into(),
-            map_initials.length as usize,
+            map_initials
+                .start
+                .as_ref()
+                .expect("missing start for ch encoding")
+                .into(),
+            map_initials.length.expect("missing length for ch encoding"),
             map_initials.mask.as_ref().map(|m| m.into()),
             global_settings.char_map(),
             map_initials.nibble.unwrap_or(global_settings.nibble()),
@@ -228,7 +295,7 @@ fn read_highscore<T: Read + Seek, S: GlobalSettings>(
             let location = match &hs.score.offsets.as_ref() {
                 None => Location::Continuous {
                     start: hs.score.start.as_ref().unwrap().into(),
-                    length: hs.score.length.unwrap_or(0) as usize,
+                    length: hs.score.length.unwrap_or(0),
                 },
                 Some(offsets) => Location::Scattered {
                     offsets: offsets.iter().map(|o| o.into()).collect(),
@@ -249,7 +316,7 @@ fn read_highscore<T: Read + Seek, S: GlobalSettings>(
                     global_settings.endianness(),
                     global_settings.nibble(),
                     map_score_start.into(),
-                    hs.score.length.unwrap_or(0) as usize,
+                    hs.score.length.unwrap_or(0),
                     &Number::from(1u64),
                 )?
             } else {
@@ -272,8 +339,12 @@ fn clear_highscores<T: Write + Seek>(mut nvram_file: &mut T, map: &NvramMap) -> 
         if let Some(map_initials) = &hs.initials {
             write_ch(
                 &mut nvram_file,
-                (&map_initials.start).into(),
-                map_initials.length as usize,
+                map_initials
+                    .start
+                    .as_ref()
+                    .expect("missing start for ch encoding")
+                    .into(),
+                map_initials.length.expect("missing length for ch encoding"),
                 "AAA".to_string(),
                 &map._char_map,
                 &map_initials.nibble.or_else(|| Some(map.nibble())),
@@ -283,7 +354,7 @@ fn clear_highscores<T: Write + Seek>(mut nvram_file: &mut T, map: &NvramMap) -> 
             write_bcd(
                 &mut nvram_file,
                 map_score_start.into(),
-                hs.score.length.unwrap_or(0) as usize,
+                hs.score.length.unwrap_or(0),
                 &hs.score.nibble.or_else(|| Some(map.nibble())),
                 0,
             )?;
@@ -299,8 +370,12 @@ fn read_mode_champion<T: Read + Seek, S: GlobalSettings>(
 ) -> io::Result<ModeChampion> {
     let initials = read_ch(
         &mut nvram_file,
-        (&mc.initials.start).into(),
-        mc.initials.length as usize,
+        mc.initials
+            .start
+            .as_ref()
+            .expect("missing start for ch encoding")
+            .into(),
+        mc.initials.length.expect("missing start for ch encoding"),
         mc.initials.mask.as_ref().map(|m| m.into()),
         global_settings.char_map(),
         mc.initials.nibble.unwrap_or(global_settings.nibble()),
@@ -326,7 +401,7 @@ fn read_mode_champion<T: Read + Seek, S: GlobalSettings>(
                         global_settings.endianness(),
                         global_settings.nibble(),
                         map_score_start.into(),
-                        score.length.unwrap_or(0) as usize,
+                        score.length.unwrap_or(0),
                         score.scale.as_ref().unwrap_or(&Number::from(1u64)),
                     )?;
                     Some(result)
@@ -344,9 +419,14 @@ fn read_mode_champion<T: Read + Seek, S: GlobalSettings>(
         .timestamp
         .as_ref()
         .map(|ts| match &ts.encoding {
-            Encoding::WpcRtc => {
-                read_wpc_rtc(&mut nvram_file, (&ts.start).into(), ts.length as usize)
-            }
+            Encoding::WpcRtc => read_wpc_rtc(
+                &mut nvram_file,
+                ts.start
+                    .as_ref()
+                    .expect("missing start for wpc_rtc encoding")
+                    .into(),
+                ts.length.expect("missing length for wpc_rtc encoding"),
+            ),
             other => todo!("Timestamp encoding not implemented: {:?}", other),
         })
         .transpose()?;
@@ -363,23 +443,31 @@ fn read_mode_champion<T: Read + Seek, S: GlobalSettings>(
 
 fn read_last_game_player<T: Read + Seek, S: GlobalSettings>(
     mut nvram_file: &mut T,
-    lg: &model::LastGamePlayer,
+    lg: &model::Descriptor,
     global_settings: &S,
 ) -> io::Result<LastGamePlayer> {
+    // TODO make sure these expects are replaced with proper error handling
     let score = match &lg.encoding {
         Encoding::Int => read_int(
             &mut nvram_file,
             global_settings.endianness(),
             global_settings.nibble(),
-            (&lg.start).into(),
-            lg.length as usize,
+            lg.start
+                .as_ref()
+                .expect("missing start for int descriptor")
+                .into(),
+            lg.length.expect("missing length for int descriptor"),
             lg.scale.as_ref().unwrap_or(&Number::from(1)),
         )?,
         Encoding::Bcd => read_bcd(
             &mut nvram_file,
             Location::Continuous {
-                start: (&lg.start).into(),
-                length: lg.length as usize,
+                start: lg
+                    .start
+                    .as_ref()
+                    .expect("missing start for bcd descriptor")
+                    .into(),
+                length: lg.length.expect("missing length for bcd descriptor"),
             },
             lg.nibble.unwrap_or(global_settings.nibble()),
             &Number::from(1),
@@ -398,11 +486,31 @@ fn read_last_game<T: Read + Seek>(
     map: &NvramMap,
 ) -> io::Result<Option<Vec<LastGamePlayer>>> {
     if let Some(lg) = &map.last_game {
+        // this is the old location of the last game scores
+        // TODO remove once all maps have been updated
         let last_games: Result<Vec<LastGamePlayer>, io::Error> = lg
             .iter()
             .map(|lg| read_last_game_player(&mut nvram_file, lg, map))
             .collect();
         Ok(Some(last_games?))
+    } else if let Some(game_state) = &map.game_state {
+        if let Some(scores) = game_state.get("scores") {
+            let scores: Result<Vec<LastGamePlayer>, io::Error> = match scores {
+                StateOrStateList::StateList(sl) => sl
+                    .iter()
+                    .map(|s| read_last_game_player(&mut nvram_file, s, map))
+                    .collect(),
+                StateOrStateList::State(_) => {
+                    return Err(io::Error::new(
+                        io::ErrorKind::InvalidData,
+                        "Scores is not a StateList",
+                    ));
+                }
+            };
+            return Ok(Some(scores?));
+        } else {
+            Ok(None)
+        }
     } else {
         Ok(None)
     }
@@ -425,13 +533,17 @@ fn read_mode_champions<T: Read + Seek>(
 
 fn read_game_state_item<T: Read + Seek, S: GlobalSettings>(
     mut nvram_file: &mut T,
-    state: &model::State,
+    state: &model::Descriptor,
     global_settings: &S,
 ) -> io::Result<String> {
     match &state.encoding {
         Encoding::Ch => read_ch(
             &mut nvram_file,
-            (&state.start).into(),
+            state
+                .start
+                .as_ref()
+                .expect("missing start for ch descriptor")
+                .into(),
             state.length.unwrap_or(0),
             state.mask.as_ref().map(|m| m.into()),
             global_settings.char_map(),
@@ -443,7 +555,11 @@ fn read_game_state_item<T: Read + Seek, S: GlobalSettings>(
                 &mut nvram_file,
                 global_settings.endianness(),
                 global_settings.nibble(),
-                (&state.start).into(),
+                state
+                    .start
+                    .as_ref()
+                    .expect("missing start for int descriptor")
+                    .into(),
                 state.length.unwrap_or(0),
                 state.scale.as_ref().unwrap_or(&Number::from(1)),
             )?;
@@ -453,7 +569,11 @@ fn read_game_state_item<T: Read + Seek, S: GlobalSettings>(
             let score = read_bcd(
                 &mut nvram_file,
                 Location::Continuous {
-                    start: (&state.start).into(),
+                    start: state
+                        .start
+                        .as_ref()
+                        .expect("missing start for bcd descriptor")
+                        .into(),
                     length: state.length.unwrap_or(0),
                 },
                 state.nibble.unwrap_or(global_settings.nibble()),
@@ -510,7 +630,7 @@ fn read_replay_score<T: Read + Seek>(
                         map.endianness(),
                         map.nibble(),
                         map_score_start.into(),
-                        replay_score.length.unwrap_or(0) as usize,
+                        replay_score.length.unwrap_or(0),
                         replay_score.scale.as_ref().unwrap_or(&Number::from(1)),
                     )?;
                     Ok(Some(score))
@@ -536,11 +656,11 @@ fn read_replay_score<T: Read + Seek>(
     }
 }
 
-fn location_for(score: &Score) -> Location {
+fn location_for(score: &Descriptor) -> Location {
     match score.offsets.as_ref() {
         None => Location::Continuous {
             start: score.start.as_ref().unwrap().into(),
-            length: score.length.unwrap_or(0) as usize,
+            length: score.length.unwrap_or(0),
         },
         Some(offsets) => Location::Scattered {
             offsets: offsets.iter().map(|o| o.into()).collect(),

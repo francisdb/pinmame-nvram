@@ -560,7 +560,15 @@
   },
   "checksum16": [
     {
+      "label": "Custom Message (2x32)",
+      "value": "valid"
+    },
+    {
       "label": "Adjustments",
+      "value": "valid"
+    },
+    {
+      "label": "Timestamps",
       "value": "valid"
     },
     {
@@ -576,9 +584,11 @@
       "value": "valid"
     },
     {
+      "label": "Credits",
       "value": "valid"
     },
     {
+      "label": "Volume",
       "value": "valid"
     },
     {
@@ -589,7 +599,11 @@
       "value": "valid"
     },
     {
-      "label": "Custom Message",
+      "label": "Custom Message (3x32)",
+      "value": "valid"
+    },
+    {
+      "label": "Custom Message (2x32)",
       "value": "valid"
     },
     {
@@ -604,6 +618,10 @@
     }
   ],
   "game_state": {
+    "credits": {
+      "label": "Credits",
+      "value": 8
+    },
     "current_ball": {
       "label": "Ball",
       "value": 1
@@ -613,12 +631,38 @@
       "value": 1
     },
     "player_count": {
-      "label": "Player Count",
-      "value": 0
+      "label": "Players",
+      "value": 2
     },
+    "replay": {
+      "label": "Replay",
+      "value": 600000000
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 9950010
+      },
+      {
+        "label": "Player 2",
+        "value": 9210280
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ],
     "theatre": {
       "label": "Theatre Value",
       "value": 0
+    },
+    "volume": {
+      "label": "Volume",
+      "value": 27
     }
   },
   "high_scores": [
@@ -671,20 +715,6 @@
         "value": 610000000
       },
       "short_label": "4th"
-    }
-  ],
-  "last_game": [
-    {
-      "value": 9950010
-    },
-    {
-      "value": 9210280
-    },
-    {
-      "value": 0
-    },
-    {
-      "value": 0
     }
   ],
   "mode_champions": [

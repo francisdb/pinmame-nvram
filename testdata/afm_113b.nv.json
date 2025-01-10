@@ -456,6 +456,10 @@
   },
   "checksum16": [
     {
+      "label": "Custom Message (2x32)",
+      "value": "valid"
+    },
+    {
       "label": "Adjustments",
       "value": "valid"
     },
@@ -476,11 +480,26 @@
       "value": "valid"
     },
     {
+      "label": "Credits",
+      "value": "valid"
+    },
+    {
+      "label": "Volume",
+      "value": "valid"
+    },
+    {
+      "value": "valid"
+    },
+    {
       "label": "?? replay level",
       "value": "valid"
     },
     {
-      "label": "Custom Message",
+      "label": "Custom Message (3x32)",
+      "value": "valid"
+    },
+    {
+      "label": "Custom Message (2x32)",
       "value": "valid"
     },
     {
@@ -502,6 +521,42 @@
       "value": "valid"
     }
   ],
+  "game_state": {
+    "credits": {
+      "label": "Credits",
+      "value": 6
+    },
+    "player_count": {
+      "label": "Players",
+      "value": 1
+    },
+    "replay": {
+      "label": "Replay",
+      "value": 4000000000
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 51477300
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ],
+    "volume": {
+      "label": "Volume",
+      "value": 26
+    }
+  },
   "high_scores": [
     {
       "initials": {
@@ -592,20 +647,6 @@
         "value": 3500000000
       },
       "short_label": "BI#4"
-    }
-  ],
-  "last_game": [
-    {
-      "value": 51477300
-    },
-    {
-      "value": 0
-    },
-    {
-      "value": 0
-    },
-    {
-      "value": 0
     }
   ],
   "last_played": {

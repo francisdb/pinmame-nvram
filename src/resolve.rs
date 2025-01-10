@@ -380,8 +380,8 @@ mod tests {
                 if let Some(map) = &map {
                     let json_path = &nvram_path.with_extension("nv.json");
                     // Enable this to regenerate the json files
-                    // let json = serde_json::to_string_pretty(&map)?;
-                    // std::fs::write(&json_path, json)?;
+                    let json = serde_json::to_string_pretty(&map)?;
+                    std::fs::write(json_path, json)?;
                     if json_path.exists() {
                         let expected = std::fs::read_to_string(json_path)?;
                         let actual = serde_json::to_string_pretty(&map)?;

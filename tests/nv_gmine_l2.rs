@@ -14,10 +14,9 @@ use testdir::testdir;
 //       "encoding": "bcd"
 //     }
 
-#[ignore = "https://github.com/tomlogic/pinmame-nvram-maps/pull/30"]
 #[test]
 fn test_gold_mine() -> io::Result<()> {
-    let mut nvram = Nvram::open(Path::new("testdata/gmine_l2.nv"))?.unwrap();
+    let mut nvram = Nvram::open_local(Path::new("testdata/gmine_l2.nv"))?.unwrap();
 
     let game_state = nvram.read_game_state()?;
     let expected = HashMap::from([
@@ -67,14 +66,13 @@ fn test_gold_mine() -> io::Result<()> {
     Ok(())
 }
 
-#[ignore = "https://github.com/tomlogic/pinmame-nvram-maps/pull/30"]
 #[test]
 fn test_gold_mine_6players() -> io::Result<()> {
     let test_dir = testdir!();
     let nvram_path = test_dir.join("gmine_l2.nv");
-    std::fs::copy("testdata/gmine_l2_6players.nv", &nvram_path)?;
+    std::fs::copy("testdata/gmine_l2-6players.nv", &nvram_path)?;
 
-    let mut nvram = Nvram::open(&nvram_path)?.unwrap();
+    let mut nvram = Nvram::open_local(&nvram_path)?.unwrap();
 
     let game_state = nvram.read_game_state()?;
     let expected = HashMap::from([
