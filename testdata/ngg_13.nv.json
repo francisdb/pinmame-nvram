@@ -1,0 +1,180 @@
+{
+  "_fileformat": 0.1,
+  "checksum16": [
+    {
+      "label": "Custom Message (2x32)",
+      "value": "valid"
+    },
+    {
+      "label": "Adjustments",
+      "value": "valid"
+    },
+    {
+      "label": "Timestamps",
+      "value": "valid"
+    },
+    {
+      "label": "High Scores",
+      "value": "valid"
+    },
+    {
+      "label": "Grand Champion",
+      "value": "valid"
+    },
+    {
+      "label": "HSTD Reset",
+      "value": "valid"
+    },
+    {
+      "label": "Credits",
+      "value": "valid"
+    },
+    {
+      "label": "Volume",
+      "value": "valid"
+    },
+    {
+      "value": "valid"
+    },
+    {
+      "value": "valid"
+    },
+    {
+      "label": "Custom Message (3x32)",
+      "value": "valid"
+    },
+    {
+      "label": "Custom Message (2x32)",
+      "value": "valid"
+    },
+    {
+      "label": "Hole-In-One Champion",
+      "value": "valid"
+    },
+    {
+      "label": "Today's High Score",
+      "value": "valid"
+    }
+  ],
+  "checksum8": [
+    {
+      "label": "Audits",
+      "value": "valid"
+    }
+  ],
+  "game_state": {
+    "credits": {
+      "label": "Credits",
+      "value": 7
+    },
+    "game_id": {
+      "label": "WPC Game ID",
+      "value": "50061"
+    },
+    "player_count": {
+      "label": "Players",
+      "value": 1
+    },
+    "replay": {
+      "label": "Replay",
+      "value": 15000000
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 496990
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ],
+    "volume": {
+      "label": "Volume",
+      "value": 27
+    }
+  },
+  "high_scores": [
+    {
+      "initials": {
+        "value": "PML"
+      },
+      "label": "Grand Champion",
+      "score": {
+        "value": 60000000
+      },
+      "short_label": "GC"
+    },
+    {
+      "initials": {
+        "value": "KOZ"
+      },
+      "label": "First Place",
+      "score": {
+        "value": 50000000
+      },
+      "short_label": "1st"
+    },
+    {
+      "initials": {
+        "value": "J K"
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 40000000
+      },
+      "short_label": "2nd"
+    },
+    {
+      "initials": {
+        "value": "J Y"
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 30000000
+      },
+      "short_label": "3rd"
+    },
+    {
+      "initials": {
+        "value": "VJP"
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 20000000
+      },
+      "short_label": "4th"
+    }
+  ],
+  "last_played": {
+    "value": "2024-01-17 00:01"
+  },
+  "mode_champions": [
+    {
+      "initials": {
+        "value": "GDD"
+      },
+      "label": "Today's High Score",
+      "score": {
+        "value": 15000000
+      }
+    },
+    {
+      "initials": {
+        "value": "LFT"
+      },
+      "label": "Hole-In-One Champion",
+      "score": {
+        "value": 3
+      }
+    }
+  ]
+}

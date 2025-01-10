@@ -1,0 +1,230 @@
+{
+  "_fileformat": 0.1,
+  "checksum16": [
+    {
+      "label": "Adjustments",
+      "value": "valid"
+    },
+    {
+      "label": "Timestamps",
+      "value": "valid"
+    },
+    {
+      "label": "High Scores",
+      "value": "valid"
+    },
+    {
+      "label": "Grand Champion",
+      "value": "valid"
+    },
+    {
+      "label": "HSTD Reset",
+      "value": "valid"
+    },
+    {
+      "label": "Credits",
+      "value": "valid"
+    },
+    {
+      "label": "Volume",
+      "value": "valid"
+    },
+    {
+      "value": "valid"
+    },
+    {
+      "value": "valid"
+    },
+    {
+      "label": "Custom Message (3x32)",
+      "value": "valid"
+    },
+    {
+      "label": "Custom Message (2x32)",
+      "value": "valid"
+    },
+    {
+      "label": "Officer's Club",
+      "value": "valid"
+    },
+    {
+      "label": "Q Continuum",
+      "value": "valid"
+    }
+  ],
+  "checksum8": [
+    {
+      "label": "Audits",
+      "value": "valid"
+    }
+  ],
+  "game_state": {
+    "credits": {
+      "label": "Credits",
+      "value": 10
+    },
+    "game_id": {
+      "label": "WPC Game ID",
+      "value": "50023"
+    },
+    "player_count": {
+      "label": "Players",
+      "value": 1
+    },
+    "replay": {
+      "label": "Replay",
+      "value": 450000000
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 20632180
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ],
+    "volume": {
+      "label": "Volume",
+      "value": 27
+    }
+  },
+  "high_scores": [
+    {
+      "initials": {
+        "value": "SSR"
+      },
+      "label": "Grand Champion",
+      "score": {
+        "value": 1000000000
+      },
+      "short_label": "GC"
+    },
+    {
+      "initials": {
+        "value": "DAN"
+      },
+      "label": "First Place",
+      "score": {
+        "value": 800000000
+      },
+      "short_label": "1st"
+    },
+    {
+      "initials": {
+        "value": "ZAP"
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 600000000
+      },
+      "short_label": "2nd"
+    },
+    {
+      "initials": {
+        "value": "GER"
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 400000000
+      },
+      "short_label": "3rd"
+    },
+    {
+      "initials": {
+        "value": "CAB"
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 200000000
+      },
+      "short_label": "4th"
+    }
+  ],
+  "last_played": {
+    "value": "2024-12-06 00:01"
+  },
+  "mode_champions": [
+    {
+      "initials": {
+        "value": "WAG"
+      },
+      "label": "Officer's Club #1",
+      "score": {
+        "value": 5000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "LED"
+      },
+      "label": "Officer's Club #2",
+      "score": {
+        "value": 2000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "WAL"
+      },
+      "label": "Officer's Club #3",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "JAP"
+      },
+      "label": "Officer's Club #4",
+      "score": {
+        "value": 500000000
+      }
+    },
+    {
+      "initials": {
+        "value": "TEX"
+      },
+      "label": "Q Continuum #1",
+      "score": {
+        "value": 16000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "XAQ"
+      },
+      "label": "Q Continuum #2",
+      "score": {
+        "value": 14000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "MAT"
+      },
+      "label": "Q Continuum #3",
+      "score": {
+        "value": 12000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "TED"
+      },
+      "label": "Q Continuum #4",
+      "score": {
+        "value": 10000000000
+      }
+    }
+  ]
+}

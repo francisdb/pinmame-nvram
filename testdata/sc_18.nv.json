@@ -1,0 +1,207 @@
+{
+  "_fileformat": 0.1,
+  "checksum16": [
+    {
+      "label": "Custom Message (2x32)",
+      "value": "valid"
+    },
+    {
+      "label": "Adjustments",
+      "value": "valid"
+    },
+    {
+      "label": "Timestamps",
+      "value": "valid"
+    },
+    {
+      "label": "High Scores",
+      "value": "valid"
+    },
+    {
+      "label": "Grand Champion",
+      "value": "valid"
+    },
+    {
+      "label": "HSTD Reset",
+      "value": "valid"
+    },
+    {
+      "label": "Credits",
+      "value": "valid"
+    },
+    {
+      "label": "Volume",
+      "value": "valid"
+    },
+    {
+      "value": "valid"
+    },
+    {
+      "value": "valid"
+    },
+    {
+      "label": "Custom Message (3x32)",
+      "value": "valid"
+    },
+    {
+      "label": "Custom Message (2x32)",
+      "value": "valid"
+    },
+    {
+      "label": "Assault Champion",
+      "value": "valid"
+    },
+    {
+      "label": "Assault High Scores",
+      "value": "valid"
+    }
+  ],
+  "checksum8": [
+    {
+      "label": "Audits",
+      "value": "valid"
+    }
+  ],
+  "game_state": {
+    "credits": {
+      "label": "Credits",
+      "value": 8
+    },
+    "game_id": {
+      "label": "WPC Game ID",
+      "value": "90003"
+    },
+    "player_count": {
+      "label": "Players",
+      "value": 1
+    },
+    "replay": {
+      "label": "Replay",
+      "value": 2500000
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 7560
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ],
+    "volume": {
+      "label": "Volume",
+      "value": 31
+    }
+  },
+  "high_scores": [
+    {
+      "initials": {
+        "value": "PML"
+      },
+      "label": "Grand Champion",
+      "score": {
+        "value": 4000000
+      },
+      "short_label": "GC"
+    },
+    {
+      "initials": {
+        "value": "MAT"
+      },
+      "label": "First Place",
+      "score": {
+        "value": 3500000
+      },
+      "short_label": "1st"
+    },
+    {
+      "initials": {
+        "value": "ADG"
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 3000000
+      },
+      "short_label": "2nd"
+    },
+    {
+      "initials": {
+        "value": "DAN"
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 2500000
+      },
+      "short_label": "3rd"
+    },
+    {
+      "initials": {
+        "value": "JY "
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 2250000
+      },
+      "short_label": "4th"
+    }
+  ],
+  "last_played": {
+    "value": "2022-09-09 00:01"
+  },
+  "mode_champions": [
+    {
+      "initials": {
+        "value": "PML"
+      },
+      "label": "Assault Champion",
+      "score": {
+        "value": 5500000
+      }
+    },
+    {
+      "initials": {
+        "value": "MAT"
+      },
+      "label": "Assault Master #1",
+      "score": {
+        "value": 4900000
+      }
+    },
+    {
+      "initials": {
+        "value": "ADG"
+      },
+      "label": "Assault Master #2",
+      "score": {
+        "value": 4800000
+      }
+    },
+    {
+      "initials": {
+        "value": "DAN"
+      },
+      "label": "Assault Master #3",
+      "score": {
+        "value": 4700000
+      }
+    },
+    {
+      "initials": {
+        "value": "JY "
+      },
+      "label": "Assault Master #4",
+      "score": {
+        "value": 4600000
+      }
+    }
+  ]
+}

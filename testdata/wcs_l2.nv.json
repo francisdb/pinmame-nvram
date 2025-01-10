@@ -1,0 +1,203 @@
+{
+  "_fileformat": 0.1,
+  "checksum16": [
+    {
+      "label": "Adjustments",
+      "value": "valid"
+    },
+    {
+      "label": "Timestamps",
+      "value": "valid"
+    },
+    {
+      "label": "High Scores",
+      "value": "valid"
+    },
+    {
+      "label": "Grand Champion",
+      "value": "valid"
+    },
+    {
+      "label": "HSTD Reset",
+      "value": "valid"
+    },
+    {
+      "label": "Credits",
+      "value": "valid"
+    },
+    {
+      "label": "Volume",
+      "value": "valid"
+    },
+    {
+      "value": "valid"
+    },
+    {
+      "value": "valid"
+    },
+    {
+      "label": "Custom Message (3x32)",
+      "value": "valid"
+    },
+    {
+      "label": "Custom Message (2x32)",
+      "value": "valid"
+    },
+    {
+      "label": "Final Match Goal Champ",
+      "value": "valid"
+    },
+    {
+      "label": "Buy-In High Scores",
+      "value": "valid"
+    }
+  ],
+  "checksum8": [
+    {
+      "label": "Audits",
+      "value": "valid"
+    }
+  ],
+  "game_state": {
+    "credits": {
+      "label": "Credits",
+      "value": 9
+    },
+    "game_id": {
+      "label": "WPC Game ID",
+      "value": "50031"
+    },
+    "player_count": {
+      "label": "Players",
+      "value": 1
+    },
+    "replay": {
+      "label": "Replay",
+      "value": 900000000
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 66339930
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ],
+    "volume": {
+      "label": "Volume",
+      "value": 27
+    }
+  },
+  "high_scores": [
+    {
+      "initials": {
+        "value": "MAT"
+      },
+      "label": "Grand Champion",
+      "score": {
+        "value": 2000000000
+      },
+      "short_label": "GC"
+    },
+    {
+      "initials": {
+        "value": "POP"
+      },
+      "label": "First Place",
+      "score": {
+        "value": 1600000000
+      },
+      "short_label": "1st"
+    },
+    {
+      "initials": {
+        "value": "DAD"
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 1400000000
+      },
+      "short_label": "2nd"
+    },
+    {
+      "initials": {
+        "value": "K O"
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 1200000000
+      },
+      "short_label": "3rd"
+    },
+    {
+      "initials": {
+        "value": "JES"
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 1000000000
+      },
+      "short_label": "4th"
+    }
+  ],
+  "last_played": {
+    "value": "2024-01-17 00:01"
+  },
+  "mode_champions": [
+    {
+      "initials": {
+        "value": "V P"
+      },
+      "label": "Final Match Goal Champ",
+      "score": {
+        "value": 6
+      }
+    },
+    {
+      "initials": {
+        "value": "CJS"
+      },
+      "label": "Buy-In High Score #1",
+      "score": {
+        "value": 2600000000
+      }
+    },
+    {
+      "initials": {
+        "value": "VLK"
+      },
+      "label": "Buy-In High Score #2",
+      "score": {
+        "value": 2400000000
+      }
+    },
+    {
+      "initials": {
+        "value": "SAC"
+      },
+      "label": "Buy-In High Score #3",
+      "score": {
+        "value": 2200000000
+      }
+    },
+    {
+      "initials": {
+        "value": "EAE"
+      },
+      "label": "Buy-In High Score #4",
+      "score": {
+        "value": 2000000000
+      }
+    }
+  ]
+}

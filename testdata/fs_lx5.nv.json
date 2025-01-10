@@ -1,0 +1,203 @@
+{
+  "_fileformat": 0.1,
+  "checksum16": [
+    {
+      "label": "Custom Message (2x32)",
+      "value": "valid"
+    },
+    {
+      "label": "Adjustments",
+      "value": "valid"
+    },
+    {
+      "label": "Timestamps",
+      "value": "valid"
+    },
+    {
+      "label": "High Scores",
+      "value": "valid"
+    },
+    {
+      "label": "Grand Champion",
+      "value": "valid"
+    },
+    {
+      "label": "HSTD Reset",
+      "value": "valid"
+    },
+    {
+      "label": "Credits",
+      "value": "valid"
+    },
+    {
+      "label": "Volume",
+      "value": "valid"
+    },
+    {
+      "value": "valid"
+    },
+    {
+      "value": "valid"
+    },
+    {
+      "label": "Custom Message (3x32)",
+      "value": "valid"
+    },
+    {
+      "label": "Top Bowler",
+      "value": "valid"
+    },
+    {
+      "label": "Buy-In Scores",
+      "value": "valid"
+    }
+  ],
+  "checksum8": [
+    {
+      "label": "Audits",
+      "value": "valid"
+    }
+  ],
+  "game_state": {
+    "credits": {
+      "label": "Credits",
+      "value": 10
+    },
+    "game_id": {
+      "label": "WPC Game ID",
+      "value": "50029"
+    },
+    "player_count": {
+      "label": "Players",
+      "value": 1
+    },
+    "replay": {
+      "label": "Replay",
+      "value": 400000000
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 8726510
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ],
+    "volume": {
+      "label": "Volume",
+      "value": 27
+    }
+  },
+  "high_scores": [
+    {
+      "initials": {
+        "value": "JBJ"
+      },
+      "label": "Grand Champion",
+      "score": {
+        "value": 1000000000
+      },
+      "short_label": "GC"
+    },
+    {
+      "initials": {
+        "value": "CMP"
+      },
+      "label": "First Place",
+      "score": {
+        "value": 640000000
+      },
+      "short_label": "1st"
+    },
+    {
+      "initials": {
+        "value": "DAV"
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 630000000
+      },
+      "short_label": "2nd"
+    },
+    {
+      "initials": {
+        "value": "FEJ"
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 620000000
+      },
+      "short_label": "3rd"
+    },
+    {
+      "initials": {
+        "value": "J T"
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 610000000
+      },
+      "short_label": "4th"
+    },
+    {
+      "initials": {
+        "value": "FLI"
+      },
+      "label": "Buy-In #1",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "NTS"
+      },
+      "label": "Buy-In #2",
+      "score": {
+        "value": 980000000
+      }
+    },
+    {
+      "initials": {
+        "value": "TON"
+      },
+      "label": "Buy-In #3",
+      "score": {
+        "value": 960000000
+      }
+    },
+    {
+      "initials": {
+        "value": "ES "
+      },
+      "label": "Buy-In #4",
+      "score": {
+        "value": 940000000
+      }
+    }
+  ],
+  "last_played": {
+    "value": "2024-01-18 00:01"
+  },
+  "mode_champions": [
+    {
+      "initials": {
+        "value": "JBJ"
+      },
+      "label": "Top Bowler",
+      "score": {
+        "value": 120
+      }
+    }
+  ]
+}
