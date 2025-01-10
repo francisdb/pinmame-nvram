@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.8](https://github.com/francisdb/pinmame-nvram/compare/v0.3.7...v0.3.8) - 2025-01-10
+
+### Added
+
+- unify model descriptors (#46)
+
+### Other
+
+- value lookup refactor (#49)
+- more wpc nvrams (#48)
+- disable test map generation
+
 ## [0.3.7](https://github.com/francisdb/pinmame-nvram/compare/v0.3.6...v0.3.7) - 2025-01-03
 
 ### Added
