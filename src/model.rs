@@ -1,7 +1,50 @@
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
-use serde_json::Number;
+use serde_json::{Number, Value};
 use std::collections::HashMap;
 use std::fmt;
+
+/// Descriptor for a single value in the NVRAM.
+/// Describing a section of the .nv file and how to interpret it
+///
+/// see https://github.com/tomlogic/pinmame-nvram-maps?tab=readme-ov-file#descriptors
+#[derive(Serialize, Deserialize)]
+pub struct Descriptor {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub _note: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub label: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub short_label: Option<String>,
+    pub start: HexOrInteger,
+    pub encoding: Encoding,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub default: Option<StringOrNumber>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub values: Option<ValuesOrReference>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub min: Option<u64>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub max: Option<u64>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub multiple_of: Option<i64>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub length: Option<usize>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub suffix: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub special_values: Option<HashMap<String, String>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub nibble: Option<Nibble>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub scale: Option<Number>,
+    // can be negative
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub offset: Option<i64>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mask: Option<HexString>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub endian: Option<Endian>,
+}
 
 #[derive(Serialize, Deserialize, Debug, PartialEq)]
 pub struct Checksum16 {
@@ -28,7 +71,8 @@ pub struct Checksum8 {
 #[derive(Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ValuesOrReference {
-    Values(Vec<String>),
+    // TODO adjust both according to result of https://github.com/tomlogic/pinmame-nvram-maps/issues/83
+    Values(Vec<Value>),
     Reference(String),
 }
 
@@ -288,39 +332,10 @@ impl fmt::Display for HexString {
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct State {
-    #[serde(skip_serializing_if = "Option::is_none")]
-    _note: Option<Notes>,
-    pub encoding: Encoding,
-    pub label: String,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub short_label: Option<String>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub length: Option<usize>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub nibble: Option<Nibble>,
-    pub start: HexOrInteger,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub mask: Option<HexString>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub endian: Option<Endian>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub scale: Option<serde_json::Number>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub suffix: Option<String>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub values: Option<Vec<u64>>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub offset: Option<u64>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub special_values: Option<HashMap<String, String>>,
-}
-
-#[derive(Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum StateOrStateList {
-    State(Box<State>),
-    StateList(Vec<State>),
+    State(Box<Descriptor>),
+    StateList(Vec<Descriptor>),
 }
 
 #[derive(Serialize, Deserialize)]
@@ -365,7 +380,7 @@ pub struct NvramMap {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub last_played: Option<LastGamePlayer>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub last_game: Option<Vec<LastGamePlayer>>,
+    pub last_game: Option<Vec<Descriptor>>,
     pub high_scores: Vec<HighScore>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub mode_champions: Option<Vec<ModeChampion>>,

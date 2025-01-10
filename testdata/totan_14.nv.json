@@ -1,5 +1,95 @@
 {
   "_fileformat": 0.1,
+  "checksum16": [
+    {
+      "label": "Custom Message (2x32)",
+      "value": "valid"
+    },
+    {
+      "label": "Adjustments",
+      "value": "valid"
+    },
+    {
+      "label": "Timestamps",
+      "value": "valid"
+    },
+    {
+      "label": "High Scores",
+      "value": "valid"
+    },
+    {
+      "label": "Grand Champion",
+      "value": "valid"
+    },
+    {
+      "label": "HSTD Reset",
+      "value": "valid"
+    },
+    {
+      "label": "Credits",
+      "value": "valid"
+    },
+    {
+      "label": "Volume",
+      "value": "valid"
+    },
+    {
+      "value": "valid"
+    },
+    {
+      "value": "valid"
+    },
+    {
+      "label": "Custom Message (3x32)",
+      "value": "valid"
+    },
+    {
+      "label": "Custom Message (2x32)",
+      "value": "valid"
+    }
+  ],
+  "checksum8": [
+    {
+      "label": "Audits",
+      "value": "valid"
+    }
+  ],
+  "game_state": {
+    "credits": {
+      "label": "Credits",
+      "value": 9
+    },
+    "player_count": {
+      "label": "Players",
+      "value": 1
+    },
+    "replay": {
+      "label": "Replay",
+      "value": 8000000
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 678040
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ],
+    "volume": {
+      "label": "Volume",
+      "value": 27
+    }
+  },
   "high_scores": [
     {
       "initials": {
@@ -50,20 +140,6 @@
         "value": 8000000
       },
       "short_label": "#4"
-    }
-  ],
-  "last_game": [
-    {
-      "value": 678040
-    },
-    {
-      "value": 0
-    },
-    {
-      "value": 0
-    },
-    {
-      "value": 0
     }
   ]
 }

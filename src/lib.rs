@@ -13,7 +13,7 @@ use crate::model::{Encoding, GlobalSettings, NvramMap, Score, StateOrStateList};
 use include_dir::{include_dir, Dir, File};
 use serde::de;
 use serde::de::DeserializeOwned;
-use serde_json::Number;
+use serde_json::{Number, Value};
 use std::collections::HashMap;
 use std::fs::OpenOptions;
 use std::io;
@@ -56,7 +56,7 @@ pub struct Nvram {
 }
 
 impl Nvram {
-    /// Open a NVRAM file
+    /// Open a NVRAM file from the embedded maps
     ///
     /// # Returns
     ///
@@ -64,6 +64,21 @@ impl Nvram {
     /// * `Ok(None)` if the file was found but no map was found for the ROM
     pub fn open(nv_path: &Path) -> io::Result<Option<Nvram>> {
         let map_opt: Option<NvramMap> = open_nvram(nv_path)?;
+        Ok(map_opt.map(|map| Nvram {
+            map,
+            nv_path: nv_path.to_path_buf(),
+        }))
+    }
+
+    /// Open a NVRAM file from the file system using the local maps
+    /// Expects the `pinmame-nvram-maps` folder to exist in the current working directory
+    ///
+    /// # Returns
+    ///
+    /// * `Ok(Some(Nvram))` if the file was found and a map was found for the ROM
+    /// * `Ok(None)` if the file was found but no map was found for the ROM
+    pub fn open_local(nv_path: &Path) -> io::Result<Option<Nvram>> {
+        let map_opt: Option<NvramMap> = open_nvram_local(nv_path)?;
         Ok(map_opt.map(|map| Nvram {
             map,
             nv_path: nv_path.to_path_buf(),
@@ -170,6 +185,27 @@ fn open_nvram<T: DeserializeOwned>(nv_path: &Path) -> io::Result<Option<T>> {
     find_map(&rom_name)
 }
 
+fn open_nvram_local<T: DeserializeOwned>(nv_path: &Path) -> io::Result<Option<T>> {
+    // get the rom name from the file name
+    let rom_name = nv_path
+        .file_name()
+        .unwrap()
+        .to_str()
+        .unwrap()
+        .split('.')
+        .next()
+        .unwrap()
+        .to_string();
+    // check if file exists
+    if !nv_path.exists() {
+        return Err(io::Error::new(
+            io::ErrorKind::NotFound,
+            format!("File not found: {:?}", nv_path),
+        ));
+    }
+    find_map_local(&rom_name)
+}
+
 fn find_map<T: DeserializeOwned>(rom_name: &String) -> io::Result<Option<T>> {
     match get_index_map()?.get(rom_name) {
         Some(map_path) => {
@@ -181,6 +217,33 @@ fn find_map<T: DeserializeOwned>(rom_name: &String) -> io::Result<Option<T>> {
                 )
             })?;
             let map: T = read_compressed_json(map_file)?;
+            Ok(Some(map))
+        }
+        None => Ok(None),
+    }
+}
+
+fn find_map_local<T: DeserializeOwned>(rom_name: &String) -> io::Result<Option<T>> {
+    let index_file = Path::new("pinmame-nvram-maps").join("index.json");
+    if !index_file.exists() {
+        return Err(io::Error::new(
+            io::ErrorKind::NotFound,
+            format!("File not found: {:?}", index_file),
+        ));
+    }
+    let index_file = OpenOptions::new().read(true).open(&index_file)?;
+    let map: Value = serde_json::from_reader(index_file)?;
+    match map.get(rom_name) {
+        Some(map_path) => {
+            let map_file = Path::new("pinmame-nvram-maps").join(map_path.as_str().unwrap());
+            if !map_file.exists() {
+                return Err(io::Error::new(
+                    io::ErrorKind::NotFound,
+                    format!("File not found: {:?}", map_file),
+                ));
+            }
+            let map_file = OpenOptions::new().read(true).open(&map_file)?;
+            let map: T = serde_json::from_reader(map_file)?;
             Ok(Some(map))
         }
         None => Ok(None),
@@ -363,7 +426,7 @@ fn read_mode_champion<T: Read + Seek, S: GlobalSettings>(
 
 fn read_last_game_player<T: Read + Seek, S: GlobalSettings>(
     mut nvram_file: &mut T,
-    lg: &model::LastGamePlayer,
+    lg: &model::Descriptor,
     global_settings: &S,
 ) -> io::Result<LastGamePlayer> {
     let score = match &lg.encoding {
@@ -372,14 +435,14 @@ fn read_last_game_player<T: Read + Seek, S: GlobalSettings>(
             global_settings.endianness(),
             global_settings.nibble(),
             (&lg.start).into(),
-            lg.length as usize,
+            lg.length.expect("missing length for descriptor") as usize,
             lg.scale.as_ref().unwrap_or(&Number::from(1)),
         )?,
         Encoding::Bcd => read_bcd(
             &mut nvram_file,
             Location::Continuous {
                 start: (&lg.start).into(),
-                length: lg.length as usize,
+                length: lg.length.expect("missing length for descriptor") as usize,
             },
             lg.nibble.unwrap_or(global_settings.nibble()),
             &Number::from(1),
@@ -398,11 +461,31 @@ fn read_last_game<T: Read + Seek>(
     map: &NvramMap,
 ) -> io::Result<Option<Vec<LastGamePlayer>>> {
     if let Some(lg) = &map.last_game {
+        // this is the old location of the last game scores
+        // TODO remove once all maps have been updated
         let last_games: Result<Vec<LastGamePlayer>, io::Error> = lg
             .iter()
             .map(|lg| read_last_game_player(&mut nvram_file, lg, map))
             .collect();
         Ok(Some(last_games?))
+    } else if let Some(game_state) = &map.game_state {
+        if let Some(scores) = game_state.get("scores") {
+            let scores: Result<Vec<LastGamePlayer>, io::Error> = match scores {
+                StateOrStateList::StateList(sl) => sl
+                    .iter()
+                    .map(|s| read_last_game_player(&mut nvram_file, s, map))
+                    .collect(),
+                StateOrStateList::State(_) => {
+                    return Err(io::Error::new(
+                        io::ErrorKind::InvalidData,
+                        "Scores is not a StateList",
+                    ));
+                }
+            };
+            return Ok(Some(scores?));
+        } else {
+            Ok(None)
+        }
     } else {
         Ok(None)
     }
@@ -425,7 +508,7 @@ fn read_mode_champions<T: Read + Seek>(
 
 fn read_game_state_item<T: Read + Seek, S: GlobalSettings>(
     mut nvram_file: &mut T,
-    state: &model::State,
+    state: &model::Descriptor,
     global_settings: &S,
 ) -> io::Result<String> {
     match &state.encoding {
