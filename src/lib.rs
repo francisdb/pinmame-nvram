@@ -435,14 +435,14 @@ fn read_last_game_player<T: Read + Seek, S: GlobalSettings>(
             global_settings.endianness(),
             global_settings.nibble(),
             (&lg.start).into(),
-            lg.length.expect("missing length for descriptor") as usize,
+            lg.length.expect("missing length for descriptor"),
             lg.scale.as_ref().unwrap_or(&Number::from(1)),
         )?,
         Encoding::Bcd => read_bcd(
             &mut nvram_file,
             Location::Continuous {
                 start: (&lg.start).into(),
-                length: lg.length.expect("missing length for descriptor") as usize,
+                length: lg.length.expect("missing length for descriptor"),
             },
             lg.nibble.unwrap_or(global_settings.nibble()),
             &Number::from(1),
