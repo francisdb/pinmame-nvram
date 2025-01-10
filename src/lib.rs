@@ -9,7 +9,9 @@ use crate::checksum::{update_all_checksum16, verify_all_checksum16, ChecksumMism
 use crate::dips::{get_dip_switch, set_dip_switch, validate_dip_switch_range};
 use crate::encoding::{read_bcd, read_ch, read_int, read_wpc_rtc, write_bcd, write_ch, Location};
 use crate::index::get_index_map;
-use crate::model::{Descriptor, Encoding, GlobalSettings, NvramMap, StateOrStateList};
+use crate::model::{
+    Descriptor, Encoding, GlobalSettings, NvramMap, StateOrStateList, DEFAULT_LENGTH, DEFAULT_SCALE,
+};
 use include_dir::{include_dir, Dir, File};
 use serde::de;
 use serde::de::DeserializeOwned;
@@ -290,41 +292,8 @@ fn read_highscore<T: Read + Seek, S: GlobalSettings>(
             map_initials.null,
         )?;
     }
-    let score = match &hs.score.encoding {
-        Encoding::Bcd => {
-            let location = match &hs.score.offsets.as_ref() {
-                None => Location::Continuous {
-                    start: hs.score.start.as_ref().unwrap().into(),
-                    length: hs.score.length.unwrap_or(0),
-                },
-                Some(offsets) => Location::Scattered {
-                    offsets: offsets.iter().map(|o| o.into()).collect(),
-                },
-            };
-            read_bcd(
-                &mut nvram_file,
-                location,
-                hs.score.nibble.unwrap_or(global_settings.nibble()),
-                hs.score.scale.as_ref().unwrap_or(&Number::from(1u64)),
-                global_settings.endianness(),
-            )?
-        }
-        Encoding::Int => {
-            if let Some(map_score_start) = &hs.score.start {
-                read_int(
-                    &mut nvram_file,
-                    global_settings.endianness(),
-                    global_settings.nibble(),
-                    map_score_start.into(),
-                    hs.score.length.unwrap_or(0),
-                    &Number::from(1u64),
-                )?
-            } else {
-                todo!("Int requires start")
-            }
-        }
-        other => todo!("Encoding not implemented: {:?}", other),
-    };
+
+    let score = read_descriptor_to_u64(&mut nvram_file, &hs.score, global_settings)?;
 
     Ok(HighScore {
         label: hs.label.clone(),
@@ -381,36 +350,9 @@ fn read_mode_champion<T: Read + Seek, S: GlobalSettings>(
         mc.initials.nibble.unwrap_or(global_settings.nibble()),
         mc.initials.null,
     )?;
-    let score = if let Some(score) = &mc.score.as_ref() {
-        match &score.encoding {
-            Encoding::Bcd => {
-                let location = location_for(score);
-                let result = read_bcd(
-                    &mut nvram_file,
-                    location,
-                    score.nibble.unwrap_or(global_settings.nibble()),
-                    score.scale.as_ref().unwrap_or(&Number::from(1)),
-                    global_settings.endianness(),
-                )?;
-                Some(result)
-            }
-            Encoding::Int => {
-                if let Some(map_score_start) = &score.start {
-                    let result = read_int(
-                        &mut nvram_file,
-                        global_settings.endianness(),
-                        global_settings.nibble(),
-                        map_score_start.into(),
-                        score.length.unwrap_or(0),
-                        score.scale.as_ref().unwrap_or(&Number::from(1u64)),
-                    )?;
-                    Some(result)
-                } else {
-                    todo!("Int requires start")
-                }
-            }
-            other => todo!("Encoding not implemented: {:?}", other),
-        }
+    let score = if let Some(score) = &mc.score {
+        let result = read_descriptor_to_u64(&mut nvram_file, score, global_settings)?;
+        Some(result)
     } else {
         None
     };
@@ -418,17 +360,7 @@ fn read_mode_champion<T: Read + Seek, S: GlobalSettings>(
     let timestamp = mc
         .timestamp
         .as_ref()
-        .map(|ts| match &ts.encoding {
-            Encoding::WpcRtc => read_wpc_rtc(
-                &mut nvram_file,
-                ts.start
-                    .as_ref()
-                    .expect("missing start for wpc_rtc encoding")
-                    .into(),
-                ts.length.expect("missing length for wpc_rtc encoding"),
-            ),
-            other => todo!("Timestamp encoding not implemented: {:?}", other),
-        })
+        .map(|ts| read_descriptor_to_rtc_string(&mut nvram_file, ts))
         .transpose()?;
 
     Ok(ModeChampion {
@@ -443,41 +375,13 @@ fn read_mode_champion<T: Read + Seek, S: GlobalSettings>(
 
 fn read_last_game_player<T: Read + Seek, S: GlobalSettings>(
     mut nvram_file: &mut T,
-    lg: &model::Descriptor,
+    descriptor: &Descriptor,
     global_settings: &S,
 ) -> io::Result<LastGamePlayer> {
-    // TODO make sure these expects are replaced with proper error handling
-    let score = match &lg.encoding {
-        Encoding::Int => read_int(
-            &mut nvram_file,
-            global_settings.endianness(),
-            global_settings.nibble(),
-            lg.start
-                .as_ref()
-                .expect("missing start for int descriptor")
-                .into(),
-            lg.length.expect("missing length for int descriptor"),
-            lg.scale.as_ref().unwrap_or(&Number::from(1)),
-        )?,
-        Encoding::Bcd => read_bcd(
-            &mut nvram_file,
-            Location::Continuous {
-                start: lg
-                    .start
-                    .as_ref()
-                    .expect("missing start for bcd descriptor")
-                    .into(),
-                length: lg.length.expect("missing length for bcd descriptor"),
-            },
-            lg.nibble.unwrap_or(global_settings.nibble()),
-            &Number::from(1),
-            global_settings.endianness(),
-        )?,
-        other => todo!("Encoding not implemented: {:?}", other),
-    };
+    let score = read_descriptor_to_u64(&mut nvram_file, descriptor, global_settings)?;
     Ok(LastGamePlayer {
         score,
-        label: lg.label.clone(),
+        label: descriptor.label.clone(),
     })
 }
 
@@ -531,59 +435,15 @@ fn read_mode_champions<T: Read + Seek>(
     }
 }
 
-fn read_game_state_item<T: Read + Seek, S: GlobalSettings>(
+fn read_replay_score<T: Read + Seek>(
     mut nvram_file: &mut T,
-    state: &model::Descriptor,
-    global_settings: &S,
-) -> io::Result<String> {
-    match &state.encoding {
-        Encoding::Ch => read_ch(
-            &mut nvram_file,
-            state
-                .start
-                .as_ref()
-                .expect("missing start for ch descriptor")
-                .into(),
-            state.length.unwrap_or(0),
-            state.mask.as_ref().map(|m| m.into()),
-            global_settings.char_map(),
-            state.nibble.unwrap_or(global_settings.nibble()),
-            None,
-        ),
-        Encoding::Int => {
-            let score = read_int(
-                &mut nvram_file,
-                global_settings.endianness(),
-                global_settings.nibble(),
-                state
-                    .start
-                    .as_ref()
-                    .expect("missing start for int descriptor")
-                    .into(),
-                state.length.unwrap_or(0),
-                state.scale.as_ref().unwrap_or(&Number::from(1)),
-            )?;
-            Ok(score.to_string())
-        }
-        Encoding::Bcd => {
-            let score = read_bcd(
-                &mut nvram_file,
-                Location::Continuous {
-                    start: state
-                        .start
-                        .as_ref()
-                        .expect("missing start for bcd descriptor")
-                        .into(),
-                    length: state.length.unwrap_or(0),
-                },
-                state.nibble.unwrap_or(global_settings.nibble()),
-                &Number::from(1),
-                global_settings.endianness(),
-            )?;
-            Ok(score.to_string())
-        }
-        Encoding::Bits => Ok("Bits encoding not implemented".to_string()),
-        other => todo!("Encoding not implemented: {:?}", other),
+    map: &NvramMap,
+) -> io::Result<Option<u64>> {
+    if let Some(descriptor) = &map.replay_score {
+        let value = read_descriptor_to_u64(&mut nvram_file, descriptor, map)?;
+        Ok(Some(value))
+    } else {
+        Ok(None)
     }
 }
 
@@ -597,7 +457,8 @@ fn read_game_state<T: Read + Seek>(
             .iter()
             .flat_map(|(key, v)| match v {
                 StateOrStateList::State(s) => {
-                    let r = read_game_state_item(&mut nvram_file, s, map).map(|r| (key.clone(), r));
+                    let r = read_descriptor_to_string(&mut nvram_file, s, map)
+                        .map(|r| (key.clone(), r));
                     vec![r]
                 }
                 StateOrStateList::StateList(sl) => sl
@@ -605,7 +466,7 @@ fn read_game_state<T: Read + Seek>(
                     .enumerate()
                     .map(|(index, s)| {
                         let compund_key = format!("{}.{}", key, index);
-                        read_game_state_item(&mut nvram_file, s, map).map(|r| (compund_key, r))
+                        read_descriptor_to_string(&mut nvram_file, s, map).map(|r| (compund_key, r))
                     })
                     .collect(),
             })
@@ -617,54 +478,141 @@ fn read_game_state<T: Read + Seek>(
     }
 }
 
-fn read_replay_score<T: Read + Seek>(
+fn read_descriptor_to_string<T: Read + Seek, S: GlobalSettings>(
     mut nvram_file: &mut T,
-    map: &NvramMap,
-) -> io::Result<Option<u64>> {
-    if let Some(replay_score) = &map.replay_score {
-        match &replay_score.encoding {
-            Encoding::Int => {
-                if let Some(map_score_start) = &replay_score.start {
-                    let score = read_int(
-                        &mut nvram_file,
-                        map.endianness(),
-                        map.nibble(),
-                        map_score_start.into(),
-                        replay_score.length.unwrap_or(0),
-                        replay_score.scale.as_ref().unwrap_or(&Number::from(1)),
-                    )?;
-                    Ok(Some(score))
-                } else {
-                    todo!("Int requires start")
-                }
-            }
-            Encoding::Bcd => {
-                let location = location_for(replay_score);
-                let score = read_bcd(
+    descriptor: &Descriptor,
+    global_settings: &S,
+) -> io::Result<String> {
+    match descriptor.encoding {
+        Encoding::Ch => match &descriptor.start {
+            Some(start) => read_ch(
+                &mut nvram_file,
+                start.into(),
+                descriptor.length.unwrap_or(DEFAULT_LENGTH),
+                descriptor.mask.as_ref().map(|m| m.into()),
+                global_settings.char_map(),
+                descriptor.nibble.unwrap_or(global_settings.nibble()),
+                None,
+            ),
+            None => Err(io::Error::new(
+                io::ErrorKind::InvalidData,
+                "Ch descriptor requires start",
+            )),
+        },
+        Encoding::Int => match &descriptor.start {
+            Some(start) => {
+                let score = read_int(
                     &mut nvram_file,
-                    location,
-                    replay_score.nibble.unwrap_or(map.nibble()),
-                    replay_score.scale.as_ref().unwrap_or(&Number::from(1)),
-                    map.endianness(),
+                    global_settings.endianness(),
+                    global_settings.nibble(),
+                    start.into(),
+                    descriptor.length.unwrap_or(DEFAULT_LENGTH),
+                    descriptor
+                        .scale
+                        .as_ref()
+                        .unwrap_or(&Number::from(DEFAULT_SCALE)),
                 )?;
-                Ok(Some(score))
+                Ok(score.to_string())
             }
-            other => todo!("Encoding not implemented: {:?}", other),
+            None => Err(io::Error::new(
+                io::ErrorKind::InvalidData,
+                "Int descriptor requires start",
+            )),
+        },
+        Encoding::Bcd => {
+            let location = location_for(descriptor)?;
+            let score = read_bcd(
+                &mut nvram_file,
+                location,
+                descriptor.nibble.unwrap_or(global_settings.nibble()),
+                descriptor
+                    .scale
+                    .as_ref()
+                    .unwrap_or(&Number::from(DEFAULT_SCALE)),
+                global_settings.endianness(),
+            )?;
+            Ok(score.to_string())
         }
-    } else {
-        Ok(None)
+        Encoding::Bits => Ok("Bits encoding not implemented".to_string()),
+        other => todo!("Encoding not implemented: {:?}", other),
     }
 }
 
-fn location_for(score: &Descriptor) -> Location {
-    match score.offsets.as_ref() {
-        None => Location::Continuous {
-            start: score.start.as_ref().unwrap().into(),
-            length: score.length.unwrap_or(0),
+fn read_descriptor_to_u64<T: Read + Seek, S: GlobalSettings>(
+    mut nvram_file: &mut T,
+    descriptor: &Descriptor,
+    global_settings: &S,
+) -> io::Result<u64> {
+    match descriptor.encoding {
+        Encoding::Bcd => {
+            let location = location_for(descriptor)?;
+            read_bcd(
+                &mut nvram_file,
+                location,
+                descriptor.nibble.unwrap_or(global_settings.nibble()),
+                descriptor
+                    .scale
+                    .as_ref()
+                    .unwrap_or(&Number::from(DEFAULT_SCALE)),
+                global_settings.endianness(),
+            )
+        }
+        Encoding::Int => {
+            if let Some(start) = &descriptor.start {
+                read_int(
+                    &mut nvram_file,
+                    global_settings.endianness(),
+                    descriptor.nibble.unwrap_or(global_settings.nibble()),
+                    start.into(),
+                    descriptor.length.unwrap_or(DEFAULT_LENGTH),
+                    descriptor
+                        .scale
+                        .as_ref()
+                        .unwrap_or(&Number::from(DEFAULT_SCALE)),
+                )
+            } else {
+                Err(io::Error::new(
+                    io::ErrorKind::InvalidData,
+                    "Int descriptor requires start",
+                ))
+            }
+        }
+        other => todo!("Encoding not implemented: {:?}", other),
+    }
+}
+
+fn read_descriptor_to_rtc_string<T: Read + Seek>(
+    mut nvram_file: &mut T,
+    ts: &Descriptor,
+) -> io::Result<String> {
+    match &ts.encoding {
+        Encoding::WpcRtc => read_wpc_rtc(
+            &mut nvram_file,
+            ts.start
+                .as_ref()
+                .expect("missing start for wpc_rtc encoding")
+                .into(),
+            ts.length.expect("missing length for wpc_rtc encoding"),
+        ),
+        other => todo!("Timestamp encoding not implemented: {:?}", other),
+    }
+}
+
+fn location_for(descriptor: &Descriptor) -> io::Result<Location> {
+    match &descriptor.offsets {
+        None => match &descriptor.start {
+            Some(start) => Ok(Location::Continuous {
+                start: start.into(),
+                length: descriptor.length.unwrap_or(DEFAULT_LENGTH),
+            }),
+            _ => Err(io::Error::new(
+                io::ErrorKind::InvalidData,
+                "Descriptor without offsets requires start",
+            )),
         },
-        Some(offsets) => Location::Scattered {
+        Some(offsets) => Ok(Location::Scattered {
             offsets: offsets.iter().map(|o| o.into()).collect(),
-        },
+        }),
     }
 }
 
