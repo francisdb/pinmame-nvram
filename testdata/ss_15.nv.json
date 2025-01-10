@@ -1,0 +1,237 @@
+{
+  "_fileformat": 0.1,
+  "checksum16": [
+    {
+      "label": "Custom Message (2x32)",
+      "value": "valid"
+    },
+    {
+      "label": "Adjustments",
+      "value": "valid"
+    },
+    {
+      "label": "Timestamps",
+      "value": "valid"
+    },
+    {
+      "label": "High Scores",
+      "value": "valid"
+    },
+    {
+      "label": "Grand Champion",
+      "value": "valid"
+    },
+    {
+      "label": "HSTD Reset",
+      "value": "valid"
+    },
+    {
+      "label": "Credits",
+      "value": "valid"
+    },
+    {
+      "label": "Volume",
+      "value": "valid"
+    },
+    {
+      "value": "valid"
+    },
+    {
+      "value": "valid"
+    },
+    {
+      "label": "Custom Message (3x32)",
+      "value": "valid"
+    },
+    {
+      "label": "Custom Message (2x32)",
+      "value": "valid"
+    },
+    {
+      "label": "Favorite Stiffs",
+      "value": "valid"
+    },
+    {
+      "label": "Spider Champion",
+      "value": "valid"
+    }
+  ],
+  "checksum8": [
+    {
+      "label": "Audits",
+      "value": "valid"
+    }
+  ],
+  "game_state": {
+    "credits": {
+      "label": "Credits",
+      "value": 10
+    },
+    "game_id": {
+      "label": "WPC Game ID",
+      "value": "50048"
+    },
+    "player_count": {
+      "label": "Players",
+      "value": 1
+    },
+    "replay": {
+      "label": "Replay",
+      "value": 6000000
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 147580
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ],
+    "volume": {
+      "label": "Volume",
+      "value": 26
+    }
+  },
+  "high_scores": [
+    {
+      "initials": {
+        "value": "DEN"
+      },
+      "label": "Grand Champion",
+      "score": {
+        "value": 20000000
+      },
+      "short_label": "GC"
+    },
+    {
+      "initials": {
+        "value": "MAB"
+      },
+      "label": "First Place",
+      "score": {
+        "value": 15000000
+      },
+      "short_label": "1st"
+    },
+    {
+      "initials": {
+        "value": "RRR"
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 10000000
+      },
+      "short_label": "2nd"
+    },
+    {
+      "initials": {
+        "value": "ONE"
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 8000000
+      },
+      "short_label": "3rd"
+    },
+    {
+      "initials": {
+        "value": " PH"
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 5000000
+      },
+      "short_label": "4th"
+    }
+  ],
+  "last_played": {
+    "value": "2024-11-21 00:01"
+  },
+  "mode_champions": [
+    {
+      "initials": {
+        "value": "TEX"
+      },
+      "label": "Spider Champ",
+      "timestamp": {
+        "value": "2023-11-07 00:26"
+      }
+    },
+    {
+      "label": "Favorite Stiff Count",
+      "score": {
+        "value": 5
+      }
+    },
+    {
+      "initials": {
+        "value": "WIN"
+      },
+      "label": "Favorite Stiff #1"
+    },
+    {
+      "initials": {
+        "value": "CJS"
+      },
+      "label": "Favorite Stiff #2"
+    },
+    {
+      "initials": {
+        "value": "ASR"
+      },
+      "label": "Favorite Stiff #3"
+    },
+    {
+      "initials": {
+        "value": "BCM"
+      },
+      "label": "Favorite Stiff #4"
+    },
+    {
+      "initials": {
+        "value": "MAB"
+      },
+      "label": "Favorite Stiff #5"
+    },
+    {
+      "initials": {
+        "value": "\\u00FF\\u00FF\\u00FF"
+      },
+      "label": "Favorite Stiff #6"
+    },
+    {
+      "initials": {
+        "value": "\\u00FF\\u00FF\\u00FF"
+      },
+      "label": "Favorite Stiff #7"
+    },
+    {
+      "initials": {
+        "value": "\\u00FF\\u00FF\\u00FF"
+      },
+      "label": "Favorite Stiff #8"
+    },
+    {
+      "initials": {
+        "value": "\\u00FF\\u00FF\\u00FF"
+      },
+      "label": "Favorite Stiff #9"
+    },
+    {
+      "initials": {
+        "value": "\\u00FF\\u00FF\\u00FF"
+      },
+      "label": "Favorite Stiff #10"
+    }
+  ]
+}

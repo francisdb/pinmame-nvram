@@ -1,0 +1,334 @@
+{
+  "_fileformat": 0.1,
+  "checksum16": [
+    {
+      "label": "Adjustments",
+      "value": "valid"
+    },
+    {
+      "label": "Timestamps",
+      "value": "valid"
+    },
+    {
+      "label": "High Scores",
+      "value": "valid"
+    },
+    {
+      "label": "Grand Champion",
+      "value": "valid"
+    },
+    {
+      "label": "HSTD Reset",
+      "value": "valid"
+    },
+    {
+      "label": "Credits",
+      "value": "valid"
+    },
+    {
+      "label": "Volume",
+      "value": "valid"
+    },
+    {
+      "value": "valid"
+    },
+    {
+      "value": "valid"
+    },
+    {
+      "label": "Custom Message (3x32)",
+      "value": "valid"
+    },
+    {
+      "label": "Custom Message (2x32)",
+      "value": "valid"
+    },
+    {
+      "label": "Mode Champions",
+      "value": "valid"
+    }
+  ],
+  "checksum8": [
+    {
+      "label": "Audits",
+      "value": "valid"
+    }
+  ],
+  "game_state": {
+    "credits": {
+      "label": "Credits",
+      "value": 7
+    },
+    "game_id": {
+      "label": "WPC Game ID",
+      "value": "50002"
+    },
+    "player_count": {
+      "label": "Players",
+      "value": 1
+    },
+    "replay": {
+      "label": "Replay",
+      "value": 7000000
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 189110
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ],
+    "volume": {
+      "label": "Volume",
+      "value": 12
+    }
+  },
+  "high_scores": [
+    {
+      "initials": {
+        "value": "JT "
+      },
+      "label": "Grand Champion",
+      "score": {
+        "value": 15000000
+      },
+      "short_label": "GC"
+    },
+    {
+      "initials": {
+        "value": "ZB "
+      },
+      "label": "First Place",
+      "score": {
+        "value": 12000000
+      },
+      "short_label": "1st"
+    },
+    {
+      "initials": {
+        "value": "DWF"
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 11000000
+      },
+      "short_label": "2nd"
+    },
+    {
+      "initials": {
+        "value": "JWH"
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 10000000
+      },
+      "short_label": "3rd"
+    },
+    {
+      "initials": {
+        "value": "RK "
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 9000000
+      },
+      "short_label": "4th"
+    }
+  ],
+  "last_played": {
+    "value": "2024-03-29 00:01"
+  },
+  "mode_champions": [
+    {
+      "initials": {
+        "value": "BRE"
+      },
+      "label": "Billionaire #1",
+      "score": {
+        "value": 1004206800
+      }
+    },
+    {
+      "initials": {
+        "value": "SLL"
+      },
+      "label": "Billionaire #2",
+      "score": {
+        "value": 1001005690
+      }
+    },
+    {
+      "initials": {
+        "value": "CCC"
+      },
+      "label": "Billionaire #3",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "DDD"
+      },
+      "label": "Billionaire #4",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "EEE"
+      },
+      "label": "Billionaire #5",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "FFF"
+      },
+      "label": "Billionaire #6",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "GGG"
+      },
+      "label": "Billionaire #7",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "HHH"
+      },
+      "label": "Billionaire #8",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "III"
+      },
+      "label": "Billionaire #9",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "JJJ"
+      },
+      "label": "Billionaire #10",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "KKK"
+      },
+      "label": "Billionaire #11",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "LLL"
+      },
+      "label": "Billionaire #12",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "MMM"
+      },
+      "label": "Billionaire #13",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "NNN"
+      },
+      "label": "Billionaire #14",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "OOO"
+      },
+      "label": "Billionaire #15",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "PPP"
+      },
+      "label": "Billionaire #16",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "QQQ"
+      },
+      "label": "Billionaire #17",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "RRR"
+      },
+      "label": "Billionaire #18",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "SSS"
+      },
+      "label": "Billionaire #19",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "TTT"
+      },
+      "label": "Billionaire #20",
+      "score": {
+        "value": 1000000000
+      }
+    }
+  ]
+}

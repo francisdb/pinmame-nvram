@@ -1,0 +1,220 @@
+{
+  "_fileformat": 0.1,
+  "checksum16": [
+    {
+      "label": "Custom Message (2x32)",
+      "value": "valid"
+    },
+    {
+      "label": "Adjustments",
+      "value": "valid"
+    },
+    {
+      "label": "Timestamps",
+      "value": "valid"
+    },
+    {
+      "label": "High Scores",
+      "value": "valid"
+    },
+    {
+      "label": "Grand Champion",
+      "value": "valid"
+    },
+    {
+      "label": "HSTD Reset",
+      "value": "valid"
+    },
+    {
+      "label": "Credits",
+      "value": "valid"
+    },
+    {
+      "label": "Volume",
+      "value": "valid"
+    },
+    {
+      "value": "valid"
+    },
+    {
+      "value": "valid"
+    },
+    {
+      "label": "Custom Message (3x32)",
+      "value": "valid"
+    },
+    {
+      "label": "Custom Message (2x32)",
+      "value": "valid"
+    },
+    {
+      "label": "Buy-In Scores",
+      "value": "valid"
+    },
+    {
+      "label": "Buy-In Champ",
+      "value": "valid"
+    },
+    {
+      "label": "Pit Stop Record",
+      "value": "valid"
+    }
+  ],
+  "checksum8": [
+    {
+      "label": "Audits",
+      "value": "valid"
+    }
+  ],
+  "game_state": {
+    "credits": {
+      "label": "Credits",
+      "value": 10
+    },
+    "game_id": {
+      "label": "WPC Game ID",
+      "value": "50026"
+    },
+    "player_count": {
+      "label": "Players",
+      "value": 1
+    },
+    "replay": {
+      "label": "Replay",
+      "value": 350000000
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 16245000
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ],
+    "volume": {
+      "label": "Volume",
+      "value": 27
+    }
+  },
+  "high_scores": [
+    {
+      "initials": {
+        "value": "MAB"
+      },
+      "label": "Grand Champion",
+      "score": {
+        "value": 700000000
+      },
+      "short_label": "GC"
+    },
+    {
+      "initials": {
+        "value": "DEN"
+      },
+      "label": "First Place",
+      "score": {
+        "value": 650000000
+      },
+      "short_label": "1st"
+    },
+    {
+      "initials": {
+        "value": "CJS"
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 600000000
+      },
+      "short_label": "2nd"
+    },
+    {
+      "initials": {
+        "value": "ONE"
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 550000000
+      },
+      "short_label": "3rd"
+    },
+    {
+      "initials": {
+        "value": "WIN"
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 500000000
+      },
+      "short_label": "4th"
+    },
+    {
+      "initials": {
+        "value": "CJS"
+      },
+      "label": "Buy-In Champion",
+      "score": {
+        "value": 900000000
+      }
+    },
+    {
+      "initials": {
+        "value": "MAB"
+      },
+      "label": "Buy-In #1",
+      "score": {
+        "value": 900000000
+      }
+    },
+    {
+      "initials": {
+        "value": "CG "
+      },
+      "label": "Buy-In #2",
+      "score": {
+        "value": 850000000
+      }
+    },
+    {
+      "initials": {
+        "value": "BCM"
+      },
+      "label": "Buy-In #3",
+      "score": {
+        "value": 800000000
+      }
+    },
+    {
+      "initials": {
+        "value": "ASR"
+      },
+      "label": "Buy-In #4",
+      "score": {
+        "value": 750000000
+      }
+    }
+  ],
+  "last_played": {
+    "value": "2024-01-16 00:01"
+  },
+  "mode_champions": [
+    {
+      "initials": {
+        "value": "TEX"
+      },
+      "label": "Pit Stop Record",
+      "score": {
+        "value": 15
+      }
+    }
+  ]
+}
