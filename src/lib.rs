@@ -295,7 +295,7 @@ fn read_highscore<T: Read + Seek, S: GlobalSettings>(
             let location = match &hs.score.offsets.as_ref() {
                 None => Location::Continuous {
                     start: hs.score.start.as_ref().unwrap().into(),
-                    length: hs.score.length.unwrap_or(0) as usize,
+                    length: hs.score.length.unwrap_or(0),
                 },
                 Some(offsets) => Location::Scattered {
                     offsets: offsets.iter().map(|o| o.into()).collect(),
@@ -316,7 +316,7 @@ fn read_highscore<T: Read + Seek, S: GlobalSettings>(
                     global_settings.endianness(),
                     global_settings.nibble(),
                     map_score_start.into(),
-                    hs.score.length.unwrap_or(0) as usize,
+                    hs.score.length.unwrap_or(0),
                     &Number::from(1u64),
                 )?
             } else {
@@ -354,7 +354,7 @@ fn clear_highscores<T: Write + Seek>(mut nvram_file: &mut T, map: &NvramMap) -> 
             write_bcd(
                 &mut nvram_file,
                 map_score_start.into(),
-                hs.score.length.unwrap_or(0) as usize,
+                hs.score.length.unwrap_or(0),
                 &hs.score.nibble.or_else(|| Some(map.nibble())),
                 0,
             )?;
@@ -401,7 +401,7 @@ fn read_mode_champion<T: Read + Seek, S: GlobalSettings>(
                         global_settings.endianness(),
                         global_settings.nibble(),
                         map_score_start.into(),
-                        score.length.unwrap_or(0) as usize,
+                        score.length.unwrap_or(0),
                         score.scale.as_ref().unwrap_or(&Number::from(1u64)),
                     )?;
                     Some(result)
@@ -630,7 +630,7 @@ fn read_replay_score<T: Read + Seek>(
                         map.endianness(),
                         map.nibble(),
                         map_score_start.into(),
-                        replay_score.length.unwrap_or(0) as usize,
+                        replay_score.length.unwrap_or(0),
                         replay_score.scale.as_ref().unwrap_or(&Number::from(1)),
                     )?;
                     Ok(Some(score))
@@ -660,7 +660,7 @@ fn location_for(score: &Descriptor) -> Location {
     match score.offsets.as_ref() {
         None => Location::Continuous {
             start: score.start.as_ref().unwrap().into(),
-            length: score.length.unwrap_or(0) as usize,
+            length: score.length.unwrap_or(0),
         },
         Some(offsets) => Location::Scattered {
             offsets: offsets.iter().map(|o| o.into()).collect(),

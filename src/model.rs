@@ -249,7 +249,7 @@ pub enum StringOrNumber {
 #[derive(Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum AuditOrNote {
-    Audit(Descriptor),
+    Audit(Box<Descriptor>),
     Note(String),
 }
 
