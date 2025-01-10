@@ -9,7 +9,7 @@ use crate::checksum::{update_all_checksum16, verify_all_checksum16, ChecksumMism
 use crate::dips::{get_dip_switch, set_dip_switch, validate_dip_switch_range};
 use crate::encoding::{read_bcd, read_ch, read_int, read_wpc_rtc, write_bcd, write_ch, Location};
 use crate::index::get_index_map;
-use crate::model::{Encoding, GlobalSettings, NvramMap, Score, StateOrStateList};
+use crate::model::{Descriptor, Encoding, GlobalSettings, NvramMap, StateOrStateList};
 use include_dir::{include_dir, Dir, File};
 use serde::de;
 use serde::de::DeserializeOwned;
@@ -429,20 +429,28 @@ fn read_last_game_player<T: Read + Seek, S: GlobalSettings>(
     lg: &model::Descriptor,
     global_settings: &S,
 ) -> io::Result<LastGamePlayer> {
+    // TODO make sure these expects are replaced with proper error handling
     let score = match &lg.encoding {
         Encoding::Int => read_int(
             &mut nvram_file,
             global_settings.endianness(),
             global_settings.nibble(),
-            (&lg.start).into(),
-            lg.length.expect("missing length for descriptor"),
+            lg.start
+                .as_ref()
+                .expect("missing start for int descriptor")
+                .into(),
+            lg.length.expect("missing length for int descriptor"),
             lg.scale.as_ref().unwrap_or(&Number::from(1)),
         )?,
         Encoding::Bcd => read_bcd(
             &mut nvram_file,
             Location::Continuous {
-                start: (&lg.start).into(),
-                length: lg.length.expect("missing length for descriptor"),
+                start: lg
+                    .start
+                    .as_ref()
+                    .expect("missing start for bcd descriptor")
+                    .into(),
+                length: lg.length.expect("missing length for bcd descriptor"),
             },
             lg.nibble.unwrap_or(global_settings.nibble()),
             &Number::from(1),
@@ -514,7 +522,11 @@ fn read_game_state_item<T: Read + Seek, S: GlobalSettings>(
     match &state.encoding {
         Encoding::Ch => read_ch(
             &mut nvram_file,
-            (&state.start).into(),
+            state
+                .start
+                .as_ref()
+                .expect("missing start for ch descriptor")
+                .into(),
             state.length.unwrap_or(0),
             state.mask.as_ref().map(|m| m.into()),
             global_settings.char_map(),
@@ -526,7 +538,11 @@ fn read_game_state_item<T: Read + Seek, S: GlobalSettings>(
                 &mut nvram_file,
                 global_settings.endianness(),
                 global_settings.nibble(),
-                (&state.start).into(),
+                state
+                    .start
+                    .as_ref()
+                    .expect("missing start for int descriptor")
+                    .into(),
                 state.length.unwrap_or(0),
                 state.scale.as_ref().unwrap_or(&Number::from(1)),
             )?;
@@ -536,7 +552,11 @@ fn read_game_state_item<T: Read + Seek, S: GlobalSettings>(
             let score = read_bcd(
                 &mut nvram_file,
                 Location::Continuous {
-                    start: (&state.start).into(),
+                    start: state
+                        .start
+                        .as_ref()
+                        .expect("missing start for bcd descriptor")
+                        .into(),
                     length: state.length.unwrap_or(0),
                 },
                 state.nibble.unwrap_or(global_settings.nibble()),
@@ -619,7 +639,7 @@ fn read_replay_score<T: Read + Seek>(
     }
 }
 
-fn location_for(score: &Score) -> Location {
+fn location_for(score: &Descriptor) -> Location {
     match score.offsets.as_ref() {
         None => Location::Continuous {
             start: score.start.as_ref().unwrap().into(),

@@ -15,7 +15,8 @@ pub struct Descriptor {
     pub label: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub short_label: Option<String>,
-    pub start: HexOrInteger,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub start: Option<HexOrInteger>,
     pub encoding: Encoding,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub default: Option<StringOrNumber>,
@@ -44,6 +45,8 @@ pub struct Descriptor {
     pub mask: Option<HexString>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub endian: Option<Endian>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub offsets: Option<Vec<HexOrInteger>>,
 }
 
 #[derive(Serialize, Deserialize, Debug, PartialEq)]
@@ -74,62 +77,6 @@ pub enum ValuesOrReference {
     // TODO adjust both according to result of https://github.com/tomlogic/pinmame-nvram-maps/issues/83
     Values(Vec<Value>),
     Reference(String),
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct Adjustment {
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub _note: Option<String>,
-    pub label: String,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub short_label: Option<String>,
-    pub start: HexOrInteger,
-    pub encoding: Encoding,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub default: Option<StringOrNumber>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub values: Option<ValuesOrReference>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub min: Option<u64>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub max: Option<u64>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub multiple_of: Option<i64>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub length: Option<u64>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub suffix: Option<String>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub special_values: Option<HashMap<String, String>>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub nibble: Option<Nibble>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub scale: Option<i64>,
-    // can be negative
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub offset: Option<i64>,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct Audit {
-    pub label: String,
-    pub start: HexOrInteger,
-    pub encoding: Encoding,
-    pub length: u64,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub units: Option<String>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub suffix: Option<String>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub scale: Option<i64>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub nibble: Option<Nibble>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub min: Option<u64>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub max: Option<u64>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub null: Option<Null>,
 }
 
 // "enum": An enumerated type where the byte at start is used as an index into a list of strings provided in values.
@@ -166,31 +113,13 @@ pub enum Null {
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct Score {
-    // TODO when is this None? How do we then read it?
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub start: Option<HexOrInteger>,
-    pub encoding: Encoding,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub length: Option<u64>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub suffix: Option<String>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub nibble: Option<Nibble>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub scale: Option<Number>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub offsets: Option<Vec<HexOrInteger>>,
-}
-
-#[derive(Serialize, Deserialize)]
 pub struct ModeChampion {
     pub label: String,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub short_label: Option<String>,
     pub initials: Initials,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub score: Option<Score>,
+    pub score: Option<Descriptor>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub timestamp: Option<LastGamePlayer>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -209,7 +138,7 @@ pub struct HighScore {
     pub short_label: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub initials: Option<Initials>,
-    pub score: Score,
+    pub score: Descriptor,
 }
 
 #[derive(Serialize, Deserialize, Debug, PartialEq)]
@@ -282,8 +211,8 @@ pub enum Notes {
 #[derive(Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum Adjustments {
-    Anonymous(Vec<Adjustment>),
-    Named(HashMap<String, Adjustment>),
+    Anonymous(Vec<Descriptor>),
+    Named(HashMap<String, Descriptor>),
 }
 
 #[derive(Debug, PartialEq)]
@@ -348,7 +277,7 @@ pub enum StringOrNumber {
 #[derive(Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum AuditOrNote {
-    Audit(Audit),
+    Audit(Descriptor),
     Note(String),
 }
 
@@ -386,7 +315,7 @@ pub struct NvramMap {
     pub mode_champions: Option<Vec<ModeChampion>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub more_mode_champions: Option<Vec<ModeChampion>>,
-    // keys are nomrally numbers except for notes, which as value are strings
+    // keys are normally numbers except for notes, which as value are strings
     #[serde(skip_serializing_if = "Option::is_none")]
     pub audits: Option<HashMap<String, HashMap<String, AuditOrNote>>>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -401,11 +330,11 @@ pub struct NvramMap {
     pub game_state: Option<HashMap<String, StateOrStateList>>,
     /// TODO this should probably be removed as it is an adjustment and only used in ww_l5.nv.json
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub replay_score: Option<Score>,
+    pub replay_score: Option<Descriptor>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub buyin_high_scores: Option<Vec<HighScore>>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub dip_switches: Option<HashMap<String, Adjustment>>,
+    pub dip_switches: Option<HashMap<String, Descriptor>>,
 }
 
 pub trait GlobalSettings {
