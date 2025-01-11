@@ -33,7 +33,7 @@ fn test_transformers() -> io::Result<()> {
         ModeChampion {
             label: Some("Combo".into()),
             short_label: Some("Combo".into()),
-            initials: "LON".into(),
+            initials: Some("LON".into()),
             score: Some(20),
             suffix: None,
             timestamp: None,
@@ -41,7 +41,7 @@ fn test_transformers() -> io::Result<()> {
         ModeChampion {
             label: Some("Best Combo Champion".into()),
             short_label: Some("Best Combo".into()),
-            initials: "LON".into(),
+            initials: Some("LON".into()),
             score: Some(327681),
             suffix: Some("-WAY".into()),
             timestamp: None,

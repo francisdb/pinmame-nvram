@@ -33,7 +33,7 @@ fn test_doctor_who() -> io::Result<()> {
         ModeChampion {
             label: Some("Loop Champion".to_string()),
             short_label: Some("Loop Champ".to_string()),
-            initials: "WHO".to_string(),
+            initials: Some("WHO".to_string()),
             score: Some(6),
             suffix: None,
             timestamp: None,
@@ -41,7 +41,7 @@ fn test_doctor_who() -> io::Result<()> {
         ModeChampion {
             label: Some("Highest Davros Wave".to_string()),
             short_label: Some("Davros Champ".to_string()),
-            initials: "WHO".to_string(),
+            initials: Some("WHO".to_string()),
             score: Some(0),
             suffix: None,
             timestamp: None,

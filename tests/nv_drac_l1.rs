@@ -32,7 +32,7 @@ fn test_bram_strokers_dracula() -> io::Result<()> {
     let expected = Vec::from([ModeChampion {
         label: Some("Loop Champion".to_string()),
         short_label: Some("LC".to_string()),
-        initials: "CD ".to_string(),
+        initials: Some("CD ".to_string()),
         score: Some(6),
         suffix: None,
         timestamp: None,

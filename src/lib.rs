@@ -37,7 +37,7 @@ pub struct HighScore {
 pub struct ModeChampion {
     pub label: Option<String>,
     pub short_label: Option<String>,
-    pub initials: String,
+    pub initials: Option<String>,
     pub score: Option<u64>,
     pub suffix: Option<String>,
     pub timestamp: Option<String>,
@@ -337,19 +337,25 @@ fn read_mode_champion<T: Read + Seek, S: GlobalSettings>(
     mc: &model::ModeChampion,
     global_settings: &S,
 ) -> io::Result<ModeChampion> {
-    let initials = read_ch(
-        &mut nvram_file,
-        mc.initials
-            .start
-            .as_ref()
-            .expect("missing start for ch encoding")
-            .into(),
-        mc.initials.length.expect("missing start for ch encoding"),
-        mc.initials.mask.as_ref().map(|m| m.into()),
-        global_settings.char_map(),
-        mc.initials.nibble.unwrap_or(global_settings.nibble()),
-        mc.initials.null,
-    )?;
+    let initials = mc
+        .initials
+        .as_ref()
+        .map(|initials| {
+            read_ch(
+                &mut nvram_file,
+                initials
+                    .start
+                    .as_ref()
+                    .expect("missing start for ch encoding")
+                    .into(),
+                initials.length.expect("missing start for ch encoding"),
+                initials.mask.as_ref().map(|m| m.into()),
+                global_settings.char_map(),
+                initials.nibble.unwrap_or(global_settings.nibble()),
+                initials.null,
+            )
+        })
+        .transpose()?;
     let score = if let Some(score) = &mc.score {
         let result = read_descriptor_to_u64(&mut nvram_file, score, global_settings)?;
         Some(result)

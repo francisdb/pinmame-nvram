@@ -32,7 +32,7 @@ fn test_robocop() -> io::Result<()> {
     let expected = Vec::from([ModeChampion {
         label: Some("Jump Master".to_string()),
         short_label: Some("Jump Master".to_string()),
-        initials: "MJW".to_string(),
+        initials: Some("MJW".to_string()),
         score: Some(5),
         suffix: Some(" Jumps".to_string()),
         timestamp: None,

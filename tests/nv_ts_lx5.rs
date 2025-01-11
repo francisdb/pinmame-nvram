@@ -12,7 +12,7 @@ fn test_the_shadow_lx5() -> io::Result<()> {
     let expected = Vec::from([ModeChampion {
         label: Some("Shadow Loop Champ".to_string()),
         short_label: Some("SLC".to_string()),
-        initials: "TEX".to_string(),
+        initials: Some("TEX".to_string()),
         score: Some(2),
         suffix: None, // TODO should be " loops"
         timestamp: None,

@@ -2,10 +2,6 @@
   "_fileformat": 0.1,
   "checksum16": [
     {
-      "label": "Custom Message (2x32)",
-      "value": "valid"
-    },
-    {
       "label": "Adjustments",
       "value": "valid"
     },
@@ -48,7 +44,11 @@
       "value": "valid"
     },
     {
-      "label": "Buy-In High Scores",
+      "label": "Super Game High Scores",
+      "value": "valid"
+    },
+    {
+      "label": "Super Game Grand Champion",
       "value": "valid"
     }
   ],
@@ -61,7 +61,11 @@
   "game_state": {
     "credits": {
       "label": "Credits",
-      "value": 10
+      "value": 5
+    },
+    "game_id": {
+      "label": "WPC Game ID",
+      "value": "20020"
     },
     "player_count": {
       "label": "Players",
@@ -69,12 +73,12 @@
     },
     "replay": {
       "label": "Replay",
-      "value": 900000000
+      "value": 150000000
     },
     "scores": [
       {
         "label": "Player 1",
-        "value": 110365920
+        "value": 1205790
       },
       {
         "label": "Player 2",
@@ -97,95 +101,103 @@
   "high_scores": [
     {
       "initials": {
-        "value": "SSR"
+        "value": "JBJ"
       },
       "label": "Grand Champion",
       "score": {
-        "value": 2000000000
+        "value": 130000000
       },
       "short_label": "GC"
     },
     {
       "initials": {
-        "value": "MAT"
+        "value": "CMP"
       },
       "label": "First Place",
       "score": {
-        "value": 1600000000
+        "value": 125000000
       },
       "short_label": "1st"
     },
     {
       "initials": {
-        "value": "ZAP"
+        "value": "FEJ"
       },
       "label": "Second Place",
       "score": {
-        "value": 1400000000
+        "value": 120000000
       },
       "short_label": "2nd"
     },
     {
       "initials": {
-        "value": "DAN"
+        "value": "MJJ"
       },
       "label": "Third Place",
       "score": {
-        "value": 1200000000
+        "value": 115000000
       },
       "short_label": "3rd"
     },
     {
       "initials": {
-        "value": "PJP"
+        "value": "J T"
       },
       "label": "Fourth Place",
       "score": {
-        "value": 1000000000
+        "value": 110000000
       },
       "short_label": "4th"
     }
   ],
+  "last_played": {
+    "value": "2024-02-05 00:01"
+  },
   "mode_champions": [
     {
       "initials": {
-        "value": "XAQ"
+        "value": "JBJ"
       },
-      "label": "Buy-In High Score #1",
+      "label": "Super Game GC",
       "score": {
-        "value": 1600000000
+        "value": 350000000
+      }
+    },
+    {
+      "initials": {
+        "value": "C K"
       },
-      "short_label": "Buy-In #1"
+      "label": "Super Game #1",
+      "score": {
+        "value": 320000000
+      }
+    },
+    {
+      "initials": {
+        "value": "EAG"
+      },
+      "label": "Super Game #2",
+      "score": {
+        "value": 310000000
+      }
     },
     {
       "initials": {
         "value": "TEX"
       },
-      "label": "Buy-In High Score #2",
+      "label": "Super Game #3",
       "score": {
-        "value": 1500000000
-      },
-      "short_label": "Buy-In #2"
+        "value": 300000000
+      }
     },
     {
       "initials": {
-        "value": "LFS"
+        "value": "PNH"
       },
-      "label": "Buy-In High Score #3",
+      "label": "Super Game #4",
       "score": {
-        "value": 1400000000
-      },
-      "short_label": "Buy-In #3"
-    },
-    {
-      "initials": {
-        "value": "TED"
-      },
-      "label": "Buy-In High Score #4",
-      "score": {
-        "value": 1300000000
-      },
-      "short_label": "Buy-In #4"
+        "value": 290000000
+      }
     }
   ]
 }
