@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.9](https://github.com/francisdb/pinmame-nvram/compare/v0.3.8...v0.3.9) - 2025-01-11
+
+### Other
+
+- _note -> _notes, optional champ initials, maps update (#51)
+- list missing test nvram files
+- pinball
+
 ## [0.3.8](https://github.com/francisdb/pinmame-nvram/compare/v0.3.7...v0.3.8) - 2025-01-10
 
 ### Added
