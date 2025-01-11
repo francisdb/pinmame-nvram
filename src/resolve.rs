@@ -366,10 +366,10 @@ mod tests {
 
         // TODO find nvram files for these roms
         let expected = [
-            "draculfp", "excaliba", "hd_l1", "hothand", "jd_l7", "lectrono", "mb_10", "mb_106",
-            "memlane", "mm_10", "mm_109", "mm_109b", "nugent", "pinbalfp", "princess", "pz_l3",
-            "ratrc_l1", "sc_18s2", "st_162", "stars", "thund_p2", "thund_p3", "tom_14h",
-            "tomy_400", "tz_92", "vrkon_l1", "wd_12gp", "wd_12p", "wildfyfp", "wildfyre",
+            "excaliba", "hd_l1", "hothand", "jd_l7", "lectrono", "mb_10", "mb_106", "memlane",
+            "mm_10", "mm_109", "mm_109b", "nugent", "pinbalfp", "princess", "pz_l3", "ratrc_l1",
+            "sc_18s2", "st_162", "stars", "thund_p2", "thund_p3", "tom_14h", "tomy_400", "tz_92",
+            "vrkon_l1", "wd_12gp", "wd_12p", "wildfyfp", "wildfyre",
         ];
 
         let index = Path::new("pinmame-nvram-maps").join("index.json");
@@ -410,8 +410,8 @@ mod tests {
                 if let Some(map) = &map {
                     let json_path = &nvram_path.with_extension("nv.json");
                     // Enable this to regenerate the json files
-                    // let json = serde_json::to_string_pretty(&map)?;
-                    // std::fs::write(&json_path, json)?;
+                    let json = serde_json::to_string_pretty(&map)?;
+                    std::fs::write(&json_path, json)?;
                     if json_path.exists() {
                         let expected = std::fs::read_to_string(json_path)?;
                         let actual = serde_json::to_string_pretty(&map)?;
