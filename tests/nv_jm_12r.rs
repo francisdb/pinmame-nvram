@@ -33,7 +33,7 @@ fn test_johnny_mnemonic() -> io::Result<()> {
         ModeChampion {
             label: Some("Cyberpunk".to_string()),
             short_label: Some("Cyberpunk".to_string()),
-            initials: "TWU".to_string(),
+            initials: Some("TWU".to_string()),
             score: None,
             suffix: None,
             timestamp: None,
@@ -41,7 +41,7 @@ fn test_johnny_mnemonic() -> io::Result<()> {
         ModeChampion {
             label: Some("Masters of Powerdown #1".to_string()),
             short_label: Some("Powerdown #1".to_string()),
-            initials: "ROG".to_string(),
+            initials: Some("ROG".to_string()),
             score: Some(100_000_000),
             suffix: None,
             timestamp: None,
@@ -49,7 +49,7 @@ fn test_johnny_mnemonic() -> io::Result<()> {
         ModeChampion {
             label: Some("Masters of Powerdown #2".to_string()),
             short_label: Some("Powerdown #2".to_string()),
-            initials: "LED".to_string(),
+            initials: Some("LED".to_string()),
             score: Some(100_000_000),
             suffix: None,
             timestamp: None,
@@ -57,7 +57,7 @@ fn test_johnny_mnemonic() -> io::Result<()> {
         ModeChampion {
             label: Some("Masters of Powerdown #3".to_string()),
             short_label: Some("Powerdown #3".to_string()),
-            initials: "LFS".to_string(),
+            initials: Some("LFS".to_string()),
             score: Some(100_000_000),
             suffix: None,
             timestamp: None,
@@ -65,7 +65,7 @@ fn test_johnny_mnemonic() -> io::Result<()> {
         ModeChampion {
             label: Some("Masters of Powerdown #4".to_string()),
             short_label: Some("Powerdown #4".to_string()),
-            initials: "JAP".to_string(),
+            initials: Some("JAP".to_string()),
             score: Some(100_000_000),
             suffix: None,
             timestamp: None,
@@ -74,7 +74,7 @@ fn test_johnny_mnemonic() -> io::Result<()> {
         ModeChampion {
             label: Some("Masters of Powerdown #5".to_string()),
             short_label: Some("Powerdown #5".to_string()),
-            initials: "   ".to_string(),
+            initials: Some("   ".to_string()),
             score: Some(100_000_000),
             suffix: None,
             timestamp: None,
@@ -82,7 +82,7 @@ fn test_johnny_mnemonic() -> io::Result<()> {
         ModeChampion {
             label: Some("Masters of Powerdown #6".to_string()),
             short_label: Some("Powerdown #6".to_string()),
-            initials: "   ".to_string(),
+            initials: Some("   ".to_string()),
             score: Some(100_000_000),
             suffix: None,
             timestamp: None,
@@ -90,7 +90,7 @@ fn test_johnny_mnemonic() -> io::Result<()> {
         ModeChampion {
             label: Some("Masters of Powerdown #7".to_string()),
             short_label: Some("Powerdown #7".to_string()),
-            initials: "   ".to_string(),
+            initials: Some("   ".to_string()),
             score: Some(100_000_000),
             suffix: None,
             timestamp: None,
@@ -98,7 +98,7 @@ fn test_johnny_mnemonic() -> io::Result<()> {
         ModeChampion {
             label: Some("Masters of Powerdown #8".to_string()),
             short_label: Some("Powerdown #8".to_string()),
-            initials: "   ".to_string(),
+            initials: Some("   ".to_string()),
             score: Some(100_000_000),
             suffix: None,
             timestamp: None,
@@ -106,7 +106,7 @@ fn test_johnny_mnemonic() -> io::Result<()> {
         ModeChampion {
             label: Some("Masters of Powerdown #9".to_string()),
             short_label: Some("Powerdown #9".to_string()),
-            initials: "   ".to_string(),
+            initials: Some("   ".to_string()),
             score: Some(100_000_000),
             suffix: None,
             timestamp: None,
@@ -114,7 +114,7 @@ fn test_johnny_mnemonic() -> io::Result<()> {
         ModeChampion {
             label: Some("Masters of Powerdown #10".to_string()),
             short_label: Some("Powerdown #10".to_string()),
-            initials: "   ".to_string(),
+            initials: Some("   ".to_string()),
             score: Some(100_000_000),
             suffix: None,
             timestamp: None,

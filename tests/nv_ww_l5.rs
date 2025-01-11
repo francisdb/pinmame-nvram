@@ -32,7 +32,7 @@ fn test_white_water() -> io::Result<()> {
     let expected = Vec::from([ModeChampion {
         label: Some("Insanity Record".to_string()),
         short_label: Some("InsanityRecord".to_string()),
-        initials: "RSM".to_string(),
+        initials: Some("RSM".to_string()),
         score: Some(12),
         suffix: Some(" Water Falls".to_string()),
         timestamp: None,

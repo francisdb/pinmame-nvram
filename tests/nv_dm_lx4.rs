@@ -34,7 +34,7 @@ fn test_demolition_man() -> io::Result<()> {
     let expected = Vec::from([ModeChampion {
         label: Some("Demolition Time Champion".to_string()),
         short_label: Some("Demo Time".to_string()),
-        initials: "WIN".to_string(),
+        initials: Some("WIN".to_string()),
         score: Some(500_000_000),
         suffix: None,
         timestamp: None,

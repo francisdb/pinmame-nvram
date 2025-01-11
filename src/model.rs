@@ -13,7 +13,7 @@ pub const DEFAULT_SCALE: i32 = 1;
 #[derive(Serialize, Deserialize)]
 pub struct Descriptor {
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub _note: Option<Notes>,
+    pub _notes: Option<Notes>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub label: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -52,6 +52,8 @@ pub struct Descriptor {
     pub offsets: Option<Vec<HexOrInteger>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub null: Option<Null>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub units: Option<String>,
 }
 
 #[derive(Serialize, Deserialize, Debug, PartialEq)]
@@ -64,7 +66,7 @@ pub struct Checksum16 {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub label: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub _note: Option<String>,
+    pub _notes: Option<String>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -122,13 +124,14 @@ pub struct ModeChampion {
     pub label: String,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub short_label: Option<String>,
-    pub initials: Descriptor,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub initials: Option<Descriptor>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub score: Option<Descriptor>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub timestamp: Option<Descriptor>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub _note: Option<String>,
+    pub _notes: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub counter: Option<Descriptor>,
     #[serde(rename = "nth time", skip_serializing_if = "Option::is_none")]
@@ -371,16 +374,18 @@ mod tests {
     use super::*;
     use pretty_assertions::assert_eq;
     use serde_json::Value;
+    use walkdir::WalkDir;
 
     #[test]
     fn read_all_nvram_maps() {
-        // read all ../pinmame-nvram-maps/*.json
-        for file in std::fs::read_dir("pinmame-nvram-maps").unwrap() {
-            let file = file.unwrap();
-            let path = file.path();
+        // read all ../pinmame-nvram-maps/*.json recursively
+        for entry in WalkDir::new("pinmame-nvram-maps")
+            .into_iter()
+            .filter_map(|e| e.ok())
+        {
+            let path = entry.path();
             let file_name = path.file_name().unwrap().to_str().unwrap().to_owned();
             if file_name.ends_with(".nv.json") {
-                // println!("Reading {}", file_name);
                 let json = std::fs::read_to_string(path).unwrap();
                 let nvram_map: NvramMap = serde_json::from_str(&json)
                     .unwrap_or_else(|e| panic!("Failed reading {}: {}", file_name, e));

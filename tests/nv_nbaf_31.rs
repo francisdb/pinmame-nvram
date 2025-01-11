@@ -33,7 +33,7 @@ fn test_nba_fastbreak() -> io::Result<()> {
         ModeChampion {
             label: Some("BLAZERS".to_string()),
             short_label: None,
-            initials: "TMK".to_string(),
+            initials: Some("TMK".to_string()),
             score: Some(51),
             suffix: None,
             timestamp: None,
@@ -41,7 +41,7 @@ fn test_nba_fastbreak() -> io::Result<()> {
         ModeChampion {
             label: Some("BUCKS".into()),
             short_label: None,
-            initials: "CJS".into(),
+            initials: Some("CJS".into()),
             score: Some(48),
             suffix: None,
             timestamp: None,
@@ -49,7 +49,7 @@ fn test_nba_fastbreak() -> io::Result<()> {
         ModeChampion {
             label: Some("BULLETS".into()),
             short_label: None,
-            initials: "ZAB".into(),
+            initials: Some("ZAB".into()),
             score: Some(34),
             suffix: None,
             timestamp: None,
@@ -57,7 +57,7 @@ fn test_nba_fastbreak() -> io::Result<()> {
         ModeChampion {
             label: Some("BULLS".into()),
             short_label: None,
-            initials: "LED".into(),
+            initials: Some("LED".into()),
             score: Some(30136),
             suffix: None,
             timestamp: None,
@@ -65,7 +65,7 @@ fn test_nba_fastbreak() -> io::Result<()> {
         ModeChampion {
             label: Some("CAVALIERS".into()),
             short_label: None,
-            initials: "ROG".into(),
+            initials: Some("ROG".into()),
             score: Some(10084),
             suffix: None,
             timestamp: None,
@@ -73,7 +73,7 @@ fn test_nba_fastbreak() -> io::Result<()> {
         ModeChampion {
             label: Some("CELTICS".into()),
             short_label: None,
-            initials: "LFS".into(),
+            initials: Some("LFS".into()),
             score: Some(20104),
             suffix: None,
             timestamp: None,
@@ -81,7 +81,7 @@ fn test_nba_fastbreak() -> io::Result<()> {
         ModeChampion {
             label: Some("CLIPPERS".into()),
             short_label: None,
-            initials: "ASR".into(),
+            initials: Some("ASR".into()),
             score: Some(52),
             suffix: None,
             timestamp: None,
@@ -89,7 +89,7 @@ fn test_nba_fastbreak() -> io::Result<()> {
         ModeChampion {
             label: Some("GRIZZLIES".into()),
             short_label: None,
-            initials: "POP".into(),
+            initials: Some("POP".into()),
             score: Some(41),
             suffix: None,
             timestamp: None,
@@ -97,7 +97,7 @@ fn test_nba_fastbreak() -> io::Result<()> {
         ModeChampion {
             label: Some("HAWKS".into()),
             short_label: None,
-            initials: "JAP".into(),
+            initials: Some("JAP".into()),
             score: Some(53),
             suffix: None,
             timestamp: None,
@@ -105,7 +105,7 @@ fn test_nba_fastbreak() -> io::Result<()> {
         ModeChampion {
             label: Some("HEAT".into()),
             short_label: None,
-            initials: "VJP".into(),
+            initials: Some("VJP".into()),
             score: Some(43),
             suffix: None,
             timestamp: None,
@@ -113,7 +113,7 @@ fn test_nba_fastbreak() -> io::Result<()> {
         ModeChampion {
             label: Some("HORNETS".into()),
             short_label: None,
-            initials: "BRE".into(),
+            initials: Some("BRE".into()),
             score: Some(47),
             suffix: None,
             timestamp: None,
@@ -121,7 +121,7 @@ fn test_nba_fastbreak() -> io::Result<()> {
         ModeChampion {
             label: Some("JAZZ".into()),
             short_label: None,
-            initials: "DJW".into(),
+            initials: Some("DJW".into()),
             score: Some(46),
             suffix: None,
             timestamp: None,
@@ -129,7 +129,7 @@ fn test_nba_fastbreak() -> io::Result<()> {
         ModeChampion {
             label: Some("KINGS".into()),
             short_label: None,
-            initials: "EAE".into(),
+            initials: Some("EAE".into()),
             score: Some(49),
             suffix: None,
             timestamp: None,
@@ -137,7 +137,7 @@ fn test_nba_fastbreak() -> io::Result<()> {
         ModeChampion {
             label: Some("KNICKS".into()),
             short_label: None,
-            initials: "RRR".into(),
+            initials: Some("RRR".into()),
             score: Some(50),
             suffix: None,
             timestamp: None,
@@ -145,7 +145,7 @@ fn test_nba_fastbreak() -> io::Result<()> {
         ModeChampion {
             label: Some("LAKERS".into()),
             short_label: None,
-            initials: "ADG".into(),
+            initials: Some("ADG".into()),
             score: Some(10072),
             suffix: None,
             timestamp: None,
@@ -153,7 +153,7 @@ fn test_nba_fastbreak() -> io::Result<()> {
         ModeChampion {
             label: Some("MAGIC".into()),
             short_label: None,
-            initials: "BCM".into(),
+            initials: Some("BCM".into()),
             score: Some(45),
             suffix: None,
             timestamp: None,
@@ -161,7 +161,7 @@ fn test_nba_fastbreak() -> io::Result<()> {
         ModeChampion {
             label: Some("MAVERICKS".into()),
             short_label: None,
-            initials: "PML".into(),
+            initials: Some("PML".into()),
             score: Some(39),
             suffix: None,
             timestamp: None,
@@ -169,7 +169,7 @@ fn test_nba_fastbreak() -> io::Result<()> {
         ModeChampion {
             label: Some("NETS".into()),
             short_label: None,
-            initials: "TEX".into(),
+            initials: Some("TEX".into()),
             score: Some(58),
             suffix: None,
             timestamp: None,
@@ -177,7 +177,7 @@ fn test_nba_fastbreak() -> io::Result<()> {
         ModeChampion {
             label: Some("NUGGETS".into()),
             short_label: None,
-            initials: "MW ".into(),
+            initials: Some("MW ".into()),
             score: Some(35),
             suffix: None,
             timestamp: None,
@@ -185,7 +185,7 @@ fn test_nba_fastbreak() -> io::Result<()> {
         ModeChampion {
             label: Some("PACERS".into()),
             short_label: None,
-            initials: "TWU".into(),
+            initials: Some("TWU".into()),
             score: Some(32),
             suffix: None,
             timestamp: None,
@@ -193,7 +193,7 @@ fn test_nba_fastbreak() -> io::Result<()> {
         ModeChampion {
             label: Some("PISTONS".into()),
             short_label: None,
-            initials: "XAQ".into(),
+            initials: Some("XAQ".into()),
             score: Some(10070),
             suffix: None,
             timestamp: None,
@@ -201,7 +201,7 @@ fn test_nba_fastbreak() -> io::Result<()> {
         ModeChampion {
             label: Some("RAPTORS".into()),
             short_label: None,
-            initials: "UTB".into(),
+            initials: Some("UTB".into()),
             score: Some(33),
             suffix: None,
             timestamp: None,
@@ -209,7 +209,7 @@ fn test_nba_fastbreak() -> io::Result<()> {
         ModeChampion {
             label: Some("ROCKETS".into()),
             short_label: None,
-            initials: "GIW".into(),
+            initials: Some("GIW".into()),
             score: Some(31),
             suffix: None,
             timestamp: None,
@@ -217,7 +217,7 @@ fn test_nba_fastbreak() -> io::Result<()> {
         ModeChampion {
             label: Some("76ERS".into()),
             short_label: None,
-            initials: "ZAP".into(),
+            initials: Some("ZAP".into()),
             score: Some(55),
             suffix: None,
             timestamp: None,
@@ -225,7 +225,7 @@ fn test_nba_fastbreak() -> io::Result<()> {
         ModeChampion {
             label: Some("SUPERSONICS".into()),
             short_label: None,
-            initials: "GG ".into(),
+            initials: Some("GG ".into()),
             score: Some(54),
             suffix: None,
             timestamp: None,
@@ -233,7 +233,7 @@ fn test_nba_fastbreak() -> io::Result<()> {
         ModeChampion {
             label: Some("SPURS".into()),
             short_label: None,
-            initials: "KCQ".into(),
+            initials: Some("KCQ".into()),
             score: Some(44),
             suffix: None,
             timestamp: None,
@@ -241,7 +241,7 @@ fn test_nba_fastbreak() -> io::Result<()> {
         ModeChampion {
             label: Some("SUNS".into()),
             short_label: None,
-            initials: "MAT".into(),
+            initials: Some("MAT".into()),
             score: Some(40),
             suffix: None,
             timestamp: None,
@@ -249,7 +249,7 @@ fn test_nba_fastbreak() -> io::Result<()> {
         ModeChampion {
             label: Some("T-WOLVES".into()),
             short_label: None,
-            initials: "KOZ".into(),
+            initials: Some("KOZ".into()),
             score: Some(37),
             suffix: None,
             timestamp: None,
@@ -257,7 +257,7 @@ fn test_nba_fastbreak() -> io::Result<()> {
         ModeChampion {
             label: Some("WARRIORS".into()),
             short_label: None,
-            initials: "JIM".into(),
+            initials: Some("JIM".into()),
             score: Some(57),
             suffix: None,
             timestamp: None,

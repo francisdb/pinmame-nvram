@@ -393,9 +393,7 @@ mod tests {
         // any nvram that contains - in the file name needs to be renamed first
         let test_dir = testdir!();
 
-        // TODO remove once this has been implemented:
-        //   https://github.com/tomlogic/pinmame-nvram-maps/issues/88
-        let excludes = ["jd_l1", "sc_091", "taf_l6", "taf_l7"];
+        let excludes = [/*"taf_l7"*/];
 
         for entry in std::fs::read_dir("testdata")? {
             let entry = entry?;

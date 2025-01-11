@@ -33,7 +33,7 @@ fn test_theatre_of_magic() -> io::Result<()> {
         ModeChampion {
             label: Some("BUY-IN SCORE #1".into()),
             short_label: Some("BIS-1".into()),
-            initials: "WWW".into(),
+            initials: Some("WWW".into()),
             score: Some(1_000_000_000),
             suffix: None,
             timestamp: None,
@@ -41,7 +41,7 @@ fn test_theatre_of_magic() -> io::Result<()> {
         ModeChampion {
             label: Some("BUY-IN SCORE #2".into()),
             short_label: Some("BIS-2".into()),
-            initials: "BMC".into(),
+            initials: Some("BMC".into()),
             score: Some(980_000_000),
             suffix: None,
             timestamp: None,
@@ -49,7 +49,7 @@ fn test_theatre_of_magic() -> io::Result<()> {
         ModeChampion {
             label: Some("BUY-IN SCORE #3".into()),
             short_label: Some("BIS-3".into()),
-            initials: "CMJ".into(),
+            initials: Some("CMJ".into()),
             score: Some(960_000_000),
             suffix: None,
             timestamp: None,
@@ -57,7 +57,7 @@ fn test_theatre_of_magic() -> io::Result<()> {
         ModeChampion {
             label: Some("BUY-IN SCORE #4".into()),
             short_label: Some("BIS-4".into()),
-            initials: "ASR".into(),
+            initials: Some("ASR".into()),
             score: Some(940_000_000),
             suffix: None,
             timestamp: None,

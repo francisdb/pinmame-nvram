@@ -33,7 +33,7 @@ fn test_attack_from_mars() -> io::Result<()> {
         ModeChampion {
             label: Some("Martian Champion".to_string()),
             short_label: Some("Martian Champ".to_string()),
-            initials: "LFS".to_string(),
+            initials: Some("LFS".to_string()),
             score: Some(20),
             suffix: Some(" Martians Destroyed".to_string()),
             timestamp: None,
@@ -41,7 +41,7 @@ fn test_attack_from_mars() -> io::Result<()> {
         ModeChampion {
             label: Some("Ruler of the Universe".to_string()),
             short_label: Some("Rule the Universe".to_string()),
-            initials: "TEX".to_string(),
+            initials: Some("TEX".to_string()),
             score: None,
             suffix: None,
             timestamp: Some("2023-11-07 00:14".to_string()),

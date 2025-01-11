@@ -46,10 +46,6 @@
     {
       "label": "Custom Message (2x32)",
       "value": "valid"
-    },
-    {
-      "label": "Buy-In High Scores",
-      "value": "valid"
     }
   ],
   "checksum8": [
@@ -63,18 +59,22 @@
       "label": "Credits",
       "value": 10
     },
+    "game_id": {
+      "label": "WPC Game ID",
+      "value": "90003"
+    },
     "player_count": {
       "label": "Players",
       "value": 1
     },
     "replay": {
       "label": "Replay",
-      "value": 900000000
+      "value": 2500000
     },
     "scores": [
       {
         "label": "Player 1",
-        "value": 110365920
+        "value": 7040
       },
       {
         "label": "Player 2",
@@ -97,11 +97,11 @@
   "high_scores": [
     {
       "initials": {
-        "value": "SSR"
+        "value": "PML"
       },
       "label": "Grand Champion",
       "score": {
-        "value": 2000000000
+        "value": 4000000
       },
       "short_label": "GC"
     },
@@ -111,17 +111,17 @@
       },
       "label": "First Place",
       "score": {
-        "value": 1600000000
+        "value": 3500000
       },
       "short_label": "1st"
     },
     {
       "initials": {
-        "value": "ZAP"
+        "value": "ADG"
       },
       "label": "Second Place",
       "score": {
-        "value": 1400000000
+        "value": 3000000
       },
       "short_label": "2nd"
     },
@@ -131,61 +131,22 @@
       },
       "label": "Third Place",
       "score": {
-        "value": 1200000000
+        "value": 2500000
       },
       "short_label": "3rd"
     },
     {
       "initials": {
-        "value": "PJP"
+        "value": "JY "
       },
       "label": "Fourth Place",
       "score": {
-        "value": 1000000000
+        "value": 2250000
       },
       "short_label": "4th"
     }
   ],
-  "mode_champions": [
-    {
-      "initials": {
-        "value": "XAQ"
-      },
-      "label": "Buy-In High Score #1",
-      "score": {
-        "value": 1600000000
-      },
-      "short_label": "Buy-In #1"
-    },
-    {
-      "initials": {
-        "value": "TEX"
-      },
-      "label": "Buy-In High Score #2",
-      "score": {
-        "value": 1500000000
-      },
-      "short_label": "Buy-In #2"
-    },
-    {
-      "initials": {
-        "value": "LFS"
-      },
-      "label": "Buy-In High Score #3",
-      "score": {
-        "value": 1400000000
-      },
-      "short_label": "Buy-In #3"
-    },
-    {
-      "initials": {
-        "value": "TED"
-      },
-      "label": "Buy-In High Score #4",
-      "score": {
-        "value": 1300000000
-      },
-      "short_label": "Buy-In #4"
-    }
-  ]
+  "last_played": {
+    "value": "2024-02-06 00:01"
+  }
 }
