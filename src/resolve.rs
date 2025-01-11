@@ -362,13 +362,14 @@ mod tests {
 
     #[test]
     fn test_missing_test_nvrams() -> io::Result<()> {
+        let excludes = ["_note"];
+
         // TODO find nvram files for these roms
-        let excludes = [
-            "_note", "bop_l8", "centaura", "che_cho", "cv_14", "dm_dt101", "dm_h6", "draculfp",
-            "excaliba", "hd_l1", "hothand", "jd_l7", "lectrono", "mb_10", "mb_106", "memlane",
-            "mm_10", "mm_109", "mm_109b", "nugent", "pinbalfp", "princess", "pz_l3", "ratrc_l1",
-            "sc_18s2", "st_162", "stars", "thund_p2", "thund_p3", "tom_14h", "tomy_400", "tz_92",
-            "vrkon_l1", "wd_12gp", "wd_12p", "wildfyfp", "wildfyre",
+        let expected = [
+            "draculfp", "excaliba", "hd_l1", "hothand", "jd_l7", "lectrono", "mb_10", "mb_106",
+            "memlane", "mm_10", "mm_109", "mm_109b", "nugent", "pinbalfp", "princess", "pz_l3",
+            "ratrc_l1", "sc_18s2", "st_162", "stars", "thund_p2", "thund_p3", "tom_14h",
+            "tomy_400", "tz_92", "vrkon_l1", "wd_12gp", "wd_12p", "wildfyfp", "wildfyre",
         ];
 
         let index = Path::new("pinmame-nvram-maps").join("index.json");
@@ -384,7 +385,7 @@ mod tests {
                 missing.push(rom);
             }
         }
-        assert_eq!(missing.len(), 0, "Missing nvrams: {:?}", missing);
+        assert_eq!(missing, expected);
         Ok(())
     }
 
