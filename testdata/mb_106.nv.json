@@ -1,0 +1,196 @@
+{
+  "_fileformat": 0.1,
+  "checksum16": [
+    {
+      "label": "Custom Message (2x32)",
+      "value": "valid"
+    },
+    {
+      "label": "Adjustments",
+      "value": "valid"
+    },
+    {
+      "label": "Timestamps",
+      "value": "valid"
+    },
+    {
+      "label": "High Scores",
+      "value": "valid"
+    },
+    {
+      "label": "Grand Champion",
+      "value": "valid"
+    },
+    {
+      "label": "HSTD Reset",
+      "value": "valid"
+    },
+    {
+      "label": "Credits",
+      "value": "valid"
+    },
+    {
+      "checksum_mismatch_calculated": 65280,
+      "checksum_mismatch_expected": 65535,
+      "label": "Volume",
+      "value": "mismatch"
+    },
+    {
+      "value": "valid"
+    },
+    {
+      "value": "valid"
+    },
+    {
+      "label": "Custom Message (3x32)",
+      "value": "valid"
+    },
+    {
+      "label": "Custom Message (2x32)",
+      "value": "valid"
+    },
+    {
+      "label": "Monster Bash Champion",
+      "value": "valid"
+    },
+    {
+      "label": "Monsters of Rock Champion",
+      "value": "valid"
+    },
+    {
+      "label": "Mosh Multiball Champion",
+      "value": "valid"
+    }
+  ],
+  "checksum8": [
+    {
+      "label": "Audits",
+      "value": "valid"
+    }
+  ],
+  "game_state": {
+    "credits": {
+      "label": "Credits",
+      "value": 0
+    },
+    "game_id": {
+      "label": "WPC Game ID",
+      "value": "50065"
+    },
+    "player_count": {
+      "label": "Players",
+      "value": 0
+    },
+    "replay": {
+      "label": "Replay",
+      "value": 60000000
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 0
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ],
+    "volume": {
+      "label": "Volume",
+      "value": 255,
+      "warning": "Value out of range: 0 ≤ 255 ≤ 31"
+    }
+  },
+  "high_scores": [
+    {
+      "initials": {
+        "value": "GAG"
+      },
+      "label": "Grand Champion",
+      "score": {
+        "value": 150000000
+      },
+      "short_label": "GC"
+    },
+    {
+      "initials": {
+        "value": "LFS"
+      },
+      "label": "First Place",
+      "score": {
+        "value": 125000000
+      },
+      "short_label": "1st"
+    },
+    {
+      "initials": {
+        "value": "CAS"
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 100000000
+      },
+      "short_label": "2nd"
+    },
+    {
+      "initials": {
+        "value": "RCF"
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 90000000
+      },
+      "short_label": "3rd"
+    },
+    {
+      "initials": {
+        "value": "VJP"
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 80000000
+      },
+      "short_label": "4th"
+    }
+  ],
+  "last_played": {
+    "value": "2025-01-11 00:01"
+  },
+  "mode_champions": [
+    {
+      "initials": {
+        "value": "K O"
+      },
+      "label": "Monster Bash Champion",
+      "score": {
+        "value": 50000000
+      }
+    },
+    {
+      "initials": {
+        "value": "ASR"
+      },
+      "label": "Monsters of Rock Champion",
+      "score": {
+        "value": 200000000
+      }
+    },
+    {
+      "initials": {
+        "value": "MOO"
+      },
+      "label": "Mosh Multiball Champion",
+      "score": {
+        "value": 25000000
+      }
+    }
+  ]
+}
