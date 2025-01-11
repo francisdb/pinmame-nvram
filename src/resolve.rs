@@ -361,6 +361,34 @@ mod tests {
     }
 
     #[test]
+    fn test_missing_test_nvrams() -> io::Result<()> {
+        // TODO find nvram files for these roms
+        let excludes = [
+            "_note", "bop_l8", "centaura", "che_cho", "cv_14", "dm_dt101", "dm_h6", "draculfp",
+            "excaliba", "hd_l1", "hothand", "jd_l7", "lectrono", "mb_10", "mb_106", "memlane",
+            "mm_10", "mm_109", "mm_109b", "nugent", "pinbalfp", "princess", "pz_l3", "ratrc_l1",
+            "sc_18s2", "st_162", "stars", "thund_p2", "thund_p3", "tom_14h", "tomy_400", "tz_92",
+            "vrkon_l1", "wd_12gp", "wd_12p", "wildfyfp", "wildfyre",
+        ];
+
+        let index = Path::new("pinmame-nvram-maps").join("index.json");
+        let testdata = Path::new("testdata");
+        let index: Value = serde_json::from_str(&std::fs::read_to_string(index)?)?;
+        let mut missing = Vec::new();
+        for (rom, _) in index.as_object().unwrap() {
+            if excludes.contains(&rom.as_str()) {
+                continue;
+            }
+            let expected = testdata.join(format!("{rom}.nv"));
+            if !expected.exists() {
+                missing.push(rom);
+            }
+        }
+        assert_eq!(missing.len(), 0, "Missing nvrams: {:?}", missing);
+        Ok(())
+    }
+
+    #[test]
     fn test_resolve_all() -> io::Result<()> {
         // any nvram that contains - in the file name needs to be renamed first
         let test_dir = testdir!();
