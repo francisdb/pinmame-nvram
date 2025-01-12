@@ -1,0 +1,163 @@
+{
+  "_fileformat": 0.1,
+  "checksum16": [
+    {
+      "label": "Custom Message (2x32)",
+      "value": "valid"
+    },
+    {
+      "label": "Adjustments",
+      "value": "valid"
+    },
+    {
+      "label": "Timestamps",
+      "value": "valid"
+    },
+    {
+      "label": "High Scores",
+      "value": "valid"
+    },
+    {
+      "label": "Grand Champion",
+      "value": "valid"
+    },
+    {
+      "label": "HSTD Reset",
+      "value": "valid"
+    },
+    {
+      "label": "Credits",
+      "value": "valid"
+    },
+    {
+      "label": "Volume",
+      "value": "valid"
+    },
+    {
+      "value": "valid"
+    },
+    {
+      "value": "valid"
+    },
+    {
+      "label": "Custom Message (3x32)",
+      "value": "valid"
+    },
+    {
+      "label": "Mode Champions",
+      "value": "valid"
+    }
+  ],
+  "checksum8": [
+    {
+      "label": "Audits",
+      "value": "valid"
+    }
+  ],
+  "game_state": {
+    "credits": {
+      "label": "Credits",
+      "value": 9
+    },
+    "game_id": {
+      "label": "WPC Game ID",
+      "value": "50020"
+    },
+    "player_count": {
+      "label": "Players",
+      "value": 2
+    },
+    "replay": {
+      "label": "Replay",
+      "value": 250000000
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 0
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ],
+    "volume": {
+      "label": "Volume",
+      "value": 12
+    }
+  },
+  "high_scores": [
+    {
+      "initials": {
+        "value": "NIK"
+      },
+      "label": "Grand Champion",
+      "score": {
+        "value": 750000000
+      },
+      "short_label": "GC"
+    },
+    {
+      "initials": {
+        "value": "DAD"
+      },
+      "label": "First Place",
+      "score": {
+        "value": 700000000
+      },
+      "short_label": "1st"
+    },
+    {
+      "initials": {
+        "value": "PML"
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 650000000
+      },
+      "short_label": "2nd"
+    },
+    {
+      "initials": {
+        "value": "J K"
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 600000000
+      },
+      "short_label": "3rd"
+    },
+    {
+      "initials": {
+        "value": "C G"
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 550000000
+      },
+      "short_label": "4th"
+    }
+  ],
+  "last_played": {
+    "value": "2025-01-12 00:01"
+  },
+  "mode_champions": [
+    {
+      "initials": {
+        "value": "TEX"
+      },
+      "label": "Lost in the Zone Champion",
+      "score": {
+        "value": 300000000
+      }
+    }
+  ]
+}

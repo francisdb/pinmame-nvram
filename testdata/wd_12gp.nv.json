@@ -1,0 +1,164 @@
+{
+  "_fileformat": 0.1,
+  "checksum16": [
+    {
+      "label": "The Roof Champion",
+      "value": "valid"
+    },
+    {
+      "label": "Custom Message (2x32)",
+      "value": "valid"
+    },
+    {
+      "label": "Adjustments",
+      "value": "valid"
+    },
+    {
+      "label": "Timestamps",
+      "value": "valid"
+    },
+    {
+      "label": "High Scores",
+      "value": "valid"
+    },
+    {
+      "label": "Grand Champion",
+      "value": "valid"
+    },
+    {
+      "label": "HSTD Reset",
+      "value": "valid"
+    },
+    {
+      "label": "Credits",
+      "value": "valid"
+    },
+    {
+      "label": "Volume",
+      "value": "valid"
+    },
+    {
+      "value": "valid"
+    },
+    {
+      "value": "valid"
+    },
+    {
+      "label": "Custom Message (3x32)",
+      "value": "valid"
+    },
+    {
+      "label": "Custom Message (2x32)",
+      "value": "valid"
+    }
+  ],
+  "checksum8": [
+    {
+      "label": "Audits",
+      "value": "valid"
+    }
+  ],
+  "game_state": {
+    "credits": {
+      "label": "Credits",
+      "value": 7
+    },
+    "game_id": {
+      "label": "WPC Game ID",
+      "value": "50044"
+    },
+    "player_count": {
+      "label": "Players",
+      "value": 3
+    },
+    "replay": {
+      "label": "Replay",
+      "value": 1500000000
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 0
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ],
+    "volume": {
+      "label": "Volume",
+      "value": 12
+    }
+  },
+  "high_scores": [
+    {
+      "initials": {
+        "value": "BSO"
+      },
+      "label": "Grand Champion",
+      "score": {
+        "value": 1750000000
+      },
+      "short_label": "GC"
+    },
+    {
+      "initials": {
+        "value": "XAQ"
+      },
+      "label": "First Place",
+      "score": {
+        "value": 1500000000
+      },
+      "short_label": "1st"
+    },
+    {
+      "initials": {
+        "value": "L D"
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 1250000000
+      },
+      "short_label": "2nd"
+    },
+    {
+      "initials": {
+        "value": "WMN"
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 1000000000
+      },
+      "short_label": "3rd"
+    },
+    {
+      "initials": {
+        "value": "Z B"
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 750000000
+      },
+      "short_label": "4th"
+    }
+  ],
+  "last_played": {
+    "value": "2025-01-12 00:01"
+  },
+  "mode_champions": [
+    {
+      "initials": {
+        "value": "XAQ"
+      },
+      "label": "The Roof Champion"
+    }
+  ]
+}

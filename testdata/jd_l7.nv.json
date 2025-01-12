@@ -1,0 +1,203 @@
+{
+  "_fileformat": 0.1,
+  "checksum16": [
+    {
+      "label": "Adjustments",
+      "value": "valid"
+    },
+    {
+      "label": "Timestamps",
+      "value": "valid"
+    },
+    {
+      "label": "High Scores",
+      "value": "valid"
+    },
+    {
+      "label": "Grand Champion",
+      "value": "valid"
+    },
+    {
+      "label": "HSTD Reset",
+      "value": "valid"
+    },
+    {
+      "label": "Credits",
+      "value": "valid"
+    },
+    {
+      "label": "Volume",
+      "value": "valid"
+    },
+    {
+      "value": "valid"
+    },
+    {
+      "value": "valid"
+    },
+    {
+      "label": "Custom Message (3x32)",
+      "value": "valid"
+    },
+    {
+      "label": "Custom Message (2x32)",
+      "value": "valid"
+    },
+    {
+      "label": "Super Game High Scores",
+      "value": "valid"
+    },
+    {
+      "label": "Super Game Grand Champion",
+      "value": "valid"
+    }
+  ],
+  "checksum8": [
+    {
+      "label": "Audits",
+      "value": "valid"
+    }
+  ],
+  "game_state": {
+    "credits": {
+      "label": "Credits",
+      "value": 0
+    },
+    "game_id": {
+      "label": "WPC Game ID",
+      "value": "20020"
+    },
+    "player_count": {
+      "label": "Players",
+      "value": 0
+    },
+    "replay": {
+      "label": "Replay",
+      "value": 150000000
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 0
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ],
+    "volume": {
+      "label": "Volume",
+      "value": 12
+    }
+  },
+  "high_scores": [
+    {
+      "initials": {
+        "value": "JBJ"
+      },
+      "label": "Grand Champion",
+      "score": {
+        "value": 130000000
+      },
+      "short_label": "GC"
+    },
+    {
+      "initials": {
+        "value": "CMP"
+      },
+      "label": "First Place",
+      "score": {
+        "value": 125000000
+      },
+      "short_label": "1st"
+    },
+    {
+      "initials": {
+        "value": "FEJ"
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 120000000
+      },
+      "short_label": "2nd"
+    },
+    {
+      "initials": {
+        "value": "MJJ"
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 115000000
+      },
+      "short_label": "3rd"
+    },
+    {
+      "initials": {
+        "value": "J T"
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 110000000
+      },
+      "short_label": "4th"
+    }
+  ],
+  "last_played": {
+    "value": "2025-01-11 00:01"
+  },
+  "mode_champions": [
+    {
+      "initials": {
+        "value": "JBJ"
+      },
+      "label": "Super Game GC",
+      "score": {
+        "value": 350000000
+      }
+    },
+    {
+      "initials": {
+        "value": "C K"
+      },
+      "label": "Super Game #1",
+      "score": {
+        "value": 320000000
+      }
+    },
+    {
+      "initials": {
+        "value": "EAG"
+      },
+      "label": "Super Game #2",
+      "score": {
+        "value": 310000000
+      }
+    },
+    {
+      "initials": {
+        "value": "TEX"
+      },
+      "label": "Super Game #3",
+      "score": {
+        "value": 300000000
+      }
+    },
+    {
+      "initials": {
+        "value": "PNH"
+      },
+      "label": "Super Game #4",
+      "score": {
+        "value": 290000000
+      }
+    }
+  ]
+}

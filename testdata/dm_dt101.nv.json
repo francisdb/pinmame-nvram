@@ -1,0 +1,82 @@
+{
+  "_fileformat": 0.1,
+  "high_scores": [
+    {
+      "initials": {
+        "value": "DAD"
+      },
+      "label": "Grand Champion",
+      "score": {
+        "value": 50
+      },
+      "short_label": "GC"
+    },
+    {
+      "initials": {
+        "value": "SAM"
+      },
+      "label": "First Place",
+      "score": {
+        "value": 40
+      },
+      "short_label": "1st"
+    },
+    {
+      "initials": {
+        "value": "JOE"
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 30
+      },
+      "short_label": "2nd"
+    },
+    {
+      "initials": {
+        "value": "ISA"
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 20
+      },
+      "short_label": "3rd"
+    },
+    {
+      "initials": {
+        "value": "MOM"
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 10
+      },
+      "short_label": "4th"
+    },
+    {
+      "initials": {
+        "value": "\\u00FF\\u00FF\\u00FF"
+      },
+      "label": "Fifth Place",
+      "score": {
+        "value": 0
+      },
+      "short_label": "5th"
+    }
+  ],
+  "last_game": [
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    }
+  ],
+  "last_played": {
+    "value": "2025-01-11 00:01"
+  }
+}
