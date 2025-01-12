@@ -366,9 +366,8 @@ mod tests {
 
         // TODO find nvram files for these roms
         let expected = [
-            "excaliba", "princess", "pz_l3", "ratrc_l1", "sc_18s2", "st_162", "stars", "thund_p2",
-            "thund_p3", "tom_14h", "tomy_400", "tz_92", "vrkon_l1", "wd_12gp", "wd_12p",
-            "wildfyfp", "wildfyre",
+            "excaliba", "sc_18s2", "st_162", "stars", "thund_p2", "thund_p3", "tom_14h",
+            "tomy_400", "tz_92", "vrkon_l1", "wd_12gp", "wd_12p", "wildfyfp", "wildfyre",
         ];
 
         let index = Path::new("pinmame-nvram-maps").join("index.json");
