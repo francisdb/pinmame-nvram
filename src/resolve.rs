@@ -365,10 +365,7 @@ mod tests {
         let excludes = ["_note"];
 
         // TODO find nvram files for these roms
-        let expected = [
-            "excaliba", "sc_18s2", "st_162", "stars", "thund_p2", "thund_p3", "tom_14h",
-            "tomy_400", "tz_92", "vrkon_l1", "wd_12gp", "wd_12p", "wildfyfp", "wildfyre",
-        ];
+        let expected = ["excaliba", "st_162"];
 
         let index = Path::new("pinmame-nvram-maps").join("index.json");
         let testdata = Path::new("testdata");
