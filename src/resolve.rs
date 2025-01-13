@@ -364,8 +364,8 @@ mod tests {
     fn test_missing_test_nvrams() -> io::Result<()> {
         let excludes = ["_note"];
 
-        // TODO find nvram files for these roms
-        let expected = ["excaliba", "st_162"];
+        // Temporarily disable these rom game names if you can't find the nvram
+        let expected: [&str; 0] = [];
 
         let index = Path::new("pinmame-nvram-maps").join("index.json");
         let testdata = Path::new("testdata");
