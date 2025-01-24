@@ -1,0 +1,44 @@
+{
+  "_fileformat": 0.4,
+  "audits": {
+    "Bookkeeping functions": {
+      "05": {
+        "label": "Current Credits",
+        "value": 10
+      },
+      "06": {
+        "label": "Total Plays (Played and Free Games)",
+        "value": 3
+      }
+    }
+  },
+  "game_state": {
+    "credits": {
+      "label": "Credits",
+      "value": 10
+    }
+  },
+  "high_scores": [
+    {
+      "label": "High Score",
+      "score": {
+        "value": 169570
+      },
+      "short_label": "HS"
+    }
+  ],
+  "last_game": [
+    {
+      "value": 28190
+    },
+    {
+      "value": 169570
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    }
+  ]
+}
