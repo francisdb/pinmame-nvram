@@ -1,0 +1,32 @@
+{
+  "_fileformat": 0.4,
+  "game_state": {
+    "credits": {
+      "label": "Credits",
+      "value": 8
+    }
+  },
+  "high_scores": [
+    {
+      "label": "High Score",
+      "score": {
+        "value": 32710
+      },
+      "short_label": "HS"
+    }
+  ],
+  "last_game": [
+    {
+      "value": 32710
+    },
+    {
+      "value": 18710
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "_fileformat": 0.4,
+  "game_state": {
+    "ball_to_play": {
+      "label": "Ball to Play",
+      "value": 0
+    },
+    "credits": {
+      "label": "Credits",
+      "value": 54
+    },
+    "score": {
+      "label": "Score",
+      "value": 655210
+    }
+  },
+  "high_scores": []
+}
