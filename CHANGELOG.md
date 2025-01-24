@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.10](https://github.com/francisdb/pinmame-nvram/compare/v0.3.9...v0.3.10) - 2025-01-24
+
+### Other
+
+- bally as-2518-35 batch 3 (#59)
+- map update, victory dips (#56)
+- excaliba, st_162
+- add most missing nvrams (#52)
+
 ## [0.3.9](https://github.com/francisdb/pinmame-nvram/compare/v0.3.8...v0.3.9) - 2025-01-11
 
 ### Other
