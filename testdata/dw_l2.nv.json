@@ -223,6 +223,10 @@
     }
   ],
   "game_state": {
+    "attract": {
+      "label": "Attract",
+      "value": "ATTRACT"
+    },
     "bonus": {
       "label": "P1 Bonus",
       "value": 66000
@@ -246,6 +250,10 @@
     "docs": {
       "label": "P1 Doctors",
       "value": "Bits encoding not implemented"
+    },
+    "eb_on_this_ball": {
+      "label": "EBs this Ball",
+      "value": 0
     },
     "escape_a": {
       "label": "Escape A",

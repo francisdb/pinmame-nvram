@@ -51,9 +51,29 @@
     }
   ],
   "game_state": {
+    "attract": {
+      "label": "Attract",
+      "value": "IN GAME"
+    },
     "credits": {
       "label": "Credits",
       "value": 9
+    },
+    "current_ball": {
+      "label": "Ball",
+      "value": 1
+    },
+    "current_player": {
+      "label": "Current Player",
+      "value": 1
+    },
+    "eb_on_this_ball": {
+      "label": "EBs this Ball",
+      "value": 1
+    },
+    "extra_balls": {
+      "label": "Extra Balls",
+      "value": 1
     },
     "player_count": {
       "label": "Players",
