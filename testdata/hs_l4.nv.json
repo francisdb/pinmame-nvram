@@ -411,6 +411,10 @@
       "label": "Bonus Hold",
       "value": 0
     },
+    "credits": {
+      "label": "Credits",
+      "value": 29
+    },
     "current_ball": {
       "label": "Ball",
       "value": 0
@@ -435,6 +439,24 @@
       "label": "Player Count",
       "value": 0
     },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 0
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ],
     "tilt_warnings": {
       "label": "Tilt Warnings",
       "value": 0
@@ -480,20 +502,6 @@
         "value": 2500000
       },
       "short_label": "4th"
-    }
-  ],
-  "last_game": [
-    {
-      "value": 0
-    },
-    {
-      "value": 0
-    },
-    {
-      "value": 0
-    },
-    {
-      "value": 0
     }
   ]
 }

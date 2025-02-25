@@ -9,16 +9,16 @@
   "game_state": {
     "credits": {
       "label": "Credits",
-      "value": 3
+      "value": 11
     },
     "current_ball": {
       "label": "Ball",
-      "value": 3
+      "value": 2
     },
     "scores": [
       {
         "label": "Player 1",
-        "value": 508040
+        "value": 219550
       },
       {
         "label": "Player 2",
@@ -41,37 +41,37 @@
       },
       "label": "First Place",
       "score": {
-        "value": 6000000
+        "value": 3000000
       },
       "short_label": "1st"
     },
     {
       "initials": {
-        "value": "BSO"
+        "value": "GNP"
       },
       "label": "Second Place",
       "score": {
-        "value": 5500000
+        "value": 2500000
       },
       "short_label": "2nd"
     },
     {
       "initials": {
-        "value": "PVA"
+        "value": "CPG"
       },
       "label": "Third Place",
       "score": {
-        "value": 5000000
+        "value": 2000000
       },
       "short_label": "3rd"
     },
     {
       "initials": {
-        "value": "CPG"
+        "value": "TOM"
       },
       "label": "Fourth Place",
       "score": {
-        "value": 4500000
+        "value": 1500000
       },
       "short_label": "4th"
     }

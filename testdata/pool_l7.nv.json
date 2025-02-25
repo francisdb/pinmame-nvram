@@ -1,0 +1,111 @@
+{
+  "_fileformat": 0.1,
+  "checksum8": [
+    {
+      "label": "Audits",
+      "value": "valid"
+    }
+  ],
+  "game_state": {
+    "credits": {
+      "label": "Credits",
+      "value": 10
+    },
+    "current_ball": {
+      "label": "Ball",
+      "value": 2
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 231010
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ]
+  },
+  "high_scores": [
+    {
+      "initials": {
+        "value": "BRE"
+      },
+      "label": "8-Ball Shark #1",
+      "score": {
+        "value": 8000000
+      }
+    },
+    {
+      "initials": {
+        "value": "XAQ"
+      },
+      "label": "8-Ball Shark #2",
+      "score": {
+        "value": 7500000
+      }
+    },
+    {
+      "initials": {
+        "value": "AMK"
+      },
+      "label": "8-Ball Shark #3",
+      "score": {
+        "value": 7000000
+      }
+    },
+    {
+      "initials": {
+        "value": "DTW"
+      },
+      "label": "8-Ball Shark #4",
+      "score": {
+        "value": 6500000
+      }
+    },
+    {
+      "initials": {
+        "value": "BRE"
+      },
+      "label": "9-Ball Shark #1",
+      "score": {
+        "value": 8000000
+      }
+    },
+    {
+      "initials": {
+        "value": "XAQ"
+      },
+      "label": "9-Ball Shark #2",
+      "score": {
+        "value": 7500000
+      }
+    },
+    {
+      "initials": {
+        "value": "AMK"
+      },
+      "label": "9-Ball Shark #3",
+      "score": {
+        "value": 7000000
+      }
+    },
+    {
+      "initials": {
+        "value": "DTW"
+      },
+      "label": "9-Ball Shark #4",
+      "score": {
+        "value": 6500000
+      }
+    }
+  ]
+}

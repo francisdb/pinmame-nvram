@@ -10,26 +10,33 @@ fn test_big_guns() -> io::Result<()> {
 
     // credits 67
     let game_state = nvram.read_game_state()?;
-    let expected = HashMap::from([("credits".into(), "67".into())]);
+    let expected = HashMap::from([
+        ("scores.0".into(), "0".into()),
+        ("scores.1".into(), "0".into()),
+        ("scores.2".into(), "0".into()),
+        ("scores.3".into(), "0".into()),
+        ("credits".into(), "67".into()),
+        ("current_ball".into(), "0".into()),
+    ]);
     assert_eq!(Some(expected), game_state);
 
     let last_game = nvram.read_last_game()?;
     let expected = Vec::from([
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 1".to_string()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 2".to_string()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 3".to_string()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 4".to_string()),
         },
     ]);
     assert_eq!(Some(expected), last_game);

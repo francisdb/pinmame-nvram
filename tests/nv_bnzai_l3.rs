@@ -9,26 +9,34 @@ fn test_banzai_run() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/bnzai_l3.nv"))?.unwrap();
 
     let game_state = nvram.read_game_state()?;
-    let expected = HashMap::from([("credits".into(), "4".into())]);
+    let expected = HashMap::from([
+        ("scores.0".into(), "134190".into()),
+        ("scores.1".into(), "0".into()),
+        ("scores.2".into(), "0".into()),
+        ("scores.3".into(), "40002".into()),
+        ("credits".into(), "4".into()),
+        ("current_ball".into(), "2".into()),
+    ]);
     assert_eq!(Some(expected), game_state);
 
     let last_game = nvram.read_last_game()?;
     let expected = Vec::from([
         LastGamePlayer {
             score: 134190,
-            label: None,
+            label: Some("Player 1".to_string()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 2".to_string()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 3".to_string()),
         },
         LastGamePlayer {
+            // TODO is this correct? Only first and last player have scores.
             score: 40002,
-            label: None,
+            label: Some("Player 4".to_string()),
         },
     ]);
     assert_eq!(Some(expected), last_game);

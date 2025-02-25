@@ -12,26 +12,33 @@ fn test_taxi() -> io::Result<()> {
     // Jackpot bonus: 500_000
 
     let game_state = nvram.read_game_state()?;
-    let expected = HashMap::from([("credits".into(), "8".into())]);
+    let expected = HashMap::from([
+        ("scores.0".into(), "376450".into()),
+        ("scores.1".into(), "147170".into()),
+        ("scores.2".into(), "0".into()),
+        ("scores.3".into(), "0".into()),
+        ("credits".into(), "8".into()),
+        ("current_ball".into(), "60".into()),
+    ]);
     assert_eq!(Some(expected), game_state);
 
     let last_game = nvram.read_last_game()?;
     let expected = Vec::from([
         LastGamePlayer {
             score: 376_450,
-            label: None,
+            label: Some("Player 1".to_string()),
         },
         LastGamePlayer {
             score: 147_170,
-            label: None,
+            label: Some("Player 2".to_string()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 3".to_string()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 4".to_string()),
         },
     ]);
     assert_eq!(Some(expected), last_game);
