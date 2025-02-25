@@ -4,7 +4,33 @@
     "credits": {
       "label": "Credits",
       "value": 26
-    }
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 2237
+      },
+      {
+        "label": "Player 2",
+        "value": 1744
+      },
+      {
+        "label": "Player 3",
+        "value": 1053
+      },
+      {
+        "label": "Player 4",
+        "value": 454
+      },
+      {
+        "label": "Player 5",
+        "value": 1738
+      },
+      {
+        "label": "Player 6",
+        "value": 368
+      }
+    ]
   },
   "high_scores": [
     {
@@ -13,26 +39,6 @@
         "value": 200
       },
       "short_label": "HS"
-    }
-  ],
-  "last_game": [
-    {
-      "value": 2237
-    },
-    {
-      "value": 1744
-    },
-    {
-      "value": 1053
-    },
-    {
-      "value": 454
-    },
-    {
-      "value": 1738
-    },
-    {
-      "value": 368
     }
   ]
 }

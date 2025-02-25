@@ -365,7 +365,10 @@ mod tests {
         let excludes = ["_note"];
 
         // Temporarily disable these rom game names if you can't find the nvram
-        let expected: [&str; 0] = [];
+        let expected: [&str; 8] = [
+            "bguns_la", "comet_l4", "eatpm_l2", "esha_la1", "grand_l4", "hs_l3", "milln_l3",
+            "rvrbt_l3",
+        ];
 
         let index = Path::new("pinmame-nvram-maps").join("index.json");
         let testdata = Path::new("testdata");

@@ -1,10 +1,38 @@
 {
   "_fileformat": 0.1,
+  "checksum8": [
+    {
+      "label": "Audits",
+      "value": "valid"
+    }
+  ],
   "game_state": {
     "credits": {
       "label": "Credits",
       "value": 3
-    }
+    },
+    "current_ball": {
+      "label": "Ball",
+      "value": 1
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 163020
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ]
   },
   "high_scores": [
     {
@@ -46,20 +74,6 @@
         "value": 5000000
       },
       "short_label": "4th"
-    }
-  ],
-  "last_game": [
-    {
-      "value": 163020
-    },
-    {
-      "value": 0
-    },
-    {
-      "value": 0
-    },
-    {
-      "value": 0
     }
   ]
 }

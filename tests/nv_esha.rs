@@ -14,26 +14,33 @@ fn test_earthshaker_la3() -> io::Result<()> {
     // High score players named "Movers and Shakers"
 
     let game_state = nvram.read_game_state()?;
-    let expected = HashMap::from([("credits".into(), "5".into())]);
+    let expected = HashMap::from([
+        ("scores.0".into(), "869880".into()),
+        ("scores.1".into(), "0".into()),
+        ("scores.2".into(), "0".into()),
+        ("scores.3".into(), "0".into()),
+        ("credits".into(), "5".into()),
+        ("current_ball".into(), "3".into()),
+    ]);
     assert_eq!(Some(expected), game_state);
 
     let last_game = nvram.read_last_game()?;
     let expected = Vec::from([
         LastGamePlayer {
             score: 869_880,
-            label: None,
+            label: Some("Player 1".to_string()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 2".to_string()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 3".to_string()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 4".to_string()),
         },
     ]);
     assert_eq!(Some(expected), last_game);
@@ -55,26 +62,33 @@ fn test_earthshaker_l4c() -> io::Result<()> {
     // High score players named "Movers and Shakers"
 
     let game_state = nvram.read_game_state()?;
-    let expected = HashMap::from([("credits".into(), "3".into())]);
+    let expected = HashMap::from([
+        ("scores.0".into(), "163020".into()),
+        ("scores.1".into(), "0".into()),
+        ("scores.2".into(), "0".into()),
+        ("scores.3".into(), "0".into()),
+        ("credits".into(), "3".into()),
+        ("current_ball".into(), "1".into()),
+    ]);
     assert_eq!(Some(expected), game_state);
 
     let last_game = nvram.read_last_game()?;
     let expected = Vec::from([
         LastGamePlayer {
             score: 163_020,
-            label: None,
+            label: Some("Player 1".to_string()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 2".to_string()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 3".to_string()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 4".to_string()),
         },
     ]);
     assert_eq!(Some(expected), last_game);
@@ -96,26 +110,33 @@ fn test_earthshaker_ma3() -> io::Result<()> {
     // High score players named "Movers and Shakers"
 
     let game_state = nvram.read_game_state()?;
-    let expected = HashMap::from([("credits".into(), "7".into())]);
+    let expected = HashMap::from([
+        ("scores.0".into(), "67020".into()),
+        ("scores.1".into(), "0".into()),
+        ("scores.2".into(), "0".into()),
+        ("scores.3".into(), "0".into()),
+        ("credits".into(), "7".into()),
+        ("current_ball".into(), "1".into()),
+    ]);
     assert_eq!(Some(expected), game_state);
 
     let last_game = nvram.read_last_game()?;
     let expected = Vec::from([
         LastGamePlayer {
             score: 67_020,
-            label: None,
+            label: Some("Player 1".to_string()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 2".to_string()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 3".to_string()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 4".to_string()),
         },
     ]);
     assert_eq!(Some(expected), last_game);

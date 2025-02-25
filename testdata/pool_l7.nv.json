@@ -18,7 +18,7 @@
     "scores": [
       {
         "label": "Player 1",
-        "value": 284510
+        "value": 231010
       },
       {
         "label": "Player 2",
@@ -37,43 +37,75 @@
   "high_scores": [
     {
       "initials": {
-        "value": "TTR"
+        "value": "BRE"
       },
-      "label": "Highest Score #1",
+      "label": "8-Ball Shark #1",
       "score": {
         "value": 8000000
-      },
-      "short_label": "#1"
+      }
     },
     {
       "initials": {
-        "value": "RMR"
+        "value": "XAQ"
       },
-      "label": "Highest Score #2",
+      "label": "8-Ball Shark #2",
       "score": {
         "value": 7500000
-      },
-      "short_label": "#2"
+      }
     },
     {
       "initials": {
-        "value": "ABG"
+        "value": "AMK"
       },
-      "label": "Highest Score #3",
+      "label": "8-Ball Shark #3",
       "score": {
         "value": 7000000
-      },
-      "short_label": "#3"
+      }
     },
     {
       "initials": {
-        "value": "CDG"
+        "value": "DTW"
       },
-      "label": "Highest Score #4",
+      "label": "8-Ball Shark #4",
       "score": {
         "value": 6500000
+      }
+    },
+    {
+      "initials": {
+        "value": "BRE"
       },
-      "short_label": "#4"
+      "label": "9-Ball Shark #1",
+      "score": {
+        "value": 8000000
+      }
+    },
+    {
+      "initials": {
+        "value": "XAQ"
+      },
+      "label": "9-Ball Shark #2",
+      "score": {
+        "value": 7500000
+      }
+    },
+    {
+      "initials": {
+        "value": "AMK"
+      },
+      "label": "9-Ball Shark #3",
+      "score": {
+        "value": 7000000
+      }
+    },
+    {
+      "initials": {
+        "value": "DTW"
+      },
+      "label": "9-Ball Shark #4",
+      "score": {
+        "value": 6500000
+      }
     }
   ]
 }

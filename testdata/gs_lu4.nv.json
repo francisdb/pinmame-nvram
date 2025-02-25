@@ -9,7 +9,7 @@
   "game_state": {
     "credits": {
       "label": "Credits",
-      "value": 6
+      "value": 29
     },
     "current_ball": {
       "label": "Ball",
@@ -18,7 +18,7 @@
     "scores": [
       {
         "label": "Player 1",
-        "value": 1520990
+        "value": 0
       },
       {
         "label": "Player 2",
@@ -37,41 +37,41 @@
   "high_scores": [
     {
       "initials": {
-        "value": "SOM"
+        "value": "DAN"
       },
-      "label": "Baddest Cat 1",
+      "label": "First Place",
       "score": {
-        "value": 8697720
+        "value": 8500000
       },
       "short_label": "1st"
     },
     {
       "initials": {
-        "value": "BSO"
+        "value": "PP "
       },
-      "label": "Baddest Cat 2",
+      "label": "Second Place",
       "score": {
-        "value": 6000000
+        "value": 8000000
       },
       "short_label": "2nd"
     },
     {
       "initials": {
-        "value": "PVA"
+        "value": "TIM"
       },
-      "label": "Baddest Cat 3",
+      "label": "Third Place",
       "score": {
-        "value": 5500000
+        "value": 7500000
       },
       "short_label": "3rd"
     },
     {
       "initials": {
-        "value": "BAD"
+        "value": "JON"
       },
-      "label": "Baddest Cat 4",
+      "label": "Fourth Place",
       "score": {
-        "value": 5000000
+        "value": 7000000
       },
       "short_label": "4th"
     }
