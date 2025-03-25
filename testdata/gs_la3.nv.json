@@ -1,0 +1,79 @@
+{
+  "_fileformat": 0.1,
+  "checksum8": [
+    {
+      "label": "Audits",
+      "value": "valid"
+    }
+  ],
+  "game_state": {
+    "credits": {
+      "label": "Credits",
+      "value": 7
+    },
+    "current_ball": {
+      "label": "Ball",
+      "value": 0
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 0
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ]
+  },
+  "high_scores": [
+    {
+      "initials": {
+        "value": "DAN"
+      },
+      "label": "First Place",
+      "score": {
+        "value": 8000000
+      },
+      "short_label": "1st"
+    },
+    {
+      "initials": {
+        "value": "PP "
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 7500000
+      },
+      "short_label": "2nd"
+    },
+    {
+      "initials": {
+        "value": "TIM"
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 7000000
+      },
+      "short_label": "3rd"
+    },
+    {
+      "initials": {
+        "value": "JON"
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 6500000
+      },
+      "short_label": "4th"
+    }
+  ]
+}
