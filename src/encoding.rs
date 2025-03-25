@@ -331,7 +331,7 @@ pub(crate) fn read_wpc_rtc<T: Read + Seek>(
 ) -> io::Result<String> {
     let mut buff = vec![0; length];
     read_exact_at(nvram_file, start, &mut buff)?;
-    let year = (buff[0] as u16) << 8 | buff[1] as u16;
+    let year = ((buff[0] as u16) << 8) | buff[1] as u16;
     let month = buff[2];
     let day = buff[3];
     let _dow = buff[4];
