@@ -1,5 +1,141 @@
 {
   "_fileformat": 0.1,
+  "audits": {
+    "Audits": {
+      "01": {
+        "label": "LEFT COINS",
+        "value": 0
+      },
+      "02": {
+        "label": "CENTER COINS",
+        "value": 1
+      },
+      "03": {
+        "label": "RIGHT COINS",
+        "value": 4
+      },
+      "04": {
+        "label": "PAID CREDITS",
+        "value": 8
+      },
+      "05": {
+        "label": "TOTAL PLAYS",
+        "value": 2
+      },
+      "06": {
+        "label": "TOTAL FREE",
+        "value": 0
+      },
+      "08": {
+        "label": "REPLAY AWARDS",
+        "value": 0
+      },
+      "10": {
+        "label": "SPECIAL AWARDS",
+        "value": 0
+      },
+      "12": {
+        "label": "MATCH AWARDS",
+        "value": 0
+      },
+      "13": {
+        "label": "HSTD CREDITS",
+        "value": 0
+      },
+      "15": {
+        "label": "EXTRA BALLS",
+        "value": 0
+      },
+      "18": {
+        "label": "MIN. OF PLAY",
+        "value": 0
+      },
+      "19": {
+        "label": "BALLS PLAYED",
+        "value": 1
+      },
+      "20": {
+        "label": "REPLAY1 AWARDS",
+        "value": 0
+      },
+      "21": {
+        "label": "REPLAY2 AWARDS",
+        "value": 0
+      },
+      "22": {
+        "label": "REPLAY3 AWARDS",
+        "value": 0
+      },
+      "23": {
+        "label": "REPLAY4 AWARDS",
+        "value": 0
+      },
+      "24": {
+        "label": "1 PLAYR. GAMES",
+        "value": 0
+      },
+      "25": {
+        "label": "2 PLAYR. GAMES",
+        "value": 0
+      },
+      "26": {
+        "label": "3 PLAYR. GAMES",
+        "value": 0
+      },
+      "27": {
+        "label": "4 PLAYR. GAMES",
+        "value": 0
+      },
+      "28": {
+        "label": "BURN IN CYCLES",
+        "value": 0
+      },
+      "29": {
+        "label": "D.T. PERCENT",
+        "value": 0
+      },
+      "30": {
+        "label": "SOLAR PERCENT",
+        "value": 0
+      },
+      "31": {
+        "label": "ENERGY PERCENT",
+        "value": 0
+      },
+      "32": {
+        "label": "S. EJECT PERCENT",
+        "value": 0
+      },
+      "33": {
+        "label": "REACH PERCENT",
+        "value": 0
+      },
+      "34": {
+        "label": "SOLAR AWARDS",
+        "value": 0
+      },
+      "35": {
+        "label": "ENERGY AWARDS",
+        "value": 0
+      },
+      "36": {
+        "label": "REACH AWARDS",
+        "value": 0
+      },
+      "37": {
+        "label": "CHEST EX. BALL",
+        "value": 0
+      },
+      "38": {
+        "label": "S. EJECT EX. BALL",
+        "value": 0
+      },
+      "39": {
+        "label": "H.S.RESET COUNTER",
+        "value": 2998
+      }
+    }
+  },
   "checksum8": [
     {
       "label": "Audits",

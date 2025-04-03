@@ -411,10 +411,6 @@
         "label": "10-99 Mil. Score",
         "value": 0
       },
-      "51": {
-        "label": "Av. Min. Game Time",
-        "value": 0
-      },
       "52": {
         "label": "Left Drains",
         "value": 0
@@ -432,6 +428,10 @@
   "checksum8": [
     {
       "label": "Audits",
+      "value": "valid"
+    },
+    {
+      "label": "Audits Continued",
       "value": "valid"
     }
   ],

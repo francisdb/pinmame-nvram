@@ -1,5 +1,193 @@
 {
   "_fileformat": 0.1,
+  "audits": {
+    "Audits": {
+      "01": {
+        "label": "LEFT COINS",
+        "value": 0
+      },
+      "02": {
+        "label": "CENTER COINS",
+        "value": 3
+      },
+      "03": {
+        "label": "RIGHT COINS",
+        "value": 1
+      },
+      "04": {
+        "label": "PAID CREDITS",
+        "value": 9
+      },
+      "05": {
+        "label": "TOTAL PLAYS",
+        "value": 2
+      },
+      "06": {
+        "label": "TOTAL FREE",
+        "value": 0
+      },
+      "08": {
+        "label": "REPLAY AWARDS",
+        "value": 0
+      },
+      "10": {
+        "label": "SPECIAL AWARDS",
+        "value": 0
+      },
+      "12": {
+        "label": "MATCH AWARDS",
+        "value": 0
+      },
+      "13": {
+        "label": "H.S.T.D. CREDITS",
+        "value": 0
+      },
+      "15": {
+        "label": "EXTRA BALLS",
+        "value": 0
+      },
+      "18": {
+        "label": "MINUTES OF PLAY",
+        "value": 1
+      },
+      "19": {
+        "label": "BALLS PLAYED",
+        "value": 1
+      },
+      "20": {
+        "label": "REPLAY 1 AWARDS",
+        "value": 0
+      },
+      "21": {
+        "label": "REPLAY 2 AWARDS",
+        "value": 0
+      },
+      "22": {
+        "label": "REPLAY 3 AWARDS",
+        "value": 0
+      },
+      "23": {
+        "label": "REPLAY 4 AWARDS",
+        "value": 0
+      },
+      "24": {
+        "label": "1 PLAYER GAMES",
+        "value": 1
+      },
+      "25": {
+        "label": "2 PLAYER GAMES",
+        "value": 0
+      },
+      "26": {
+        "label": "3 PLAYER GAMES",
+        "value": 0
+      },
+      "27": {
+        "label": "4 PLAYER GAMES",
+        "value": 0
+      },
+      "28": {
+        "label": "BURN-IN CYCLES",
+        "value": 0
+      },
+      "29": {
+        "label": "LEFT DRAINS",
+        "value": 1
+      },
+      "30": {
+        "label": "LEFT KICKBACKS",
+        "value": 1
+      },
+      "31": {
+        "label": "RIGHT DRAINS",
+        "value": 0
+      },
+      "32": {
+        "label": "TOTAL RAMP SHOTS",
+        "value": 0
+      },
+      "33": {
+        "label": "DEEP FREEZE PLAY",
+        "value": 0
+      },
+      "34": {
+        "label": "SKATE COMPLETE",
+        "value": 0
+      },
+      "35": {
+        "label": "TOP DROPS COMP.",
+        "value": 1
+      },
+      "36": {
+        "label": "ALL TEAMS COMP.",
+        "value": 0
+      },
+      "37": {
+        "label": "MULTIBALLS",
+        "value": 0
+      },
+      "38": {
+        "label": "JACKPOTS",
+        "value": 0
+      },
+      "39": {
+        "label": "H.S. RESET COUNTER",
+        "value": 2998
+      },
+      "40": {
+        "label": "0.0-0.4 MIL. SCORE",
+        "value": 0
+      },
+      "41": {
+        "label": "0.5-0.9 MIL. SCORE",
+        "value": 0
+      },
+      "42": {
+        "label": "1.0-1.9 MIL. SCORE",
+        "value": 0
+      },
+      "43": {
+        "label": "2.0-2.9 MIL. SCORE",
+        "value": 0
+      },
+      "44": {
+        "label": "3.0-3.9 MIL. SCORE",
+        "value": 0
+      },
+      "45": {
+        "label": "4.0-5.9 MIL. SCORE",
+        "value": 0
+      },
+      "46": {
+        "label": "6.0-7.9 MIL. SCORE",
+        "value": 0
+      },
+      "47": {
+        "label": "8.0-99.9 MIL. SCORE",
+        "value": 0
+      },
+      "50": {
+        "label": "SUDDEN DEATH",
+        "value": 0
+      },
+      "51": {
+        "label": "SUDDN. DEATH RMPS.",
+        "value": 0
+      },
+      "52": {
+        "label": "SUDDN. DEATH COMP.",
+        "value": 0
+      },
+      "53": {
+        "label": "ROLLER MOTION",
+        "value": 0
+      },
+      "54": {
+        "label": "MINUTES ON",
+        "value": 2
+      }
+    }
+  },
   "checksum8": [
     {
       "label": "Audits",

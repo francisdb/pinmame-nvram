@@ -1,5 +1,189 @@
 {
   "_fileformat": 0.1,
+  "audits": {
+    "Audits": {
+      "01": {
+        "label": "LEFT COINS",
+        "value": 2
+      },
+      "02": {
+        "label": "CENTER COINS",
+        "value": 1
+      },
+      "03": {
+        "label": "RIGHT COINS",
+        "value": 10
+      },
+      "04": {
+        "label": "PAID CREDITS",
+        "value": 16
+      },
+      "05": {
+        "label": "TOTAL PLAYS",
+        "value": 11
+      },
+      "06": {
+        "label": "TOTAL FREE",
+        "value": 0
+      },
+      "08": {
+        "label": "REPLAY AWARDS",
+        "value": 0
+      },
+      "10": {
+        "label": "SPECIAL AWARDS",
+        "value": 0
+      },
+      "12": {
+        "label": "MATCH AWARDS",
+        "value": 0
+      },
+      "13": {
+        "label": "H.S.T.D. CREDITS",
+        "value": 0
+      },
+      "15": {
+        "label": "EXTRA BALLS",
+        "value": 1
+      },
+      "18": {
+        "label": "MINUTES OF PLAY",
+        "value": 2
+      },
+      "19": {
+        "label": "BALLS PLAYED",
+        "value": 11
+      },
+      "20": {
+        "label": "REPLAY 1 AWARDS",
+        "value": 0
+      },
+      "21": {
+        "label": "REPLAY 2 AWARDS",
+        "value": 0
+      },
+      "22": {
+        "label": "REPLAY 3 AWARDS",
+        "value": 0
+      },
+      "23": {
+        "label": "REPLAY 4 AWARDS",
+        "value": 0
+      },
+      "24": {
+        "label": "1 PLAYER GAMES",
+        "value": 6
+      },
+      "25": {
+        "label": "2 PLAYER GAMES",
+        "value": 0
+      },
+      "26": {
+        "label": "3 PLAYER GAMES",
+        "value": 0
+      },
+      "27": {
+        "label": "4 PLAYER GAMES",
+        "value": 0
+      },
+      "28": {
+        "label": "BURN-IN CYCLES",
+        "value": 0
+      },
+      "29": {
+        "label": "LEFT OUTLANE",
+        "value": 0
+      },
+      "30": {
+        "label": "RIGHT OUTLANE",
+        "value": 1
+      },
+      "31": {
+        "label": "HEAD FOR SHELTER",
+        "value": 0
+      },
+      "32": {
+        "label": "JACKPOTS",
+        "value": 0
+      },
+      "33": {
+        "label": "3 BL. MULTI-BALLS",
+        "value": 0
+      },
+      "34": {
+        "label": "100K CENTER RAMP",
+        "value": 0
+      },
+      "35": {
+        "label": "TRIPS TO FAULT",
+        "value": 3
+      },
+      "36": {
+        "label": "MILES TRAVELED",
+        "value": 26
+      },
+      "37": {
+        "label": "2 BL. MULTI-BALLS",
+        "value": 0
+      },
+      "38": {
+        "label": "MILLION SHOTS",
+        "value": 0
+      },
+      "39": {
+        "label": "H.S. RESET COUNTER",
+        "value": 2989
+      },
+      "40": {
+        "label": "0.0-0.4 MIL. SCORE",
+        "value": 1
+      },
+      "41": {
+        "label": "0.5-0.9 MIL. SCORE",
+        "value": 0
+      },
+      "42": {
+        "label": "1.0-1.9 MIL. SCORE",
+        "value": 0
+      },
+      "43": {
+        "label": "2.0-2.9 MIL. SCORE",
+        "value": 0
+      },
+      "44": {
+        "label": "3.0-3.9 MIL. SCORE",
+        "value": 0
+      },
+      "45": {
+        "label": "4.0-5.9 MIL. SCORE",
+        "value": 0
+      },
+      "46": {
+        "label": "6.0-7.9 MIL. SCORE",
+        "value": 0
+      },
+      "47": {
+        "label": "8.0-99.9 MIL. SCORE",
+        "value": 0
+      },
+      "50": {
+        "label": "BONUS 2X REACHED",
+        "value": 4
+      },
+      "51": {
+        "label": "BONUS 3X REACHED",
+        "value": 1
+      },
+      "52": {
+        "label": "BONUS 4X REACHED",
+        "value": 0
+      },
+      "53": {
+        "label": "BONUS 5X REACHED",
+        "value": 0
+      }
+    }
+  },
   "checksum8": [
     {
       "label": "Audits",
