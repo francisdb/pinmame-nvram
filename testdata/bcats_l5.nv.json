@@ -1,8 +1,220 @@
 {
   "_fileformat": 0.1,
+  "audits": {
+    "Audits": {
+      "01": {
+        "label": "LEFT COINS",
+        "value": 36
+      },
+      "02": {
+        "label": "CENTER COINS",
+        "value": 2
+      },
+      "03": {
+        "label": "RIGHT COINS",
+        "value": 111
+      },
+      "04": {
+        "label": "PAID CREDITS",
+        "value": 72
+      },
+      "05": {
+        "label": "TOTAL PLAYS",
+        "value": 78
+      },
+      "06": {
+        "label": "TOTAL FREE",
+        "value": 12
+      },
+      "08": {
+        "label": "REPLAY AWARDS",
+        "value": 2
+      },
+      "10": {
+        "label": "SPECIAL AWARDS",
+        "value": 4
+      },
+      "12": {
+        "label": "MATCH AWARDS",
+        "value": 5
+      },
+      "13": {
+        "label": "H.S.T.D. CREDITS",
+        "value": 1
+      },
+      "15": {
+        "label": "EXTRA BALLS",
+        "value": 6
+      },
+      "18": {
+        "label": "MINUTES OF PLAY",
+        "value": 28
+      },
+      "19": {
+        "label": "BALLS PLAYED",
+        "value": 94
+      },
+      "20": {
+        "label": "REPLAY1 AWARDS",
+        "value": 2
+      },
+      "21": {
+        "label": "REPLAY2 AWARDS",
+        "value": 0
+      },
+      "22": {
+        "label": "REPLAY3 AWARDS",
+        "value": 0
+      },
+      "23": {
+        "label": "REPLAY4 AWARDS",
+        "value": 0
+      },
+      "24": {
+        "label": "1 PLAYER GAMES",
+        "value": 19
+      },
+      "25": {
+        "label": "2 PLAYER GAMES",
+        "value": 0
+      },
+      "26": {
+        "label": "3 PLAYER GAMES",
+        "value": 0
+      },
+      "27": {
+        "label": "4 PLAYER GAMES",
+        "value": 0
+      },
+      "28": {
+        "label": "BURN-IN CYCLES",
+        "value": 0
+      },
+      "29": {
+        "label": "UNLM. MIL. LIT",
+        "value": 1
+      },
+      "30": {
+        "label": "UNLM. MIL. AWARDED",
+        "value": 0
+      },
+      "31": {
+        "label": "20 MILLION LIT",
+        "value": 0
+      },
+      "32": {
+        "label": "20 MIL. AWARDED",
+        "value": 0
+      },
+      "33": {
+        "label": "TIGER RAMP COMPL.",
+        "value": 21
+      },
+      "34": {
+        "label": "TIGER RMP. MISSED",
+        "value": 1
+      },
+      "35": {
+        "label": "GOLDFISH RAMP",
+        "value": 60
+      },
+      "36": {
+        "label": "JACKPOTS AWARDED",
+        "value": 0
+      },
+      "37": {
+        "label": "TOTAL WHL. SPINS",
+        "value": 15
+      },
+      "38": {
+        "label": "CURIOSITY SPINS",
+        "value": 7
+      },
+      "39": {
+        "label": "H.S.RESET COUNTER",
+        "value": 2922
+      },
+      "40": {
+        "label": "0.0-0.4 MIL. SCORE",
+        "value": 6
+      },
+      "41": {
+        "label": "0.5-0.9 MIL. SCORE",
+        "value": 4
+      },
+      "42": {
+        "label": "1.0-1.4 MIL. SCORE",
+        "value": 3
+      },
+      "43": {
+        "label": "1.5-1.9 MIL. SCORE",
+        "value": 2
+      },
+      "44": {
+        "label": "2.0-2.9 MIL. SCORE",
+        "value": 2
+      },
+      "45": {
+        "label": "3.0-3.9 MIL. SCORE",
+        "value": 1
+      },
+      "46": {
+        "label": "4.0-4.9 MIL. SCORE",
+        "value": 0
+      },
+      "47": {
+        "label": "5.0-5.9 MIL. SCORE",
+        "value": 0
+      },
+      "48": {
+        "label": "6.0-7.9 MIL. SCORE",
+        "value": 0
+      },
+      "49": {
+        "label": "8.0-9.9 MIL. SCORE",
+        "value": 1
+      },
+      "50": {
+        "label": "10-99.9 MIL. SCORE",
+        "value": 0
+      },
+      "52": {
+        "label": "TOTAL FISH COL.",
+        "value": 19
+      },
+      "53": {
+        "label": "FISH COL. 10X",
+        "value": 5
+      },
+      "54": {
+        "label": "FISH 5 MILLION",
+        "value": 1
+      },
+      "55": {
+        "label": "BONUS MULTIPLIER",
+        "value": 77
+      },
+      "56": {
+        "label": "LEFT DRAINS",
+        "value": 24
+      },
+      "57": {
+        "label": "RIGHT DRAINS",
+        "value": 12
+      },
+      "58": {
+        "label": "CONSOL. XTRA BALL",
+        "value": 0
+      }
+    }
+  },
   "checksum8": [
     {
       "label": "Audits",
+      "value": "valid"
+    },
+    {
+      "label": "Audits Continued",
       "value": "valid"
     }
   ],

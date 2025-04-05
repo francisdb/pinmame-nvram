@@ -221,6 +221,7 @@ mod test {
             start: HexOrInteger::Integer(0),
             end: HexOrInteger::Integer(2),
             groupings: None,
+            _notes: None,
         };
         let result = verify_checksum8_range(&mut cursor, &checksum8, 0, 2);
         assert_eq!(None, result?);
@@ -238,6 +239,7 @@ mod test {
             start: HexOrInteger::Integer(0),
             end: HexOrInteger::Integer(4),
             groupings: None,
+            _notes: None,
         };
         let result = verify_checksum8(&mut cursor, &checksum8);
         assert_eq!(None, result?);
@@ -256,6 +258,7 @@ mod test {
             start: HexOrInteger::Integer(0),
             end: HexOrInteger::Integer(5),
             groupings: Some(3),
+            _notes: None,
         };
         let result = verify_checksum8(&mut cursor, &checksum8);
         assert_eq!(None, result?);
@@ -270,6 +273,7 @@ mod test {
             start: HexOrInteger::Integer(0),
             end: HexOrInteger::Integer(2),
             groupings: None,
+            _notes: None,
         };
         let result = verify_checksum8_range(&mut cursor, &checksum8, 0, 2);
         assert_eq!(

@@ -1,5 +1,141 @@
 {
   "_fileformat": 0.1,
+  "audits": {
+    "Audits": {
+      "01": {
+        "label": "LEFT COINS",
+        "value": 0
+      },
+      "02": {
+        "label": "CENTER COINS",
+        "value": 10
+      },
+      "03": {
+        "label": "RIGHT COINS",
+        "value": 9
+      },
+      "04": {
+        "label": "PAID CREDITS",
+        "value": 49
+      },
+      "05": {
+        "label": "TOTAL PLAYS",
+        "value": 1
+      },
+      "06": {
+        "label": "TOTAL FREE",
+        "value": 0
+      },
+      "08": {
+        "label": "REPLAY AWARDS",
+        "value": 0
+      },
+      "10": {
+        "label": "SPECIAL AWARDS",
+        "value": 0
+      },
+      "12": {
+        "label": "MATCH AWARDS",
+        "value": 0
+      },
+      "13": {
+        "label": "HSTD CREDITS",
+        "value": 0
+      },
+      "15": {
+        "label": "EXTRA BALLS",
+        "value": 0
+      },
+      "18": {
+        "label": "MIN. OF PLAY",
+        "value": 1
+      },
+      "19": {
+        "label": "BALLS PLAYED",
+        "value": 2
+      },
+      "20": {
+        "label": "REPLAY1 AWARDS",
+        "value": 0
+      },
+      "21": {
+        "label": "REPLAY2 AWARDS",
+        "value": 0
+      },
+      "22": {
+        "label": "REPLAY3 AWARDS",
+        "value": 0
+      },
+      "23": {
+        "label": "REPLAY4 AWARDS",
+        "value": 0
+      },
+      "24": {
+        "label": "1 PLAYR. GAMES",
+        "value": 0
+      },
+      "25": {
+        "label": "2 PLAYR. GAMES",
+        "value": 0
+      },
+      "26": {
+        "label": "3 PLAYR. GAMES",
+        "value": 0
+      },
+      "27": {
+        "label": "4 PLAYR. GAMES",
+        "value": 0
+      },
+      "28": {
+        "label": "BURN IN CYCLES",
+        "value": 0
+      },
+      "29": {
+        "label": "1000000 AWARDED",
+        "value": 0
+      },
+      "30": {
+        "label": "MULTI BALL",
+        "value": 0
+      },
+      "31": {
+        "label": "EX. BALL LIT",
+        "value": 0
+      },
+      "32": {
+        "label": "SPECIAL LIT",
+        "value": 0
+      },
+      "33": {
+        "label": "10X LIT",
+        "value": 0
+      },
+      "34": {
+        "label": "100000 SH. LANE",
+        "value": 0
+      },
+      "35": {
+        "label": "TOTAL SH. LANE",
+        "value": 2
+      },
+      "36": {
+        "label": "CEN.RAMP RAISED",
+        "value": 0
+      },
+      "37": {
+        "label": "P.O. FIRE AWARDED",
+        "value": 1
+      },
+      "38": {
+        "label": "NOT USED",
+        "value": 0
+      },
+      "39": {
+        "label": "H.S.RESET COUNTER",
+        "value": 2999
+      }
+    }
+  },
   "checksum8": [
     {
       "label": "Audits",

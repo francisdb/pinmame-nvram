@@ -76,6 +76,8 @@ pub struct Checksum8 {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub groupings: Option<u64>,
     pub label: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub _notes: Option<Notes>,
 }
 
 #[derive(Serialize, Deserialize)]

@@ -1,8 +1,200 @@
 {
   "_fileformat": 0.1,
+  "audits": {
+    "Audits": {
+      "01": {
+        "label": "LEFT COINS",
+        "value": 11
+      },
+      "02": {
+        "label": "CENTER COINS",
+        "value": 0
+      },
+      "03": {
+        "label": "RIGHT COINS",
+        "value": 76
+      },
+      "04": {
+        "label": "PAID CREDITS",
+        "value": 44
+      },
+      "05": {
+        "label": "TOTAL PLAYS",
+        "value": 37
+      },
+      "06": {
+        "label": "TOTAL FREE",
+        "value": 3
+      },
+      "08": {
+        "label": "REPLAY AWARDS",
+        "value": 0
+      },
+      "10": {
+        "label": "SPECIAL AWARDS",
+        "value": 0
+      },
+      "12": {
+        "label": "MATCH AWARDS",
+        "value": 3
+      },
+      "13": {
+        "label": "H.S.T.D. CREDITS",
+        "value": 0
+      },
+      "15": {
+        "label": "EXTRA BALLS",
+        "value": 1
+      },
+      "18": {
+        "label": "MINUTES OF PLAY",
+        "value": 12
+      },
+      "19": {
+        "label": "BALLS PLAYED",
+        "value": 39
+      },
+      "20": {
+        "label": "REPLAY1 AWARDS",
+        "value": 0
+      },
+      "21": {
+        "label": "REPLAY2 AWARDS",
+        "value": 0
+      },
+      "22": {
+        "label": "REPLAY3 AWARDS",
+        "value": 0
+      },
+      "23": {
+        "label": "REPLAY4 AWARDS",
+        "value": 0
+      },
+      "24": {
+        "label": "1 PLAYER GAMES",
+        "value": 7
+      },
+      "25": {
+        "label": "2 PLAYER GAMES",
+        "value": 0
+      },
+      "26": {
+        "label": "3 PLAYER GAMES",
+        "value": 0
+      },
+      "27": {
+        "label": "4 PLAYER GAMES",
+        "value": 0
+      },
+      "28": {
+        "label": "BURN-IN CYCLES",
+        "value": 0
+      },
+      "29": {
+        "label": "MULTIBALLS",
+        "value": 1
+      },
+      "30": {
+        "label": "JACKPOT AWARDS",
+        "value": 0
+      },
+      "31": {
+        "label": "MILLION AWARDS",
+        "value": 0
+      },
+      "32": {
+        "label": "CHEEZ. BON. AWARDS",
+        "value": 2
+      },
+      "33": {
+        "label": "DOUBLE PLAYFIELD",
+        "value": 0
+      },
+      "34": {
+        "label": "2X MULT. AWARDS",
+        "value": 5
+      },
+      "35": {
+        "label": "3X MULT. AWARDS",
+        "value": 0
+      },
+      "36": {
+        "label": "OUTLANE AWARDS",
+        "value": 8
+      },
+      "37": {
+        "label": "CONSOL. EX. BALLS",
+        "value": 2
+      },
+      "38": {
+        "label": "CHEEZY EX. BALLS",
+        "value": 1
+      },
+      "39": {
+        "label": "H.S. RESET COUNTER",
+        "value": 2963
+      },
+      "40": {
+        "label": "0.0-0.4 MIL. SCORE",
+        "value": 1
+      },
+      "41": {
+        "label": "0.5-0.9 MIL. SCORE",
+        "value": 4
+      },
+      "42": {
+        "label": "1.0-1.4 MIL. SCORE",
+        "value": 0
+      },
+      "43": {
+        "label": "1.5-1.9 MIL. SCORE",
+        "value": 0
+      },
+      "44": {
+        "label": "2.0-2.9 MIL. SCORE",
+        "value": 0
+      },
+      "45": {
+        "label": "3.0-3.9 MIL. SCORE",
+        "value": 2
+      },
+      "46": {
+        "label": "4.0-4.9 MIL. SCORE",
+        "value": 0
+      },
+      "47": {
+        "label": "5.0-5.9 MIL. SCORE",
+        "value": 0
+      },
+      "48": {
+        "label": "6.0-7.9 MIL. SCORE",
+        "value": 0
+      },
+      "49": {
+        "label": "8.0-9.9 MIL. SCORE",
+        "value": 0
+      },
+      "50": {
+        "label": "10-99.9 MIL. SCORE",
+        "value": 0
+      },
+      "52": {
+        "label": "LEFT DRAINS",
+        "value": 0
+      },
+      "53": {
+        "label": "RIGHT DRAINS",
+        "value": 7
+      }
+    }
+  },
   "checksum8": [
     {
       "label": "Audits",
+      "value": "valid"
+    },
+    {
+      "label": "Audits Continued",
       "value": "valid"
     }
   ],

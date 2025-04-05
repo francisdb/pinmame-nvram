@@ -1,5 +1,141 @@
 {
   "_fileformat": 0.1,
+  "audits": {
+    "Audits": {
+      "01": {
+        "label": "LEFT COINS",
+        "value": 1
+      },
+      "02": {
+        "label": "CENTER COINS",
+        "value": 15
+      },
+      "03": {
+        "label": "RIGHT COINS",
+        "value": 10
+      },
+      "04": {
+        "label": "PAID CREDITS",
+        "value": 71
+      },
+      "05": {
+        "label": "TOTAL PLAYS",
+        "value": 7
+      },
+      "06": {
+        "label": "TOTAL FREE",
+        "value": 0
+      },
+      "08": {
+        "label": "REPLAY AWARDS",
+        "value": 0
+      },
+      "10": {
+        "label": "SPECIAL AWARDS",
+        "value": 0
+      },
+      "12": {
+        "label": "MATCH AWARDS",
+        "value": 0
+      },
+      "13": {
+        "label": "HSTD CREDITS",
+        "value": 0
+      },
+      "15": {
+        "label": "EXTRA BALLS",
+        "value": 0
+      },
+      "18": {
+        "label": "MIN. OF PLAY",
+        "value": 0
+      },
+      "19": {
+        "label": "BALLS PLAYED",
+        "value": 3
+      },
+      "20": {
+        "label": "REPLAY1 AWARDS",
+        "value": 0
+      },
+      "21": {
+        "label": "REPLAY2 AWARDS",
+        "value": 0
+      },
+      "22": {
+        "label": "REPLAY3 AWARDS",
+        "value": 0
+      },
+      "23": {
+        "label": "REPLAY4 AWARDS",
+        "value": 0
+      },
+      "24": {
+        "label": "1 PLAYR. GAMES",
+        "value": 0
+      },
+      "25": {
+        "label": "2 PLAYR. GAMES",
+        "value": 0
+      },
+      "26": {
+        "label": "3 PLAYR. GAMES",
+        "value": 0
+      },
+      "27": {
+        "label": "4 PLAYR. GAMES",
+        "value": 0
+      },
+      "28": {
+        "label": "BURN IN CYCLES",
+        "value": 0
+      },
+      "29": {
+        "label": "MULTI BALL",
+        "value": 0
+      },
+      "30": {
+        "label": "BONUS X",
+        "value": 1
+      },
+      "31": {
+        "label": "LANDING",
+        "value": 0
+      },
+      "32": {
+        "label": "KILLS",
+        "value": 0
+      },
+      "33": {
+        "label": "KILL LT XBALL",
+        "value": 0
+      },
+      "34": {
+        "label": "MULT LT XBALL",
+        "value": 0
+      },
+      "35": {
+        "label": "FLIGHT INS COL",
+        "value": 0
+      },
+      "36": {
+        "label": "LEFT DRAINS",
+        "value": 0
+      },
+      "37": {
+        "label": "RIGHT DRAINS",
+        "value": 1
+      },
+      "38": {
+        "label": "KILLGEN YAGOV",
+        "value": 0
+      },
+      "39": {
+        "label": "H.S.RESET COUNTER",
+        "value": 2993
+      }
+    }
+  },
   "checksum8": [
     {
       "label": "Audits",

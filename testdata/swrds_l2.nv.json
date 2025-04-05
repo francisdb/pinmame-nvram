@@ -1,5 +1,165 @@
 {
   "_fileformat": 0.1,
+  "audits": {
+    "Audits": {
+      "01": {
+        "label": "LEFT COINS",
+        "value": 0
+      },
+      "02": {
+        "label": "CENTER COINS",
+        "value": 0
+      },
+      "03": {
+        "label": "RIGHT COINS",
+        "value": 15
+      },
+      "04": {
+        "label": "PAID CREDITS",
+        "value": 15
+      },
+      "05": {
+        "label": "TOTAL PLAYS",
+        "value": 3
+      },
+      "06": {
+        "label": "TOTAL FREE",
+        "value": 0
+      },
+      "08": {
+        "label": "REPLAY AWARDS",
+        "value": 0
+      },
+      "10": {
+        "label": "SPECIAL AWARDS",
+        "value": 0
+      },
+      "12": {
+        "label": "MATCH AWARDS",
+        "value": 0
+      },
+      "13": {
+        "label": "HSTD CREDITS",
+        "value": 0
+      },
+      "15": {
+        "label": "EXTRA BALLS",
+        "value": 0
+      },
+      "18": {
+        "label": "MIN. OF PLAY",
+        "value": 0
+      },
+      "19": {
+        "label": "BALLS PLAYED",
+        "value": 1
+      },
+      "20": {
+        "label": "REPLAY1 AWARDS",
+        "value": 0
+      },
+      "21": {
+        "label": "REPLAY2 AWARDS",
+        "value": 0
+      },
+      "22": {
+        "label": "REPLAY3 AWARDS",
+        "value": 0
+      },
+      "23": {
+        "label": "REPLAY4 AWARDS",
+        "value": 0
+      },
+      "24": {
+        "label": "1 PLAYR. GAMES",
+        "value": 0
+      },
+      "25": {
+        "label": "2 PLAYR. GAMES",
+        "value": 0
+      },
+      "26": {
+        "label": "3 PLAYR. GAMES",
+        "value": 0
+      },
+      "27": {
+        "label": "4 PLAYR. GAMES",
+        "value": 0
+      },
+      "28": {
+        "label": "BURN IN CYCLES",
+        "value": 0
+      },
+      "29": {
+        "label": "LEFT OUTLANE",
+        "value": 0
+      },
+      "30": {
+        "label": "RIGHT OUTLANE",
+        "value": 0
+      },
+      "31": {
+        "label": "AVENGER MADE",
+        "value": 0
+      },
+      "32": {
+        "label": "EX. BALL LIT",
+        "value": 0
+      },
+      "33": {
+        "label": "7 X LIT",
+        "value": 0
+      },
+      "34": {
+        "label": "SPECIAL LIT",
+        "value": 0
+      },
+      "35": {
+        "label": "MULTI- BALL",
+        "value": 0
+      },
+      "36": {
+        "label": "LIONMAN BONUS",
+        "value": 0
+      },
+      "37": {
+        "label": "TOP.LOOP 500000",
+        "value": 0
+      },
+      "38": {
+        "label": "JACKPOT MADE",
+        "value": 0
+      },
+      "39": {
+        "label": "H.S.RESET COUNTER",
+        "value": 2997
+      },
+      "40": {
+        "label": "0.0-0.4 M. SCORE",
+        "value": 0
+      },
+      "41": {
+        "label": "0.5-0.9 M. SCORE",
+        "value": 0
+      },
+      "42": {
+        "label": "1.0-1.4 M. SCORE",
+        "value": 0
+      },
+      "43": {
+        "label": "1.5-1.9 M. SCORE",
+        "value": 0
+      },
+      "44": {
+        "label": "2.0-2.4 M. SCORE",
+        "value": 0
+      },
+      "45": {
+        "label": "2.5-9.9 M. SCORE",
+        "value": 0
+      }
+    }
+  },
   "checksum8": [
     {
       "label": "Audits",
