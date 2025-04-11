@@ -13,7 +13,7 @@ pub(crate) fn de_nibble(length: usize, buff: &[u8], nibble: Nibble) -> io::Resul
         return Ok(buff.to_vec());
     }
     // TODO make this more efficient
-    let resulting_length = (length + 1) / 2;
+    let resulting_length = length.div_ceil(2);
     let mut result = vec![0; resulting_length];
     let mut buffer = buff.to_owned();
     if length % 2 != 0 {
@@ -256,7 +256,7 @@ pub(crate) fn write_bcd<A: Write + Seek>(
     stream.seek(SeekFrom::Start(location))?;
     // the nibble function will validate the length
     let buff_len = if nibble.is_some() {
-        (length + 1) / 2
+        length.div_ceil(2)
     } else {
         length
     };
