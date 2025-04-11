@@ -1,8 +1,8 @@
-use crate::checksum::{verify_checksum16, verify_checksum8};
-use crate::encoding::{read_bcd, read_ch, read_int, read_wpc_rtc, Location};
+use crate::checksum::{verify_checksum8, verify_checksum16};
+use crate::encoding::{Location, read_bcd, read_ch, read_int, read_wpc_rtc};
 use crate::model::{
-    Checksum16, Checksum8, Encoding, Endian, GlobalSettings, GlobalSettingsImpl, Nibble, Null,
-    DEFAULT_LENGTH, DEFAULT_SCALE,
+    Checksum8, Checksum16, DEFAULT_LENGTH, DEFAULT_SCALE, Encoding, Endian, GlobalSettings,
+    GlobalSettingsImpl, Nibble, Null,
 };
 use crate::{dips, open_nvram};
 use serde_json::{Map, Number, Value};
@@ -30,7 +30,7 @@ pub fn resolve(nv_path: &Path) -> io::Result<Option<Value>> {
                 return Err(io::Error::new(
                     e.kind(),
                     format!("Failed to resolve: {}: {}", nv_path.display(), e),
-                ))
+                ));
             }
         }
     } else {

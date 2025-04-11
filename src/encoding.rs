@@ -239,11 +239,7 @@ fn apply_scale(scale: &Number, score: u64) -> u64 {
 
 /// Ignore nibbles 0xA to 0xF (0xF = blank on Dracula/Wild Fyre) (prefix)
 pub(crate) fn cap_bcd(value: u8) -> u8 {
-    if value > 9 {
-        0
-    } else {
-        value
-    }
+    if value > 9 { 0 } else { value }
 }
 
 pub(crate) fn write_bcd<A: Write + Seek>(
@@ -347,7 +343,7 @@ pub(crate) fn read_wpc_rtc<T: Read + Seek>(
 #[cfg(test)]
 mod tests {
     use crate::encoding::*;
-    use crate::model::{Endian, Nibble, DEFAULT_SCALE};
+    use crate::model::{DEFAULT_SCALE, Endian, Nibble};
     use std::io;
 
     #[test]

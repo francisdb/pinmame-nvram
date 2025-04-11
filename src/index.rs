@@ -1,4 +1,4 @@
-use crate::{read_compressed_json, MAPS};
+use crate::{MAPS, read_compressed_json};
 use lazy_static::lazy_static;
 use serde_json::Value;
 use std::io;

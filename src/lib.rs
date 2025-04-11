@@ -5,14 +5,14 @@ mod index;
 mod model;
 pub mod resolve;
 
-use crate::checksum::{update_all_checksum16, verify_all_checksum16, ChecksumMismatch};
+use crate::checksum::{ChecksumMismatch, update_all_checksum16, verify_all_checksum16};
 use crate::dips::{get_dip_switch, set_dip_switch, validate_dip_switch_range};
-use crate::encoding::{read_bcd, read_ch, read_int, read_wpc_rtc, write_bcd, write_ch, Location};
+use crate::encoding::{Location, read_bcd, read_ch, read_int, read_wpc_rtc, write_bcd, write_ch};
 use crate::index::get_index_map;
 use crate::model::{
-    Descriptor, Encoding, GlobalSettings, NvramMap, StateOrStateList, DEFAULT_LENGTH, DEFAULT_SCALE,
+    DEFAULT_LENGTH, DEFAULT_SCALE, Descriptor, Encoding, GlobalSettings, NvramMap, StateOrStateList,
 };
-use include_dir::{include_dir, Dir, File};
+use include_dir::{Dir, File, include_dir};
 use serde::de;
 use serde::de::DeserializeOwned;
 use serde_json::{Number, Value};
