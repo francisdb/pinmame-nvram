@@ -50,10 +50,15 @@ fn resolve_recursive<T: Read + Seek, S: GlobalSettings>(
             // println!("{:?}", map.get("encoding"));
             if let Some(encoding) = map.get("encoding") {
                 let encoding: Encoding = serde_json::from_value(encoding.clone())?;
-                let value = resolve_value(rom, map, encoding, global_settings)?;
-                let warning = validate_range(map, &value);
+                let value = resolve_value(rom, map, encoding, global_settings);
+                let warning = match &value {
+                    Ok(value) => validate_range(map, value),
+                    Err(e) => Some(format!("Failed to resolve: {}", e)),
+                };
                 let mut resolved_map = Map::new();
-                resolved_map.insert("value".to_string(), value);
+                if let Ok(value) = value {
+                    resolved_map.insert("value".to_string(), value);
+                }
                 if let Some(label) = map.get("label") {
                     // maybe we should instead remove all properties related to the encoding
                     resolved_map.insert("label".to_string(), label.clone());
@@ -98,11 +103,14 @@ fn validate_range(map: &Map<String, Value>, value: &Value) -> Option<String> {
     if let (Some(min), Some(max)) = (map.get("min"), map.get("max")) {
         // TODO might be better to do this check earlier before the scaling is applied
         // min and max are unscaled values so we need to unscale the value first
+        let Some(number_value) = value.as_u64() else {
+            return Some(format!("Value {} is not a unsigned int", value));
+        };
         let unscaled_value = if let Some(scale) = map.get("scale") {
             let scale = scale.as_u64().unwrap();
-            value.as_u64().unwrap() / scale
+            number_value / scale
         } else {
-            value.as_u64().unwrap()
+            number_value
         };
 
         let min = min.as_u64().unwrap();
@@ -207,15 +215,26 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
             Value::Number(value.into())
         }
         Encoding::Enum => {
-            // read a single byte and use it as index in the enum array
-            let index = {
-                rom.seek(SeekFrom::Start(start.unwrap()))?;
-                let mut buff = [0; 1];
-                rom.read_exact(&mut buff)?;
-                buff[0] as usize
-            };
+            let index = read_int(
+                rom,
+                global_settings.endianness(),
+                global_settings.nibble(),
+                start.unwrap(),
+                length,
+                &Number::from(DEFAULT_SCALE),
+            )? as usize;
             let values = map.get("values").unwrap().as_array().unwrap();
-            let value = values.get(index).unwrap_or(&Value::Null).clone();
+            if index >= values.len() {
+                return Err(io::Error::new(
+                    io::ErrorKind::InvalidData,
+                    format!(
+                        "Index {} out of bounds for enum with {} values",
+                        index,
+                        values.len()
+                    ),
+                ));
+            }
+            let value = values.get(index).unwrap().clone();
             value
         }
         Encoding::Bcd => {

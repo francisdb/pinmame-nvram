@@ -1,5 +1,237 @@
 {
   "_fileformat": 0.4,
+  "adjustments": {
+    "Game Adjustments": {
+      "31": {
+        "label": "Game Adjust 1",
+        "value": 1
+      },
+      "32": {
+        "label": "Game Adjust 2",
+        "value": 10
+      },
+      "33": {
+        "label": "Game Adjust 3",
+        "value": 1
+      },
+      "34": {
+        "label": "Game Adjust 4",
+        "value": 1
+      },
+      "35": {
+        "label": "Game Adjust 5",
+        "value": 0
+      },
+      "36": {
+        "label": "Game Adjust 6",
+        "value": 0
+      },
+      "37": {
+        "label": "Game Adjust 7",
+        "value": 0
+      },
+      "38": {
+        "label": "Game Adjust 8",
+        "value": 0
+      },
+      "39": {
+        "label": "Game Adjust 9",
+        "value": 0
+      }
+    },
+    "Standard Adjustments": {
+      "13": {
+        "label": "Backup HSTD",
+        "value": 2500000
+      },
+      "14": {
+        "label": "Replay 1 Score",
+        "value": 1500000
+      },
+      "15": {
+        "label": "Replay 2 Score",
+        "value": 2500000
+      },
+      "16": {
+        "label": "Replay 3 Score",
+        "value": 0
+      },
+      "17": {
+        "label": "Replay 4 Score",
+        "value": 0
+      },
+      "18": {
+        "label": "Maximum Credits",
+        "value": 30
+      },
+      "19": {
+        "label": "Pricing Control",
+        "value": 2
+      },
+      "20": {
+        "label": "Left Coin Slot Multiplier",
+        "value": 9
+      },
+      "21": {
+        "label": "Center Coin Slot Multiplier",
+        "value": 45
+      },
+      "22": {
+        "label": "Right Coin Slot Multiplier",
+        "value": 18
+      },
+      "23": {
+        "label": "Coin Units Required for Credit",
+        "value": 5
+      },
+      "24": {
+        "label": "Coin Units Bonus Point",
+        "value": 45
+      },
+      "25": {
+        "label": "Minimum Coin Units",
+        "value": 0
+      },
+      "26": {
+        "label": "Match",
+        "value": "On"
+      },
+      "27": {
+        "label": "Special Awards",
+        "value": "Credit"
+      },
+      "28": {
+        "label": "Replay Award",
+        "value": "Credit"
+      },
+      "29": {
+        "label": "Tilt Warnings",
+        "value": 3
+      },
+      "30": {
+        "label": "Number of Balls",
+        "value": 3
+      },
+      "40": {
+        "label": "HSTD Credits",
+        "value": 3
+      },
+      "41": {
+        "label": "Maximum Extra Balls",
+        "value": 3
+      }
+    }
+  },
+  "audits": {
+    "Game Audits": {
+      "42": {
+        "label": "Game Audit 1",
+        "value": 0
+      },
+      "43": {
+        "label": "Game Audit 2",
+        "value": 0
+      },
+      "44": {
+        "label": "Game Audit 3",
+        "value": 0
+      },
+      "45": {
+        "label": "Game Audit 4",
+        "value": 0
+      },
+      "46": {
+        "label": "Game Audit 5",
+        "value": 0
+      },
+      "47": {
+        "label": "Game Audit 6",
+        "value": 0
+      },
+      "48": {
+        "label": "Game Audit 7",
+        "value": 0
+      },
+      "49": {
+        "label": "Burn-In Cycles",
+        "value": 0
+      },
+      "99": {
+        "label": "CMOS Checksum",
+        "value": 45733
+      }
+    },
+    "Standard Audits": {
+      "01": {
+        "label": "Coins, left chute",
+        "value": 0
+      },
+      "02": {
+        "label": "Coins, center chute",
+        "value": 18
+      },
+      "03": {
+        "label": "Coins, right chute",
+        "value": 13
+      },
+      "04": {
+        "label": "Total Paid Credits",
+        "value": 220
+      },
+      "05": {
+        "label": "Special Credits",
+        "value": 0
+      },
+      "06": {
+        "label": "Replay Score Credits",
+        "value": 2
+      },
+      "07": {
+        "label": "Match Credits",
+        "value": 0
+      },
+      "08": {
+        "label": "Total Credits",
+        "value": 42
+      },
+      "09": {
+        "label": "Total Extra Balls",
+        "value": 0
+      },
+      "10": {
+        "label": "Ball Time",
+        "value": 5
+      },
+      "11": {
+        "label": "Total Balls Played",
+        "value": 10
+      },
+      "12": {
+        "label": "Current HSTD",
+        "value": 3137150
+      },
+      "13": {
+        "label": "HSTD Credits",
+        "value": 0
+      },
+      "14": {
+        "label": "Replay 1 Awarded",
+        "value": 1
+      },
+      "15": {
+        "label": "Replay 2 Awarded",
+        "value": 1
+      },
+      "16": {
+        "label": "Replay 3 Awarded",
+        "value": 0
+      },
+      "17": {
+        "label": "Replay 4 Awarded",
+        "value": 0
+      }
+    }
+  },
   "game_state": {
     "credits": {
       "label": "Credits",
@@ -13,27 +245,6 @@
         "value": 3137150
       },
       "short_label": "1st"
-    },
-    {
-      "label": "Second Place",
-      "score": {
-        "value": 0
-      },
-      "short_label": "2nd"
-    },
-    {
-      "label": "Third Place",
-      "score": {
-        "value": 0
-      },
-      "short_label": "3rd"
-    },
-    {
-      "label": "Fourth Place",
-      "score": {
-        "value": 0
-      },
-      "short_label": "4th"
     }
   ]
 }

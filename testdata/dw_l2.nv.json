@@ -146,7 +146,7 @@
       },
       "33": {
         "label": "H.S.T.D. Reset Count",
-        "value": 0
+        "value": 2999
       },
       "34": {
         "label": "Burn-in Time",
@@ -154,7 +154,7 @@
       },
       "35": {
         "label": "1st Replay Level",
-        "value": 707
+        "value": 200
       },
       "36": {
         "label": "Left Flipper",

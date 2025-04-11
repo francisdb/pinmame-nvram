@@ -347,7 +347,7 @@ pub(crate) fn read_wpc_rtc<T: Read + Seek>(
 #[cfg(test)]
 mod tests {
     use crate::encoding::*;
-    use crate::model::{Endian, Nibble};
+    use crate::model::{Endian, Nibble, DEFAULT_SCALE};
     use std::io;
 
     #[test]
@@ -396,7 +396,7 @@ mod tests {
             Nibble::Both,
             1,
             1,
-            &Number::from(1),
+            &Number::from(DEFAULT_SCALE),
         )?;
         pretty_assertions::assert_eq!(value, 255);
         Ok(())
@@ -412,7 +412,7 @@ mod tests {
             Nibble::High,
             1,
             1,
-            &Number::from(1),
+            &Number::from(DEFAULT_SCALE),
         )?;
         pretty_assertions::assert_eq!(value, 15);
         Ok(())
