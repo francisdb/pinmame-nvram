@@ -5,7 +5,7 @@
       "31": {
         "label": "Reset Multiplier on Next Ball",
         "value": "X5",
-        "warning": "Value \"X5\" is not a unsigned int"
+        "warning": "Value \"X5\" is not an unsigned int"
       },
       "32a": {
         "label": "Double Ball",

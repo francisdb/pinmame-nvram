@@ -52,7 +52,11 @@ fn resolve_recursive<T: Read + Seek, S: GlobalSettings>(
                 let encoding: Encoding = serde_json::from_value(encoding.clone())?;
                 let value = resolve_value(rom, map, encoding, global_settings);
                 let warning = match &value {
-                    Ok(value) => validate_range(map, value),
+                    Ok(value) => {
+                        // FIXME if the value is an enum we need to validate the raw value
+                        //   instead of the enum value
+                        validate_range(map, value)
+                    }
                     Err(e) => Some(format!("Failed to resolve: {}", e)),
                 };
                 let mut resolved_map = Map::new();
@@ -104,7 +108,7 @@ fn validate_range(map: &Map<String, Value>, value: &Value) -> Option<String> {
         // TODO might be better to do this check earlier before the scaling is applied
         // min and max are unscaled values so we need to unscale the value first
         let Some(number_value) = value.as_u64() else {
-            return Some(format!("Value {} is not a unsigned int", value));
+            return Some(format!("Value {} is not an unsigned int", value));
         };
         let unscaled_value = if let Some(scale) = map.get("scale") {
             let scale = scale.as_u64().unwrap();
@@ -224,18 +228,19 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
                 &Number::from(DEFAULT_SCALE),
             )? as usize;
             let values = map.get("values").unwrap().as_array().unwrap();
-            if index >= values.len() {
-                return Err(io::Error::new(
+            let enum_value = values.get(index);
+            return if let Some(enum_value) = enum_value {
+                Ok(enum_value.clone())
+            } else {
+                Err(io::Error::new(
                     io::ErrorKind::InvalidData,
                     format!(
                         "Index {} out of bounds for enum with {} values",
                         index,
                         values.len()
                     ),
-                ));
-            }
-            let value = values.get(index).unwrap().clone();
-            value
+                ))
+            };
         }
         Encoding::Bcd => {
             let location = match map.get("offsets") {
