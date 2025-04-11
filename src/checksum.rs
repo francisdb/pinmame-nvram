@@ -1,4 +1,4 @@
-use crate::model::{Checksum16, Checksum8, Endian, NvramMap};
+use crate::model::{Checksum8, Checksum16, Endian, NvramMap};
 use std::io;
 use std::io::{Read, Seek, SeekFrom, Write};
 
@@ -205,9 +205,9 @@ pub(crate) fn update_all_checksum16<T: Read + Seek + Write>(
 #[cfg(test)]
 mod test {
     use super::*;
+    use crate::Nvram;
     use crate::checksum::ChecksumMismatch;
     use crate::model::{Checksum8, HexOrInteger};
-    use crate::Nvram;
     use pretty_assertions::assert_eq;
     use std::fs::OpenOptions;
     use std::io;

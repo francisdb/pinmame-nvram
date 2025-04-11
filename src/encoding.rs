@@ -13,7 +13,7 @@ pub(crate) fn de_nibble(length: usize, buff: &[u8], nibble: Nibble) -> io::Resul
         return Ok(buff.to_vec());
     }
     // TODO make this more efficient
-    let resulting_length = (length + 1) / 2;
+    let resulting_length = length.div_ceil(2);
     let mut result = vec![0; resulting_length];
     let mut buffer = buff.to_owned();
     if length % 2 != 0 {
@@ -239,11 +239,7 @@ fn apply_scale(scale: &Number, score: u64) -> u64 {
 
 /// Ignore nibbles 0xA to 0xF (0xF = blank on Dracula/Wild Fyre) (prefix)
 pub(crate) fn cap_bcd(value: u8) -> u8 {
-    if value > 9 {
-        0
-    } else {
-        value
-    }
+    if value > 9 { 0 } else { value }
 }
 
 pub(crate) fn write_bcd<A: Write + Seek>(
@@ -256,7 +252,7 @@ pub(crate) fn write_bcd<A: Write + Seek>(
     stream.seek(SeekFrom::Start(location))?;
     // the nibble function will validate the length
     let buff_len = if nibble.is_some() {
-        (length + 1) / 2
+        length.div_ceil(2)
     } else {
         length
     };
@@ -347,7 +343,7 @@ pub(crate) fn read_wpc_rtc<T: Read + Seek>(
 #[cfg(test)]
 mod tests {
     use crate::encoding::*;
-    use crate::model::{Endian, Nibble};
+    use crate::model::{DEFAULT_SCALE, Endian, Nibble};
     use std::io;
 
     #[test]
@@ -396,7 +392,7 @@ mod tests {
             Nibble::Both,
             1,
             1,
-            &Number::from(1),
+            &Number::from(DEFAULT_SCALE),
         )?;
         pretty_assertions::assert_eq!(value, 255);
         Ok(())
@@ -412,7 +408,7 @@ mod tests {
             Nibble::High,
             1,
             1,
-            &Number::from(1),
+            &Number::from(DEFAULT_SCALE),
         )?;
         pretty_assertions::assert_eq!(value, 15);
         Ok(())
