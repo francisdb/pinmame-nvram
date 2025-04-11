@@ -9,7 +9,7 @@ documentation = "https://docs.rs/vpin"
 keywords = ["pinmame", "emulation", "mame", "virtual-pinball"]
 categories = ["game-engines", "game-development"]
 version = "0.3.13"
-edition = "2021"
+edition = "2024"
 
 [dependencies]
 serde = { version = "1.0.215", features = ["derive"] }
