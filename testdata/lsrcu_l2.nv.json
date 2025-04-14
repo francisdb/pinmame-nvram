@@ -123,8 +123,7 @@
       },
       "41": {
         "label": "Maximum Extra Balls",
-        "value": 7,
-        "warning": "Value out of range: 0 ≤ 7 ≤ 4"
+        "value": 7
       }
     }
   },
