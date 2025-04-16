@@ -275,7 +275,7 @@ pub struct NvramMap {
     pub _nibble: Option<Nibble>,
     pub _roms: Vec<String>,
     pub _fileformat: f64,
-    pub _version: f64,
+    pub _version: Number,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _ramsize: Option<u64>,
     #[serde(skip_serializing_if = "Option::is_none")]
