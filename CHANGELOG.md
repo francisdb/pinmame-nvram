@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.17](https://github.com/francisdb/pinmame-nvram/compare/v0.3.16...v0.3.17) - 2025-04-21
+
+### Other
+
+- *(deps)* update brotli requirement from 7.0.0 to 8.0.0 ([#79](https://github.com/francisdb/pinmame-nvram/pull/79))
+
 ## [0.3.16](https://github.com/francisdb/pinmame-nvram/compare/v0.3.15...v0.3.16) - 2025-04-16
 
 ### Other
