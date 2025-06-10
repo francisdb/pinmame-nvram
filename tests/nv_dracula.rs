@@ -35,7 +35,7 @@ fn test_dracula_last_game() -> io::Result<()> {
         ("scores.1".into(), "22510".into()),
         ("scores.2".into(), "0".into()),
         ("scores.3".into(), "0".into()),
-        ("current_ball".into(), "70".into()),
+        ("current_ball".into(), "0".into()),
         ("credits".into(), "0".into()),
         ("match".into(), "70".into()),
     ]);

@@ -119,7 +119,7 @@
     },
     "30": {
       "label": "3rd Coin Chute Credits",
-      "value": "add 9 credits"
+      "value": "add 9 credits (enables Free Play on competition ROMs)"
     },
     "31": {
       "label": "Extra Ball Control",
@@ -143,7 +143,7 @@
     },
     "9-13": {
       "label": "Right Coin Chute",
-      "value": "9 credits/coin"
+      "value": "1 credits/5 coins"
     }
   },
   "game_state": {
