@@ -59,7 +59,7 @@
     },
     "current_ball": {
       "label": "Ball",
-      "value": 40
+      "value": 0
     },
     "match": {
       "label": "Match",
