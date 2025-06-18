@@ -1,62 +1,42 @@
 {
   "_fileformat": 0.4,
-  "adjustments": {
-    "High score functions": {
-      "01": {
-        "label": "Extra ball / Free game score level 1",
-        "value": 0
-      },
-      "02": {
-        "label": "Extra ball / Free game score level 2",
-        "value": 0
-      },
-      "03": {
-        "label": "Extra ball / Free game score level 3",
-        "value": 0
-      },
-      "04": {
-        "label": "High score to date",
-        "value": 29180
-      }
-    }
-  },
   "audits": {
     "Bookkeeping functions": {
       "05": {
         "label": "Current Credits",
-        "value": 8
+        "value": 19
       },
       "06": {
         "label": "Total Plays (Paid and Free Games)",
-        "value": 4
+        "value": 441
       },
       "07": {
         "label": "Total Replays (Free Games)",
-        "value": 0
+        "value": 24
       },
       "08": {
-        "label": "Total times 'High Score To Date' is beat",
-        "value": 2
+        "label": "Total times 'High Score to Date' is beat",
+        "value": 11
       },
       "09": {
         "label": "Coins Dropped thru Coin Chute #1",
-        "value": 6
+        "value": 18
       },
       "10": {
         "label": "Coins Dropped thru Coin Chute #2",
-        "value": 0
+        "value": 5
       },
       "11": {
         "label": "Coins Dropped thru Coin Chute #3",
-        "value": 6
+        "value": 440
       },
       "12": {
         "label": "Number of Specials awarded from Panel Specials Only",
-        "value": 0
+        "value": 6
       },
       "13": {
         "label": "Number of minutes of Game Play",
-        "value": 0
+        "value": 315
       },
       "14": {
         "label": "Number of Service Credits",
@@ -67,30 +47,30 @@
   "game_state": {
     "credits": {
       "label": "Credits",
-      "value": 0
+      "value": 19
     }
   },
   "high_scores": [
     {
       "label": "High Score",
       "score": {
-        "value": 29180
+        "value": 917980
       },
       "short_label": "HS"
     }
   ],
   "last_game": [
     {
-      "value": 29180
+      "value": 33600
     },
     {
-      "value": 5920
+      "value": 917980
     },
     {
-      "value": 0
+      "value": 43930
     },
     {
-      "value": 0
+      "value": 33370
     }
   ]
 }

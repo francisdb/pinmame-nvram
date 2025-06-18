@@ -1,0 +1,74 @@
+{
+  "_fileformat": 0.4,
+  "audits": {
+    "Bookkeeping functions": {
+      "05": {
+        "label": "Current Credits",
+        "value": 40
+      },
+      "06": {
+        "label": "Total Plays (Paid and Free Games)",
+        "value": 3
+      },
+      "07": {
+        "label": "Total Replays (Free Games)",
+        "value": 2
+      },
+      "08": {
+        "label": "Game Percentage",
+        "value": 0
+      },
+      "09": {
+        "label": "Total times 'High Score to Date' is beat",
+        "value": 2
+      },
+      "10": {
+        "label": "Coins Dropped thru Coin Chute #1",
+        "value": 11
+      },
+      "11": {
+        "label": "Coins Dropped thru Coin Chute #2",
+        "value": 6
+      },
+      "12": {
+        "label": "Coins Dropped thru Coin Chute #3",
+        "value": 12
+      },
+      "13": {
+        "label": "Number of Specials awarded from Panel Specials Only",
+        "value": 0
+      },
+      "14": {
+        "label": "Number of minutes of Game Play",
+        "value": 1
+      },
+      "15": {
+        "label": "Number of Service Credits",
+        "value": 0
+      }
+    }
+  },
+  "game_state": {
+    "credits": {
+      "label": "Credits",
+      "value": 40
+    }
+  },
+  "high_scores": [
+    {
+      "label": "High Score",
+      "score": {
+        "value": 128000
+      },
+      "short_label": "HS"
+    }
+  ],
+  "last_game": [
+    {
+      "value": 37500
+    },
+    {
+      "value": 128000
+    }
+  ]
+}

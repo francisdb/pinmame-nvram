@@ -2,10 +2,6 @@
   "_fileformat": 0.5,
   "adjustments": {
     "Standard Adjustments": {
-      "06": {
-        "label": "Replay Percentage",
-        "value": 0
-      },
       "11": {
         "label": "First High Score",
         "value": 0
@@ -24,19 +20,19 @@
     "Bookkeeping": {
       "01": {
         "label": "Left Chute Coins",
-        "value": 4
+        "value": 1
       },
       "02": {
         "label": "Right Chute Coins",
-        "value": 0
+        "value": 17
       },
       "03": {
         "label": "Center Chute Coins",
-        "value": 7
+        "value": 22
       },
       "04": {
         "label": "Total Plays",
-        "value": 7
+        "value": 4
       },
       "05": {
         "label": "Total Replays",
@@ -60,15 +56,15 @@
       },
       "14": {
         "label": "Highest Game To Date",
-        "value": 283000
+        "value": 0
       },
       "14a": {
         "label": "HGTD Initials",
-        "value": "   "
+        "value": ""
       },
       "15": {
         "label": "Game Time",
-        "value": 250
+        "value": 110
       }
     }
   },
@@ -149,17 +145,17 @@
   "game_state": {
     "credits": {
       "label": "Credits",
-      "value": 8
+      "value": 0
     }
   },
   "high_scores": [
     {
       "initials": {
-        "value": "   "
+        "value": ""
       },
       "label": "High Score #1",
       "score": {
-        "value": 283000
+        "value": 0
       },
       "short_label": "1st"
     },
