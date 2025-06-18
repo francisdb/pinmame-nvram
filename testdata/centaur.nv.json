@@ -1,7 +1,7 @@
 {
   "_fileformat": 0.4,
   "adjustments": {
-    "Game adjustments": {
+    "Game Adjustments": {
       "16": {
         "label": "High Score award #1",
         "value": 0
@@ -53,7 +53,7 @@
         "value": 8
       },
       "06": {
-        "label": "Total Plays (Played and Free Games)",
+        "label": "Total Plays (Paid and Free Games)",
         "value": 26
       },
       "07": {

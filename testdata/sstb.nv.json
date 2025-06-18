@@ -1,0 +1,64 @@
+{
+  "_fileformat": 0.4,
+  "audits": {
+    "Bookkeeping functions": {
+      "05": {
+        "label": "Current Credits",
+        "value": 40
+      },
+      "06": {
+        "label": "Total Plays (Paid and Free Games)",
+        "value": 6
+      },
+      "07": {
+        "label": "Total Replays (Free Games)",
+        "value": 5
+      },
+      "08": {
+        "label": "Total times 'High Score to Date' is beat",
+        "value": 2
+      },
+      "09": {
+        "label": "Coins Dropped thru Coin Chute #1",
+        "value": 0
+      },
+      "10": {
+        "label": "Coins Dropped thru Coin Chute #2",
+        "value": 1
+      },
+      "11": {
+        "label": "Coins Dropped thru Coin Chute #3",
+        "value": 14
+      }
+    }
+  },
+  "game_state": {
+    "credits": {
+      "label": "Credits",
+      "value": 40
+    }
+  },
+  "high_scores": [
+    {
+      "label": "High Score",
+      "score": {
+        "value": 366340
+      },
+      "short_label": "HS"
+    }
+  ],
+  "last_game": [
+    {
+      "value": 6250
+    },
+    {
+      "value": 366340
+    },
+    {
+      "value": 0
+    },
+    {
+      "value": 0
+    }
+  ]
+}
