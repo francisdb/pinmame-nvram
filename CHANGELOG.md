@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.19](https://github.com/francisdb/pinmame-nvram/compare/v0.3.18...v0.3.19) - 2025-07-02
+
+### Other
+
+- submodule master -> main
+- make update script nixos compatible
+
 ## [0.3.18](https://github.com/francisdb/pinmame-nvram/compare/v0.3.17...v0.3.18) - 2025-06-18
 
 ### Other
