@@ -315,7 +315,7 @@ fn clear_highscores<T: Write + Seek>(mut nvram_file: &mut T, map: &NvramMap) -> 
                     .into(),
                 map_initials.length.expect("missing length for ch encoding"),
                 "AAA".to_string(),
-                &map._char_map,
+                &map.char_map(),
                 &map_initials.nibble.or_else(|| Some(map.nibble())),
             )?;
         }

@@ -12,19 +12,19 @@ fn test_the_whos_tommy_pinball_wizard() -> io::Result<()> {
     let expected = Vec::from([
         LastGamePlayer {
             score: 4_702_109_630,
-            label: None,
+            label: Some("Player 1".to_string()),
         },
         LastGamePlayer {
             score: 4_349_414_040,
-            label: None,
+            label: Some("Player 2".to_string()),
         },
         LastGamePlayer {
             score: 4_152_202_031,
-            label: None,
+            label: Some("Player 3".to_string()),
         },
         LastGamePlayer {
             score: 3_720_203_230,
-            label: None,
+            label: Some("Player 4".to_string()),
         },
     ]);
     assert_eq!(Some(expected), last_game);

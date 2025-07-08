@@ -262,20 +262,38 @@ pub enum AuditOrNote {
 }
 
 #[derive(Serialize, Deserialize)]
+pub struct Metadata {
+    pub copyright: String,
+    pub license: String,
+    pub platform: String,
+    pub version: Number,
+    pub roms: Vec<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub char_map: Option<String>,
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct NvramMap {
+    
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _notes: Option<Notes>,
+    pub _fileformat: f64,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub _metadata: Option<Metadata>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _todo: Option<Notes>,
-    pub _copyright: String,
-    pub _license: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub _copyright: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub _license: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _endian: Option<Endian>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _nibble: Option<Nibble>,
-    pub _roms: Vec<String>,
-    pub _fileformat: f64,
-    pub _version: Number,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub _roms: Option<Vec<String>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub _version: Option<Number>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _ramsize: Option<u64>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -283,7 +301,7 @@ pub struct NvramMap {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _history: Option<Vec<String>>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub _char_map: Option<String>,
+    _char_map: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _values: Option<HashMap<String, Vec<String>>>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -317,6 +335,17 @@ pub struct NvramMap {
     pub dip_switches: Option<HashMap<String, Descriptor>>,
 }
 
+impl NvramMap {
+    pub fn char_map(&self) -> &Option<String> {
+        // first look at metadata, then fall back to the property
+         if let Some(metadata) = &self._metadata {
+             &metadata.char_map
+         } else {
+             &self._char_map
+         }
+    }
+}
+
 pub trait GlobalSettings {
     fn endianness(&self) -> Endian;
     fn nibble(&self) -> Nibble;
@@ -332,7 +361,7 @@ impl GlobalSettings for NvramMap {
         self._nibble.unwrap_or(Nibble::Both)
     }
     fn char_map(&self) -> &Option<String> {
-        &self._char_map
+        &self.char_map()
     }
     fn value(&self, key: &str, index: usize) -> Option<String> {
         self._values.as_ref()?.get(key)?.get(index).cloned()
