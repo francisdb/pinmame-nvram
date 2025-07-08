@@ -389,7 +389,7 @@ mod tests {
         let excludes = ["_note"];
 
         // Temporarily disable these rom game names if you can't find the nvram
-        let expected: [&str; 122] = [
+        let expected: [&str; 131] = [
             "algar_l1ff",
             "alpok_b6",
             "alpok_f6",
@@ -397,6 +397,15 @@ mod tests {
             "alpok_l2",
             "alpok_l2ff",
             "alpok_l6ff",
+            "amaz3afp",
+            "amazn2fp",
+            "amazn3fp",
+            "amazonh2",
+            "amazonh3",
+            "arena_fp",
+            "arenaafp",
+            "arenaffp",
+            "arenagfp",
             "badgrffp",
             "badgrgfp",
             "badgrlfp",

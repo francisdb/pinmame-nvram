@@ -46,8 +46,8 @@ fn process_directory(
             .file_name()
             .unwrap()
             .to_string_lossy()
-            .ends_with(".nv.json")
-            || path.file_name() == Some("index.json".as_ref())
+            .ends_with(".json")
+        //|| path.file_name() == Some("index.json".as_ref())
         {
             // Make sure the parent directory exists.
             // We do this here because we only want directories with JSON files.

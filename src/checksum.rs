@@ -148,11 +148,11 @@ pub(crate) fn verify_all_checksum16<T: Read + Seek>(
     mut nvram_file: &mut T,
     map: &NvramMap,
 ) -> io::Result<Vec<ChecksumMismatch<u16>>> {
-    let endian = map._endian.as_ref().unwrap();
+    let endian = map.endianness();
     map.checksum16
         .iter()
         .flatten()
-        .map(|cs| verify_checksum16(&mut nvram_file, cs, *endian))
+        .map(|cs| verify_checksum16(&mut nvram_file, cs, endian))
         .filter_map(|r| r.transpose())
         .collect()
 }
@@ -195,11 +195,11 @@ pub(crate) fn update_all_checksum16<T: Read + Seek + Write>(
     mut nvram_file: &mut T,
     map: &NvramMap,
 ) -> io::Result<()> {
-    let endian = map._endian.as_ref().unwrap();
+    let endian = map.endianness();
     map.checksum16
         .iter()
         .flatten()
-        .try_for_each(|cs| update_checksum16(&mut nvram_file, cs, *endian))
+        .try_for_each(|cs| update_checksum16(&mut nvram_file, cs, endian))
 }
 
 #[cfg(test)]

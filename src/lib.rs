@@ -10,7 +10,8 @@ use crate::dips::{get_dip_switch, set_dip_switch, validate_dip_switch_range};
 use crate::encoding::{Location, read_bcd, read_ch, read_int, read_wpc_rtc, write_bcd, write_ch};
 use crate::index::get_index_map;
 use crate::model::{
-    DEFAULT_LENGTH, DEFAULT_SCALE, Descriptor, Encoding, GlobalSettings, NvramMap, StateOrStateList,
+    DEFAULT_LENGTH, DEFAULT_SCALE, Descriptor, Encoding, GlobalSettings, NvramMap, Platform,
+    StateOrStateList,
 };
 use include_dir::{Dir, File, include_dir};
 use serde::de;
@@ -54,6 +55,7 @@ pub struct LastGamePlayer {
 /// Main interface to read and write data from a NVRAM file
 pub struct Nvram {
     pub map: NvramMap,
+    pub platform: Platform,
     pub nv_path: PathBuf,
 }
 
@@ -66,10 +68,17 @@ impl Nvram {
     /// * `Ok(None)` if the file was found but no map was found for the ROM
     pub fn open(nv_path: &Path) -> io::Result<Option<Nvram>> {
         let map_opt: Option<NvramMap> = open_nvram(nv_path)?;
-        Ok(map_opt.map(|map| Nvram {
-            map,
-            nv_path: nv_path.to_path_buf(),
-        }))
+        if let Some(map) = map_opt {
+            // find the platform from the map
+            let platform = read_platform(&map._metadata.platform)?;
+            Ok(Some(Nvram {
+                map,
+                platform,
+                nv_path: nv_path.to_path_buf(),
+            }))
+        } else {
+            Ok(None)
+        }
     }
 
     /// Open a NVRAM file from the file system using the local maps
@@ -81,8 +90,10 @@ impl Nvram {
     /// * `Ok(None)` if the file was found but no map was found for the ROM
     pub fn open_local(nv_path: &Path) -> io::Result<Option<Nvram>> {
         let map_opt: Option<NvramMap> = open_nvram_local(nv_path)?;
+        let platform = todo!("Determine platform from map");
         Ok(map_opt.map(|map| Nvram {
             map,
+            platform,
             nv_path: nv_path.to_path_buf(),
         }))
     }
@@ -206,6 +217,22 @@ fn open_nvram_local<T: DeserializeOwned>(nv_path: &Path) -> io::Result<Option<T>
         ));
     }
     find_map_local(&rom_name)
+}
+
+fn read_platform<T: DeserializeOwned>(platform_name: &String) -> io::Result<T> {
+    let platform_file_name = format!("{}.json.brotli", platform_name);
+    let compressed_platform_path = Path::new("platforms").join(platform_file_name);
+
+    let map_file = MAPS.get_file(&compressed_platform_path).ok_or_else(|| {
+        io::Error::new(
+            io::ErrorKind::NotFound,
+            format!(
+                "File not found: {}",
+                compressed_platform_path.to_string_lossy()
+            ),
+        )
+    })?;
+    read_compressed_json(map_file)
 }
 
 fn find_map<T: DeserializeOwned>(rom_name: &String) -> io::Result<Option<T>> {
