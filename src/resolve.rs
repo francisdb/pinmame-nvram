@@ -593,15 +593,15 @@ mod tests {
                     if json_path.exists() {
                         let expected = std::fs::read_to_string(json_path)?;
                         let actual = serde_json::to_string_pretty(&map)?;
-                        assert_eq!(expected, actual, "Mismatch: {:?}", json_path);
+                        assert_eq!(expected, actual, "Mismatch: {json_path:?}");
                     } else {
                         // Enable this to regenerate the missing json files
                         // let json = serde_json::to_string_pretty(&map)?;
                         // std::fs::write(&json_path, json)?;
-                        panic!("Expected file not found: {:?}", json_path);
+                        panic!("Expected file not found: {json_path:?}");
                     }
                 } else {
-                    panic!("Failed to resolve: {:?}", path);
+                    panic!("Failed to resolve: {path:?}");
                 }
             }
         }
