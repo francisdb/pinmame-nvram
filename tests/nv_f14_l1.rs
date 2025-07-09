@@ -8,7 +8,7 @@ fn test_f14() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/f14_l1.nv"))?.unwrap();
 
     let last_game = nvram.read_last_game()?;
-    let expected = Vec::from([
+    let expected = vec![
         LastGamePlayer {
             score: 13_460,
             label: Some("Player 1".to_string()),
@@ -25,11 +25,11 @@ fn test_f14() -> io::Result<()> {
             score: 0,
             label: Some("Player 4".to_string()),
         },
-    ]);
+    ];
     assert_eq!(Some(expected), last_game);
 
     let scores = nvram.read_highscores()?;
-    let expected = Vec::from([
+    let expected = vec![
         HighScore {
             label: Some("First Place".to_string()),
             short_label: Some("1st".to_string()),
@@ -54,7 +54,7 @@ fn test_f14() -> io::Result<()> {
             initials: "KWD".to_string(),
             score: 3_400_000,
         },
-    ]);
+    ];
     assert_eq!(expected, scores);
 
     Ok(())

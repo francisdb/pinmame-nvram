@@ -9,7 +9,7 @@ fn test_dracula_last_game() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/dracula.nv"))?.unwrap();
 
     let last_game = nvram.read_last_game()?;
-    let expected = Vec::from([
+    let expected = vec![
         LastGamePlayer {
             score: 32520,
             label: Some("Player 1".to_string()),
@@ -26,7 +26,7 @@ fn test_dracula_last_game() -> io::Result<()> {
             score: 0,
             label: Some("Player 4".to_string()),
         },
-    ]);
+    ];
     assert_eq!(Some(expected), last_game);
 
     let game_state = nvram.read_game_state()?;
@@ -49,12 +49,12 @@ fn test_dracula() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/dracula.nv"))?.unwrap();
 
     let scores = nvram.read_highscores()?;
-    let expected = Vec::from([HighScore {
+    let expected = vec![HighScore {
         label: Some("High Score".to_string()),
         short_label: Some("HS".to_string()),
         initials: "".to_string(),
         score: 440_040,
-    }]);
+    }];
     assert_eq!(expected, scores);
 
     Ok(())

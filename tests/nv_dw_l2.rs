@@ -8,7 +8,7 @@ fn test_doctor_who() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/dw_l2.nv"))?.unwrap();
 
     let last_game = nvram.read_last_game()?;
-    let expected = Vec::from([
+    let expected = vec![
         LastGamePlayer {
             score: 4_262_570,
             label: Some("Player 1".to_string()),
@@ -25,11 +25,11 @@ fn test_doctor_who() -> io::Result<()> {
             score: 0,
             label: Some("Player 4".to_string()),
         },
-    ]);
+    ];
     assert_eq!(Some(expected), last_game);
 
     let champions = nvram.read_mode_champions()?;
-    let expected = Vec::from([
+    let expected = vec![
         ModeChampion {
             label: Some("Loop Champion".to_string()),
             short_label: Some("Loop Champ".to_string()),
@@ -46,11 +46,11 @@ fn test_doctor_who() -> io::Result<()> {
             suffix: None,
             timestamp: None,
         },
-    ]);
+    ];
     assert_eq!(Some(expected), champions);
 
     let scores = nvram.read_highscores()?;
-    let expected = Vec::from([
+    let expected = vec![
         HighScore {
             label: Some("Grand Champion".to_string()),
             short_label: Some("GC".to_string()),
@@ -81,7 +81,7 @@ fn test_doctor_who() -> io::Result<()> {
             initials: "S  ".to_string(),
             score: 100_000_000,
         },
-    ]);
+    ];
     assert_eq!(expected, scores);
 
     Ok(())

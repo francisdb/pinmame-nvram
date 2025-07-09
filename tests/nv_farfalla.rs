@@ -22,7 +22,7 @@ fn test_farfalla() -> io::Result<()> {
     assert_eq!(Some(expected), game_state);
 
     let last_game = nvram.read_last_game()?;
-    let expected = Vec::from([
+    let expected = vec![
         LastGamePlayer {
             score: 94_220,
             label: Some("Player 1".to_string()),
@@ -39,16 +39,16 @@ fn test_farfalla() -> io::Result<()> {
             score: 0,
             label: Some("Player 4".to_string()),
         },
-    ]);
+    ];
     assert_eq!(Some(expected), last_game);
 
     let scores = nvram.read_highscores()?;
-    let expected = Vec::from([HighScore {
+    let expected = vec![HighScore {
         label: Some("High Score".to_string()),
         short_label: Some("HS".to_string()),
         initials: "".to_string(),
         score: 4_000_000,
-    }]);
+    }];
     assert_eq!(expected, scores);
 
     Ok(())
@@ -75,7 +75,7 @@ fn test_farfalla_default_hs_adjusted() -> io::Result<()> {
     assert_eq!(Some(expected), game_state);
 
     let last_game = nvram.read_last_game()?;
-    let expected = Vec::from([
+    let expected = vec![
         LastGamePlayer {
             score: 0,
             label: Some("Player 1".to_string()),
@@ -92,16 +92,16 @@ fn test_farfalla_default_hs_adjusted() -> io::Result<()> {
             score: 0,
             label: Some("Player 4".to_string()),
         },
-    ]);
+    ];
     assert_eq!(Some(expected), last_game);
 
     let scores = nvram.read_highscores()?;
-    let expected = Vec::from([HighScore {
+    let expected = vec![HighScore {
         label: Some("High Score".to_string()),
         short_label: Some("HS".to_string()),
         initials: "".to_string(),
         score: 1_350_000,
-    }]);
+    }];
     assert_eq!(expected, scores);
 
     Ok(())

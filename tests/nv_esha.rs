@@ -25,7 +25,7 @@ fn test_earthshaker_la3() -> io::Result<()> {
     assert_eq!(Some(expected), game_state);
 
     let last_game = nvram.read_last_game()?;
-    let expected = Vec::from([
+    let expected = vec![
         LastGamePlayer {
             score: 869_880,
             label: Some("Player 1".to_string()),
@@ -42,7 +42,7 @@ fn test_earthshaker_la3() -> io::Result<()> {
             score: 0,
             label: Some("Player 4".to_string()),
         },
-    ]);
+    ];
     assert_eq!(Some(expected), last_game);
 
     let scores = nvram.read_highscores()?;
@@ -73,7 +73,7 @@ fn test_earthshaker_l4c() -> io::Result<()> {
     assert_eq!(Some(expected), game_state);
 
     let last_game = nvram.read_last_game()?;
-    let expected = Vec::from([
+    let expected = vec![
         LastGamePlayer {
             score: 163_020,
             label: Some("Player 1".to_string()),
@@ -90,7 +90,7 @@ fn test_earthshaker_l4c() -> io::Result<()> {
             score: 0,
             label: Some("Player 4".to_string()),
         },
-    ]);
+    ];
     assert_eq!(Some(expected), last_game);
 
     let scores = nvram.read_highscores()?;
@@ -121,7 +121,7 @@ fn test_earthshaker_ma3() -> io::Result<()> {
     assert_eq!(Some(expected), game_state);
 
     let last_game = nvram.read_last_game()?;
-    let expected = Vec::from([
+    let expected = vec![
         LastGamePlayer {
             score: 67_020,
             label: Some("Player 1".to_string()),
@@ -138,7 +138,7 @@ fn test_earthshaker_ma3() -> io::Result<()> {
             score: 0,
             label: Some("Player 4".to_string()),
         },
-    ]);
+    ];
     assert_eq!(Some(expected), last_game);
 
     let scores = nvram.read_highscores()?;
@@ -149,7 +149,7 @@ fn test_earthshaker_ma3() -> io::Result<()> {
 }
 
 fn default_highscores() -> Vec<HighScore> {
-    Vec::from([
+    vec![
         HighScore {
             label: Some("First Place".to_string()),
             short_label: Some("1st".to_string()),
@@ -174,5 +174,5 @@ fn default_highscores() -> Vec<HighScore> {
             initials: "SJO".to_string(),
             score: 5_000_000,
         },
-    ])
+    ]
 }
