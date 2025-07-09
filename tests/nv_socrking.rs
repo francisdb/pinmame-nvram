@@ -11,26 +11,32 @@ fn test_soccer_kings() -> io::Result<()> {
     // 8 digits for the score
 
     let game_state = nvram.read_game_state()?;
-    let expected = HashMap::from([("credits".into(), "71".into())]);
+    let expected = HashMap::from([
+        ("credits".into(), "71".into()),
+        ("scores.0".into(), "137680".into()),
+        ("scores.1".into(), "414950".into()),
+        ("scores.2".into(), "0".into()),
+        ("scores.3".into(), "0".into()),
+    ]);
     assert_eq!(Some(expected), game_state);
 
     let last_game = nvram.read_last_game()?;
     let expected = Vec::from([
         LastGamePlayer {
             score: 137_680,
-            label: None,
+            label: Some("Player 1".into()),
         },
         LastGamePlayer {
             score: 414_950,
-            label: None,
+            label: Some("Player 2".into()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 3".into()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 4".into()),
         },
     ]);
     assert_eq!(Some(expected), last_game);

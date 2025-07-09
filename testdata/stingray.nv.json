@@ -1,5 +1,5 @@
 {
-  "_fileformat": 0.4,
+  "_fileformat": 0.7,
   "adjustments": {
     "Adjustments": {
       "01": {
@@ -67,19 +67,19 @@
     },
     "scores": [
       {
-        "label": "P1",
-        "value": 41440
+        "label": "Player 1",
+        "value": 301300
       },
       {
-        "label": "P2",
+        "label": "Player 2",
         "value": 0
       },
       {
-        "label": "P3",
+        "label": "Player 3",
         "value": 0
       },
       {
-        "label": "P4",
+        "label": "Player 4",
         "value": 0
       }
     ]
@@ -91,20 +91,6 @@
         "value": 820710
       },
       "short_label": "HS"
-    }
-  ],
-  "last_game": [
-    {
-      "value": 301300
-    },
-    {
-      "value": 0
-    },
-    {
-      "value": 0
-    },
-    {
-      "value": 0
     }
   ]
 }

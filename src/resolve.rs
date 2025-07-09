@@ -8,7 +8,7 @@ use crate::{dips, open_nvram, read_platform};
 use serde_json::{Map, Number, Value};
 use std::fs::OpenOptions;
 use std::io;
-use std::io::{Read, Seek, SeekFrom};
+use std::io::{Read, Seek};
 use std::path::Path;
 
 pub fn resolve(nv_path: &Path) -> io::Result<Option<Value>> {

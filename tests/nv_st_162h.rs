@@ -13,19 +13,19 @@ fn test_star_trek_stern() -> io::Result<()> {
     let expected = Vec::from([
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 1".into()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 2".into()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 3".into()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 4".into()),
         },
     ]);
     assert_eq!(Some(expected), last_game);

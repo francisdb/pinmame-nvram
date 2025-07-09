@@ -39,24 +39,24 @@ fn test_centaur() -> io::Result<()> {
     let mut nvram = Nvram::open(path)?.unwrap();
 
     let last_game = nvram.read_last_game()?;
-    let expected = Vec::from([
+    let expected = vec![
         LastGamePlayer {
             score: 52_500,
-            label: None,
+            label: Some("Player 1".to_string()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 2".to_string()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 3".to_string()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 4".to_string()),
         },
-    ]);
+    ];
     assert_eq!(Some(expected), last_game);
 
     // C. MEMORY BONUS FEATURE - #6 #7

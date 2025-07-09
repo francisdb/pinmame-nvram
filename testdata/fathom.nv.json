@@ -1,10 +1,28 @@
 {
-  "_fileformat": 0.4,
+  "_fileformat": 0.7,
   "game_state": {
     "credits": {
       "label": "Credits",
       "value": 7
-    }
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 39130
+      },
+      {
+        "label": "Player 2",
+        "value": 25110
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ]
   },
   "high_scores": [
     {
@@ -13,20 +31,6 @@
         "value": 563440
       },
       "short_label": "HS"
-    }
-  ],
-  "last_game": [
-    {
-      "value": 39130
-    },
-    {
-      "value": 25110
-    },
-    {
-      "value": 0
-    },
-    {
-      "value": 0
     }
   ]
 }

@@ -11,26 +11,32 @@ fn test_robot() -> io::Result<()> {
     // 8 digits for the score
 
     let game_state = nvram.read_game_state()?;
-    let expected = HashMap::from([("credits".into(), "22".into())]);
+    let expected = HashMap::from([
+        ("credits".into(), "22".into()),
+        ("scores.0".into(), "166350".into()),
+        ("scores.1".into(), "65830".into()),
+        ("scores.2".into(), "105190".into()),
+        ("scores.3".into(), "0".into()),
+    ]);
     assert_eq!(Some(expected), game_state);
 
     let last_game = nvram.read_last_game()?;
     let expected = Vec::from([
         LastGamePlayer {
             score: 166_350,
-            label: None,
+            label: Some("Player 1".to_string()),
         },
         LastGamePlayer {
             score: 65_830,
-            label: None,
+            label: Some("Player 2".to_string()),
         },
         LastGamePlayer {
             score: 105_190,
-            label: None,
+            label: Some("Player 3".to_string()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 4".to_string()),
         },
     ]);
     assert_eq!(Some(expected), last_game);

@@ -11,27 +11,27 @@ fn test_star_wars_trilogy() -> io::Result<()> {
     let expected = Vec::from([
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 1".into()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 2".into()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 3".into()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 4".into()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 5".into()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 6".into()),
         },
     ]);
     assert_eq!(Some(expected), last_game);

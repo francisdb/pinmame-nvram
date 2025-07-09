@@ -104,9 +104,8 @@ pub(crate) fn verify_checksum16<T: Read + Seek>(
     endian: Endian,
     offset: u64,
 ) -> io::Result<Option<ChecksumMismatch<u16>>> {
-    let physical_start: u64 = (&checksum16.start).into();
-    let start = physical_start - offset;
-    let end = end(checksum16)? - offset;
+    let start = u64::from(&checksum16.start) - offset;
+    let end = end(checksum16, offset)?;
     let length = (1 + end - start) as usize;
     let mut buff = vec![0; length];
     read_exact_at(nvram_file, start, &mut buff)?;
@@ -128,12 +127,12 @@ pub(crate) fn verify_checksum16<T: Read + Seek>(
     Ok(None)
 }
 
-fn end(checksum16: &Checksum16) -> io::Result<u64> {
+fn end(checksum16: &Checksum16, offset: u64) -> io::Result<u64> {
     let start: u64 = (&checksum16.start).into();
     let end: u64 = if let Some(end) = &checksum16.end {
-        end.into()
+        u64::from(end) - offset
     } else if let Some(length) = &checksum16.length {
-        start + length - 1
+        start + length - 1 - offset
     } else {
         return Err(io::Error::new(
             io::ErrorKind::InvalidData,
@@ -162,9 +161,10 @@ fn update_checksum16<T: Read + Seek + Write>(
     nvram_file: &mut T,
     checksum16: &Checksum16,
     endian: Endian,
+    offset: u64,
 ) -> io::Result<()> {
-    let start: u64 = (&checksum16.start).into();
-    let end: u64 = end(checksum16)?;
+    let start: u64 = u64::from(&checksum16.start) - offset;
+    let end: u64 = end(checksum16, offset)?;
     let length = (1 + end - start) as usize;
 
     let mut buff = vec![0; length - 2];
@@ -197,10 +197,11 @@ pub(crate) fn update_all_checksum16<T: Read + Seek + Write>(
     platform: &Platform,
 ) -> io::Result<()> {
     let endian = platform.endian;
+    let offset = platform.offset(MemoryLayoutType::NVRam);
     map.checksum16
         .iter()
         .flatten()
-        .try_for_each(|cs| update_checksum16(&mut nvram_file, cs, endian))
+        .try_for_each(|cs| update_checksum16(&mut nvram_file, cs, endian, offset))
 }
 
 #[cfg(test)]

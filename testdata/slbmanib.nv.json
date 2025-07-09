@@ -1,5 +1,5 @@
 {
-  "_fileformat": 0.4,
+  "_fileformat": 0.7,
   "audits": {
     "Bookkeeping functions": {
       "05": {
@@ -16,7 +16,25 @@
     "credits": {
       "label": "Credits",
       "value": 5
-    }
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 36770
+      },
+      {
+        "label": "Player 2",
+        "value": 34440
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ]
   },
   "high_scores": [
     {
@@ -25,20 +43,6 @@
         "value": 36770
       },
       "short_label": "HS"
-    }
-  ],
-  "last_game": [
-    {
-      "value": 36770
-    },
-    {
-      "value": 34440
-    },
-    {
-      "value": 0
-    },
-    {
-      "value": 0
     }
   ]
 }
