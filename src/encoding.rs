@@ -246,15 +246,15 @@ pub(crate) fn write_bcd<A: Write + Seek>(
     stream: &mut A,
     location: u64,
     length: usize,
-    nibble: &Option<Nibble>,
+    nibble: Nibble,
     value: u64,
 ) -> io::Result<()> {
     stream.seek(SeekFrom::Start(location))?;
     // the nibble function will validate the length
-    let buff_len = if nibble.is_some() {
-        length.div_ceil(2)
-    } else {
+    let buff_len = if nibble == Nibble::Both {
         length
+    } else {
+        length.div_ceil(2)
     };
     let mut buff = vec![0; buff_len];
     let mut score = value;
@@ -263,8 +263,8 @@ pub(crate) fn write_bcd<A: Write + Seek>(
         score /= 100;
     }
 
-    if let Some(nibble) = nibble {
-        buff = do_nibble(length, &buff, *nibble)?;
+    if nibble != Nibble::Both {
+        buff = do_nibble(length, &buff, nibble)?;
     }
 
     stream.write_all(&buff)?;
@@ -295,7 +295,11 @@ pub(crate) fn read_int<T: Read + Seek>(
     Ok(apply_scale(scale, score))
 }
 
-fn read_exact_at<A: Seek + Read>(stream: &mut A, offset: u64, buff: &mut [u8]) -> io::Result<()> {
+pub(crate) fn read_exact_at<A: Seek + Read>(
+    stream: &mut A,
+    offset: u64,
+    buff: &mut [u8],
+) -> io::Result<()> {
     stream.seek(SeekFrom::Start(offset))?;
     match stream.read_exact(buff) {
         Ok(()) => Ok(()),

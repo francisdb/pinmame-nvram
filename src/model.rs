@@ -6,7 +6,7 @@ use std::fmt;
 pub const DEFAULT_LENGTH: usize = 1;
 pub const DEFAULT_SCALE: i32 = 1;
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Copy, Clone)]
 #[serde(rename_all = "lowercase")]
 pub enum MemoryLayoutType {
     Ram,
@@ -26,6 +26,12 @@ pub struct MemoryLayout {
     pub nibble: Option<Nibble>,
 }
 
+impl MemoryLayout {
+    pub(crate) fn nibble(&self) -> Nibble {
+        self.nibble.unwrap_or(Nibble::Both)
+    }
+}
+
 /// A platform defines the native memory layout
 ///
 /// The nvram map will contain physical addresses instead of nvram file addresses if
@@ -37,6 +43,32 @@ pub struct Platform {
     pub cpu: String,
     pub endian: Endian,
     pub memory_layout: Vec<MemoryLayout>,
+}
+
+impl Platform {
+    // TODO this should probably take a memory address instead
+    pub(crate) fn nibble(&self, memory_layout_type: MemoryLayoutType) -> Nibble {
+        self.layout(memory_layout_type)
+            .nibble
+            .unwrap_or(Nibble::Both)
+    }
+
+    // TODO this should probably take a memory address instead
+    pub(crate) fn offset(&self, memory_layout_type: MemoryLayoutType) -> u64 {
+        (&self.layout(memory_layout_type).address).into()
+    }
+
+    fn layout(&self, memory_layout_type: MemoryLayoutType) -> &MemoryLayout {
+        if let Some(layout) = self
+            .memory_layout
+            .iter()
+            .find(|l| l.type_ == memory_layout_type)
+        {
+            layout
+        } else {
+            panic!("Memory layout not found for {:?}", memory_layout_type);
+        }
+    }
 }
 
 /// Descriptor for a single value in the NVRAM.
@@ -316,25 +348,11 @@ pub struct NvramMap {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _todo: Option<Notes>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub _copyright: Option<String>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub _license: Option<String>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    _endian: Option<Endian>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub _nibble: Option<Nibble>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub _roms: Option<Vec<String>>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub _version: Option<Number>,
-    #[serde(skip_serializing_if = "Option::is_none")]
     pub _ramsize: Option<u64>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _game: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _history: Option<Vec<String>>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub _values: Option<HashMap<String, Vec<String>>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub last_played: Option<Descriptor>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -370,61 +388,52 @@ impl NvramMap {
     pub fn char_map(&self) -> &Option<String> {
         &self._metadata.char_map
     }
-
-    pub fn endianness(&self) -> Endian {
-        self._endian.unwrap_or(Endian::Big)
-    }
 }
 
 pub trait GlobalSettings {
-    fn endianness(&self) -> Endian;
-    fn nibble(&self) -> Nibble;
     fn char_map(&self) -> &Option<String>;
     fn value(&self, key: &str, index: usize) -> Option<String>;
+    fn platform(&self) -> &str;
 }
 
 impl GlobalSettings for NvramMap {
-    fn endianness(&self) -> Endian {
-        self.endianness()
-    }
-    fn nibble(&self) -> Nibble {
-        self._nibble.unwrap_or(Nibble::Both)
-    }
     fn char_map(&self) -> &Option<String> {
         &self.char_map()
     }
     fn value(&self, key: &str, index: usize) -> Option<String> {
-        self._values.as_ref()?.get(key)?.get(index).cloned()
+        self._metadata
+            .values
+            .as_ref()?
+            .get(key)?
+            .get(index)
+            .cloned()
+    }
+    fn platform(&self) -> &str {
+        &self._metadata.platform
     }
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct GlobalSettingsImpl {
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub _endian: Option<Endian>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub _nibble: Option<Nibble>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub _char_map: Option<String>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub _values: Option<HashMap<String, Vec<String>>>,
+    pub _metadata: Metadata,
 }
 
 impl GlobalSettings for GlobalSettingsImpl {
-    fn endianness(&self) -> Endian {
-        self._endian.unwrap_or(Endian::Big)
-    }
-
-    fn nibble(&self) -> Nibble {
-        self._nibble.unwrap_or(Nibble::Both)
-    }
-
     fn char_map(&self) -> &Option<String> {
-        &self._char_map
+        &self._metadata.char_map
     }
 
     fn value(&self, key: &str, index: usize) -> Option<String> {
-        self._values.as_ref()?.get(key)?.get(index).cloned()
+        self._metadata
+            .values
+            .as_ref()?
+            .get(key)?
+            .get(index)
+            .cloned()
+    }
+
+    fn platform(&self) -> &str {
+        &self._metadata.platform
     }
 }
 
