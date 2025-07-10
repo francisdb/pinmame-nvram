@@ -155,7 +155,7 @@ pub(crate) fn write_ch<A: Write + Seek>(
     if !value.is_ascii() {
         return Err(io::Error::new(
             io::ErrorKind::InvalidInput,
-            format!("String is not ASCII: {}", value),
+            format!("String is not ASCII: {value}"),
         ));
     }
     let mut buff = value.as_bytes().to_vec();
@@ -339,8 +339,7 @@ pub(crate) fn read_wpc_rtc<T: Read + Seek>(
     let minute = buff[6];
     // output as "YYYY-MM-DD HH:MM"
     Ok(format!(
-        "{:04}-{:02}-{:02} {:02}:{:02}",
-        year, month, day, hour, minute
+        "{year:04}-{month:02}-{day:02} {hour:02}:{minute:02}"
     ))
 }
 

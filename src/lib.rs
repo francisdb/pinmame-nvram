@@ -232,7 +232,7 @@ fn open_nvram<T: DeserializeOwned>(nv_path: &Path) -> io::Result<Option<T>> {
     if !nv_path.exists() {
         return Err(io::Error::new(
             io::ErrorKind::NotFound,
-            format!("File not found: {:?}", nv_path),
+            format!("File not found: {nv_path:?}"),
         ));
     }
     find_map(&rom_name)
@@ -253,14 +253,14 @@ fn open_nvram_local<T: DeserializeOwned>(nv_path: &Path) -> io::Result<Option<T>
     if !nv_path.exists() {
         return Err(io::Error::new(
             io::ErrorKind::NotFound,
-            format!("File not found: {:?}", nv_path),
+            format!("File not found: {nv_path:?}"),
         ));
     }
     find_map_local(&rom_name)
 }
 
 fn read_platform<T: DeserializeOwned>(platform_name: &str) -> io::Result<T> {
-    let platform_file_name = format!("{}.json.brotli", platform_name);
+    let platform_file_name = format!("{platform_name}.json.brotli");
     let compressed_platform_path = Path::new("platforms").join(platform_file_name);
 
     let map_file = MAPS.get_file(&compressed_platform_path).ok_or_else(|| {
@@ -276,14 +276,14 @@ fn read_platform<T: DeserializeOwned>(platform_name: &str) -> io::Result<T> {
 }
 
 fn read_platform_local<T: DeserializeOwned>(platform_name: &str) -> io::Result<T> {
-    let platform_file_name = format!("{}.json", platform_name);
+    let platform_file_name = format!("{platform_name}.json");
     let platform_path = Path::new("pinmame-nvram-maps")
         .join("platforms")
         .join(platform_file_name);
     if !platform_path.exists() {
         return Err(io::Error::new(
             io::ErrorKind::NotFound,
-            format!("File not found: {:?}", platform_path),
+            format!("File not found: {platform_path:?}"),
         ));
     }
     let platform_file = OpenOptions::new().read(true).open(&platform_path)?;
@@ -298,7 +298,7 @@ fn find_map<T: DeserializeOwned>(rom_name: &String) -> io::Result<Option<T>> {
             let map_file = MAPS.get_file(&compressed_map_path).ok_or_else(|| {
                 io::Error::new(
                     io::ErrorKind::NotFound,
-                    format!("File not found: {}", compressed_map_path),
+                    format!("File not found: {compressed_map_path}"),
                 )
             })?;
             let map: T = read_compressed_json(map_file)?;
@@ -313,7 +313,7 @@ fn find_map_local<T: DeserializeOwned>(rom_name: &String) -> io::Result<Option<T
     if !index_file.exists() {
         return Err(io::Error::new(
             io::ErrorKind::NotFound,
-            format!("File not found: {:?}", index_file),
+            format!("File not found: {index_file:?}"),
         ));
     }
     let index_file = OpenOptions::new().read(true).open(&index_file)?;
@@ -324,7 +324,7 @@ fn find_map_local<T: DeserializeOwned>(rom_name: &String) -> io::Result<Option<T
             if !map_file.exists() {
                 return Err(io::Error::new(
                     io::ErrorKind::NotFound,
-                    format!("File not found: {:?}", map_file),
+                    format!("File not found: {map_file:?}"),
                 ));
             }
             let map_file = OpenOptions::new().read(true).open(&map_file)?;
@@ -411,8 +411,8 @@ fn clear_highscores<T: Write + Seek>(
                 ) - offset,
                 map_initials.length.expect("missing length for ch encoding"),
                 "AAA".to_string(),
-                &map.char_map(),
-                &map_initials.nibble.or_else(|| Some(nibble)),
+                map.char_map(),
+                &map_initials.nibble.or(Some(nibble)),
             )?;
         }
         if let Some(map_score_start) = &hs.score.start {
@@ -586,7 +586,7 @@ fn read_game_state<T: Read + Seek>(
                     .iter()
                     .enumerate()
                     .map(|(index, s)| {
-                        let compund_key = format!("{}.{}", key, index);
+                        let compund_key = format!("{key}.{index}");
                         read_descriptor_to_string(&mut nvram_file, s, endian, nibble, offset, map)
                             .map(|r| (compund_key, r))
                     })

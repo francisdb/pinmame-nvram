@@ -146,8 +146,8 @@ fn test_centaur() -> io::Result<()> {
     for switch_number in 1..=nvram.dip_switches_len() {
         let enabled = nvram.get_dip_switch(switch_number)?;
         let state = if enabled { "ON" } else { "OFF" };
-        println!("#{} {}", switch_number, state);
-        dip_switch_string.push_str(&format!("#{} {}\n", switch_number, state));
+        println!("#{switch_number} {state}");
+        dip_switch_string.push_str(&format!("#{switch_number} {state}\n"));
     }
 
     // make a string with all dip switches and compare it with the expected

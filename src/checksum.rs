@@ -51,8 +51,7 @@ fn groupings_to_ranges(start: u64, end: u64, groupings: &Option<u64>) -> io::Res
                 return Err(io::Error::new(
                     io::ErrorKind::InvalidData,
                     format!(
-                        "Inclusive range [{} - {}] ({} elements) is not divisible by groupings {}",
-                        start, end, elements, group_size
+                        "Inclusive range [{start} - {end}] ({elements} elements) is not divisible by groupings {group_size}"
                     ),
                 ));
             }

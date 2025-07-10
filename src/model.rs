@@ -66,7 +66,7 @@ impl Platform {
         {
             layout
         } else {
-            panic!("Memory layout not found for {:?}", memory_layout_type);
+            panic!("Memory layout not found for {memory_layout_type:?}");
         }
     }
 }
@@ -398,7 +398,7 @@ pub trait GlobalSettings {
 
 impl GlobalSettings for NvramMap {
     fn char_map(&self) -> &Option<String> {
-        &self.char_map()
+        self.char_map()
     }
     fn value(&self, key: &str, index: usize) -> Option<String> {
         self._metadata
@@ -459,7 +459,7 @@ mod tests {
                 found_any = true;
                 let json = std::fs::read_to_string(path).unwrap();
                 let nvram_map: NvramMap = serde_json::from_str(&json)
-                    .unwrap_or_else(|e| panic!("Failed reading {}: {}", file_name, e));
+                    .unwrap_or_else(|e| panic!("Failed reading {file_name}: {e}"));
                 let json2 = serde_json::to_string_pretty(&nvram_map).unwrap();
 
                 // read json as Value to compare without formatting
@@ -487,7 +487,7 @@ mod tests {
                 found_any = true;
                 let json = std::fs::read_to_string(path).unwrap();
                 let platform: Platform = serde_json::from_str(&json)
-                    .unwrap_or_else(|e| panic!("Failed reading {}: {}", file_name, e));
+                    .unwrap_or_else(|e| panic!("Failed reading {file_name}: {e}"));
                 let json2 = serde_json::to_string_pretty(&platform).unwrap();
 
                 // read json as Value to compare without formatting

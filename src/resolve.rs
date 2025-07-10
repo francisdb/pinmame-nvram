@@ -19,7 +19,7 @@ pub fn resolve(nv_path: &Path) -> io::Result<Option<Value>> {
             serde_json::from_value(map.clone()).map_err(|e| {
                 io::Error::new(
                     io::ErrorKind::InvalidData,
-                    format!("Failed to parse global settings: {}", e),
+                    format!("Failed to parse global settings: {e}"),
                 )
             })?;
 
@@ -80,7 +80,7 @@ fn resolve_recursive<T: Read + Seek, S: GlobalSettings>(
                         //   instead of the enum value
                         validate_range(map, value)
                     }
-                    Err(e) => Some(format!("Failed to resolve: {}", e)),
+                    Err(e) => Some(format!("Failed to resolve: {e}")),
                 };
                 let mut resolved_map = Map::new();
                 if let Ok(value) = value {
@@ -137,7 +137,7 @@ fn validate_range(map: &Map<String, Value>, value: &Value) -> Option<String> {
         // TODO might be better to do this check earlier before the scaling is applied
         // min and max are unscaled values so we need to unscale the value first
         let Some(number_value) = value.as_u64() else {
-            return Some(format!("Value {} is not an unsigned int", value));
+            return Some(format!("Value {value} is not an unsigned int"));
         };
         let unscaled_value = if let Some(scale) = map.get("scale") {
             let scale = scale.as_u64().unwrap();
@@ -150,8 +150,7 @@ fn validate_range(map: &Map<String, Value>, value: &Value) -> Option<String> {
         let max = max.as_u64().unwrap();
         if unscaled_value < min || unscaled_value > max {
             return Some(format!(
-                "Value out of range: {} ≤ {} ≤ {}",
-                min, unscaled_value, max
+                "Value out of range: {min} ≤ {unscaled_value} ≤ {max}"
             ));
         }
     }
@@ -365,7 +364,7 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
                     }
                 }
                 _ => {
-                    panic!("Unexpected dip switch values type: {:?}", values);
+                    panic!("Unexpected dip switch values type: {values:?}");
                 }
             }
         }
@@ -381,7 +380,7 @@ fn json_hex_or_int(s: &Value) -> io::Result<u64> {
                 u64::from_str_radix(&s[2..], 16)
                     .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))
             } else {
-                panic!("Not implemented: int from string {}", s)
+                panic!("Not implemented: int from string {s}")
             }
         }
 
@@ -404,7 +403,7 @@ mod tests {
     fn test_resolve() -> io::Result<()> {
         let path = Path::new("testdata/hs_l4.nv");
         let map: Option<Value> = resolve(path)?;
-        assert!(map.is_some(), "Failed to resolve: {:?}", path);
+        assert!(map.is_some(), "Failed to resolve: {path:?}");
 
         // let json = serde_json::to_string_pretty(&map.unwrap())?;
         // assert_eq!("{}", json);
@@ -580,7 +579,7 @@ mod tests {
             if nvram_path.extension().unwrap() == "nv" {
                 let path = path_for_test(&test_dir, &nvram_path)?;
                 if excludes.contains(&path.file_stem().unwrap().to_str().unwrap()) {
-                    println!("Skipping: {:?}", path);
+                    println!("Skipping: {path:?}");
                     continue;
                 }
                 let map = resolve(&path)?;

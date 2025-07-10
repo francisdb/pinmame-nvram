@@ -14,7 +14,7 @@ impl MapIndex {
         let index_file = MAPS.get_file(index_path).ok_or_else(|| {
             io::Error::new(
                 io::ErrorKind::NotFound,
-                format!("File not found: {}", index_path),
+                format!("File not found: {index_path}"),
             )
         })?;
         let map: Value = read_compressed_json(index_file)?;
