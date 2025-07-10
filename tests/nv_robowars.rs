@@ -17,7 +17,7 @@ fn test_robo_war() -> io::Result<()> {
     assert_eq!(None, last_game);
 
     let scores = nvram.read_highscores()?;
-    let expected = Vec::from([
+    let expected = vec![
         HighScore {
             label: Some("High Score #1".to_string()),
             short_label: Some("1st".to_string()),
@@ -50,7 +50,7 @@ fn test_robo_war() -> io::Result<()> {
             initials: "BBB".to_string(),
             score: 87000,
         },
-    ]);
+    ];
 
     assert_eq!(expected, scores);
     Ok(())
@@ -67,7 +67,7 @@ fn test_robo_war_default() -> io::Result<()> {
 
     let mut nvram = Nvram::open(&nvram_path)?.unwrap();
     let scores = nvram.read_highscores()?;
-    let expected = Vec::from([
+    let expected = vec![
         HighScore {
             label: Some("High Score #1".to_string()),
             short_label: Some("1st".to_string()),
@@ -100,7 +100,7 @@ fn test_robo_war_default() -> io::Result<()> {
             initials: "".to_string(),
             score: 0,
         },
-    ]);
+    ];
 
     assert_eq!(expected, scores);
     Ok(())
@@ -117,7 +117,7 @@ fn test_robo_wars_clear_highscores() -> io::Result<()> {
     nvram.clear_highscores()?;
 
     let scores = nvram.read_highscores()?;
-    let expected = Vec::from([
+    let expected = vec![
         HighScore {
             label: Some("High Score #1".to_string()),
             short_label: Some("1st".to_string()),
@@ -150,7 +150,7 @@ fn test_robo_wars_clear_highscores() -> io::Result<()> {
             initials: "AAA".to_string(),
             score: 0,
         },
-    ]);
+    ];
 
     assert_eq!(expected, scores);
     Ok(())

@@ -14,12 +14,12 @@ fn test_warlok() -> io::Result<()> {
     assert_eq!(Some(expected), game_state);
 
     let scores = nvram.read_highscores()?;
-    let expected = Vec::from([HighScore {
+    let expected = vec![HighScore {
         label: Some("First Place".to_string()),
         short_label: Some("1st".to_string()),
         initials: "".into(),
         score: 2_500_000,
-    }]);
+    }];
     assert_eq!(expected, scores);
 
     Ok(())

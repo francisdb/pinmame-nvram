@@ -9,7 +9,7 @@ fn test_the_whos_tommy_pinball_wizard() -> io::Result<()> {
 
     let last_game = nvram.read_last_game()?;
     // TODO pretty sure this is wrong, is that because 500 is not compatible with 400?
-    let expected = Vec::from([
+    let expected = vec![
         LastGamePlayer {
             score: 4_702_109_630,
             label: Some("Player 1".to_string()),
@@ -26,11 +26,11 @@ fn test_the_whos_tommy_pinball_wizard() -> io::Result<()> {
             score: 3_720_203_230,
             label: Some("Player 4".to_string()),
         },
-    ]);
+    ];
     assert_eq!(Some(expected), last_game);
 
     let scores = nvram.read_highscores()?;
-    let expected = Vec::from([
+    let expected = vec![
         HighScore {
             label: Some("1st".to_string()),
             short_label: Some("#1".to_string()),
@@ -67,7 +67,7 @@ fn test_the_whos_tommy_pinball_wizard() -> io::Result<()> {
             initials: "JEN".to_string(),
             score: 500_000_000,
         },
-    ]);
+    ];
     assert_eq!(expected, scores);
 
     Ok(())

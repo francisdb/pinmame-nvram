@@ -9,14 +9,14 @@ fn test_the_shadow_lx5() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/ts_lx5.nv"))?.unwrap();
 
     let champions = nvram.read_mode_champions()?;
-    let expected = Vec::from([ModeChampion {
+    let expected = vec![ModeChampion {
         label: Some("Shadow Loop Champ".to_string()),
         short_label: Some("SLC".to_string()),
         initials: Some("TEX".to_string()),
         score: Some(2),
         suffix: None, // TODO should be " loops"
         timestamp: None,
-    }]);
+    }];
     assert_eq!(Some(expected), champions);
 
     Ok(())
@@ -27,7 +27,7 @@ fn test_the_shadow() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/ts_lx5.nv"))?.unwrap();
 
     let last_game = nvram.read_last_game()?;
-    let expected = Vec::from([
+    let expected = vec![
         LastGamePlayer {
             score: 142239830,
             label: Some("Player 1".to_string()),
@@ -44,11 +44,11 @@ fn test_the_shadow() -> io::Result<()> {
             score: 0,
             label: Some("Player 4".to_string()),
         },
-    ]);
+    ];
     assert_eq!(Some(expected), last_game);
 
     let scores = nvram.read_highscores()?;
-    let expected = Vec::from([
+    let expected = vec![
         HighScore {
             label: Some("Grand Champion".to_string()),
             short_label: Some("GC".to_string()),
@@ -109,7 +109,7 @@ fn test_the_shadow() -> io::Result<()> {
             initials: "ASR".to_string(),
             score: 700_000_000,
         },
-    ]);
+    ];
     assert_eq!(expected, scores);
 
     Ok(())

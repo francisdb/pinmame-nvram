@@ -21,7 +21,7 @@ fn test_soccer_kings() -> io::Result<()> {
     assert_eq!(Some(expected), game_state);
 
     let last_game = nvram.read_last_game()?;
-    let expected = Vec::from([
+    let expected = vec![
         LastGamePlayer {
             score: 137_680,
             label: Some("Player 1".into()),
@@ -38,16 +38,16 @@ fn test_soccer_kings() -> io::Result<()> {
             score: 0,
             label: Some("Player 4".into()),
         },
-    ]);
+    ];
     assert_eq!(Some(expected), last_game);
 
     let scores = nvram.read_highscores()?;
-    let expected = Vec::from([HighScore {
+    let expected = vec![HighScore {
         label: Some("High Score".to_string()),
         short_label: Some("HS".to_string()),
         initials: "".to_string(),
         score: 13_500_000,
-    }]);
+    }];
     assert_eq!(expected, scores);
 
     Ok(())

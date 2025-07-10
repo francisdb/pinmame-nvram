@@ -11,7 +11,7 @@ fn test_goldeneye() -> io::Result<()> {
     assert_eq!(None, last_game);
 
     let scores = nvram.read_highscores()?;
-    let expected = Vec::from([
+    let expected = vec![
         HighScore {
             label: Some("First Place".to_string()),
             short_label: Some("1st".to_string()),
@@ -48,7 +48,7 @@ fn test_goldeneye() -> io::Result<()> {
             initials: "DAY".to_string(),
             score: 1_500_000_000,
         },
-    ]);
+    ];
 
     assert_eq!(expected, scores);
     Ok(())

@@ -10,7 +10,7 @@ fn test_funhouse() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/fh_l9.nv"))?.unwrap();
 
     let last_game = nvram.read_last_game()?;
-    let expected = Vec::from([
+    let expected = vec![
         LastGamePlayer {
             score: 743_820,
             label: Some("Player 1".to_string()),
@@ -27,11 +27,11 @@ fn test_funhouse() -> io::Result<()> {
             score: 0,
             label: Some("Player 4".to_string()),
         },
-    ]);
+    ];
     assert_eq!(Some(expected), last_game);
 
     let scores = nvram.read_highscores()?;
-    let expected = Vec::from([
+    let expected = vec![
         HighScore {
             label: Some("Grand Champion".to_string()),
             short_label: Some("GC".to_string()),
@@ -62,7 +62,7 @@ fn test_funhouse() -> io::Result<()> {
             initials: "HEY".to_string(),
             score: 9_000_000,
         },
-    ]);
+    ];
     assert_eq!(expected, scores);
 
     Ok(())

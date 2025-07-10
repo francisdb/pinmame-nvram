@@ -32,7 +32,7 @@ fn test_gold_mine() -> io::Result<()> {
     assert_eq!(Some(expected), game_state);
 
     let last_game = nvram.read_last_game()?;
-    let expected = Vec::from([
+    let expected = vec![
         LastGamePlayer {
             score: 0,
             label: Some("Player 1".to_string()),
@@ -57,16 +57,16 @@ fn test_gold_mine() -> io::Result<()> {
             score: 0,
             label: Some("Player 6".to_string()),
         },
-    ]);
+    ];
     assert_eq!(Some(expected), last_game);
 
     let scores = nvram.read_highscores()?;
-    let expected = Vec::from([HighScore {
+    let expected = vec![HighScore {
         label: Some("High Score".to_string()),
         short_label: Some("HS".to_string()),
         initials: "".into(),
         score: 104,
-    }]);
+    }];
     assert_eq!(expected, scores);
 
     Ok(())
@@ -101,7 +101,7 @@ fn test_gold_mine_6players() -> io::Result<()> {
     // all 6 high scores 600
 
     let last_game = nvram.read_last_game()?;
-    let expected = Vec::from([
+    let expected = vec![
         LastGamePlayer {
             score: 2237,
             label: Some("Player 1".to_string()),
@@ -126,7 +126,7 @@ fn test_gold_mine_6players() -> io::Result<()> {
             score: 368,
             label: Some("Player 6".to_string()),
         },
-    ]);
+    ];
     assert_eq!(Some(expected), last_game);
     Ok(())
 }
