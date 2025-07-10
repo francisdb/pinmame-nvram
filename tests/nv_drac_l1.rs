@@ -8,7 +8,7 @@ fn test_bram_strokers_dracula() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/drac_l1.nv"))?.unwrap();
 
     let last_game = nvram.read_last_game()?;
-    let expected = Vec::from([
+    let expected = vec![
         LastGamePlayer {
             score: 595_070,
             label: Some("Player 1".to_string()),
@@ -25,22 +25,22 @@ fn test_bram_strokers_dracula() -> io::Result<()> {
             score: 0,
             label: Some("Player 4".to_string()),
         },
-    ]);
+    ];
     assert_eq!(Some(expected), last_game);
 
     let champions = nvram.read_mode_champions()?;
-    let expected = Vec::from([ModeChampion {
+    let expected = vec![ModeChampion {
         label: Some("Loop Champion".to_string()),
         short_label: Some("LC".to_string()),
         initials: Some("CD ".to_string()),
         score: Some(6),
         suffix: None,
         timestamp: None,
-    }]);
+    }];
     assert_eq!(Some(expected), champions);
 
     let scores = nvram.read_highscores()?;
-    let expected = Vec::from([
+    let expected = vec![
         HighScore {
             label: Some("Greatest Vampire Hunter".to_string()),
             short_label: Some("GVP".to_string()),
@@ -71,7 +71,7 @@ fn test_bram_strokers_dracula() -> io::Result<()> {
             initials: "S  ".to_string(),
             score: 100_000_000,
         },
-    ]);
+    ];
 
     assert_eq!(expected, scores);
     Ok(())

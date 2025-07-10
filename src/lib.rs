@@ -10,7 +10,8 @@ use crate::dips::{get_dip_switch, set_dip_switch, validate_dip_switch_range};
 use crate::encoding::{Location, read_bcd, read_ch, read_int, read_wpc_rtc, write_bcd, write_ch};
 use crate::index::get_index_map;
 use crate::model::{
-    DEFAULT_LENGTH, DEFAULT_SCALE, Descriptor, Encoding, GlobalSettings, NvramMap, StateOrStateList,
+    DEFAULT_LENGTH, DEFAULT_SCALE, Descriptor, Encoding, Endian, GlobalSettings, MemoryLayoutType,
+    Nibble, NvramMap, Platform, StateOrStateList,
 };
 use include_dir::{Dir, File, include_dir};
 use serde::de;
@@ -54,6 +55,7 @@ pub struct LastGamePlayer {
 /// Main interface to read and write data from a NVRAM file
 pub struct Nvram {
     pub map: NvramMap,
+    pub platform: Platform,
     pub nv_path: PathBuf,
 }
 
@@ -66,10 +68,17 @@ impl Nvram {
     /// * `Ok(None)` if the file was found but no map was found for the ROM
     pub fn open(nv_path: &Path) -> io::Result<Option<Nvram>> {
         let map_opt: Option<NvramMap> = open_nvram(nv_path)?;
-        Ok(map_opt.map(|map| Nvram {
-            map,
-            nv_path: nv_path.to_path_buf(),
-        }))
+        if let Some(map) = map_opt {
+            // find the platform from the map
+            let platform = read_platform(&map._metadata.platform)?;
+            Ok(Some(Nvram {
+                map,
+                platform,
+                nv_path: nv_path.to_path_buf(),
+            }))
+        } else {
+            Ok(None)
+        }
     }
 
     /// Open a NVRAM file from the file system using the local maps
@@ -81,15 +90,28 @@ impl Nvram {
     /// * `Ok(None)` if the file was found but no map was found for the ROM
     pub fn open_local(nv_path: &Path) -> io::Result<Option<Nvram>> {
         let map_opt: Option<NvramMap> = open_nvram_local(nv_path)?;
-        Ok(map_opt.map(|map| Nvram {
-            map,
-            nv_path: nv_path.to_path_buf(),
-        }))
+        //let platform = todo!("Determine platform from map");
+        if let Some(map) = map_opt {
+            let platform = read_platform_local(map.platform())?;
+            Ok(Some(Nvram {
+                map,
+                platform,
+                nv_path: nv_path.to_path_buf(),
+            }))
+        } else {
+            Ok(None)
+        }
     }
 
     pub fn read_highscores(&mut self) -> io::Result<Vec<HighScore>> {
         let mut file = OpenOptions::new().read(true).open(&self.nv_path)?;
-        read_highscores(&self.map, &mut file)
+        read_highscores(
+            self.platform.endian,
+            self.platform.nibble(MemoryLayoutType::NVRam),
+            self.platform.offset(MemoryLayoutType::NVRam),
+            &self.map,
+            &mut file,
+        )
     }
 
     pub fn clear_highscores(&mut self) -> io::Result<()> {
@@ -98,34 +120,63 @@ impl Nvram {
             .read(true)
             .write(true)
             .open(&self.nv_path)?;
-        clear_highscores(&mut rw_file, &self.map)?;
-        update_all_checksum16(&mut rw_file, &self.map)
+        clear_highscores(
+            &mut rw_file,
+            self.platform.nibble(MemoryLayoutType::NVRam),
+            self.platform.offset(MemoryLayoutType::NVRam),
+            &self.map,
+        )?;
+        update_all_checksum16(&mut rw_file, &self.map, &self.platform)
     }
 
     pub fn read_mode_champions(&mut self) -> io::Result<Option<Vec<ModeChampion>>> {
         let mut file = OpenOptions::new().read(true).open(&self.nv_path)?;
-        read_mode_champions(&mut file, &self.map)
+        read_mode_champions(
+            &mut file,
+            self.platform.endian,
+            self.platform.nibble(MemoryLayoutType::NVRam),
+            self.platform.offset(MemoryLayoutType::NVRam),
+            &self.map,
+        )
     }
 
     pub fn read_last_game(&mut self) -> io::Result<Option<Vec<LastGamePlayer>>> {
         let mut file = OpenOptions::new().read(true).open(&self.nv_path)?;
-        read_last_game(&mut file, &self.map)
+        read_last_game(
+            &mut file,
+            self.platform.endian,
+            self.platform.nibble(MemoryLayoutType::NVRam),
+            self.platform.offset(MemoryLayoutType::NVRam),
+            &self.map,
+        )
     }
 
     pub fn verify_all_checksum16(&mut self) -> io::Result<Vec<ChecksumMismatch<u16>>> {
         let mut file = OpenOptions::new().read(true).open(&self.nv_path)?;
-        verify_all_checksum16(&mut file, &self.map)
+        verify_all_checksum16(&mut file, &self.map, &self.platform)
     }
 
     // TODO we probably want to remove this
     pub fn read_replay_score(&mut self) -> io::Result<Option<u64>> {
         let mut file = OpenOptions::new().read(true).open(&self.nv_path)?;
-        read_replay_score(&mut file, &self.map)
+        read_replay_score(
+            &mut file,
+            self.platform.endian,
+            self.platform.nibble(MemoryLayoutType::NVRam),
+            self.platform.offset(MemoryLayoutType::NVRam),
+            &self.map,
+        )
     }
 
     pub fn read_game_state(&mut self) -> io::Result<Option<HashMap<String, String>>> {
         let mut file = OpenOptions::new().read(true).open(&self.nv_path)?;
-        read_game_state(&mut file, &self.map)
+        read_game_state(
+            &mut file,
+            self.platform.endian,
+            self.platform.nibble(MemoryLayoutType::NVRam),
+            self.platform.offset(MemoryLayoutType::NVRam),
+            &self.map,
+        )
     }
 
     pub fn dip_switches_len(&self) -> usize {
@@ -181,7 +232,7 @@ fn open_nvram<T: DeserializeOwned>(nv_path: &Path) -> io::Result<Option<T>> {
     if !nv_path.exists() {
         return Err(io::Error::new(
             io::ErrorKind::NotFound,
-            format!("File not found: {:?}", nv_path),
+            format!("File not found: {nv_path:?}"),
         ));
     }
     find_map(&rom_name)
@@ -202,10 +253,42 @@ fn open_nvram_local<T: DeserializeOwned>(nv_path: &Path) -> io::Result<Option<T>
     if !nv_path.exists() {
         return Err(io::Error::new(
             io::ErrorKind::NotFound,
-            format!("File not found: {:?}", nv_path),
+            format!("File not found: {nv_path:?}"),
         ));
     }
     find_map_local(&rom_name)
+}
+
+fn read_platform<T: DeserializeOwned>(platform_name: &str) -> io::Result<T> {
+    let platform_file_name = format!("{platform_name}.json.brotli");
+    let compressed_platform_path = Path::new("platforms").join(platform_file_name);
+
+    let map_file = MAPS.get_file(&compressed_platform_path).ok_or_else(|| {
+        io::Error::new(
+            io::ErrorKind::NotFound,
+            format!(
+                "File not found: {}",
+                compressed_platform_path.to_string_lossy()
+            ),
+        )
+    })?;
+    read_compressed_json(map_file)
+}
+
+fn read_platform_local<T: DeserializeOwned>(platform_name: &str) -> io::Result<T> {
+    let platform_file_name = format!("{platform_name}.json");
+    let platform_path = Path::new("pinmame-nvram-maps")
+        .join("platforms")
+        .join(platform_file_name);
+    if !platform_path.exists() {
+        return Err(io::Error::new(
+            io::ErrorKind::NotFound,
+            format!("File not found: {platform_path:?}"),
+        ));
+    }
+    let platform_file = OpenOptions::new().read(true).open(&platform_path)?;
+    let platform = serde_json::from_reader(platform_file)?;
+    Ok(platform)
 }
 
 fn find_map<T: DeserializeOwned>(rom_name: &String) -> io::Result<Option<T>> {
@@ -215,7 +298,7 @@ fn find_map<T: DeserializeOwned>(rom_name: &String) -> io::Result<Option<T>> {
             let map_file = MAPS.get_file(&compressed_map_path).ok_or_else(|| {
                 io::Error::new(
                     io::ErrorKind::NotFound,
-                    format!("File not found: {}", compressed_map_path),
+                    format!("File not found: {compressed_map_path}"),
                 )
             })?;
             let map: T = read_compressed_json(map_file)?;
@@ -230,7 +313,7 @@ fn find_map_local<T: DeserializeOwned>(rom_name: &String) -> io::Result<Option<T
     if !index_file.exists() {
         return Err(io::Error::new(
             io::ErrorKind::NotFound,
-            format!("File not found: {:?}", index_file),
+            format!("File not found: {index_file:?}"),
         ));
     }
     let index_file = OpenOptions::new().read(true).open(&index_file)?;
@@ -241,7 +324,7 @@ fn find_map_local<T: DeserializeOwned>(rom_name: &String) -> io::Result<Option<T
             if !map_file.exists() {
                 return Err(io::Error::new(
                     io::ErrorKind::NotFound,
-                    format!("File not found: {:?}", map_file),
+                    format!("File not found: {map_file:?}"),
                 ));
             }
             let map_file = OpenOptions::new().read(true).open(&map_file)?;
@@ -260,13 +343,16 @@ fn read_compressed_json<T: de::DeserializeOwned>(map_file: &File) -> io::Result<
 }
 
 fn read_highscores<T: Read + Seek>(
+    endian: Endian,
+    nibble: Nibble,
+    offset: u64,
     map: &NvramMap,
     mut nvram_file: &mut T,
 ) -> io::Result<Vec<HighScore>> {
     let scores: Result<Vec<HighScore>, io::Error> = map
         .high_scores
         .iter()
-        .map(|hs| read_highscore(&mut nvram_file, hs, map))
+        .map(|hs| read_highscore(&mut nvram_file, hs, endian, nibble, offset, map))
         .collect();
     scores
 }
@@ -274,26 +360,30 @@ fn read_highscores<T: Read + Seek>(
 fn read_highscore<T: Read + Seek, S: GlobalSettings>(
     mut nvram_file: &mut T,
     hs: &model::HighScore,
+    endian: Endian,
+    nibble: Nibble,
+    offset: u64,
     global_settings: &S,
 ) -> io::Result<HighScore> {
     let mut initials = "".to_string();
     if let Some(map_initials) = &hs.initials {
         initials = read_ch(
             &mut nvram_file,
-            map_initials
-                .start
-                .as_ref()
-                .expect("missing start for ch encoding")
-                .into(),
+            u64::from(
+                map_initials
+                    .start
+                    .as_ref()
+                    .expect("missing start for ch encoding"),
+            ) - offset,
             map_initials.length.expect("missing length for ch encoding"),
             map_initials.mask.as_ref().map(|m| m.into()),
             global_settings.char_map(),
-            map_initials.nibble.unwrap_or(global_settings.nibble()),
+            map_initials.nibble.unwrap_or(nibble),
             map_initials.null,
         )?;
     }
 
-    let score = read_descriptor_to_u64(&mut nvram_file, &hs.score, global_settings)?;
+    let score = read_descriptor_to_u64(&mut nvram_file, &hs.score, endian, nibble, offset)?;
 
     Ok(HighScore {
         label: hs.label.clone(),
@@ -303,28 +393,34 @@ fn read_highscore<T: Read + Seek, S: GlobalSettings>(
     })
 }
 
-fn clear_highscores<T: Write + Seek>(mut nvram_file: &mut T, map: &NvramMap) -> io::Result<()> {
+fn clear_highscores<T: Write + Seek>(
+    mut nvram_file: &mut T,
+    nibble: Nibble,
+    offset: u64,
+    map: &NvramMap,
+) -> io::Result<()> {
     for hs in &map.high_scores {
         if let Some(map_initials) = &hs.initials {
             write_ch(
                 &mut nvram_file,
-                map_initials
-                    .start
-                    .as_ref()
-                    .expect("missing start for ch encoding")
-                    .into(),
+                u64::from(
+                    map_initials
+                        .start
+                        .as_ref()
+                        .expect("missing start for ch encoding"),
+                ) - offset,
                 map_initials.length.expect("missing length for ch encoding"),
                 "AAA".to_string(),
-                &map._char_map,
-                &map_initials.nibble.or_else(|| Some(map.nibble())),
+                map.char_map(),
+                &map_initials.nibble.or(Some(nibble)),
             )?;
         }
         if let Some(map_score_start) = &hs.score.start {
             write_bcd(
                 &mut nvram_file,
-                map_score_start.into(),
+                u64::from(map_score_start) - offset,
                 hs.score.length.unwrap_or(0),
-                &hs.score.nibble.or_else(|| Some(map.nibble())),
+                hs.score.nibble.unwrap_or(nibble),
                 0,
             )?;
         }
@@ -335,6 +431,9 @@ fn clear_highscores<T: Write + Seek>(mut nvram_file: &mut T, map: &NvramMap) -> 
 fn read_mode_champion<T: Read + Seek, S: GlobalSettings>(
     mut nvram_file: &mut T,
     mc: &model::ModeChampion,
+    endian: Endian,
+    nibble: Nibble,
+    offset: u64,
     global_settings: &S,
 ) -> io::Result<ModeChampion> {
     let initials = mc
@@ -343,21 +442,22 @@ fn read_mode_champion<T: Read + Seek, S: GlobalSettings>(
         .map(|initials| {
             read_ch(
                 &mut nvram_file,
-                initials
-                    .start
-                    .as_ref()
-                    .expect("missing start for ch encoding")
-                    .into(),
+                u64::from(
+                    initials
+                        .start
+                        .as_ref()
+                        .expect("missing start for ch encoding"),
+                ) - offset,
                 initials.length.expect("missing start for ch encoding"),
                 initials.mask.as_ref().map(|m| m.into()),
                 global_settings.char_map(),
-                initials.nibble.unwrap_or(global_settings.nibble()),
+                initials.nibble.unwrap_or(nibble),
                 initials.null,
             )
         })
         .transpose()?;
     let score = if let Some(score) = &mc.score {
-        let result = read_descriptor_to_u64(&mut nvram_file, score, global_settings)?;
+        let result = read_descriptor_to_u64(&mut nvram_file, score, endian, nibble, offset)?;
         Some(result)
     } else {
         None
@@ -379,12 +479,14 @@ fn read_mode_champion<T: Read + Seek, S: GlobalSettings>(
     })
 }
 
-fn read_last_game_player<T: Read + Seek, S: GlobalSettings>(
+fn read_last_game_player<T: Read + Seek>(
     mut nvram_file: &mut T,
     descriptor: &Descriptor,
-    global_settings: &S,
+    endian: Endian,
+    nibble: Nibble,
+    offset: u64,
 ) -> io::Result<LastGamePlayer> {
-    let score = read_descriptor_to_u64(&mut nvram_file, descriptor, global_settings)?;
+    let score = read_descriptor_to_u64(&mut nvram_file, descriptor, endian, nibble, offset)?;
     Ok(LastGamePlayer {
         score,
         label: descriptor.label.clone(),
@@ -393,6 +495,9 @@ fn read_last_game_player<T: Read + Seek, S: GlobalSettings>(
 
 fn read_last_game<T: Read + Seek>(
     mut nvram_file: &mut T,
+    endian: Endian,
+    nibble: Nibble,
+    offset: u64,
     map: &NvramMap,
 ) -> io::Result<Option<Vec<LastGamePlayer>>> {
     if let Some(lg) = &map.last_game {
@@ -400,7 +505,7 @@ fn read_last_game<T: Read + Seek>(
         // TODO remove once all maps have been updated
         let last_games: Result<Vec<LastGamePlayer>, io::Error> = lg
             .iter()
-            .map(|lg| read_last_game_player(&mut nvram_file, lg, map))
+            .map(|lg| read_last_game_player(&mut nvram_file, lg, endian, nibble, offset))
             .collect();
         Ok(Some(last_games?))
     } else if let Some(game_state) = &map.game_state {
@@ -408,7 +513,7 @@ fn read_last_game<T: Read + Seek>(
             let scores: Result<Vec<LastGamePlayer>, io::Error> = match scores {
                 StateOrStateList::StateList(sl) => sl
                     .iter()
-                    .map(|s| read_last_game_player(&mut nvram_file, s, map))
+                    .map(|s| read_last_game_player(&mut nvram_file, s, endian, nibble, offset))
                     .collect(),
                 StateOrStateList::State(_) => {
                     return Err(io::Error::new(
@@ -428,12 +533,15 @@ fn read_last_game<T: Read + Seek>(
 
 fn read_mode_champions<T: Read + Seek>(
     mut nvram_file: &mut T,
+    endian: Endian,
+    nibble: Nibble,
+    offset: u64,
     map: &NvramMap,
 ) -> io::Result<Option<Vec<ModeChampion>>> {
     if let Some(mode_champions) = &map.mode_champions {
         let champions: Result<Vec<ModeChampion>, io::Error> = mode_champions
             .iter()
-            .map(|mc| read_mode_champion(&mut nvram_file, mc, map))
+            .map(|mc| read_mode_champion(&mut nvram_file, mc, endian, nibble, offset, map))
             .collect();
         Ok(Some(champions?))
     } else {
@@ -443,10 +551,13 @@ fn read_mode_champions<T: Read + Seek>(
 
 fn read_replay_score<T: Read + Seek>(
     mut nvram_file: &mut T,
+    endian: Endian,
+    nibble: Nibble,
+    offset: u64,
     map: &NvramMap,
 ) -> io::Result<Option<u64>> {
     if let Some(descriptor) = &map.replay_score {
-        let value = read_descriptor_to_u64(&mut nvram_file, descriptor, map)?;
+        let value = read_descriptor_to_u64(&mut nvram_file, descriptor, endian, nibble, offset)?;
         Ok(Some(value))
     } else {
         Ok(None)
@@ -455,6 +566,9 @@ fn read_replay_score<T: Read + Seek>(
 
 fn read_game_state<T: Read + Seek>(
     mut nvram_file: &mut T,
+    endian: Endian,
+    nibble: Nibble,
+    offset: u64,
     map: &NvramMap,
 ) -> io::Result<Option<HashMap<String, String>>> {
     if let Some(game_state) = &map.game_state {
@@ -463,16 +577,18 @@ fn read_game_state<T: Read + Seek>(
             .iter()
             .flat_map(|(key, v)| match v {
                 StateOrStateList::State(s) => {
-                    let r = read_descriptor_to_string(&mut nvram_file, s, map)
-                        .map(|r| (key.clone(), r));
+                    let r =
+                        read_descriptor_to_string(&mut nvram_file, s, endian, nibble, offset, map)
+                            .map(|r| (key.clone(), r));
                     vec![r]
                 }
                 StateOrStateList::StateList(sl) => sl
                     .iter()
                     .enumerate()
                     .map(|(index, s)| {
-                        let compund_key = format!("{}.{}", key, index);
-                        read_descriptor_to_string(&mut nvram_file, s, map).map(|r| (compund_key, r))
+                        let compund_key = format!("{key}.{index}");
+                        read_descriptor_to_string(&mut nvram_file, s, endian, nibble, offset, map)
+                            .map(|r| (compund_key, r))
                     })
                     .collect(),
             })
@@ -487,17 +603,20 @@ fn read_game_state<T: Read + Seek>(
 fn read_descriptor_to_string<T: Read + Seek, S: GlobalSettings>(
     mut nvram_file: &mut T,
     descriptor: &Descriptor,
+    endian: Endian,
+    nibble: Nibble,
+    offset: u64,
     global_settings: &S,
 ) -> io::Result<String> {
     match descriptor.encoding {
         Encoding::Ch => match &descriptor.start {
             Some(start) => read_ch(
                 &mut nvram_file,
-                start.into(),
+                u64::from(start) - offset,
                 descriptor.length.unwrap_or(DEFAULT_LENGTH),
                 descriptor.mask.as_ref().map(|m| m.into()),
                 global_settings.char_map(),
-                descriptor.nibble.unwrap_or(global_settings.nibble()),
+                descriptor.nibble.unwrap_or(nibble),
                 None,
             ),
             None => Err(io::Error::new(
@@ -509,9 +628,9 @@ fn read_descriptor_to_string<T: Read + Seek, S: GlobalSettings>(
             Some(start) => {
                 let score = read_int(
                     &mut nvram_file,
-                    global_settings.endianness(),
-                    global_settings.nibble(),
-                    start.into(),
+                    endian,
+                    nibble,
+                    u64::from(start) - offset,
                     descriptor.length.unwrap_or(DEFAULT_LENGTH),
                     descriptor
                         .scale
@@ -526,16 +645,16 @@ fn read_descriptor_to_string<T: Read + Seek, S: GlobalSettings>(
             )),
         },
         Encoding::Bcd => {
-            let location = location_for(descriptor)?;
+            let location = location_for(descriptor, offset)?;
             let score = read_bcd(
                 &mut nvram_file,
                 location,
-                descriptor.nibble.unwrap_or(global_settings.nibble()),
+                descriptor.nibble.unwrap_or(nibble),
                 descriptor
                     .scale
                     .as_ref()
                     .unwrap_or(&Number::from(DEFAULT_SCALE)),
-                global_settings.endianness(),
+                endian,
             )?;
             Ok(score.to_string())
         }
@@ -544,32 +663,34 @@ fn read_descriptor_to_string<T: Read + Seek, S: GlobalSettings>(
     }
 }
 
-fn read_descriptor_to_u64<T: Read + Seek, S: GlobalSettings>(
+fn read_descriptor_to_u64<T: Read + Seek>(
     mut nvram_file: &mut T,
     descriptor: &Descriptor,
-    global_settings: &S,
+    endian: Endian,
+    nibble: Nibble,
+    offset: u64,
 ) -> io::Result<u64> {
     match descriptor.encoding {
         Encoding::Bcd => {
-            let location = location_for(descriptor)?;
+            let location = location_for(descriptor, offset)?;
             read_bcd(
                 &mut nvram_file,
                 location,
-                descriptor.nibble.unwrap_or(global_settings.nibble()),
+                descriptor.nibble.unwrap_or(nibble),
                 descriptor
                     .scale
                     .as_ref()
                     .unwrap_or(&Number::from(DEFAULT_SCALE)),
-                global_settings.endianness(),
+                endian,
             )
         }
         Encoding::Int => {
             if let Some(start) = &descriptor.start {
                 read_int(
                     &mut nvram_file,
-                    global_settings.endianness(),
-                    descriptor.nibble.unwrap_or(global_settings.nibble()),
-                    start.into(),
+                    endian,
+                    descriptor.nibble.unwrap_or(nibble),
+                    u64::from(start) - offset,
                     descriptor.length.unwrap_or(DEFAULT_LENGTH),
                     descriptor
                         .scale
@@ -604,11 +725,11 @@ fn read_descriptor_to_rtc_string<T: Read + Seek>(
     }
 }
 
-fn location_for(descriptor: &Descriptor) -> io::Result<Location> {
+fn location_for(descriptor: &Descriptor, offset: u64) -> io::Result<Location> {
     match &descriptor.offsets {
         None => match &descriptor.start {
             Some(start) => Ok(Location::Continuous {
-                start: start.into(),
+                start: u64::from(start) - offset,
                 length: descriptor.length.unwrap_or(DEFAULT_LENGTH),
             }),
             _ => Err(io::Error::new(
@@ -617,7 +738,7 @@ fn location_for(descriptor: &Descriptor) -> io::Result<Location> {
             )),
         },
         Some(offsets) => Ok(Location::Scattered {
-            offsets: offsets.iter().map(|o| o.into()).collect(),
+            offsets: offsets.iter().map(|o| u64::from(o) - offset).collect(),
         }),
     }
 }

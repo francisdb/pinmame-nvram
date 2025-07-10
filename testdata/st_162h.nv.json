@@ -1,5 +1,5 @@
 {
-  "_fileformat": 0.3,
+  "_fileformat": 0.7,
   "checksum16": [
     {
       "label": "Grand Champion",
@@ -34,6 +34,26 @@
       "value": "valid"
     }
   ],
+  "game_state": {
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 0
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ]
+  },
   "high_scores": [
     {
       "initials": {
@@ -84,20 +104,6 @@
         "value": 25000000
       },
       "short_label": "#4"
-    }
-  ],
-  "last_game": [
-    {
-      "value": 0
-    },
-    {
-      "value": 0
-    },
-    {
-      "value": 0
-    },
-    {
-      "value": 0
     }
   ],
   "mode_champions": [

@@ -8,7 +8,7 @@ fn test_transporter_the_rescue() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/tsptr_l3.nv"))?.unwrap();
 
     let last_game = nvram.read_last_game()?;
-    let expected = Vec::from([
+    let expected = vec![
         LastGamePlayer {
             score: 0,
             label: Some("Player 1".to_string()),
@@ -25,11 +25,11 @@ fn test_transporter_the_rescue() -> io::Result<()> {
             score: 0,
             label: Some("Player 4".to_string()),
         },
-    ]);
+    ];
     assert_eq!(Some(expected), last_game);
 
     let scores = nvram.read_highscores()?;
-    let expected = Vec::from([
+    let expected = vec![
         HighScore {
             label: Some("First Place".to_string()),
             short_label: Some("1st".to_string()),
@@ -54,7 +54,7 @@ fn test_transporter_the_rescue() -> io::Result<()> {
             initials: "R/J".to_string(),
             score: 5_500_000,
         },
-    ]);
+    ];
     assert_eq!(expected, scores);
 
     Ok(())

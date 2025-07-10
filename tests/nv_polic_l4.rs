@@ -23,7 +23,7 @@ fn test_police_force() -> io::Result<()> {
     assert_eq!(Some(expected), game_state);
 
     let last_game = nvram.read_last_game()?;
-    let expected = Vec::from([
+    let expected = vec![
         LastGamePlayer {
             score: 508_040,
             label: Some("Player 1".to_string()),
@@ -40,11 +40,11 @@ fn test_police_force() -> io::Result<()> {
             score: 0,
             label: Some("Player 4".to_string()),
         },
-    ]);
+    ];
     assert_eq!(Some(expected), last_game);
 
     let scores = nvram.read_highscores()?;
-    let expected = Vec::from([
+    let expected = vec![
         HighScore {
             label: Some("First Place".to_string()),
             short_label: Some("1st".to_string()),
@@ -69,7 +69,7 @@ fn test_police_force() -> io::Result<()> {
             initials: "CPG".to_string(),
             score: 4_500_000,
         },
-    ]);
+    ];
     assert_eq!(expected, scores);
 
     Ok(())

@@ -8,7 +8,7 @@ fn test_medieval_madness() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/mm_109c.nv"))?.unwrap();
 
     let last_game = nvram.read_last_game()?;
-    let expected = Vec::from([
+    let expected = vec![
         LastGamePlayer {
             score: 587_880,
             label: Some("Player 1".into()),
@@ -25,11 +25,11 @@ fn test_medieval_madness() -> io::Result<()> {
             score: 0,
             label: Some("Player 4".into()),
         },
-    ]);
+    ];
     assert_eq!(Some(expected), last_game);
 
     let champions = nvram.read_mode_champions()?;
-    let expected = Vec::from([
+    let expected = vec![
         ModeChampion {
             label: Some("Castle Champion".into()),
             short_label: Some("Castle Champ".into()),
@@ -118,11 +118,11 @@ fn test_medieval_madness() -> io::Result<()> {
             suffix: None,
             timestamp: Some("2024-01-17 14:48".into()),
         },
-    ]);
+    ];
     assert_eq!(Some(expected), champions);
 
     let scores = nvram.read_highscores()?;
-    let expected = Vec::from([
+    let expected = vec![
         HighScore {
             label: Some("Grand Champion".into()),
             short_label: Some("GC".into()),
@@ -153,7 +153,7 @@ fn test_medieval_madness() -> io::Result<()> {
             initials: "RCF".into(),
             score: 32_000_000,
         },
-    ]);
+    ];
     assert_eq!(expected, scores);
 
     Ok(())

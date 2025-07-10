@@ -8,36 +8,36 @@ fn test_star_wars_trilogy() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/swtril43.nv"))?.unwrap();
 
     let last_game = nvram.read_last_game()?;
-    let expected = Vec::from([
+    let expected = vec![
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 1".into()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 2".into()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 3".into()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 4".into()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 5".into()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 6".into()),
         },
-    ]);
+    ];
     assert_eq!(Some(expected), last_game);
 
     let scores = nvram.read_highscores()?;
-    let expected = Vec::from([
+    let expected = vec![
         HighScore {
             label: Some("#1 Jedi".to_string()),
             short_label: Some("#1".to_string()),
@@ -74,7 +74,7 @@ fn test_star_wars_trilogy() -> io::Result<()> {
             initials: "JIM".to_string(),
             score: 15_000_000,
         },
-    ]);
+    ];
     assert_eq!(expected, scores);
 
     Ok(())

@@ -11,12 +11,12 @@ fn test_seawitch_default() -> io::Result<()> {
     std::fs::copy("testdata/seawitch-default.nv", &nvram_path)?;
     let mut nvram = Nvram::open(&nvram_path)?.unwrap();
     let scores = nvram.read_highscores()?;
-    let expected = Vec::from([HighScore {
+    let expected = vec![HighScore {
         label: Some("1st".to_string()),
         short_label: Some("#1".to_string()),
         initials: "".to_string(),
         score: 0,
-    }]);
+    }];
     assert_eq!(expected, scores);
 
     Ok(())
@@ -30,12 +30,12 @@ fn test_seawitch() -> io::Result<()> {
     assert_eq!(None, last_game);
 
     let scores = nvram.read_highscores()?;
-    let expected = Vec::from([HighScore {
+    let expected = vec![HighScore {
         label: Some("1st".to_string()),
         short_label: Some("#1".to_string()),
         initials: "".to_string(),
         score: 8170,
-    }]);
+    }];
     assert_eq!(expected, scores);
 
     Ok(())

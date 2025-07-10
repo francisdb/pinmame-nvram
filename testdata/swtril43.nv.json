@@ -1,5 +1,33 @@
 {
-  "_fileformat": 0.1,
+  "_fileformat": 0.7,
+  "game_state": {
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 0
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      },
+      {
+        "label": "Player 5",
+        "value": 0
+      },
+      {
+        "label": "Player 6",
+        "value": 0
+      }
+    ]
+  },
   "high_scores": [
     {
       "initials": {
@@ -60,26 +88,6 @@
         "value": 15000000
       },
       "short_label": "#6"
-    }
-  ],
-  "last_game": [
-    {
-      "value": 0
-    },
-    {
-      "value": 0
-    },
-    {
-      "value": 0
-    },
-    {
-      "value": 0
-    },
-    {
-      "value": 0
-    },
-    {
-      "value": 0
     }
   ]
 }

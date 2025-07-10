@@ -11,37 +11,43 @@ fn test_house_of_diamonds() -> io::Result<()> {
     // 6 digits for the score
 
     let game_state = nvram.read_game_state()?;
-    let expected = HashMap::from([("credits".into(), "8".into())]);
+    let expected = HashMap::from([
+        ("credits".into(), "8".into()),
+        ("scores.0".into(), "57290".into()),
+        ("scores.1".into(), "10000".into()),
+        ("scores.2".into(), "0".into()),
+        ("scores.3".into(), "0".into()),
+    ]);
     assert_eq!(Some(expected), game_state);
 
     let last_game = nvram.read_last_game()?;
-    let expected = Vec::from([
+    let expected = vec![
         LastGamePlayer {
             score: 57_290,
-            label: None,
+            label: Some("Player 1".to_string()),
         },
         LastGamePlayer {
             score: 10_000,
-            label: None,
+            label: Some("Player 2".to_string()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 3".to_string()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 4".to_string()),
         },
-    ]);
+    ];
     assert_eq!(Some(expected), last_game);
 
     let scores = nvram.read_highscores()?;
-    let expected = Vec::from([HighScore {
+    let expected = vec![HighScore {
         label: Some("High Score".to_string()),
         short_label: Some("HS".to_string()),
         initials: "".to_string(),
         score: 57_290,
-    }]);
+    }];
     assert_eq!(expected, scores);
 
     Ok(())

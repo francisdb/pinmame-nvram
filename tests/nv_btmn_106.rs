@@ -12,28 +12,28 @@ fn test_batman() -> io::Result<()> {
     // assert_eq!(Some(expected), game_state);
 
     let last_game = nvram.read_last_game()?;
-    let expected = Vec::from([
+    let expected = vec![
         LastGamePlayer {
             score: 339_930,
-            label: None,
+            label: Some("Player 1".to_string()),
         },
         LastGamePlayer {
             score: 1_868_230,
-            label: None,
+            label: Some("Player 2".to_string()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 3".to_string()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 4".to_string()),
         },
-    ]);
+    ];
     assert_eq!(Some(expected), last_game);
 
     let scores = nvram.read_highscores()?;
-    let expected = Vec::from([
+    let expected = vec![
         HighScore {
             label: Some("Dark Knight".to_string()),
             short_label: Some("GC".to_string()),
@@ -70,7 +70,7 @@ fn test_batman() -> io::Result<()> {
             initials: "HEC".to_string(),
             score: 14_000_000,
         },
-    ]);
+    ];
     assert_eq!(expected, scores);
 
     Ok(())

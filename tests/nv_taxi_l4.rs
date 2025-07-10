@@ -23,7 +23,7 @@ fn test_taxi() -> io::Result<()> {
     assert_eq!(Some(expected), game_state);
 
     let last_game = nvram.read_last_game()?;
-    let expected = Vec::from([
+    let expected = vec![
         LastGamePlayer {
             score: 376_450,
             label: Some("Player 1".to_string()),
@@ -40,12 +40,12 @@ fn test_taxi() -> io::Result<()> {
             score: 0,
             label: Some("Player 4".to_string()),
         },
-    ]);
+    ];
     assert_eq!(Some(expected), last_game);
 
     // They are called "Best Drivers" in the game
     let scores = nvram.read_highscores()?;
-    let expected = Vec::from([
+    let expected = vec![
         HighScore {
             label: Some("First Place".to_string()),
             short_label: Some("1st".to_string()),
@@ -70,7 +70,7 @@ fn test_taxi() -> io::Result<()> {
             initials: "P J".to_string(),
             score: 3_000_000,
         },
-    ]);
+    ];
     assert_eq!(expected, scores);
 
     Ok(())

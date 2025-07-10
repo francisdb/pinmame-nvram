@@ -10,28 +10,28 @@ fn test_star_trek_stern() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/st_162h.nv"))?.unwrap();
 
     let last_game = nvram.read_last_game()?;
-    let expected = Vec::from([
+    let expected = vec![
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 1".into()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 2".into()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 3".into()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 4".into()),
         },
-    ]);
+    ];
     assert_eq!(Some(expected), last_game);
 
     let scores = nvram.read_highscores()?;
-    let expected = Vec::from([
+    let expected = vec![
         HighScore {
             label: Some("Grand Champion".to_string()),
             short_label: Some("GC".to_string()),
@@ -62,7 +62,7 @@ fn test_star_trek_stern() -> io::Result<()> {
             initials: "T".to_string(),
             score: 25_000_000,
         },
-    ]);
+    ];
     assert_eq!(expected, scores);
 
     Ok(())

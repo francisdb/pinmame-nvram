@@ -24,19 +24,19 @@
     "Bookkeeping": {
       "01": {
         "label": "Left Chute Coins",
-        "value": 0
+        "value": 3
       },
       "02": {
         "label": "Right Chute Coins",
-        "value": 0
+        "value": 9
       },
       "03": {
         "label": "Center Chute Coins",
-        "value": 0
+        "value": 6
       },
       "04": {
         "label": "Total Plays",
-        "value": 0
+        "value": 3
       },
       "05": {
         "label": "Total Replays",
@@ -68,7 +68,7 @@
       },
       "15": {
         "label": "Game Time",
-        "value": 0
+        "value": 50
       }
     }
   },
@@ -149,7 +149,7 @@
   "game_state": {
     "credits": {
       "label": "Credits",
-      "value": 0
+      "value": 10
     }
   },
   "high_scores": [

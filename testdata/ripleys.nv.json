@@ -1,5 +1,25 @@
 {
-  "_fileformat": 0.1,
+  "_fileformat": 0.7,
+  "game_state": {
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 30030
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ]
+  },
   "high_scores": [
     {
       "initials": {
@@ -50,20 +70,6 @@
         "value": 18000000
       },
       "short_label": "#4"
-    }
-  ],
-  "last_game": [
-    {
-      "value": 30030
-    },
-    {
-      "value": 0
-    },
-    {
-      "value": 0
-    },
-    {
-      "value": 0
     }
   ]
 }

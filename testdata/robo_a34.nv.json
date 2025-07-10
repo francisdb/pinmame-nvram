@@ -1,5 +1,5 @@
 {
-  "_fileformat": 0.2,
+  "_fileformat": 0.7,
   "adjustments": {
     "Feature Adjustments": {
       "01": {
@@ -196,6 +196,26 @@
       }
     }
   },
+  "game_state": {
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 130240
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ]
+  },
   "high_scores": [
     {
       "initials": {
@@ -236,20 +256,6 @@
         "value": 2500000
       },
       "short_label": "3rd"
-    }
-  ],
-  "last_game": [
-    {
-      "value": 130240
-    },
-    {
-      "value": 0
-    },
-    {
-      "value": 0
-    },
-    {
-      "value": 0
     }
   ],
   "mode_champions": [

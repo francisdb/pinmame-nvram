@@ -8,7 +8,7 @@ fn test_theatre_of_magic() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/tom_14hb.nv"))?.unwrap();
 
     let last_game = nvram.read_last_game()?;
-    let expected = Vec::from([
+    let expected = vec![
         LastGamePlayer {
             score: 9_950_010,
             label: Some("Player 1".into()),
@@ -25,11 +25,11 @@ fn test_theatre_of_magic() -> io::Result<()> {
             score: 0,
             label: Some("Player 4".into()),
         },
-    ]);
+    ];
     assert_eq!(Some(expected), last_game);
 
     let champions = nvram.read_mode_champions()?;
-    let expected = Vec::from([
+    let expected = vec![
         ModeChampion {
             label: Some("BUY-IN SCORE #1".into()),
             short_label: Some("BIS-1".into()),
@@ -62,11 +62,11 @@ fn test_theatre_of_magic() -> io::Result<()> {
             suffix: None,
             timestamp: None,
         },
-    ]);
+    ];
     assert_eq!(Some(expected), champions);
 
     let scores = nvram.read_highscores()?;
-    let expected = Vec::from([
+    let expected = vec![
         HighScore {
             label: Some("Grand Champion".to_string()),
             short_label: Some("GC".to_string()),
@@ -97,7 +97,7 @@ fn test_theatre_of_magic() -> io::Result<()> {
             initials: "LTD".to_string(),
             score: 610_000_000,
         },
-    ]);
+    ];
     assert_eq!(expected, scores);
 
     Ok(())

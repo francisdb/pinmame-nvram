@@ -6,6 +6,71 @@ use std::fmt;
 pub const DEFAULT_LENGTH: usize = 1;
 pub const DEFAULT_SCALE: i32 = 1;
 
+#[derive(Serialize, Deserialize, Debug, PartialEq, Copy, Clone)]
+#[serde(rename_all = "lowercase")]
+pub enum MemoryLayoutType {
+    Ram,
+    NVRam,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct MemoryLayout {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub _notes: Option<Notes>,
+    pub label: String,
+    pub address: HexOrInteger,
+    pub size: HexOrInteger,
+    #[serde(rename = "type")]
+    pub type_: MemoryLayoutType,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub nibble: Option<Nibble>,
+}
+
+impl MemoryLayout {
+    pub(crate) fn nibble(&self) -> Nibble {
+        self.nibble.unwrap_or(Nibble::Both)
+    }
+}
+
+/// A platform defines the native memory layout
+///
+/// The nvram map will contain physical addresses instead of nvram file addresses if
+/// the platform is defined.
+#[derive(Serialize, Deserialize)]
+pub struct Platform {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub _notes: Option<Notes>,
+    pub cpu: String,
+    pub endian: Endian,
+    pub memory_layout: Vec<MemoryLayout>,
+}
+
+impl Platform {
+    // TODO this should probably take a memory address instead
+    pub(crate) fn nibble(&self, memory_layout_type: MemoryLayoutType) -> Nibble {
+        self.layout(memory_layout_type)
+            .nibble
+            .unwrap_or(Nibble::Both)
+    }
+
+    // TODO this should probably take a memory address instead
+    pub(crate) fn offset(&self, memory_layout_type: MemoryLayoutType) -> u64 {
+        (&self.layout(memory_layout_type).address).into()
+    }
+
+    fn layout(&self, memory_layout_type: MemoryLayoutType) -> &MemoryLayout {
+        if let Some(layout) = self
+            .memory_layout
+            .iter()
+            .find(|l| l.type_ == memory_layout_type)
+        {
+            layout
+        } else {
+            panic!("Memory layout not found for {memory_layout_type:?}");
+        }
+    }
+}
+
 /// Descriptor for a single value in the NVRAM.
 /// Describing a section of the .nv file and how to interpret it
 ///
@@ -262,30 +327,32 @@ pub enum AuditOrNote {
 }
 
 #[derive(Serialize, Deserialize)]
+pub struct Metadata {
+    pub copyright: String,
+    pub license: String,
+    pub platform: String,
+    pub version: Number,
+    pub roms: Vec<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub char_map: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub values: Option<HashMap<String, Vec<String>>>,
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct NvramMap {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _notes: Option<Notes>,
+    pub _fileformat: f64,
+    pub _metadata: Metadata,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _todo: Option<Notes>,
-    pub _copyright: String,
-    pub _license: String,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub _endian: Option<Endian>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub _nibble: Option<Nibble>,
-    pub _roms: Vec<String>,
-    pub _fileformat: f64,
-    pub _version: Number,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _ramsize: Option<u64>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _game: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _history: Option<Vec<String>>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub _char_map: Option<String>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub _values: Option<HashMap<String, Vec<String>>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub last_played: Option<Descriptor>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -317,55 +384,56 @@ pub struct NvramMap {
     pub dip_switches: Option<HashMap<String, Descriptor>>,
 }
 
+impl NvramMap {
+    pub fn char_map(&self) -> &Option<String> {
+        &self._metadata.char_map
+    }
+}
+
 pub trait GlobalSettings {
-    fn endianness(&self) -> Endian;
-    fn nibble(&self) -> Nibble;
     fn char_map(&self) -> &Option<String>;
     fn value(&self, key: &str, index: usize) -> Option<String>;
+    fn platform(&self) -> &str;
 }
 
 impl GlobalSettings for NvramMap {
-    fn endianness(&self) -> Endian {
-        self._endian.unwrap_or(Endian::Big)
-    }
-    fn nibble(&self) -> Nibble {
-        self._nibble.unwrap_or(Nibble::Both)
-    }
     fn char_map(&self) -> &Option<String> {
-        &self._char_map
+        self.char_map()
     }
     fn value(&self, key: &str, index: usize) -> Option<String> {
-        self._values.as_ref()?.get(key)?.get(index).cloned()
+        self._metadata
+            .values
+            .as_ref()?
+            .get(key)?
+            .get(index)
+            .cloned()
+    }
+    fn platform(&self) -> &str {
+        &self._metadata.platform
     }
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct GlobalSettingsImpl {
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub _endian: Option<Endian>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub _nibble: Option<Nibble>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub _char_map: Option<String>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub _values: Option<HashMap<String, Vec<String>>>,
+    pub _metadata: Metadata,
 }
 
 impl GlobalSettings for GlobalSettingsImpl {
-    fn endianness(&self) -> Endian {
-        self._endian.unwrap_or(Endian::Big)
-    }
-
-    fn nibble(&self) -> Nibble {
-        self._nibble.unwrap_or(Nibble::Both)
-    }
-
     fn char_map(&self) -> &Option<String> {
-        &self._char_map
+        &self._metadata.char_map
     }
 
     fn value(&self, key: &str, index: usize) -> Option<String> {
-        self._values.as_ref()?.get(key)?.get(index).cloned()
+        self._metadata
+            .values
+            .as_ref()?
+            .get(key)?
+            .get(index)
+            .cloned()
+    }
+
+    fn platform(&self) -> &str {
+        &self._metadata.platform
     }
 }
 
@@ -376,21 +444,22 @@ mod tests {
     use super::*;
     use pretty_assertions::assert_eq;
     use serde_json::Value;
+    use std::path::Path;
     use walkdir::WalkDir;
 
     #[test]
     fn read_all_nvram_maps() {
         // read all ../pinmame-nvram-maps/*.json recursively
-        for entry in WalkDir::new("pinmame-nvram-maps")
-            .into_iter()
-            .filter_map(|e| e.ok())
-        {
+        let maps_path = Path::new("pinmame-nvram-maps").join("maps");
+        let mut found_any = false;
+        for entry in WalkDir::new(maps_path).into_iter().filter_map(|e| e.ok()) {
             let path = entry.path();
             let file_name = path.file_name().unwrap().to_str().unwrap().to_owned();
             if file_name.ends_with(".nv.json") {
+                found_any = true;
                 let json = std::fs::read_to_string(path).unwrap();
                 let nvram_map: NvramMap = serde_json::from_str(&json)
-                    .unwrap_or_else(|e| panic!("Failed reading {}: {}", file_name, e));
+                    .unwrap_or_else(|e| panic!("Failed reading {file_name}: {e}"));
                 let json2 = serde_json::to_string_pretty(&nvram_map).unwrap();
 
                 // read json as Value to compare without formatting
@@ -400,5 +469,34 @@ mod tests {
                 assert_eq!(json_obj, json_obj2, "Failed for {}", file_name);
             }
         }
+        assert!(found_any, "No nvram map files found");
+    }
+
+    #[test]
+    fn read_all_platforms() {
+        // read all ../pinmame-nvram-maps/platforms/*.json recursively
+        let platforms_path = Path::new("pinmame-nvram-maps").join("platforms");
+        let mut found_any = false;
+        for entry in WalkDir::new(platforms_path)
+            .into_iter()
+            .filter_map(|e| e.ok())
+        {
+            let path = entry.path();
+            let file_name = path.file_name().unwrap().to_str().unwrap().to_owned();
+            if file_name.ends_with(".json") {
+                found_any = true;
+                let json = std::fs::read_to_string(path).unwrap();
+                let platform: Platform = serde_json::from_str(&json)
+                    .unwrap_or_else(|e| panic!("Failed reading {file_name}: {e}"));
+                let json2 = serde_json::to_string_pretty(&platform).unwrap();
+
+                // read json as Value to compare without formatting
+                let json_obj: Value = serde_json::from_str(&json).unwrap();
+                let json_obj2: Value = serde_json::from_str(&json2).unwrap();
+
+                assert_eq!(json_obj, json_obj2, "Failed for {}", file_name);
+            }
+        }
+        assert!(found_any, "No platform files found");
     }
 }

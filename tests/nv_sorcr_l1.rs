@@ -11,7 +11,7 @@ fn test_sorcerer() -> io::Result<()> {
     assert_eq!(None, last_game);
 
     let scores = nvram.read_highscores()?;
-    let expected = Vec::from([
+    let expected = vec![
         HighScore {
             label: None,
             short_label: None,
@@ -36,7 +36,7 @@ fn test_sorcerer() -> io::Result<()> {
             initials: "".to_string(),
             score: 1_100_000,
         },
-    ]);
+    ];
     assert_eq!(expected, scores);
 
     Ok(())

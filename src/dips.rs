@@ -122,10 +122,7 @@ pub(crate) fn validate_generic_dip_switch_range(number: usize) -> io::Result<()>
     if !(1..=MAX_SWITCH_COUNT).contains(&number) {
         return Err(io::Error::new(
             io::ErrorKind::InvalidInput,
-            format!(
-                "Dip switch #{} out of range, expected 1-{}",
-                number, MAX_SWITCH_COUNT
-            ),
+            format!("Dip switch #{number} out of range, expected 1-{MAX_SWITCH_COUNT}"),
         ));
     }
     Ok(())
@@ -135,19 +132,13 @@ pub(crate) fn validate_dip_switch_range(switch_count: usize, number: usize) -> i
     if switch_count > MAX_SWITCH_COUNT {
         return Err(io::Error::new(
             io::ErrorKind::InvalidInput,
-            format!(
-                "Switch count {} out of range, expected 0-{}",
-                switch_count, MAX_SWITCH_COUNT
-            ),
+            format!("Switch count {switch_count} out of range, expected 0-{MAX_SWITCH_COUNT}"),
         ));
     }
     if number < 1 || number > switch_count {
         return Err(io::Error::new(
             io::ErrorKind::InvalidInput,
-            format!(
-                "Dip switch #{} out of range, expected 1-{}",
-                number, switch_count
-            ),
+            format!("Dip switch #{number} out of range, expected 1-{switch_count}"),
         ));
     }
     validate_generic_dip_switch_range(number)?;
@@ -207,7 +198,7 @@ mod test {
             Err(ref e) if e.kind() == io::ErrorKind::InvalidInput && e.to_string() == "Dip switch #0 out of range, expected 1-16"
         ));
         let result = validate_dip_switch_range(8 * 6 + 1, 1);
-        println!("{:?}", result);
+        println!("{result:?}");
         assert!(matches!(
             result,
             Err(ref e) if e.kind() == io::ErrorKind::InvalidInput && e.to_string() == "Switch count 49 out of range, expected 0-48"

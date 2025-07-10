@@ -1,4 +1,5 @@
-use crate::model::{Checksum8, Checksum16, Endian, NvramMap};
+use crate::encoding::read_exact_at;
+use crate::model::{Checksum8, Checksum16, Endian, MemoryLayoutType, NvramMap, Platform};
 use std::io;
 use std::io::{Read, Seek, SeekFrom, Write};
 
@@ -50,8 +51,7 @@ fn groupings_to_ranges(start: u64, end: u64, groupings: &Option<u64>) -> io::Res
                 return Err(io::Error::new(
                     io::ErrorKind::InvalidData,
                     format!(
-                        "Inclusive range [{} - {}] ({} elements) is not divisible by groupings {}",
-                        start, end, elements, group_size
+                        "Inclusive range [{start} - {end}] ({elements} elements) is not divisible by groupings {group_size}"
                     ),
                 ));
             }
@@ -80,11 +80,9 @@ fn verify_checksum8_range<T: Read + Seek>(
     start: u64,
     end: u64,
 ) -> io::Result<Option<ChecksumMismatch<u8>>> {
-    nvram_file.seek(SeekFrom::Start(start))?;
     let length = (end - start + 1) as usize;
     let mut buff = vec![0; length];
-    nvram_file.read_exact(&mut buff)?;
-
+    read_exact_at(nvram_file, start, &mut buff)?;
     let stored_sum = buff.pop().unwrap();
     let calc_sum: u8 = 0xFFu8 - buff.iter().fold(0u8, |acc, &x| acc.wrapping_add(x));
     if calc_sum != stored_sum {
@@ -103,14 +101,13 @@ pub(crate) fn verify_checksum16<T: Read + Seek>(
     nvram_file: &mut T,
     checksum16: &Checksum16,
     endian: Endian,
+    offset: u64,
 ) -> io::Result<Option<ChecksumMismatch<u16>>> {
-    let start: u64 = (&checksum16.start).into();
-    let end = end(checksum16)?;
+    let start = u64::from(&checksum16.start) - offset;
+    let end = end(checksum16, offset)?;
     let length = (1 + end - start) as usize;
-
-    nvram_file.seek(SeekFrom::Start(start))?;
     let mut buff = vec![0; length];
-    nvram_file.read_exact(&mut buff)?;
+    read_exact_at(nvram_file, start, &mut buff)?;
 
     let stored_sum = match endian {
         Endian::Big => (buff.pop().unwrap() as u16) + ((buff.pop().unwrap() as u16) << 8),
@@ -129,12 +126,12 @@ pub(crate) fn verify_checksum16<T: Read + Seek>(
     Ok(None)
 }
 
-fn end(checksum16: &Checksum16) -> io::Result<u64> {
+fn end(checksum16: &Checksum16, offset: u64) -> io::Result<u64> {
     let start: u64 = (&checksum16.start).into();
     let end: u64 = if let Some(end) = &checksum16.end {
-        end.into()
+        u64::from(end) - offset
     } else if let Some(length) = &checksum16.length {
-        start + length - 1
+        start + length - 1 - offset
     } else {
         return Err(io::Error::new(
             io::ErrorKind::InvalidData,
@@ -147,12 +144,14 @@ fn end(checksum16: &Checksum16) -> io::Result<u64> {
 pub(crate) fn verify_all_checksum16<T: Read + Seek>(
     mut nvram_file: &mut T,
     map: &NvramMap,
+    platform: &Platform,
 ) -> io::Result<Vec<ChecksumMismatch<u16>>> {
-    let endian = map._endian.as_ref().unwrap();
+    let endian = platform.endian;
+    let offset = platform.offset(MemoryLayoutType::NVRam);
     map.checksum16
         .iter()
         .flatten()
-        .map(|cs| verify_checksum16(&mut nvram_file, cs, *endian))
+        .map(|cs| verify_checksum16(&mut nvram_file, cs, endian, offset))
         .filter_map(|r| r.transpose())
         .collect()
 }
@@ -161,14 +160,14 @@ fn update_checksum16<T: Read + Seek + Write>(
     nvram_file: &mut T,
     checksum16: &Checksum16,
     endian: Endian,
+    offset: u64,
 ) -> io::Result<()> {
-    let start: u64 = (&checksum16.start).into();
-    let end: u64 = end(checksum16)?;
+    let start: u64 = u64::from(&checksum16.start) - offset;
+    let end: u64 = end(checksum16, offset)?;
     let length = (1 + end - start) as usize;
 
-    nvram_file.seek(SeekFrom::Start(start))?;
     let mut buff = vec![0; length - 2];
-    nvram_file.read_exact(&mut buff)?;
+    read_exact_at(nvram_file, start, &mut buff)?;
 
     // adding sum + all other bytes should result in 0xFFFF
     let calc_sum: u16 = 0xFFFFu16 - buff.iter().fold(0u16, |acc, &x| acc.wrapping_add(x as u16));
@@ -194,12 +193,14 @@ fn update_checksum16<T: Read + Seek + Write>(
 pub(crate) fn update_all_checksum16<T: Read + Seek + Write>(
     mut nvram_file: &mut T,
     map: &NvramMap,
+    platform: &Platform,
 ) -> io::Result<()> {
-    let endian = map._endian.as_ref().unwrap();
+    let endian = platform.endian;
+    let offset = platform.offset(MemoryLayoutType::NVRam);
     map.checksum16
         .iter()
         .flatten()
-        .try_for_each(|cs| update_checksum16(&mut nvram_file, cs, *endian))
+        .try_for_each(|cs| update_checksum16(&mut nvram_file, cs, endian, offset))
 }
 
 #[cfg(test)]
@@ -306,7 +307,7 @@ mod test {
     fn test_verify_all_checksum16() -> io::Result<()> {
         let mut file = OpenOptions::new().read(true).open("testdata/dm_lx4.nv")?;
         let nvram = Nvram::open(Path::new("testdata/dm_lx4.nv"))?.unwrap();
-        let checksum_failures = verify_all_checksum16(&mut file, &nvram.map)?;
+        let checksum_failures = verify_all_checksum16(&mut file, &nvram.map, &nvram.platform)?;
         assert_eq!(Vec::<ChecksumMismatch<u16>>::new(), checksum_failures);
         Ok(())
     }

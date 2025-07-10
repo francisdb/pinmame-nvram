@@ -1,5 +1,5 @@
 {
-  "_fileformat": 0.4,
+  "_fileformat": 0.7,
   "adjustments": {
     "Game Adjustments": {
       "16": {
@@ -98,7 +98,25 @@
     "credits": {
       "label": "Credits",
       "value": 0
-    }
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 9999998
+      },
+      {
+        "label": "Player 2",
+        "value": 9999980
+      },
+      {
+        "label": "Player 3",
+        "value": 9
+      },
+      {
+        "label": "Player 4",
+        "value": 6000
+      }
+    ]
   },
   "high_scores": [
     {
@@ -107,20 +125,6 @@
         "value": 140000
       },
       "short_label": "HS"
-    }
-  ],
-  "last_game": [
-    {
-      "value": 9999998
-    },
-    {
-      "value": 9999980
-    },
-    {
-      "value": 9
-    },
-    {
-      "value": 6000
     }
   ]
 }

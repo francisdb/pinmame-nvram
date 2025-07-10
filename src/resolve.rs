@@ -1,14 +1,14 @@
 use crate::checksum::{verify_checksum8, verify_checksum16};
-use crate::encoding::{Location, read_bcd, read_ch, read_int, read_wpc_rtc};
+use crate::encoding::{Location, read_bcd, read_ch, read_exact_at, read_int, read_wpc_rtc};
 use crate::model::{
     Checksum8, Checksum16, DEFAULT_LENGTH, DEFAULT_SCALE, Encoding, Endian, GlobalSettings,
-    GlobalSettingsImpl, Nibble, Null,
+    GlobalSettingsImpl, MemoryLayoutType, Nibble, Null, Platform,
 };
-use crate::{dips, open_nvram};
+use crate::{dips, open_nvram, read_platform};
 use serde_json::{Map, Number, Value};
 use std::fs::OpenOptions;
 use std::io;
-use std::io::{Read, Seek, SeekFrom};
+use std::io::{Read, Seek};
 use std::path::Path;
 
 pub fn resolve(nv_path: &Path) -> io::Result<Option<Value>> {
@@ -19,12 +19,14 @@ pub fn resolve(nv_path: &Path) -> io::Result<Option<Value>> {
             serde_json::from_value(map.clone()).map_err(|e| {
                 io::Error::new(
                     io::ErrorKind::InvalidData,
-                    format!("Failed to parse global settings: {}", e),
+                    format!("Failed to parse global settings: {e}"),
                 )
             })?;
 
+        let platform: Platform = read_platform(global_settings.platform())?;
+
         let mut rom = OpenOptions::new().read(true).open(nv_path)?;
-        match resolve_recursive(map, &global_settings, &mut rom) {
+        match resolve_recursive(map, &global_settings, &platform, &mut rom) {
             Ok(resolved) => Some(resolved),
             Err(e) => {
                 return Err(io::Error::new(
@@ -42,22 +44,43 @@ pub fn resolve(nv_path: &Path) -> io::Result<Option<Value>> {
 fn resolve_recursive<T: Read + Seek, S: GlobalSettings>(
     value: &Value,
     global_settings: &S,
+    platform: &Platform,
     rom: &mut T,
 ) -> io::Result<Value> {
+    let nvram_layout = platform
+        .memory_layout
+        .iter()
+        .find(|layout| layout.type_ == MemoryLayoutType::NVRam)
+        .ok_or_else(|| {
+            io::Error::new(
+                io::ErrorKind::NotFound,
+                "NVRam layout not found in platform memory layout",
+            )
+        })?;
+    let offset: u64 = (&nvram_layout.address).into();
+    let nibble = nvram_layout.nibble();
     let result: Value = match value {
         Value::Object(map) => {
             // println!("{:?}", map);
             // println!("{:?}", map.get("encoding"));
             if let Some(encoding) = map.get("encoding") {
                 let encoding: Encoding = serde_json::from_value(encoding.clone())?;
-                let value = resolve_value(rom, map, encoding, global_settings);
+                let value = resolve_value(
+                    rom,
+                    map,
+                    encoding,
+                    platform.endian,
+                    nibble,
+                    global_settings,
+                    offset,
+                );
                 let warning = match &value {
                     Ok(value) => {
                         // FIXME if the value is an enum we need to validate the raw value
                         //   instead of the enum value
                         validate_range(map, value)
                     }
-                    Err(e) => Some(format!("Failed to resolve: {}", e)),
+                    Err(e) => Some(format!("Failed to resolve: {e}")),
                 };
                 let mut resolved_map = Map::new();
                 if let Ok(value) = value {
@@ -75,15 +98,21 @@ fn resolve_recursive<T: Read + Seek, S: GlobalSettings>(
                 let mut resolved_map = Map::new();
                 for (key, value) in map.iter() {
                     if key.eq("checksum16") {
-                        let checksum_result =
-                            resolve_checksum16(global_settings.endianness(), rom, value)?;
+                        let checksum_result = resolve_checksum16(
+                            platform.endian,
+                            rom,
+                            value,
+                            platform.offset(MemoryLayoutType::NVRam),
+                        )?;
                         resolved_map.insert(key.clone(), checksum_result);
                     } else if key.eq("checksum8") {
                         let checksum_result = resolve_checksum8(rom, value)?;
                         resolved_map.insert(key.clone(), checksum_result);
                     } else if key.eq("_fileformat") || !key.starts_with('_') {
-                        resolved_map
-                            .insert(key.clone(), resolve_recursive(value, global_settings, rom)?);
+                        resolved_map.insert(
+                            key.clone(),
+                            resolve_recursive(value, global_settings, platform, rom)?,
+                        );
                     }
                 }
                 Value::Object(resolved_map)
@@ -92,7 +121,7 @@ fn resolve_recursive<T: Read + Seek, S: GlobalSettings>(
         Value::Array(array) => {
             let resolved_array: Vec<Value> = array
                 .iter()
-                .map(|v| resolve_recursive(v, global_settings, rom))
+                .map(|v| resolve_recursive(v, global_settings, platform, rom))
                 .collect::<Result<Vec<_>, _>>()?;
             Value::Array(resolved_array)
         }
@@ -108,7 +137,7 @@ fn validate_range(map: &Map<String, Value>, value: &Value) -> Option<String> {
         // TODO might be better to do this check earlier before the scaling is applied
         // min and max are unscaled values so we need to unscale the value first
         let Some(number_value) = value.as_u64() else {
-            return Some(format!("Value {} is not an unsigned int", value));
+            return Some(format!("Value {value} is not an unsigned int"));
         };
         let unscaled_value = if let Some(scale) = map.get("scale") {
             let scale = scale.as_u64().unwrap();
@@ -121,8 +150,7 @@ fn validate_range(map: &Map<String, Value>, value: &Value) -> Option<String> {
         let max = max.as_u64().unwrap();
         if unscaled_value < min || unscaled_value > max {
             return Some(format!(
-                "Value out of range: {} ≤ {} ≤ {}",
-                min, unscaled_value, max
+                "Value out of range: {min} ≤ {unscaled_value} ≤ {max}"
             ));
         }
     }
@@ -133,12 +161,13 @@ fn resolve_checksum16<T: Read + Seek>(
     endian: Endian,
     rom: &mut T,
     value: &Value,
+    offset: u64,
 ) -> io::Result<Value> {
     // go over the checksum16 array and verify the checksum
     let mut checksum_result: Vec<Value> = Vec::new();
     for checksum in value.as_array().unwrap() {
         let checksum16: Checksum16 = serde_json::from_value(checksum.clone())?;
-        let checksum_failure = verify_checksum16(rom, &checksum16, endian)?;
+        let checksum_failure = verify_checksum16(rom, &checksum16, endian, offset)?;
         let mut map = Map::new();
         if let Some(label) = checksum.get("label") {
             map.insert("label".to_string(), label.clone());
@@ -195,9 +224,14 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
     rom: &mut T,
     map: &Map<String, Value>,
     encoding: Encoding,
+    endian: Endian,
+    nibble: Nibble,
     global_settings: &U,
+    offset: u64,
 ) -> io::Result<Value> {
-    let start = map.get("start").map(json_hex_or_int).transpose()?;
+    let start_native = map.get("start").map(json_hex_or_int).transpose()?;
+    // in a nvram file the start is always relative to the nvram layout address
+    let start = start_native.map(|s| s - offset);
     let length = map
         .get("length")
         .map_or(DEFAULT_LENGTH, |v| v.as_u64().unwrap() as usize);
@@ -208,21 +242,14 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
                 .and_then(|s| s.as_number())
                 .cloned()
                 .unwrap_or(Number::from(DEFAULT_SCALE));
-            let value = read_int(
-                rom,
-                global_settings.endianness(),
-                global_settings.nibble(),
-                start.unwrap(),
-                length,
-                &scale,
-            )?;
+            let value = read_int(rom, endian, nibble, start.unwrap(), length, &scale)?;
             Value::Number(value.into())
         }
         Encoding::Enum => {
             let index = read_int(
                 rom,
-                global_settings.endianness(),
-                global_settings.nibble(),
+                endian,
+                nibble,
                 start.unwrap(),
                 length,
                 &Number::from(DEFAULT_SCALE),
@@ -267,27 +294,27 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
             let nibble: Nibble = map
                 .get("nibble")
                 .map(|n| serde_json::from_value(n.clone()).unwrap())
-                .unwrap_or(global_settings.nibble());
+                .unwrap_or(nibble);
 
-            let value = read_bcd(rom, location, nibble, &scale, global_settings.endianness())?;
+            let value = read_bcd(rom, location, nibble, &scale, endian)?;
             Value::Number(value.into())
         }
         Encoding::Ch => {
-            let start = json_hex_or_int(map.get("start").unwrap())?;
             let mask = map.get("mask").map(json_hex_or_int).transpose()?;
-            let nibble: Option<Nibble> = map
+            let nibble = map
                 .get("nibble")
-                .map(|n| serde_json::from_value(n.clone()).unwrap());
+                .map(|n| serde_json::from_value(n.clone()).unwrap())
+                .unwrap_or(nibble);
             let null: Option<Null> = map
                 .get("null")
                 .map(|n| serde_json::from_value(n.clone()).unwrap());
             let value = read_ch(
                 rom,
-                start,
+                start.unwrap(),
                 length,
                 mask,
                 global_settings.char_map(),
-                nibble.unwrap_or(global_settings.nibble()),
+                nibble,
                 null,
             )?;
             Value::String(value)
@@ -302,8 +329,7 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
         }
         Encoding::Raw => {
             let mut buff = vec![0; length];
-            rom.seek(SeekFrom::Start(start.unwrap()))?;
-            rom.read_exact(&mut buff)?;
+            read_exact_at(rom, start.unwrap(), &mut buff)?;
             Value::Array(buff.iter().map(|b| Value::Number((*b).into())).collect())
         }
         Encoding::Dipsw => {
@@ -338,7 +364,7 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
                     }
                 }
                 _ => {
-                    panic!("Unexpected dip switch values type: {:?}", values);
+                    panic!("Unexpected dip switch values type: {values:?}");
                 }
             }
         }
@@ -354,7 +380,7 @@ fn json_hex_or_int(s: &Value) -> io::Result<u64> {
                 u64::from_str_radix(&s[2..], 16)
                     .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))
             } else {
-                panic!("Not implemented: int from string {}", s)
+                panic!("Not implemented: int from string {s}")
             }
         }
 
@@ -377,7 +403,7 @@ mod tests {
     fn test_resolve() -> io::Result<()> {
         let path = Path::new("testdata/hs_l4.nv");
         let map: Option<Value> = resolve(path)?;
-        assert!(map.is_some(), "Failed to resolve: {:?}", path);
+        assert!(map.is_some(), "Failed to resolve: {path:?}");
 
         // let json = serde_json::to_string_pretty(&map.unwrap())?;
         // assert_eq!("{}", json);
@@ -389,7 +415,7 @@ mod tests {
         let excludes = ["_note"];
 
         // Temporarily disable these rom game names if you can't find the nvram
-        let expected: [&str; 118] = [
+        let expected: [&str; 131] = [
             "algar_l1ff",
             "alpok_b6",
             "alpok_f6",
@@ -397,6 +423,15 @@ mod tests {
             "alpok_l2",
             "alpok_l2ff",
             "alpok_l6ff",
+            "amaz3afp",
+            "amazn2fp",
+            "amazn3fp",
+            "amazonh2",
+            "amazonh3",
+            "arena_fp",
+            "arenaafp",
+            "arenaffp",
+            "arenagfp",
             "badgrffp",
             "badgrgfp",
             "badgrlfp",
@@ -433,6 +468,10 @@ mod tests {
             "frpwr_l6ff",
             "frpwr_t6",
             "frpwr_t6ff",
+            "genesffp",
+            "genesgfp",
+            "genesifp",
+            "genesis",
             "gldwgffp",
             "gldwggfp",
             "goldwgfp",
@@ -540,7 +579,7 @@ mod tests {
             if nvram_path.extension().unwrap() == "nv" {
                 let path = path_for_test(&test_dir, &nvram_path)?;
                 if excludes.contains(&path.file_stem().unwrap().to_str().unwrap()) {
-                    println!("Skipping: {:?}", path);
+                    println!("Skipping: {path:?}");
                     continue;
                 }
                 let map = resolve(&path)?;
@@ -553,15 +592,15 @@ mod tests {
                     if json_path.exists() {
                         let expected = std::fs::read_to_string(json_path)?;
                         let actual = serde_json::to_string_pretty(&map)?;
-                        assert_eq!(expected, actual, "Mismatch: {:?}", json_path);
+                        assert_eq!(expected, actual, "Mismatch: {json_path:?}");
                     } else {
                         // Enable this to regenerate the missing json files
                         // let json = serde_json::to_string_pretty(&map)?;
                         // std::fs::write(&json_path, json)?;
-                        panic!("Expected file not found: {:?}", json_path);
+                        panic!("Expected file not found: {json_path:?}");
                     }
                 } else {
-                    panic!("Failed to resolve: {:?}", path);
+                    panic!("Failed to resolve: {path:?}");
                 }
             }
         }
