@@ -161,6 +161,240 @@
         "value": 58
       }
     },
+    "B.4 FEATURE AUDS.": {
+      "01": {
+        "label": "BALL SAVES",
+        "value": 5
+      },
+      "02": {
+        "label": "TOTAL MULTIBALLS",
+        "value": 0
+      },
+      "03": {
+        "label": "BALLS LOCKED",
+        "value": 0
+      },
+      "04": {
+        "label": "CASTLE M.B. START",
+        "value": 0
+      },
+      "05": {
+        "label": "CASTLE M.B. J.P.",
+        "value": 0
+      },
+      "06": {
+        "label": "CASTLE M.B. S.J.",
+        "value": 0
+      },
+      "07": {
+        "label": "CASTLE M.B. E.B. LIT",
+        "value": 0
+      },
+      "08": {
+        "label": "CASTLE ATK. START",
+        "value": 0
+      },
+      "09": {
+        "label": "CASTLE ATK. COMPL.",
+        "value": 0
+      },
+      "10": {
+        "label": "CASTLE ATK. E.B.L.",
+        "value": 0
+      },
+      "11": {
+        "label": "1st CASTLE START",
+        "value": 0
+      },
+      "12": {
+        "label": "1st CASTLE COMPL.",
+        "value": 0
+      },
+      "13": {
+        "label": "2nd CASTLE START",
+        "value": 0
+      },
+      "14": {
+        "label": "2nd CASTLE COMPL.",
+        "value": 0
+      },
+      "15": {
+        "label": "3rd CASTLE START",
+        "value": 0
+      },
+      "16": {
+        "label": "3rd CASTLE COMPL.",
+        "value": 0
+      },
+      "17": {
+        "label": "4th CASTLE START",
+        "value": 0
+      },
+      "18": {
+        "label": "4th CASTLE COMPL.",
+        "value": 0
+      },
+      "19": {
+        "label": "5th CASTLE START",
+        "value": 0
+      },
+      "20": {
+        "label": "5th CASTLE COMPL.",
+        "value": 0
+      },
+      "21": {
+        "label": "6th CASTLE START",
+        "value": 0
+      },
+      "22": {
+        "label": "6th CASTLE COMPL.",
+        "value": 0
+      },
+      "23": {
+        "label": "TROLLS! LIT",
+        "value": 0
+      },
+      "24": {
+        "label": "TROLLS! START",
+        "value": 0
+      },
+      "25": {
+        "label": "TROLLS! COMPL.",
+        "value": 0
+      },
+      "26": {
+        "label": "TROLL BOMBS COLL.",
+        "value": 0
+      },
+      "27": {
+        "label": "TROLL BOMBS USED",
+        "value": 0
+      },
+      "28": {
+        "label": "JOUST MAD. LIT",
+        "value": 0
+      },
+      "29": {
+        "label": "CATAPULT MAD. LIT",
+        "value": 0
+      },
+      "30": {
+        "label": "PEASANT MAD. LIT",
+        "value": 0
+      },
+      "31": {
+        "label": "DAMSEL MAD. LIT",
+        "value": 0
+      },
+      "32": {
+        "label": "TROLL MAD. LIT",
+        "value": 0
+      },
+      "33": {
+        "label": "M.B. MADNESS START",
+        "value": 0
+      },
+      "34": {
+        "label": "1 MADNESS START",
+        "value": 0
+      },
+      "35": {
+        "label": "2 MADNESS START",
+        "value": 0
+      },
+      "36": {
+        "label": "3 MADNESS START",
+        "value": 0
+      },
+      "37": {
+        "label": "4 MADNESS START",
+        "value": 0
+      },
+      "38": {
+        "label": "5 MADNESS START",
+        "value": 0
+      },
+      "39": {
+        "label": "M.B. MADNESS JP.",
+        "value": 0
+      },
+      "40": {
+        "label": "M.B. MADNESS S.J.",
+        "value": 0
+      },
+      "41": {
+        "label": "M.B. MADNESS D.S.J.",
+        "value": 0
+      },
+      "42": {
+        "label": "HURRY UP START",
+        "value": 0
+      },
+      "43": {
+        "label": "HURRY UP AWARDS",
+        "value": 0
+      },
+      "44": {
+        "label": "HURRY UP E.B. LIT",
+        "value": 0
+      },
+      "45": {
+        "label": "R. MADNESS START",
+        "value": 0
+      },
+      "46": {
+        "label": "R. MADNESS COMPL.",
+        "value": 0
+      },
+      "47": {
+        "label": "R. MADNESS E.B.",
+        "value": 0
+      },
+      "48": {
+        "label": "BARNYRD M.B. START",
+        "value": 0
+      },
+      "49": {
+        "label": "B. KINGDOM START",
+        "value": 0
+      },
+      "50": {
+        "label": "B. KINGDOM COMPL.",
+        "value": 0
+      },
+      "51": {
+        "label": "SUPER SKILL SHOT",
+        "value": 0
+      },
+      "52": {
+        "label": "SUPER JETS START",
+        "value": 1
+      },
+      "53": {
+        "label": "RANDOM AWARD",
+        "value": 0
+      },
+      "54": {
+        "label": "RANDOM E.B. LIT",
+        "value": 0
+      },
+      "55": {
+        "label": "VIDEO MODE START",
+        "value": 0
+      },
+      "56": {
+        "label": "VIDEO E.B.",
+        "value": 0
+      },
+      "57": {
+        "label": "VIDEO COMPL.",
+        "value": 0
+      },
+      "58": {
+        "label": "SMACK TRL. START",
+        "value": 0
+      }
+    },
     "B.5 Histograms": {
       "01": {
         "label": "0-0.99M Score",

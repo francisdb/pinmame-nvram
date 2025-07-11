@@ -1,5 +1,429 @@
 {
   "_fileformat": 0.7,
+  "audits": {
+    "B.2 EARNINGS AUDS.": {
+      "02": {
+        "label": "RECENT LEFT SLOT",
+        "value": 0
+      },
+      "03": {
+        "label": "RECENT CENT. SLOT",
+        "value": 3
+      },
+      "04": {
+        "label": "RECENT RGHT. SLOT",
+        "value": 1
+      },
+      "05": {
+        "label": "RECENT 4TH SLOT",
+        "value": 0
+      },
+      "06": {
+        "label": "RECENT PAID CRED",
+        "value": 9
+      },
+      "07": {
+        "label": "TOTAL EARNINGS",
+        "value": 0
+      },
+      "09": {
+        "label": "TOTAL LEFT SLOT",
+        "value": 0
+      },
+      "10": {
+        "label": "TOTAL CENTR. SLOT",
+        "value": 3
+      },
+      "11": {
+        "label": "TOTAL RIGHT SLOT",
+        "value": 1
+      },
+      "12": {
+        "label": "TOTAL 4TH SLOT",
+        "value": 0
+      },
+      "13": {
+        "label": "TOTAL PAID CRED.",
+        "value": 9
+      },
+      "14": {
+        "label": "TOTAL SERV. CRED.",
+        "value": 0
+      }
+    },
+    "B.3 STANDARD AUDS.": {
+      "01": {
+        "label": "GAMES STARTED",
+        "value": 2
+      },
+      "02": {
+        "label": "TOTAL PLAYS",
+        "value": 0
+      },
+      "03": {
+        "label": "TOTAL FREE PLAYS",
+        "value": 0
+      },
+      "05": {
+        "label": "REPLAY AWARDS",
+        "value": 0
+      },
+      "07": {
+        "label": "SPECIAL AWARDS",
+        "value": 0
+      },
+      "09": {
+        "label": "MATCH AWARDS",
+        "value": 0
+      },
+      "11": {
+        "label": "H.S.T.D. CREDITS",
+        "value": 0
+      },
+      "13": {
+        "label": "BONUS BALL",
+        "value": 0
+      },
+      "15": {
+        "label": "TICKETS AWARDED",
+        "value": 0
+      },
+      "17": {
+        "label": "LEFT DRAINS",
+        "value": 0
+      },
+      "18": {
+        "label": "RIGHT DRAINS",
+        "value": 0
+      },
+      "21": {
+        "label": "PLAY TIME",
+        "value": 0
+      },
+      "22": {
+        "label": "MINUTES ON",
+        "value": 3
+      },
+      "23": {
+        "label": "BALLS PLAYED",
+        "value": 0
+      },
+      "24": {
+        "label": "TILTS",
+        "value": 0
+      },
+      "25": {
+        "label": "REPLAY 1 AWARDS",
+        "value": 0
+      },
+      "26": {
+        "label": "REPLAY 2 AWARDS",
+        "value": 0
+      },
+      "27": {
+        "label": "REPLAY 3 AWARDS",
+        "value": 0
+      },
+      "28": {
+        "label": "REPLAY 4 AWARDS",
+        "value": 0
+      },
+      "29": {
+        "label": "1 PLAYER GAMES",
+        "value": 0
+      },
+      "30": {
+        "label": "2 PLAYER GAMES",
+        "value": 0
+      },
+      "31": {
+        "label": "3 PLAYER GAMES",
+        "value": 0
+      },
+      "32": {
+        "label": "4 PLAYER GAMES",
+        "value": 0
+      },
+      "33": {
+        "label": "H.S.T.D. RESET COUNT",
+        "value": 3000
+      },
+      "34": {
+        "label": "BURN-IN TIME",
+        "value": 0
+      },
+      "36": {
+        "label": "LEFT FLIPPER",
+        "value": 0
+      },
+      "37": {
+        "label": "RIGHT FLIPPER",
+        "value": 0
+      }
+    },
+    "B.4 FEATURE AUDS.": {
+      "01": {
+        "label": "OUTLN B. BALL",
+        "value": 0
+      },
+      "02": {
+        "label": "OUTLN 2 MILL",
+        "value": 0
+      },
+      "03": {
+        "label": "OUTLN GIFT GODS",
+        "value": 0
+      },
+      "04": {
+        "label": "OUTLN 500K",
+        "value": 0
+      },
+      "05": {
+        "label": "OUTLN 100K",
+        "value": 0
+      },
+      "06": {
+        "label": "POTION READY",
+        "value": 0
+      },
+      "07": {
+        "label": "JACKPOT 50 MILL",
+        "value": 0
+      },
+      "08": {
+        "label": "JACKPOT  5 MILL",
+        "value": 0
+      },
+      "09": {
+        "label": "JACKPOT  4 MILL",
+        "value": 0
+      },
+      "10": {
+        "label": "JACKPOT  3 MILL",
+        "value": 0
+      },
+      "11": {
+        "label": "JACKPOT  2 MILL",
+        "value": 0
+      },
+      "12": {
+        "label": "JACKPOT  1 MILL",
+        "value": 0
+      },
+      "13": {
+        "label": "500K OUT LANE",
+        "value": 0
+      },
+      "14": {
+        "label": "EJECT KICKB ON",
+        "value": 0
+      },
+      "15": {
+        "label": "EJECT 200K RMPDN",
+        "value": 0
+      },
+      "16": {
+        "label": "EJECT SPOT ITEM",
+        "value": 0
+      },
+      "17": {
+        "label": "EJECT 100K RMPDN",
+        "value": 0
+      },
+      "18": {
+        "label": "LAGOON DONE",
+        "value": 0
+      },
+      "19": {
+        "label": "LAGOON MULTIBALL",
+        "value": 0
+      },
+      "20": {
+        "label": "LAGOON BON. BALL",
+        "value": 0
+      },
+      "21": {
+        "label": "LAGOON 3 MILL.",
+        "value": 0
+      },
+      "22": {
+        "label": "LAGOON 2 MILL.",
+        "value": 0
+      },
+      "23": {
+        "label": "LAGOON 1 MILL.",
+        "value": 0
+      },
+      "24": {
+        "label": "LAGOON 750K",
+        "value": 0
+      },
+      "25": {
+        "label": "LAGOON 500K",
+        "value": 0
+      },
+      "26": {
+        "label": "LAGOON 300K",
+        "value": 0
+      },
+      "27": {
+        "label": "LAGOON 150K",
+        "value": 0
+      }
+    },
+    "B.5 HISTOGRAMS": {
+      "01": {
+        "label": "0.0-0.4 MIL. SCORE",
+        "value": 0
+      },
+      "02": {
+        "label": "0.5-0.9 MIL. SCORE",
+        "value": 0
+      },
+      "03": {
+        "label": "1.0-1.4 MIL. SCORE",
+        "value": 0
+      },
+      "04": {
+        "label": "1.5-1.9 MIL. SCORE",
+        "value": 0
+      },
+      "05": {
+        "label": "2.0-2.9 MIL. SCORE",
+        "value": 0
+      },
+      "06": {
+        "label": "3.0-3.9 MIL. SCORE",
+        "value": 0
+      },
+      "07": {
+        "label": "4.0-4.9 MIL. SCORE",
+        "value": 0
+      },
+      "08": {
+        "label": "5.0-5.9 MIL. SCORE",
+        "value": 0
+      },
+      "09": {
+        "label": "6.0-7.9 MIL. SCORE",
+        "value": 0
+      },
+      "10": {
+        "label": "8.0-9.9 MIL. SCORE",
+        "value": 0
+      },
+      "11": {
+        "label": "10-15 MIL. SCORE",
+        "value": 0
+      },
+      "12": {
+        "label": "15-20 MIL. SCORE",
+        "value": 0
+      },
+      "13": {
+        "label": "OVER 20 MILLION",
+        "value": 0
+      },
+      "14": {
+        "label": "GAME TIME 0.0-1.0M",
+        "value": 0
+      },
+      "15": {
+        "label": "GAME TIME 1.0-1.5M",
+        "value": 0
+      },
+      "16": {
+        "label": "GAME TIME 1.5-2.0M",
+        "value": 0
+      },
+      "17": {
+        "label": "GAME TIME 2.0-2.5M",
+        "value": 0
+      },
+      "18": {
+        "label": "GAME TIME 2.5-3.0M",
+        "value": 0
+      },
+      "19": {
+        "label": "GAME TIME 3.0-3.5M",
+        "value": 0
+      },
+      "20": {
+        "label": "GAME TIME 3.5-4.0M",
+        "value": 0
+      },
+      "21": {
+        "label": "GAME TIME 4-5 M.",
+        "value": 0
+      },
+      "22": {
+        "label": "GAME TIME 5-6 M.",
+        "value": 0
+      },
+      "23": {
+        "label": "GAME TIME 6-8 M.",
+        "value": 0
+      },
+      "24": {
+        "label": "GAME TIME 8-10 M",
+        "value": 0
+      },
+      "25": {
+        "label": "GAME TIME 10-15M",
+        "value": 0
+      },
+      "26": {
+        "label": "GAME TIME > 15M",
+        "value": 0
+      }
+    },
+    "B.6 TIME-STAMPS": {
+      "02": {
+        "label": "TOTALS CLEARED",
+        "value": "2023-11-05 14:53"
+      },
+      "03": {
+        "label": "CLOCK LAST SET",
+        "value": "2023-11-05 14:53"
+      },
+      "04": {
+        "label": "AUDITS CLEARED",
+        "value": "2023-11-05 14:53"
+      },
+      "05": {
+        "label": "COINS CLEARED",
+        "value": "2023-11-05 14:53"
+      },
+      "06": {
+        "label": "FACTORY SETTING",
+        "value": "2023-11-05 14:53"
+      },
+      "07": {
+        "label": "LAST GAME START",
+        "value": "2023-12-07 14:04"
+      },
+      "08": {
+        "label": "LAST REPLAY",
+        "value": "2023-11-05 14:53"
+      },
+      "09": {
+        "label": "LAST HSTD RESET",
+        "value": "2023-11-05 14:53"
+      },
+      "10": {
+        "label": "CHAMPION RESET",
+        "value": "2023-11-05 14:53"
+      },
+      "11": {
+        "label": "LAST PRINTOUT",
+        "value": "2023-11-05 14:53"
+      },
+      "12": {
+        "label": "LAST SERV. CRED",
+        "value": "2023-11-05 14:53"
+      }
+    }
+  },
   "checksum16": [
     {
       "label": "Adjustments",

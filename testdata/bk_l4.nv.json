@@ -233,9 +233,71 @@
     }
   },
   "game_state": {
+    "ball_count": {
+      "label": "Ball Count",
+      "value": 3
+    },
+    "bonus_time": {
+      "label": "Bonus Time",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
     "credits": {
       "label": "Credits",
       "value": 28
+    },
+    "current_ball": {
+      "label": "Ball",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "current_player": {
+      "label": "Current Player",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "extra_balls": {
+      "label": "Extra Balls",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "game_over": {
+      "label": "Game Over",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "player_count": {
+      "label": "Players",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "playfield_valid": {
+      "label": "Playfield Valid",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "warning": "Failed to resolve: Value is stored outside the NVRAM"
+      },
+      {
+        "label": "Player 2",
+        "warning": "Failed to resolve: Value is stored outside the NVRAM"
+      },
+      {
+        "label": "Player 3",
+        "warning": "Failed to resolve: Value is stored outside the NVRAM"
+      },
+      {
+        "label": "Player 4",
+        "warning": "Failed to resolve: Value is stored outside the NVRAM"
+      }
+    ],
+    "self_test": {
+      "label": "Self Test",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "tilt": {
+      "label": "Tilt",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "tilt_warnings": {
+      "label": "Tilt Warnings",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
     }
   },
   "high_scores": [

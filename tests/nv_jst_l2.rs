@@ -1,6 +1,5 @@
 use pinmame_nvram::{HighScore, Nvram};
 use pretty_assertions::assert_eq;
-use std::collections::HashMap;
 use std::io;
 use std::path::Path;
 
@@ -8,9 +7,9 @@ use std::path::Path;
 fn test_joust() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/jst_l2.nv"))?.unwrap();
 
-    let game_state = nvram.read_game_state()?;
-    let expected = HashMap::from([("credits".into(), "31".into())]);
-    assert_eq!(Some(expected), game_state);
+    let game_state = nvram.read_game_state()?.unwrap();
+    assert_eq!("31", game_state.get("credits").unwrap());
+    assert_eq!("5", game_state.get("ball_count").unwrap());
 
     let scores = nvram.read_highscores()?;
     let expected = vec![HighScore {

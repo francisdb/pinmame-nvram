@@ -1,6 +1,5 @@
 use pinmame_nvram::{HighScore, Nvram};
 use pretty_assertions::assert_eq;
-use std::collections::HashMap;
 use std::io;
 use std::path::Path;
 
@@ -8,9 +7,9 @@ use std::path::Path;
 fn test_star_light() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/strlt_l1.nv"))?.unwrap();
 
-    let game_state = nvram.read_game_state()?;
-    let expected = HashMap::from([("credits".into(), "2".into())]);
-    assert_eq!(Some(expected), game_state);
+    let game_state = nvram.read_game_state()?.unwrap();
+    assert_eq!("2", game_state.get("credits").unwrap());
+    assert_eq!("3", game_state.get("ball_count").unwrap());
 
     let scores = nvram.read_highscores()?;
     let expected = vec![HighScore {

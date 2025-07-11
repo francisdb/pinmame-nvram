@@ -298,6 +298,498 @@
       }
     }
   },
+  "audits": {
+    "B.2 EARNINGS AUDS.": {
+      "02": {
+        "label": "RECENT LEFT SLOT",
+        "value": 0
+      },
+      "03": {
+        "label": "RECENT CENT. SLOT",
+        "value": 35
+      },
+      "04": {
+        "label": "RECENT RGHT. SLOT",
+        "value": 22
+      },
+      "05": {
+        "label": "RECENT 4TH SLOT",
+        "value": 0
+      },
+      "06": {
+        "label": "RECENT PAID CRED",
+        "value": 28
+      },
+      "07": {
+        "label": "RECENT SERV. CRED",
+        "value": 0
+      },
+      "09": {
+        "label": "TOTAL LEFT SLOT",
+        "value": 0
+      },
+      "10": {
+        "label": "TOTAL CENTR. SLOT",
+        "value": 35
+      },
+      "11": {
+        "label": "TOTAL RIGHT SLOT",
+        "value": 22
+      },
+      "12": {
+        "label": "TOTAL 4TH SLOT",
+        "value": 0
+      },
+      "13": {
+        "label": "TOTAL PAID CRED.",
+        "value": 28
+      },
+      "14": {
+        "label": "TOTAL SERV. CRED.",
+        "value": 0
+      }
+    },
+    "B.3 STANDARD AUDS.": {
+      "01": {
+        "label": "GAMES STARTED",
+        "value": 18
+      },
+      "02": {
+        "label": "TOTAL PLAYS",
+        "value": 6
+      },
+      "03": {
+        "label": "TOTAL FREE PLAYS",
+        "value": 0
+      },
+      "05": {
+        "label": "REPLAY AWARDS",
+        "value": 0
+      },
+      "07": {
+        "label": "SPECIAL AWARDS",
+        "value": 0
+      },
+      "09": {
+        "label": "MATCH AWARDS",
+        "value": 0
+      },
+      "11": {
+        "label": "H.S.T.D. CREDITS",
+        "value": 0
+      },
+      "13": {
+        "label": "EXTRA BALLS",
+        "value": 0
+      },
+      "15": {
+        "label": "TICKETS AWARDED",
+        "value": 0
+      },
+      "17": {
+        "label": "LEFT DRAINS",
+        "value": 3
+      },
+      "18": {
+        "label": "RIGHT DRAINS",
+        "value": 2
+      },
+      "21": {
+        "label": "PLAY TIME",
+        "value": 300
+      },
+      "22": {
+        "label": "MINUTES ON",
+        "value": 30
+      },
+      "23": {
+        "label": "BALLS PLAYED",
+        "value": 18
+      },
+      "24": {
+        "label": "TILTS",
+        "value": 0
+      },
+      "25": {
+        "label": "REPLAY 1 AWARDS",
+        "value": 0
+      },
+      "26": {
+        "label": "REPLAY 2 AWARDS",
+        "value": 0
+      },
+      "27": {
+        "label": "REPLAY 3 AWARDS",
+        "value": 0
+      },
+      "28": {
+        "label": "REPLAY 4 AWARDS",
+        "value": 0
+      },
+      "29": {
+        "label": "1 PLAYER GAMES",
+        "value": 1
+      },
+      "30": {
+        "label": "2 PLAYER GAMES",
+        "value": 0
+      },
+      "31": {
+        "label": "3 PLAYER GAMES",
+        "value": 0
+      },
+      "32": {
+        "label": "4 PLAYER GAMES",
+        "value": 0
+      },
+      "33": {
+        "label": "H.S.T.D. RESET COUNT",
+        "value": 2994
+      },
+      "34": {
+        "label": "BURN-IN TIME",
+        "value": 0
+      },
+      "36": {
+        "label": "LEFT FLIPPER",
+        "value": 238
+      },
+      "37": {
+        "label": "RIGHT FLIPPER",
+        "value": 242
+      }
+    },
+    "B.4 FEATURE AUDS.": {
+      "01": {
+        "label": "Outlane Lit",
+        "value": 0
+      },
+      "02": {
+        "label": "Outlane Special",
+        "value": 0
+      },
+      "03": {
+        "label": "Outlane Ex.Ball",
+        "value": 0
+      },
+      "04": {
+        "label": "Loop Ex.Ball Lit",
+        "value": 0
+      },
+      "05": {
+        "label": "V.Mode Ex. Ball",
+        "value": 0
+      },
+      "06": {
+        "label": "Mystery Ex. Ball",
+        "value": 1
+      },
+      "07": {
+        "label": "All Locks",
+        "value": 0
+      },
+      "08": {
+        "label": "All Multiballs",
+        "value": 0
+      },
+      "09": {
+        "label": "Mist M.Ball, Tot.",
+        "value": 0
+      },
+      "10": {
+        "label": "Mist M.Ball, 1st",
+        "value": 0
+      },
+      "11": {
+        "label": "Castle M.Ball, Tot.",
+        "value": 0
+      },
+      "12": {
+        "label": "Castle M.Ball, 1st",
+        "value": 0
+      },
+      "13": {
+        "label": "Coffin M.Ball, Tot.",
+        "value": 0
+      },
+      "14": {
+        "label": "Coffin M.Ball, 1st",
+        "value": 0
+      },
+      "15": {
+        "label": "Bonus X's",
+        "value": 5
+      },
+      "16": {
+        "label": "Altars, Total",
+        "value": 5
+      },
+      "17": {
+        "label": "Altars, 1st",
+        "value": 2
+      },
+      "18": {
+        "label": "Altars, 2nd",
+        "value": 1
+      },
+      "19": {
+        "label": "Altars, 3rd",
+        "value": 1
+      },
+      "20": {
+        "label": "Altars, 4th",
+        "value": 1
+      },
+      "21": {
+        "label": "Altars, 5th",
+        "value": 0
+      },
+      "22": {
+        "label": "Rat mode, Total",
+        "value": 1
+      },
+      "23": {
+        "label": "Rat mode, 1st",
+        "value": 1
+      },
+      "24": {
+        "label": "Loops, Total",
+        "value": 1
+      },
+      "25": {
+        "label": "Loops, 1st",
+        "value": 1
+      },
+      "26": {
+        "label": "Loops, 2nd",
+        "value": 0
+      },
+      "27": {
+        "label": "Loops, 3rd",
+        "value": 0
+      },
+      "28": {
+        "label": "Loops, 4th",
+        "value": 0
+      },
+      "29": {
+        "label": "Loops, 5th",
+        "value": 0
+      },
+      "30": {
+        "label": "Bat mode, Total",
+        "value": 0
+      },
+      "31": {
+        "label": "Bat mode, 1st",
+        "value": 0
+      },
+      "32": {
+        "label": "Mystery, Total",
+        "value": 5
+      },
+      "33": {
+        "label": "Mystery, 1st",
+        "value": 5
+      },
+      "34": {
+        "label": "Video Mode, Total",
+        "value": 0
+      },
+      "35": {
+        "label": "Video Mode, 1st",
+        "value": 0
+      },
+      "36": {
+        "label": "Video Modes, Won",
+        "value": 0
+      },
+      "37": {
+        "label": "Video Modes, Lost",
+        "value": 0
+      },
+      "38": {
+        "label": "Balls Saved",
+        "value": 4
+      },
+      "39": {
+        "label": "Magnet Faults",
+        "value": 0
+      },
+      "40": {
+        "label": "T.R. Ramp Faults",
+        "value": 0
+      },
+      "41": {
+        "label": "Other Sw. Faults",
+        "value": 0
+      },
+      "42": {
+        "label": "2X Multi-M.Balls",
+        "value": 0
+      },
+      "43": {
+        "label": "3X Multi-M.Balls",
+        "value": 0
+      },
+      "44": {
+        "label": "Mist M.B. Attempts",
+        "value": 1
+      }
+    },
+    "B.5 HISTOGRAMS": {
+      "01": {
+        "label": "0-1.9 M. SCORE",
+        "value": 0
+      },
+      "02": {
+        "label": "2-4.9 M. SCORE",
+        "value": 0
+      },
+      "03": {
+        "label": "5-9.9 M. SCORE",
+        "value": 1
+      },
+      "04": {
+        "label": "10-19 M. SCORE",
+        "value": 0
+      },
+      "05": {
+        "label": "20-29 M. SCORE",
+        "value": 0
+      },
+      "06": {
+        "label": "30-39 M. SCORE",
+        "value": 0
+      },
+      "07": {
+        "label": "40-49 M. SCORE",
+        "value": 0
+      },
+      "08": {
+        "label": "50-69 M. SCORE",
+        "value": 0
+      },
+      "09": {
+        "label": "70-99 M. SCORE",
+        "value": 0
+      },
+      "10": {
+        "label": "100-149 M. SCORE",
+        "value": 0
+      },
+      "11": {
+        "label": "150-199 M. SCORE",
+        "value": 0
+      },
+      "12": {
+        "label": "200-299 M. SCORE",
+        "value": 0
+      },
+      "13": {
+        "label": "OVER 300 MILLION",
+        "value": 0
+      },
+      "14": {
+        "label": "GAME TIME 0.0-1.0M",
+        "value": 0
+      },
+      "15": {
+        "label": "GAME TIME 1.0-1.5M",
+        "value": 1
+      },
+      "16": {
+        "label": "GAME TIME 1.5-2.0M",
+        "value": 0
+      },
+      "17": {
+        "label": "GAME TIME 2.0-2.5M",
+        "value": 0
+      },
+      "18": {
+        "label": "GAME TIME 2.5-3.0M",
+        "value": 0
+      },
+      "19": {
+        "label": "GAME TIME 3.0-3.5M",
+        "value": 0
+      },
+      "20": {
+        "label": "GAME TIME 3.5-4.0M",
+        "value": 0
+      },
+      "21": {
+        "label": "GAME TIME 4-5 M.",
+        "value": 0
+      },
+      "22": {
+        "label": "GAME TIME 5-6 M.",
+        "value": 0
+      },
+      "23": {
+        "label": "GAME TIME 6-8 M.",
+        "value": 0
+      },
+      "24": {
+        "label": "GAME TIME 8-10 M",
+        "value": 0
+      },
+      "25": {
+        "label": "GAME TIME 10-15M",
+        "value": 0
+      },
+      "26": {
+        "label": "GAME TIME > 15M",
+        "value": 0
+      }
+    },
+    "B.6 TIME-STAMPS": {
+      "02": {
+        "label": "TOTALS CLEARED",
+        "value": "2024-01-11 12:13"
+      },
+      "03": {
+        "label": "CLOCK LAST SET",
+        "value": "2024-01-11 12:13"
+      },
+      "04": {
+        "label": "AUDITS CLEARED",
+        "value": "2024-01-11 12:13"
+      },
+      "05": {
+        "label": "COINS CLEARED",
+        "value": "2024-01-11 12:13"
+      },
+      "06": {
+        "label": "FACTORY SETTING",
+        "value": "2024-01-11 12:13"
+      },
+      "07": {
+        "label": "LAST GAME START",
+        "value": "2024-11-12 18:29"
+      },
+      "08": {
+        "label": "LAST REPLAY",
+        "value": "2024-01-11 12:13"
+      },
+      "09": {
+        "label": "LAST HSTD RESET",
+        "value": "2024-01-11 12:13"
+      },
+      "10": {
+        "label": "CHAMPION RESET",
+        "value": "2024-01-11 12:13"
+      },
+      "11": {
+        "label": "LAST PRINTOUT",
+        "value": "2024-01-11 12:13"
+      },
+      "12": {
+        "label": "LAST SERV. CRED",
+        "value": "2024-01-11 12:13"
+      }
+    }
+  },
   "checksum16": [
     {
       "label": "Adjustments",
@@ -339,6 +831,10 @@
     },
     {
       "label": "Custom Message (2x32)",
+      "value": "valid"
+    },
+    {
+      "label": "Loop Champion",
       "value": "valid"
     }
   ],

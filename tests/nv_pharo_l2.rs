@@ -1,6 +1,5 @@
 use pinmame_nvram::{HighScore, Nvram};
 use pretty_assertions::assert_eq;
-use std::collections::HashMap;
 use std::io;
 use std::path::Path;
 
@@ -8,9 +7,9 @@ use std::path::Path;
 fn test_pharaoh() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/pharo_l2.nv"))?.unwrap();
 
-    let game_state = nvram.read_game_state()?;
-    let expected = HashMap::from([("credits".into(), "0".into())]);
-    assert_eq!(Some(expected), game_state);
+    let game_state = nvram.read_game_state()?.unwrap();
+    assert_eq!("0", game_state.get("credits").unwrap());
+    assert_eq!("3", game_state.get("ball_count").unwrap());
 
     let scores = nvram.read_highscores()?;
     let expected = vec![HighScore {

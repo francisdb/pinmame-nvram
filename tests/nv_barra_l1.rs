@@ -1,6 +1,5 @@
 use pinmame_nvram::{HighScore, Nvram};
 use pretty_assertions::assert_eq;
-use std::collections::HashMap;
 use std::io;
 use std::path::Path;
 
@@ -9,8 +8,7 @@ fn test_barracora() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/barra_l1.nv"))?.unwrap();
 
     let game_state = nvram.read_game_state()?;
-    let expected = HashMap::from([("credits".into(), "29".into())]);
-    assert_eq!(Some(expected), game_state);
+    assert_eq!("29", game_state.unwrap().get("credits").unwrap());
 
     let scores = nvram.read_highscores()?;
     let expected = vec![HighScore {

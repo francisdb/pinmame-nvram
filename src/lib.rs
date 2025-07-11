@@ -626,11 +626,15 @@ fn read_descriptor_to_string<T: Read + Seek, S: GlobalSettings>(
         },
         Encoding::Int => match &descriptor.start {
             Some(start) => {
+                let start = u64::from(start);
+                if start < offset {
+                    return Ok("Value is stored outside the NVRAM".to_string());
+                }
                 let score = read_int(
                     &mut nvram_file,
                     endian,
                     nibble,
-                    u64::from(start) - offset,
+                    start - offset,
                     descriptor.length.unwrap_or(DEFAULT_LENGTH),
                     descriptor
                         .scale
@@ -645,7 +649,12 @@ fn read_descriptor_to_string<T: Read + Seek, S: GlobalSettings>(
             )),
         },
         Encoding::Bcd => {
-            let location = location_for(descriptor, offset)?;
+            let location = match location_for(descriptor, offset)? {
+                LocateResult::OutsideNVRAM => {
+                    return Ok("Value is stored outside the NVRAM".to_string());
+                }
+                LocateResult::Located(loc) => loc,
+            };
             let score = read_bcd(
                 &mut nvram_file,
                 location,
@@ -672,7 +681,15 @@ fn read_descriptor_to_u64<T: Read + Seek>(
 ) -> io::Result<u64> {
     match descriptor.encoding {
         Encoding::Bcd => {
-            let location = location_for(descriptor, offset)?;
+            let location = match location_for(descriptor, offset)? {
+                LocateResult::OutsideNVRAM => {
+                    return Err(io::Error::new(
+                        io::ErrorKind::InvalidData,
+                        "Descriptor points outside NVRAM",
+                    ));
+                }
+                LocateResult::Located(loc) => loc,
+            };
             read_bcd(
                 &mut nvram_file,
                 location,
@@ -725,21 +742,32 @@ fn read_descriptor_to_rtc_string<T: Read + Seek>(
     }
 }
 
-fn location_for(descriptor: &Descriptor, offset: u64) -> io::Result<Location> {
+enum LocateResult {
+    OutsideNVRAM,
+    Located(Location),
+}
+
+fn location_for(descriptor: &Descriptor, offset: u64) -> io::Result<LocateResult> {
     match &descriptor.offsets {
         None => match &descriptor.start {
-            Some(start) => Ok(Location::Continuous {
-                start: u64::from(start) - offset,
-                length: descriptor.length.unwrap_or(DEFAULT_LENGTH),
-            }),
+            Some(start) => {
+                let start = u64::from(start);
+                if start < offset {
+                    return Ok(LocateResult::OutsideNVRAM);
+                }
+                Ok(LocateResult::Located(Location::Continuous {
+                    start: start - offset,
+                    length: descriptor.length.unwrap_or(DEFAULT_LENGTH),
+                }))
+            }
             _ => Err(io::Error::new(
                 io::ErrorKind::InvalidData,
                 "Descriptor without offsets requires start",
             )),
         },
-        Some(offsets) => Ok(Location::Scattered {
+        Some(offsets) => Ok(LocateResult::Located(Location::Scattered {
             offsets: offsets.iter().map(|o| u64::from(o) - offset).collect(),
-        }),
+        })),
     }
 }
 
