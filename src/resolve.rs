@@ -2,7 +2,7 @@ use crate::checksum::{verify_checksum8, verify_checksum16};
 use crate::encoding::{Location, read_bcd, read_ch, read_exact_at, read_int, read_wpc_rtc};
 use crate::model::{
     Checksum8, Checksum16, DEFAULT_LENGTH, DEFAULT_SCALE, Encoding, Endian, GlobalSettings,
-    GlobalSettingsImpl, MemoryLayoutType, Nibble, Null, Platform,
+    GlobalSettingsImpl, MemoryLayout, MemoryLayoutType, Nibble, Null, Platform,
 };
 use crate::{dips, open_nvram, read_platform};
 use serde_json::{Map, Number, Value};
@@ -47,33 +47,13 @@ fn resolve_recursive<T: Read + Seek, S: GlobalSettings>(
     platform: &Platform,
     rom: &mut T,
 ) -> io::Result<Value> {
-    let nvram_layout = platform
-        .memory_layout
-        .iter()
-        .find(|layout| layout.type_ == MemoryLayoutType::NVRam)
-        .ok_or_else(|| {
-            io::Error::new(
-                io::ErrorKind::NotFound,
-                "NVRam layout not found in platform memory layout",
-            )
-        })?;
-    let offset: u64 = (&nvram_layout.address).into();
-    let nibble = nvram_layout.nibble();
     let result: Value = match value {
         Value::Object(map) => {
             // println!("{:?}", map);
             // println!("{:?}", map.get("encoding"));
             if let Some(encoding) = map.get("encoding") {
                 let encoding: Encoding = serde_json::from_value(encoding.clone())?;
-                let value = resolve_value(
-                    rom,
-                    map,
-                    encoding,
-                    platform.endian,
-                    nibble,
-                    global_settings,
-                    offset,
-                );
+                let value = resolve_value(rom, map, encoding, global_settings, platform);
                 let warning = match &value {
                     Ok(value) => {
                         // FIXME if the value is an enum we need to validate the raw value
@@ -222,39 +202,40 @@ fn resolve_checksum8<T: Read + Seek>(rom: &mut T, value: &Value) -> io::Result<V
 
 fn resolve_value<T: Read + Seek, U: GlobalSettings>(
     rom: &mut T,
-    map: &Map<String, Value>,
+    descriptor: &Map<String, Value>,
     encoding: Encoding,
-    endian: Endian,
-    nibble: Nibble,
     global_settings: &U,
-    offset: u64,
+    platform: &Platform,
 ) -> io::Result<Value> {
-    let start_native = map.get("start").map(json_hex_or_int).transpose()?;
-    // in a nvram file the start is always relative to the nvram layout address
-    let start = start_native.map(|s| s - offset);
-    let length = map
+    // we only have access to nvram files and cannot access the RAM.
+    let nvram_layout = platform.layout(MemoryLayoutType::NVRam);
+    let nibble = nvram_layout.nibble();
+    let endian = platform.endian;
+    let length = descriptor
         .get("length")
         .map_or(DEFAULT_LENGTH, |v| v.as_u64().unwrap() as usize);
     let value = match encoding {
         Encoding::Int => {
-            let scale = map
+            let scale = descriptor
                 .get("scale")
                 .and_then(|s| s.as_number())
                 .cloned()
                 .unwrap_or(Number::from(DEFAULT_SCALE));
-            let value = read_int(rom, endian, nibble, start.unwrap(), length, &scale)?;
+            let start = start_in_nvram_file(&nvram_layout, descriptor)?;
+            let value = read_int(rom, endian, nibble, start, length, &scale)?;
             Value::Number(value.into())
         }
         Encoding::Enum => {
+            let start = start_in_nvram_file(&nvram_layout, descriptor)?;
             let index = read_int(
                 rom,
                 endian,
                 nibble,
-                start.unwrap(),
+                start,
                 length,
                 &Number::from(DEFAULT_SCALE),
             )? as usize;
-            let values = map.get("values").unwrap().as_array().unwrap();
+            let values = descriptor.get("values").unwrap().as_array().unwrap();
             let enum_value = values.get(index);
             return if let Some(enum_value) = enum_value {
                 Ok(enum_value.clone())
@@ -270,9 +251,9 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
             };
         }
         Encoding::Bcd => {
-            let location = match map.get("offsets") {
+            let location = match descriptor.get("offsets") {
                 None => {
-                    let start = start.unwrap();
+                    let start = start_in_nvram_file(&nvram_layout, descriptor)?;
                     Location::Continuous { start, length }
                 }
                 Some(offsets) => {
@@ -285,13 +266,13 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
                     Location::Scattered { offsets }
                 }
             };
-            let scale = map
+            let scale = descriptor
                 .get("scale")
                 .and_then(|s| s.as_number())
                 .cloned()
                 .unwrap_or(Number::from(DEFAULT_SCALE));
-            // how can i=avoid the clone() here?
-            let nibble: Nibble = map
+            // how can we avoid the clone() here?
+            let nibble: Nibble = descriptor
                 .get("nibble")
                 .map(|n| serde_json::from_value(n.clone()).unwrap())
                 .unwrap_or(nibble);
@@ -300,17 +281,18 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
             Value::Number(value.into())
         }
         Encoding::Ch => {
-            let mask = map.get("mask").map(json_hex_or_int).transpose()?;
-            let nibble = map
+            let start = start_in_nvram_file(&nvram_layout, descriptor)?;
+            let mask = descriptor.get("mask").map(json_hex_or_int).transpose()?;
+            let nibble = descriptor
                 .get("nibble")
                 .map(|n| serde_json::from_value(n.clone()).unwrap())
                 .unwrap_or(nibble);
-            let null: Option<Null> = map
+            let null: Option<Null> = descriptor
                 .get("null")
                 .map(|n| serde_json::from_value(n.clone()).unwrap());
             let value = read_ch(
                 rom,
-                start.unwrap(),
+                start,
                 length,
                 mask,
                 global_settings.char_map(),
@@ -320,7 +302,8 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
             Value::String(value)
         }
         Encoding::WpcRtc => {
-            let value = read_wpc_rtc(rom, start.unwrap(), length)?;
+            let start = start_in_nvram_file(&nvram_layout, descriptor)?;
+            let value = read_wpc_rtc(rom, start, length)?;
             Value::String(value)
         }
         Encoding::Bits => {
@@ -328,12 +311,13 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
             Value::String(value)
         }
         Encoding::Raw => {
+            let start = start_in_nvram_file(&nvram_layout, descriptor)?;
             let mut buff = vec![0; length];
-            read_exact_at(rom, start.unwrap(), &mut buff)?;
+            read_exact_at(rom, start, &mut buff)?;
             Value::Array(buff.iter().map(|b| Value::Number((*b).into())).collect())
         }
         Encoding::Dipsw => {
-            let offsets = map
+            let offsets = descriptor
                 .get("offsets")
                 .unwrap()
                 .as_array()
@@ -353,7 +337,9 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
                 value = (value << 1) | if *dip { 1 } else { 0 };
             }
 
-            let values = map.get("values").expect("Missing values for dip switch");
+            let values = descriptor
+                .get("values")
+                .expect("Missing values for dip switch");
             let index = value as usize;
             match values {
                 Value::Array(array) => array.get(index).unwrap_or(&Value::Null).clone(),
@@ -370,6 +356,29 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
         }
     };
     Ok(value)
+}
+
+fn start_in_nvram_file(
+    nvram_layout: &MemoryLayout,
+    descriptor: &Map<String, Value>,
+) -> io::Result<u64> {
+    let start_native = descriptor.get("start").map(json_hex_or_int).transpose()?;
+    if let Some(s) = start_native {
+        let offset: u64 = (&nvram_layout.address).into();
+        if s < offset {
+            Err(io::Error::new(
+                io::ErrorKind::InvalidData,
+                "Value is stored outside the NVRAM",
+            ))
+        } else {
+            Ok(s - offset)
+        }
+    } else {
+        Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "Missing start value for NVRAM encoding",
+        ))
+    }
 }
 
 fn json_hex_or_int(s: &Value) -> io::Result<u64> {
@@ -415,7 +424,7 @@ mod tests {
         let excludes = ["_note"];
 
         // Temporarily disable these rom game names if you can't find the nvram
-        let expected: [&str; 131] = [
+        let expected: [&str; 188] = [
             "algar_l1ff",
             "alpok_b6",
             "alpok_f6",
@@ -447,17 +456,31 @@ mod tests {
             "bonebffp",
             "bonebgfp",
             "bonebsfp",
+            "bop_d7",
+            "bop_d8",
             "bountgfp",
             "bounthfp",
+            "br_d4",
+            "cftbl_d4",
             "comet_l4",
+            "congo_20",
+            "dh_dx2",
             "diamnffp",
             "diamngfp",
             "diamonfp",
+            "dm_dx4",
+            "dm_h6c",
+            "dm_lx4c",
+            "drac_d1",
+            "dw_d2",
             "eatpm_l2",
             "esha_la1",
             "excalbfp",
             "excalffp",
             "excalgfp",
+            "fh_d9",
+            "fh_d9b",
+            "fh_l9b",
             "flash_l1ff",
             "flash_l2",
             "flash_t1",
@@ -468,10 +491,17 @@ mod tests {
             "frpwr_l6ff",
             "frpwr_t6",
             "frpwr_t6ff",
+            "fs_dx5",
+            "fs_sp2",
+            "fs_sp2d",
+            "ft_d5",
+            "ft_d6",
+            "ft_l5p",
             "genesffp",
             "genesgfp",
             "genesifp",
             "genesis",
+            "gi_d9",
             "gldwgffp",
             "gldwggfp",
             "goldwgfp",
@@ -480,6 +510,10 @@ mod tests {
             "grgar_l1ff",
             "grgar_t1",
             "grgar_t1ff",
+            "gw_d5",
+            "gw_l5c",
+            "hd_d1",
+            "hd_d3",
             "hlywdhfp",
             "hlywhffp",
             "hlywhgfp",
@@ -487,6 +521,12 @@ mod tests {
             "hotshgfp",
             "hotshtfp",
             "hs_l3",
+            "hurr_d2",
+            "ij_d7",
+            "jb_101r",
+            "jd_d1",
+            "jd_d7",
+            "jy_12c",
             "lzbal_l2ff",
             "lzbal_l2sp",
             "lzbal_l2spff",
@@ -502,6 +542,9 @@ mod tests {
             "mntcrmfp",
             "mntecrfp",
             "nmovesfp",
+            "pop_dx5",
+            "pz_d3",
+            "pz_f5",
             "raven",
             "ravenafp",
             "ravenfp",
@@ -513,6 +556,7 @@ mod tests {
             "rockegfp",
             "rockfp",
             "rockgfp",
+            "rs_l6c",
             "rvrbt_l3",
             "scrpn_l1ff",
             "scrpn_t1",
@@ -523,6 +567,21 @@ mod tests {
             "sprbrgfp",
             "sprbrkfp",
             "sprbrsfp",
+            "sttng_d7",
+            "sttng_dx",
+            "sttng_l7c",
+            "sttng_x7",
+            "t2_d8",
+            "t2_l81",
+            "t2_l82",
+            "t2_l83",
+            "t2_l84",
+            "taf_d5",
+            "taf_d6",
+            "taf_d7",
+            "taf_i4",
+            "taf_l5c",
+            "tafg_dx3",
             "tagteam",
             "tagtem2f",
             "tagtemfp",
@@ -532,21 +591,28 @@ mod tests {
             "tmwrp_l3ff",
             "tmwrp_t2",
             "tmwrp_t2ff",
+            "tom_13c",
             "triplgfp",
             "triplyf1",
             "triplyfp",
             "trizn_l1ff",
             "trizn_t1",
             "trizn_t1ff",
+            "ts_dx5",
             "txsecffp",
             "txsecgfp",
             "txsectfp",
+            "tz_93",
             "victr101",
             "victr11",
             "victr12",
             "victrffp",
             "victrgfp",
             "victryfp",
+            "wcs_d2",
+            "wcs_l3c",
+            "ww_d5",
+            "ww_lh6c",
         ];
 
         let index = Path::new("pinmame-nvram-maps").join("index.json");

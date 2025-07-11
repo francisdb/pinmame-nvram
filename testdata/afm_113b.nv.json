@@ -297,6 +297,224 @@
         "value": 99
       }
     },
+    "B.4 FEATURE AUDS.": {
+      "01": {
+        "label": "BALL SAVES",
+        "value": 0
+      },
+      "02": {
+        "label": "TOTAL MULTIBALLS",
+        "value": 0
+      },
+      "03": {
+        "label": "ATK. WAVE START",
+        "value": 1
+      },
+      "04": {
+        "label": "ATK. WAVE COMPL.",
+        "value": 1
+      },
+      "05": {
+        "label": "ATK. WAVE E.B. LIT",
+        "value": 0
+      },
+      "06": {
+        "label": "LOCKS LIT",
+        "value": 0
+      },
+      "07": {
+        "label": "BALLS LOCKED",
+        "value": 0
+      },
+      "08": {
+        "label": "MAIN M.B. START",
+        "value": 0
+      },
+      "09": {
+        "label": "MAIN M.B. JACKPOTS",
+        "value": 0
+      },
+      "10": {
+        "label": "MAIN M.B. SUPER JP.",
+        "value": 0
+      },
+      "11": {
+        "label": "1st WAVE START",
+        "value": 1
+      },
+      "12": {
+        "label": "1st WAVE COMPL.",
+        "value": 1
+      },
+      "13": {
+        "label": "2nd WAVE START",
+        "value": 0
+      },
+      "14": {
+        "label": "2nd WAVE COMPL.",
+        "value": 0
+      },
+      "15": {
+        "label": "3rd WAVE START",
+        "value": 0
+      },
+      "16": {
+        "label": "3rd WAVE COMPL.",
+        "value": 0
+      },
+      "17": {
+        "label": "4th WAVE START",
+        "value": 0
+      },
+      "18": {
+        "label": "4th WAVE COMPL.",
+        "value": 0
+      },
+      "19": {
+        "label": "5th WAVE START",
+        "value": 0
+      },
+      "20": {
+        "label": "5th WAVE COMPL.",
+        "value": 0
+      },
+      "21": {
+        "label": "6th WAVE START",
+        "value": 0
+      },
+      "22": {
+        "label": "6th WAVE COMPL.",
+        "value": 0
+      },
+      "23": {
+        "label": "HURRY UP AWARDS",
+        "value": 0
+      },
+      "24": {
+        "label": "ANNIHIL. START",
+        "value": 0
+      },
+      "25": {
+        "label": "ANNIHIL. AWARDS",
+        "value": 0
+      },
+      "26": {
+        "label": "ANNIHIL. JACKPOTS",
+        "value": 0
+      },
+      "27": {
+        "label": "MARTIAN COMPL.",
+        "value": 0
+      },
+      "28": {
+        "label": "MARTN. ATK. START",
+        "value": 1
+      },
+      "29": {
+        "label": "MARTN. ATK. KILLS",
+        "value": 3
+      },
+      "30": {
+        "label": "MARTN. BOMBS COLL.",
+        "value": 0
+      },
+      "31": {
+        "label": "MARTN. BOMBS USED",
+        "value": 0
+      },
+      "32": {
+        "label": "MARTIAN M.B. START",
+        "value": 0
+      },
+      "33": {
+        "label": "MARTIAN M.B. KILLS",
+        "value": 0
+      },
+      "34": {
+        "label": "5-WAY COMBOS",
+        "value": 0
+      },
+      "35": {
+        "label": "SUPER JETS START",
+        "value": 0
+      },
+      "36": {
+        "label": "R. UNIVERSE START",
+        "value": 0
+      },
+      "37": {
+        "label": "R. UNIVERSE WON",
+        "value": 0
+      },
+      "38": {
+        "label": "SKILL SHOT",
+        "value": 0
+      },
+      "39": {
+        "label": "SUPER SKILL SHOT",
+        "value": 0
+      },
+      "40": {
+        "label": "BONUS X",
+        "value": 0
+      },
+      "41": {
+        "label": "BOT. LANE COMPL.",
+        "value": 0
+      },
+      "42": {
+        "label": "BOT. LANE E.B. LIT",
+        "value": 0
+      },
+      "43": {
+        "label": "RANDOM AWARDS",
+        "value": 1
+      },
+      "44": {
+        "label": "RANDOM E.B. LIT",
+        "value": 0
+      },
+      "45": {
+        "label": "STROBE M.B. START",
+        "value": 0
+      },
+      "46": {
+        "label": "STROBE E.B. LIT",
+        "value": 0
+      },
+      "47": {
+        "label": "VIDEO MODE START",
+        "value": 0
+      },
+      "48": {
+        "label": "VIDEO E.B.",
+        "value": 0
+      },
+      "49": {
+        "label": "VIDEO MOTHERSHIP",
+        "value": 0
+      },
+      "50": {
+        "label": "VIDEO COMPL.",
+        "value": 0
+      },
+      "51": {
+        "label": "SNEAK ATK. START",
+        "value": 0
+      },
+      "52": {
+        "label": "SNEAK ATK. COMPL.",
+        "value": 0
+      },
+      "53": {
+        "label": "NOVICE MODES",
+        "value": 0
+      },
+      "54": {
+        "label": "BUY-IN EX. BALLS",
+        "value": 0
+      }
+    },
     "B.5 Histograms": {
       "01": {
         "label": "0-199M Score",

@@ -16,7 +16,7 @@ pub enum MemoryLayoutType {
 #[derive(Serialize, Deserialize)]
 pub struct MemoryLayout {
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub _notes: Option<Notes>,
+    pub _notes: Option<Strings>,
     pub label: String,
     pub address: HexOrInteger,
     pub size: HexOrInteger,
@@ -39,7 +39,7 @@ impl MemoryLayout {
 #[derive(Serialize, Deserialize)]
 pub struct Platform {
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub _notes: Option<Notes>,
+    pub _notes: Option<Strings>,
     pub cpu: String,
     pub endian: Endian,
     pub memory_layout: Vec<MemoryLayout>,
@@ -58,7 +58,7 @@ impl Platform {
         (&self.layout(memory_layout_type).address).into()
     }
 
-    fn layout(&self, memory_layout_type: MemoryLayoutType) -> &MemoryLayout {
+    pub(crate) fn layout(&self, memory_layout_type: MemoryLayoutType) -> &MemoryLayout {
         if let Some(layout) = self
             .memory_layout
             .iter()
@@ -78,7 +78,7 @@ impl Platform {
 #[derive(Serialize, Deserialize)]
 pub struct Descriptor {
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub _notes: Option<Notes>,
+    pub _notes: Option<Strings>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub label: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -142,7 +142,7 @@ pub struct Checksum8 {
     pub groupings: Option<u64>,
     pub label: String,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub _notes: Option<Notes>,
+    pub _notes: Option<Strings>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -248,7 +248,7 @@ pub enum Endian {
 
 #[derive(Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum Notes {
+pub enum Strings {
     Single(String),
     Multiple(Vec<String>),
 }
@@ -328,7 +328,9 @@ pub enum AuditOrNote {
 
 #[derive(Serialize, Deserialize)]
 pub struct Metadata {
-    pub copyright: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub _notes: Option<Strings>,
+    pub copyright: Strings,
     pub license: String,
     pub platform: String,
     pub version: Number,
@@ -342,11 +344,11 @@ pub struct Metadata {
 #[derive(Serialize, Deserialize)]
 pub struct NvramMap {
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub _notes: Option<Notes>,
+    pub _notes: Option<Strings>,
     pub _fileformat: f64,
     pub _metadata: Metadata,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub _todo: Option<Notes>,
+    pub _todo: Option<Strings>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _ramsize: Option<u64>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -375,7 +377,10 @@ pub struct NvramMap {
     pub limits: Option<HashMap<String, String>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub game_state: Option<HashMap<String, StateOrStateList>>,
-    /// TODO this should probably be removed as it is an adjustment and only used in ww_l5.nv.json
+    /// TODO for now we don't do anything with this, so we keep it generic
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub player_state: Option<Value>,
+    /// TODO this HashMap<String, StateOrStateList>should probably be removed as it is an adjustment and only used in ww_l5.nv.json
     #[serde(skip_serializing_if = "Option::is_none")]
     pub replay_score: Option<Descriptor>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -459,14 +464,14 @@ mod tests {
                 found_any = true;
                 let json = std::fs::read_to_string(path).unwrap();
                 let nvram_map: NvramMap = serde_json::from_str(&json)
-                    .unwrap_or_else(|e| panic!("Failed reading {file_name}: {e}"));
+                    .unwrap_or_else(|e| panic!("Failed reading {path:?}: {e}"));
                 let json2 = serde_json::to_string_pretty(&nvram_map).unwrap();
 
                 // read json as Value to compare without formatting
                 let json_obj: Value = serde_json::from_str(&json).unwrap();
                 let json_obj2: Value = serde_json::from_str(&json2).unwrap();
 
-                assert_eq!(json_obj, json_obj2, "Failed for {}", file_name);
+                assert_eq!(json_obj, json_obj2, "Failed for {path:?}");
             }
         }
         assert!(found_any, "No nvram map files found");

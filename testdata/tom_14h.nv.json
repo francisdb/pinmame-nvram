@@ -219,6 +219,56 @@
     }
   },
   "audits": {
+    "B.2 EARNINGS AUDS.": {
+      "02": {
+        "label": "RECENT LEFT SLOT",
+        "value": 0
+      },
+      "03": {
+        "label": "RECENT CENT. SLOT",
+        "value": 1
+      },
+      "04": {
+        "label": "RECENT RGHT. SLOT",
+        "value": 0
+      },
+      "05": {
+        "label": "RECENT 4TH SLOT",
+        "value": 0
+      },
+      "06": {
+        "label": "RECENT PAID CRED",
+        "value": 2
+      },
+      "07": {
+        "label": "RECENT SERV. CRED",
+        "value": 0
+      },
+      "09": {
+        "label": "TOTAL LEFT SLOT",
+        "value": 0
+      },
+      "10": {
+        "label": "TOTAL CENTR. SLOT",
+        "value": 1
+      },
+      "11": {
+        "label": "TOTAL RIGHT SLOT",
+        "value": 0
+      },
+      "12": {
+        "label": "TOTAL 4TH SLOT",
+        "value": 0
+      },
+      "13": {
+        "label": "TOTAL PAID CRED.",
+        "value": 2
+      },
+      "14": {
+        "label": "TOTAL SERV. CRED.",
+        "value": 0
+      }
+    },
     "B.3 Standard Audits": {
       "01": {
         "label": "Games Started",
@@ -555,6 +605,52 @@
       "26": {
         "label": "Game Time > 15M",
         "value": 0
+      }
+    },
+    "B.6 TIME-STAMPS": {
+      "02": {
+        "label": "TOTALS CLEARED",
+        "value": "2025-01-12 17:19"
+      },
+      "03": {
+        "label": "CLOCK LAST SET",
+        "value": "2025-01-12 17:19"
+      },
+      "04": {
+        "label": "AUDITS CLEARED",
+        "value": "2025-01-12 17:19"
+      },
+      "05": {
+        "label": "COINS CLEARED",
+        "value": "2025-01-12 17:19"
+      },
+      "06": {
+        "label": "FACTORY SETTING",
+        "value": "2025-01-12 17:19"
+      },
+      "07": {
+        "label": "LAST GAME START",
+        "value": "2025-01-12 17:19"
+      },
+      "08": {
+        "label": "LAST REPLAY",
+        "value": "2025-01-12 17:19"
+      },
+      "09": {
+        "label": "LAST HSTD RESET",
+        "value": "2025-01-12 17:19"
+      },
+      "10": {
+        "label": "CHAMPION RESET",
+        "value": "2025-01-12 17:19"
+      },
+      "11": {
+        "label": "LAST PRINTOUT",
+        "value": "2025-01-12 17:19"
+      },
+      "12": {
+        "label": "LAST SERV. CRED",
+        "value": "2025-01-12 17:19"
       }
     }
   },

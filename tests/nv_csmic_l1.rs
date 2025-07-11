@@ -8,9 +8,9 @@ use std::path::Path;
 fn test_cosmic_gunfight() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/csmic_l1.nv"))?.unwrap();
 
-    let game_state = nvram.read_game_state()?;
-    let expected = HashMap::from([("credits".into(), "12".into())]);
-    assert_eq!(Some(expected), game_state);
+    let game_state = nvram.read_game_state()?.unwrap();
+    assert_eq!("12", game_state.get("credits").unwrap());
+    assert_eq!("3", game_state.get("ball_count").unwrap());
 
     let scores = nvram.read_highscores()?;
     let expected = vec![HighScore {

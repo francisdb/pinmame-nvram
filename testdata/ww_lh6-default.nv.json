@@ -1,5 +1,497 @@
 {
   "_fileformat": 0.7,
+  "audits": {
+    "B.2 EARNINGS AUDS.": {
+      "02": {
+        "label": "RECENT LEFT SLOT",
+        "value": 0
+      },
+      "03": {
+        "label": "RECENT CENT. SLOT",
+        "value": 0
+      },
+      "04": {
+        "label": "RECENT RGHT. SLOT",
+        "value": 0
+      },
+      "05": {
+        "label": "RECENT 4TH SLOT",
+        "value": 0
+      },
+      "06": {
+        "label": "RECENT PAID CRED",
+        "value": 0
+      },
+      "07": {
+        "label": "RECENT SERV. CRED",
+        "value": 0
+      },
+      "09": {
+        "label": "TOTAL LEFT SLOT",
+        "value": 0
+      },
+      "10": {
+        "label": "TOTAL CENTR. SLOT",
+        "value": 0
+      },
+      "11": {
+        "label": "TOTAL RIGHT SLOT",
+        "value": 0
+      },
+      "12": {
+        "label": "TOTAL 4TH SLOT",
+        "value": 0
+      },
+      "13": {
+        "label": "TOTAL PAID CRED.",
+        "value": 0
+      },
+      "14": {
+        "label": "TOTAL SERV. CRED.",
+        "value": 0
+      }
+    },
+    "B.3 STANDARD AUDS.": {
+      "01": {
+        "label": "GAMES STARTED",
+        "value": 0
+      },
+      "02": {
+        "label": "TOTAL PLAYS",
+        "value": 0
+      },
+      "03": {
+        "label": "TOTAL FREE PLAYS",
+        "value": 0
+      },
+      "05": {
+        "label": "REPLAY AWARDS",
+        "value": 0
+      },
+      "07": {
+        "label": "SPECIAL AWARDS",
+        "value": 0
+      },
+      "09": {
+        "label": "MATCH AWARDS",
+        "value": 0
+      },
+      "11": {
+        "label": "H.S.T.D. CREDITS",
+        "value": 0
+      },
+      "13": {
+        "label": "EXTRA BALLS",
+        "value": 0
+      },
+      "15": {
+        "label": "TICKETS AWARDED",
+        "value": 0
+      },
+      "17": {
+        "label": "LEFT DRAINS",
+        "value": 0
+      },
+      "18": {
+        "label": "RIGHT DRAINS",
+        "value": 0
+      },
+      "21": {
+        "label": "PLAY TIME",
+        "value": 0
+      },
+      "22": {
+        "label": "MINUTES ON",
+        "value": 0
+      },
+      "23": {
+        "label": "BALLS PLAYED",
+        "value": 0
+      },
+      "24": {
+        "label": "TILTS",
+        "value": 0
+      },
+      "25": {
+        "label": "REPLAY 1 AWARDS",
+        "value": 0
+      },
+      "26": {
+        "label": "REPLAY 2 AWARDS",
+        "value": 0
+      },
+      "27": {
+        "label": "REPLAY 3 AWARDS",
+        "value": 0
+      },
+      "28": {
+        "label": "REPLAY 4 AWARDS",
+        "value": 0
+      },
+      "29": {
+        "label": "1 PLAYER GAMES",
+        "value": 0
+      },
+      "30": {
+        "label": "2 PLAYER GAMES",
+        "value": 0
+      },
+      "31": {
+        "label": "3 PLAYER GAMES",
+        "value": 0
+      },
+      "32": {
+        "label": "4 PLAYER GAMES",
+        "value": 0
+      },
+      "33": {
+        "label": "H.S.T.D. RESET COUNT",
+        "value": 3000
+      },
+      "34": {
+        "label": "BURN-IN TIME",
+        "value": 0
+      },
+      "36": {
+        "label": "LEFT FLIPPER",
+        "value": 0
+      },
+      "37": {
+        "label": "RIGHT FLIPPER",
+        "value": 0
+      }
+    },
+    "B.4 FEATURE AUDS.": {
+      "01": {
+        "label": "TWO WAY COMBO",
+        "value": 0
+      },
+      "02": {
+        "label": "THREE WAY COMBO",
+        "value": 0
+      },
+      "03": {
+        "label": "FOUR WAY COMBO",
+        "value": 0
+      },
+      "04": {
+        "label": "FIVE WAY COMBO",
+        "value": 0
+      },
+      "05": {
+        "label": "SKILL SHOTS",
+        "value": 0
+      },
+      "06": {
+        "label": "HOTFOOT STARTED",
+        "value": 0
+      },
+      "07": {
+        "label": "HOTFOOT JACKPOT",
+        "value": 0
+      },
+      "08": {
+        "label": "BOULDER AWARDS",
+        "value": 0
+      },
+      "09": {
+        "label": "BOULDER 5X AWARD",
+        "value": 0
+      },
+      "10": {
+        "label": "BOULDER MAN OVER",
+        "value": 0
+      },
+      "11": {
+        "label": "QUICK MULTIBALL",
+        "value": 0
+      },
+      "12": {
+        "label": "BOULDER EX. B. LIT",
+        "value": 0
+      },
+      "13": {
+        "label": "BOULDER ADV. RAFT",
+        "value": 0
+      },
+      "14": {
+        "label": "BOULDER MYSTERY",
+        "value": 0
+      },
+      "15": {
+        "label": "MULTIBALL PLAYS",
+        "value": 0
+      },
+      "16": {
+        "label": "SINGLE JACKPOT",
+        "value": 0
+      },
+      "17": {
+        "label": "DOUBLE JACKPOT",
+        "value": 0
+      },
+      "18": {
+        "label": "TRIPLE JACKPOT",
+        "value": 0
+      },
+      "19": {
+        "label": "5X JACKPOT",
+        "value": 0
+      },
+      "20": {
+        "label": "RAMP EX. BALL LIT",
+        "value": 0
+      },
+      "21": {
+        "label": "PCT. EXTRA BALL",
+        "value": 0
+      },
+      "22": {
+        "label": "BOULDER LOOP",
+        "value": 0
+      },
+      "23": {
+        "label": "BOOMERANG LOOPS",
+        "value": 0
+      },
+      "24": {
+        "label": "SPINE CHILL. LOOP",
+        "value": 0
+      },
+      "25": {
+        "label": "SPINE LOOP MAX",
+        "value": 0
+      },
+      "26": {
+        "label": "QUICK JACKPOT",
+        "value": 0
+      },
+      "27": {
+        "label": "DISASTER DROP",
+        "value": 0
+      },
+      "28": {
+        "label": "INSANITY FALLS",
+        "value": 0
+      },
+      "29": {
+        "label": "REMATCH STARTED",
+        "value": 0
+      },
+      "30": {
+        "label": "REMATCH AWARDED",
+        "value": 0
+      },
+      "31": {
+        "label": "START QUICK END",
+        "value": 0
+      },
+      "32": {
+        "label": "AWARD QUICK END",
+        "value": 0
+      },
+      "33": {
+        "label": "WET WILLIE MADE",
+        "value": 0
+      },
+      "34": {
+        "label": "STAGE 2 STARTED",
+        "value": 0
+      },
+      "35": {
+        "label": "STAGE 2 AWARDED",
+        "value": 0
+      },
+      "36": {
+        "label": "GOLD MINE ENTRY",
+        "value": 0
+      },
+      "37": {
+        "label": "GOLD RUSH STARTS",
+        "value": 0
+      },
+      "38": {
+        "label": "CAMERA PICKUPS",
+        "value": 0
+      },
+      "39": {
+        "label": "PICTURE TAKEN",
+        "value": 0
+      },
+      "40": {
+        "label": "BOULDER BASH",
+        "value": 0
+      },
+      "41": {
+        "label": "COW PICKUP",
+        "value": 0
+      },
+      "42": {
+        "label": "SECRET COW",
+        "value": 0
+      },
+      "43": {
+        "label": "VACATION JACKPOT",
+        "value": 0
+      },
+      "44": {
+        "label": "BALL SAVES",
+        "value": 0
+      }
+    },
+    "B.5 HISTOGRAMS": {
+      "01": {
+        "label": "0-10 M. SCORE",
+        "value": 0
+      },
+      "02": {
+        "label": "10-20 M. SCORE",
+        "value": 0
+      },
+      "03": {
+        "label": "20-40 M. SCORE",
+        "value": 0
+      },
+      "04": {
+        "label": "40-50 M. SCORE",
+        "value": 0
+      },
+      "05": {
+        "label": "50-70 M. SCORE",
+        "value": 0
+      },
+      "06": {
+        "label": "70-100 M. SCORE",
+        "value": 0
+      },
+      "07": {
+        "label": "100-150 M. SCORE",
+        "value": 0
+      },
+      "08": {
+        "label": "150-200 M. SCORE",
+        "value": 0
+      },
+      "09": {
+        "label": "200-300 M. SCORE",
+        "value": 0
+      },
+      "10": {
+        "label": "300-500 M. SCORE",
+        "value": 0
+      },
+      "11": {
+        "label": "500-900 M. SCORE",
+        "value": 0
+      },
+      "12": {
+        "label": "900-1 BIL. SCORE",
+        "value": 0
+      },
+      "13": {
+        "label": "OVER 1 BILLION",
+        "value": 0
+      },
+      "14": {
+        "label": "GAME TIME 0.0-1.0M",
+        "value": 0
+      },
+      "15": {
+        "label": "GAME TIME 1.0-1.5M",
+        "value": 0
+      },
+      "16": {
+        "label": "GAME TIME 1.5-2.0M",
+        "value": 0
+      },
+      "17": {
+        "label": "GAME TIME 2.0-2.5M",
+        "value": 0
+      },
+      "18": {
+        "label": "GAME TIME 2.5-3.0M",
+        "value": 0
+      },
+      "19": {
+        "label": "GAME TIME 3.0-3.5M",
+        "value": 0
+      },
+      "20": {
+        "label": "GAME TIME 3.5-4.0M",
+        "value": 0
+      },
+      "21": {
+        "label": "GAME TIME 4-5 M.",
+        "value": 0
+      },
+      "22": {
+        "label": "GAME TIME 5-6 M.",
+        "value": 0
+      },
+      "23": {
+        "label": "GAME TIME 6-8 M.",
+        "value": 0
+      },
+      "24": {
+        "label": "GAME TIME 8-10 M",
+        "value": 0
+      },
+      "25": {
+        "label": "GAME TIME 10-15M",
+        "value": 0
+      },
+      "26": {
+        "label": "GAME TIME > 15M",
+        "value": 0
+      }
+    },
+    "B.6 TIME-STAMPS": {
+      "02": {
+        "label": "TOTALS CLEARED",
+        "value": "2024-11-27 11:52"
+      },
+      "03": {
+        "label": "CLOCK LAST SET",
+        "value": "2024-11-27 11:52"
+      },
+      "04": {
+        "label": "AUDITS CLEARED",
+        "value": "2024-11-27 11:52"
+      },
+      "05": {
+        "label": "COINS CLEARED",
+        "value": "2024-11-27 11:52"
+      },
+      "06": {
+        "label": "FACTORY SETTING",
+        "value": "2024-11-27 11:52"
+      },
+      "07": {
+        "label": "LAST GAME START",
+        "value": "2024-11-27 11:52"
+      },
+      "08": {
+        "label": "LAST REPLAY",
+        "value": "2024-11-27 11:52"
+      },
+      "09": {
+        "label": "LAST HSTD RESET",
+        "value": "2024-11-27 11:52"
+      },
+      "10": {
+        "label": "CHAMPION RESET",
+        "value": "2024-11-27 11:52"
+      },
+      "11": {
+        "label": "LAST PRINTOUT",
+        "value": "2024-11-27 11:52"
+      },
+      "12": {
+        "label": "LAST SERV. CRED",
+        "value": "2024-11-27 11:52"
+      }
+    }
+  },
   "checksum16": [
     {
       "label": "Custom Message (2x32)",

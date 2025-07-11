@@ -1,5 +1,533 @@
 {
   "_fileformat": 0.7,
+  "audits": {
+    "B.2 EARNINGS AUDS.": {
+      "02": {
+        "label": "RECENT LEFT SLOT",
+        "value": 0
+      },
+      "03": {
+        "label": "RECENT CENT. SLOT",
+        "value": 11
+      },
+      "04": {
+        "label": "RECENT RGHT. SLOT",
+        "value": 0
+      },
+      "05": {
+        "label": "RECENT 4TH SLOT",
+        "value": 0
+      },
+      "06": {
+        "label": "RECENT PAID CRED",
+        "value": 27
+      },
+      "07": {
+        "label": "RECENT SERV. CRED",
+        "value": 0
+      },
+      "09": {
+        "label": "TOTAL LEFT SLOT",
+        "value": 0
+      },
+      "10": {
+        "label": "TOTAL CENTR. SLOT",
+        "value": 11
+      },
+      "11": {
+        "label": "TOTAL RIGHT SLOT",
+        "value": 0
+      },
+      "12": {
+        "label": "TOTAL 4TH SLOT",
+        "value": 0
+      },
+      "13": {
+        "label": "TOTAL PAID CRED.",
+        "value": 27
+      },
+      "14": {
+        "label": "TOTAL SERV. CRED.",
+        "value": 0
+      }
+    },
+    "B.3 STANDARD AUDS.": {
+      "01": {
+        "label": "GAMES STARTED",
+        "value": 2
+      },
+      "02": {
+        "label": "TOTAL PLAYS",
+        "value": 0
+      },
+      "03": {
+        "label": "TOTAL FREE PLAYS",
+        "value": 0
+      },
+      "05": {
+        "label": "REPLAY AWARDS",
+        "value": 0
+      },
+      "07": {
+        "label": "SPECIAL AWARDS",
+        "value": 0
+      },
+      "09": {
+        "label": "MATCH AWARDS",
+        "value": 0
+      },
+      "11": {
+        "label": "H.S.T.D. CREDITS",
+        "value": 0
+      },
+      "13": {
+        "label": "EXTRA BALLS",
+        "value": 0
+      },
+      "15": {
+        "label": "TICKETS AWARDED",
+        "value": 0
+      },
+      "17": {
+        "label": "LEFT DRAINS",
+        "value": 0
+      },
+      "18": {
+        "label": "RIGHT DRAINS",
+        "value": 0
+      },
+      "21": {
+        "label": "PLAY TIME",
+        "value": 0
+      },
+      "22": {
+        "label": "MINUTES ON",
+        "value": 3
+      },
+      "23": {
+        "label": "BALLS PLAYED",
+        "value": 0
+      },
+      "24": {
+        "label": "TILTS",
+        "value": 0
+      },
+      "25": {
+        "label": "REPLAY 1 AWARDS",
+        "value": 0
+      },
+      "26": {
+        "label": "REPLAY 2 AWARDS",
+        "value": 0
+      },
+      "27": {
+        "label": "REPLAY 3 AWARDS",
+        "value": 0
+      },
+      "28": {
+        "label": "REPLAY 4 AWARDS",
+        "value": 0
+      },
+      "29": {
+        "label": "1 PLAYER GAMES",
+        "value": 0
+      },
+      "30": {
+        "label": "2 PLAYER GAMES",
+        "value": 0
+      },
+      "31": {
+        "label": "3 PLAYER GAMES",
+        "value": 0
+      },
+      "32": {
+        "label": "4 PLAYER GAMES",
+        "value": 0
+      },
+      "33": {
+        "label": "H.S.T.D. RESET COUNT",
+        "value": 3000
+      },
+      "34": {
+        "label": "BURN-IN TIME",
+        "value": 0
+      },
+      "36": {
+        "label": "LEFT FLIPPER",
+        "value": 13
+      },
+      "37": {
+        "label": "RIGHT FLIPPER",
+        "value": 7
+      }
+    },
+    "B.4 FEATURE AUDS.": {
+      "01": {
+        "label": "BUY-IN EX. BALLS",
+        "value": 0
+      },
+      "03": {
+        "label": "BALL SAVES",
+        "value": 0
+      },
+      "04": {
+        "label": "TOTAL L EX BALL",
+        "value": 0
+      },
+      "05": {
+        "label": "TOTAL EXTRA BALL",
+        "value": 0
+      },
+      "06": {
+        "label": "TOTAL RECYCLES",
+        "value": 0
+      },
+      "07": {
+        "label": "TOTAL L M.BALL",
+        "value": 0
+      },
+      "08": {
+        "label": "TOTAL MULTIBALL",
+        "value": 0
+      },
+      "09": {
+        "label": "TOTAL JACKPOTS",
+        "value": 0
+      },
+      "10": {
+        "label": "TOTAL S JACKPOT",
+        "value": 0
+      },
+      "11": {
+        "label": "TOTAL JUNK",
+        "value": 0
+      },
+      "12": {
+        "label": "TOTAL TOASTER GN",
+        "value": 0
+      },
+      "13": {
+        "label": "TOTAL RADAR ASSM",
+        "value": 0
+      },
+      "14": {
+        "label": "TOTAL RADAR ADV",
+        "value": 0
+      },
+      "15": {
+        "label": "TOTAL JALOPYS",
+        "value": 0
+      },
+      "16": {
+        "label": "TOTAL JALOPY ADV",
+        "value": 0
+      },
+      "17": {
+        "label": "TOTAL SUBMERGERS",
+        "value": 0
+      },
+      "18": {
+        "label": "TOTAL TOILET ADV",
+        "value": 0
+      },
+      "19": {
+        "label": "TOTAL FLYING M",
+        "value": 0
+      },
+      "20": {
+        "label": "TOTAL COMBAT ADV",
+        "value": 0
+      },
+      "21": {
+        "label": "TOTAL ALL JUNK",
+        "value": 0
+      },
+      "22": {
+        "label": "TOTAL OUTER SPCE",
+        "value": 0
+      },
+      "23": {
+        "label": "TOTAL BOB DEFTED",
+        "value": 0
+      },
+      "24": {
+        "label": "TOTAL TIME MCHNE",
+        "value": 0
+      },
+      "25": {
+        "label": "TOTAL DOG MODES",
+        "value": 0
+      },
+      "26": {
+        "label": "TOTAL FIREWORKS",
+        "value": 0
+      },
+      "27": {
+        "label": "TOTAL BONUS X",
+        "value": 0
+      },
+      "28": {
+        "label": "TOTAL CHSE JUNK",
+        "value": 0
+      },
+      "29": {
+        "label": "BUS LITE E. BALL",
+        "value": 0
+      },
+      "30": {
+        "label": "BUS COLLECT JUNK",
+        "value": 0
+      },
+      "31": {
+        "label": "BUS DOG VIDEO",
+        "value": 0
+      },
+      "32": {
+        "label": "BUS MULTIBALL",
+        "value": 0
+      },
+      "33": {
+        "label": "BUS BONUS X",
+        "value": 0
+      },
+      "34": {
+        "label": "BUS LITE JACKPOT",
+        "value": 0
+      },
+      "35": {
+        "label": "BUS SHOPPING",
+        "value": 0
+      },
+      "36": {
+        "label": "BUS LITE TIME",
+        "value": 0
+      },
+      "37": {
+        "label": "BUS ALL ABOVE",
+        "value": 0
+      },
+      "38": {
+        "label": "BUS RECYCLE LIT",
+        "value": 0
+      },
+      "39": {
+        "label": "BUS AUTOFIRE",
+        "value": 0
+      },
+      "40": {
+        "label": "BUS POINTS",
+        "value": 0
+      },
+      "41": {
+        "label": "SKILL SUPER",
+        "value": 0
+      },
+      "42": {
+        "label": "SKILL LITE TIME",
+        "value": 0
+      },
+      "43": {
+        "label": "SKILL LITE EXTRA",
+        "value": 0
+      },
+      "44": {
+        "label": "SKILL SPOT DOG",
+        "value": 0
+      },
+      "45": {
+        "label": "SKILL AWARD JUNK",
+        "value": 0
+      },
+      "46": {
+        "label": "SKILL BONUS X",
+        "value": 0
+      },
+      "47": {
+        "label": "SKILL POINTS",
+        "value": 0
+      },
+      "48": {
+        "label": "SKILL WINDOWS",
+        "value": 0
+      },
+      "49": {
+        "label": "WINDOW TX WASTE",
+        "value": 0
+      },
+      "50": {
+        "label": "WINDOW EX BALL",
+        "value": 0
+      },
+      "51": {
+        "label": "WINDOW L JACKPOT",
+        "value": 0
+      },
+      "52": {
+        "label": "WINDOW FREE GAME",
+        "value": 0
+      },
+      "53": {
+        "label": "WINDOW FIREWORKS",
+        "value": 0
+      },
+      "54": {
+        "label": "SKILL FIREWORKS",
+        "value": 0
+      }
+    },
+    "B.5 HISTOGRAMS": {
+      "01": {
+        "label": "0-1 M. SCORE",
+        "value": 0
+      },
+      "02": {
+        "label": "1-2 M. SCORE",
+        "value": 0
+      },
+      "03": {
+        "label": "3-4 M. SCORE",
+        "value": 0
+      },
+      "04": {
+        "label": "3-4 M. SCORE",
+        "value": 0
+      },
+      "05": {
+        "label": "4-6 M. SCORE",
+        "value": 0
+      },
+      "06": {
+        "label": "6-8 M. SCORE",
+        "value": 0
+      },
+      "07": {
+        "label": "8-10 M. SCORE",
+        "value": 0
+      },
+      "08": {
+        "label": "10-15 M. SCORE",
+        "value": 0
+      },
+      "09": {
+        "label": "15-20 M. SCORE",
+        "value": 0
+      },
+      "10": {
+        "label": "20-30 M. SCORE",
+        "value": 0
+      },
+      "11": {
+        "label": "30-50 M. SCORE",
+        "value": 0
+      },
+      "12": {
+        "label": "50-75 M. SCORE",
+        "value": 0
+      },
+      "13": {
+        "label": "OVER 75 MILLION",
+        "value": 0
+      },
+      "14": {
+        "label": "GAME TIME 0.0-1.0M",
+        "value": 0
+      },
+      "15": {
+        "label": "GAME TIME 1.0-1.5M",
+        "value": 0
+      },
+      "16": {
+        "label": "GAME TIME 1.5-2.0M",
+        "value": 0
+      },
+      "17": {
+        "label": "GAME TIME 2.0-2.5M",
+        "value": 0
+      },
+      "18": {
+        "label": "GAME TIME 2.5-3.0M",
+        "value": 0
+      },
+      "19": {
+        "label": "GAME TIME 3.0-3.5M",
+        "value": 0
+      },
+      "20": {
+        "label": "GAME TIME 3.5-4.0M",
+        "value": 0
+      },
+      "21": {
+        "label": "GAME TIME 4-5 M.",
+        "value": 0
+      },
+      "22": {
+        "label": "GAME TIME 5-6 M.",
+        "value": 0
+      },
+      "23": {
+        "label": "GAME TIME 6-8 M.",
+        "value": 0
+      },
+      "24": {
+        "label": "GAME TIME 8-10 M",
+        "value": 0
+      },
+      "25": {
+        "label": "GAME TIME 10-15M",
+        "value": 0
+      },
+      "26": {
+        "label": "GAME TIME > 15M",
+        "value": 0
+      }
+    },
+    "B.6 TIME-STAMPS": {
+      "02": {
+        "label": "TOTALS CLEARED",
+        "value": "2024-04-09 09:00"
+      },
+      "03": {
+        "label": "CLOCK LAST SET",
+        "value": "2024-04-09 09:00"
+      },
+      "04": {
+        "label": "AUDITS CLEARED",
+        "value": "2024-04-09 09:00"
+      },
+      "05": {
+        "label": "COINS CLEARED",
+        "value": "2024-04-09 09:00"
+      },
+      "06": {
+        "label": "FACTORY SETTING",
+        "value": "2024-04-09 09:00"
+      },
+      "07": {
+        "label": "LAST GAME START",
+        "value": "2024-04-09 09:03"
+      },
+      "08": {
+        "label": "LAST REPLAY",
+        "value": "2024-04-09 09:00"
+      },
+      "09": {
+        "label": "LAST HSTD RESET",
+        "value": "2024-04-09 09:00"
+      },
+      "10": {
+        "label": "CHAMPION RESET",
+        "value": "2024-04-09 09:00"
+      },
+      "11": {
+        "label": "LAST PRINTOUT",
+        "value": "2024-04-09 09:00"
+      },
+      "12": {
+        "label": "LAST SERV. CRED",
+        "value": "2024-04-09 09:00"
+      }
+    }
+  },
   "checksum16": [
     {
       "label": "Custom Message (2x32)",
