@@ -221,12 +221,12 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
                 .and_then(|s| s.as_number())
                 .cloned()
                 .unwrap_or(Number::from(DEFAULT_SCALE));
-            let start = start_in_nvram_file(&nvram_layout, descriptor)?;
+            let start = start_in_nvram_file(nvram_layout, descriptor)?;
             let value = read_int(rom, endian, nibble, start, length, &scale)?;
             Value::Number(value.into())
         }
         Encoding::Enum => {
-            let start = start_in_nvram_file(&nvram_layout, descriptor)?;
+            let start = start_in_nvram_file(nvram_layout, descriptor)?;
             let index = read_int(
                 rom,
                 endian,
@@ -253,7 +253,7 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
         Encoding::Bcd => {
             let location = match descriptor.get("offsets") {
                 None => {
-                    let start = start_in_nvram_file(&nvram_layout, descriptor)?;
+                    let start = start_in_nvram_file(nvram_layout, descriptor)?;
                     Location::Continuous { start, length }
                 }
                 Some(offsets) => {
@@ -281,7 +281,7 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
             Value::Number(value.into())
         }
         Encoding::Ch => {
-            let start = start_in_nvram_file(&nvram_layout, descriptor)?;
+            let start = start_in_nvram_file(nvram_layout, descriptor)?;
             let mask = descriptor.get("mask").map(json_hex_or_int).transpose()?;
             let nibble = descriptor
                 .get("nibble")
@@ -302,7 +302,7 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
             Value::String(value)
         }
         Encoding::WpcRtc => {
-            let start = start_in_nvram_file(&nvram_layout, descriptor)?;
+            let start = start_in_nvram_file(nvram_layout, descriptor)?;
             let value = read_wpc_rtc(rom, start, length)?;
             Value::String(value)
         }
@@ -311,7 +311,7 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
             Value::String(value)
         }
         Encoding::Raw => {
-            let start = start_in_nvram_file(&nvram_layout, descriptor)?;
+            let start = start_in_nvram_file(nvram_layout, descriptor)?;
             let mut buff = vec![0; length];
             read_exact_at(rom, start, &mut buff)?;
             Value::Array(buff.iter().map(|b| Value::Number((*b).into())).collect())
