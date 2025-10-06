@@ -522,7 +522,7 @@ fn read_last_game<T: Read + Seek>(
                     ));
                 }
             };
-            return Ok(Some(scores?));
+            Ok(Some(scores?))
         } else {
             Ok(None)
         }

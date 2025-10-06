@@ -16,7 +16,7 @@ pub(crate) fn de_nibble(length: usize, buff: &[u8], nibble: Nibble) -> io::Resul
     let resulting_length = length.div_ceil(2);
     let mut result = vec![0; resulting_length];
     let mut buffer = buff.to_owned();
-    if length % 2 != 0 {
+    if !length.is_multiple_of(2) {
         // prepend 0
         buffer = vec![0].into_iter().chain(buffer).collect();
     };
@@ -38,13 +38,13 @@ pub(crate) fn do_nibble(length: usize, buff: &[u8], nibble: Nibble) -> io::Resul
     if nibble == Nibble::Both {
         return Ok(buff.to_vec());
     }
-    if nibble == Nibble::High && length % 2 != 0 {
+    if nibble == Nibble::High && !length.is_multiple_of(2) {
         return Err(io::Error::new(
             io::ErrorKind::InvalidInput,
             "Length should be even when writing the high nibble",
         ));
     }
-    if nibble == Nibble::Low && length % 2 != 0 && buff[0] > 0x0F {
+    if nibble == Nibble::Low && !length.is_multiple_of(2) && buff[0] > 0x0F {
         return Err(io::Error::new(
             io::ErrorKind::InvalidInput,
             "When writing the low nibble for an uneven length the first nibble should be 0",
@@ -77,7 +77,7 @@ pub(crate) fn do_nibble(length: usize, buff: &[u8], nibble: Nibble) -> io::Resul
         }
     }
     // remove the first byte if the length is uneven
-    if length % 2 != 0 {
+    if !length.is_multiple_of(2) {
         result.remove(0);
     }
     Ok(result)

@@ -47,7 +47,7 @@ fn groupings_to_ranges(start: u64, end: u64, groupings: &Option<u64>) -> io::Res
         Some(group_size) => {
             // validate that the range is divisible by the groupings
             let elements = end - start + 1;
-            if elements % group_size != 0 {
+            if !elements.is_multiple_of(*group_size) {
                 return Err(io::Error::new(
                     io::ErrorKind::InvalidData,
                     format!(
