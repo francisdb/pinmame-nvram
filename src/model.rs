@@ -11,6 +11,7 @@ pub const DEFAULT_SCALE: i32 = 1;
 pub enum MemoryLayoutType {
     Ram,
     NVRam,
+    Rom,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -460,7 +461,7 @@ mod tests {
         for entry in WalkDir::new(maps_path).into_iter().filter_map(|e| e.ok()) {
             let path = entry.path();
             let file_name = path.file_name().unwrap().to_str().unwrap().to_owned();
-            if file_name.ends_with(".nv.json") {
+            if file_name.ends_with(".map.json") {
                 found_any = true;
                 let json = std::fs::read_to_string(path).unwrap();
                 let nvram_map: NvramMap = serde_json::from_str(&json)
