@@ -221,6 +221,7 @@ mod test {
             label: "test".to_string(),
             start: HexOrInteger::Integer(0),
             end: HexOrInteger::Integer(2),
+            checksum: None,
             groupings: None,
             _notes: None,
         };
@@ -239,6 +240,7 @@ mod test {
             label: "test".to_string(),
             start: HexOrInteger::Integer(0),
             end: HexOrInteger::Integer(4),
+            checksum: None,
             groupings: None,
             _notes: None,
         };
@@ -258,6 +260,7 @@ mod test {
             label: "test".to_string(),
             start: HexOrInteger::Integer(0),
             end: HexOrInteger::Integer(5),
+            checksum: None,
             groupings: Some(3),
             _notes: None,
         };
@@ -273,6 +276,7 @@ mod test {
             label: "test".to_string(),
             start: HexOrInteger::Integer(0),
             end: HexOrInteger::Integer(2),
+            checksum: None,
             groupings: None,
             _notes: None,
         };

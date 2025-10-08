@@ -12,6 +12,7 @@ pub enum MemoryLayoutType {
     Ram,
     NVRam,
     Rom,
+    Banked,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -120,6 +121,8 @@ pub struct Descriptor {
     pub null: Option<Null>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub units: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub invert: Option<bool>,
 }
 
 #[derive(Serialize, Deserialize, Debug, PartialEq)]
@@ -139,6 +142,8 @@ pub struct Checksum16 {
 pub struct Checksum8 {
     pub start: HexOrInteger,
     pub end: HexOrInteger,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub checksum: Option<u64>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub groupings: Option<u64>,
     pub label: String,
@@ -174,6 +179,7 @@ pub enum Encoding {
     WpcRtc,
     /// Dip switches
     Dipsw,
+    Bool,
 }
 
 #[derive(Serialize, Deserialize, Debug, PartialEq, Copy, Clone)]
@@ -208,6 +214,8 @@ pub struct ModeChampion {
 
 #[derive(Serialize, Deserialize)]
 pub struct HighScore {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub _notes: Option<Strings>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub label: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -311,6 +319,7 @@ impl fmt::Display for HexString {
 pub enum StateOrStateList {
     State(Box<Descriptor>),
     StateList(Vec<Descriptor>),
+    Notes(Strings),
 }
 
 #[derive(Serialize, Deserialize)]

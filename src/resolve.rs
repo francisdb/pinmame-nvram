@@ -354,6 +354,26 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
                 }
             }
         }
+        Encoding::Bool => {
+            // Same decoding as `"int"`, but all non-zero values equate to
+            //     `true` and zero is `false`.
+            // also check invert boolean propery to invert the value
+            let start = start_in_nvram_file(nvram_layout, descriptor)?;
+            let value = read_int(
+                rom,
+                endian,
+                nibble,
+                start,
+                length,
+                &Number::from(DEFAULT_SCALE),
+            )?;
+            let invert = descriptor
+                .get("invert")
+                .and_then(|v| v.as_bool())
+                .unwrap_or(false);
+            let bool_value = if invert { value == 0 } else { value != 0 };
+            Value::Bool(bool_value)
+        }
     };
     Ok(value)
 }

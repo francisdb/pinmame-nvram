@@ -515,7 +515,7 @@ fn read_last_game<T: Read + Seek>(
                     .iter()
                     .map(|s| read_last_game_player(&mut nvram_file, s, endian, nibble, offset))
                     .collect(),
-                StateOrStateList::State(_) => {
+                _other => {
                     return Err(io::Error::new(
                         io::ErrorKind::InvalidData,
                         "Scores is not a StateList",
@@ -591,6 +591,9 @@ fn read_game_state<T: Read + Seek>(
                             .map(|r| (compund_key, r))
                     })
                     .collect(),
+                StateOrStateList::Notes(_) => {
+                    vec![]
+                }
             })
             .collect();
 
