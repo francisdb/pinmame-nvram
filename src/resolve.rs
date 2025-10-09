@@ -1,8 +1,10 @@
 use crate::checksum::{verify_checksum8, verify_checksum16};
-use crate::encoding::{Location, read_bcd, read_ch, read_exact_at, read_int, read_wpc_rtc};
+use crate::encoding::{
+    Location, read_bcd, read_bool, read_ch, read_exact_at, read_int, read_wpc_rtc,
+};
 use crate::model::{
-    Checksum8, Checksum16, DEFAULT_LENGTH, DEFAULT_SCALE, Encoding, Endian, GlobalSettings,
-    GlobalSettingsImpl, MemoryLayout, MemoryLayoutType, Nibble, Null, Platform,
+    Checksum8, Checksum16, DEFAULT_INVERT, DEFAULT_LENGTH, DEFAULT_SCALE, Encoding, Endian,
+    GlobalSettings, GlobalSettingsImpl, MemoryLayout, MemoryLayoutType, Nibble, Null, Platform,
 };
 use crate::{dips, open_nvram, read_platform};
 use serde_json::{Map, Number, Value};
@@ -355,23 +357,12 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
             }
         }
         Encoding::Bool => {
-            // Same decoding as `"int"`, but all non-zero values equate to
-            //     `true` and zero is `false`.
-            // also check invert boolean propery to invert the value
-            let start = start_in_nvram_file(nvram_layout, descriptor)?;
-            let value = read_int(
-                rom,
-                endian,
-                nibble,
-                start,
-                length,
-                &Number::from(DEFAULT_SCALE),
-            )?;
+            let start = crate::resolve::start_in_nvram_file(nvram_layout, descriptor)?;
             let invert = descriptor
                 .get("invert")
                 .and_then(|v| v.as_bool())
-                .unwrap_or(false);
-            let bool_value = if invert { value == 0 } else { value != 0 };
+                .unwrap_or(DEFAULT_INVERT);
+            let bool_value = read_bool(rom, start, nibble, endian, length, invert)?;
             Value::Bool(bool_value)
         }
     };

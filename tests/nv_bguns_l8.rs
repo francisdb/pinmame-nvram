@@ -17,6 +17,14 @@ fn test_big_guns() -> io::Result<()> {
         ("scores.3".into(), "0".into()),
         ("credits".into(), "67".into()),
         ("current_ball".into(), "0".into()),
+        ("current_player".into(), "0".into()),
+        ("tilt_warnings".into(), "0".into()),
+        ("tilted".into(), "false".into()),
+        ("extra_balls".into(), "3".into()),
+        ("ball_count".into(), "3".into()),
+        ("max_credits".into(), "10".into()),
+        ("game_over".into(), "true".into()),
+        ("player_count".into(), "0".into()),
     ]);
     assert_eq!(Some(expected), game_state);
 

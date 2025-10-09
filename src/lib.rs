@@ -7,11 +7,13 @@ pub mod resolve;
 
 use crate::checksum::{ChecksumMismatch, update_all_checksum16, verify_all_checksum16};
 use crate::dips::{get_dip_switch, set_dip_switch, validate_dip_switch_range};
-use crate::encoding::{Location, read_bcd, read_ch, read_int, read_wpc_rtc, write_bcd, write_ch};
+use crate::encoding::{
+    Location, read_bcd, read_bool, read_ch, read_int, read_wpc_rtc, write_bcd, write_ch,
+};
 use crate::index::get_index_map;
 use crate::model::{
-    DEFAULT_LENGTH, DEFAULT_SCALE, Descriptor, Encoding, Endian, GlobalSettings, MemoryLayoutType,
-    Nibble, NvramMap, Platform, StateOrStateList,
+    DEFAULT_INVERT, DEFAULT_LENGTH, DEFAULT_SCALE, Descriptor, Encoding, Endian, GlobalSettings,
+    MemoryLayoutType, Nibble, NvramMap, Platform, StateOrStateList,
 };
 use include_dir::{Dir, File, include_dir};
 use serde::de;
@@ -671,6 +673,23 @@ fn read_descriptor_to_string<T: Read + Seek, S: GlobalSettings>(
             Ok(score.to_string())
         }
         Encoding::Bits => Ok("Bits encoding not implemented".to_string()),
+        Encoding::Bool => match &descriptor.start {
+            Some(start) => {
+                let bool = read_bool(
+                    nvram_file,
+                    start.into(),
+                    nibble,
+                    endian,
+                    descriptor.length.unwrap_or(DEFAULT_LENGTH),
+                    descriptor.invert.unwrap_or(DEFAULT_INVERT),
+                )?;
+                Ok(bool.to_string())
+            }
+            None => Err(io::Error::new(
+                io::ErrorKind::InvalidData,
+                "Bool descriptor requires start",
+            )),
+        },
         other => todo!("Encoding not implemented: {:?}", other),
     }
 }

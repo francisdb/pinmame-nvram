@@ -6,6 +6,8 @@ use std::fmt;
 pub const DEFAULT_LENGTH: usize = 1;
 pub const DEFAULT_SCALE: i32 = 1;
 
+pub const DEFAULT_INVERT: bool = false;
+
 #[derive(Serialize, Deserialize, Debug, PartialEq, Copy, Clone)]
 #[serde(rename_all = "lowercase")]
 pub enum MemoryLayoutType {
