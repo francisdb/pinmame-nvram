@@ -1,8 +1,10 @@
 use crate::checksum::{verify_checksum8, verify_checksum16};
-use crate::encoding::{Location, read_bcd, read_ch, read_exact_at, read_int, read_wpc_rtc};
+use crate::encoding::{
+    Location, read_bcd, read_bool, read_ch, read_exact_at, read_int, read_wpc_rtc,
+};
 use crate::model::{
-    Checksum8, Checksum16, DEFAULT_LENGTH, DEFAULT_SCALE, Encoding, Endian, GlobalSettings,
-    GlobalSettingsImpl, MemoryLayout, MemoryLayoutType, Nibble, Null, Platform,
+    Checksum8, Checksum16, DEFAULT_INVERT, DEFAULT_LENGTH, DEFAULT_SCALE, Encoding, Endian,
+    GlobalSettings, GlobalSettingsImpl, MemoryLayout, MemoryLayoutType, Nibble, Null, Platform,
 };
 use crate::{dips, open_nvram, read_platform};
 use serde_json::{Map, Number, Value};
@@ -354,6 +356,15 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
                 }
             }
         }
+        Encoding::Bool => {
+            let start = crate::resolve::start_in_nvram_file(nvram_layout, descriptor)?;
+            let invert = descriptor
+                .get("invert")
+                .and_then(|v| v.as_bool())
+                .unwrap_or(DEFAULT_INVERT);
+            let bool_value = read_bool(rom, start, nibble, endian, length, invert)?;
+            Value::Bool(bool_value)
+        }
     };
     Ok(value)
 }
@@ -424,9 +435,8 @@ mod tests {
         let excludes = ["_note"];
 
         // Temporarily disable these rom game names if you can't find the nvram
-        let expected: [&str; 188] = [
+        let expected: [&str; 204] = [
             "algar_l1ff",
-            "alpok_b6",
             "alpok_f6",
             "alpok_f6ff",
             "alpok_l2",
@@ -478,8 +488,10 @@ mod tests {
             "excalbfp",
             "excalffp",
             "excalgfp",
+            "fh_d3",
             "fh_d9",
             "fh_d9b",
+            "fh_l3",
             "fh_l9b",
             "flash_l1ff",
             "flash_l2",
@@ -513,10 +525,13 @@ mod tests {
             "gw_d5",
             "gw_l5c",
             "hd_d1",
+            "hd_d2",
             "hd_d3",
+            "hd_l2",
             "hlywdhfp",
             "hlywhffp",
             "hlywhgfp",
+            "hothanfp",
             "hotshffp",
             "hotshgfp",
             "hotshtfp",
@@ -527,11 +542,16 @@ mod tests {
             "jd_d1",
             "jd_d7",
             "jy_12c",
+            "lectrofp",
+            "lucky_l1",
             "lzbal_l2ff",
             "lzbal_l2sp",
             "lzbal_l2spff",
             "lzbal_t2",
             "lzbal_t2ff",
+            "magic",
+            "magicfp",
+            "memlanfp",
             "milln_l3",
             "mntcr2fp",
             "mntcrafp",
@@ -541,8 +561,11 @@ mod tests {
             "mntcrgmfp",
             "mntcrmfp",
             "mntecrfp",
+            "nfl",
             "nmovesfp",
+            "nugentfp",
             "pop_dx5",
+            "princefp",
             "pz_d3",
             "pz_f5",
             "raven",
@@ -567,6 +590,8 @@ mod tests {
             "sprbrgfp",
             "sprbrkfp",
             "sprbrsfp",
+            "starsfp",
+            "stingrfp",
             "sttng_d7",
             "sttng_dx",
             "sttng_l7c",
@@ -606,11 +631,13 @@ mod tests {
             "victr101",
             "victr11",
             "victr12",
+            "victr13",
             "victrffp",
             "victrgfp",
             "victryfp",
             "wcs_d2",
             "wcs_l3c",
+            "wldcp_l1",
             "ww_d5",
             "ww_lh6c",
         ];

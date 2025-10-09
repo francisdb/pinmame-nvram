@@ -575,9 +575,9 @@
     }
   ],
   "game_state": {
-    "attract": {
-      "label": "Attract",
-      "value": "IN GAME"
+    "ball_count": {
+      "label": "Ball Count",
+      "value": 3
     },
     "credits": {
       "label": "Credits",
@@ -598,6 +598,14 @@
     "extra_balls": {
       "label": "Extra Balls",
       "value": 0
+    },
+    "game_over": {
+      "label": "Game Over",
+      "value": false
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "value": 10
     },
     "player_count": {
       "label": "Players",

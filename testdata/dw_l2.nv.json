@@ -615,9 +615,9 @@
     }
   ],
   "game_state": {
-    "attract": {
-      "label": "Attract",
-      "value": "ATTRACT"
+    "ball_count": {
+      "label": "Ball Count",
+      "value": 3
     },
     "bonus": {
       "label": "P1 Bonus",
@@ -666,6 +666,14 @@
     "extra_balls": {
       "label": "Extra Balls",
       "value": 0
+    },
+    "game_over": {
+      "label": "Game Over",
+      "value": true
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "value": 10
     },
     "mb_round": {
       "label": "P1 Multiball Round",

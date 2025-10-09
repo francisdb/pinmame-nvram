@@ -1,5 +1,5 @@
 {
-  "_fileformat": 0.7,
+  "_fileformat": 0.8,
   "adjustments": {
     "Adjustments": {
       "01": {
@@ -433,9 +433,19 @@
     {
       "label": "Audits Continued",
       "value": "valid"
+    },
+    {
+      "checksum_mismatch_calculated": 249,
+      "checksum_mismatch_expected": 7,
+      "label": "Credits",
+      "value": "mismatch"
     }
   ],
   "game_state": {
+    "ball_count": {
+      "label": "Ball Count",
+      "value": 3
+    },
     "bonus": {
       "label": "Bonus",
       "value": 0
@@ -456,6 +466,14 @@
       "label": "Current Player",
       "value": 0
     },
+    "extra_balls": {
+      "label": "Extra Balls",
+      "value": 0
+    },
+    "game_over": {
+      "label": "Game Over",
+      "value": true
+    },
     "jackpot": {
       "label": "Jackpot Bonus",
       "value": 530000
@@ -463,6 +481,10 @@
     "match": {
       "label": "Match",
       "value": 0
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "value": 10
     },
     "player_count": {
       "label": "Player Count",
@@ -490,6 +512,14 @@
         "value": 0
       }
     ],
+    "tilt_warnings": {
+      "label": "Tilt Warnings",
+      "value": 0
+    },
+    "tilted": {
+      "label": "Tilted",
+      "value": false
+    },
     "xcel_value": {
       "label": "X-Cellerator Value",
       "value": "Bits encoding not implemented"

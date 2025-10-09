@@ -7,11 +7,13 @@ pub mod resolve;
 
 use crate::checksum::{ChecksumMismatch, update_all_checksum16, verify_all_checksum16};
 use crate::dips::{get_dip_switch, set_dip_switch, validate_dip_switch_range};
-use crate::encoding::{Location, read_bcd, read_ch, read_int, read_wpc_rtc, write_bcd, write_ch};
+use crate::encoding::{
+    Location, read_bcd, read_bool, read_ch, read_int, read_wpc_rtc, write_bcd, write_ch,
+};
 use crate::index::get_index_map;
 use crate::model::{
-    DEFAULT_LENGTH, DEFAULT_SCALE, Descriptor, Encoding, Endian, GlobalSettings, MemoryLayoutType,
-    Nibble, NvramMap, Platform, StateOrStateList,
+    DEFAULT_INVERT, DEFAULT_LENGTH, DEFAULT_SCALE, Descriptor, Encoding, Endian, GlobalSettings,
+    MemoryLayoutType, Nibble, NvramMap, Platform, StateOrStateList,
 };
 use include_dir::{Dir, File, include_dir};
 use serde::de;
@@ -513,9 +515,9 @@ fn read_last_game<T: Read + Seek>(
             let scores: Result<Vec<LastGamePlayer>, io::Error> = match scores {
                 StateOrStateList::StateList(sl) => sl
                     .iter()
-                    .map(|s| read_last_game_player(&mut nvram_file, s, endian, nibble, offset))
+                    .map(|d| read_last_game_player(&mut nvram_file, d, endian, nibble, offset))
                     .collect(),
-                StateOrStateList::State(_) => {
+                _other => {
                     return Err(io::Error::new(
                         io::ErrorKind::InvalidData,
                         "Scores is not a StateList",
@@ -591,6 +593,9 @@ fn read_game_state<T: Read + Seek>(
                             .map(|r| (compund_key, r))
                     })
                     .collect(),
+                StateOrStateList::Notes(_) => {
+                    vec![]
+                }
             })
             .collect();
 
@@ -668,6 +673,23 @@ fn read_descriptor_to_string<T: Read + Seek, S: GlobalSettings>(
             Ok(score.to_string())
         }
         Encoding::Bits => Ok("Bits encoding not implemented".to_string()),
+        Encoding::Bool => match &descriptor.start {
+            Some(start) => {
+                let bool = read_bool(
+                    nvram_file,
+                    start.into(),
+                    nibble,
+                    endian,
+                    descriptor.length.unwrap_or(DEFAULT_LENGTH),
+                    descriptor.invert.unwrap_or(DEFAULT_INVERT),
+                )?;
+                Ok(bool.to_string())
+            }
+            None => Err(io::Error::new(
+                io::ErrorKind::InvalidData,
+                "Bool descriptor requires start",
+            )),
+        },
         other => todo!("Encoding not implemented: {:?}", other),
     }
 }
@@ -685,7 +707,10 @@ fn read_descriptor_to_u64<T: Read + Seek>(
                 LocateResult::OutsideNVRAM => {
                     return Err(io::Error::new(
                         io::ErrorKind::InvalidData,
-                        "Descriptor points outside NVRAM",
+                        format!(
+                            "Descriptor '{}' points outside NVRAM",
+                            descriptor.label.as_deref().unwrap_or("unknown")
+                        ),
                     ));
                 }
                 LocateResult::Located(loc) => loc,

@@ -1,0 +1,166 @@
+{
+  "_fileformat": 0.7,
+  "game_state": {
+    "ball_count": {
+      "label": "Ball Count",
+      "value": 3
+    },
+    "credits": {
+      "label": "Credits",
+      "value": 4
+    },
+    "current_ball": {
+      "label": "Current Ball",
+      "value": 0
+    },
+    "current_player": {
+      "label": "Current Player",
+      "value": 0
+    },
+    "game_over": {
+      "label": "Game Over",
+      "value": true
+    },
+    "max_credits": {
+      "label": "Max Credits",
+      "value": 30
+    },
+    "player_count": {
+      "label": "Player Count",
+      "value": 0
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 24991890
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      },
+      {
+        "label": "Player 5",
+        "value": 0
+      },
+      {
+        "label": "Player 6",
+        "value": 0
+      }
+    ],
+    "tilted": {
+      "label": "Tilted",
+      "value": false
+    }
+  },
+  "high_scores": [
+    {
+      "initials": {
+        "value": "JOE       "
+      },
+      "label": "#1",
+      "score": {
+        "value": 400000000
+      }
+    },
+    {
+      "initials": {
+        "value": "LON       "
+      },
+      "label": "#2",
+      "score": {
+        "value": 375000000
+      }
+    },
+    {
+      "initials": {
+        "value": "DAY       "
+      },
+      "label": "#3",
+      "score": {
+        "value": 350000000
+      }
+    },
+    {
+      "initials": {
+        "value": "KRT       "
+      },
+      "label": "#4",
+      "score": {
+        "value": 325000000
+      }
+    },
+    {
+      "initials": {
+        "value": "JAY       "
+      },
+      "label": "#5",
+      "score": {
+        "value": 300000000
+      }
+    },
+    {
+      "initials": {
+        "value": "KJY       "
+      },
+      "label": "#6",
+      "score": {
+        "value": 275000000
+      }
+    },
+    {
+      "initials": {
+        "value": "RAY       "
+      },
+      "label": "#7",
+      "score": {
+        "value": 250000000
+      }
+    },
+    {
+      "initials": {
+        "value": "JDB       "
+      },
+      "label": "#8",
+      "score": {
+        "value": 225000000
+      }
+    },
+    {
+      "initials": {
+        "value": "XAQ       "
+      },
+      "label": "#9",
+      "score": {
+        "value": 200000000
+      }
+    },
+    {
+      "initials": {
+        "value": "KEF       "
+      },
+      "label": "#10",
+      "score": {
+        "value": 175000000
+      }
+    }
+  ],
+  "mode_champions": [
+    {
+      "initials": {
+        "value": "LON"
+      },
+      "label": "Goal Champ",
+      "score": {
+        "value": 25
+      }
+    }
+  ]
+}

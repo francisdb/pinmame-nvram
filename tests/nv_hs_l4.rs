@@ -75,6 +75,10 @@ fn test_high_speed() -> io::Result<()> {
         ("current_player".into(), "0".into()),
         ("player_count".into(), "0".into()),
         ("match".into(), "0".into()),
+        ("max_credits".into(), "30".into()),
+        ("tilted".into(), "false".into()),
+        ("ball_count".into(), "3".into()),
+        ("game_over".into(), "true".into()),
     ]);
     assert_eq!(Some(expected), game_state);
 

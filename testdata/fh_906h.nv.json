@@ -1,5 +1,449 @@
 {
   "_fileformat": 0.7,
+  "audits": {
+    "B.2 EARNINGS AUDS.": {
+      "02": {
+        "label": "RECENT LEFT SLOT",
+        "value": 1
+      },
+      "03": {
+        "label": "RECENT CENT. SLOT",
+        "value": 1
+      },
+      "04": {
+        "label": "RECENT RGHT. SLOT",
+        "value": 149
+      },
+      "05": {
+        "label": "RECENT 4TH SLOT",
+        "value": 1
+      },
+      "06": {
+        "label": "RECENT PAID CRED",
+        "value": 916
+      },
+      "07": {
+        "label": "RECENT SERV. CRED",
+        "value": 5
+      },
+      "09": {
+        "label": "TOTAL LEFT SLOT",
+        "value": 1
+      },
+      "10": {
+        "label": "TOTAL CENTR. SLOT",
+        "value": 1
+      },
+      "11": {
+        "label": "TOTAL RIGHT SLOT",
+        "value": 149
+      },
+      "12": {
+        "label": "TOTAL 4TH SLOT",
+        "value": 1
+      },
+      "13": {
+        "label": "TOTAL PAID CRED.",
+        "value": 916
+      },
+      "14": {
+        "label": "TOTAL SERV. CRED.",
+        "value": 5
+      }
+    },
+    "B.3 STANDARD AUDS.": {
+      "01": {
+        "label": "GAMES STARTED",
+        "value": 134
+      },
+      "02": {
+        "label": "TOTAL PLAYS",
+        "value": 81
+      },
+      "03": {
+        "label": "TOTAL FREE PLAYS",
+        "value": 5
+      },
+      "05": {
+        "label": "REPLAY AWARDS",
+        "value": 0
+      },
+      "07": {
+        "label": "SPECIAL AWARDS",
+        "value": 0
+      },
+      "09": {
+        "label": "MATCH AWARDS",
+        "value": 5
+      },
+      "11": {
+        "label": "H.S.T.D. CREDITS",
+        "value": 0
+      },
+      "13": {
+        "label": "EXTRA BALLS",
+        "value": 9
+      },
+      "15": {
+        "label": "TICKETS AWARDED",
+        "value": 0
+      },
+      "17": {
+        "label": "LEFT DRAINS",
+        "value": 14
+      },
+      "18": {
+        "label": "RIGHT DRAINS",
+        "value": 34
+      },
+      "21": {
+        "label": "PLAY TIME",
+        "value": 13000
+      },
+      "22": {
+        "label": "MINUTES ON",
+        "value": 682
+      },
+      "23": {
+        "label": "BALLS PLAYED",
+        "value": 396
+      },
+      "24": {
+        "label": "TILTS",
+        "value": 0
+      },
+      "25": {
+        "label": "REPLAY 1 AWARDS",
+        "value": 0
+      },
+      "26": {
+        "label": "REPLAY 2 AWARDS",
+        "value": 0
+      },
+      "27": {
+        "label": "REPLAY 3 AWARDS",
+        "value": 0
+      },
+      "28": {
+        "label": "REPLAY 4 AWARDS",
+        "value": 0
+      },
+      "29": {
+        "label": "1 PLAYER GAMES",
+        "value": 50
+      },
+      "30": {
+        "label": "2 PLAYER GAMES",
+        "value": 11
+      },
+      "31": {
+        "label": "3 PLAYER GAMES",
+        "value": 0
+      },
+      "32": {
+        "label": "4 PLAYER GAMES",
+        "value": 0
+      },
+      "33": {
+        "label": "H.S.T.D. RESET COUNT",
+        "value": 2919
+      },
+      "34": {
+        "label": "BURN-IN TIME",
+        "value": 0
+      },
+      "36": {
+        "label": "LEFT FLIPPER",
+        "value": 6013
+      },
+      "37": {
+        "label": "RIGHT FLIPPER",
+        "value": 5130
+      }
+    },
+    "B.4 FEATURE AUDS.": {
+      "01": {
+        "label": "11:30 GAMES",
+        "value": 53
+      },
+      "02": {
+        "label": "11:45 GAMES",
+        "value": 27
+      },
+      "03": {
+        "label": "MIDNIGHT GAMES",
+        "value": 16
+      },
+      "04": {
+        "label": "MULTIBALL",
+        "value": 6
+      },
+      "05": {
+        "label": "MILLION PLUS",
+        "value": 1
+      },
+      "06": {
+        "label": "HIDDEN HALLWAY",
+        "value": 1
+      },
+      "07": {
+        "label": "QUICK MULTIBALL",
+        "value": 17
+      },
+      "08": {
+        "label": "MILLION SHOTS",
+        "value": 9
+      },
+      "09": {
+        "label": "RUDY JAW HITS",
+        "value": 130
+      },
+      "10": {
+        "label": "RAMP SHOTS",
+        "value": 179
+      },
+      "11": {
+        "label": "SKILL SHOTS",
+        "value": 7
+      },
+      "12": {
+        "label": "\"MYSTERY MIRROR\"",
+        "value": 128
+      },
+      "13": {
+        "label": "MIRROR COMPLETED",
+        "value": 0
+      },
+      "14": {
+        "label": "MIRROR E.B. LIT",
+        "value": 19
+      },
+      "15": {
+        "label": "MIRROR SUPER-DOG",
+        "value": 27
+      },
+      "16": {
+        "label": "GANGWAY",
+        "value": 18
+      },
+      "17": {
+        "label": "GANGWAY E.B. LIT",
+        "value": 0
+      },
+      "18": {
+        "label": "FRENZY LIT",
+        "value": 0
+      },
+      "19": {
+        "label": "FRENZY COLLECTED",
+        "value": 0
+      },
+      "20": {
+        "label": "S-T-E-P COMPLETE",
+        "value": 108
+      },
+      "21": {
+        "label": "STEP BALLSHOOTER",
+        "value": 45
+      },
+      "22": {
+        "label": "SUPER DOG LANE",
+        "value": 36
+      },
+      "23": {
+        "label": "E.B. LIT BY STEPS",
+        "value": 0
+      },
+      "24": {
+        "label": "SUPER-DOG HITS",
+        "value": 54
+      },
+      "25": {
+        "label": "JET BUMPER LANE",
+        "value": 62
+      },
+      "26": {
+        "label": "TRAP DOOR OPENED",
+        "value": 63
+      },
+      "27": {
+        "label": "TRAP DOOR SHOTS",
+        "value": 17
+      },
+      "28": {
+        "label": "MAN HOLE HITS",
+        "value": 51
+      },
+      "29": {
+        "label": "3-WAY COMBO",
+        "value": 0
+      },
+      "30": {
+        "label": "4-WAY COMBO",
+        "value": 0
+      },
+      "31": {
+        "label": "HALLWAY SHOTS",
+        "value": 171
+      },
+      "32": {
+        "label": "SPECIAL LIT",
+        "value": 0
+      }
+    },
+    "B.5 HISTOGRAMS": {
+      "01": {
+        "label": "0.0-0.4 MIL. SCORE",
+        "value": 0
+      },
+      "02": {
+        "label": "0.5-0.9 MIL. SCORE",
+        "value": 2
+      },
+      "03": {
+        "label": "1.0-1.4 MIL. SCORE",
+        "value": 11
+      },
+      "04": {
+        "label": "1.5-1.9 MIL. SCORE",
+        "value": 12
+      },
+      "05": {
+        "label": "2.0-2.9 MIL. SCORE",
+        "value": 21
+      },
+      "06": {
+        "label": "3.0-3.9 MIL. SCORE",
+        "value": 16
+      },
+      "07": {
+        "label": "4.0-4.9 MIL. SCORE",
+        "value": 4
+      },
+      "08": {
+        "label": "5.0-5.9 MIL. SCORE",
+        "value": 2
+      },
+      "09": {
+        "label": "6.0-7.9 MIL. SCORE",
+        "value": 3
+      },
+      "10": {
+        "label": "8.0-9.9 MIL. SCORE",
+        "value": 1
+      },
+      "11": {
+        "label": "10-15 MIL. SCORE",
+        "value": 0
+      },
+      "12": {
+        "label": "15-20 MIL. SCORE",
+        "value": 0
+      },
+      "13": {
+        "label": "OVER 20 MILLION",
+        "value": 0
+      },
+      "14": {
+        "label": "GAME TIME 0.0-1.0M",
+        "value": 1
+      },
+      "15": {
+        "label": "GAME TIME 1.0-1.5M",
+        "value": 10
+      },
+      "16": {
+        "label": "GAME TIME 1.5-2.0M",
+        "value": 12
+      },
+      "17": {
+        "label": "GAME TIME 2.0-2.5M",
+        "value": 12
+      },
+      "18": {
+        "label": "GAME TIME 2.5-3.0M",
+        "value": 7
+      },
+      "19": {
+        "label": "GAME TIME 3.0-3.5M",
+        "value": 15
+      },
+      "20": {
+        "label": "GAME TIME 3.5-4.0M",
+        "value": 5
+      },
+      "21": {
+        "label": "GAME TIME 4-5 M.",
+        "value": 7
+      },
+      "22": {
+        "label": "GAME TIME 5-6 M.",
+        "value": 2
+      },
+      "23": {
+        "label": "GAME TIME 6-8 M.",
+        "value": 1
+      },
+      "24": {
+        "label": "GAME TIME 8-10 M",
+        "value": 0
+      },
+      "25": {
+        "label": "GAME TIME 10-15M",
+        "value": 0
+      },
+      "26": {
+        "label": "GAME TIME > 15M",
+        "value": 0
+      }
+    },
+    "B.6 TIME-STAMPS": {
+      "02": {
+        "label": "TOTALS CLEARED",
+        "value": "2019-03-23 12:20"
+      },
+      "03": {
+        "label": "CLOCK LAST SET",
+        "value": "2019-03-23 12:20"
+      },
+      "04": {
+        "label": "AUDITS CLEARED",
+        "value": "2019-03-23 12:20"
+      },
+      "05": {
+        "label": "COINS CLEARED",
+        "value": "2019-03-23 12:20"
+      },
+      "06": {
+        "label": "FACTORY SETTING",
+        "value": "2019-03-23 12:20"
+      },
+      "07": {
+        "label": "LAST GAME START",
+        "value": "2023-05-28 21:44"
+      },
+      "08": {
+        "label": "LAST REPLAY",
+        "value": "2019-03-23 12:20"
+      },
+      "09": {
+        "label": "LAST HSTD RESET",
+        "value": "2019-03-23 12:20"
+      },
+      "10": {
+        "label": "CHAMPION RESET",
+        "value": "2019-03-23 12:20"
+      },
+      "11": {
+        "label": "LAST PRINTOUT",
+        "value": "2019-03-23 12:20"
+      },
+      "12": {
+        "label": "LAST SERV. CRED",
+        "value": "2023-05-28 21:48"
+      }
+    }
+  },
   "checksum16": [
     {
       "label": "Custom Message (2x32)",
@@ -55,9 +499,9 @@
     }
   ],
   "game_state": {
-    "attract": {
-      "label": "Attract",
-      "value": "ATTRACT"
+    "ball_count": {
+      "label": "Ball Count",
+      "value": 5
     },
     "credits": {
       "label": "Credits",
@@ -78,6 +522,14 @@
     "extra_balls": {
       "label": "Extra Balls",
       "value": 0
+    },
+    "game_over": {
+      "label": "Game Over",
+      "value": true
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "value": 10
     },
     "player_count": {
       "label": "Players",

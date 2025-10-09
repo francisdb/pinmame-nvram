@@ -6,11 +6,15 @@ use std::fmt;
 pub const DEFAULT_LENGTH: usize = 1;
 pub const DEFAULT_SCALE: i32 = 1;
 
+pub const DEFAULT_INVERT: bool = false;
+
 #[derive(Serialize, Deserialize, Debug, PartialEq, Copy, Clone)]
 #[serde(rename_all = "lowercase")]
 pub enum MemoryLayoutType {
     Ram,
     NVRam,
+    Rom,
+    Banked,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -119,6 +123,8 @@ pub struct Descriptor {
     pub null: Option<Null>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub units: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub invert: Option<bool>,
 }
 
 #[derive(Serialize, Deserialize, Debug, PartialEq)]
@@ -137,7 +143,12 @@ pub struct Checksum16 {
 #[derive(Serialize, Deserialize)]
 pub struct Checksum8 {
     pub start: HexOrInteger,
-    pub end: HexOrInteger,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub end: Option<HexOrInteger>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub length: Option<u64>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub checksum: Option<u64>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub groupings: Option<u64>,
     pub label: String,
@@ -173,6 +184,7 @@ pub enum Encoding {
     WpcRtc,
     /// Dip switches
     Dipsw,
+    Bool,
 }
 
 #[derive(Serialize, Deserialize, Debug, PartialEq, Copy, Clone)]
@@ -207,6 +219,8 @@ pub struct ModeChampion {
 
 #[derive(Serialize, Deserialize)]
 pub struct HighScore {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub _notes: Option<Strings>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub label: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -310,6 +324,7 @@ impl fmt::Display for HexString {
 pub enum StateOrStateList {
     State(Box<Descriptor>),
     StateList(Vec<Descriptor>),
+    Notes(Strings),
 }
 
 #[derive(Serialize, Deserialize)]
@@ -460,7 +475,7 @@ mod tests {
         for entry in WalkDir::new(maps_path).into_iter().filter_map(|e| e.ok()) {
             let path = entry.path();
             let file_name = path.file_name().unwrap().to_str().unwrap().to_owned();
-            if file_name.ends_with(".nv.json") {
+            if file_name.ends_with(".map.json") {
                 found_any = true;
                 let json = std::fs::read_to_string(path).unwrap();
                 let nvram_map: NvramMap = serde_json::from_str(&json)

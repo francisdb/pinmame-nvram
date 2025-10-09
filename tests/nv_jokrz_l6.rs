@@ -4,7 +4,6 @@ use std::collections::HashMap;
 use std::io;
 use std::path::Path;
 
-#[ignore = "https://github.com/tomlogic/pinmame-nvram-maps/pull/30"]
 #[test]
 fn test_jokerz() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/jokrz_l6.nv"))?.unwrap();
@@ -13,26 +12,41 @@ fn test_jokerz() -> io::Result<()> {
     // replay at: 2_500_000
 
     let game_state = nvram.read_game_state()?;
-    let expected = HashMap::from([("credits".into(), "33".into())]);
+    let expected = HashMap::from([
+        ("credits".into(), "33".into()),
+        ("current_ball".into(), "1".into()),
+        ("current_player".into(), "0".into()),
+        ("ball_count".into(), "3".into()),
+        ("extra_balls".into(), "0".into()),
+        ("game_over".into(), "false".into()),
+        ("max_credits".into(), "10".into()),
+        ("player_count".into(), "0".into()),
+        ("scores.0".into(), "119000".into()),
+        ("scores.1".into(), "0".into()),
+        ("scores.2".into(), "0".into()),
+        ("scores.3".into(), "0".into()),
+        ("tilt_warnings".into(), "0".into()),
+        ("tilted".into(), "false".into()),
+    ]);
     assert_eq!(Some(expected), game_state);
 
     let last_game = nvram.read_last_game()?;
     let expected = vec![
         LastGamePlayer {
             score: 119_000,
-            label: None,
+            label: Some("Player 1".to_string()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 2".to_string()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 3".to_string()),
         },
         LastGamePlayer {
             score: 0,
-            label: None,
+            label: Some("Player 4".to_string()),
         },
     ];
     assert_eq!(Some(expected), last_game);

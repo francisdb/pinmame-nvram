@@ -1,5 +1,465 @@
 {
   "_fileformat": 0.7,
+  "audits": {
+    "B.2 EARNINGS AUDS.": {
+      "02": {
+        "label": "RECENT LEFT SLOT",
+        "value": 0
+      },
+      "03": {
+        "label": "RECENT CENT. SLOT",
+        "value": 10
+      },
+      "04": {
+        "label": "RECENT RGHT. SLOT",
+        "value": 8
+      },
+      "05": {
+        "label": "RECENT 4TH SLOT",
+        "value": 0
+      },
+      "06": {
+        "label": "RECENT PAID CRED",
+        "value": 11
+      },
+      "07": {
+        "label": "RECENT SERV. CRED",
+        "value": 0
+      },
+      "09": {
+        "label": "TOTAL LEFT SLOT",
+        "value": 0
+      },
+      "10": {
+        "label": "TOTAL CENTR. SLOT",
+        "value": 10
+      },
+      "11": {
+        "label": "TOTAL RIGHT SLOT",
+        "value": 8
+      },
+      "12": {
+        "label": "TOTAL 4TH SLOT",
+        "value": 0
+      },
+      "13": {
+        "label": "TOTAL PAID CRED.",
+        "value": 11
+      },
+      "14": {
+        "label": "TOTAL SERV. CRED.",
+        "value": 0
+      }
+    },
+    "B.3 STANDARD AUDS.": {
+      "01": {
+        "label": "GAMES STARTED",
+        "value": 2
+      },
+      "02": {
+        "label": "GAMES COMPLETED",
+        "value": 0
+      },
+      "03": {
+        "label": "TOTAL FREE PLAYS",
+        "value": 0
+      },
+      "05": {
+        "label": "REPLAY AWARDS",
+        "value": 0
+      },
+      "07": {
+        "label": "SPECIAL AWARDS",
+        "value": 0
+      },
+      "09": {
+        "label": "MATCH AWARDS",
+        "value": 0
+      },
+      "11": {
+        "label": "H.S.T.D. CREDITS",
+        "value": 0
+      },
+      "13": {
+        "label": "EXTRA BALLS",
+        "value": 0
+      },
+      "15": {
+        "label": "TICKETS AWARDED",
+        "value": 0
+      },
+      "17": {
+        "label": "LEFT DRAINS",
+        "value": 0
+      },
+      "18": {
+        "label": "RIGHT DRAINS",
+        "value": 0
+      },
+      "21": {
+        "label": "MINUTES OF PLAY",
+        "value": 0
+      },
+      "22": {
+        "label": "MINUTES ON",
+        "value": 2
+      },
+      "23": {
+        "label": "BALLS PLAYED",
+        "value": 0
+      },
+      "24": {
+        "label": "TILTS",
+        "value": 0
+      },
+      "25": {
+        "label": "REPLAY 1 AWARDS",
+        "value": 0
+      },
+      "26": {
+        "label": "REPLAY 2 AWARDS",
+        "value": 0
+      },
+      "27": {
+        "label": "REPLAY 3 AWARDS",
+        "value": 0
+      },
+      "28": {
+        "label": "REPLAY 4 AWARDS",
+        "value": 0
+      },
+      "29": {
+        "label": "1 PLAYER GAMES",
+        "value": 0
+      },
+      "30": {
+        "label": "2 PLAYER GAMES",
+        "value": 0
+      },
+      "31": {
+        "label": "3 PLAYER GAMES",
+        "value": 0
+      },
+      "32": {
+        "label": "4 PLAYER GAMES",
+        "value": 0
+      },
+      "33": {
+        "label": "H.S.T.D. RESET COUNT",
+        "value": 3000
+      },
+      "34": {
+        "label": "BURN-IN CYCLES",
+        "value": 0
+      }
+    },
+    "B.4 FEATURE AUDS.": {
+      "01": {
+        "label": "JACKPOT X 1",
+        "value": 0
+      },
+      "02": {
+        "label": "JACKPOT X 2",
+        "value": 0
+      },
+      "03": {
+        "label": "JACKPOT X 3",
+        "value": 0
+      },
+      "04": {
+        "label": "JACKPOT X 4",
+        "value": 0
+      },
+      "05": {
+        "label": "JACKPOT X 5",
+        "value": 0
+      },
+      "06": {
+        "label": "JACKPOT X 6",
+        "value": 0
+      },
+      "07": {
+        "label": "JACKPOT X 7",
+        "value": 0
+      },
+      "08": {
+        "label": "JACKPOT X 8",
+        "value": 0
+      },
+      "09": {
+        "label": "JACKPOT X 9",
+        "value": 0
+      },
+      "10": {
+        "label": "JACKPOT X 10",
+        "value": 0
+      },
+      "11": {
+        "label": "1ST LOCK",
+        "value": 0
+      },
+      "12": {
+        "label": "MULTIBALL",
+        "value": 0
+      },
+      "13": {
+        "label": "QUICK MULTIBALL",
+        "value": 0
+      },
+      "14": {
+        "label": "FIVE MILLION",
+        "value": 0
+      },
+      "15": {
+        "label": "LEFT MILLION",
+        "value": 0
+      },
+      "16": {
+        "label": "RIGHT MILLION",
+        "value": 0
+      },
+      "17": {
+        "label": "LEFT CITIES",
+        "value": 1
+      },
+      "18": {
+        "label": "RIGHT CITIES",
+        "value": 0
+      },
+      "19": {
+        "label": "SPEED TRAP",
+        "value": 1
+      },
+      "20": {
+        "label": "SPEED BON. LEV. 1",
+        "value": 0
+      },
+      "21": {
+        "label": "SPEED BON. LEV. 2",
+        "value": 0
+      },
+      "22": {
+        "label": "SPEED BON. LEV. 3",
+        "value": 0
+      },
+      "23": {
+        "label": "SPEED BON. LEV. 4",
+        "value": 0
+      },
+      "24": {
+        "label": "SPEED BON. LEV. 5",
+        "value": 0
+      },
+      "25": {
+        "label": "BONUS 2X",
+        "value": 0
+      },
+      "26": {
+        "label": "BONUS 3X",
+        "value": 0
+      },
+      "27": {
+        "label": "BONUS 4X",
+        "value": 0
+      },
+      "28": {
+        "label": "BONUS SX",
+        "value": 0
+      },
+      "29": {
+        "label": "BONUS 6X",
+        "value": 0
+      },
+      "30": {
+        "label": "USA BONUS",
+        "value": 0
+      },
+      "31": {
+        "label": "HARLEY 25K",
+        "value": 0
+      },
+      "32": {
+        "label": "HARLEY 50K",
+        "value": 0
+      },
+      "33": {
+        "label": "HARLEY 100K",
+        "value": 0
+      },
+      "34": {
+        "label": "HARLEY 200K",
+        "value": 0
+      },
+      "35": {
+        "label": "HARLEY 300K",
+        "value": 0
+      },
+      "36": {
+        "label": "HARLEY 500K",
+        "value": 0
+      },
+      "37": {
+        "label": "BIKE BON. 1 MILL.",
+        "value": 0
+      },
+      "38": {
+        "label": "CONSOLATION BALL",
+        "value": 0
+      }
+    },
+    "B.5 HISTOGRAMS": {
+      "01": {
+        "label": "0.0-0.4 MIL. SCORE",
+        "value": 0
+      },
+      "02": {
+        "label": "0.5-0.9 MIL. SCORE",
+        "value": 0
+      },
+      "03": {
+        "label": "1.0-1.4 MIL. SCORE",
+        "value": 0
+      },
+      "04": {
+        "label": "1.5-1.9 MIL. SCORE",
+        "value": 0
+      },
+      "05": {
+        "label": "2.0-2.9 MIL. SCORE",
+        "value": 0
+      },
+      "06": {
+        "label": "3.0-3.9 MIL. SCORE",
+        "value": 0
+      },
+      "07": {
+        "label": "4.0-4.9 MIL. SCORE",
+        "value": 0
+      },
+      "08": {
+        "label": "5.0-5.9 MIL. SCORE",
+        "value": 0
+      },
+      "09": {
+        "label": "6.0-7.9 MIL. SCORE",
+        "value": 0
+      },
+      "10": {
+        "label": "8.0-9.9 MIL. SCORE",
+        "value": 0
+      },
+      "11": {
+        "label": "10-15 MIL. SCORE",
+        "value": 0
+      },
+      "12": {
+        "label": "15-20 MIL. SCORE",
+        "value": 0
+      },
+      "13": {
+        "label": "OVER 20 MILLION",
+        "value": 0
+      },
+      "14": {
+        "label": "GAME TIME 0.0-1.0M",
+        "value": 0
+      },
+      "15": {
+        "label": "GAME TIME 1.0-1.5M",
+        "value": 0
+      },
+      "16": {
+        "label": "GAME TIME 1.5-2.0M",
+        "value": 0
+      },
+      "17": {
+        "label": "GAME TIME 2.0-2.5M",
+        "value": 0
+      },
+      "18": {
+        "label": "GAME TIME 2.5-3.0M",
+        "value": 0
+      },
+      "19": {
+        "label": "GAME TIME 3.0-3.5M",
+        "value": 0
+      },
+      "20": {
+        "label": "GAME TIME 3.5-4.0M",
+        "value": 0
+      },
+      "21": {
+        "label": "GAME TIME 4-5 M.",
+        "value": 0
+      },
+      "22": {
+        "label": "GAME TIME 5-6 M.",
+        "value": 0
+      },
+      "23": {
+        "label": "GAME TIME 6-8 M.",
+        "value": 0
+      },
+      "24": {
+        "label": "GAME TIME 8-10 M",
+        "value": 0
+      },
+      "25": {
+        "label": "GAME TIME 10-15M",
+        "value": 0
+      },
+      "26": {
+        "label": "GAME TIME > 15M",
+        "value": 0
+      }
+    },
+    "B.6 TIME-STAMPS": {
+      "02": {
+        "label": "TOTALS CLEARED",
+        "value": "2024-01-11 18:45"
+      },
+      "03": {
+        "label": "CLOCK LAST SET",
+        "value": "2024-01-11 18:45"
+      },
+      "04": {
+        "label": "AUDITS CLEARED",
+        "value": "2024-01-11 18:45"
+      },
+      "05": {
+        "label": "COINS CLEARED",
+        "value": "2024-01-11 18:45"
+      },
+      "06": {
+        "label": "FACTORY SETTING",
+        "value": "2024-01-11 18:45"
+      },
+      "07": {
+        "label": "LAST GAME START",
+        "value": "2024-01-12 08:52"
+      },
+      "08": {
+        "label": "LAST REPLAY",
+        "value": "2024-01-11 18:45"
+      },
+      "09": {
+        "label": "LAST HSTD RESET",
+        "value": "2024-01-11 18:45"
+      },
+      "10": {
+        "label": "CHAMPION RESET",
+        "value": "2024-01-11 18:45"
+      },
+      "11": {
+        "label": "LAST PRINTOUT",
+        "value": "2024-01-11 18:45"
+      },
+      "12": {
+        "label": "LAST SERV. CRED",
+        "value": "2024-01-11 18:45"
+      }
+    }
+  },
   "checksum16": [
     {
       "label": "Adjustments",
@@ -51,9 +511,9 @@
     }
   ],
   "game_state": {
-    "attract": {
-      "label": "Attract",
-      "value": "IN GAME"
+    "ball_count": {
+      "label": "Ball Count",
+      "value": 3
     },
     "credits": {
       "label": "Credits",
@@ -74,6 +534,14 @@
     "extra_balls": {
       "label": "Extra Balls",
       "value": 1
+    },
+    "game_over": {
+      "label": "Game Over",
+      "value": false
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "value": 10
     },
     "player_count": {
       "label": "Players",

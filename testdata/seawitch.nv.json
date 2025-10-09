@@ -1,5 +1,29 @@
 {
   "_fileformat": 0.7,
+  "game_state": {
+    "player_count": {
+      "label": "Players",
+      "value": 1
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 8170
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ]
+  },
   "high_scores": [
     {
       "label": "1st",

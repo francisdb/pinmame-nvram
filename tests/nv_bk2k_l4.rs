@@ -21,6 +21,14 @@ fn test_black_knight_2000() -> io::Result<()> {
         ("credits".into(), "8".into()),
         // FIXME this value is wrong
         ("current_ball".into(), "70".into()),
+        ("current_player".into(), "0".into()),
+        ("tilt_warnings".into(), "0".into()),
+        ("tilted".into(), "false".into()),
+        ("extra_balls".into(), "0".into()),
+        ("ball_count".into(), "3".into()),
+        ("max_credits".into(), "10".into()),
+        ("game_over".into(), "true".into()),
+        ("player_count".into(), "0".into()),
     ]);
     assert_eq!(Some(expected), game_state);
 

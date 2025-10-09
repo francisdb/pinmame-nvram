@@ -1,5 +1,5 @@
 {
-  "_fileformat": 0.7,
+  "_fileformat": 0.8,
   "audits": {
     "Audits": {
       "01": {
@@ -172,9 +172,19 @@
     {
       "label": "Audits",
       "value": "valid"
+    },
+    {
+      "checksum_mismatch_calculated": 247,
+      "checksum_mismatch_expected": 4,
+      "label": "Credits",
+      "value": "mismatch"
     }
   ],
   "game_state": {
+    "ball_count": {
+      "label": "Ball Count",
+      "value": 3
+    },
     "credits": {
       "label": "Credits",
       "value": 8
@@ -182,6 +192,26 @@
     "current_ball": {
       "label": "Ball",
       "value": 60
+    },
+    "current_player": {
+      "label": "Current Player",
+      "value": 1
+    },
+    "extra_balls": {
+      "label": "Extra Balls",
+      "value": 0
+    },
+    "game_over": {
+      "label": "Game Over",
+      "value": true
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "value": 10
+    },
+    "player_count": {
+      "label": "Player Count",
+      "value": 1
     },
     "scores": [
       {
@@ -200,7 +230,15 @@
         "label": "Player 4",
         "value": 0
       }
-    ]
+    ],
+    "tilt_warnings": {
+      "label": "Tilt Warnings",
+      "value": 0
+    },
+    "tilted": {
+      "label": "Tilted",
+      "value": false
+    }
   },
   "high_scores": [
     {

@@ -1,4 +1,4 @@
-use pinmame_nvram::{HighScore, Nvram};
+use pinmame_nvram::{HighScore, LastGamePlayer, Nvram};
 use pretty_assertions::assert_eq;
 use std::io;
 use std::path::Path;
@@ -27,7 +27,25 @@ fn test_seawitch() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/seawitch.nv"))?.unwrap();
 
     let last_game = nvram.read_last_game()?;
-    assert_eq!(None, last_game);
+    let expected = vec![
+        LastGamePlayer {
+            score: 8170,
+            label: Some("Player 1".to_string()),
+        },
+        LastGamePlayer {
+            score: 0,
+            label: Some("Player 2".to_string()),
+        },
+        LastGamePlayer {
+            score: 0,
+            label: Some("Player 3".to_string()),
+        },
+        LastGamePlayer {
+            score: 0,
+            label: Some("Player 4".to_string()),
+        },
+    ];
+    assert_eq!(Some(expected), last_game);
 
     let scores = nvram.read_highscores()?;
     let expected = vec![HighScore {

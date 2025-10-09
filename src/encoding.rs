@@ -1,4 +1,4 @@
-use crate::model::{Endian, Nibble, Null};
+use crate::model::{DEFAULT_SCALE, Endian, Nibble, Null};
 use serde_json::Number;
 use std::io;
 use std::io::{Read, Seek, SeekFrom, Write};
@@ -341,6 +341,26 @@ pub(crate) fn read_wpc_rtc<T: Read + Seek>(
     Ok(format!(
         "{year:04}-{month:02}-{day:02} {hour:02}:{minute:02}"
     ))
+}
+
+pub(crate) fn read_bool<T: Read + Seek>(
+    nvram_file: &mut T,
+    start: u64,
+    nibble: Nibble,
+    endian: Endian,
+    length: usize,
+    invert: bool,
+) -> io::Result<bool> {
+    let value = read_int(
+        nvram_file,
+        endian,
+        nibble,
+        start,
+        length,
+        &Number::from(DEFAULT_SCALE),
+    )?;
+    let bool_value = if invert { value == 0 } else { value != 0 };
+    Ok(bool_value)
 }
 
 #[cfg(test)]

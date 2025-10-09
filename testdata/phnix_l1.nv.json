@@ -107,12 +107,12 @@
   },
   "game_state": {
     "ball_count": {
-      "label": "Number of Balls",
-      "value": 0
+      "label": "Ball Count",
+      "value": 3
     },
     "credits": {
       "label": "Credits",
-      "value": 0
+      "value": 19
     },
     "current_ball": {
       "label": "Ball",
@@ -121,6 +121,14 @@
     "current_player": {
       "label": "Player",
       "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "game_over": {
+      "label": "Game Over",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "value": 20
     },
     "player_count": {
       "label": "Player Count",

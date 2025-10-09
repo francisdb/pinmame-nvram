@@ -12,6 +12,7 @@ fn test_bad_cats() -> io::Result<()> {
     // jackpot worth 20_080_000
 
     let game_state = nvram.read_game_state()?;
+
     let expected = HashMap::from([
         ("scores.0".into(), "1520990".into()),
         ("scores.1".into(), "0".into()),
@@ -19,6 +20,14 @@ fn test_bad_cats() -> io::Result<()> {
         ("scores.3".into(), "0".into()),
         ("credits".into(), "6".into()),
         ("current_ball".into(), "0".into()),
+        ("current_player".into(), "0".into()),
+        ("tilt_warnings".into(), "0".into()),
+        ("tilted".into(), "false".into()),
+        ("extra_balls".into(), "0".into()),
+        ("ball_count".into(), "3".into()),
+        ("max_credits".into(), "10".into()),
+        ("game_over".into(), "true".into()),
+        ("player_count".into(), "0".into()),
     ]);
     assert_eq!(Some(expected), game_state);
 

@@ -1,0 +1,165 @@
+{
+  "_fileformat": 0.7,
+  "adjustments": {
+    "Standard Adjustments": {
+      "01": {
+        "label": "Replay 1 Score",
+        "value": 90000
+      },
+      "02": {
+        "label": "Replay 2 Score",
+        "value": 140000
+      },
+      "03": {
+        "label": "Replay 3 Score",
+        "value": 200000
+      },
+      "04": {
+        "label": "Replay 4 Score",
+        "value": 0
+      },
+      "05": {
+        "label": "Maximum Credits",
+        "value": 20
+      },
+      "06": {
+        "label": "Match/Credit/Extra Ball",
+        "value": 0
+      },
+      "07": {
+        "label": "Play",
+        "value": "moderate",
+        "warning": "Value \"moderate\" is not an unsigned int"
+      },
+      "08": {
+        "label": "HSTD Credits",
+        "value": 3
+      },
+      "09": {
+        "label": "Left Coin Slot Multiplier",
+        "value": 1
+      },
+      "10": {
+        "label": "Center Coin Slot Multiplier",
+        "value": 1
+      },
+      "11": {
+        "label": "Right Coin Slot Multiplier",
+        "value": 1
+      },
+      "12": {
+        "label": "Coin Units Required for Credit",
+        "value": 0
+      },
+      "13": {
+        "label": "Coin Units Bonus Point",
+        "value": 2
+      },
+      "14": {
+        "label": "Coin Units Per Credit",
+        "value": 1
+      },
+      "15A": {
+        "label": "Special Awards",
+        "value": "credit"
+      },
+      "15B": {
+        "label": "Number of Balls",
+        "value": 3
+      },
+      "16": {
+        "label": "Tilt Warnings",
+        "value": 3
+      }
+    }
+  },
+  "audits": {
+    "Standard Audits": {
+      "18": {
+        "label": "Current HSTD",
+        "value": 150000
+      },
+      "19": {
+        "label": "Coins, left chute",
+        "value": 0
+      },
+      "20": {
+        "label": "Coins, center chute",
+        "value": 6
+      },
+      "21": {
+        "label": "Coins, right chute",
+        "value": 3
+      },
+      "22": {
+        "label": "Total Paid Credits",
+        "value": 13
+      },
+      "23": {
+        "label": "Special Credits",
+        "value": 0
+      },
+      "99": {
+        "label": "Check Byte",
+        "value": 90
+      }
+    }
+  },
+  "game_state": {
+    "ball_count": {
+      "label": "Ball Count",
+      "value": 3
+    },
+    "credits": {
+      "label": "Credits",
+      "value": 11
+    },
+    "current_ball": {
+      "label": "Ball",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "current_player": {
+      "label": "Player",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "game_over": {
+      "label": "Game Over",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "value": 20
+    },
+    "player_count": {
+      "label": "Player Count",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "warning": "Failed to resolve: Value is stored outside the NVRAM"
+      },
+      {
+        "label": "Player 2",
+        "warning": "Failed to resolve: Value is stored outside the NVRAM"
+      },
+      {
+        "label": "Player 3",
+        "warning": "Failed to resolve: Value is stored outside the NVRAM"
+      },
+      {
+        "label": "Player 4",
+        "warning": "Failed to resolve: Value is stored outside the NVRAM"
+      }
+    ]
+  },
+  "high_scores": [
+    {
+      "label": "First Place",
+      "score": {
+        "value": 150000
+      },
+      "short_label": "1st"
+    }
+  ]
+}
