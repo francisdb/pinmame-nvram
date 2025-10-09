@@ -515,7 +515,7 @@ fn read_last_game<T: Read + Seek>(
             let scores: Result<Vec<LastGamePlayer>, io::Error> = match scores {
                 StateOrStateList::StateList(sl) => sl
                     .iter()
-                    .map(|s| read_last_game_player(&mut nvram_file, s, endian, nibble, offset))
+                    .map(|d| read_last_game_player(&mut nvram_file, d, endian, nibble, offset))
                     .collect(),
                 _other => {
                     return Err(io::Error::new(
@@ -707,7 +707,10 @@ fn read_descriptor_to_u64<T: Read + Seek>(
                 LocateResult::OutsideNVRAM => {
                     return Err(io::Error::new(
                         io::ErrorKind::InvalidData,
-                        "Descriptor points outside NVRAM",
+                        format!(
+                            "Descriptor '{}' points outside NVRAM",
+                            descriptor.label.as_deref().unwrap_or("unknown")
+                        ),
                     ));
                 }
                 LocateResult::Located(loc) => loc,

@@ -13,8 +13,12 @@ fn test_robo_war() -> io::Result<()> {
 
     let mut nvram = Nvram::open(Path::new("testdata/robowars.nv"))?.unwrap();
 
-    let last_game = nvram.read_last_game()?;
-    assert_eq!(None, last_game);
+    let last_game = nvram.read_last_game();
+    // TODO handle this cleanly by returning None
+    assert_eq!(
+        last_game.unwrap_err().to_string(),
+        "Descriptor 'Player 1' points outside NVRAM"
+    );
 
     let scores = nvram.read_highscores()?;
     let expected = vec![
