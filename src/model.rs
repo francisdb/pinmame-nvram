@@ -141,7 +141,10 @@ pub struct Checksum16 {
 #[derive(Serialize, Deserialize)]
 pub struct Checksum8 {
     pub start: HexOrInteger,
-    pub end: HexOrInteger,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub end: Option<HexOrInteger>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub length: Option<u64>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub checksum: Option<u64>,
     #[serde(skip_serializing_if = "Option::is_none")]

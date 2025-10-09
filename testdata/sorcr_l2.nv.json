@@ -1,22 +1,310 @@
 {
   "_fileformat": 0.7,
+  "adjustments": {
+    "Game Adjustments": {
+      "31": {
+        "label": "Extra Ball Lamp Memory",
+        "value": "conservative (no)"
+      },
+      "32": {
+        "label": "Drop Target Reset",
+        "value": 5
+      },
+      "33": {
+        "label": "Bell",
+        "value": "ON"
+      },
+      "34": {
+        "label": "Drop Target Blink Interval",
+        "value": 5
+      },
+      "35": {
+        "label": "Background Sounds",
+        "value": "ON"
+      },
+      "36": {
+        "label": "Attract Mode Sounds",
+        "value": "OFF"
+      },
+      "37": {
+        "label": "Bonus Holdover in Memory",
+        "value": "ON"
+      },
+      "38": {
+        "label": "S-O-R-C-E-R-E-R Target Memory",
+        "value": "liberal (yes)"
+      },
+      "39": {
+        "label": "Game Adjustment (unused)",
+        "value": 0
+      }
+    },
+    "Standard Adjustments": {
+      "13a": {
+        "label": "Backup High Score 1",
+        "value": 2500000
+      },
+      "13b": {
+        "label": "Backup High Score 2",
+        "value": 2000000
+      },
+      "13c": {
+        "label": "Backup High Score 3",
+        "value": 1500000
+      },
+      "13d": {
+        "label": "Backup High Score 4",
+        "value": 1100000
+      },
+      "14": {
+        "label": "First Replay Level",
+        "value": 1000000
+      },
+      "15": {
+        "label": "Second Replay Level",
+        "value": 0
+      },
+      "16": {
+        "label": "Third Replay Level",
+        "value": 0
+      },
+      "17": {
+        "label": "Fourth Replay Level",
+        "value": 0
+      },
+      "18": {
+        "label": "Maximum Credits",
+        "value": 30
+      },
+      "19": {
+        "label": "Standard/Custom Pricing",
+        "value": "1/$0.25, 4/$1"
+      },
+      "20": {
+        "label": "Left Coin-Slot Multiplier",
+        "value": 1
+      },
+      "21": {
+        "label": "Center Coin-Slot Multiplier",
+        "value": 4
+      },
+      "22": {
+        "label": "Right Coin-Slot Multiplier",
+        "value": 1
+      },
+      "23": {
+        "label": "Coin Units/Credit",
+        "value": 1
+      },
+      "24": {
+        "label": "Units for Bonus Credit",
+        "value": 0
+      },
+      "25": {
+        "label": "Minimum Coin Units",
+        "value": 0
+      },
+      "26": {
+        "label": "Match",
+        "value": "ON"
+      },
+      "27": {
+        "label": "Special Awards",
+        "value": "CREDIT"
+      },
+      "28": {
+        "label": "Replay Awards",
+        "value": "CREDIT"
+      },
+      "29": {
+        "label": "Tilt Warnings",
+        "value": 3
+      },
+      "30": {
+        "label": "Number of Balls",
+        "value": 3
+      },
+      "40": {
+        "label": "Max High Score Credits",
+        "value": 3
+      },
+      "41": {
+        "label": "Max Extra Balls",
+        "value": 4
+      }
+    }
+  },
+  "audits": {
+    "Game Audits": {
+      "42": {
+        "label": "Multiball Achieved",
+        "value": 0
+      },
+      "43": {
+        "label": "3X's in Multiball",
+        "value": 0
+      },
+      "44": {
+        "label": "5X's in Multiball",
+        "value": 0
+      },
+      "45": {
+        "label": "Ramps over 5X",
+        "value": 0
+      },
+      "46": {
+        "label": "Bonus Holdovers",
+        "value": 0
+      },
+      "47": {
+        "label": "Playfield Specials",
+        "value": 0
+      },
+      "48": {
+        "label": "A-B-C-D Completed",
+        "value": 1
+      },
+      "49": {
+        "label": "Game Audit #8 (unused)",
+        "value": 0
+      }
+    },
+    "Standard Audits": {
+      "01": {
+        "label": "Coins, Left Chute",
+        "value": 0
+      },
+      "02": {
+        "label": "Coins, Center Chute",
+        "value": 11
+      },
+      "03": {
+        "label": "Coins, Right Chute",
+        "value": 11
+      },
+      "04": {
+        "label": "Total Paid Credits",
+        "value": 55
+      },
+      "05": {
+        "label": "Special Credits",
+        "value": 0
+      },
+      "06": {
+        "label": "Replay Credits",
+        "value": 0
+      },
+      "07": {
+        "label": "Match Credits",
+        "value": 1
+      },
+      "08": {
+        "label": "Total Credits",
+        "value": 2
+      },
+      "09": {
+        "label": "Extra Balls",
+        "value": 0
+      },
+      "10": {
+        "label": "Ball Time",
+        "value": 1
+      },
+      "11": {
+        "label": "Balls Played",
+        "value": 4
+      },
+      "14": {
+        "label": "Reached Replay 1",
+        "value": 0
+      },
+      "15": {
+        "label": "Reached Replay 2",
+        "value": 0
+      },
+      "16": {
+        "label": "Reached Replay 3",
+        "value": 0
+      },
+      "17": {
+        "label": "Reached Replay 4",
+        "value": 0
+      }
+    }
+  },
+  "game_state": {
+    "ball_count": {
+      "label": "Ball Count",
+      "value": 3
+    },
+    "credits": {
+      "label": "Credits",
+      "value": 30
+    },
+    "current_ball": {
+      "label": "Ball",
+      "value": 30
+    },
+    "current_player": {
+      "label": "Current Player",
+      "value": 0
+    },
+    "game_over": {
+      "label": "Game Over",
+      "value": true
+    },
+    "match": {
+      "label": "Match",
+      "value": 30
+    },
+    "max_credits": {
+      "label": "Max Credits",
+      "value": 30
+    },
+    "player_count": {
+      "label": "Players",
+      "value": 255
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 70330
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ]
+  },
   "high_scores": [
     {
+      "label": "High Score #1",
       "score": {
         "value": 2500000
       }
     },
     {
+      "label": "High Score #2",
       "score": {
         "value": 2000000
       }
     },
     {
+      "label": "High Score #3",
       "score": {
         "value": 1500000
       }
     },
     {
+      "label": "High Score #4",
       "score": {
         "value": 1100000
       }

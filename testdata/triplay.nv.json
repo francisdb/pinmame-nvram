@@ -143,10 +143,52 @@
     }
   },
   "game_state": {
+    "ball_count": {
+      "label": "Balls Per Game",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
     "credits": {
       "label": "Credits",
       "value": 0
-    }
+    },
+    "current_ball": {
+      "label": "Ball",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "current_player": {
+      "label": "Current Player",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "extra_balls": {
+      "label": "Extra Balls",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "value": 10
+    },
+    "player_count": {
+      "label": "Player Count",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "warning": "Failed to resolve: Value is stored outside the NVRAM"
+      },
+      {
+        "label": "Player 2",
+        "warning": "Failed to resolve: Value is stored outside the NVRAM"
+      },
+      {
+        "label": "Player 3",
+        "warning": "Failed to resolve: Value is stored outside the NVRAM"
+      },
+      {
+        "label": "Player 4",
+        "warning": "Failed to resolve: Value is stored outside the NVRAM"
+      }
+    ]
   },
   "high_scores": [
     {

@@ -242,6 +242,10 @@
       "label": "Game Over",
       "warning": "Failed to resolve: Value is stored outside the NVRAM"
     },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "value": 30
+    },
     "player_count": {
       "label": "Players",
       "warning": "Failed to resolve: Value is stored outside the NVRAM"
@@ -272,12 +276,12 @@
       "label": "Self Test",
       "warning": "Failed to resolve: Value is stored outside the NVRAM"
     },
-    "tilt": {
-      "label": "Tilt",
-      "warning": "Failed to resolve: Value is stored outside the NVRAM"
-    },
     "tilt_warnings": {
       "label": "Tilt Warnings",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "tilted": {
+      "label": "Tilted",
       "warning": "Failed to resolve: Value is stored outside the NVRAM"
     }
   },

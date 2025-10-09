@@ -543,10 +543,6 @@
     }
   ],
   "game_state": {
-    "attract": {
-      "label": "Attract",
-      "value": "IN GAME"
-    },
     "credits": {
       "label": "Credits",
       "value": 10
@@ -570,6 +566,14 @@
     "game_id": {
       "label": "WPC Game ID",
       "value": "90003"
+    },
+    "game_over": {
+      "label": "Game Over",
+      "value": false
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "value": 10
     },
     "player_count": {
       "label": "Players",

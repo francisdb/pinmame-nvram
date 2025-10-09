@@ -1,5 +1,7 @@
 use crate::encoding::read_exact_at;
-use crate::model::{Checksum8, Checksum16, Endian, MemoryLayoutType, NvramMap, Platform};
+use crate::model::{
+    Checksum8, Checksum16, DEFAULT_LENGTH, Endian, MemoryLayoutType, NvramMap, Platform,
+};
 use std::io;
 use std::io::{Read, Seek, SeekFrom, Write};
 
@@ -21,7 +23,13 @@ pub(crate) fn verify_checksum8<T: Read + Seek>(
     checksum8: &Checksum8,
 ) -> io::Result<Option<ChecksumMismatch<u8>>> {
     let start: u64 = (&checksum8.start).into();
-    let end: u64 = (&checksum8.end).into();
+    let end: u64 = match &checksum8.end {
+        Some(e) => u64::from(e),
+        None => {
+            let length: u64 = checksum8.length.unwrap_or(DEFAULT_LENGTH as u64);
+            start + length
+        }
+    };
 
     let group_ranges: Vec<[u64; 2]> = groupings_to_ranges(start, end, &checksum8.groupings)?;
 
@@ -220,7 +228,8 @@ mod test {
         let checksum8 = Checksum8 {
             label: "test".to_string(),
             start: HexOrInteger::Integer(0),
-            end: HexOrInteger::Integer(2),
+            end: Some(HexOrInteger::Integer(2)),
+            length: None,
             checksum: None,
             groupings: None,
             _notes: None,
@@ -239,7 +248,28 @@ mod test {
         let checksum8 = Checksum8 {
             label: "test".to_string(),
             start: HexOrInteger::Integer(0),
-            end: HexOrInteger::Integer(4),
+            end: Some(HexOrInteger::Integer(4)),
+            length: None,
+            checksum: None,
+            groupings: None,
+            _notes: None,
+        };
+        let result = verify_checksum8(&mut cursor, &checksum8);
+        assert_eq!(None, result?);
+        Ok(())
+    }
+
+    #[test]
+    fn test_verify_checksum8_using_length() -> io::Result<()> {
+        #[rustfmt::skip]
+        let mut cursor = io::Cursor::new([
+            0xAA, 0x11, 0x11, 0x11, 0x22
+        ]);
+        let checksum8 = Checksum8 {
+            label: "test".to_string(),
+            start: HexOrInteger::Integer(0),
+            end: None,
+            length: Some(4),
             checksum: None,
             groupings: None,
             _notes: None,
@@ -259,7 +289,8 @@ mod test {
         let checksum8 = Checksum8 {
             label: "test".to_string(),
             start: HexOrInteger::Integer(0),
-            end: HexOrInteger::Integer(5),
+            end: Some(HexOrInteger::Integer(5)),
+            length: None,
             checksum: None,
             groupings: Some(3),
             _notes: None,
@@ -275,7 +306,8 @@ mod test {
         let checksum8 = Checksum8 {
             label: "test".to_string(),
             start: HexOrInteger::Integer(0),
-            end: HexOrInteger::Integer(2),
+            end: Some(HexOrInteger::Integer(2)),
+            length: None,
             checksum: None,
             groupings: None,
             _notes: None,

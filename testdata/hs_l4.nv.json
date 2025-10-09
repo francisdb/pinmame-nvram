@@ -1,5 +1,5 @@
 {
-  "_fileformat": 0.7,
+  "_fileformat": 0.8,
   "adjustments": {
     "Adjustments": {
       "01": {
@@ -394,11 +394,21 @@
       "value": "valid"
     },
     {
+      "checksum_mismatch_calculated": 214,
+      "checksum_mismatch_expected": 4,
+      "label": "Credits",
+      "value": "mismatch"
+    },
+    {
       "label": "Auto Replay Data",
       "value": "valid"
     }
   ],
   "game_state": {
+    "ball_count": {
+      "label": "Ball Count",
+      "value": 3
+    },
     "bonus": {
       "label": "Bonus",
       "value": "Bits encoding not implemented"
@@ -427,6 +437,10 @@
       "label": "Extra Balls",
       "value": 3
     },
+    "game_over": {
+      "label": "Game Over",
+      "value": true
+    },
     "hideout_jackpot": {
       "label": "Hideout Jackpot",
       "value": 280000
@@ -434,6 +448,10 @@
     "match": {
       "label": "Match",
       "value": 0
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "value": 30
     },
     "player_count": {
       "label": "Player Count",
@@ -460,6 +478,10 @@
     "tilt_warnings": {
       "label": "Tilt Warnings",
       "value": 0
+    },
+    "tilted": {
+      "label": "Tilted",
+      "value": false
     }
   },
   "high_scores": [
