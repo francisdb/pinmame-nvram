@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.2](https://github.com/francisdb/pinmame-nvram/compare/v0.4.1...v0.4.2) - 2025-10-09
+
+### Added
+
+- New maps structure ([#99](https://github.com/francisdb/pinmame-nvram/pull/99))
+
+### Other
+
+- add missing workflow permissions ([#101](https://github.com/francisdb/pinmame-nvram/pull/101))
+- add missing workflow permissions ([#100](https://github.com/francisdb/pinmame-nvram/pull/100))
+- new clippy rules
+- *(deps)* bump actions/checkout from 4 to 5 ([#96](https://github.com/francisdb/pinmame-nvram/pull/96))
+
 ## [0.4.1](https://github.com/francisdb/pinmame-nvram/compare/v0.4.0...v0.4.1) - 2025-07-11
 
 ### Added
