@@ -6,14 +6,14 @@ mod model;
 pub mod resolve;
 
 use crate::checksum::{ChecksumMismatch, update_all_checksum16, verify_all_checksum16};
-use crate::dips::{get_dip_switch, set_dip_switch, validate_dip_switch_range};
+use crate::dips::{MAX_SWITCH_COUNT, get_dip_switch, set_dip_switch, validate_dip_switch_range};
 use crate::encoding::{
     Location, read_bcd, read_bool, read_ch, read_int, read_wpc_rtc, write_bcd, write_ch,
 };
 use crate::index::get_index_map;
 use crate::model::{
     DEFAULT_INVERT, DEFAULT_LENGTH, DEFAULT_SCALE, Descriptor, Encoding, Endian, GlobalSettings,
-    MemoryLayoutType, Nibble, NvramMap, Platform, StateOrStateList,
+    HexOrInteger, MemoryLayoutType, Nibble, NvramMap, Platform, StateOrStateList,
 };
 use include_dir::{Dir, File, include_dir};
 use serde::de;
@@ -54,12 +54,20 @@ pub struct LastGamePlayer {
     pub label: Option<String>,
 }
 
+#[derive(Debug, PartialEq)]
+pub struct DipSwitchInfo {
+    pub nr: usize,
+    pub name: Option<String>,
+}
+
 /// Main interface to read and write data from a NVRAM file
 pub struct Nvram {
     pub map: NvramMap,
     pub platform: Platform,
     pub nv_path: PathBuf,
 }
+
+impl Nvram {}
 
 impl Nvram {
     /// Open a NVRAM file from the embedded maps
@@ -181,12 +189,87 @@ impl Nvram {
         )
     }
 
-    pub fn dip_switches_len(&self) -> usize {
-        // TODO get the number of dip switches from the map
-        // centaur
-        // 32 default switches
-        // 3 additional switches for the sound board reverb effect
-        32 + 3
+    pub fn dip_switches_len(&self) -> io::Result<usize> {
+        if let Some(dip_switches) = &self.map.dip_switches {
+            let mut highest_offset = 0;
+            for (name, ds) in dip_switches {
+                if let Some(offsets_vec) = &ds.offsets {
+                    for offset in offsets_vec {
+                        let offest_u64 = u64::from(offset);
+                        if offest_u64 > highest_offset {
+                            highest_offset = offest_u64;
+                        }
+                    }
+                } else {
+                    return Err(io::Error::new(
+                        io::ErrorKind::InvalidData,
+                        format!("Dip switch '{name}' is missing offsets"),
+                    ));
+                }
+            }
+            if highest_offset as usize > MAX_SWITCH_COUNT {
+                return Err(io::Error::new(
+                    io::ErrorKind::InvalidData,
+                    format!(
+                        "Dip switch offset {highest_offset} out of range, expected 1-{MAX_SWITCH_COUNT}"
+                    ),
+                ));
+            }
+            Ok(highest_offset as usize)
+        } else {
+            // centaur
+            // 32 default switches
+            // 3 additional switches for the sound board reverb effect
+            Ok(32 + 3)
+        }
+    }
+
+    pub fn dip_switches_info(&self) -> io::Result<Vec<DipSwitchInfo>> {
+        let len = self.dip_switches_len()?;
+        let mut info = Vec::with_capacity(len);
+        if let Some(dip_switches) = &self.map.dip_switches {
+            let mut offsets = std::collections::HashSet::new();
+            for (name, ds) in dip_switches {
+                if let Some(offsets_vec) = &ds.offsets {
+                    for offset in offsets_vec {
+                        offsets.insert(u64::from(offset));
+                    }
+                } else {
+                    return Err(io::Error::new(
+                        io::ErrorKind::InvalidData,
+                        format!("Dip switch '{name}' is missing offsets"),
+                    ));
+                }
+            }
+            let mut sorted_offsets: Vec<u64> = offsets.into_iter().collect();
+            sorted_offsets.sort_unstable();
+            for (i, offset) in sorted_offsets.iter().enumerate() {
+                let name = dip_switches
+                    .iter()
+                    .find_map(|(_section, ds)| {
+                        if let Some(offsets_vec) = &ds.offsets
+                            && offsets_vec.contains(&HexOrInteger::from(*offset))
+                        {
+                            return ds.label.clone();
+                        }
+                        None
+                    })
+                    .unwrap_or_else(|| "".to_string());
+                info.push(DipSwitchInfo {
+                    nr: i + 1,
+                    name: if name.is_empty() { None } else { Some(name) },
+                });
+            }
+            Ok(info)
+        } else {
+            for i in 0..len {
+                info.push(DipSwitchInfo {
+                    nr: i + 1,
+                    name: None,
+                });
+            }
+            Ok(info)
+        }
     }
 
     /// Get the value of a dip switch
@@ -197,7 +280,7 @@ impl Nvram {
     /// * `Ok(false)` if the dip switch is OFF
     /// * `Err(io::Error)` if the dip switch number is out of range or an IO error occurred
     pub fn get_dip_switch(&self, number: usize) -> io::Result<bool> {
-        validate_dip_switch_range(self.dip_switches_len(), number)?;
+        validate_dip_switch_range(self.dip_switches_len()?, number)?;
         let mut file = OpenOptions::new().read(true).open(&self.nv_path)?;
         get_dip_switch(&mut file, number)
     }
@@ -210,7 +293,7 @@ impl Nvram {
     /// * `Ok(())` if the dip switch was set successfully
     /// * `Err(io::Error)` if the dip switch number is out of range or an IO error occurred
     pub fn set_dip_switch(&self, number: usize, on: bool) -> io::Result<()> {
-        validate_dip_switch_range(self.dip_switches_len(), number)?;
+        validate_dip_switch_range(self.dip_switches_len()?, number)?;
         let mut file = OpenOptions::new()
             .read(true)
             .write(true)

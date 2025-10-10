@@ -117,6 +117,7 @@ pub struct Descriptor {
     pub mask: Option<HexOrInteger>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub endian: Option<Endian>,
+    /// for dip switches these offsets start at 1, for other encodings at 0
     #[serde(skip_serializing_if = "Option::is_none")]
     pub offsets: Option<Vec<HexOrInteger>>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -230,7 +231,7 @@ pub struct HighScore {
     pub score: Descriptor,
 }
 
-#[derive(Serialize, Deserialize, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Debug)]
 #[serde(untagged)]
 pub enum HexOrInteger {
     Hex(HexString),
@@ -241,6 +242,23 @@ impl From<&HexOrInteger> for u64 {
         match h {
             HexOrInteger::Hex(h) => h.value,
             HexOrInteger::Integer(i) => *i as u64,
+        }
+    }
+}
+
+impl From<u64> for HexOrInteger {
+    fn from(i: u64) -> HexOrInteger {
+        HexOrInteger::Integer(i as i64)
+    }
+}
+
+impl PartialEq for HexOrInteger {
+    fn eq(&self, other: &Self) -> bool {
+        match (self, other) {
+            (HexOrInteger::Hex(h1), HexOrInteger::Hex(h2)) => h1.value == h2.value,
+            (HexOrInteger::Integer(i1), HexOrInteger::Integer(i2)) => i1 == i2,
+            (HexOrInteger::Hex(h), HexOrInteger::Integer(i))
+            | (HexOrInteger::Integer(i), HexOrInteger::Hex(h)) => h.value == *i as u64,
         }
     }
 }
@@ -518,5 +536,25 @@ mod tests {
             }
         }
         assert!(found_any, "No platform files found");
+    }
+
+    #[test]
+    fn test_hex_or_integer_partial_eq() {
+        let hex1 = HexOrInteger::Hex(HexString {
+            value: 255,
+            serialized: "0xFF".to_string(),
+        });
+        let hex2 = HexOrInteger::Hex(HexString {
+            value: 255,
+            serialized: "0xff".to_string(),
+        });
+        let int1 = HexOrInteger::Integer(255);
+        let int2 = HexOrInteger::Integer(256);
+
+        assert_eq!(hex1, hex2);
+        assert_eq!(hex1, int1);
+        assert_eq!(int1, hex2);
+        assert_ne!(hex1, int2);
+        assert_ne!(int1, int2);
     }
 }
