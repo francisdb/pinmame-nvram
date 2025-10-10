@@ -14,7 +14,7 @@ use std::io::{Read, Seek, SeekFrom, Write};
 const DIP_SWITCH_BYTES: usize = 6;
 
 /// Maximum number of dip switches that we can handle
-const MAX_SWITCH_COUNT: usize = DIP_SWITCH_BYTES * 8;
+pub const MAX_SWITCH_COUNT: usize = DIP_SWITCH_BYTES * 8;
 
 #[derive(Debug, PartialEq)]
 pub struct DipSwitchState {
