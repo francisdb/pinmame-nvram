@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.4](https://github.com/francisdb/pinmame-nvram/compare/v0.4.3...v0.4.4) - 2025-12-16
+
+### Other
+
+- bump pinmame-nvram-maps from 475fa36 to 7c24639 ([#108](https://github.com/francisdb/pinmame-nvram/pull/108))
+- document development
+- rust-toolchain & rust-cache
+- *(deps)* bump actions/checkout from 5 to 6 ([#104](https://github.com/francisdb/pinmame-nvram/pull/104))
+
 ## [0.4.3](https://github.com/francisdb/pinmame-nvram/compare/v0.4.2...v0.4.3) - 2025-10-10
 
 ### Added
