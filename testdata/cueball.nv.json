@@ -1,0 +1,103 @@
+{
+  "_fileformat": 0.7,
+  "game_state": {
+    "ball_count": {
+      "label": "Ball Count",
+      "value": 3
+    },
+    "credits": {
+      "label": "Credits",
+      "value": 5
+    },
+    "current_ball": {
+      "label": "Ball",
+      "value": 0
+    },
+    "current_player": {
+      "label": "Current Player",
+      "value": 0
+    },
+    "game_over": {
+      "label": "Game Over",
+      "value": true
+    },
+    "max_credits": {
+      "label": "Max Credits",
+      "value": 10
+    },
+    "player_count": {
+      "label": "Player Count",
+      "value": 0
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 0
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ]
+  },
+  "high_scores": [
+    {
+      "initials": {
+        "value": "BFH"
+      },
+      "label": "High Score #1",
+      "score": {
+        "value": 320000000
+      },
+      "short_label": "#1"
+    },
+    {
+      "initials": {
+        "value": "JET"
+      },
+      "label": "High Score #2",
+      "score": {
+        "value": 280000000
+      },
+      "short_label": "#2"
+    },
+    {
+      "initials": {
+        "value": "DAV"
+      },
+      "label": "High Score #3",
+      "score": {
+        "value": 240000000
+      },
+      "short_label": "#3"
+    },
+    {
+      "initials": {
+        "value": "ZAB"
+      },
+      "label": "High Score #4",
+      "score": {
+        "value": 200000000
+      },
+      "short_label": "#4"
+    },
+    {
+      "initials": {
+        "value": "EZY"
+      },
+      "label": "High Score #5",
+      "score": {
+        "value": 160000000
+      },
+      "short_label": "#5"
+    }
+  ]
+}

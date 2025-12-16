@@ -1,0 +1,134 @@
+{
+  "_fileformat": 0.8,
+  "adjustments": {
+    "High score functions": {
+      "01": {
+        "label": "Replay Level 1",
+        "value": 0
+      },
+      "02": {
+        "label": "Replay Level 2",
+        "value": 0
+      },
+      "03": {
+        "label": "Replay Level 3",
+        "value": 0
+      },
+      "04": {
+        "label": "High score to date",
+        "value": 0
+      }
+    }
+  },
+  "audits": {
+    "Bookkeeping functions": {
+      "05": {
+        "label": "Current Credits",
+        "value": 5
+      },
+      "06": {
+        "label": "Total Plays (Paid and Free Games)",
+        "value": 1
+      },
+      "07": {
+        "label": "Total Replays (Free Games)",
+        "value": 0
+      },
+      "08": {
+        "label": "HSTD Achieved",
+        "value": 0
+      },
+      "09": {
+        "label": "Coin Chute #1",
+        "value": 0
+      },
+      "10": {
+        "label": "Coin Chute #2",
+        "value": 0
+      },
+      "11": {
+        "label": "Coin Chute #3",
+        "value": 4
+      }
+    }
+  },
+  "game_state": {
+    "ball_count": {
+      "label": "Ball Count",
+      "value": 3
+    },
+    "credits": {
+      "label": "Credits",
+      "value": 5
+    },
+    "current_ball": {
+      "label": "Current Ball",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "current_player": {
+      "label": "Current Player",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "final_scores": [
+      {
+        "label": "Final P1",
+        "value": 0
+      },
+      {
+        "label": "Final P2",
+        "value": 0
+      },
+      {
+        "label": "Final P3",
+        "value": 0
+      },
+      {
+        "label": "Final P4",
+        "value": 0
+      }
+    ],
+    "game_over": {
+      "label": "Game Over",
+      "value": false
+    },
+    "max_credits": {
+      "label": "Max Credits",
+      "value": 5
+    },
+    "player_count": {
+      "label": "Players",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 0
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ],
+    "tilted": {
+      "label": "Tilted",
+      "value": false
+    }
+  },
+  "high_scores": [
+    {
+      "label": "High Score",
+      "score": {
+        "value": 0
+      },
+      "short_label": "HS"
+    }
+  ]
+}
