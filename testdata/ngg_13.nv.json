@@ -1,5 +1,5 @@
 {
-  "_fileformat": 0.7,
+  "_fileformat": 0.8,
   "audits": {
     "B.2 EARNINGS AUDS.": {
       "02": {
@@ -502,6 +502,10 @@
     "extra_balls": {
       "label": "Extra Balls",
       "value": 0
+    },
+    "free_play": {
+      "label": "Free Play",
+      "value": false
     },
     "game_id": {
       "label": "WPC Game ID",

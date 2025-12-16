@@ -1,6 +1,34 @@
 {
   "_fileformat": 0.7,
   "game_state": {
+    "ball_count": {
+      "label": "Ball Count",
+      "value": 3
+    },
+    "credits": {
+      "label": "Credits",
+      "value": 0
+    },
+    "current_ball": {
+      "label": "Ball",
+      "value": 0
+    },
+    "current_player": {
+      "label": "Current Player",
+      "value": 0
+    },
+    "game_over": {
+      "label": "Game Over",
+      "value": true
+    },
+    "max_credits": {
+      "label": "Max Credits",
+      "value": 20
+    },
+    "player_count": {
+      "label": "Player Count",
+      "value": 0
+    },
     "scores": [
       {
         "label": "Player 1",
@@ -35,7 +63,7 @@
       "initials": {
         "value": "LVS"
       },
-      "label": "Dream Warriors",
+      "label": "Dream Warrior #2",
       "score": {
         "value": 140000000
       },
@@ -45,7 +73,7 @@
       "initials": {
         "value": "CIN"
       },
-      "label": "Dream Warriors",
+      "label": "Dream Warrior #3",
       "score": {
         "value": 120000000
       },
@@ -55,7 +83,7 @@
       "initials": {
         "value": "JON"
       },
-      "label": "Dream Warriors",
+      "label": "Dream Warrior #4",
       "score": {
         "value": 100000000
       },
@@ -65,11 +93,22 @@
       "initials": {
         "value": "GIL"
       },
-      "label": "Dream Warriors",
+      "label": "Dream Warrior #5",
       "score": {
         "value": 80000000
       },
       "short_label": "#5"
+    }
+  ],
+  "mode_champions": [
+    {
+      "initials": {
+        "value": "CIN"
+      },
+      "label": "Most Souls Saved",
+      "score": {
+        "value": 40
+      }
     }
   ]
 }

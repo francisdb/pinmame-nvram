@@ -1,5 +1,5 @@
 {
-  "_fileformat": 0.7,
+  "_fileformat": 0.8,
   "adjustments": {
     "Standard Adjustments": {
       "06": {
@@ -167,9 +167,13 @@
       "label": "Extra Balls",
       "warning": "Failed to resolve: Value is stored outside the NVRAM"
     },
+    "game_over": {
+      "label": "Game Over",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
     "max_credits": {
       "label": "Maximum Credits",
-      "value": 10
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
     },
     "player_count": {
       "label": "Player Count",
@@ -192,7 +196,11 @@
         "label": "Player 4",
         "warning": "Failed to resolve: Value is stored outside the NVRAM"
       }
-    ]
+    ],
+    "tilted": {
+      "label": "Tilted",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    }
   },
   "high_scores": [
     {

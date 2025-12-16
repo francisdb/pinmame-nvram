@@ -1,17 +1,17 @@
 {
-  "_fileformat": 0.7,
+  "_fileformat": 0.8,
   "adjustments": {
     "High score functions": {
       "01": {
-        "label": "Extra ball / Free game score level 1",
+        "label": "Replay Level 1",
         "value": 0
       },
       "02": {
-        "label": "Extra ball / Free game score level 2",
+        "label": "Replay Level 2",
         "value": 0
       },
       "03": {
-        "label": "Extra ball / Free game score level 3",
+        "label": "Replay Level 3",
         "value": 0
       },
       "04": {
@@ -39,39 +39,81 @@
         "value": 0
       },
       "09": {
-        "label": "Total times 'High Score To Date' is beat",
+        "label": "HSTD Achieved",
         "value": 1
       },
       "10": {
-        "label": "Coins Dropped thru Coin Chute #1",
+        "label": "Coin Chute #1",
         "value": 7
       },
       "11": {
-        "label": "Coins Dropped thru Coin Chute #2",
+        "label": "Coin Chute #2",
         "value": 0
       },
       "12": {
-        "label": "Coins Dropped thru Coin Chute #3",
+        "label": "Coin Chute #3",
         "value": 6
       },
       "13": {
-        "label": "Number of Specials awarded from Panel Specials Only",
+        "label": "Specials Awarded",
         "value": 0
       },
       "14": {
-        "label": "Number of minutes of Game Play",
+        "label": "Minutes of Game Play",
         "value": 0
       },
       "15": {
-        "label": "Number of Service Credits",
+        "label": "Service Credits",
         "value": 0
       }
     }
   },
   "game_state": {
+    "ball_count": {
+      "label": "Ball Count",
+      "value": 3
+    },
     "credits": {
       "label": "Credits",
-      "value": 0
+      "value": 10
+    },
+    "current_ball": {
+      "label": "Current Ball",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "current_player": {
+      "label": "Current Player",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "final_scores": [
+      {
+        "label": "Final Score P1",
+        "value": 45330
+      },
+      {
+        "label": "Final Score P2",
+        "value": 0
+      },
+      {
+        "label": "Final Score P3",
+        "value": 0
+      },
+      {
+        "label": "Final Score P4",
+        "value": 0
+      }
+    ],
+    "game_over": {
+      "label": "Game Over",
+      "value": false
+    },
+    "max_credits": {
+      "label": "Max Credits",
+      "value": 10
+    },
+    "player_count": {
+      "label": "Players",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
     },
     "scores": [
       {
@@ -90,7 +132,11 @@
         "label": "Player 4",
         "value": 0
       }
-    ]
+    ],
+    "tilted": {
+      "label": "Tilted",
+      "value": false
+    }
   },
   "high_scores": [
     {

@@ -189,6 +189,10 @@
       "label": "Extra Balls",
       "value": 3
     },
+    "free_play": {
+      "label": "Free Play",
+      "value": false
+    },
     "game_over": {
       "label": "Game Over",
       "value": true

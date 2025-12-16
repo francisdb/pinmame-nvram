@@ -1,9 +1,131 @@
 {
-  "_fileformat": 0.7,
+  "_fileformat": 0.8,
+  "adjustments": {
+    "Adjustments": {
+      "01": {
+        "label": "Replay Level 1",
+        "value": 0
+      },
+      "02": {
+        "label": "Replay Level 2",
+        "value": 0
+      },
+      "03": {
+        "label": "Replay Level 3",
+        "value": 0
+      },
+      "16": {
+        "label": "Special/Extra Ball Awards",
+        "warning": "Failed to resolve: Index 15 out of bounds for enum with 4 values"
+      },
+      "17": {
+        "label": "Replay Award",
+        "warning": "Failed to resolve: Index 15 out of bounds for enum with 4 values"
+      },
+      "18": {
+        "label": "Sound Option",
+        "warning": "Failed to resolve: Index 15 out of bounds for enum with 4 values"
+      },
+      "19": {
+        "label": "HSTD Award",
+        "value": 0
+      }
+    }
+  },
+  "audits": {
+    "Bookkeeping functions": {
+      "05": {
+        "label": "Current Credits",
+        "value": 10
+      },
+      "06": {
+        "label": "Total Plays (Paid and Free Games)",
+        "value": 3
+      },
+      "07": {
+        "label": "Total Replays (Free Games)",
+        "value": 0
+      },
+      "08": {
+        "label": "Game Percentage",
+        "value": 0
+      },
+      "09": {
+        "label": "HSTD Achieved",
+        "value": 2
+      },
+      "10": {
+        "label": "Coin Chute #1",
+        "value": 0
+      },
+      "11": {
+        "label": "Coin Chute #2",
+        "value": 0
+      },
+      "12": {
+        "label": "Coin Chute #3",
+        "value": 5
+      },
+      "13": {
+        "label": "Specials Awarded",
+        "value": 0
+      },
+      "14": {
+        "label": "Minutes of Game Play",
+        "value": 1
+      },
+      "15": {
+        "label": "Service Credits",
+        "value": 0
+      }
+    }
+  },
   "game_state": {
+    "ball_count": {
+      "label": "Ball Count",
+      "value": 3
+    },
     "credits": {
       "label": "Credits",
       "value": 10
+    },
+    "current_ball": {
+      "label": "Current Ball",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "current_player": {
+      "label": "Current Player",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "final_scores": [
+      {
+        "label": "Final Score P1",
+        "value": 43380
+      },
+      {
+        "label": "Final Score P2",
+        "value": 49840
+      },
+      {
+        "label": "Final Score P3",
+        "value": 0
+      },
+      {
+        "label": "Final Score P4",
+        "value": 0
+      }
+    ],
+    "game_over": {
+      "label": "Game Over",
+      "value": false
+    },
+    "max_credits": {
+      "label": "Max Credits",
+      "value": 10
+    },
+    "player_count": {
+      "label": "Players",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
     },
     "scores": [
       {
@@ -22,7 +144,11 @@
         "label": "Player 4",
         "value": 0
       }
-    ]
+    ],
+    "tilted": {
+      "label": "Tilted",
+      "value": false
+    }
   },
   "high_scores": [
     {

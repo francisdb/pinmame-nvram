@@ -372,6 +372,8 @@ pub struct Metadata {
     pub char_map: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub values: Option<HashMap<String, Vec<String>>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub free_only: Option<Vec<String>>,
 }
 
 #[derive(Serialize, Deserialize)]

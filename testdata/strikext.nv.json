@@ -1,5 +1,5 @@
 {
-  "_fileformat": 0.7,
+  "_fileformat": 0.8,
   "game_state": {
     "ball_count": {
       "label": "Ball Count",
@@ -16,6 +16,10 @@
     "current_player": {
       "label": "Current Player",
       "value": 0
+    },
+    "free_play": {
+      "label": "Free Play",
+      "value": false
     },
     "game_over": {
       "label": "Game Over",

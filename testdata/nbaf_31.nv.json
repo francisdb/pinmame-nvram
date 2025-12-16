@@ -1,5 +1,5 @@
 {
-  "_fileformat": 0.7,
+  "_fileformat": 0.8,
   "adjustments": {
     "A.1 Standard Adjustments": {
       "01": {
@@ -662,6 +662,14 @@
     {
       "label": "Custom Message (2x32)",
       "value": "valid"
+    },
+    {
+      "label": "MVP",
+      "value": "valid"
+    },
+    {
+      "label": "Mode Champions",
+      "value": "valid"
     }
   ],
   "checksum8": [
@@ -694,6 +702,10 @@
     "extra_balls": {
       "label": "Extra Balls",
       "value": 0
+    },
+    "free_play": {
+      "label": "Free Play",
+      "value": false
     },
     "game_over": {
       "label": "Game Over",
@@ -790,6 +802,15 @@
     "value": "2024-06-03 00:01"
   },
   "mode_champions": [
+    {
+      "initials": {
+        "value": "WAG"
+      },
+      "label": "* MVP",
+      "score": {
+        "value": 10042
+      }
+    },
     {
       "initials": {
         "value": "TMK"
