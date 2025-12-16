@@ -10,20 +10,20 @@ fn test_stingray() -> io::Result<()> {
     let last_game = nvram.read_last_game()?;
     let expected = vec![
         LastGamePlayer {
-            score: 301_300,
-            label: Some("Player 1".into()),
+            score: 301300,
+            label: Some("Final P1".into()),
         },
         LastGamePlayer {
             score: 0,
-            label: Some("Player 2".into()),
+            label: Some("Final P2".into()),
         },
         LastGamePlayer {
             score: 0,
-            label: Some("Player 3".into()),
+            label: Some("Final P3".into()),
         },
         LastGamePlayer {
             score: 0,
-            label: Some("Player 4".into()),
+            label: Some("Final P4".into()),
         },
     ];
     assert_eq!(Some(expected), last_game);

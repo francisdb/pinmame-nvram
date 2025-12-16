@@ -594,7 +594,26 @@ fn read_last_game<T: Read + Seek>(
             .collect();
         Ok(Some(last_games?))
     } else if let Some(game_state) = &map.game_state {
-        if let Some(scores) = game_state.get("scores") {
+        // sometimes scores is outside nvram and we need to read final_scores instead
+        if let Some(scores) = game_state.get("final_scores") {
+            let scores: Result<Vec<LastGamePlayer>, io::Error> = match scores {
+                StateOrStateList::StateList(sl) => sl
+                    .iter()
+                    // .filter(|d| match location_for(d, offset) {
+                    //     Ok(LocateResult::Located(_)) => true,
+                    //     _ => false,
+                    // })
+                    .map(|d| read_last_game_player(&mut nvram_file, d, endian, nibble, offset))
+                    .collect(),
+                _other => {
+                    return Err(io::Error::new(
+                        io::ErrorKind::InvalidData,
+                        "Scores is not a StateList",
+                    ));
+                }
+            };
+            Ok(Some(scores?))
+        } else if let Some(scores) = game_state.get("scores") {
             let scores: Result<Vec<LastGamePlayer>, io::Error> = match scores {
                 StateOrStateList::StateList(sl) => sl
                     .iter()
@@ -662,6 +681,10 @@ fn read_game_state<T: Read + Seek>(
             .iter()
             .flat_map(|(key, v)| match v {
                 StateOrStateList::State(s) => {
+                    // skip values outside nvram
+                    if let Ok(LocateResult::OutsideNVRAM) = location_for(s, offset) {
+                        return vec![];
+                    }
                     let r =
                         read_descriptor_to_string(&mut nvram_file, s, endian, nibble, offset, map)
                             .map(|r| (key.clone(), r));
@@ -670,6 +693,13 @@ fn read_game_state<T: Read + Seek>(
                 StateOrStateList::StateList(sl) => sl
                     .iter()
                     .enumerate()
+                    .filter_map(|(index, s)| {
+                        // skip values outside nvram
+                        if let Ok(LocateResult::OutsideNVRAM) = location_for(s, offset) {
+                            return None;
+                        }
+                        Some((index, s))
+                    })
                     .map(|(index, s)| {
                         let compund_key = format!("{key}.{index}");
                         read_descriptor_to_string(&mut nvram_file, s, endian, nibble, offset, map)
@@ -758,9 +788,10 @@ fn read_descriptor_to_string<T: Read + Seek, S: GlobalSettings>(
         Encoding::Bits => Ok("Bits encoding not implemented".to_string()),
         Encoding::Bool => match &descriptor.start {
             Some(start) => {
+                println!("Reading bool at start {:?}", start);
                 let bool = read_bool(
                     nvram_file,
-                    start.into(),
+                    u64::from(start) - offset,
                     nibble,
                     endian,
                     descriptor.length.unwrap_or(DEFAULT_LENGTH),
@@ -773,6 +804,7 @@ fn read_descriptor_to_string<T: Read + Seek, S: GlobalSettings>(
                 "Bool descriptor requires start",
             )),
         },
+        Encoding::Dipsw => Ok("Dipsw encoding not implemented".to_string()),
         other => todo!("Encoding not implemented: {:?}", other),
     }
 }
@@ -873,9 +905,18 @@ fn location_for(descriptor: &Descriptor, offset: u64) -> io::Result<LocateResult
                 "Descriptor without offsets requires start",
             )),
         },
-        Some(offsets) => Ok(LocateResult::Located(Location::Scattered {
-            offsets: offsets.iter().map(|o| u64::from(o) - offset).collect(),
-        })),
+        Some(offsets) => {
+            // check if any offset is outside nvram
+            for o in offsets {
+                let o_u64 = u64::from(o);
+                if o_u64 < offset {
+                    return Ok(LocateResult::OutsideNVRAM);
+                }
+            }
+            Ok(LocateResult::Located(Location::Scattered {
+                offsets: offsets.iter().map(|o| u64::from(o) - offset).collect(),
+            }))
+        }
     }
 }
 

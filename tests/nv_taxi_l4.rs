@@ -27,6 +27,7 @@ fn test_taxi() -> io::Result<()> {
         ("player_count".into(), "1".into()),
         ("ball_count".into(), "3".into()),
         ("tilt_warnings".into(), "0".into()),
+        ("free_play".into(), "false".into()),
     ]);
     assert_eq!(Some(expected), game_state);
 

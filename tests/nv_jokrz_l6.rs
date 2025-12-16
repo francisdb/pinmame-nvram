@@ -27,6 +27,7 @@ fn test_jokerz() -> io::Result<()> {
         ("scores.3".into(), "0".into()),
         ("tilt_warnings".into(), "0".into()),
         ("tilted".into(), "false".into()),
+        ("free_play".into(), "false".into()),
     ]);
     assert_eq!(Some(expected), game_state);
 

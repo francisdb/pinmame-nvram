@@ -27,6 +27,7 @@ fn test_bad_cats() -> io::Result<()> {
         ("ball_count".into(), "3".into()),
         ("max_credits".into(), "10".into()),
         ("game_over".into(), "true".into()),
+        ("free_play".into(), "false".into()),
         ("player_count".into(), "0".into()),
     ]);
     assert_eq!(Some(expected), game_state);

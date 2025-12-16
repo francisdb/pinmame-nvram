@@ -28,6 +28,7 @@ fn test_cyclone() -> io::Result<()> {
         ("max_credits".into(), "10".into()),
         ("game_over".into(), "false".into()),
         ("player_count".into(), "0".into()),
+        ("free_play".into(), "false".into()),
     ]);
     assert_eq!(Some(expected), game_state);
 

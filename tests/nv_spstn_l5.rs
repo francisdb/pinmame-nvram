@@ -24,6 +24,7 @@ fn test_space_station() -> io::Result<()> {
         ("ball_count".into(), "3".into()),
         ("current_player".into(), "0".into()),
         ("extra_balls".into(), "0".into()),
+        ("free_play".into(), "false".into()),
     ]);
     assert_eq!(Some(expected), game_state);
 
