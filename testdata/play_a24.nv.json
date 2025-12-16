@@ -1,0 +1,105 @@
+{
+  "_fileformat": 0.8,
+  "game_state": {
+    "ball_count": {
+      "label": "Ball Count",
+      "value": 3
+    },
+    "credits": {
+      "label": "Credits",
+      "value": 15
+    },
+    "current_ball": {
+      "label": "Current Ball",
+      "value": 0
+    },
+    "current_player": {
+      "label": "Current Player",
+      "value": 1
+    },
+    "free_play": {
+      "label": "Free Play",
+      "value": false
+    },
+    "game_over": {
+      "label": "Game Over",
+      "value": true
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "value": 30
+    },
+    "player_count": {
+      "label": "Player Count",
+      "value": 128
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 0
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ]
+  },
+  "high_scores": [
+    {
+      "initials": {
+        "value": "JJK"
+      },
+      "label": "1st Place",
+      "score": {
+        "value": 7054910
+      },
+      "short_label": "1st"
+    },
+    {
+      "initials": {
+        "value": "KLJ"
+      },
+      "label": "2nd Place",
+      "score": {
+        "value": 6027200
+      },
+      "short_label": "2nd"
+    },
+    {
+      "initials": {
+        "value": "RAD"
+      },
+      "label": "3rd Place",
+      "score": {
+        "value": 5096170
+      },
+      "short_label": "3rd"
+    },
+    {
+      "initials": {
+        "value": "DDT"
+      },
+      "label": "4th Place",
+      "score": {
+        "value": 4537330
+      },
+      "short_label": "4th"
+    }
+  ],
+  "mode_champions": [
+    {
+      "label": "Jackpot Record",
+      "score": {
+        "value": 8
+      }
+    }
+  ]
+}
