@@ -29,3 +29,19 @@ fn main() {
 
 This library makes use of the [PinMAME NVRAM Maps](https://github.com/tomlogic/pinmame-nvram-maps) project.
 The maps are embedded in the library and are used to look up values in the nvram files.
+
+## Development
+
+Make sure you have Rust and Cargo installed. Then clone the repository.
+
+Check out the submodules:
+
+```
+git submodule update --init --recursive
+```
+
+Run the tests:
+
+```
+cargo test
+```
