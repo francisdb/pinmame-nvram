@@ -1,5 +1,5 @@
 {
-  "_fileformat": 0.7,
+  "_fileformat": 0.8,
   "audits": {
     "Bookkeeping functions": {
       "05": {
@@ -15,54 +15,108 @@
         "value": 0
       },
       "08": {
-        "label": "Total times 'High Game to Date' is beat",
+        "label": "HSTD Achieved",
         "value": 6
       },
       "09": {
-        "label": "Coins Dropped thru Coin Chute #1",
+        "label": "Coin Chute #1",
         "value": 11
       },
       "10": {
-        "label": "Coins Dropped thru Coin Chute #2",
+        "label": "Coin Chute #2",
         "value": 15
       },
       "11": {
-        "label": "Coins Dropped thru Coin Chute #3",
+        "label": "Coin Chute #3",
         "value": 9
       }
     }
   },
   "game_state": {
+    "ball_count": {
+      "label": "Ball Count",
+      "value": 3
+    },
     "credits": {
       "label": "Credits",
       "value": 27
     },
-    "scores": [
+    "current_ball": {
+      "label": "Current Ball",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "current_player": {
+      "label": "Current Player",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "final_scores": [
       {
-        "label": "Player 1",
+        "label": "Final Score P1",
         "value": 18640
       },
       {
-        "label": "Player 2",
+        "label": "Final Score P2",
         "value": 6110
       },
       {
-        "label": "Player 3",
+        "label": "Final Score P3",
         "value": 22300
       },
       {
-        "label": "Player 4",
+        "label": "Final Score P4",
         "value": 29410
       },
       {
-        "label": "Player 5",
+        "label": "Final Score P5",
         "value": 13100
       },
       {
-        "label": "Player 6",
+        "label": "Final Score P6",
         "value": 18800
       }
-    ]
+    ],
+    "game_over": {
+      "label": "Game Over",
+      "value": false
+    },
+    "max_credits": {
+      "label": "Max Credits",
+      "value": 40
+    },
+    "player_count": {
+      "label": "Players",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 0
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      },
+      {
+        "label": "Player 5",
+        "value": 0
+      },
+      {
+        "label": "Player 6",
+        "value": 0
+      }
+    ],
+    "tilted": {
+      "label": "Tilted",
+      "value": false
+    }
   },
   "high_scores": [
     {

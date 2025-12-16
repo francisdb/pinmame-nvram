@@ -1,0 +1,158 @@
+{
+  "_fileformat": 0.8,
+  "adjustments": {
+    "Adjustments": {
+      "01": {
+        "label": "Replay Level 1",
+        "value": 0
+      },
+      "02": {
+        "label": "Replay Level 2",
+        "value": 0
+      },
+      "03": {
+        "label": "Replay Level 3",
+        "value": 0
+      },
+      "04": {
+        "label": "Current HSTD",
+        "value": 0
+      }
+    }
+  },
+  "audits": {
+    "Audits": {
+      "05": {
+        "label": "Current Credits",
+        "value": 7
+      },
+      "06": {
+        "label": "Total Plays",
+        "value": 1
+      },
+      "07": {
+        "label": "Total Replays",
+        "value": 0
+      },
+      "08": {
+        "label": "HSTD Achieved",
+        "value": 0
+      },
+      "09": {
+        "label": "Coin Chute #2",
+        "value": 0
+      },
+      "10": {
+        "label": "Coin Chute #1",
+        "value": 8
+      },
+      "11": {
+        "label": "Coin Chute #3",
+        "value": 0
+      },
+      "12": {
+        "label": "Balls Played",
+        "value": 2
+      },
+      "13": {
+        "label": "Extra Balls Awarded",
+        "value": 0
+      },
+      "14": {
+        "label": "Specials Awarded",
+        "value": 0
+      },
+      "15": {
+        "label": "Replay 1 Passed",
+        "value": 0
+      },
+      "16": {
+        "label": "Replay 2 Passed",
+        "value": 0
+      },
+      "17": {
+        "label": "Replay 3 Passed",
+        "value": 0
+      }
+    }
+  },
+  "game_state": {
+    "ball_count": {
+      "label": "Ball Count",
+      "value": 3
+    },
+    "credits": {
+      "label": "Credits",
+      "value": 7
+    },
+    "current_ball": {
+      "label": "Current Ball",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "current_player": {
+      "label": "Current Player",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "final_scores": [
+      {
+        "label": "Player 1",
+        "value": 9320
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ],
+    "game_over": {
+      "label": "Game Over",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "max_credits": {
+      "label": "Max Credits",
+      "value": 10
+    },
+    "player_count": {
+      "label": "Players",
+      "value": 1
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "warning": "Failed to resolve: Value is stored outside the NVRAM"
+      },
+      {
+        "label": "Player 2",
+        "warning": "Failed to resolve: Value is stored outside the NVRAM"
+      },
+      {
+        "label": "Player 3",
+        "warning": "Failed to resolve: Value is stored outside the NVRAM"
+      },
+      {
+        "label": "Player 4",
+        "warning": "Failed to resolve: Value is stored outside the NVRAM"
+      }
+    ],
+    "tilted": {
+      "label": "Tilted",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    }
+  },
+  "high_scores": [
+    {
+      "label": "1st",
+      "score": {
+        "value": 0
+      },
+      "short_label": "#1"
+    }
+  ]
+}

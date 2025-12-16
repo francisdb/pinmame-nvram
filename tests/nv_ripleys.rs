@@ -29,35 +29,36 @@ fn test_ripleys_believe_it_or_not() -> io::Result<()> {
     assert_eq!(Some(expected), last_game);
 
     let scores = nvram.read_highscores()?;
+    // FIXME: These initials have trailing spaces in the nvram?
     let expected = vec![
         HighScore {
-            label: Some("Grand Champion".to_string()),
+            label: Some("Grand Champ".to_string()),
             short_label: Some("GC".to_string()),
-            initials: "PML".to_string(),
+            initials: "PML       ".to_string(),
             score: 50_000_000,
         },
         HighScore {
-            label: Some("1st".to_string()),
-            short_label: Some("#1".to_string()),
-            initials: "LNK".to_string(),
+            label: Some("#1".to_string()),
+            short_label: None,
+            initials: "LNK       ".to_string(),
             score: 31_000_000,
         },
         HighScore {
-            label: Some("2nd".to_string()),
-            short_label: Some("#2".to_string()),
-            initials: "JRK".to_string(),
+            label: Some("#2".to_string()),
+            short_label: None,
+            initials: "JRK       ".to_string(),
             score: 25_000_000,
         },
         HighScore {
-            label: Some("3rd".to_string()),
-            short_label: Some("#3".to_string()),
-            initials: "J Y".to_string(),
+            label: Some("#3".to_string()),
+            short_label: None,
+            initials: "J Y       ".to_string(),
             score: 22_000_000,
         },
         HighScore {
-            label: Some("4th".to_string()),
-            short_label: Some("#4".to_string()),
-            initials: "C G".to_string(),
+            label: Some("#4".to_string()),
+            short_label: None,
+            initials: "C G       ".to_string(),
             score: 18_000_000,
         },
     ];

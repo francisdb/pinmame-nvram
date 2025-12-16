@@ -1,22 +1,54 @@
 {
-  "_fileformat": 0.7,
+  "_fileformat": 0.8,
   "game_state": {
+    "ball_count": {
+      "label": "Ball Count",
+      "value": 3
+    },
+    "credits": {
+      "label": "Credits",
+      "value": 24
+    },
+    "current_ball": {
+      "label": "Ball",
+      "value": 0
+    },
+    "current_player": {
+      "label": "Player",
+      "value": 0
+    },
+    "free_play": {
+      "label": "Free Play",
+      "value": false
+    },
+    "game_over": {
+      "label": "Game Over",
+      "value": true
+    },
+    "max_credits": {
+      "label": "Max Credits",
+      "value": 30
+    },
+    "player_count": {
+      "label": "Player Count",
+      "value": 0
+    },
     "scores": [
       {
         "label": "Player 1",
-        "value": 1006000000
+        "value": 0
       },
       {
         "label": "Player 2",
-        "value": 2020202041
+        "value": 0
       },
       {
         "label": "Player 3",
-        "value": 5052494020
+        "value": 0
       },
       {
         "label": "Player 4",
-        "value": 3620203139
+        "value": 0
       }
     ]
   },
@@ -25,7 +57,7 @@
       "initials": {
         "value": "LFS"
       },
-      "label": "1st",
+      "label": "First",
       "score": {
         "value": 1000000000
       },
@@ -35,7 +67,7 @@
       "initials": {
         "value": "LON"
       },
-      "label": "2nd",
+      "label": "Second",
       "score": {
         "value": 900000000
       },
@@ -45,7 +77,7 @@
       "initials": {
         "value": "EDC"
       },
-      "label": "3rd",
+      "label": "Third",
       "score": {
         "value": 800000000
       },
@@ -55,7 +87,7 @@
       "initials": {
         "value": "JEK"
       },
-      "label": "4th",
+      "label": "Fourth",
       "score": {
         "value": 700000000
       },
@@ -65,7 +97,7 @@
       "initials": {
         "value": "JAK"
       },
-      "label": "5th",
+      "label": "Fifth",
       "score": {
         "value": 600000000
       },
@@ -75,7 +107,7 @@
       "initials": {
         "value": "KRT"
       },
-      "label": "6th",
+      "label": "Sixth",
       "score": {
         "value": 500000000
       },

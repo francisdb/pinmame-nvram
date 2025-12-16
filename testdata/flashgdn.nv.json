@@ -1,5 +1,5 @@
 {
-  "_fileformat": 0.7,
+  "_fileformat": 0.8,
   "adjustments": {
     "Adjustments": {
       "01": {
@@ -19,7 +19,7 @@
         "warning": "Failed to resolve: Index 15 out of bounds for enum with 4 values"
       },
       "17": {
-        "label": "Replay Awards",
+        "label": "Replay Award",
         "warning": "Failed to resolve: Index 15 out of bounds for enum with 4 values"
       },
       "18": {
@@ -33,17 +33,17 @@
     }
   },
   "audits": {
-    "Audits": {
+    "Bookkeeping functions": {
       "05": {
         "label": "Current Credits",
         "value": 10
       },
       "06": {
-        "label": "Total Plays",
+        "label": "Total Plays (Paid and Free Games)",
         "value": 4
       },
       "07": {
-        "label": "Total Replays",
+        "label": "Total Replays (Free Games)",
         "value": 3
       },
       "08": {

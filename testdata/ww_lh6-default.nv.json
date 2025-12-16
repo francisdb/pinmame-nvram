@@ -1,5 +1,5 @@
 {
-  "_fileformat": 0.7,
+  "_fileformat": 0.8,
   "audits": {
     "B.2 EARNINGS AUDS.": {
       "02": {
@@ -518,6 +518,12 @@
       "value": "valid"
     },
     {
+      "checksum_mismatch_calculated": 63750,
+      "checksum_mismatch_expected": 65535,
+      "label": "Credits",
+      "value": "mismatch"
+    },
+    {
       "label": "Volume",
       "value": "valid"
     },
@@ -547,6 +553,10 @@
       "label": "Ball Count",
       "value": 3
     },
+    "credits": {
+      "label": "Credits",
+      "value": 255
+    },
     "current_ball": {
       "label": "Ball",
       "value": 1
@@ -562,6 +572,10 @@
     "extra_balls": {
       "label": "Extra Balls",
       "value": 0
+    },
+    "free_play": {
+      "label": "Free Play",
+      "value": false
     },
     "game_over": {
       "label": "Game Over",

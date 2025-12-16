@@ -1,5 +1,5 @@
 {
-  "_fileformat": 0.7,
+  "_fileformat": 0.8,
   "adjustments": {
     "Feature Adjustments": {
       "01": {
@@ -197,6 +197,34 @@
     }
   },
   "game_state": {
+    "ball_count": {
+      "label": "Ball Count",
+      "value": 3
+    },
+    "credits": {
+      "label": "Credits",
+      "value": 4
+    },
+    "current_ball": {
+      "label": "Current Ball",
+      "value": 1
+    },
+    "current_player": {
+      "label": "Current Player",
+      "value": 1
+    },
+    "game_over": {
+      "label": "Game Over",
+      "value": false
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "value": 30
+    },
+    "player_count": {
+      "label": "Player Count",
+      "value": 1
+    },
     "scores": [
       {
         "label": "Player 1",

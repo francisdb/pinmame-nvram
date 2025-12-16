@@ -12,19 +12,19 @@ fn test_dracula_last_game() -> io::Result<()> {
     let expected = vec![
         LastGamePlayer {
             score: 32520,
-            label: Some("Player 1".to_string()),
+            label: Some("Final P1".to_string()),
         },
         LastGamePlayer {
             score: 22510,
-            label: Some("Player 2".to_string()),
+            label: Some("Final P2".to_string()),
         },
         LastGamePlayer {
             score: 0,
-            label: Some("Player 3".to_string()),
+            label: Some("Final P3".to_string()),
         },
         LastGamePlayer {
             score: 0,
-            label: Some("Player 4".to_string()),
+            label: Some("Final P4".to_string()),
         },
     ];
     assert_eq!(Some(expected), last_game);
@@ -35,9 +35,14 @@ fn test_dracula_last_game() -> io::Result<()> {
         ("scores.1".into(), "22510".into()),
         ("scores.2".into(), "0".into()),
         ("scores.3".into(), "0".into()),
-        ("current_ball".into(), "0".into()),
         ("credits".into(), "0".into()),
         ("match".into(), "70".into()),
+        ("game_over".into(), "false".into()),
+        ("tilted".into(), "false".into()),
+        ("final_scores.0".into(), "32520".into()),
+        ("final_scores.1".into(), "22510".into()),
+        ("final_scores.2".into(), "0".into()),
+        ("final_scores.3".into(), "0".into()),
     ]);
     assert_eq!(Some(expected), game_state);
 

@@ -31,6 +31,14 @@ fn test_nba_fastbreak() -> io::Result<()> {
     let champions = nvram.read_mode_champions()?;
     let expected = vec![
         ModeChampion {
+            label: Some("* MVP".to_string()),
+            short_label: None,
+            initials: Some("WAG".to_string()),
+            score: Some(10042),
+            suffix: None,
+            timestamp: None,
+        },
+        ModeChampion {
             label: Some("BLAZERS".to_string()),
             short_label: None,
             initials: Some("TMK".to_string()),

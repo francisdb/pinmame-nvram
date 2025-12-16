@@ -5,6 +5,16 @@
       "label": "Credits",
       "value": 8
     },
+    "final_scores": [
+      {
+        "label": "Final P1",
+        "value": 113000
+      },
+      {
+        "label": "Final P2",
+        "value": 122000
+      }
+    ],
     "scores": [
       {
         "label": "Player 1",

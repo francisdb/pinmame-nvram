@@ -29,6 +29,7 @@ fn test_black_knight_2000() -> io::Result<()> {
         ("max_credits".into(), "10".into()),
         ("game_over".into(), "true".into()),
         ("player_count".into(), "0".into()),
+        ("free_play".into(), "false".into()),
     ]);
     assert_eq!(Some(expected), game_state);
 

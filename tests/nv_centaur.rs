@@ -42,19 +42,19 @@ fn test_centaur() -> io::Result<()> {
     let expected = vec![
         LastGamePlayer {
             score: 52_500,
-            label: Some("Player 1".to_string()),
+            label: Some("Final Score P1".to_string()),
         },
         LastGamePlayer {
             score: 0,
-            label: Some("Player 2".to_string()),
+            label: Some("Final Score P2".to_string()),
         },
         LastGamePlayer {
             score: 0,
-            label: Some("Player 3".to_string()),
+            label: Some("Final Score P3".to_string()),
         },
         LastGamePlayer {
             score: 0,
-            label: Some("Player 4".to_string()),
+            label: Some("Final Score P4".to_string()),
         },
     ];
     assert_eq!(Some(expected), last_game);
