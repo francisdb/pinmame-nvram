@@ -257,6 +257,10 @@
       "label": "Extra Balls",
       "warning": "Failed to resolve: Value is stored outside the NVRAM"
     },
+    "free_play": {
+      "label": "Free Play",
+      "value": true
+    },
     "game_over": {
       "label": "Game Over",
       "warning": "Failed to resolve: Value is stored outside the NVRAM"

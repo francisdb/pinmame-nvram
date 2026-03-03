@@ -1,0 +1,117 @@
+{
+  "_fileformat": 0.8,
+  "game_state": {
+    "ball_count": {
+      "label": "Ball Count",
+      "value": 3
+    },
+    "credits": {
+      "label": "Credits",
+      "value": 14
+    },
+    "current_ball": {
+      "label": "Ball",
+      "value": 1
+    },
+    "current_player": {
+      "label": "Player",
+      "value": 1
+    },
+    "free_play": {
+      "label": "Free Play",
+      "value": false
+    },
+    "game_over": {
+      "label": "Game Over",
+      "value": false
+    },
+    "max_credits": {
+      "label": "Max Credits",
+      "value": 30
+    },
+    "player_count": {
+      "label": "Player Count",
+      "value": 1
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 25000
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ]
+  },
+  "high_scores": [
+    {
+      "initials": {
+        "value": "JEK"
+      },
+      "label": "First",
+      "score": {
+        "value": 7500000
+      },
+      "short_label": "#1"
+    },
+    {
+      "initials": {
+        "value": "RAY"
+      },
+      "label": "Second",
+      "score": {
+        "value": 6500000
+      },
+      "short_label": "#2"
+    },
+    {
+      "initials": {
+        "value": "BLS"
+      },
+      "label": "Third",
+      "score": {
+        "value": 5500000
+      },
+      "short_label": "#3"
+    },
+    {
+      "initials": {
+        "value": "NBW"
+      },
+      "label": "Fourth",
+      "score": {
+        "value": 4500000
+      },
+      "short_label": "#4"
+    },
+    {
+      "initials": {
+        "value": "P G"
+      },
+      "label": "Fifth",
+      "score": {
+        "value": 3500000
+      },
+      "short_label": "#5"
+    },
+    {
+      "initials": {
+        "value": "A A"
+      },
+      "label": "Sixth",
+      "score": {
+        "value": 2500000
+      },
+      "short_label": "#6"
+    }
+  ]
+}
