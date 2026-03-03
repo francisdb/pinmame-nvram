@@ -1,0 +1,130 @@
+{
+  "_fileformat": 0.8,
+  "adjustments": {
+    "High score functions": {
+      "07": {
+        "label": "Replay Level 1",
+        "value": 0
+      },
+      "08": {
+        "label": "Replay Level 2",
+        "value": 0
+      },
+      "09": {
+        "label": "Replay Level 3",
+        "value": 0
+      },
+      "10": {
+        "label": "High score to date",
+        "value": 38540
+      }
+    }
+  },
+  "audits": {
+    "Bookkeeping functions": {
+      "01": {
+        "label": "Coin Chute #1",
+        "value": 13
+      },
+      "02": {
+        "label": "Coin Chute #2",
+        "value": 0
+      },
+      "03": {
+        "label": "Coin Chute #3",
+        "value": 8
+      },
+      "04": {
+        "label": "Total Plays",
+        "value": 5
+      },
+      "05": {
+        "label": "Unknown Audit",
+        "value": 1
+      },
+      "06": {
+        "label": "Current Credits",
+        "value": 3
+      }
+    }
+  },
+  "game_state": {
+    "ball_count": {
+      "label": "Ball Count",
+      "value": 3
+    },
+    "credits": {
+      "label": "Credits",
+      "value": 3
+    },
+    "current_ball": {
+      "label": "Current Ball",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "current_player": {
+      "label": "Current Player",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "final_scores": [
+      {
+        "label": "Final P1",
+        "value": 0
+      },
+      {
+        "label": "Final P2",
+        "value": 0
+      },
+      {
+        "label": "Final P3",
+        "value": 0
+      },
+      {
+        "label": "Final P4",
+        "value": 0
+      }
+    ],
+    "game_over": {
+      "label": "Game Over",
+      "value": false
+    },
+    "max_credits": {
+      "label": "Max Credits",
+      "value": 5
+    },
+    "player_count": {
+      "label": "Players",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 38540
+      },
+      {
+        "label": "Player 2",
+        "value": 38540
+      },
+      {
+        "label": "Player 3",
+        "value": 38540
+      },
+      {
+        "label": "Player 4",
+        "value": 38540
+      }
+    ],
+    "tilted": {
+      "label": "Tilted",
+      "value": false
+    }
+  },
+  "high_scores": [
+    {
+      "label": "High Score",
+      "score": {
+        "value": 38540
+      },
+      "short_label": "HS"
+    }
+  ]
+}

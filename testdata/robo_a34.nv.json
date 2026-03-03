@@ -213,6 +213,10 @@
       "label": "Current Player",
       "value": 1
     },
+    "free_play": {
+      "label": "Free Play",
+      "value": false
+    },
     "game_over": {
       "label": "Game Over",
       "value": false

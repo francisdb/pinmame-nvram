@@ -1,0 +1,117 @@
+{
+  "_fileformat": 0.8,
+  "game_state": {
+    "ball_count": {
+      "label": "Ball Count",
+      "value": 5
+    },
+    "credits": {
+      "label": "Credits",
+      "value": 0
+    },
+    "current_ball": {
+      "label": "Ball",
+      "value": 1
+    },
+    "current_player": {
+      "label": "Player",
+      "value": 1
+    },
+    "free_play": {
+      "label": "Free Play",
+      "value": true
+    },
+    "game_over": {
+      "label": "Game Over",
+      "value": false
+    },
+    "max_credits": {
+      "label": "Max Credits",
+      "value": 30
+    },
+    "player_count": {
+      "label": "Player Count",
+      "value": 1
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 670000
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ]
+  },
+  "high_scores": [
+    {
+      "initials": {
+        "value": "CNH"
+      },
+      "label": "First",
+      "score": {
+        "value": 400000000
+      },
+      "short_label": "#1"
+    },
+    {
+      "initials": {
+        "value": "PUP"
+      },
+      "label": "Second",
+      "score": {
+        "value": 350000000
+      },
+      "short_label": "#2"
+    },
+    {
+      "initials": {
+        "value": "UGR"
+      },
+      "label": "Third",
+      "score": {
+        "value": 300000000
+      },
+      "short_label": "#3"
+    },
+    {
+      "initials": {
+        "value": "JAY"
+      },
+      "label": "Fourth",
+      "score": {
+        "value": 250000000
+      },
+      "short_label": "#4"
+    },
+    {
+      "initials": {
+        "value": "LAR"
+      },
+      "label": "Fifth",
+      "score": {
+        "value": 200000000
+      },
+      "short_label": "#5"
+    },
+    {
+      "initials": {
+        "value": "DAN"
+      },
+      "label": "Sixth",
+      "score": {
+        "value": 150000000
+      },
+      "short_label": "#6"
+    }
+  ]
+}

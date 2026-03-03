@@ -75,6 +75,10 @@
         "value": 18800
       }
     ],
+    "free_play": {
+      "label": "Free Play",
+      "value": true
+    },
     "game_over": {
       "label": "Game Over",
       "value": false
