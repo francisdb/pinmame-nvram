@@ -7,7 +7,7 @@
     },
     "credits": {
       "label": "Credits",
-      "value": 13
+      "value": 11
     },
     "current_ball": {
       "label": "Ball",
@@ -36,7 +36,7 @@
     "scores": [
       {
         "label": "Player 1",
-        "value": 104019730
+        "value": 71461820
       },
       {
         "label": "Player 2",
@@ -63,7 +63,7 @@
   "high_scores": [
     {
       "initials": {
-        "value": "WMT"
+        "value": "JEK"
       },
       "label": "First",
       "score": {
@@ -73,7 +73,7 @@
     },
     {
       "initials": {
-        "value": "JRP"
+        "value": "JB "
       },
       "label": "Second",
       "score": {
@@ -83,7 +83,7 @@
     },
     {
       "initials": {
-        "value": "RFH"
+        "value": "LON"
       },
       "label": "Third",
       "score": {
@@ -93,7 +93,7 @@
     },
     {
       "initials": {
-        "value": "BTB"
+        "value": "DAY"
       },
       "label": "Fourth",
       "score": {
@@ -103,7 +103,7 @@
     },
     {
       "initials": {
-        "value": "NF "
+        "value": "JAK"
       },
       "label": "Fifth",
       "score": {
@@ -113,7 +113,7 @@
     },
     {
       "initials": {
-        "value": "DAY"
+        "value": "KRT"
       },
       "label": "Sixth",
       "score": {

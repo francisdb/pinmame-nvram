@@ -1,0 +1,107 @@
+{
+  "_fileformat": 0.8,
+  "high_scores": [
+    {
+      "initials": {
+        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+      },
+      "label": "Kingpin #1",
+      "score": {
+        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+      },
+      "short_label": "KP1"
+    },
+    {
+      "initials": {
+        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+      },
+      "label": "Kingpin #2",
+      "score": {
+        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+      },
+      "short_label": "KP2"
+    },
+    {
+      "initials": {
+        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+      },
+      "label": "Kingpin #3",
+      "score": {
+        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+      },
+      "short_label": "KP3"
+    },
+    {
+      "initials": {
+        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+      },
+      "label": "Kingpin #4",
+      "score": {
+        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+      },
+      "short_label": "KP4"
+    },
+    {
+      "initials": {
+        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+      },
+      "label": "Kingpin #5",
+      "score": {
+        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+      },
+      "short_label": "KP5"
+    }
+  ],
+  "mode_champions": [
+    {
+      "initials": {
+        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+      },
+      "label": "Buyin Boss #1",
+      "score": {
+        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+      },
+      "short_label": "BB1"
+    },
+    {
+      "initials": {
+        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+      },
+      "label": "Buyin Boss #2",
+      "score": {
+        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+      },
+      "short_label": "BB2"
+    },
+    {
+      "initials": {
+        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+      },
+      "label": "Buyin Boss #3",
+      "score": {
+        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+      },
+      "short_label": "BB3"
+    },
+    {
+      "initials": {
+        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+      },
+      "label": "Buyin Boss #4",
+      "score": {
+        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+      },
+      "short_label": "BB4"
+    },
+    {
+      "initials": {
+        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+      },
+      "label": "Buyin Boss #5",
+      "score": {
+        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+      },
+      "short_label": "BB5"
+    }
+  ]
+}

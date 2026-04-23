@@ -363,8 +363,9 @@ pub enum AuditOrNote {
 pub struct Metadata {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _notes: Option<Strings>,
-    pub copyright: Strings,
-    pub license: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub copyright: Option<Strings>,
+    pub license: Option<String>,
     pub platform: String,
     pub version: Number,
     pub roms: Vec<String>,

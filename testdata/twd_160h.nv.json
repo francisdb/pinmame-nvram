@@ -1,0 +1,178 @@
+{
+  "_fileformat": 0.7,
+  "high_scores": [
+    {
+      "initials": {
+        "value": "JDB"
+      },
+      "label": "Grand Champion",
+      "score": {
+        "value": 75000000
+      }
+    },
+    {
+      "initials": {
+        "value": "LFS"
+      },
+      "label": "First Place",
+      "score": {
+        "value": 55000000
+      }
+    },
+    {
+      "initials": {
+        "value": "T"
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 40000000
+      }
+    },
+    {
+      "initials": {
+        "value": "MDK"
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 30000000
+      }
+    },
+    {
+      "initials": {
+        "value": "TEK"
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 25000000
+      }
+    }
+  ],
+  "mode_champions": [
+    {
+      "counter": {
+        "value": 25
+      },
+      "initials": {
+        "value": "DAV"
+      },
+      "label": "Walkers Killed Champion"
+    },
+    {
+      "counter": {
+        "value": 2500000
+      },
+      "initials": {
+        "value": "MAR"
+      },
+      "label": "Combo Champion"
+    },
+    {
+      "initials": {
+        "value": "RON"
+      },
+      "label": "Bicycle Girl Champion",
+      "score": {
+        "value": 5000000
+      }
+    },
+    {
+      "initials": {
+        "value": "JOS"
+      },
+      "label": "Barn Champion",
+      "score": {
+        "value": 15000000
+      }
+    },
+    {
+      "initials": {
+        "value": "KWI"
+      },
+      "label": "CDC Champion",
+      "score": {
+        "value": 15000000
+      }
+    },
+    {
+      "initials": {
+        "value": "GLV"
+      },
+      "label": "Riot Champion",
+      "score": {
+        "value": 15000000
+      }
+    },
+    {
+      "initials": {
+        "value": "STQ"
+      },
+      "label": "Tunnel Champion",
+      "score": {
+        "value": 15000000
+      }
+    },
+    {
+      "initials": {
+        "value": "SDE"
+      },
+      "label": "Arena Champion",
+      "score": {
+        "value": 15000000
+      }
+    },
+    {
+      "initials": {
+        "value": "TOM"
+      },
+      "label": "Terminus Champion",
+      "score": {
+        "value": 25000000
+      }
+    },
+    {
+      "initials": {
+        "value": "EPC"
+      },
+      "label": "Blood Bath Champion",
+      "score": {
+        "value": 7500000
+      }
+    },
+    {
+      "initials": {
+        "value": "BFB"
+      },
+      "label": "Crossbow Champion",
+      "score": {
+        "value": 10000000
+      }
+    },
+    {
+      "initials": {
+        "value": "PVW"
+      },
+      "label": "X Champion",
+      "score": {
+        "value": 25000000
+      }
+    },
+    {
+      "initials": {
+        "value": "L E"
+      },
+      "label": "Horde Champion",
+      "score": {
+        "value": 50000000
+      }
+    },
+    {
+      "initials": {
+        "value": "EB"
+      },
+      "label": "Last Man Standing Champion",
+      "score": {
+        "value": 75000000
+      }
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "_fileformat": 0.7,
+  "high_scores": [
+    {
+      "initials": {
+        "value": "JDB"
+      },
+      "label": "Grand Champion",
+      "score": {
+        "value": 75000000
+      }
+    },
+    {
+      "initials": {
+        "value": "LFS"
+      },
+      "label": "First Place",
+      "score": {
+        "value": 55000000
+      }
+    },
+    {
+      "initials": {
+        "value": "J R"
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 40000000
+      }
+    },
+    {
+      "initials": {
+        "value": "DDG"
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 30000000
+      }
+    },
+    {
+      "initials": {
+        "value": "M G"
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 25000000
+      }
+    }
+  ],
+  "mode_champions": [
+    {
+      "counter": {
+        "value": 10
+      },
+      "initials": {
+        "value": "VJP"
+      },
+      "label": "Combo Champion"
+    },
+    {
+      "initials": {
+        "value": "ABC"
+      },
+      "label": "Lady Justice Champion",
+      "score": {
+        "value": 2500000
+      }
+    },
+    {
+      "initials": {
+        "value": "ABC"
+      },
+      "label": "Fuel Champion",
+      "score": {
+        "value": 5000000
+      }
+    },
+    {
+      "initials": {
+        "value": "ABC"
+      },
+      "label": "Seek & Destroy Champion",
+      "score": {
+        "value": 15000000
+      }
+    },
+    {
+      "initials": {
+        "value": "ROB"
+      },
+      "label": "Blackened Champion",
+      "score": {
+        "value": 15000000
+      }
+    },
+    {
+      "initials": {
+        "value": "MDK"
+      },
+      "label": "For Whom The Bell Tolls Champion",
+      "score": {
+        "value": 25000000
+      }
+    },
+    {
+      "initials": {
+        "value": "ABC"
+      },
+      "label": "Fade To Black Champion",
+      "score": {
+        "value": 25000000
+      }
+    },
+    {
+      "initials": {
+        "value": "ABC"
+      },
+      "label": "Battery Champion",
+      "score": {
+        "value": 25000000
+      }
+    },
+    {
+      "initials": {
+        "value": "TEK"
+      },
+      "label": "Enter Sandman Champion",
+      "score": {
+        "value": 25000000
+      }
+    },
+    {
+      "initials": {
+        "value": "ABC"
+      },
+      "label": "The End Of The Line Champion",
+      "score": {
+        "value": 50000000
+      }
+    }
+  ]
+}
