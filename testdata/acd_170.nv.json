@@ -1,0 +1,207 @@
+{
+  "_fileformat": 0.8,
+  "high_scores": [
+    {
+      "initials": {
+        "value": "LFS"
+      },
+      "label": "Grand Champion",
+      "score": {
+        "value": 75000000
+      },
+      "short_label": "GC"
+    },
+    {
+      "initials": {
+        "value": "R B"
+      },
+      "label": "First Place",
+      "score": {
+        "value": 55000000
+      },
+      "short_label": "#1"
+    },
+    {
+      "initials": {
+        "value": "J Y"
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 40000000
+      },
+      "short_label": "#2"
+    },
+    {
+      "initials": {
+        "value": "M G"
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 30000000
+      },
+      "short_label": "#3"
+    },
+    {
+      "initials": {
+        "value": "ABC"
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 25000000
+      },
+      "short_label": "#4"
+    }
+  ],
+  "mode_champions": [
+    {
+      "initials": {
+        "value": "ABC"
+      },
+      "label": "Combo Champion",
+      "score": {
+        "value": 20
+      },
+      "short_label": "Combo"
+    },
+    {
+      "initials": {
+        "value": "ABC"
+      },
+      "label": "Back In Black Champion",
+      "score": {
+        "value": 7500000
+      },
+      "short_label": "BIB"
+    },
+    {
+      "initials": {
+        "value": "ABC"
+      },
+      "label": "For Those About To Rock Champion",
+      "score": {
+        "value": 7500000
+      },
+      "short_label": "FTATR"
+    },
+    {
+      "initials": {
+        "value": "ABC"
+      },
+      "label": "Hell Aint A Bad Place To Be Champion",
+      "score": {
+        "value": 7500000
+      },
+      "short_label": "HABP"
+    },
+    {
+      "initials": {
+        "value": "ABC"
+      },
+      "label": "Hells Bells Champion",
+      "score": {
+        "value": 7500000
+      },
+      "short_label": "HB"
+    },
+    {
+      "initials": {
+        "value": "ABC"
+      },
+      "label": "Highway To Hell Champion",
+      "score": {
+        "value": 7500000
+      },
+      "short_label": "HTH"
+    },
+    {
+      "initials": {
+        "value": "ABC"
+      },
+      "label": "Let There Be Rock Champion",
+      "score": {
+        "value": 7500000
+      },
+      "short_label": "LTBR"
+    },
+    {
+      "initials": {
+        "value": "ABC"
+      },
+      "label": "Rock N Roll Train Champion",
+      "score": {
+        "value": 7500000
+      },
+      "short_label": "RNRT"
+    },
+    {
+      "initials": {
+        "value": "ABC"
+      },
+      "label": "Thunderstruck Champion",
+      "score": {
+        "value": 7500000
+      },
+      "short_label": "TS"
+    },
+    {
+      "initials": {
+        "value": "ABC"
+      },
+      "label": "T.N.T. Champion",
+      "score": {
+        "value": 7500000
+      },
+      "short_label": "TNT"
+    },
+    {
+      "initials": {
+        "value": "ABC"
+      },
+      "label": "War Machine Champion",
+      "score": {
+        "value": 7500000
+      },
+      "short_label": "WM"
+    },
+    {
+      "initials": {
+        "value": "ABC"
+      },
+      "label": "Whole Lotta Rosie Champion",
+      "score": {
+        "value": 7500000
+      },
+      "short_label": "WLR"
+    },
+    {
+      "initials": {
+        "value": "ABC"
+      },
+      "label": "You Shook Me All Night Long Champion",
+      "score": {
+        "value": 7500000
+      },
+      "short_label": "YSMALL"
+    },
+    {
+      "initials": {
+        "value": "ABC"
+      },
+      "label": "Song Jackpot Champion",
+      "score": {
+        "value": 20000000
+      },
+      "short_label": "SJ"
+    },
+    {
+      "initials": {
+        "value": "ABC"
+      },
+      "label": "Encore Champion",
+      "score": {
+        "value": 30000000
+      },
+      "short_label": "Enc"
+    }
+  ]
+}

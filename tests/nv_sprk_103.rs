@@ -1,4 +1,4 @@
-use pinmame_nvram::{HighScore, Nvram};
+use pinmame_nvram::{HighScore, LastGamePlayer, Nvram};
 use pretty_assertions::assert_eq;
 use std::io;
 use std::path::Path;
@@ -8,68 +8,94 @@ fn test_south_park() -> io::Result<()> {
     let mut nvram = Nvram::open(Path::new("testdata/sprk_103.nv"))?.unwrap();
 
     let last_game = nvram.read_last_game()?;
-    assert_eq!(None, last_game);
+    let expected_last_game = vec![
+        LastGamePlayer {
+            score: 1135780,
+            label: Some("Player 1".to_string()),
+        },
+        LastGamePlayer {
+            score: 0,
+            label: Some("Player 2".to_string()),
+        },
+        LastGamePlayer {
+            score: 0,
+            label: Some("Player 3".to_string()),
+        },
+        LastGamePlayer {
+            score: 0,
+            label: Some("Player 4".to_string()),
+        },
+        LastGamePlayer {
+            score: 0,
+            label: Some("Player 5".to_string()),
+        },
+        LastGamePlayer {
+            score: 0,
+            label: Some("Player 6".to_string()),
+        },
+    ];
+    assert_eq!(Some(expected_last_game), last_game);
 
     let scores = nvram.read_highscores()?;
     let expected = vec![
         HighScore {
-            label: Some("First Place".to_string()),
-            short_label: Some("1st".to_string()),
-            initials: "JEK".to_string(),
+            label: Some("#1".to_string()),
+            short_label: None,
+            initials: "JEK       ".to_string(),
             score: 400_000_000,
         },
         HighScore {
-            label: Some("Second Place".to_string()),
-            short_label: Some("2nd".to_string()),
-            initials: "KIM".to_string(),
+            label: Some("#2".to_string()),
+            short_label: None,
+            initials: "KIM       ".to_string(),
             score: 375_000_000,
         },
         HighScore {
-            label: Some("Third Place".to_string()),
-            short_label: Some("3rd".to_string()),
-            initials: "CMK".to_string(),
+            label: Some("#3".to_string()),
+            short_label: None,
+            initials: "CMK       ".to_string(),
             score: 350_000_000,
         },
         HighScore {
-            label: Some("Fourth Place".to_string()),
-            short_label: Some("4th".to_string()),
-            initials: "DLK".to_string(),
+            label: Some("#4".to_string()),
+            short_label: None,
+            initials: "DLK       ".to_string(),
             score: 325_000_000,
         },
         HighScore {
-            label: Some("Fifth Place".to_string()),
-            short_label: Some("5th".to_string()),
-            initials: "KLK".to_string(),
+            label: Some("#5".to_string()),
+            short_label: None,
+            initials: "KLK       ".to_string(),
             score: 300_000_000,
         },
         HighScore {
-            label: Some("Sixth Place".to_string()),
-            short_label: Some("6th".to_string()),
-            initials: "JOE".to_string(),
+            label: Some("#6".to_string()),
+            short_label: None,
+            initials: "JOE       ".to_string(),
             score: 275_000_000,
         },
         HighScore {
-            label: Some("Seventh Place".to_string()),
-            short_label: Some("7th".to_string()),
-            initials: "NF ".to_string(),
+            label: Some("#7".to_string()),
+            short_label: None,
+            initials: "NF        ".to_string(),
             score: 250_000_000,
         },
         HighScore {
-            label: Some("Eighth Place".to_string()),
-            short_label: Some("8th".to_string()),
-            initials: "DAY".to_string(),
+            label: Some("#8".to_string()),
+            short_label: None,
+            initials: "DAY       ".to_string(),
             score: 225_000_000,
         },
         HighScore {
-            label: Some("Ninth Place".to_string()),
-            short_label: Some("9th".to_string()),
-            initials: "KRT".to_string(),
+            label: Some("#9".to_string()),
+            short_label: None,
+            initials: "KRT       ".to_string(),
             score: 200_000_000,
         },
         HighScore {
-            label: Some("Tenth Place".to_string()),
-            short_label: Some("10th".to_string()),
-            initials: "RFH".to_string(),
+            label: Some("#10".to_string()),
+            short_label: None,
+            initials: "RFH       ".to_string(),
             score: 175_000_000,
         },
     ];

@@ -25,46 +25,54 @@ fn test_the_lost_world_jurassic_park() -> io::Result<()> {
             score: 0,
             label: Some("Player 4".to_string()),
         },
+        LastGamePlayer {
+            score: 0,
+            label: Some("Player 5".to_string()),
+        },
+        LastGamePlayer {
+            score: 0,
+            label: Some("Player 6".to_string()),
+        },
     ];
     assert_eq!(Some(expected), last_game);
 
     let scores = nvram.read_highscores()?;
     let expected = vec![
         HighScore {
-            label: Some("#1".to_string()),
+            label: Some("First".to_string()),
             short_label: Some("#1".to_string()),
             initials: "JRB".to_string(),
-            score: 2_400_000_000,
+            score: 24_000_000,
         },
         HighScore {
-            label: Some("#2".to_string()),
+            label: Some("Second".to_string()),
             short_label: Some("#2".to_string()),
             initials: "JEK".to_string(),
-            score: 2_100_000_000,
+            score: 21_000_000,
         },
         HighScore {
-            label: Some("#3".to_string()),
+            label: Some("Third".to_string()),
             short_label: Some("#3".to_string()),
             initials: "NF ".to_string(),
-            score: 1_950_000_000,
+            score: 19_500_000,
         },
         HighScore {
-            label: Some("#4".to_string()),
+            label: Some("Fourth".to_string()),
             short_label: Some("#4".to_string()),
             initials: "DAY".to_string(),
-            score: 1_800_000_000,
+            score: 18_000_000,
         },
         HighScore {
-            label: Some("#5".to_string()),
+            label: Some("Fifth".to_string()),
             short_label: Some("#5".to_string()),
             initials: "KRT".to_string(),
-            score: 1_650_000_000,
+            score: 16_500_000,
         },
         HighScore {
-            label: Some("#6".to_string()),
+            label: Some("Sixth".to_string()),
             short_label: Some("#6".to_string()),
             initials: "JIM".to_string(),
-            score: 1_500_000_000,
+            score: 15_000_000,
         },
     ];
     assert_eq!(expected, scores);

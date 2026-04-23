@@ -7,7 +7,7 @@
     },
     "credits": {
       "label": "Credits",
-      "value": 7
+      "value": 4
     },
     "current_ball": {
       "label": "Current Ball",
@@ -36,7 +36,7 @@
     "scores": [
       {
         "label": "Player 1",
-        "value": 1135780
+        "value": 13361560
       },
       {
         "label": "Player 2",
@@ -67,7 +67,7 @@
   "high_scores": [
     {
       "initials": {
-        "value": "JEK       "
+        "value": "JDB       "
       },
       "label": "#1",
       "score": {
@@ -76,7 +76,7 @@
     },
     {
       "initials": {
-        "value": "KIM       "
+        "value": "LON       "
       },
       "label": "#2",
       "score": {
@@ -85,7 +85,7 @@
     },
     {
       "initials": {
-        "value": "CMK       "
+        "value": "MAT       "
       },
       "label": "#3",
       "score": {
@@ -94,7 +94,7 @@
     },
     {
       "initials": {
-        "value": "DLK       "
+        "value": "KRT       "
       },
       "label": "#4",
       "score": {
@@ -103,7 +103,7 @@
     },
     {
       "initials": {
-        "value": "KLK       "
+        "value": "JAY       "
       },
       "label": "#5",
       "score": {
@@ -112,7 +112,7 @@
     },
     {
       "initials": {
-        "value": "JOE       "
+        "value": "KJY       "
       },
       "label": "#6",
       "score": {
@@ -121,7 +121,7 @@
     },
     {
       "initials": {
-        "value": "NF        "
+        "value": "JON       "
       },
       "label": "#7",
       "score": {
@@ -130,7 +130,7 @@
     },
     {
       "initials": {
-        "value": "DAY       "
+        "value": "RAY       "
       },
       "label": "#8",
       "score": {
@@ -139,7 +139,7 @@
     },
     {
       "initials": {
-        "value": "KRT       "
+        "value": "JOE       "
       },
       "label": "#9",
       "score": {
@@ -148,7 +148,7 @@
     },
     {
       "initials": {
-        "value": "RFH       "
+        "value": "JEK       "
       },
       "label": "#10",
       "score": {

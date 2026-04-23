@@ -1,6 +1,38 @@
 {
-  "_fileformat": 0.7,
+  "_fileformat": 0.8,
   "game_state": {
+    "ball_count": {
+      "label": "Ball Count",
+      "value": 3
+    },
+    "credits": {
+      "label": "Credits",
+      "value": 8
+    },
+    "current_ball": {
+      "label": "Ball",
+      "value": 2
+    },
+    "current_player": {
+      "label": "Player",
+      "value": 1
+    },
+    "free_play": {
+      "label": "Free Play",
+      "value": false
+    },
+    "game_over": {
+      "label": "Game Over",
+      "value": false
+    },
+    "max_credits": {
+      "label": "Max Credits",
+      "value": 30
+    },
+    "player_count": {
+      "label": "Player Count",
+      "value": 1
+    },
     "scores": [
       {
         "label": "Player 1",
@@ -17,6 +49,14 @@
       {
         "label": "Player 4",
         "value": 0
+      },
+      {
+        "label": "Player 5",
+        "value": 0
+      },
+      {
+        "label": "Player 6",
+        "value": 0
       }
     ]
   },
@@ -25,9 +65,9 @@
       "initials": {
         "value": "JRB"
       },
-      "label": "#1",
+      "label": "First",
       "score": {
-        "value": 2400000000
+        "value": 24000000
       },
       "short_label": "#1"
     },
@@ -35,9 +75,9 @@
       "initials": {
         "value": "JEK"
       },
-      "label": "#2",
+      "label": "Second",
       "score": {
-        "value": 2100000000
+        "value": 21000000
       },
       "short_label": "#2"
     },
@@ -45,9 +85,9 @@
       "initials": {
         "value": "NF "
       },
-      "label": "#3",
+      "label": "Third",
       "score": {
-        "value": 1950000000
+        "value": 19500000
       },
       "short_label": "#3"
     },
@@ -55,9 +95,9 @@
       "initials": {
         "value": "DAY"
       },
-      "label": "#4",
+      "label": "Fourth",
       "score": {
-        "value": 1800000000
+        "value": 18000000
       },
       "short_label": "#4"
     },
@@ -65,9 +105,9 @@
       "initials": {
         "value": "KRT"
       },
-      "label": "#5",
+      "label": "Fifth",
       "score": {
-        "value": 1650000000
+        "value": 16500000
       },
       "short_label": "#5"
     },
@@ -75,9 +115,9 @@
       "initials": {
         "value": "JIM"
       },
-      "label": "#6",
+      "label": "Sixth",
       "score": {
-        "value": 1500000000
+        "value": 15000000
       },
       "short_label": "#6"
     }

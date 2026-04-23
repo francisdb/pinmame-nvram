@@ -1,0 +1,115 @@
+{
+  "_fileformat": 0.7,
+  "high_scores": [
+    {
+      "initials": {
+        "value": "SSR"
+      },
+      "label": "Grand Champion",
+      "score": {
+        "value": 150000000
+      }
+    },
+    {
+      "initials": {
+        "value": "LFS"
+      },
+      "label": "First Place",
+      "score": {
+        "value": 120000000
+      }
+    },
+    {
+      "initials": {
+        "value": "J R"
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 90000000
+      }
+    },
+    {
+      "initials": {
+        "value": "RCT"
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 60000000
+      }
+    },
+    {
+      "initials": {
+        "value": "M G"
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 30000000
+      }
+    }
+  ],
+  "mode_champions": [
+    {
+      "counter": {
+        "value": 20
+      },
+      "initials": {
+        "value": "DSO"
+      },
+      "label": "Combo Champion"
+    },
+    {
+      "counter": {
+        "value": 5
+      },
+      "initials": {
+        "value": "LEE"
+      },
+      "label": "Best Combo Champion"
+    },
+    {
+      "counter": {
+        "value": 25
+      },
+      "initials": {
+        "value": "DGH"
+      },
+      "label": "Spider Champion"
+    },
+    {
+      "initials": {
+        "value": "F R"
+      },
+      "label": "Spider Sense Champion",
+      "score": {
+        "value": 5000000
+      }
+    },
+    {
+      "initials": {
+        "value": "JPW"
+      },
+      "label": "Battle Royale Champion",
+      "score": {
+        "value": 50000000
+      }
+    },
+    {
+      "initials": {
+        "value": "PEM"
+      },
+      "label": "Super Hero Champion",
+      "score": {
+        "value": 150000000
+      }
+    },
+    {
+      "initials": {
+        "value": "LFS"
+      },
+      "label": "Best Bonus Champion",
+      "score": {
+        "value": 10000000
+      }
+    }
+  ]
+}
