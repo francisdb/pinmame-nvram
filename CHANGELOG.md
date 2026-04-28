@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.8](https://github.com/francisdb/pinmame-nvram/compare/v0.4.7...v0.4.8) - 2026-04-28
+
+### Other
+
+- bump pinmame-nvram-maps to 90186be ([#122](https://github.com/francisdb/pinmame-nvram/pull/122))
+
 ## [0.4.7](https://github.com/francisdb/pinmame-nvram/compare/v0.4.6...v0.4.7) - 2026-04-23
 
 ### Other
