@@ -48,19 +48,19 @@ fn test_robocop() -> io::Result<()> {
             score: 4_000_000,
         },
         HighScore {
-            label: Some("1st Place".to_string()),
+            label: Some("Chief".to_string()),
             short_label: Some("1st".to_string()),
             initials: "TEB".to_string(),
             score: 3_500_000,
         },
         HighScore {
-            label: Some("2nd Place".to_string()),
+            label: Some("Sarge".to_string()),
             short_label: Some("2nd".to_string()),
             initials: "ERB".to_string(),
             score: 3_000_000,
         },
         HighScore {
-            label: Some("3rd Place".to_string()),
+            label: Some("Flat Foot".to_string()),
             short_label: Some("3rd".to_string()),
             initials: "DAS".to_string(),
             score: 2_500_000,

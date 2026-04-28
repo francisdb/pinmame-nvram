@@ -1,0 +1,55 @@
+{
+  "_fileformat": 0.8,
+  "high_scores": [
+    {
+      "initials": {
+        "value": "RJS"
+      },
+      "label": "Ultimate Gladiator",
+      "score": {
+        "value": 300000000
+      },
+      "short_label": "UG"
+    },
+    {
+      "initials": {
+        "value": "EZY"
+      },
+      "label": "Honorific Gladiators #1",
+      "score": {
+        "value": 250000000
+      },
+      "short_label": "#1"
+    },
+    {
+      "initials": {
+        "value": "JET"
+      },
+      "label": "Honorific Gladiators #2",
+      "score": {
+        "value": 200000000
+      },
+      "short_label": "#2"
+    },
+    {
+      "initials": {
+        "value": "CEN"
+      },
+      "label": "Honorific Gladiators #3",
+      "score": {
+        "value": 150000000
+      },
+      "short_label": "#3"
+    },
+    {
+      "initials": {
+        "value": "BOB"
+      },
+      "label": "Honorific Gladiators #4",
+      "score": {
+        "value": 100000000
+      },
+      "short_label": "#4"
+    }
+  ]
+}

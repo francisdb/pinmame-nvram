@@ -44,7 +44,7 @@ fn test_bram_strokers_dracula() -> io::Result<()> {
         HighScore {
             label: Some("Greatest Vampire Hunter".to_string()),
             short_label: Some("GVP".to_string()),
-            initials: "CD".to_string(),
+            initials: "CD ".to_string(),
             score: 300_000_000,
         },
         HighScore {
