@@ -1,0 +1,55 @@
+{
+  "_fileformat": 0.8,
+  "high_scores": [
+    {
+      "initials": {
+        "value": "\u0000\\u00CC)"
+      },
+      "label": "Street Fighters #1",
+      "score": {
+        "value": 42000000
+      },
+      "short_label": "#1"
+    },
+    {
+      "initials": {
+        "value": "B\u0001\u0000"
+      },
+      "label": "Street Fighters #2",
+      "score": {
+        "value": 42020000
+      },
+      "short_label": "#2"
+    },
+    {
+      "initials": {
+        "value": "\\u00BB6\u0003"
+      },
+      "label": "Street Fighters #3",
+      "score": {
+        "value": 56002900
+      },
+      "short_label": "#3"
+    },
+    {
+      "initials": {
+        "value": "\u0000\u0000\u0000"
+      },
+      "label": "Street Fighters #4",
+      "score": {
+        "value": 2900
+      },
+      "short_label": "#4"
+    },
+    {
+      "initials": {
+        "value": "\\u00CC\f\\u00CC"
+      },
+      "label": "Street Fighters #5",
+      "score": {
+        "value": 2900200022
+      },
+      "short_label": "#5"
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "_fileformat": 0.8,
+  "high_scores": [
+    {
+      "initials": {
+        "value": "WIL"
+      },
+      "label": "First Place",
+      "score": {
+        "value": 1900000000
+      },
+      "short_label": "#1"
+    },
+    {
+      "initials": {
+        "value": "JON"
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 1600000000
+      },
+      "short_label": "#2"
+    },
+    {
+      "initials": {
+        "value": "RAY"
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 1300000000
+      },
+      "short_label": "#3"
+    },
+    {
+      "initials": {
+        "value": "TIM"
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 1000000000
+      },
+      "short_label": "#4"
+    },
+    {
+      "initials": {
+        "value": "DON"
+      },
+      "label": "Fifth Place",
+      "score": {
+        "value": 700000000
+      },
+      "short_label": "#5"
+    }
+  ],
+  "mode_champions": [
+    {
+      "initials": {
+        "value": "\u00000\u0000"
+      },
+      "label": "Highest Ball Score",
+      "score": {
+        "value": 6200
+      },
+      "short_label": "HBS"
+    }
+  ]
+}
