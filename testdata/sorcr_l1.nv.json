@@ -208,6 +208,7 @@
       },
       "10": {
         "label": "Ball Time",
+        "units": "minutes",
         "value": 0
       },
       "11": {

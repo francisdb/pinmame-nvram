@@ -17,6 +17,7 @@
       },
       "33": {
         "label": "Extra Ball Time",
+        "units": "seconds",
         "value": 10
       },
       "34": {
@@ -181,6 +182,7 @@
       },
       "10": {
         "label": "Ball Time",
+        "units": "minutes",
         "value": 0
       },
       "11": {

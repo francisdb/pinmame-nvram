@@ -98,10 +98,12 @@
       },
       "21": {
         "label": "PLAY TIME",
+        "units": "seconds",
         "value": 1420
       },
       "22": {
         "label": "MINUTES ON",
+        "units": "minutes",
         "value": 120
       },
       "23": {
@@ -150,6 +152,7 @@
       },
       "34": {
         "label": "BURN-IN TIME",
+        "units": "seconds",
         "value": 0
       },
       "35": {
