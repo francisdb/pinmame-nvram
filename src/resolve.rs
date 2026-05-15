@@ -72,6 +72,16 @@ fn resolve_recursive<T: Read + Seek, S: GlobalSettings>(
                     // maybe we should instead remove all properties related to the encoding
                     resolved_map.insert("label".to_string(), label.clone());
                 }
+                // Surface the map's unit annotation on resolved numeric fields
+                // so downstream consumers can render time-like / distance-like
+                // scores with the right formatting (e.g. `units: "seconds"`
+                // -> `mm:ss.dd`) without hardcoding per-table knowledge.
+                // `scale` is intentionally not propagated: `value` is already
+                // post-scaled, so exposing it would just invite double-scaling
+                // bugs. See issue #124.
+                if let Some(units) = map.get("units") {
+                    resolved_map.insert("units".to_string(), units.clone());
+                }
                 if let Some(warning) = warning {
                     resolved_map.insert("warning".to_string(), Value::String(warning));
                 }
@@ -427,6 +437,39 @@ mod tests {
 
         // let json = serde_json::to_string_pretty(&map.unwrap())?;
         // assert_eq!("{}", json);
+        Ok(())
+    }
+
+    #[test]
+    fn test_resolve_propagates_units() -> io::Result<()> {
+        // Lord of the Rings has a Destroy Ring Champion score annotated as
+        // `units: "seconds"` in the map. We want it present on the resolved
+        // value so downstream consumers can render time-like scores as
+        // mm:ss.dd without per-table knowledge (see #124).
+        //
+        // `scale` is deliberately not propagated; `value` is already post-
+        // scaled by resolve_value, so exposing it would invite double-scaling
+        // bugs in callers.
+        let resolved = resolve(Path::new("testdata/lotr.nv"))?.expect("lotr.nv should resolve");
+        let drc = resolved
+            .get("mode_champions")
+            .and_then(|v| v.as_array())
+            .and_then(|a| {
+                a.iter().find(|e| {
+                    e.get("label") == Some(&Value::String("Destroy Ring Champion".to_string()))
+                })
+            })
+            .expect("Destroy Ring Champion entry");
+        let score = drc.get("score").expect("score object");
+        assert_eq!(
+            score.get("units").and_then(|v| v.as_str()),
+            Some("seconds"),
+            "units annotation should be on the resolved score"
+        );
+        assert!(
+            score.get("scale").is_none(),
+            "scale should NOT be propagated - value is already post-scaled"
+        );
         Ok(())
     }
 

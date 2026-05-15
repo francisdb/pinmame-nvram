@@ -98,10 +98,12 @@
       },
       "21": {
         "label": "MINUTES OF PLAY",
+        "units": "seconds",
         "value": 0
       },
       "22": {
         "label": "MINUTES ON",
+        "units": "minutes",
         "value": 3
       },
       "23": {

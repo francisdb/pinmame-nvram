@@ -94,10 +94,12 @@
       },
       "21": {
         "label": "Play Time",
+        "units": "seconds",
         "value": 0
       },
       "22": {
         "label": "Minutes On",
+        "units": "minutes",
         "value": 0
       },
       "23": {
@@ -146,6 +148,7 @@
       },
       "34": {
         "label": "Burn-in Time",
+        "units": "seconds",
         "value": 0
       },
       "35": {

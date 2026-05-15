@@ -308,10 +308,12 @@
       },
       "21": {
         "label": "Play Time",
+        "units": "seconds",
         "value": 0
       },
       "22": {
         "label": "Machine On",
+        "units": "minutes",
         "value": 41
       },
       "23": {
@@ -360,6 +362,7 @@
       },
       "34": {
         "label": "Burn-in Time",
+        "units": "seconds",
         "value": 0
       },
       "35": {

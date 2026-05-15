@@ -138,6 +138,7 @@
       },
       "10": {
         "label": "Total Ball Time",
+        "units": "minutes",
         "value": 1
       },
       "11": {
