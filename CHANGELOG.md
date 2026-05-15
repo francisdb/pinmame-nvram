@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.9](https://github.com/francisdb/pinmame-nvram/compare/v0.4.8...v0.4.9) - 2026-05-15
+
+### Added
+
+- *(resolve)* expose units on resolved numeric values ([#125](https://github.com/francisdb/pinmame-nvram/pull/125))
+
 ## [0.4.8](https://github.com/francisdb/pinmame-nvram/compare/v0.4.7...v0.4.8) - 2026-04-28
 
 ### Other
