@@ -233,20 +233,14 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
                 .and_then(|s| s.as_number())
                 .cloned()
                 .unwrap_or(Number::from(DEFAULT_SCALE));
-            let start = start_in_nvram_file(nvram_layout, descriptor)?;
-            let value = read_int(rom, endian, nibble, start, length, &scale)?;
+            let location = location_in_nvram_file(nvram_layout, descriptor, length)?;
+            let value = read_int(rom, endian, nibble, location, &scale)?;
             Value::Number(value.into())
         }
         Encoding::Enum => {
-            let start = start_in_nvram_file(nvram_layout, descriptor)?;
-            let index = read_int(
-                rom,
-                endian,
-                nibble,
-                start,
-                length,
-                &Number::from(DEFAULT_SCALE),
-            )? as usize;
+            let location = location_in_nvram_file(nvram_layout, descriptor, length)?;
+            let index =
+                read_int(rom, endian, nibble, location, &Number::from(DEFAULT_SCALE))? as usize;
             let values = descriptor.get("values").unwrap().as_array().unwrap();
             let enum_value = values.get(index);
             return if let Some(enum_value) = enum_value {
@@ -263,21 +257,7 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
             };
         }
         Encoding::Bcd => {
-            let location = match descriptor.get("offsets") {
-                None => {
-                    let start = start_in_nvram_file(nvram_layout, descriptor)?;
-                    Location::Continuous { start, length }
-                }
-                Some(offsets) => {
-                    let offsets: Vec<u64> = offsets
-                        .as_array()
-                        .unwrap()
-                        .iter()
-                        .map(json_hex_or_int)
-                        .collect::<Result<Vec<_>, _>>()?;
-                    Location::Scattered { offsets }
-                }
-            };
+            let location = location_in_nvram_file(nvram_layout, descriptor, length)?;
             let scale = descriptor
                 .get("scale")
                 .and_then(|s| s.as_number())
@@ -293,7 +273,7 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
             Value::Number(value.into())
         }
         Encoding::Ch => {
-            let start = start_in_nvram_file(nvram_layout, descriptor)?;
+            let location = location_in_nvram_file(nvram_layout, descriptor, length)?;
             let mask = descriptor.get("mask").map(json_hex_or_int).transpose()?;
             let nibble = descriptor
                 .get("nibble")
@@ -304,8 +284,7 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
                 .map(|n| serde_json::from_value(n.clone()).unwrap());
             let value = read_ch(
                 rom,
-                start,
-                length,
+                location,
                 mask,
                 global_settings.char_map(),
                 nibble,
@@ -377,6 +356,46 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
         }
     };
     Ok(value)
+}
+
+/// Resolve the location of a value in the NVRAM file from a descriptor.
+///
+/// A descriptor either has a single `start` address (a contiguous run of
+/// `length` bytes) or an `offsets` array listing the address of each byte
+/// (used by platforms that map 8-bit NVRAM on a wider bus, so the bytes are
+/// not adjacent in the file). Both forms are CPU addresses and are translated
+/// to file offsets by subtracting the NVRAM layout base address.
+fn location_in_nvram_file(
+    nvram_layout: &MemoryLayout,
+    descriptor: &Map<String, Value>,
+    length: usize,
+) -> io::Result<Location> {
+    match descriptor.get("offsets") {
+        Some(offsets) => {
+            let base: u64 = (&nvram_layout.address).into();
+            let offsets = offsets
+                .as_array()
+                .unwrap()
+                .iter()
+                .map(|o| {
+                    let address = json_hex_or_int(o)?;
+                    if address < base {
+                        Err(io::Error::new(
+                            io::ErrorKind::InvalidData,
+                            "Value is stored outside the NVRAM",
+                        ))
+                    } else {
+                        Ok(address - base)
+                    }
+                })
+                .collect::<io::Result<Vec<u64>>>()?;
+            Ok(Location::Scattered { offsets })
+        }
+        None => {
+            let start = start_in_nvram_file(nvram_layout, descriptor)?;
+            Ok(Location::Continuous { start, length })
+        }
+    }
 }
 
 fn start_in_nvram_file(
