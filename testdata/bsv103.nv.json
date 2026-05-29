@@ -3,51 +3,51 @@
   "high_scores": [
     {
       "initials": {
-        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+        "value": "WIZ"
       },
       "label": "High Score #1",
       "score": {
-        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+        "value": 10000000
       },
       "short_label": "HS1"
     },
     {
       "initials": {
-        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+        "value": "TON"
       },
       "label": "High Score #2",
       "score": {
-        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+        "value": 8000000
       },
       "short_label": "HS2"
     },
     {
       "initials": {
-        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+        "value": "DMW"
       },
       "label": "High Score #3",
       "score": {
-        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+        "value": 5000000
       },
       "short_label": "HS3"
     },
     {
       "initials": {
-        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+        "value": "SOM"
       },
       "label": "High Score #4",
       "score": {
-        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+        "value": 4980340
       },
       "short_label": "HS4"
     },
     {
       "initials": {
-        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+        "value": "SOM"
       },
       "label": "High Score #5",
       "score": {
-        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+        "value": 4081950
       },
       "short_label": "HS5"
     }
@@ -55,51 +55,51 @@
   "mode_champions": [
     {
       "initials": {
-        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+        "value": "TND"
       },
       "label": "Buyin Boss #1",
       "score": {
-        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+        "value": 20000000
       },
       "short_label": "BB1"
     },
     {
       "initials": {
-        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+        "value": "SAM"
       },
       "label": "Buyin Boss #2",
       "score": {
-        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+        "value": 16000000
       },
       "short_label": "BB2"
     },
     {
       "initials": {
-        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+        "value": "PFZ"
       },
       "label": "Buyin Boss #3",
       "score": {
-        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+        "value": 10000000
       },
       "short_label": "BB3"
     },
     {
       "initials": {
-        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+        "value": "DAN"
       },
       "label": "Buyin Boss #4",
       "score": {
-        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+        "value": 6000000
       },
       "short_label": "BB4"
     },
     {
       "initials": {
-        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+        "value": "XXX"
       },
       "label": "Buyin Boss #5",
       "score": {
-        "warning": "Failed to resolve: Missing start value for NVRAM encoding"
+        "value": 2000000
       },
       "short_label": "BB5"
     }

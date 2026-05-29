@@ -452,19 +452,12 @@ fn read_highscore<T: Read + Seek, S: GlobalSettings>(
 ) -> io::Result<HighScore> {
     let mut initials = "".to_string();
     if let Some(map_initials) = &hs.initials {
-        initials = read_ch(
+        initials = read_ch_descriptor(
             &mut nvram_file,
-            u64::from(
-                map_initials
-                    .start
-                    .as_ref()
-                    .expect("missing start for ch encoding"),
-            ) - offset,
-            map_initials.length.expect("missing length for ch encoding"),
-            map_initials.mask.as_ref().map(|m| m.into()),
-            global_settings.char_map(),
-            map_initials.nibble.unwrap_or(nibble),
-            map_initials.null,
+            map_initials,
+            nibble,
+            offset,
+            global_settings,
         )?;
     }
 
@@ -525,20 +518,7 @@ fn read_mode_champion<T: Read + Seek, S: GlobalSettings>(
         .initials
         .as_ref()
         .map(|initials| {
-            read_ch(
-                &mut nvram_file,
-                u64::from(
-                    initials
-                        .start
-                        .as_ref()
-                        .expect("missing start for ch encoding"),
-                ) - offset,
-                initials.length.expect("missing start for ch encoding"),
-                initials.mask.as_ref().map(|m| m.into()),
-                global_settings.char_map(),
-                initials.nibble.unwrap_or(nibble),
-                initials.null,
-            )
+            read_ch_descriptor(&mut nvram_file, initials, nibble, offset, global_settings)
         })
         .transpose()?;
     let score = if let Some(score) = &mc.score {
@@ -727,45 +707,28 @@ fn read_descriptor_to_string<T: Read + Seek, S: GlobalSettings>(
     global_settings: &S,
 ) -> io::Result<String> {
     match descriptor.encoding {
-        Encoding::Ch => match &descriptor.start {
-            Some(start) => read_ch(
-                &mut nvram_file,
-                u64::from(start) - offset,
-                descriptor.length.unwrap_or(DEFAULT_LENGTH),
-                descriptor.mask.as_ref().map(|m| m.into()),
-                global_settings.char_map(),
-                descriptor.nibble.unwrap_or(nibble),
-                None,
-            ),
-            None => Err(io::Error::new(
-                io::ErrorKind::InvalidData,
-                "Ch descriptor requires start",
-            )),
-        },
-        Encoding::Int => match &descriptor.start {
-            Some(start) => {
-                let start = u64::from(start);
-                if start < offset {
+        Encoding::Ch => {
+            read_ch_descriptor(&mut nvram_file, descriptor, nibble, offset, global_settings)
+        }
+        Encoding::Int => {
+            let location = match location_for(descriptor, offset)? {
+                LocateResult::OutsideNVRAM => {
                     return Ok("Value is stored outside the NVRAM".to_string());
                 }
-                let score = read_int(
-                    &mut nvram_file,
-                    endian,
-                    nibble,
-                    start - offset,
-                    descriptor.length.unwrap_or(DEFAULT_LENGTH),
-                    descriptor
-                        .scale
-                        .as_ref()
-                        .unwrap_or(&Number::from(DEFAULT_SCALE)),
-                )?;
-                Ok(score.to_string())
-            }
-            None => Err(io::Error::new(
-                io::ErrorKind::InvalidData,
-                "Int descriptor requires start",
-            )),
-        },
+                LocateResult::Located(loc) => loc,
+            };
+            let score = read_int(
+                &mut nvram_file,
+                endian,
+                nibble,
+                location,
+                descriptor
+                    .scale
+                    .as_ref()
+                    .unwrap_or(&Number::from(DEFAULT_SCALE)),
+            )?;
+            Ok(score.to_string())
+        }
         Encoding::Bcd => {
             let location = match location_for(descriptor, offset)? {
                 LocateResult::OutsideNVRAM => {
@@ -842,24 +805,28 @@ fn read_descriptor_to_u64<T: Read + Seek>(
             )
         }
         Encoding::Int => {
-            if let Some(start) = &descriptor.start {
-                read_int(
-                    &mut nvram_file,
-                    endian,
-                    descriptor.nibble.unwrap_or(nibble),
-                    u64::from(start) - offset,
-                    descriptor.length.unwrap_or(DEFAULT_LENGTH),
-                    descriptor
-                        .scale
-                        .as_ref()
-                        .unwrap_or(&Number::from(DEFAULT_SCALE)),
-                )
-            } else {
-                Err(io::Error::new(
-                    io::ErrorKind::InvalidData,
-                    "Int descriptor requires start",
-                ))
-            }
+            let location = match location_for(descriptor, offset)? {
+                LocateResult::OutsideNVRAM => {
+                    return Err(io::Error::new(
+                        io::ErrorKind::InvalidData,
+                        format!(
+                            "Descriptor '{}' points outside NVRAM",
+                            descriptor.label.as_deref().unwrap_or("unknown")
+                        ),
+                    ));
+                }
+                LocateResult::Located(loc) => loc,
+            };
+            read_int(
+                &mut nvram_file,
+                endian,
+                descriptor.nibble.unwrap_or(nibble),
+                location,
+                descriptor
+                    .scale
+                    .as_ref()
+                    .unwrap_or(&Number::from(DEFAULT_SCALE)),
+            )
         }
         other => todo!("Encoding not implemented: {:?}", other),
     }
@@ -885,6 +852,33 @@ fn read_descriptor_to_rtc_string<T: Read + Seek>(
 enum LocateResult {
     OutsideNVRAM,
     Located(Location),
+}
+
+/// Read a `ch` (character) descriptor, supporting both `start` and `offsets`.
+fn read_ch_descriptor<T: Read + Seek, S: GlobalSettings>(
+    nvram_file: &mut T,
+    descriptor: &Descriptor,
+    nibble: Nibble,
+    offset: u64,
+    global_settings: &S,
+) -> io::Result<String> {
+    let location = match location_for(descriptor, offset)? {
+        LocateResult::OutsideNVRAM => {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidData,
+                "Value is stored outside the NVRAM",
+            ));
+        }
+        LocateResult::Located(loc) => loc,
+    };
+    read_ch(
+        nvram_file,
+        location,
+        descriptor.mask.as_ref().map(|m| m.into()),
+        global_settings.char_map(),
+        descriptor.nibble.unwrap_or(nibble),
+        descriptor.null,
+    )
 }
 
 fn location_for(descriptor: &Descriptor, offset: u64) -> io::Result<LocateResult> {

@@ -8,6 +8,31 @@ pub(crate) enum Location {
     Scattered { offsets: Vec<u64> },
 }
 
+/// Read the raw bytes for a location into a buffer.
+///
+/// A `Continuous` location reads `length` consecutive bytes from `start`.
+/// A `Scattered` location reads a single byte from each offset, in order. This
+/// is used by platforms like Capcom where the 8-bit NVRAM is mapped on a 16-bit
+/// bus, so the bytes that make up a value live at non-consecutive file offsets.
+fn read_location<A: Read + Seek>(stream: &mut A, location: &Location) -> io::Result<Vec<u8>> {
+    match location {
+        Location::Continuous { start, length } => {
+            let mut buff = vec![0; *length];
+            read_exact_at(stream, *start, &mut buff)?;
+            Ok(buff)
+        }
+        Location::Scattered { offsets } => {
+            let mut buff = Vec::with_capacity(offsets.len());
+            for offset in offsets {
+                let mut byte = [0; 1];
+                read_exact_at(stream, *offset, &mut byte)?;
+                buff.push(byte[0]);
+            }
+            Ok(buff)
+        }
+    }
+}
+
 pub(crate) fn de_nibble(length: usize, buff: &[u8], nibble: Nibble) -> io::Result<Vec<u8>> {
     if nibble == Nibble::Both {
         return Ok(buff.to_vec());
@@ -85,15 +110,14 @@ pub(crate) fn do_nibble(length: usize, buff: &[u8], nibble: Nibble) -> io::Resul
 
 pub(crate) fn read_ch<A: Read + Seek>(
     stream: &mut A,
-    location: u64,
-    length: usize,
+    location: Location,
     mask: Option<u64>,
     char_map: &Option<String>,
     nibble: Nibble,
     null: Option<Null>,
 ) -> io::Result<String> {
-    let mut buff = vec![0; length];
-    read_exact_at(stream, location, &mut buff)?;
+    let mut buff = read_location(stream, &location)?;
+    let length = buff.len();
 
     if nibble != Nibble::Both {
         let result = de_nibble(length, &buff, nibble)?;
@@ -195,22 +219,7 @@ pub(crate) fn read_bcd<A: Read + Seek>(
     scale: &Number,
     endian: Endian,
 ) -> io::Result<u64> {
-    let mut buff = match location {
-        Location::Continuous { start, length } => {
-            let mut buff = vec![0; length];
-            read_exact_at(stream, start, &mut buff)?;
-            buff
-        }
-        Location::Scattered { offsets } => {
-            let mut buff = vec![0; offsets.len()];
-            for offset in offsets.iter() {
-                let mut byte = [0; 1];
-                read_exact_at(stream, *offset, &mut byte)?;
-                buff.push(byte[0]);
-            }
-            buff
-        }
-    };
+    let mut buff = read_location(stream, &location)?;
 
     if endian == Endian::Little {
         buff.reverse();
@@ -275,14 +284,11 @@ pub(crate) fn read_int<T: Read + Seek>(
     nvram_file: &mut T,
     endian: Endian,
     nibble: Nibble,
-    start: u64,
-    length: usize,
+    location: Location,
     scale: &Number,
 ) -> io::Result<u64> {
-    nvram_file.seek(SeekFrom::Start(start))?;
-    let mut buff = vec![0; length];
-    read_exact_at(nvram_file, start, &mut buff)?;
-    buff = de_nibble(length, &buff, nibble)?;
+    let buff = read_location(nvram_file, &location)?;
+    let buff = de_nibble(buff.len(), &buff, nibble)?;
     let score = match endian {
         Endian::Big => buff
             .iter()
@@ -355,8 +361,7 @@ pub(crate) fn read_bool<T: Read + Seek>(
         nvram_file,
         endian,
         nibble,
-        start,
-        length,
+        Location::Continuous { start, length },
         &Number::from(DEFAULT_SCALE),
     )?;
     let bool_value = if invert { value == 0 } else { value != 0 };
@@ -413,8 +418,10 @@ mod tests {
             &mut cursor,
             Endian::Little,
             Nibble::Both,
-            1,
-            1,
+            Location::Continuous {
+                start: 1,
+                length: 1,
+            },
             &Number::from(DEFAULT_SCALE),
         )?;
         pretty_assertions::assert_eq!(value, 255);
@@ -429,8 +436,10 @@ mod tests {
             &mut cursor,
             Endian::Little,
             Nibble::High,
-            1,
-            1,
+            Location::Continuous {
+                start: 1,
+                length: 1,
+            },
             &Number::from(DEFAULT_SCALE),
         )?;
         pretty_assertions::assert_eq!(value, 15);
@@ -440,7 +449,17 @@ mod tests {
     #[test]
     fn test_read_ch() -> io::Result<()> {
         let mut cursor = io::Cursor::new(vec![0x41, 0x42, 0x43, 0x44, 0x45]);
-        let score = read_ch(&mut cursor, 0x0000, 5, None, &None, Nibble::Both, None)?;
+        let score = read_ch(
+            &mut cursor,
+            Location::Continuous {
+                start: 0x0000,
+                length: 5,
+            },
+            None,
+            &None,
+            Nibble::Both,
+            None,
+        )?;
         pretty_assertions::assert_eq!(score, "ABCDE");
         Ok(())
     }
@@ -449,7 +468,17 @@ mod tests {
     fn test_read_ch_with_charmap() -> io::Result<()> {
         let char_map = Some("???????????ABCDEFGHIJKLMNOPQRSTUVWXYZ".to_string());
         let mut cursor = io::Cursor::new(vec![0x0B, 0x0C, 0x0D, 0x0E, 0x0F]);
-        let score = read_ch(&mut cursor, 0x0000, 5, None, &char_map, Nibble::Both, None)?;
+        let score = read_ch(
+            &mut cursor,
+            Location::Continuous {
+                start: 0x0000,
+                length: 5,
+            },
+            None,
+            &char_map,
+            Nibble::Both,
+            None,
+        )?;
         pretty_assertions::assert_eq!(score, "ABCDE");
         Ok(())
     }
@@ -483,7 +512,17 @@ mod tests {
         // Nibble: where the sequence 0x04 0x01 0x04 0x02 0x04 0x03
         // translates to 0x41 0x42 0x43 which is the string "ABC"
         let mut cursor = io::Cursor::new(vec![0x04, 0x01, 0x04, 0x02, 0x04, 0x03]);
-        let score = read_ch(&mut cursor, 0x0000, 6, None, &None, Nibble::Low, None)?;
+        let score = read_ch(
+            &mut cursor,
+            Location::Continuous {
+                start: 0x0000,
+                length: 6,
+            },
+            None,
+            &None,
+            Nibble::Low,
+            None,
+        )?;
         pretty_assertions::assert_eq!(score, "ABC");
         Ok(())
     }
@@ -493,8 +532,10 @@ mod tests {
         let mut cursor = io::Cursor::new(vec![0x41, 0x42, 0x43, 0x00, 0xFF]);
         let score = read_ch(
             &mut cursor,
-            0x0000,
-            5,
+            Location::Continuous {
+                start: 0x0000,
+                length: 5,
+            },
             None,
             &None,
             Nibble::Both,
