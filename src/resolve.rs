@@ -777,6 +777,104 @@ mod tests {
         Ok(())
     }
 
+    fn collect_checksum_mismatches(rom: &str, value: &Value, out: &mut Vec<String>) {
+        match value {
+            Value::Object(map) => {
+                if map.get("value").and_then(|v| v.as_str()) == Some("mismatch")
+                    && let (Some(exp), Some(calc)) = (
+                        map.get("checksum_mismatch_expected")
+                            .and_then(|v| v.as_u64()),
+                        map.get("checksum_mismatch_calculated")
+                            .and_then(|v| v.as_u64()),
+                    )
+                {
+                    let label = map
+                        .get("label")
+                        .and_then(|l| l.as_str())
+                        .unwrap_or("(no label)");
+                    out.push(format!(
+                        "{rom} | {label} | expected {exp:#x} calculated {calc:#x}"
+                    ));
+                }
+                for v in map.values() {
+                    collect_checksum_mismatches(rom, v, out);
+                }
+            }
+            Value::Array(array) => {
+                for v in array {
+                    collect_checksum_mismatches(rom, v, out);
+                }
+            }
+            _ => {}
+        }
+    }
+
+    /// Ratchet: the set of checksum mismatches the resolver reports must match
+    /// testdata/aaa_expected_checksum_mismatches.txt exactly, so a new mismatch
+    /// (a real regression or corrupt fixture) is caught and a fixed one must be
+    /// removed from the list deliberately. The directional message lists what to
+    /// add or remove.
+    #[test]
+    fn test_expected_checksum_mismatches() -> io::Result<()> {
+        let test_dir = testdir!();
+        let mut actual = Vec::new();
+        for entry in std::fs::read_dir("testdata")? {
+            let nvram_path = entry?.path();
+            if nvram_path.extension().and_then(|e| e.to_str()) != Some("nv") {
+                continue;
+            }
+            let rom = nvram_path
+                .file_stem()
+                .unwrap()
+                .to_str()
+                .unwrap()
+                .to_string();
+            let path = path_for_test(&test_dir, &nvram_path)?;
+            if let Some(value) = resolve(&path)? {
+                collect_checksum_mismatches(&rom, &value, &mut actual);
+            }
+        }
+        let actual: std::collections::BTreeSet<String> = actual.into_iter().collect();
+
+        let expected_content =
+            std::fs::read_to_string("testdata/aaa_expected_checksum_mismatches.txt")?;
+        let expected: std::collections::BTreeSet<String> = expected_content
+            .lines()
+            .map(|l| l.trim())
+            .filter(|l| !l.is_empty() && !l.starts_with('#'))
+            .map(|l| l.to_string())
+            .collect();
+
+        let new: Vec<&String> = actual.difference(&expected).collect();
+        let resolved: Vec<&String> = expected.difference(&actual).collect();
+
+        if !new.is_empty() || !resolved.is_empty() {
+            let mut msg = String::from(
+                "checksum mismatches differ from testdata/aaa_expected_checksum_mismatches.txt\n",
+            );
+            if !new.is_empty() {
+                msg.push_str(
+                    "\nNEW unexpected checksum mismatches - a regression to investigate, \
+                     or add these lines to the file if intended:\n",
+                );
+                for w in &new {
+                    msg.push_str(&format!("  + {w}\n"));
+                }
+            }
+            if !resolved.is_empty() {
+                msg.push_str(
+                    "\nExpected checksum mismatches that no longer occur - remove these lines \
+                     from the file:\n",
+                );
+                for w in &resolved {
+                    msg.push_str(&format!("  - {w}\n"));
+                }
+            }
+            panic!("{msg}");
+        }
+        Ok(())
+    }
+
     fn path_for_test(test_dir: &Path, nvram_path: &PathBuf) -> io::Result<PathBuf> {
         let path = if nvram_path
             .file_name()
