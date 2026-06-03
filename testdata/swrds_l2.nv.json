@@ -166,10 +166,8 @@
       "value": "valid"
     },
     {
-      "checksum_mismatch_calculated": 237,
-      "checksum_mismatch_expected": 5,
       "label": "Credits",
-      "value": "mismatch"
+      "value": "valid"
     }
   ],
   "game_state": {

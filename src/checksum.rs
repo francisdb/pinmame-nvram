@@ -23,6 +23,35 @@ pub(crate) fn verify_checksum8<T: Read + Seek>(
     checksum8: &Checksum8,
 ) -> io::Result<Option<ChecksumMismatch<u8>>> {
     let start: u64 = (&checksum8.start).into();
+
+    // Non-adjacent checksum (file format v0.8): `start`..=`end` describe only the
+    // data bytes and the checksum is stored separately at `checksum`. Used for
+    // e.g. the single-byte Credits field on Williams System 11, whose checksum
+    // lives at an unrelated address.
+    if let Some(checksum_address) = checksum8.checksum {
+        let data_end: u64 = match &checksum8.end {
+            Some(e) => u64::from(e),
+            None => start + checksum8.length.unwrap_or(DEFAULT_LENGTH as u64) - 1,
+        };
+        let mut buff = vec![0; (data_end - start + 1) as usize];
+        read_exact_at(nvram_file, start, &mut buff)?;
+        let calc_sum: u8 = 0xFFu8 - buff.iter().fold(0u8, |acc, &x| acc.wrapping_add(x));
+
+        let mut checksum_byte = [0u8; 1];
+        read_exact_at(nvram_file, checksum_address, &mut checksum_byte)?;
+        let stored_sum = checksum_byte[0];
+
+        return if calc_sum != stored_sum {
+            Ok(Some(ChecksumMismatch {
+                label: Some(checksum8.label.clone()),
+                expected: stored_sum,
+                calculated: calc_sum,
+            }))
+        } else {
+            Ok(None)
+        };
+    }
+
     let end: u64 = match &checksum8.end {
         Some(e) => u64::from(e),
         None => {
@@ -276,6 +305,54 @@ mod test {
         };
         let result = verify_checksum8(&mut cursor, &checksum8);
         assert_eq!(None, result?);
+        Ok(())
+    }
+
+    #[test]
+    fn test_verify_checksum8_non_adjacent_checksum() -> io::Result<()> {
+        // data byte at 0 (0x10), unrelated bytes, checksum byte at 4 (0xEF).
+        // 0x10 + 0xEF == 0xFF -> valid (mirrors diner_l4 Credits).
+        #[rustfmt::skip]
+        let mut cursor = io::Cursor::new([
+            0x10, 0x00, 0x00, 0x00, 0xEF
+        ]);
+        let checksum8 = Checksum8 {
+            label: "Credits".to_string(),
+            start: HexOrInteger::Integer(0),
+            end: None,
+            length: None,
+            checksum: Some(4),
+            groupings: None,
+            _notes: None,
+        };
+        assert_eq!(None, verify_checksum8(&mut cursor, &checksum8)?);
+        Ok(())
+    }
+
+    #[test]
+    fn test_verify_checksum8_non_adjacent_checksum_mismatch() -> io::Result<()> {
+        // data byte 0xFF with checksum byte 0xFF: 0xFF + 0xFF != 0xFF (blank slot)
+        #[rustfmt::skip]
+        let mut cursor = io::Cursor::new([
+            0xFF, 0x00, 0x00, 0x00, 0xFF
+        ]);
+        let checksum8 = Checksum8 {
+            label: "Credits".to_string(),
+            start: HexOrInteger::Integer(0),
+            end: None,
+            length: None,
+            checksum: Some(4),
+            groupings: None,
+            _notes: None,
+        };
+        assert_eq!(
+            Some(ChecksumMismatch {
+                label: Some("Credits".to_string()),
+                expected: 0xFF,
+                calculated: 0x00,
+            }),
+            verify_checksum8(&mut cursor, &checksum8)?
+        );
         Ok(())
     }
 

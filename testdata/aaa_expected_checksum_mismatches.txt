@@ -6,53 +6,20 @@
 # regression - wrong offset/range/encoding, or a corrupt fixture) is caught, and
 # a fixed one must be removed from the list deliberately.
 #
-# KNOWN ISSUE: the ~30 System 11 "Credits" entries are FALSE mismatches caused by
-# the library not yet honoring the non-adjacent `checksum` field (v0.8). The
-# nvrams are valid (e.g. diner_l4: data 0x10 + checksum 0xef = 0xff). They will
-# be removed once checksum8/16 honor `checksum`.
-#
-# The remaining entries are genuinely uninitialised/unset regions (e.g. WPC
-# Volume never set: byte and its checksum both blank).
+# The remaining entries are genuinely uninitialised/unset regions: a value and
+# its checksum are both blank because that setting was never written (e.g. WPC
+# Volume never set -> byte 0xff with checksum 0xffff). ft_l5 Audits is an
+# off-by-one that still needs investigation.
 #
 # Lines starting with '#' and blank lines are ignored.
 
-bbnny_l2 | Credits | expected 0x8 calculated 0xf6
-bcats_l5 | Credits | expected 0x8 calculated 0xf9
-bguns_l8 | Credits | expected 0x3 calculated 0x98
-bk2k_l4 | Credits | expected 0x5 calculated 0xf7
-bnzai_l3 | Credits | expected 0x4 calculated 0xfb
 bop_l8 | Volume | expected 0xffff calculated 0xff00
 cv_20h | Credits | expected 0xffff calculated 0xf807
-cycln_l5 | Credits | expected 0x3 calculated 0xfa
-dd_l2 | Credits | expected 0x6 calculated 0xf7
-diner_l4 | Credits | expected 0x8 calculated 0xef
-eatpm_l4 | Credits | expected 0x8 calculated 0xf7
-esha_l4c | Credits | expected 0x6 calculated 0xfc
-esha_la3 | Credits | expected 0x6 calculated 0xfa
-esha_ma3 | Credits | expected 0x6 calculated 0xf8
-f14_l1 | Credits | expected 0x4 calculated 0x9b
-fire_l3 | Credits | expected 0x4 calculated 0xb7
 ft_l5 | Audits | expected 0xf0 calculated 0xf1
-gs_la3 | Credits | expected 0x8 calculated 0xf8
-gs_lu4 | Credits | expected 0x8 calculated 0xd6
-hs_l4 | Credits | expected 0x4 calculated 0xd6
-jokrz_l6 | Credits | expected 0x5 calculated 0xcc
 mb_106 | Volume | expected 0xffff calculated 0xff00
-mousn_l4 | Credits | expected 0x8 calculated 0xef
-pb_l5 | Credits | expected 0x3 calculated 0xf9
-polic_l4 | Credits | expected 0x6 calculated 0xfc
-pool_l7 | Credits | expected 0x8 calculated 0xef
-radcl_l1 | Credits | expected 0x8 calculated 0xef
-rdkng_l4 | Credits | expected 0x3 calculated 0xee
-rollr_l2 | Credits | expected 0x9 calculated 0xf8
-spstn_l5 | Credits | expected 0x4 calculated 0xf8
-swrds_l2 | Credits | expected 0x5 calculated 0xed
 taf_h4 | Volume | expected 0xffff calculated 0xff00
 taf_l5 | Volume | expected 0xffff calculated 0xff00
-taxi_l4 | Credits | expected 0x4 calculated 0xf7
 tom_14h | Volume | expected 0xffff calculated 0xff00
-tsptr_l3 | Credits | expected 0x7 calculated 0xf9
 wd_12g | Volume | expected 0xffff calculated 0xff00
-whirl_l3 | Credits | expected 0x6 calculated 0xef
 ww_lh6 | Credits | expected 0xffff calculated 0xf906
 ww_lh6-default | Credits | expected 0xffff calculated 0xf906
