@@ -33,21 +33,21 @@
     },
     {
       "initials": {
-        "value": "SOM"
+        "value": "JRP"
       },
       "label": "High Score #4",
       "score": {
-        "value": 4980340
+        "value": 3000000
       },
       "short_label": "HS4"
     },
     {
       "initials": {
-        "value": "SOM"
+        "value": "DMP"
       },
       "label": "High Score #5",
       "score": {
-        "value": 4081950
+        "value": 1000000
       },
       "short_label": "HS5"
     }
@@ -102,46 +102,6 @@
         "value": 2000000
       },
       "short_label": "BB5"
-    },
-    {
-      "initials": {
-        "value": "TON"
-      },
-      "label": "Cutthroat Champion #1",
-      "score": {
-        "value": 20000000
-      },
-      "short_label": "CT1"
-    },
-    {
-      "initials": {
-        "value": "AJD"
-      },
-      "label": "Cutthroat Champion #2",
-      "score": {
-        "value": 15000000
-      },
-      "short_label": "CT2"
-    },
-    {
-      "initials": {
-        "value": "MAD"
-      },
-      "label": "Cutthroat Champion #3",
-      "score": {
-        "value": 10000000
-      },
-      "short_label": "CT3"
-    },
-    {
-      "initials": {
-        "value": "KTN"
-      },
-      "label": "Cutthroat Champion #4",
-      "score": {
-        "value": 5000000
-      },
-      "short_label": "CT4"
     }
   ]
 }

@@ -106,7 +106,7 @@
       },
       "26": {
         "label": "Match",
-        "warning": "Failed to resolve: Index 2 out of bounds for enum with 2 values"
+        "value": "Fancy Match"
       },
       "27": {
         "label": "Special Awards",

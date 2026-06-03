@@ -17,9 +17,6 @@
 # Lines starting with '#' and blank lines are ignored.
 
 bop_l8 | Volume | Value out of range: 0 ≤ 255 ≤ 31
-# NOTE: disco_l1 map bug - "Play" min should be 1, not 2 (index 1 is a real
-#       setting "normal (1 & 2 together)"); remove once fixed upstream.
-disco_l1 | Play | Value out of range: 2 ≤ 1 ≤ 4
 eballdlx | Backbox Deluxe Feature | Value out of range: 0 ≤ 15 ≤ 3
 embryon | Replay Award | Failed to resolve: Index 15 out of bounds for enum with 4 values
 embryon | Sound Option | Failed to resolve: Index 15 out of bounds for enum with 4 values
@@ -35,7 +32,6 @@ flashgdn | Sound Option | Failed to resolve: Index 15 out of bounds for enum wit
 flashgdn | Special/Extra Ball Awards | Failed to resolve: Index 15 out of bounds for enum with 4 values
 mb_106 | Volume | Value out of range: 0 ≤ 255 ≤ 31
 ratrc_l1 | Replay Award | Failed to resolve: Index 85 out of bounds for enum with 2 values
-sshtl_l7 | Match | Failed to resolve: Index 2 out of bounds for enum with 2 values
 taf_h4 | Volume | Value out of range: 0 ≤ 255 ≤ 31
 taf_l5 | Volume | Value out of range: 0 ≤ 255 ≤ 31
 tom_14h | Volume | Value out of range: 0 ≤ 255 ≤ 31

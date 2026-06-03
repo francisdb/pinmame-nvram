@@ -1,0 +1,55 @@
+{
+  "_fileformat": 0.8,
+  "high_scores": [
+    {
+      "initials": {
+        "value": "AJG"
+      },
+      "label": "High Score #1",
+      "score": {
+        "value": 400000000
+      },
+      "short_label": "#1"
+    },
+    {
+      "initials": {
+        "value": "DEF"
+      },
+      "label": "High Score #2",
+      "score": {
+        "value": 360000000
+      },
+      "short_label": "#2"
+    },
+    {
+      "initials": {
+        "value": "GHI"
+      },
+      "label": "High Score #3",
+      "score": {
+        "value": 320000000
+      },
+      "short_label": "#3"
+    },
+    {
+      "initials": {
+        "value": "JKL"
+      },
+      "label": "High Score #4",
+      "score": {
+        "value": 280000000
+      },
+      "short_label": "#4"
+    },
+    {
+      "initials": {
+        "value": "MNO"
+      },
+      "label": "High Score #5",
+      "score": {
+        "value": 240000000
+      },
+      "short_label": "#5"
+    }
+  ]
+}
