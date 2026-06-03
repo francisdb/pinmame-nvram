@@ -640,6 +640,11 @@ mod tests {
     /// match testdata/aaa_expected_warnings.txt exactly. A new unexpected
     /// warning fails here even when added together with a fresh golden
     /// .nv.json, and a fixed warning must be removed from the list on purpose.
+    ///
+    /// The failure message is directional: warnings present now but missing
+    /// from the file are flagged as regressions to investigate, while warnings
+    /// in the file that no longer occur are flagged for removal (e.g. after an
+    /// upstream map fix).
     #[test]
     fn test_expected_warnings() -> io::Result<()> {
         let test_dir = testdir!();
@@ -657,18 +662,43 @@ mod tests {
                 collect_warnings(&rom, &value, &mut actual);
             }
         }
-        actual.sort();
+        let actual: std::collections::BTreeSet<String> = actual.into_iter().collect();
 
         let expected_content = std::fs::read_to_string("testdata/aaa_expected_warnings.txt")?;
-        let mut expected: Vec<String> = expected_content
+        let expected: std::collections::BTreeSet<String> = expected_content
             .lines()
             .map(|l| l.trim())
             .filter(|l| !l.is_empty() && !l.starts_with('#'))
             .map(|l| l.to_string())
             .collect();
-        expected.sort();
 
-        assert_eq!(actual, expected);
+        let new: Vec<&String> = actual.difference(&expected).collect();
+        let resolved: Vec<&String> = expected.difference(&actual).collect();
+
+        if !new.is_empty() || !resolved.is_empty() {
+            let mut msg = String::from(
+                "resolve warnings differ from testdata/aaa_expected_warnings.txt\n",
+            );
+            if !new.is_empty() {
+                msg.push_str(
+                    "\nNEW unexpected warnings - a regression to investigate, \
+                     or add these lines to the file if intended:\n",
+                );
+                for w in &new {
+                    msg.push_str(&format!("  + {w}\n"));
+                }
+            }
+            if !resolved.is_empty() {
+                msg.push_str(
+                    "\nExpected warnings that no longer occur - remove these lines \
+                     from the file:\n",
+                );
+                for w in &resolved {
+                    msg.push_str(&format!("  - {w}\n"));
+                }
+            }
+            panic!("{msg}");
+        }
         Ok(())
     }
 
