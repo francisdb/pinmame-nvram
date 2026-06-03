@@ -609,6 +609,106 @@ mod tests {
         Ok(())
     }
 
+    /// Warnings of this kind are tolerated wholesale by the ratchet: the value
+    /// is simply not part of the dumped NVRAM region, which is common and
+    /// expected, so we do not enumerate them in the expected-warnings file.
+    const OUTSIDE_NVRAM_WARNING: &str = "Value is stored outside the NVRAM";
+
+    fn collect_warnings(rom: &str, value: &Value, out: &mut Vec<String>) {
+        match value {
+            Value::Object(map) => {
+                if let Some(Value::String(warning)) = map.get("warning")
+                    && !warning.contains(OUTSIDE_NVRAM_WARNING)
+                {
+                    let label = map
+                        .get("label")
+                        .and_then(|l| l.as_str())
+                        .unwrap_or("(no label)");
+                    out.push(format!("{rom} | {label} | {warning}"));
+                }
+                for v in map.values() {
+                    collect_warnings(rom, v, out);
+                }
+            }
+            Value::Array(array) => {
+                for v in array {
+                    collect_warnings(rom, v, out);
+                }
+            }
+            _ => {}
+        }
+    }
+
+    /// Ratchet: the set of resolve warnings (excluding "outside NVRAM") must
+    /// match testdata/aaa_expected_warnings.txt exactly. A new unexpected
+    /// warning fails here even when added together with a fresh golden
+    /// .nv.json, and a fixed warning must be removed from the list on purpose.
+    ///
+    /// The failure message is directional: warnings present now but missing
+    /// from the file are flagged as regressions to investigate, while warnings
+    /// in the file that no longer occur are flagged for removal (e.g. after an
+    /// upstream map fix).
+    #[test]
+    fn test_expected_warnings() -> io::Result<()> {
+        let test_dir = testdir!();
+        let mut actual = Vec::new();
+        for entry in std::fs::read_dir("testdata")? {
+            let nvram_path = entry?.path();
+            if nvram_path.extension().and_then(|e| e.to_str()) != Some("nv") {
+                continue;
+            }
+            // The display name keeps the original file stem (e.g. the
+            // "-default" suffix), while resolving needs the rom-named path.
+            let rom = nvram_path
+                .file_stem()
+                .unwrap()
+                .to_str()
+                .unwrap()
+                .to_string();
+            let path = path_for_test(&test_dir, &nvram_path)?;
+            if let Some(value) = resolve(&path)? {
+                collect_warnings(&rom, &value, &mut actual);
+            }
+        }
+        let actual: std::collections::BTreeSet<String> = actual.into_iter().collect();
+
+        let expected_content = std::fs::read_to_string("testdata/aaa_expected_warnings.txt")?;
+        let expected: std::collections::BTreeSet<String> = expected_content
+            .lines()
+            .map(|l| l.trim())
+            .filter(|l| !l.is_empty() && !l.starts_with('#'))
+            .map(|l| l.to_string())
+            .collect();
+
+        let new: Vec<&String> = actual.difference(&expected).collect();
+        let resolved: Vec<&String> = expected.difference(&actual).collect();
+
+        if !new.is_empty() || !resolved.is_empty() {
+            let mut msg =
+                String::from("resolve warnings differ from testdata/aaa_expected_warnings.txt\n");
+            if !new.is_empty() {
+                msg.push_str(
+                    "\nNEW unexpected warnings - a regression to investigate, \
+                     or add these lines to the file if intended:\n",
+                );
+                for w in &new {
+                    msg.push_str(&format!("  + {w}\n"));
+                }
+            }
+            if !resolved.is_empty() {
+                msg.push_str(
+                    "\nExpected warnings that no longer occur - remove these lines \
+                     from the file:\n",
+                );
+                for w in &resolved {
+                    msg.push_str(&format!("  - {w}\n"));
+                }
+            }
+            panic!("{msg}");
+        }
+        Ok(())
+    }
+
     fn path_for_test(test_dir: &Path, nvram_path: &PathBuf) -> io::Result<PathBuf> {
         let path = if nvram_path
             .file_name()
