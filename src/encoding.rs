@@ -351,17 +351,16 @@ pub(crate) fn read_wpc_rtc<T: Read + Seek>(
 
 pub(crate) fn read_bool<T: Read + Seek>(
     nvram_file: &mut T,
-    start: u64,
     nibble: Nibble,
     endian: Endian,
-    length: usize,
+    location: Location,
     invert: bool,
 ) -> io::Result<bool> {
     let value = read_int(
         nvram_file,
         endian,
         nibble,
-        Location::Continuous { start, length },
+        location,
         &Number::from(DEFAULT_SCALE),
     )?;
     let bool_value = if invert { value == 0 } else { value != 0 };
@@ -443,6 +442,53 @@ mod tests {
             &Number::from(DEFAULT_SCALE),
         )?;
         pretty_assertions::assert_eq!(value, 15);
+        Ok(())
+    }
+
+    #[test]
+    fn test_read_bool_continuous() -> io::Result<()> {
+        let mut cursor = io::Cursor::new(vec![0x00, 0x01]);
+        let value = read_bool(
+            &mut cursor,
+            Nibble::Both,
+            Endian::Big,
+            Location::Continuous {
+                start: 1,
+                length: 1,
+            },
+            false,
+        )?;
+        pretty_assertions::assert_eq!(value, true);
+        Ok(())
+    }
+
+    #[test]
+    fn test_read_bool_scattered() -> io::Result<()> {
+        // bool stored as a single byte at a scattered offset (Capcom 16-bit bus)
+        let mut cursor = io::Cursor::new(vec![0x00, 0x00, 0x01, 0x00]);
+        let value = read_bool(
+            &mut cursor,
+            Nibble::Both,
+            Endian::Big,
+            Location::Scattered { offsets: vec![2] },
+            false,
+        )?;
+        pretty_assertions::assert_eq!(value, true);
+        Ok(())
+    }
+
+    #[test]
+    fn test_read_bool_scattered_invert() -> io::Result<()> {
+        // invert: a zero byte reads as true (used by "game_over" style flags)
+        let mut cursor = io::Cursor::new(vec![0x00, 0x00, 0x01, 0x00]);
+        let value = read_bool(
+            &mut cursor,
+            Nibble::Both,
+            Endian::Big,
+            Location::Scattered { offsets: vec![3] },
+            true,
+        )?;
+        pretty_assertions::assert_eq!(value, true);
         Ok(())
     }
 
