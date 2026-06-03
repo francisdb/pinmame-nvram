@@ -609,6 +609,69 @@ mod tests {
         Ok(())
     }
 
+    /// Warnings of this kind are tolerated wholesale by the ratchet: the value
+    /// is simply not part of the dumped NVRAM region, which is common and
+    /// expected, so we do not enumerate them in the expected-warnings file.
+    const OUTSIDE_NVRAM_WARNING: &str = "Value is stored outside the NVRAM";
+
+    fn collect_warnings(rom: &str, value: &Value, out: &mut Vec<String>) {
+        match value {
+            Value::Object(map) => {
+                if let Some(Value::String(warning)) = map.get("warning") {
+                    if !warning.contains(OUTSIDE_NVRAM_WARNING) {
+                        let label = map.get("label").and_then(|l| l.as_str()).unwrap_or("(no label)");
+                        out.push(format!("{rom} | {label} | {warning}"));
+                    }
+                }
+                for v in map.values() {
+                    collect_warnings(rom, v, out);
+                }
+            }
+            Value::Array(array) => {
+                for v in array {
+                    collect_warnings(rom, v, out);
+                }
+            }
+            _ => {}
+        }
+    }
+
+    /// Ratchet: the set of resolve warnings (excluding "outside NVRAM") must
+    /// match testdata/aaa_expected_warnings.txt exactly. A new unexpected
+    /// warning fails here even when added together with a fresh golden
+    /// .nv.json, and a fixed warning must be removed from the list on purpose.
+    #[test]
+    fn test_expected_warnings() -> io::Result<()> {
+        let test_dir = testdir!();
+        let mut actual = Vec::new();
+        for entry in std::fs::read_dir("testdata")? {
+            let nvram_path = entry?.path();
+            if nvram_path.extension().and_then(|e| e.to_str()) != Some("nv") {
+                continue;
+            }
+            // The display name keeps the original file stem (e.g. the
+            // "-default" suffix), while resolving needs the rom-named path.
+            let rom = nvram_path.file_stem().unwrap().to_str().unwrap().to_string();
+            let path = path_for_test(&test_dir, &nvram_path)?;
+            if let Some(value) = resolve(&path)? {
+                collect_warnings(&rom, &value, &mut actual);
+            }
+        }
+        actual.sort();
+
+        let expected_content = std::fs::read_to_string("testdata/aaa_expected_warnings.txt")?;
+        let mut expected: Vec<String> = expected_content
+            .lines()
+            .map(|l| l.trim())
+            .filter(|l| !l.is_empty() && !l.starts_with('#'))
+            .map(|l| l.to_string())
+            .collect();
+        expected.sort();
+
+        assert_eq!(actual, expected);
+        Ok(())
+    }
+
     fn path_for_test(test_dir: &Path, nvram_path: &PathBuf) -> io::Result<PathBuf> {
         let path = if nvram_path
             .file_name()
