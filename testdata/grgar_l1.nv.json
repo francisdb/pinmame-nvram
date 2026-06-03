@@ -50,7 +50,7 @@
       },
       "19": {
         "label": "Pricing Control",
-        "value": 5
+        "value": "1/1F, 7/5F"
       },
       "20": {
         "label": "Left Coin Slot Multiplier",
@@ -151,7 +151,7 @@
       },
       "99": {
         "label": "Check Byte",
-        "value": 90
+        "value": "valid"
       }
     }
   },

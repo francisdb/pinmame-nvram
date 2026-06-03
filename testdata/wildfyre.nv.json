@@ -93,7 +93,7 @@
     },
     "match": {
       "label": "Match",
-      "value": 2
+      "value": "n/a"
     },
     "max_credits": {
       "label": "Max Credits",

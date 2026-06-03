@@ -16,19 +16,19 @@
       },
       "03a": {
         "label": "Replay Levels",
-        "value": 0
+        "value": 1
       },
       "03b": {
         "label": "Replay Level 2",
-        "value": 0
+        "value": "Off"
       },
       "04b": {
         "label": "Replay Level 3",
-        "value": 0
+        "value": "Off"
       },
       "05b": {
         "label": "Replay Level 4",
-        "value": 0
+        "value": "Off"
       },
       "06": {
         "label": "Replay Award",
@@ -419,7 +419,7 @@
     },
     "bonus_hold": {
       "label": "Bonus Hold",
-      "value": 0
+      "value": "No"
     },
     "credits": {
       "label": "Credits",
@@ -427,11 +427,11 @@
     },
     "current_ball": {
       "label": "Ball",
-      "value": 0
+      "value": "n/a"
     },
     "current_player": {
       "label": "Current Player",
-      "value": 0
+      "value": 1
     },
     "extra_balls": {
       "label": "Extra Balls",
@@ -459,7 +459,7 @@
     },
     "player_count": {
       "label": "Player Count",
-      "value": 0
+      "value": 1
     },
     "scores": [
       {

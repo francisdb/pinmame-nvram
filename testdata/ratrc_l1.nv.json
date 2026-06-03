@@ -62,11 +62,11 @@
       },
       "18": {
         "label": "Maximum Credits",
-        "value": 0
+        "value": "Free Play"
       },
       "19": {
         "label": "Pricing Control",
-        "value": 0
+        "value": "Manual"
       },
       "20": {
         "label": "Left Coin Slot Multiplier",

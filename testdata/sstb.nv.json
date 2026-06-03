@@ -12,7 +12,7 @@
       },
       "03": {
         "label": "Replay Level 3",
-        "value": 0
+        "value": "OFF"
       },
       "04": {
         "label": "High score to date",

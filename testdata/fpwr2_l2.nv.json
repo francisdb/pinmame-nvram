@@ -66,7 +66,7 @@
       },
       "19": {
         "label": "Pricing Control",
-        "value": 2
+        "value": "1/1DM, 3/2DM, 10/5DM"
       },
       "20": {
         "label": "Left Coin Slot Multiplier",
@@ -158,7 +158,7 @@
       },
       "99": {
         "label": "CMOS Checksum",
-        "value": 45733
+        "value": "valid"
       }
     },
     "Standard Audits": {
