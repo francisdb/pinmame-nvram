@@ -617,11 +617,11 @@ mod tests {
     fn collect_warnings(rom: &str, value: &Value, out: &mut Vec<String>) {
         match value {
             Value::Object(map) => {
-                if let Some(Value::String(warning)) = map.get("warning") {
-                    if !warning.contains(OUTSIDE_NVRAM_WARNING) {
-                        let label = map.get("label").and_then(|l| l.as_str()).unwrap_or("(no label)");
-                        out.push(format!("{rom} | {label} | {warning}"));
-                    }
+                if let Some(Value::String(warning)) = map.get("warning")
+                    && !warning.contains(OUTSIDE_NVRAM_WARNING)
+                {
+                    let label = map.get("label").and_then(|l| l.as_str()).unwrap_or("(no label)");
+                    out.push(format!("{rom} | {label} | {warning}"));
                 }
                 for v in map.values() {
                     collect_warnings(rom, v, out);
