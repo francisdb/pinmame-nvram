@@ -620,7 +620,10 @@ mod tests {
                 if let Some(Value::String(warning)) = map.get("warning")
                     && !warning.contains(OUTSIDE_NVRAM_WARNING)
                 {
-                    let label = map.get("label").and_then(|l| l.as_str()).unwrap_or("(no label)");
+                    let label = map
+                        .get("label")
+                        .and_then(|l| l.as_str())
+                        .unwrap_or("(no label)");
                     out.push(format!("{rom} | {label} | {warning}"));
                 }
                 for v in map.values() {
@@ -656,7 +659,12 @@ mod tests {
             }
             // The display name keeps the original file stem (e.g. the
             // "-default" suffix), while resolving needs the rom-named path.
-            let rom = nvram_path.file_stem().unwrap().to_str().unwrap().to_string();
+            let rom = nvram_path
+                .file_stem()
+                .unwrap()
+                .to_str()
+                .unwrap()
+                .to_string();
             let path = path_for_test(&test_dir, &nvram_path)?;
             if let Some(value) = resolve(&path)? {
                 collect_warnings(&rom, &value, &mut actual);
@@ -676,9 +684,8 @@ mod tests {
         let resolved: Vec<&String> = expected.difference(&actual).collect();
 
         if !new.is_empty() || !resolved.is_empty() {
-            let mut msg = String::from(
-                "resolve warnings differ from testdata/aaa_expected_warnings.txt\n",
-            );
+            let mut msg =
+                String::from("resolve warnings differ from testdata/aaa_expected_warnings.txt\n");
             if !new.is_empty() {
                 msg.push_str(
                     "\nNEW unexpected warnings - a regression to investigate, \
