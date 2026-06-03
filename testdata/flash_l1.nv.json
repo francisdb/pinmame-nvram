@@ -24,8 +24,7 @@
       },
       "35B": {
         "label": "5,000 Lamp",
-        "value": "lit initially",
-        "warning": "Value \"lit initially\" is not an unsigned int"
+        "value": "lit initially"
       }
     },
     "Standard Adjustments": {
