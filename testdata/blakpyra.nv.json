@@ -4,11 +4,11 @@
     "Game Adjustments": {
       "16": {
         "label": "Special/EB/Novelty",
-        "value": 0
+        "value": "no award"
       },
       "17": {
         "label": "Replay Award",
-        "value": 0
+        "value": "nothing"
       },
       "18": {
         "label": "Unused",
@@ -22,15 +22,15 @@
     "High score functions": {
       "01": {
         "label": "Replay Level 1",
-        "value": 0
+        "value": "OFF"
       },
       "02": {
         "label": "Replay Level 2",
-        "value": 0
+        "value": "OFF"
       },
       "03": {
         "label": "Replay Level 3",
-        "value": 0
+        "value": "OFF"
       },
       "04": {
         "label": "High score to date",

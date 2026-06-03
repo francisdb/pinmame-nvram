@@ -24,7 +24,7 @@
       },
       "06": {
         "label": "Match/Credit/Extra Ball",
-        "value": 10
+        "value": "match on, replay awards credit"
       },
       "07": {
         "label": "Play",
@@ -96,7 +96,7 @@
       },
       "99": {
         "label": "Check Byte",
-        "value": 90
+        "value": "valid"
       }
     }
   },

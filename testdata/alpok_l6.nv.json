@@ -62,7 +62,7 @@
       },
       "19": {
         "label": "Pricing Control",
-        "value": 1
+        "value": "1/$0.25, 3/$0.50"
       },
       "20": {
         "label": "Left Coin Slot Multiplier",
@@ -167,7 +167,7 @@
       },
       "99": {
         "label": "Check Byte",
-        "value": 90
+        "value": "valid"
       }
     }
   },

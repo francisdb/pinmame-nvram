@@ -16,7 +16,7 @@
       },
       "04": {
         "label": "Max E.B. Per B.I.P.",
-        "value": 0
+        "value": "OFF"
       },
       "05": {
         "label": "Replay System",
@@ -40,15 +40,15 @@
       },
       "10": {
         "label": "Replay L2",
-        "value": 0
+        "value": "OFF"
       },
       "11": {
         "label": "Replay L3",
-        "value": 0
+        "value": "OFF"
       },
       "12": {
         "label": "Replay L4",
-        "value": 0
+        "value": "OFF"
       },
       "13": {
         "label": "Replay Boost",

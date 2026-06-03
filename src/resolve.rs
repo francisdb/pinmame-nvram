@@ -118,6 +118,35 @@ fn resolve_recursive<T: Read + Seek, S: GlobalSettings>(
     Ok(result)
 }
 
+/// The `offset` property: a value added to a decoded `int`/`bcd` value before
+/// display (applied after `scale`). Defaults to 0.
+fn value_offset(descriptor: &Map<String, Value>) -> i128 {
+    descriptor
+        .get("offset")
+        .and_then(|v| v.as_i64())
+        .unwrap_or(0) as i128
+}
+
+/// If the descriptor has a `special_values` override for this displayed integer
+/// (e.g. `{"0": "OFF"}`), return its label. The key is matched against the
+/// value after `scale` and `offset` have been applied.
+fn special_value(descriptor: &Map<String, Value>, value: i128) -> Option<String> {
+    descriptor
+        .get("special_values")?
+        .as_object()?
+        .get(&value.to_string())?
+        .as_str()
+        .map(str::to_string)
+}
+
+fn number_from_i128(v: i128) -> Number {
+    if (0..=u64::MAX as i128).contains(&v) {
+        Number::from(v as u64)
+    } else {
+        Number::from(v as i64)
+    }
+}
+
 /// Validate the raw numeric value against the descriptor's min and max range.
 /// If the value is out of range a warning is returned.
 ///
@@ -243,8 +272,12 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
                 .unwrap_or(Number::from(DEFAULT_SCALE));
             let location = location_in_nvram_file(nvram_layout, descriptor, length)?;
             let value = read_int(rom, endian, nibble, location, &scale)?;
+            let display = value as i128 + value_offset(descriptor);
+            if let Some(label) = special_value(descriptor, display) {
+                return Ok((Value::String(label), None));
+            }
             range_value = Some(value);
-            Value::Number(value.into())
+            Value::Number(number_from_i128(display))
         }
         Encoding::Enum => {
             let location = location_in_nvram_file(nvram_layout, descriptor, length)?;
@@ -283,8 +316,12 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
                 .unwrap_or(nibble);
 
             let value = read_bcd(rom, location, nibble, &scale, endian)?;
+            let display = value as i128 + value_offset(descriptor);
+            if let Some(label) = special_value(descriptor, display) {
+                return Ok((Value::String(label), None));
+            }
             range_value = Some(value);
-            Value::Number(value.into())
+            Value::Number(number_from_i128(display))
         }
         Encoding::Ch => {
             let location = location_in_nvram_file(nvram_layout, descriptor, length)?;
@@ -492,6 +529,37 @@ mod tests {
     fn test_validate_range_no_bounds() {
         // a descriptor without min/max is never range-checked
         assert_eq!(validate_range(&Map::new(), Some(255)), None);
+    }
+
+    #[test]
+    fn test_value_offset() {
+        assert_eq!(value_offset(&Map::new()), 0);
+        let mut m = Map::new();
+        m.insert("offset".to_string(), Value::from(1));
+        assert_eq!(value_offset(&m), 1);
+        m.insert("offset".to_string(), Value::from(-3));
+        assert_eq!(value_offset(&m), -3);
+    }
+
+    #[test]
+    fn test_special_value() {
+        let mut sv = Map::new();
+        sv.insert("0".to_string(), Value::from("OFF"));
+        sv.insert("256".to_string(), Value::from("n/a"));
+        let mut m = Map::new();
+        m.insert("special_values".to_string(), Value::Object(sv));
+        assert_eq!(special_value(&m, 0), Some("OFF".to_string()));
+        assert_eq!(special_value(&m, 256), Some("n/a".to_string()));
+        assert_eq!(special_value(&m, 1), None);
+        // no special_values at all
+        assert_eq!(special_value(&Map::new(), 0), None);
+    }
+
+    #[test]
+    fn test_number_from_i128() {
+        assert_eq!(number_from_i128(255), Number::from(255u64));
+        assert_eq!(number_from_i128(0), Number::from(0u64));
+        assert_eq!(number_from_i128(-3), Number::from(-3i64));
     }
 
     #[test]

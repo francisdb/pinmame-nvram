@@ -244,11 +244,11 @@
     },
     "current_ball": {
       "label": "Ball",
-      "value": 0
+      "value": "n/a"
     },
     "current_player": {
       "label": "Current Player",
-      "value": 0
+      "value": 1
     },
     "free_play": {
       "label": "Free Play",
@@ -268,7 +268,7 @@
     },
     "player_count": {
       "label": "Players",
-      "value": 0
+      "value": 1
     },
     "scores": [
       {

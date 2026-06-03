@@ -4,15 +4,15 @@
     "High score functions": {
       "07": {
         "label": "Replay Level 1",
-        "value": 0
+        "value": "OFF"
       },
       "08": {
         "label": "Replay Level 2",
-        "value": 0
+        "value": "OFF"
       },
       "09": {
         "label": "Replay Level 3",
-        "value": 0
+        "value": "OFF"
       },
       "10": {
         "label": "High score to date",

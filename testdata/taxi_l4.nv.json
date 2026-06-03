@@ -195,7 +195,7 @@
     },
     "current_player": {
       "label": "Current Player",
-      "value": 1
+      "value": 2
     },
     "extra_balls": {
       "label": "Extra Balls",
@@ -215,7 +215,7 @@
     },
     "player_count": {
       "label": "Player Count",
-      "value": 1
+      "value": 2
     },
     "scores": [
       {

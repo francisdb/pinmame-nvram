@@ -4,15 +4,15 @@
     "Adjustments": {
       "01": {
         "label": "Replay Level 1",
-        "value": 0
+        "value": "OFF"
       },
       "02": {
         "label": "Replay Level 2",
-        "value": 0
+        "value": "OFF"
       },
       "03": {
         "label": "Replay Level 3",
-        "value": 0
+        "value": "OFF"
       },
       "16": {
         "label": "Special/Extra Ball Awards",

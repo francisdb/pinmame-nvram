@@ -16,7 +16,7 @@
       },
       "04": {
         "label": "Max E.B Per B.I.P",
-        "value": 0
+        "value": "OFF"
       },
       "05": {
         "label": "Replay System",
@@ -154,11 +154,11 @@
       },
       "09": {
         "label": "Pre-lite V.Mode",
-        "value": 0
+        "value": "NONE"
       },
       "10": {
         "label": "V.Mode Award",
-        "value": 0
+        "value": "NONE"
       },
       "11": {
         "label": "Bonus 'X' Memory",
@@ -178,7 +178,7 @@
       },
       "15": {
         "label": "Pre-lite Coffin",
-        "value": 0
+        "value": "NONE"
       },
       "16": {
         "label": "Coffin Ramp Time",
@@ -270,7 +270,7 @@
       },
       "38": {
         "label": "Timed Plunger",
-        "value": 0
+        "value": "OFF"
       },
       "39": {
         "label": "Flipped Plunger",
