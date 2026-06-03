@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.12](https://github.com/francisdb/pinmame-nvram/compare/v0.4.11...v0.4.12) - 2026-06-03
+
+### Added
+
+- *(resolve)* honor special_values and offset for int/bcd ([#134](https://github.com/francisdb/pinmame-nvram/pull/134))
+
+### Fixed
+
+- *(checksum)* honor the non-adjacent checksum8 `checksum` field ([#137](https://github.com/francisdb/pinmame-nvram/pull/137))
+- *(resolve)* range-check the raw value, not the decoded display value ([#132](https://github.com/francisdb/pinmame-nvram/pull/132))
+- *(encoding)* support scattered offsets for bool encoding ([#130](https://github.com/francisdb/pinmame-nvram/pull/130))
+
+### Other
+
+- replace ft_l5 fixture with a healthy dump ([#138](https://github.com/francisdb/pinmame-nvram/pull/138))
+- *(resolve)* ratchet on unexpected checksum mismatches ([#136](https://github.com/francisdb/pinmame-nvram/pull/136))
+- bump pinmame-nvram-maps and reconcile testdata ([#135](https://github.com/francisdb/pinmame-nvram/pull/135))
+- *(resolve)* ratchet on unexpected resolve warnings ([#133](https://github.com/francisdb/pinmame-nvram/pull/133))
+
 ## [0.4.11](https://github.com/francisdb/pinmame-nvram/compare/v0.4.10...v0.4.11) - 2026-05-29
 
 ### Added
