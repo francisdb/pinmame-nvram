@@ -8,14 +8,12 @@
 #
 # The remaining entries are genuinely uninitialised/unset regions: a value and
 # its checksum are both blank because that setting was never written (e.g. WPC
-# Volume never set -> byte 0xff with checksum 0xffff). ft_l5 Audits is an
-# off-by-one that still needs investigation.
+# Volume never set -> byte 0xff with checksum 0xffff).
 #
 # Lines starting with '#' and blank lines are ignored.
 
 bop_l8 | Volume | expected 0xffff calculated 0xff00
 cv_20h | Credits | expected 0xffff calculated 0xf807
-ft_l5 | Audits | expected 0xf0 calculated 0xf1
 mb_106 | Volume | expected 0xffff calculated 0xff00
 taf_h4 | Volume | expected 0xffff calculated 0xff00
 taf_l5 | Volume | expected 0xffff calculated 0xff00
