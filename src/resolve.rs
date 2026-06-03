@@ -346,12 +346,12 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
             }
         }
         Encoding::Bool => {
-            let start = crate::resolve::start_in_nvram_file(nvram_layout, descriptor)?;
+            let location = location_in_nvram_file(nvram_layout, descriptor, length)?;
             let invert = descriptor
                 .get("invert")
                 .and_then(|v| v.as_bool())
                 .unwrap_or(DEFAULT_INVERT);
-            let bool_value = read_bool(rom, start, nibble, endian, length, invert)?;
+            let bool_value = read_bool(rom, nibble, endian, location, invert)?;
             Value::Bool(bool_value)
         }
     };

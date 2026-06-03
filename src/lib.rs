@@ -749,24 +749,22 @@ fn read_descriptor_to_string<T: Read + Seek, S: GlobalSettings>(
             Ok(score.to_string())
         }
         Encoding::Bits => Ok("Bits encoding not implemented".to_string()),
-        Encoding::Bool => match &descriptor.start {
-            Some(start) => {
-                println!("Reading bool at start {:?}", start);
-                let bool = read_bool(
-                    nvram_file,
-                    u64::from(start) - offset,
-                    nibble,
-                    endian,
-                    descriptor.length.unwrap_or(DEFAULT_LENGTH),
-                    descriptor.invert.unwrap_or(DEFAULT_INVERT),
-                )?;
-                Ok(bool.to_string())
-            }
-            None => Err(io::Error::new(
-                io::ErrorKind::InvalidData,
-                "Bool descriptor requires start",
-            )),
-        },
+        Encoding::Bool => {
+            let location = match location_for(descriptor, offset)? {
+                LocateResult::OutsideNVRAM => {
+                    return Ok("Value is stored outside the NVRAM".to_string());
+                }
+                LocateResult::Located(loc) => loc,
+            };
+            let bool = read_bool(
+                nvram_file,
+                nibble,
+                endian,
+                location,
+                descriptor.invert.unwrap_or(DEFAULT_INVERT),
+            )?;
+            Ok(bool.to_string())
+        }
         Encoding::Dipsw => Ok("Dipsw encoding not implemented".to_string()),
         other => todo!("Encoding not implemented: {:?}", other),
     }
