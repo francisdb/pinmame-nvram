@@ -28,8 +28,7 @@
       },
       "07": {
         "label": "Play",
-        "value": "normal ('P' and 'O' together)",
-        "warning": "Value \"normal ('P' and 'O' together)\" is not an unsigned int"
+        "value": "normal ('P' and 'O' together)"
       },
       "08": {
         "label": "HSTD Credits",

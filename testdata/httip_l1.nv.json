@@ -28,8 +28,7 @@
       },
       "07": {
         "label": "Play",
-        "value": "moderate",
-        "warning": "Value \"moderate\" is not an unsigned int"
+        "value": "moderate"
       },
       "08": {
         "label": "HSTD Credits",

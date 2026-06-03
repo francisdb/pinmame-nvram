@@ -55,17 +55,13 @@ fn resolve_recursive<T: Read + Seek, S: GlobalSettings>(
             // println!("{:?}", map.get("encoding"));
             if let Some(encoding) = map.get("encoding") {
                 let encoding: Encoding = serde_json::from_value(encoding.clone())?;
-                let value = resolve_value(rom, map, encoding, global_settings, platform);
-                let warning = match &value {
-                    Ok(value) => {
-                        // FIXME if the value is an enum we need to validate the raw value
-                        //   instead of the enum value
-                        validate_range(map, value)
-                    }
+                let resolved = resolve_value(rom, map, encoding, global_settings, platform);
+                let warning = match &resolved {
+                    Ok((_, range_value)) => validate_range(map, *range_value),
                     Err(e) => Some(format!("Failed to resolve: {e}")),
                 };
                 let mut resolved_map = Map::new();
-                if let Ok(value) = value {
+                if let Ok((value, _)) = resolved {
                     resolved_map.insert("value".to_string(), value);
                 }
                 if let Some(label) = map.get("label") {
@@ -122,29 +118,32 @@ fn resolve_recursive<T: Read + Seek, S: GlobalSettings>(
     Ok(result)
 }
 
-/// Validate the value against the min and max range
-/// If the value is out of range a warning is returned
-fn validate_range(map: &Map<String, Value>, value: &Value) -> Option<String> {
-    if let (Some(min), Some(max)) = (map.get("min"), map.get("max")) {
-        // TODO might be better to do this check earlier before the scaling is applied
-        // min and max are unscaled values so we need to unscale the value first
-        let Some(number_value) = value.as_u64() else {
-            return Some(format!("Value {value} is not an unsigned int"));
-        };
-        let unscaled_value = if let Some(scale) = map.get("scale") {
-            let scale = scale.as_u64().unwrap();
-            number_value / scale
-        } else {
-            number_value
-        };
+/// Validate the raw numeric value against the descriptor's min and max range.
+/// If the value is out of range a warning is returned.
+///
+/// `value` is the raw number the range applies to: the integer for `int`/`bcd`
+/// encodings, or the selected index for `enum` encodings. Encodings that do not
+/// produce a number pass `None` and are never range-checked (they also never
+/// carry min/max).
+fn validate_range(map: &Map<String, Value>, value: Option<u64>) -> Option<String> {
+    let (Some(min), Some(max)) = (map.get("min"), map.get("max")) else {
+        return None;
+    };
+    let number_value = value?;
+    // min and max are unscaled values so we need to unscale the value first
+    let unscaled_value = if let Some(scale) = map.get("scale") {
+        let scale = scale.as_u64().unwrap();
+        number_value / scale
+    } else {
+        number_value
+    };
 
-        let min = min.as_u64().unwrap();
-        let max = max.as_u64().unwrap();
-        if unscaled_value < min || unscaled_value > max {
-            return Some(format!(
-                "Value out of range: {min} ≤ {unscaled_value} ≤ {max}"
-            ));
-        }
+    let min = min.as_u64().unwrap();
+    let max = max.as_u64().unwrap();
+    if unscaled_value < min || unscaled_value > max {
+        return Some(format!(
+            "Value out of range: {min} ≤ {unscaled_value} ≤ {max}"
+        ));
     }
     None
 }
@@ -212,13 +211,20 @@ fn resolve_checksum8<T: Read + Seek>(rom: &mut T, value: &Value) -> io::Result<V
     Ok(Value::Array(checksum_result))
 }
 
+/// Resolve a descriptor to its display value plus the raw numeric value that
+/// range validation should be applied to.
+///
+/// For most numeric encodings the raw value matches the display value, but for
+/// `enum` the display value is a string label while the range (`min`/`max`)
+/// applies to the underlying index. Encodings that do not produce a number
+/// return `None` as the raw value and are never range-checked.
 fn resolve_value<T: Read + Seek, U: GlobalSettings>(
     rom: &mut T,
     descriptor: &Map<String, Value>,
     encoding: Encoding,
     global_settings: &U,
     platform: &Platform,
-) -> io::Result<Value> {
+) -> io::Result<(Value, Option<u64>)> {
     // we only have access to nvram files and cannot access the RAM.
     let nvram_layout = platform.layout(MemoryLayoutType::NVRam);
     let nibble = nvram_layout.nibble();
@@ -226,6 +232,8 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
     let length = descriptor
         .get("length")
         .map_or(DEFAULT_LENGTH, |v| v.as_u64().unwrap() as usize);
+    // The raw numeric value the descriptor's min/max range applies to, if any.
+    let mut range_value: Option<u64> = None;
     let value = match encoding {
         Encoding::Int => {
             let scale = descriptor
@@ -235,6 +243,7 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
                 .unwrap_or(Number::from(DEFAULT_SCALE));
             let location = location_in_nvram_file(nvram_layout, descriptor, length)?;
             let value = read_int(rom, endian, nibble, location, &scale)?;
+            range_value = Some(value);
             Value::Number(value.into())
         }
         Encoding::Enum => {
@@ -242,19 +251,23 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
             let index =
                 read_int(rom, endian, nibble, location, &Number::from(DEFAULT_SCALE))? as usize;
             let values = descriptor.get("values").unwrap().as_array().unwrap();
-            let enum_value = values.get(index);
-            return if let Some(enum_value) = enum_value {
-                Ok(enum_value.clone())
-            } else {
-                Err(io::Error::new(
-                    io::ErrorKind::InvalidData,
-                    format!(
-                        "Index {} out of bounds for enum with {} values",
-                        index,
-                        values.len()
-                    ),
-                ))
-            };
+            match values.get(index) {
+                Some(enum_value) => {
+                    // The range (min/max) constrains the raw index, not the label.
+                    range_value = Some(index as u64);
+                    enum_value.clone()
+                }
+                None => {
+                    return Err(io::Error::new(
+                        io::ErrorKind::InvalidData,
+                        format!(
+                            "Index {} out of bounds for enum with {} values",
+                            index,
+                            values.len()
+                        ),
+                    ));
+                }
+            }
         }
         Encoding::Bcd => {
             let location = location_in_nvram_file(nvram_layout, descriptor, length)?;
@@ -270,6 +283,7 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
                 .unwrap_or(nibble);
 
             let value = read_bcd(rom, location, nibble, &scale, endian)?;
+            range_value = Some(value);
             Value::Number(value.into())
         }
         Encoding::Ch => {
@@ -355,7 +369,7 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
             Value::Bool(bool_value)
         }
     };
-    Ok(value)
+    Ok((value, range_value))
 }
 
 /// Resolve the location of a value in the NVRAM file from a descriptor.
@@ -447,6 +461,38 @@ mod tests {
     use pretty_assertions::assert_eq;
     use std::path::PathBuf;
     use testdir::testdir;
+
+    fn range_map() -> Map<String, Value> {
+        let mut map = Map::new();
+        map.insert("min".to_string(), Value::from(0));
+        map.insert("max".to_string(), Value::from(31));
+        map
+    }
+
+    #[test]
+    fn test_validate_range_in_range() {
+        assert_eq!(validate_range(&range_map(), Some(15)), None);
+    }
+
+    #[test]
+    fn test_validate_range_out_of_range() {
+        assert_eq!(
+            validate_range(&range_map(), Some(255)),
+            Some("Value out of range: 0 ≤ 255 ≤ 31".to_string())
+        );
+    }
+
+    #[test]
+    fn test_validate_range_no_raw_value_is_skipped() {
+        // encodings that do not produce a number pass None and are not checked
+        assert_eq!(validate_range(&range_map(), None), None);
+    }
+
+    #[test]
+    fn test_validate_range_no_bounds() {
+        // a descriptor without min/max is never range-checked
+        assert_eq!(validate_range(&Map::new(), Some(255)), None);
+    }
 
     #[test]
     fn test_resolve() -> io::Result<()> {

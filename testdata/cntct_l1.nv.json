@@ -28,8 +28,7 @@
       },
       "07": {
         "label": "Play",
-        "value": "normal (Star 1 & 2 together)",
-        "warning": "Value \"normal (Star 1 & 2 together)\" is not an unsigned int"
+        "value": "normal (Star 1 & 2 together)"
       },
       "08": {
         "label": "HSTD Credits",

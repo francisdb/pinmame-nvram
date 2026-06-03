@@ -4,8 +4,7 @@
     "Game Adjustments": {
       "31": {
         "label": "Reset Multiplier on Next Ball",
-        "value": "X5",
-        "warning": "Value \"X5\" is not an unsigned int"
+        "value": "X5"
       },
       "32a": {
         "label": "Double Ball",
