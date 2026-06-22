@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.13](https://github.com/francisdb/pinmame-nvram/compare/v0.4.12...v0.4.13) - 2026-06-22
+
+### Other
+
+- *(deps)* bump actions/checkout from 6 to 7 ([#139](https://github.com/francisdb/pinmame-nvram/pull/139))
+
 ## [0.4.12](https://github.com/francisdb/pinmame-nvram/compare/v0.4.11...v0.4.12) - 2026-06-03
 
 ### Added
