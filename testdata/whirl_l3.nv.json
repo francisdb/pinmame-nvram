@@ -233,7 +233,7 @@
     },
     "game_over": {
       "label": "Game Over",
-      "value": false
+      "value": true
     },
     "max_credits": {
       "label": "Maximum Credits",

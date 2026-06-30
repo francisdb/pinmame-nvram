@@ -99,6 +99,7 @@
       },
       "22": {
         "label": "MINUTES ON",
+        "units": "minutes",
         "value": 5
       },
       "23": {
