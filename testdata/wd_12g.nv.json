@@ -99,6 +99,7 @@
       },
       "22": {
         "label": "MINUTES ON",
+        "units": "minutes",
         "value": 0
       },
       "23": {
@@ -683,8 +684,7 @@
     ],
     "volume": {
       "label": "Volume",
-      "value": 255,
-      "warning": "Value out of range: 0 ≤ 255 ≤ 31"
+      "value": "n/a"
     }
   },
   "high_scores": [

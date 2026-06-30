@@ -7,7 +7,7 @@
     },
     "credits": {
       "label": "Credits",
-      "value": 1
+      "value": 6
     },
     "current_ball": {
       "label": "Ball",
@@ -36,7 +36,7 @@
     "scores": [
       {
         "label": "Player 1",
-        "value": 6183200
+        "value": 169050
       },
       {
         "label": "Player 2",
@@ -55,53 +55,53 @@
   "high_scores": [
     {
       "initials": {
-        "value": "SSR       "
+        "value": "PML       "
       },
-      "label": "Grand Champion",
+      "label": "First",
       "score": {
         "value": 100000000
-      },
-      "short_label": "GC"
-    },
-    {
-      "initials": {
-        "value": "JMR       "
-      },
-      "label": "First Place",
-      "score": {
-        "value": 90000000
       },
       "short_label": "#1"
     },
     {
       "initials": {
-        "value": "LON       "
+        "value": "AGK       "
       },
-      "label": "Second Place",
+      "label": "Second",
       "score": {
-        "value": 80000000
+        "value": 65000000
       },
       "short_label": "#2"
     },
     {
       "initials": {
-        "value": "MG        "
+        "value": "JRK       "
       },
-      "label": "Third Place",
+      "label": "Third",
       "score": {
-        "value": 70000000
+        "value": 55000000
       },
       "short_label": "#3"
     },
     {
       "initials": {
-        "value": "CG        "
+        "value": "J Y       "
       },
-      "label": "Fourth Place",
+      "label": "Fourth",
       "score": {
-        "value": 60000000
+        "value": 50000000
       },
       "short_label": "#4"
+    },
+    {
+      "initials": {
+        "value": "C G       "
+      },
+      "label": "Fifth",
+      "score": {
+        "value": 45000000
+      },
+      "short_label": "#5"
     }
   ]
 }
