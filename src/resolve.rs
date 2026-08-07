@@ -613,7 +613,7 @@ mod tests {
         let missing_nvrams_path = Path::new("testdata/aaa_missing_nvrams.txt");
         let missing_nvrams_content = std::fs::read_to_string(missing_nvrams_path)?;
 
-        let index = Path::new("pinmame-nvram-maps").join("index.json");
+        let index = Path::new("pinball-memory-maps").join("index.json");
         let testdata = Path::new("testdata");
         let index: Value = serde_json::from_str(&std::fs::read_to_string(index)?)?;
         let mut missing = Vec::new();

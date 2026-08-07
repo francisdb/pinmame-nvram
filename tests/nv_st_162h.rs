@@ -6,7 +6,7 @@ use std::path::Path;
 #[test]
 fn test_star_trek_stern() -> io::Result<()> {
     // TODO add test for st_161h.nv
-    // TODO fix last highscore value when this is implemented: https://github.com/tomlogic/pinmame-nvram-maps/issues/34
+    // TODO fix last highscore value when this is implemented: https://github.com/tomlogic/pinball-memory-maps/issues/34
     let mut nvram = Nvram::open(Path::new("testdata/st_162h.nv"))?.unwrap();
 
     let last_game = nvram.read_last_game()?;
