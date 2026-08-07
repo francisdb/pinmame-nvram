@@ -1,4 +1,4 @@
-[submodule "pinmame-nvram-maps"]
-	path = pinmame-nvram-maps
-	url = https://github.com/tomlogic/pinmame-nvram-maps.git
+[submodule "pinball-memory-maps"]
+	path = pinball-memory-maps
+	url = https://github.com/tomlogic/pinball-memory-maps.git
 	update = merge

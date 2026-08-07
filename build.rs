@@ -7,7 +7,7 @@ use std::path::Path;
 
 fn main() -> io::Result<()> {
     // Directory containing JSON files
-    let json_dir = Path::new("pinmame-nvram-maps");
+    let json_dir = Path::new("pinball-memory-maps");
     println!("cargo:rerun-if-changed={}", json_dir.display());
 
     // Output directory

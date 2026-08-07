@@ -92,7 +92,7 @@ impl Nvram {
     }
 
     /// Open a NVRAM file from the file system using the local maps
-    /// Expects the `pinmame-nvram-maps` folder to exist in the current working directory
+    /// Expects the `pinball-memory-maps` folder to exist in the current working directory
     ///
     /// # Returns
     ///
@@ -362,7 +362,7 @@ fn read_platform<T: DeserializeOwned>(platform_name: &str) -> io::Result<T> {
 
 fn read_platform_local<T: DeserializeOwned>(platform_name: &str) -> io::Result<T> {
     let platform_file_name = format!("{platform_name}.json");
-    let platform_path = Path::new("pinmame-nvram-maps")
+    let platform_path = Path::new("pinball-memory-maps")
         .join("platforms")
         .join(platform_file_name);
     if !platform_path.exists() {
@@ -394,7 +394,7 @@ fn find_map<T: DeserializeOwned>(rom_name: &String) -> io::Result<Option<T>> {
 }
 
 fn find_map_local<T: DeserializeOwned>(rom_name: &String) -> io::Result<Option<T>> {
-    let index_file = Path::new("pinmame-nvram-maps").join("index.json");
+    let index_file = Path::new("pinball-memory-maps").join("index.json");
     if !index_file.exists() {
         return Err(io::Error::new(
             io::ErrorKind::NotFound,
@@ -405,7 +405,7 @@ fn find_map_local<T: DeserializeOwned>(rom_name: &String) -> io::Result<Option<T
     let map: Value = serde_json::from_reader(index_file)?;
     match map.get(rom_name) {
         Some(map_path) => {
-            let map_file = Path::new("pinmame-nvram-maps").join(map_path.as_str().unwrap());
+            let map_file = Path::new("pinball-memory-maps").join(map_path.as_str().unwrap());
             if !map_file.exists() {
                 return Err(io::Error::new(
                     io::ErrorKind::NotFound,

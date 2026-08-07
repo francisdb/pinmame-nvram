@@ -27,7 +27,7 @@ fn main() {
 
 ## Attributions
 
-This library makes use of the [PinMAME NVRAM Maps](https://github.com/tomlogic/pinmame-nvram-maps) project.
+This library makes use of the [Pinball Memory Maps](https://github.com/tomlogic/pinball-memory-maps) project.
 The maps are embedded in the library and are used to look up values in the nvram files.
 
 ## Development

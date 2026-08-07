@@ -78,7 +78,7 @@ impl Platform {
 /// Descriptor for a single value in the NVRAM.
 /// Describing a section of the .nv file and how to interpret it
 ///
-/// see https://github.com/tomlogic/pinmame-nvram-maps?tab=readme-ov-file#descriptors
+/// see https://github.com/tomlogic/pinball-memory-maps?tab=readme-ov-file#descriptors
 #[derive(Serialize, Deserialize)]
 pub struct Descriptor {
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -160,7 +160,7 @@ pub struct Checksum8 {
 #[derive(Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ValuesOrReference {
-    // TODO adjust both according to result of https://github.com/tomlogic/pinmame-nvram-maps/issues/83
+    // TODO adjust both according to result of https://github.com/tomlogic/pinball-memory-maps/issues/83
     Values(Vec<Value>),
     Reference(String),
 }
@@ -490,8 +490,8 @@ mod tests {
 
     #[test]
     fn read_all_nvram_maps() {
-        // read all ../pinmame-nvram-maps/*.json recursively
-        let maps_path = Path::new("pinmame-nvram-maps").join("maps");
+        // read all ../pinball-memory-maps/*.json recursively
+        let maps_path = Path::new("pinball-memory-maps").join("maps");
         let mut found_any = false;
         for entry in WalkDir::new(maps_path).into_iter().filter_map(|e| e.ok()) {
             let path = entry.path();
@@ -515,8 +515,8 @@ mod tests {
 
     #[test]
     fn read_all_platforms() {
-        // read all ../pinmame-nvram-maps/platforms/*.json recursively
-        let platforms_path = Path::new("pinmame-nvram-maps").join("platforms");
+        // read all ../pinball-memory-maps/platforms/*.json recursively
+        let platforms_path = Path::new("pinball-memory-maps").join("platforms");
         let mut found_any = false;
         for entry in WalkDir::new(platforms_path)
             .into_iter()
