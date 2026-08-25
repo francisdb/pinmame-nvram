@@ -27,8 +27,26 @@ fn main() {
 
 ## Attributions
 
-This library makes use of the [Pinball Memory Maps](https://github.com/tomlogic/pinball-memory-maps) project.
+This library makes use of content from the
+[Pinball Memory Maps](https://github.com/tomlogic/pinball-memory-maps) project.
 The maps are embedded in the library and are used to look up values in the nvram files.
+
+## License
+
+The code in this repository is licensed under the [MIT license](LICENSE).
+
+The embedded map data from the Pinball Memory Maps project is made available
+under the [Open Database License (ODbL)](https://opendatacommons.org/licenses/odbl/1.0/),
+with the individual contents licensed under the
+[Database Contents License (DbCL)](https://opendatacommons.org/licenses/dbcl/1.0/).
+Both license texts are included in the `pinball-memory-maps` submodule and ship
+with the published crate.
+
+If your application publicly displays data decoded through these maps, the ODbL
+asks that you include a notice such as: "Contains information from
+[Pinball Memory Maps](https://github.com/tomlogic/pinball-memory-maps), which is
+made available under the
+[Open Database License (ODbL)](https://opendatacommons.org/licenses/odbl/1.0/)."
 
 ## Development
 
