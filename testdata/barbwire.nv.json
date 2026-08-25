@@ -1,11 +1,59 @@
 {
   "_fileformat": 0.8,
+  "game_state": {
+    "ball_count": {
+      "label": "Ball Count",
+      "value": 3
+    },
+    "credits": {
+      "label": "Credits",
+      "value": 18
+    },
+    "current_ball": {
+      "label": "Ball",
+      "value": 0
+    },
+    "current_player": {
+      "label": "Current Player",
+      "value": 1
+    },
+    "game_over": {
+      "label": "Game Over",
+      "value": true
+    },
+    "max_credits": {
+      "label": "Max Credits",
+      "value": 20
+    },
+    "player_count": {
+      "label": "Player Count",
+      "value": 0
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 0
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ]
+  },
   "high_scores": [
     {
       "initials": {
         "value": "WIL"
       },
-      "label": "First Place",
+      "label": "First",
       "score": {
         "value": 1900000000
       },
@@ -15,7 +63,7 @@
       "initials": {
         "value": "JON"
       },
-      "label": "Second Place",
+      "label": "Second",
       "score": {
         "value": 1600000000
       },
@@ -25,7 +73,7 @@
       "initials": {
         "value": "RAY"
       },
-      "label": "Third Place",
+      "label": "Third",
       "score": {
         "value": 1300000000
       },
@@ -35,7 +83,7 @@
       "initials": {
         "value": "TIM"
       },
-      "label": "Fourth Place",
+      "label": "Fourth",
       "score": {
         "value": 1000000000
       },
@@ -45,7 +93,7 @@
       "initials": {
         "value": "DON"
       },
-      "label": "Fifth Place",
+      "label": "Fifth",
       "score": {
         "value": 700000000
       },

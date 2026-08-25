@@ -128,15 +128,15 @@ fn value_offset(descriptor: &Map<String, Value>) -> i128 {
 }
 
 /// If the descriptor has a `special_values` override for this displayed integer
-/// (e.g. `{"0": "OFF"}`), return its label. The key is matched against the
-/// value after `scale` and `offset` have been applied.
-fn special_value(descriptor: &Map<String, Value>, value: i128) -> Option<String> {
+/// (e.g. `{"0": "OFF"}` or `{"888888": 0}`), return the replacement value. The
+/// key is matched against the value after `scale` and `offset` have been
+/// applied.
+fn special_value(descriptor: &Map<String, Value>, value: i128) -> Option<Value> {
     descriptor
         .get("special_values")?
         .as_object()?
-        .get(&value.to_string())?
-        .as_str()
-        .map(str::to_string)
+        .get(&value.to_string())
+        .cloned()
 }
 
 fn number_from_i128(v: i128) -> Number {
@@ -273,8 +273,8 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
             let location = location_in_nvram_file(nvram_layout, descriptor, length)?;
             let value = read_int(rom, endian, nibble, location, &scale)?;
             let display = value as i128 + value_offset(descriptor);
-            if let Some(label) = special_value(descriptor, display) {
-                return Ok((Value::String(label), None));
+            if let Some(replacement) = special_value(descriptor, display) {
+                return Ok((replacement, None));
             }
             range_value = Some(value);
             Value::Number(number_from_i128(display))
@@ -317,8 +317,8 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
 
             let value = read_bcd(rom, location, nibble, &scale, endian)?;
             let display = value as i128 + value_offset(descriptor);
-            if let Some(label) = special_value(descriptor, display) {
-                return Ok((Value::String(label), None));
+            if let Some(replacement) = special_value(descriptor, display) {
+                return Ok((replacement, None));
             }
             range_value = Some(value);
             Value::Number(number_from_i128(display))
@@ -546,10 +546,12 @@ mod tests {
         let mut sv = Map::new();
         sv.insert("0".to_string(), Value::from("OFF"));
         sv.insert("256".to_string(), Value::from("n/a"));
+        sv.insert("888888".to_string(), Value::from(0));
         let mut m = Map::new();
         m.insert("special_values".to_string(), Value::Object(sv));
-        assert_eq!(special_value(&m, 0), Some("OFF".to_string()));
-        assert_eq!(special_value(&m, 256), Some("n/a".to_string()));
+        assert_eq!(special_value(&m, 0), Some(Value::from("OFF")));
+        assert_eq!(special_value(&m, 256), Some(Value::from("n/a")));
+        assert_eq!(special_value(&m, 888888), Some(Value::from(0)));
         assert_eq!(special_value(&m, 1), None);
         // no special_values at all
         assert_eq!(special_value(&Map::new(), 0), None);

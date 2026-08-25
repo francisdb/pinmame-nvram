@@ -437,7 +437,22 @@ fn read_highscores<T: Read + Seek>(
     let scores: Result<Vec<HighScore>, io::Error> = map
         .high_scores
         .iter()
-        .map(|hs| read_highscore(&mut nvram_file, hs, endian, nibble, offset, map))
+        .flatten()
+        .map(|hs| match hs {
+            model::HighScoreOrDescriptor::HighScore(hs) => {
+                read_highscore(&mut nvram_file, hs, endian, nibble, offset, map)
+            }
+            model::HighScoreOrDescriptor::Descriptor(descriptor) => {
+                let score =
+                    read_descriptor_to_u64(&mut nvram_file, descriptor, endian, nibble, offset)?;
+                Ok(HighScore {
+                    label: descriptor.label.clone(),
+                    short_label: descriptor.short_label.clone(),
+                    initials: "".to_string(),
+                    score,
+                })
+            }
+        })
         .collect();
     scores
 }
@@ -477,8 +492,12 @@ fn clear_highscores<T: Write + Seek>(
     offset: u64,
     map: &NvramMap,
 ) -> io::Result<()> {
-    for hs in &map.high_scores {
-        if let Some(map_initials) = &hs.initials {
+    for hs in map.high_scores.iter().flatten() {
+        let (initials, score) = match hs {
+            model::HighScoreOrDescriptor::HighScore(hs) => (hs.initials.as_ref(), &hs.score),
+            model::HighScoreOrDescriptor::Descriptor(descriptor) => (None, descriptor.as_ref()),
+        };
+        if let Some(map_initials) = initials {
             write_ch(
                 &mut nvram_file,
                 u64::from(
@@ -493,12 +512,12 @@ fn clear_highscores<T: Write + Seek>(
                 &map_initials.nibble.or(Some(nibble)),
             )?;
         }
-        if let Some(map_score_start) = &hs.score.start {
+        if let Some(map_score_start) = &score.start {
             write_bcd(
                 &mut nvram_file,
                 u64::from(map_score_start) - offset,
-                hs.score.length.unwrap_or(0),
-                hs.score.nibble.unwrap_or(nibble),
+                score.length.unwrap_or(0),
+                score.nibble.unwrap_or(nibble),
                 0,
             )?;
         }

@@ -1,53 +1,101 @@
 {
   "_fileformat": 0.8,
+  "game_state": {
+    "ball_count": {
+      "label": "Ball Count",
+      "value": 3
+    },
+    "credits": {
+      "label": "Credits",
+      "value": 20
+    },
+    "current_ball": {
+      "label": "Ball",
+      "value": 0
+    },
+    "current_player": {
+      "label": "Current Player",
+      "value": 1
+    },
+    "game_over": {
+      "label": "Game Over",
+      "value": true
+    },
+    "max_credits": {
+      "label": "Max Credits",
+      "value": 20
+    },
+    "player_count": {
+      "label": "Player Count",
+      "value": 0
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 0
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ]
+  },
   "high_scores": [
     {
       "initials": {
-        "value": "\u0000\\u00CC)"
+        "value": "RAY"
       },
-      "label": "Street Fighters #1",
+      "label": "First",
       "score": {
-        "value": 42000000
+        "value": 160000000
       },
       "short_label": "#1"
     },
     {
       "initials": {
-        "value": "B\u0001\u0000"
+        "value": "DEB"
       },
-      "label": "Street Fighters #2",
+      "label": "Second",
       "score": {
-        "value": 42020000
+        "value": 140000000
       },
       "short_label": "#2"
     },
     {
       "initials": {
-        "value": "\\u00BB6\u0003"
+        "value": "RYN"
       },
-      "label": "Street Fighters #3",
+      "label": "Third",
       "score": {
-        "value": 56002900
+        "value": 120000000
       },
       "short_label": "#3"
     },
     {
       "initials": {
-        "value": "\u0000\u0000\u0000"
+        "value": "ANN"
       },
-      "label": "Street Fighters #4",
+      "label": "Fourth",
       "score": {
-        "value": 2900
+        "value": 100000000
       },
       "short_label": "#4"
     },
     {
       "initials": {
-        "value": "\\u00CC\f\\u00CC"
+        "value": "JET"
       },
-      "label": "Street Fighters #5",
+      "label": "Fifth",
       "score": {
-        "value": 2900200022
+        "value": 80000000
       },
       "short_label": "#5"
     }

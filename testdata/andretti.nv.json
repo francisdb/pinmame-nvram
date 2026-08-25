@@ -1,5 +1,53 @@
 {
   "_fileformat": 0.8,
+  "game_state": {
+    "ball_count": {
+      "label": "Ball Count",
+      "value": 3
+    },
+    "credits": {
+      "label": "Credits",
+      "value": 6
+    },
+    "current_ball": {
+      "label": "Ball",
+      "value": 0
+    },
+    "current_player": {
+      "label": "Current Player",
+      "value": 1
+    },
+    "game_over": {
+      "label": "Game Over",
+      "value": true
+    },
+    "max_credits": {
+      "label": "Max Credits",
+      "value": 20
+    },
+    "player_count": {
+      "label": "Player Count",
+      "value": 0
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 0
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ]
+  },
   "high_scores": [
     {
       "initials": {
@@ -13,41 +61,41 @@
     },
     {
       "initials": {
-        "value": "\u0007\\u00CC)"
+        "value": "RPG"
       },
       "label": "Standings #2",
       "score": {
-        "value": 9010004
+        "value": 1600000000
       },
       "short_label": "#2"
     },
     {
       "initials": {
-        "value": "\u0006\\u00BB#"
+        "value": "DLW"
       },
       "label": "Standings #3",
       "score": {
-        "value": 0
+        "value": 1300000000
       },
       "short_label": "#3"
     },
     {
       "initials": {
-        "value": "\u0000\u0000\u0000"
+        "value": "RGP"
       },
       "label": "Standings #4",
       "score": {
-        "value": 0
+        "value": 1000000000
       },
       "short_label": "#4"
     },
     {
       "initials": {
-        "value": "\u0000\u0001\u0006"
+        "value": "MHG"
       },
       "label": "Standings #5",
       "score": {
-        "value": 2500
+        "value": 700000000
       },
       "short_label": "#5"
     }
