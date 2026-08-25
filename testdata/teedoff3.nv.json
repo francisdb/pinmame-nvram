@@ -1,0 +1,103 @@
+{
+  "_fileformat": 0.8,
+  "game_state": {
+    "ball_count": {
+      "label": "Ball Count",
+      "value": 3
+    },
+    "credits": {
+      "label": "Credits",
+      "value": 8
+    },
+    "current_ball": {
+      "label": "Ball",
+      "value": 0
+    },
+    "current_player": {
+      "label": "Current Player",
+      "value": 1
+    },
+    "game_over": {
+      "label": "Game Over",
+      "value": true
+    },
+    "max_credits": {
+      "label": "Max Credits",
+      "value": 20
+    },
+    "player_count": {
+      "label": "Player Count",
+      "value": 0
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 0
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ]
+  },
+  "high_scores": [
+    {
+      "initials": {
+        "value": "OEX"
+      },
+      "label": "First",
+      "score": {
+        "value": 320000000
+      },
+      "short_label": "#1"
+    },
+    {
+      "initials": {
+        "value": "DOW"
+      },
+      "label": "Second",
+      "score": {
+        "value": 280000000
+      },
+      "short_label": "#2"
+    },
+    {
+      "initials": {
+        "value": "NEY"
+      },
+      "label": "Third",
+      "score": {
+        "value": 240000000
+      },
+      "short_label": "#3"
+    },
+    {
+      "initials": {
+        "value": "SPX"
+      },
+      "label": "Fourth",
+      "score": {
+        "value": 200000000
+      },
+      "short_label": "#4"
+    },
+    {
+      "initials": {
+        "value": "NYA"
+      },
+      "label": "Fifth",
+      "score": {
+        "value": 160000000
+      },
+      "short_label": "#5"
+    }
+  ]
+}

@@ -105,7 +105,8 @@ pub struct Descriptor {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub suffix: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub special_values: Option<HashMap<String, String>>,
+    // replacement is usually a string (e.g. "OFF") but can also be a number
+    pub special_values: Option<HashMap<String, Value>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub nibble: Option<Nibble>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -229,6 +230,16 @@ pub struct HighScore {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub initials: Option<Descriptor>,
     pub score: Descriptor,
+}
+
+/// A `high_scores` entry: either the structured form with `initials`/`score`
+/// descriptors, or a bare descriptor for the score itself (used by e.g. the
+/// Atari maps, where no initials are stored).
+#[derive(Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum HighScoreOrDescriptor {
+    HighScore(Box<HighScore>),
+    Descriptor(Box<Descriptor>),
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -395,7 +406,8 @@ pub struct NvramMap {
     pub last_played: Option<Descriptor>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub last_game: Option<Vec<Descriptor>>,
-    pub high_scores: Vec<HighScore>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub high_scores: Option<Vec<HighScoreOrDescriptor>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub mode_champions: Option<Vec<ModeChampion>>,
     #[serde(skip_serializing_if = "Option::is_none")]

@@ -1,11 +1,59 @@
 {
   "_fileformat": 0.8,
+  "game_state": {
+    "ball_count": {
+      "label": "Ball Count",
+      "value": 3
+    },
+    "credits": {
+      "label": "Credits",
+      "value": 0
+    },
+    "current_ball": {
+      "label": "Ball",
+      "value": 0
+    },
+    "current_player": {
+      "label": "Current Player",
+      "value": 1
+    },
+    "game_over": {
+      "label": "Game Over",
+      "value": true
+    },
+    "max_credits": {
+      "label": "Max Credits",
+      "value": 10
+    },
+    "player_count": {
+      "label": "Player Count",
+      "value": 0
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 0
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ]
+  },
   "high_scores": [
     {
       "initials": {
         "value": "JET"
       },
-      "label": "Mario's Friends #1",
+      "label": "First",
       "score": {
         "value": 250000000
       },
@@ -15,7 +63,7 @@
       "initials": {
         "value": "CM "
       },
-      "label": "Mario's Friends #2",
+      "label": "Second",
       "score": {
         "value": 200000000
       },
@@ -25,7 +73,7 @@
       "initials": {
         "value": "DAV"
       },
-      "label": "Mario's Friends #3",
+      "label": "Third",
       "score": {
         "value": 165000000
       },
@@ -35,7 +83,7 @@
       "initials": {
         "value": "ZAB"
       },
-      "label": "Mario's Friends #4",
+      "label": "Fourth",
       "score": {
         "value": 135000000
       },
@@ -45,7 +93,7 @@
       "initials": {
         "value": "EZY"
       },
-      "label": "Mario's Friends #5",
+      "label": "Fifth",
       "score": {
         "value": 110000000
       },

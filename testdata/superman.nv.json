@@ -1,0 +1,126 @@
+{
+  "_fileformat": 0.8,
+  "adjustments": {
+    "Adjustments": {
+      "16": {
+        "label": "Replay Level 1",
+        "value": 0
+      },
+      "17": {
+        "label": "Replay Level 2",
+        "value": 0
+      },
+      "18": {
+        "label": "Replay Level 3",
+        "value": 0
+      },
+      "19": {
+        "label": "High Score",
+        "value": 0
+      }
+    }
+  },
+  "audits": {
+    "Audits": {
+      "05": {
+        "label": "Credits",
+        "value": 16
+      },
+      "06": {
+        "label": "Left Coins",
+        "value": 1
+      },
+      "07": {
+        "label": "Right Coins",
+        "value": 15
+      },
+      "08": {
+        "label": "Total Coins",
+        "value": 16
+      },
+      "09": {
+        "label": "Total Plays",
+        "value": 4
+      },
+      "10": {
+        "label": "Total Replays",
+        "value": 0
+      },
+      "11": {
+        "label": "Game Timer",
+        "units": "minutes",
+        "value": 0
+      },
+      "12": {
+        "label": "Specials",
+        "value": 0
+      },
+      "13": {
+        "label": "Extra Balls",
+        "value": 0
+      },
+      "14": {
+        "label": "Tilts",
+        "value": 0
+      },
+      "15": {
+        "label": "Battery Backup Errors",
+        "value": 0
+      }
+    }
+  },
+  "game_state": {
+    "ball_count": {
+      "label": "Balls",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "credits": {
+      "label": "Credits",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "current_ball": {
+      "label": "Ball",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "current_player": {
+      "label": "Player",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "game_over": {
+      "label": "Game Over",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "max_credits": {
+      "label": "Max Credits",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "player_count": {
+      "label": "Players",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 3200
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ]
+  },
+  "high_scores": [
+    {
+      "label": "High Score",
+      "value": 0
+    }
+  ]
+}

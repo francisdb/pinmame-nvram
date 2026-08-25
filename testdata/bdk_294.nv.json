@@ -1,0 +1,79 @@
+{
+  "_fileformat": 0.7,
+  "high_scores": [
+    {
+      "initials": {
+        "value": "GAG"
+      },
+      "label": "Grand Champion",
+      "score": {
+        "value": 240000000
+      }
+    },
+    {
+      "initials": {
+        "value": "LFS"
+      },
+      "label": "First Place",
+      "score": {
+        "value": 200000000
+      }
+    },
+    {
+      "initials": {
+        "value": "AGE"
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 163785490
+      }
+    },
+    {
+      "initials": {
+        "value": "M G"
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 160000000
+      }
+    },
+    {
+      "initials": {
+        "value": "J R"
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 120000000
+      }
+    }
+  ],
+  "mode_champions": [
+    {
+      "initials": {
+        "value": "AGE"
+      },
+      "label": "Batmobile Hurry-Up Champion",
+      "score": {
+        "value": 10287880
+      }
+    },
+    {
+      "initials": {
+        "value": "M R"
+      },
+      "label": "Bat Signal Challenge Champion",
+      "score": {
+        "value": 25000000
+      }
+    },
+    {
+      "initials": {
+        "value": "JLS"
+      },
+      "label": "Gotham City Champion",
+      "score": {
+        "value": 75000000
+      }
+    }
+  ]
+}

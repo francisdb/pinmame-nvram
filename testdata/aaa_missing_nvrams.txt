@@ -1,3 +1,5 @@
+aavengef
+aavenger
 abv105
 afm_03
 afm_10
@@ -5,7 +7,6 @@ afm_11
 afm_11pfx
 afm_11u
 algar_l1ff
-alpok_f6
 alpok_f6ff
 alpok_l2
 alpok_l2ff
@@ -13,8 +14,11 @@ alpok_l6ff
 amaz3afp
 amazn2fp
 amazn3fp
+amazonh
 amazonh2
 amazonh3
+amazonha
+andrett4
 apollo1
 apollo14
 apollo2
@@ -23,6 +27,8 @@ arenaa
 arenaafp
 arenaffp
 arenagfp
+atarianf
+atarians
 aust201
 aust300
 aust301
@@ -39,7 +45,6 @@ bay_401
 bay_d400
 bay_e400
 bbb108
-bdk_294
 bguns_la
 bighosfp
 bighsffp
@@ -47,6 +52,9 @@ bighsgfp
 blackjcb
 blackjcd
 blakpyrb
+blkhol7s
+blkhole2
+blkholea
 blkou_f1
 blkou_f1ff
 blkou_l1ff
@@ -114,6 +122,7 @@ cftbl_l4c
 cftbl_p3
 cheetahb
 cheetahb2
+cntforce
 comet_l4
 congo_11
 congo_13
@@ -121,6 +130,7 @@ congo_20
 congo_20s10k
 corv_dx1
 corv_la1
+corv_la2
 corv_lx1
 corv_lx2
 corv_px3
@@ -163,6 +173,8 @@ drac_d1
 drac_l2c
 drac_p11
 drac_p12
+dvlsdre2
+dvlsdrea
 dw_d1
 dw_d2
 dw_l1
@@ -172,8 +184,11 @@ eatpm_l2
 eballd14
 eballdla
 eballdld
+eclipse
+eclipse7
 eightblb
 eightblc
+eldorado
 elektraa
 elv100
 elv302
@@ -230,6 +245,8 @@ flashgva
 flashgvf
 flashgvffp
 flight2k
+forceii
+forceii7
 frankstg
 franksti
 freddy4
@@ -264,7 +281,6 @@ futurspb
 genesffp
 genesgfp
 genesifp
-genesis
 gi_d3
 gi_d4
 gi_d6
@@ -311,6 +327,7 @@ gprixf
 gprixg
 gprixi
 gprixl
+grand8
 grand_l4
 grgar_c1
 grgar_l1ff
@@ -354,7 +371,16 @@ hd_d1
 hd_d2
 hd_d3
 hd_l2
+hercules
 hglbtrtr
+hh7
+hh_1
+hh_3
+hh_3a
+hh_3b
+hh_4
+hh_4a
+hh_4b
 hirol210
 hirol_fr
 hirol_g3
@@ -396,6 +422,9 @@ ij_l5
 ij_l6
 ij_lg7
 ij_p2
+jamesb2
+jamesb7
+jamesb7b
 jb_04a
 jb_101b
 jb_101r
@@ -499,6 +528,11 @@ m_mpaca
 m_mpacb
 magic
 magicfp
+mars
+mars7
+mars_2
+marsf
+marsp
 mataharb
 mataharc
 mav_100
@@ -513,6 +547,9 @@ meteor
 meteora
 meteora2
 meteorbf
+midearta
+mideartf
+midearth
 milln_l3
 mm_05
 mm_10pfx
@@ -572,6 +609,7 @@ nightrdc
 nmovesfp
 nugentfp
 orbitor1
+panthera
 paragonb
 paragonc
 paragond
@@ -602,6 +640,8 @@ playboyf
 playboyg
 playboyi
 playboyl
+pnkpntr7
+pnkpntrs
 pop_dx5
 pop_la4
 pop_lx4
@@ -610,6 +650,7 @@ pop_pa4
 poto_a29
 poto_a31
 princefp
+punk
 pwerplab
 pwerplac
 pz_d1
@@ -620,6 +661,7 @@ pz_f5
 pz_l1
 pz_l2
 rab_130
+raimfire
 raven
 ravenafp
 ravenfp
@@ -642,6 +684,7 @@ rctycnf
 rctycng
 rctycni
 rctycnl
+rflshdlx1
 rip300
 rip300f
 rip300g
@@ -675,6 +718,7 @@ rock_enc
 rockegfp
 rockfp
 rockgfp
+rockyf
 rollston
 rs_70
 rs_da4
@@ -702,6 +746,8 @@ scrpn_l1ff
 scrpn_t1
 scrpn_t1ff
 sexygirl
+sfight2b
+shaqatt2
 shrky207
 shrky_fr
 shrky_gr
@@ -726,11 +772,12 @@ simpprti
 simpprtl
 skatebla
 skateblb
-slbmania
 slbmanic
 slbmanid
 smanve_100
 smanve_101c
+smb1
+smb2
 smman
 smmand
 sopr107f
@@ -758,6 +805,10 @@ spacejm2
 spacejmf
 spacejmg
 spacejmi
+spcridef
+spcrider
+spirit0
+spirit3
 splitsec
 sprbrafp
 sprbreak
@@ -783,6 +834,7 @@ ssvc_e40
 st_161hc
 st_162c
 st_162hc
+starrace
 starsfp
 startrec
 startred
@@ -791,6 +843,9 @@ startrp
 stingrfp
 stk_sprb
 stk_sprc
+striker
+strikerf
+strikerg
 strxt_fr
 strxt_gr
 strxt_it
@@ -885,8 +940,12 @@ tftc_104
 tftc_200
 tftc_300
 tftc_302
+thegamsb
+thegamsc
+tim2000f
+time2000
+timelin7
 tmac_a18
-tmac_a24
 tmac_g18
 tmnt_101
 tmnt_103
@@ -914,7 +973,6 @@ tomy_201d
 tomy_301g
 tomy_h30
 torp_a16
-torp_e21
 totan_04
 totan_12
 totan_13
@@ -922,7 +980,6 @@ totan_15c
 trek_117
 trek_120
 trek_200
-trek_201
 trek_300
 tridenfp
 tridenta
@@ -990,7 +1047,12 @@ victrgfp
 victryfp
 viking
 vipr_102
+vlcno_1a
+vlcno_1b
+vlcno_1c
+vlcno_a7
 vlcno_ax
+vlcno_b7
 voltan
 voltanc
 voltand
@@ -1005,12 +1067,14 @@ wcs_p2
 wcs_p3
 wcs_p5
 wcs_p6
+wcsoccd2
 wd_03r
 wd_048r
 wd_10f
 wd_10g
 wd_10r
 wd_11
+wipeouta
 wldcp_l1
 ww_d2
 ww_d3

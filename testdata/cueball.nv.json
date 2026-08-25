@@ -1,5 +1,5 @@
 {
-  "_fileformat": 0.7,
+  "_fileformat": 0.8,
   "game_state": {
     "ball_count": {
       "label": "Ball Count",
@@ -53,7 +53,7 @@
       "initials": {
         "value": "BFH"
       },
-      "label": "High Score #1",
+      "label": "First",
       "score": {
         "value": 320000000
       },
@@ -63,7 +63,7 @@
       "initials": {
         "value": "JET"
       },
-      "label": "High Score #2",
+      "label": "Second",
       "score": {
         "value": 280000000
       },
@@ -73,7 +73,7 @@
       "initials": {
         "value": "DAV"
       },
-      "label": "High Score #3",
+      "label": "Third",
       "score": {
         "value": 240000000
       },
@@ -83,7 +83,7 @@
       "initials": {
         "value": "ZAB"
       },
-      "label": "High Score #4",
+      "label": "Fourth",
       "score": {
         "value": 200000000
       },
@@ -93,7 +93,7 @@
       "initials": {
         "value": "EZY"
       },
-      "label": "High Score #5",
+      "label": "Fifth",
       "score": {
         "value": 160000000
       },
