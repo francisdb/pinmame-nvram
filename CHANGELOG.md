@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.15](https://github.com/francisdb/pinmame-nvram/compare/v0.4.14...v0.4.15) - 2026-08-26
+
+### Other
+
+- add 45 nvram dumps from a nvram backup zip
+- attribution and license details for the embedded map data
+- bump pinball-memory-maps and reconcile testdata
+- *(deps)* bump Swatinem/rust-cache from 2.9.1 to 2.9.2 ([#145](https://github.com/francisdb/pinmame-nvram/pull/145))
+
 ## [0.4.14](https://github.com/francisdb/pinmame-nvram/compare/v0.4.13...v0.4.14) - 2026-08-07
 
 ### Other
