@@ -14,10 +14,19 @@
 
 bop_l8 | Volume | expected 0xffff calculated 0xff00
 cv_20h | Credits | expected 0xffff calculated 0xf807
+f14_p5 | Credits | expected 0x0 calculated 0xff
 mb_106 | Volume | expected 0xffff calculated 0xff00
+t2_p2f | Volume | expected 0xffff calculated 0xff00
 taf_h4 | Volume | expected 0xffff calculated 0xff00
+taf_l4 | Volume | expected 0xffff calculated 0xff00
 taf_l5 | Volume | expected 0xffff calculated 0xff00
 tom_14h | Volume | expected 0xffff calculated 0xff00
+wcs_p3 | Volume | expected 0xffff calculated 0xff00
+wcs_p6 | Volume | expected 0xffff calculated 0xff00
+wd_03r | The Roof Champion | expected 0x0 calculated 0xffff
+wd_03r | Volume | expected 0xffff calculated 0xff00
+wd_11 | Volume | expected 0xffff calculated 0xff00
 wd_12g | Volume | expected 0xffff calculated 0xff00
+ww_p9 | Volume | expected 0xffff calculated 0xff00
 ww_lh6 | Credits | expected 0xffff calculated 0xf906
 ww_lh6-default | Credits | expected 0xffff calculated 0xf906

@@ -1,0 +1,103 @@
+{
+  "_fileformat": 0.8,
+  "game_state": {
+    "ball_count": {
+      "label": "Ball Count",
+      "value": 0
+    },
+    "credits": {
+      "label": "Credits",
+      "value": 0
+    },
+    "current_ball": {
+      "label": "Ball",
+      "value": 0
+    },
+    "current_player": {
+      "label": "Current Player",
+      "value": 1
+    },
+    "game_over": {
+      "label": "Game Over",
+      "value": true
+    },
+    "max_credits": {
+      "label": "Max Credits",
+      "value": 0
+    },
+    "player_count": {
+      "label": "Player Count",
+      "value": 0
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 0
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ]
+  },
+  "high_scores": [
+    {
+      "initials": {
+        "value": "\u0000\u0000\u0000"
+      },
+      "label": "First",
+      "score": {
+        "value": 0
+      },
+      "short_label": "#1"
+    },
+    {
+      "initials": {
+        "value": "\u0000\u0000\u0000"
+      },
+      "label": "Second",
+      "score": {
+        "value": 0
+      },
+      "short_label": "#2"
+    },
+    {
+      "initials": {
+        "value": "\u0000\u0000\u0000"
+      },
+      "label": "Third",
+      "score": {
+        "value": 0
+      },
+      "short_label": "#3"
+    },
+    {
+      "initials": {
+        "value": "\u0000\u0000\u0000"
+      },
+      "label": "Fourth",
+      "score": {
+        "value": 0
+      },
+      "short_label": "#4"
+    },
+    {
+      "initials": {
+        "value": "\u0000\u0000\u0000"
+      },
+      "label": "Fifth",
+      "score": {
+        "value": 0
+      },
+      "short_label": "#5"
+    }
+  ]
+}

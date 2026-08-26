@@ -14,7 +14,6 @@ alpok_l6ff
 amaz3afp
 amazn2fp
 amazn3fp
-amazonh
 amazonh2
 amazonh3
 amazonha
@@ -35,7 +34,6 @@ aust301
 austinf
 austing
 austini
-avs_170c
 badgrffp
 badgrgfp
 badgrlfp
@@ -122,7 +120,6 @@ cftbl_l4c
 cftbl_p3
 cheetahb
 cheetahb2
-cntforce
 comet_l4
 congo_11
 congo_13
@@ -184,12 +181,9 @@ eatpm_l2
 eballd14
 eballdla
 eballdld
-eclipse
 eclipse7
 eightblb
 eightblc
-eldorado
-elektraa
 elv100
 elv302
 elv302f
@@ -206,7 +200,6 @@ elv400f
 elv400g
 elv400i
 elv400l
-elvisf
 elvisg
 elvisi
 elvisl
@@ -218,7 +211,6 @@ evelknic
 excalbfp
 excalffp
 excalgfp
-f14_p5
 fathoma
 fball_ia
 fbclassa
@@ -239,22 +231,17 @@ flash_t1
 flash_t1ff
 flashgda
 flashgdf
-flashgdv
 flashgfa
 flashgva
 flashgvf
 flashgvffp
-flight2k
-forceii
 forceii7
 frankstg
 franksti
-freddy4
 freedoma
 freedomb
 frontiea
 frontieg
-frpwr_l2
 frpwr_l2ff
 frpwr_l6
 frpwr_l6ff
@@ -328,7 +315,6 @@ gprixg
 gprixi
 gprixl
 grand8
-grand_l4
 grgar_c1
 grgar_l1ff
 grgar_t1
@@ -422,7 +408,6 @@ ij_l5
 ij_l6
 ij_lg7
 ij_p2
-jamesb2
 jamesb7
 jamesb7b
 jb_04a
@@ -449,7 +434,6 @@ jupk_g51
 jy_03
 jy_11
 jy_12c
-kiss
 kissd
 kisse
 kissf
@@ -509,7 +493,6 @@ lotr_sp6
 lotr_sp7
 lotr_sp8
 lotr_sp9
-lucky_l1
 lw3_200
 lw3_203
 lw3_205
@@ -526,9 +509,6 @@ lzbal_t2
 lzbal_t2ff
 m_mpaca
 m_mpacb
-magic
-magicfp
-mars
 mars7
 mars_2
 marsf
@@ -538,7 +518,6 @@ mataharc
 mav_100
 mav_200
 mav_400
-mav_401
 mb_05
 medusaa
 medusaf
@@ -550,7 +529,6 @@ meteorbf
 midearta
 mideartf
 midearth
-milln_l3
 mm_05
 mm_10pfx
 mm_10u
@@ -599,7 +577,6 @@ nf_20
 nf_22
 nf_23
 nf_23f
-nfl
 ngg_10
 ngg_12
 ngg_p06
@@ -608,7 +585,6 @@ nightrdb
 nightrdc
 nmovesfp
 nugentfp
-orbitor1
 panthera
 paragonb
 paragonc
@@ -648,7 +624,6 @@ pop_lx4
 pop_pa3
 pop_pa4
 poto_a29
-poto_a31
 princefp
 punk
 pwerplab
@@ -662,7 +637,6 @@ pz_l1
 pz_l2
 rab_130
 raimfire
-raven
 ravenafp
 ravenfp
 ravengfp
@@ -719,7 +693,6 @@ rockegfp
 rockfp
 rockgfp
 rockyf
-rollston
 rs_70
 rs_da4
 rs_da5
@@ -735,7 +708,6 @@ rs_lx3
 rs_lx4
 rs_lx5
 rs_pa2
-rvrbt_l3
 sc_10
 sc_14
 sc_17
@@ -747,7 +719,6 @@ scrpn_t1
 scrpn_t1ff
 sexygirl
 sfight2b
-shaqatt2
 shrky207
 shrky_fr
 shrky_gr
@@ -800,7 +771,6 @@ sopranof
 sopranog
 sopranoi
 sopranol
-spaceinv
 spacejm2
 spacejmf
 spacejmg
@@ -838,8 +808,6 @@ starrace
 starsfp
 startrec
 startred
-startrek
-startrp
 stingrfp
 stk_sprb
 stk_sprc
@@ -894,7 +862,6 @@ t2_l81
 t2_l82
 t2_l83
 t2_l84
-t2_p2f
 t2_p2g
 taf_d1
 taf_d2
@@ -907,7 +874,6 @@ taf_i4
 taf_l1
 taf_l2
 taf_l3
-taf_l4
 taf_l5c
 taf_p2
 taf_p3
@@ -919,7 +885,6 @@ tafg_i3
 tafg_la2
 tafg_la3
 tagteam
-tagteam2
 tagtem2f
 tagtemfp
 tagtmgfp
@@ -982,7 +947,6 @@ trek_120
 trek_200
 trek_300
 tridenfp
-tridenta
 triplgfp
 triplyf1
 triplyfp
@@ -1045,9 +1009,7 @@ victr13
 victrffp
 victrgfp
 victryfp
-viking
 vipr_102
-vlcno_1a
 vlcno_1b
 vlcno_1c
 vlcno_a7
@@ -1064,16 +1026,11 @@ wcs_l3c
 wcs_la1
 wcs_la2
 wcs_p2
-wcs_p3
 wcs_p5
-wcs_p6
-wcsoccd2
-wd_03r
 wd_048r
 wd_10f
 wd_10g
 wd_10r
-wd_11
 wipeouta
 wldcp_l1
 ww_d2
@@ -1087,7 +1044,6 @@ ww_lh5
 ww_lh6c
 ww_p6
 ww_p8
-ww_p9
 wwfr_103
 xenona
 xenonf
@@ -1096,4 +1052,3 @@ xfiles2
 xfiles20
 xfiles304
 xfilesf
-xsandos

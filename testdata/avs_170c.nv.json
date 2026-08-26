@@ -1,0 +1,50 @@
+{
+  "_fileformat": 0.7,
+  "high_scores": [
+    {
+      "initials": {
+        "value": "G S"
+      },
+      "label": "Grand Champion",
+      "score": {
+        "value": 75000000
+      }
+    },
+    {
+      "initials": {
+        "value": "L R"
+      },
+      "label": "First Place",
+      "score": {
+        "value": 55000000
+      }
+    },
+    {
+      "initials": {
+        "value": "J R"
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 40000000
+      }
+    },
+    {
+      "initials": {
+        "value": "D T"
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 30000000
+      }
+    },
+    {
+      "initials": {
+        "value": "P P"
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 25000000
+      }
+    }
+  ]
+}

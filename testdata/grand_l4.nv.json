@@ -1,0 +1,255 @@
+{
+  "_fileformat": 0.8,
+  "audits": {
+    "Audits": {
+      "01": {
+        "label": "LEFT COINS",
+        "value": 6
+      },
+      "02": {
+        "label": "CENTER COINS",
+        "value": 0
+      },
+      "03": {
+        "label": "RIGHT COINS",
+        "value": 7
+      },
+      "04": {
+        "label": "PAID CREDITS",
+        "value": 13
+      },
+      "05": {
+        "label": "TOTAL PLAYS",
+        "value": 12
+      },
+      "06": {
+        "label": "TOTAL FREE",
+        "value": 0
+      },
+      "08": {
+        "label": "REPLAY AWARDS",
+        "value": 0
+      },
+      "10": {
+        "label": "SPECIAL AWARDS",
+        "value": 0
+      },
+      "12": {
+        "label": "MATCH AWARDS",
+        "value": 0
+      },
+      "13": {
+        "label": "HSTD CREDITS",
+        "value": 0
+      },
+      "15": {
+        "label": "EXTRA BALLS",
+        "value": 0
+      },
+      "18": {
+        "label": "MIN. OF PLAY",
+        "value": 1
+      },
+      "19": {
+        "label": "BALLS PLAYED",
+        "value": 4
+      },
+      "20": {
+        "label": "REPLAY1 AWARDS",
+        "value": 0
+      },
+      "21": {
+        "label": "REPLAY2 AWARDS",
+        "value": 0
+      },
+      "22": {
+        "label": "REPLAY3 AWARDS",
+        "value": 0
+      },
+      "23": {
+        "label": "REPLAY4 AWARDS",
+        "value": 0
+      },
+      "24": {
+        "label": "1 PLAYR. GAMES",
+        "value": 0
+      },
+      "25": {
+        "label": "2 PLAYR. GAMES",
+        "value": 0
+      },
+      "26": {
+        "label": "3 PLAYR. GAMES",
+        "value": 0
+      },
+      "27": {
+        "label": "4 PLAYR. GAMES",
+        "value": 0
+      },
+      "28": {
+        "label": "BURN IN CYCLES",
+        "value": 0
+      },
+      "29": {
+        "label": "3 BANK X BALLS",
+        "value": 0
+      },
+      "30": {
+        "label": "MAXIMUM BONUSES",
+        "value": 1
+      },
+      "31": {
+        "label": "100K SCORES",
+        "value": 2
+      },
+      "32": {
+        "label": "AWARDED SPEED50",
+        "value": 0
+      },
+      "33": {
+        "label": "2X MULT BALL",
+        "value": 0
+      },
+      "34": {
+        "label": "3X MULT BALL",
+        "value": 0
+      },
+      "35": {
+        "label": "BONUS HOLDOVR",
+        "value": 0
+      },
+      "36": {
+        "label": "AUDIT 8",
+        "value": 0
+      },
+      "37": {
+        "label": "AUDIT 9",
+        "value": 0
+      },
+      "38": {
+        "label": "AUDIT 10",
+        "value": 0
+      },
+      "39": {
+        "label": "H.S.RESET COUNTER",
+        "value": 5988
+      }
+    }
+  },
+  "checksum8": [
+    {
+      "label": "Audits",
+      "value": "valid"
+    },
+    {
+      "label": "Credits",
+      "value": "valid"
+    }
+  ],
+  "game_state": {
+    "ball_count": {
+      "label": "Ball Count",
+      "value": 3
+    },
+    "credits": {
+      "label": "Credits",
+      "value": 1
+    },
+    "current_ball": {
+      "label": "Ball",
+      "value": 3
+    },
+    "current_player": {
+      "label": "Current Player",
+      "value": 1
+    },
+    "extra_balls": {
+      "label": "Extra Balls",
+      "value": 0
+    },
+    "free_play": {
+      "label": "Free Play",
+      "value": false
+    },
+    "game_over": {
+      "label": "Game Over",
+      "value": false
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "value": 10
+    },
+    "player_count": {
+      "label": "Player Count",
+      "value": 1
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 28290
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ],
+    "tilt_warnings": {
+      "label": "Tilt Warnings",
+      "value": 0
+    },
+    "tilted": {
+      "label": "Tilted",
+      "value": false
+    }
+  },
+  "high_scores": [
+    {
+      "initials": {
+        "value": "BSO"
+      },
+      "label": "First Place",
+      "score": {
+        "value": 3000000
+      },
+      "short_label": "1st"
+    },
+    {
+      "initials": {
+        "value": "EJS"
+      },
+      "label": "Second Place",
+      "score": {
+        "value": 2600000
+      },
+      "short_label": "2nd"
+    },
+    {
+      "initials": {
+        "value": "WRP"
+      },
+      "label": "Third Place",
+      "score": {
+        "value": 2200000
+      },
+      "short_label": "3rd"
+    },
+    {
+      "initials": {
+        "value": "PVA"
+      },
+      "label": "Fourth Place",
+      "score": {
+        "value": 1800000
+      },
+      "short_label": "4th"
+    }
+  ]
+}
