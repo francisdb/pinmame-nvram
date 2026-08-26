@@ -29,5 +29,8 @@ fball_ii | Special/Extra Ball Awards | Failed to resolve: Index 15 out of bounds
 flashgdn | Replay Award | Failed to resolve: Index 15 out of bounds for enum with 4 values
 flashgdn | Sound Option | Failed to resolve: Index 15 out of bounds for enum with 4 values
 flashgdn | Special/Extra Ball Awards | Failed to resolve: Index 15 out of bounds for enum with 4 values
+flashgdv | Replay Award | Failed to resolve: Index 15 out of bounds for enum with 4 values
+flashgdv | Sound Option | Failed to resolve: Index 15 out of bounds for enum with 4 values
+flashgdv | Special/Extra Ball Awards | Failed to resolve: Index 15 out of bounds for enum with 4 values
 ratrc_l1 | Replay Award | Failed to resolve: Index 85 out of bounds for enum with 2 values
 tsptr_l3 | Replay Start | Value out of range: 8 ≤ 25 ≤ 20
