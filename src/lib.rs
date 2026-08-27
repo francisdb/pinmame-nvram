@@ -344,6 +344,24 @@ fn open_nvram_local<T: DeserializeOwned>(nv_path: &Path) -> io::Result<Option<T>
     find_map_local(&rom_name)
 }
 
+/// Returns the full list of known PinMAME ROM names mapped to a human-readable
+/// game title, e.g. `"mm_109"` -> `"Medieval Madness (1.09)"`.
+///
+/// The list comes from the embedded `romnames.json` of the pinball-memory-maps
+/// project and also contains ROMs for which no memory map exists yet.
+pub fn rom_names() -> io::Result<HashMap<String, String>> {
+    let romnames_path = "romnames.json.brotli";
+    let romnames_file = MAPS.get_file(romnames_path).ok_or_else(|| {
+        io::Error::new(
+            io::ErrorKind::NotFound,
+            format!("File not found: {romnames_path}"),
+        )
+    })?;
+    let mut names: HashMap<String, String> = read_compressed_json(romnames_file)?;
+    names.retain(|k, _| !k.starts_with('_'));
+    Ok(names)
+}
+
 fn read_platform<T: DeserializeOwned>(platform_name: &str) -> io::Result<T> {
     let platform_file_name = format!("{platform_name}.json.brotli");
     let compressed_platform_path = Path::new("platforms").join(platform_file_name);
@@ -945,6 +963,18 @@ mod tests {
     fn test_find_map() -> io::Result<()> {
         let map: Option<Value> = find_map(&"afm_113b".to_string())?;
         assert_eq!(true, map.is_some());
+        Ok(())
+    }
+
+    #[test]
+    fn test_rom_names() -> io::Result<()> {
+        let names = rom_names()?;
+        assert_eq!(
+            Some(&"Medieval Madness (1.09)".to_string()),
+            names.get("mm_109")
+        );
+        assert_eq!(None, names.get("_note"));
+        assert!(names.len() > 1000);
         Ok(())
     }
 }
