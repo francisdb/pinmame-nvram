@@ -1,8 +1,7 @@
 use crate::{MAPS, read_compressed_json};
-use lazy_static::lazy_static;
 use serde_json::Value;
 use std::io;
-use std::sync::RwLock;
+use std::sync::LazyLock;
 
 pub(crate) struct MapIndex {
     map: Value,
@@ -29,10 +28,8 @@ impl MapIndex {
     }
 }
 
-lazy_static! {
-    static ref INDEX_MAP: RwLock<MapIndex> = RwLock::new(MapIndex::new().unwrap());
-}
+static INDEX_MAP: LazyLock<MapIndex> = LazyLock::new(|| MapIndex::new().unwrap());
 
-pub(crate) fn get_index_map() -> io::Result<std::sync::RwLockReadGuard<'static, MapIndex>> {
-    Ok(INDEX_MAP.read().unwrap())
+pub(crate) fn get_index_map() -> &'static MapIndex {
+    &INDEX_MAP
 }

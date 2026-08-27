@@ -377,7 +377,7 @@ fn read_platform_local<T: DeserializeOwned>(platform_name: &str) -> io::Result<T
 }
 
 fn find_map<T: DeserializeOwned>(rom_name: &String) -> io::Result<Option<T>> {
-    match get_index_map()?.get(rom_name) {
+    match get_index_map().get(rom_name) {
         Some(map_path) => {
             let compressed_map_path = format!("{}.brotli", map_path.as_str().unwrap());
             let map_file = MAPS.get_file(&compressed_map_path).ok_or_else(|| {
