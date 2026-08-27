@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.16](https://github.com/francisdb/pinmame-nvram/compare/v0.4.15...v0.4.16) - 2026-08-27
+
+### Added
+
+- expose the pinball-memory-maps rom names list ([#154](https://github.com/francisdb/pinmame-nvram/pull/154))
+
+### Other
+
+- merge per-game integration tests into one binary ([#155](https://github.com/francisdb/pinmame-nvram/pull/155))
+- replace lazy_static with std::sync::LazyLock ([#153](https://github.com/francisdb/pinmame-nvram/pull/153))
+- bump pinball-memory-maps and reconcile testdata ([#151](https://github.com/francisdb/pinmame-nvram/pull/151))
+
 ## [0.4.15](https://github.com/francisdb/pinmame-nvram/compare/v0.4.14...v0.4.15) - 2026-08-26
 
 ### Other
