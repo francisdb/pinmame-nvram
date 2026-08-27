@@ -80,6 +80,84 @@
       }
     }
   },
+  "dip_switches": {
+    "1-5": {
+      "label": "Coin Chute #1 (hinge side) Credits/Coin",
+      "value": "1 credit/coin"
+    },
+    "14": {
+      "label": "Memory for Top Center Lane Values",
+      "value": "off"
+    },
+    "15": {
+      "label": "Memory for Right Side Stand Up Target Values",
+      "value": "off"
+    },
+    "16": {
+      "label": "Memory for Left Side Stand Up Target Values",
+      "value": "off"
+    },
+    "17-20": {
+      "label": "Coin Chute #2 (center) Credits/Coin",
+      "value": "8 credits/coin"
+    },
+    "21": {
+      "label": "Inside Target Lites Outside Targets",
+      "value": "2 outside lites"
+    },
+    "22": {
+      "label": "Memory for Center Outside Target Lites",
+      "value": "off"
+    },
+    "23": {
+      "label": "Memory for 1 and 2 Top Lane Lites",
+      "value": "off"
+    },
+    "24": {
+      "label": "Memory for A and B Lane Lites (Flipsave)",
+      "value": "off"
+    },
+    "25-26": {
+      "label": "Maximum Credits",
+      "value": 10
+    },
+    "27": {
+      "label": "Credits Displayed",
+      "value": "off"
+    },
+    "28": {
+      "label": "Match Feature",
+      "value": "off"
+    },
+    "29": {
+      "label": "Replays per Game",
+      "value": "only 1 replay per player per game"
+    },
+    "30": {
+      "label": "Game Over Attract Voice",
+      "value": "no voice"
+    },
+    "31-32": {
+      "label": "Balls per Game",
+      "value": 3
+    },
+    "6": {
+      "label": "Top Drop Targets Feature",
+      "value": "collect feature on 2nd completion"
+    },
+    "7": {
+      "label": "Memory for 10K/20K/40K Bonus and Special",
+      "value": "off"
+    },
+    "8": {
+      "label": "Memory for Bonus Multipliers",
+      "value": "off"
+    },
+    "9-13": {
+      "label": "Coin Chute #3 (right side) Credits/Coin",
+      "value": "1 credit/coin"
+    }
+  },
   "game_state": {
     "ball_count": {
       "label": "Ball Count",

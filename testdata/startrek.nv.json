@@ -52,6 +52,48 @@
       }
     }
   },
+  "dip_switches": {
+    "1-5": {
+      "label": "Coin Chute #1 (hinge side) Credits/Coin",
+      "value": "incentive: 1@1, 2@2 (3/2)"
+    },
+    "14-15": {
+      "label": "High Score / Special Award Mode",
+      "value": "no award"
+    },
+    "16": {
+      "label": "Balls per Game",
+      "value": 3
+    },
+    "17-19": {
+      "label": "Maximum Credits",
+      "value": 5
+    },
+    "20": {
+      "label": "Credits Displayed",
+      "value": "on"
+    },
+    "21": {
+      "label": "Match Feature",
+      "value": "on"
+    },
+    "25-28": {
+      "label": "Coin Chute #2 Credits/Coin",
+      "value": "same as chute 1"
+    },
+    "6-7": {
+      "label": "High Score to Date Award",
+      "value": "no award"
+    },
+    "8,32": {
+      "label": "Sound Option",
+      "value": "sound setting 1"
+    },
+    "9-13": {
+      "label": "Coin Chute #3 Credits/Coin",
+      "value": "incentive: 1@1, 2@2 (3/2)"
+    }
+  },
   "game_state": {
     "ball_count": {
       "label": "Ball Count",

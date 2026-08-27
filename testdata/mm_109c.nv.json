@@ -840,7 +840,7 @@
         "value": "KOP"
       },
       "label": "King of the Realm #1",
-      "nth time": {
+      "nth_time": {
         "value": 1
       },
       "short_label": "King #1",
@@ -856,7 +856,7 @@
         "value": "KOP"
       },
       "label": "King of the Realm #2",
-      "nth time": {
+      "nth_time": {
         "value": 0
       },
       "short_label": "King #2",
@@ -872,7 +872,7 @@
         "value": "KOP"
       },
       "label": "King of the Realm #3",
-      "nth time": {
+      "nth_time": {
         "value": 0
       },
       "short_label": "King #3",
@@ -888,7 +888,7 @@
         "value": "KOP"
       },
       "label": "King of the Realm #4",
-      "nth time": {
+      "nth_time": {
         "value": 0
       },
       "short_label": "King #4",
