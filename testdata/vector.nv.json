@@ -74,6 +74,36 @@
       }
     }
   },
+  "dip_switches": {
+    "1-5": {
+      "label": "Coin Chute #1 (hinge side) Credits/Coin",
+      "value": "1 credit/coin"
+    },
+    "17-20": {
+      "label": "Coin Chute #2 (center) Credits/Coin",
+      "value": "8 credits/coin"
+    },
+    "25-26": {
+      "label": "Maximum Credits",
+      "value": 10
+    },
+    "27": {
+      "label": "Credits Displayed",
+      "value": "on"
+    },
+    "28": {
+      "label": "Match Feature",
+      "value": "off"
+    },
+    "31-32": {
+      "label": "Balls per Game",
+      "value": 3
+    },
+    "9-13": {
+      "label": "Coin Chute #3 (right side) Credits/Coin",
+      "value": "1 credit/coin"
+    }
+  },
   "game_state": {
     "ball_count": {
       "label": "Ball Count",

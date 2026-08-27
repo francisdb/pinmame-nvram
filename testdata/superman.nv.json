@@ -120,7 +120,9 @@
   "high_scores": [
     {
       "label": "High Score",
-      "value": 0
+      "score": {
+        "value": 0
+      }
     }
   ]
 }

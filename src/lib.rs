@@ -438,21 +438,7 @@ fn read_highscores<T: Read + Seek>(
         .high_scores
         .iter()
         .flatten()
-        .map(|hs| match hs {
-            model::HighScoreOrDescriptor::HighScore(hs) => {
-                read_highscore(&mut nvram_file, hs, endian, nibble, offset, map)
-            }
-            model::HighScoreOrDescriptor::Descriptor(descriptor) => {
-                let score =
-                    read_descriptor_to_u64(&mut nvram_file, descriptor, endian, nibble, offset)?;
-                Ok(HighScore {
-                    label: descriptor.label.clone(),
-                    short_label: descriptor.short_label.clone(),
-                    initials: "".to_string(),
-                    score,
-                })
-            }
-        })
+        .map(|hs| read_highscore(&mut nvram_file, hs, endian, nibble, offset, map))
         .collect();
     scores
 }
@@ -493,10 +479,7 @@ fn clear_highscores<T: Write + Seek>(
     map: &NvramMap,
 ) -> io::Result<()> {
     for hs in map.high_scores.iter().flatten() {
-        let (initials, score) = match hs {
-            model::HighScoreOrDescriptor::HighScore(hs) => (hs.initials.as_ref(), &hs.score),
-            model::HighScoreOrDescriptor::Descriptor(descriptor) => (None, descriptor.as_ref()),
-        };
+        let (initials, score) = (hs.initials.as_ref(), &hs.score);
         if let Some(map_initials) = initials {
             write_ch(
                 &mut nvram_file,
