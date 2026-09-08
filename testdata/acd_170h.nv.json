@@ -1,5 +1,37 @@
 {
   "_fileformat": 0.7,
+  "game_state": {
+    "current_ball": {
+      "label": "Ball",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "current_player": {
+      "label": "Player",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "player_count": {
+      "label": "Player Count",
+      "value": 1
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 631160
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ]
+  },
   "high_scores": [
     {
       "initials": {

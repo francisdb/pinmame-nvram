@@ -200,6 +200,10 @@
       "label": "Game Over",
       "warning": "Failed to resolve: Value is stored outside the NVRAM"
     },
+    "ignore_scores": {
+      "label": "Ignore Scores",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
     "max_credits": {
       "label": "Maximum Credits",
       "value": 20

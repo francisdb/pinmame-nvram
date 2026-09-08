@@ -22,15 +22,19 @@
       "value": "valid"
     },
     {
-      "label": "Combo Champion",
+      "label": "Free Throws Champion",
       "value": "valid"
     },
     {
-      "label": "Warp Champion",
+      "label": "2-Pointers Champion",
       "value": "valid"
     },
     {
-      "label": "Medals Champion",
+      "label": "3-Pointers Champion",
+      "value": "valid"
+    },
+    {
+      "label": "NBA Finals Champion",
       "value": "valid"
     }
   ],
@@ -45,16 +49,16 @@
     },
     "player_count": {
       "label": "Player Count",
-      "value": 2
+      "value": 1
     },
     "scores": [
       {
         "label": "Player 1",
-        "value": 3617980
+        "value": 1153510
       },
       {
         "label": "Player 2",
-        "value": 55015990
+        "value": 0
       },
       {
         "label": "Player 3",
@@ -69,7 +73,7 @@
   "high_scores": [
     {
       "initials": {
-        "value": "SSR"
+        "value": "G S"
       },
       "label": "Grand Champion",
       "score": {
@@ -79,71 +83,80 @@
     },
     {
       "initials": {
-        "value": "ABCDEFGHIJ"
+        "value": "L R"
       },
       "label": "High Score #1",
       "score": {
-        "value": 55015990
+        "value": 55000000
       },
-      "short_label": "#1"
+      "short_label": "HS1"
     },
     {
       "initials": {
-        "value": "LON"
+        "value": "R T"
       },
       "label": "High Score #2",
       "score": {
-        "value": 55000000
+        "value": 40000000
       },
-      "short_label": "#2"
+      "short_label": "HS2"
     },
     {
       "initials": {
-        "value": "GGF"
+        "value": "D T"
       },
       "label": "High Score #3",
       "score": {
-        "value": 40000000
+        "value": 30000000
       },
-      "short_label": "#3"
+      "short_label": "HS3"
     },
     {
       "initials": {
-        "value": "JMR"
+        "value": "J B"
       },
       "label": "High Score #4",
       "score": {
-        "value": 30000000
+        "value": 25000000
       },
-      "short_label": "#4"
+      "short_label": "HS4"
     }
   ],
   "mode_champions": [
     {
       "initials": {
-        "value": "W"
+        "value": "LON"
       },
-      "label": "Combo Champion",
+      "label": "Free Throws Champion",
       "score": {
-        "value": 12
+        "value": 2
       }
     },
     {
       "initials": {
-        "value": "MDK"
+        "value": "LON"
       },
-      "label": "Warp Champion",
+      "label": "2-Pointers Champion",
       "score": {
-        "value": 6
+        "value": 4
       }
     },
     {
       "initials": {
-        "value": "ABCDEFGHIJ"
+        "value": "LON"
       },
-      "label": "Medals Champion",
+      "label": "3-Pointers Champion",
       "score": {
-        "value": 7
+        "value": 3
+      }
+    },
+    {
+      "initials": {
+        "value": "LON"
+      },
+      "label": "NBA Finals Champion",
+      "score": {
+        "value": 25000000
       }
     }
   ]
