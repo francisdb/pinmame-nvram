@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.17](https://github.com/francisdb/pinmame-nvram/compare/v0.4.16...v0.4.17) - 2026-09-08
+
+### Other
+
+- bump pinball-memory-maps to 7e63610 and reconcile testdata ([#159](https://github.com/francisdb/pinmame-nvram/pull/159))
+- *(deps)* update brotli requirement from 8.0.0 to 9.0.0 ([#157](https://github.com/francisdb/pinmame-nvram/pull/157))
+
 ## [0.4.16](https://github.com/francisdb/pinmame-nvram/compare/v0.4.15...v0.4.16) - 2026-08-27
 
 ### Added
