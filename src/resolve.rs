@@ -94,7 +94,11 @@ fn resolve_recursive<T: Read + Seek, S: GlobalSettings>(
                         )?;
                         resolved_map.insert(key.clone(), checksum_result);
                     } else if key.eq("checksum8") {
-                        let checksum_result = resolve_checksum8(rom, value)?;
+                        let checksum_result = resolve_checksum8(
+                            rom,
+                            value,
+                            platform.offset(MemoryLayoutType::NVRam),
+                        )?;
                         resolved_map.insert(key.clone(), checksum_result);
                     } else if key.eq("_fileformat") || !key.starts_with('_') {
                         resolved_map.insert(
@@ -211,12 +215,12 @@ fn resolve_checksum16<T: Read + Seek>(
     Ok(Value::Array(checksum_result))
 }
 
-fn resolve_checksum8<T: Read + Seek>(rom: &mut T, value: &Value) -> io::Result<Value> {
+fn resolve_checksum8<T: Read + Seek>(rom: &mut T, value: &Value, offset: u64) -> io::Result<Value> {
     // go over the checksum16 array and verify the checksum
     let mut checksum_result: Vec<Value> = Vec::new();
     for checksum in value.as_array().unwrap() {
         let checksum8: Checksum8 = serde_json::from_value(checksum.clone())?;
-        let checksum_failure = verify_checksum8(rom, &checksum8)?;
+        let checksum_failure = verify_checksum8(rom, &checksum8, offset)?;
         let mut map = Map::new();
         if let Some(label) = checksum.get("label") {
             map.insert("label".to_string(), label.clone());
