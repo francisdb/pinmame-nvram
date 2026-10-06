@@ -21,8 +21,9 @@ pub struct ChecksumMismatch<T> {
 pub(crate) fn verify_checksum8<T: Read + Seek>(
     nvram_file: &mut T,
     checksum8: &Checksum8,
+    offset: u64,
 ) -> io::Result<Option<ChecksumMismatch<u8>>> {
-    let start: u64 = (&checksum8.start).into();
+    let start: u64 = u64::from(&checksum8.start) - offset;
 
     // Non-adjacent checksum (file format v0.8): `start`..=`end` describe only the
     // data bytes and the checksum is stored separately at `checksum`. Used for
@@ -30,7 +31,7 @@ pub(crate) fn verify_checksum8<T: Read + Seek>(
     // lives at an unrelated address.
     if let Some(checksum_address) = checksum8.checksum {
         let data_end: u64 = match &checksum8.end {
-            Some(e) => u64::from(e),
+            Some(e) => u64::from(e) - offset,
             None => start + checksum8.length.unwrap_or(DEFAULT_LENGTH as u64) - 1,
         };
         let mut buff = vec![0; (data_end - start + 1) as usize];
@@ -38,7 +39,7 @@ pub(crate) fn verify_checksum8<T: Read + Seek>(
         let calc_sum: u8 = 0xFFu8 - buff.iter().fold(0u8, |acc, &x| acc.wrapping_add(x));
 
         let mut checksum_byte = [0u8; 1];
-        read_exact_at(nvram_file, checksum_address, &mut checksum_byte)?;
+        read_exact_at(nvram_file, checksum_address - offset, &mut checksum_byte)?;
         let stored_sum = checksum_byte[0];
 
         return if calc_sum != stored_sum {
@@ -53,7 +54,7 @@ pub(crate) fn verify_checksum8<T: Read + Seek>(
     }
 
     let end: u64 = match &checksum8.end {
-        Some(e) => u64::from(e),
+        Some(e) => u64::from(e) - offset,
         None => {
             let length: u64 = checksum8.length.unwrap_or(DEFAULT_LENGTH as u64);
             start + length
@@ -283,7 +284,7 @@ mod test {
             groupings: None,
             _notes: None,
         };
-        let result = verify_checksum8(&mut cursor, &checksum8);
+        let result = verify_checksum8(&mut cursor, &checksum8, 0);
         assert_eq!(None, result?);
         Ok(())
     }
@@ -303,7 +304,7 @@ mod test {
             groupings: None,
             _notes: None,
         };
-        let result = verify_checksum8(&mut cursor, &checksum8);
+        let result = verify_checksum8(&mut cursor, &checksum8, 0);
         assert_eq!(None, result?);
         Ok(())
     }
@@ -325,7 +326,7 @@ mod test {
             groupings: None,
             _notes: None,
         };
-        assert_eq!(None, verify_checksum8(&mut cursor, &checksum8)?);
+        assert_eq!(None, verify_checksum8(&mut cursor, &checksum8, 0)?);
         Ok(())
     }
 
@@ -351,8 +352,49 @@ mod test {
                 expected: 0xFF,
                 calculated: 0x00,
             }),
-            verify_checksum8(&mut cursor, &checksum8)?
+            verify_checksum8(&mut cursor, &checksum8, 0)?
         );
+        Ok(())
+    }
+
+    #[test]
+    fn test_verify_checksum8_nvram_base() -> io::Result<()> {
+        // NVRAM mapped at a non-zero CPU address (as on Stern SAM): map
+        // addresses are CPU addresses, the file starts at the NVRAM base.
+        #[rustfmt::skip]
+        let mut cursor = io::Cursor::new([
+            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+            0x01, 0x00, 0x00, 0x00, 0xFE, 0xFF, 0xFF, 0xFF
+        ]);
+        let checksum8 = Checksum8 {
+            label: "test".to_string(),
+            start: HexOrInteger::Integer(0x02102008),
+            end: Some(HexOrInteger::Integer(0x0210200C)),
+            length: None,
+            checksum: None,
+            groupings: None,
+            _notes: None,
+        };
+        assert_eq!(None, verify_checksum8(&mut cursor, &checksum8, 0x02102000)?);
+        Ok(())
+    }
+
+    #[test]
+    fn test_verify_checksum8_non_adjacent_checksum_nvram_base() -> io::Result<()> {
+        #[rustfmt::skip]
+        let mut cursor = io::Cursor::new([
+            0x10, 0x00, 0x00, 0x00, 0xEF
+        ]);
+        let checksum8 = Checksum8 {
+            label: "test".to_string(),
+            start: HexOrInteger::Integer(0x1000),
+            end: None,
+            length: None,
+            checksum: Some(0x1004),
+            groupings: None,
+            _notes: None,
+        };
+        assert_eq!(None, verify_checksum8(&mut cursor, &checksum8, 0x1000)?);
         Ok(())
     }
 
@@ -372,7 +414,7 @@ mod test {
             groupings: Some(3),
             _notes: None,
         };
-        let result = verify_checksum8(&mut cursor, &checksum8);
+        let result = verify_checksum8(&mut cursor, &checksum8, 0);
         assert_eq!(None, result?);
         Ok(())
     }
