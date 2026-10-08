@@ -4,7 +4,7 @@
     "B.2 EARNINGS AUDS.": {
       "02": {
         "label": "RECENT LEFT SLOT",
-        "value": 4
+        "value": 0
       },
       "03": {
         "label": "RECENT CENT. SLOT",
@@ -20,7 +20,7 @@
       },
       "06": {
         "label": "RECENT PAID CRED",
-        "value": 3
+        "value": 0
       },
       "07": {
         "label": "RECENT SERV. CRED",
@@ -28,7 +28,7 @@
       },
       "09": {
         "label": "TOTAL LEFT SLOT",
-        "value": 4
+        "value": 0
       },
       "10": {
         "label": "TOTAL CENTR. SLOT",
@@ -44,7 +44,7 @@
       },
       "13": {
         "label": "TOTAL PAID CRED.",
-        "value": 3
+        "value": 0
       },
       "14": {
         "label": "TOTAL SERV. CRED.",
@@ -54,7 +54,7 @@
     "B.3 STANDARD AUDS.": {
       "01": {
         "label": "GAMES STARTED",
-        "value": 2
+        "value": 0
       },
       "02": {
         "label": "TOTAL PLAYS",
@@ -103,7 +103,7 @@
       },
       "22": {
         "label": "MINUTES ON",
-        "value": 9
+        "value": 0
       },
       "23": {
         "label": "BALLS PLAYED",
@@ -414,47 +414,47 @@
     "B.6 TIME-STAMPS": {
       "02": {
         "label": "TOTALS CLEARED",
-        "value": "2026-06-03 21:17"
+        "value": "2017-02-05 12:39"
       },
       "03": {
         "label": "CLOCK LAST SET",
-        "value": "2026-06-03 21:17"
+        "value": "2017-02-05 12:39"
       },
       "04": {
         "label": "AUDITS CLEARED",
-        "value": "2026-06-03 21:17"
+        "value": "2017-02-05 12:39"
       },
       "05": {
         "label": "COINS CLEARED",
-        "value": "2026-06-03 21:17"
+        "value": "2017-02-05 12:39"
       },
       "06": {
         "label": "FACTORY SETTING",
-        "value": "2026-06-03 21:17"
+        "value": "2017-02-05 12:39"
       },
       "07": {
         "label": "LAST GAME START",
-        "value": "2026-09-02 20:30"
+        "value": "2017-02-05 12:39"
       },
       "08": {
         "label": "LAST REPLAY",
-        "value": "2026-06-03 21:17"
+        "value": "2017-02-05 12:39"
       },
       "09": {
         "label": "LAST HSTD RESET",
-        "value": "2026-06-03 21:17"
+        "value": "2017-02-05 12:39"
       },
       "10": {
         "label": "CHAMPION RESET",
-        "value": "2026-06-03 21:17"
+        "value": "2017-02-05 12:39"
       },
       "11": {
         "label": "LAST PRINTOUT",
-        "value": "2026-06-03 21:17"
+        "value": "2017-02-05 12:39"
       },
       "12": {
         "label": "LAST SERV. CRED",
-        "value": "2026-06-03 21:17"
+        "value": "2017-02-05 12:39"
       }
     }
   },
@@ -484,8 +484,10 @@
       "value": "valid"
     },
     {
+      "checksum_mismatch_calculated": 65280,
+      "checksum_mismatch_expected": 65535,
       "label": "Volume",
-      "value": "valid"
+      "value": "mismatch"
     },
     {
       "value": "valid"
@@ -515,7 +517,7 @@
     },
     "credits": {
       "label": "Credits",
-      "value": 1
+      "value": 0
     },
     "current_ball": {
       "label": "Ball",
@@ -543,7 +545,7 @@
     },
     "game_over": {
       "label": "Game Over",
-      "value": false
+      "value": true
     },
     "max_credits": {
       "label": "Maximum Credits",
@@ -551,7 +553,7 @@
     },
     "player_count": {
       "label": "Players",
-      "value": 1
+      "value": 0
     },
     "replay": {
       "label": "Replay",
@@ -577,7 +579,7 @@
     ],
     "volume": {
       "label": "Volume",
-      "value": 12
+      "value": "n/a"
     }
   },
   "high_scores": [
@@ -633,6 +635,6 @@
     }
   ],
   "last_played": {
-    "value": "2026-09-02 00:01"
+    "value": "2017-02-05 00:01"
   }
 }

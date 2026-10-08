@@ -4,7 +4,7 @@
     "B.2 EARNINGS AUDS.": {
       "02": {
         "label": "RECENT LEFT SLOT",
-        "value": 4
+        "value": 0
       },
       "03": {
         "label": "RECENT CENT. SLOT",
@@ -20,7 +20,7 @@
       },
       "06": {
         "label": "RECENT PAID CRED",
-        "value": 3
+        "value": 0
       },
       "07": {
         "label": "RECENT SERV. CRED",
@@ -28,7 +28,7 @@
       },
       "09": {
         "label": "TOTAL LEFT SLOT",
-        "value": 4
+        "value": 0
       },
       "10": {
         "label": "TOTAL CENTR. SLOT",
@@ -44,7 +44,7 @@
       },
       "13": {
         "label": "TOTAL PAID CRED.",
-        "value": 3
+        "value": 0
       },
       "14": {
         "label": "TOTAL SERV. CRED.",
@@ -54,7 +54,7 @@
     "B.3 STANDARD AUDS.": {
       "01": {
         "label": "GAMES STARTED",
-        "value": 2
+        "value": 0
       },
       "02": {
         "label": "TOTAL PLAYS",
@@ -66,10 +66,6 @@
       },
       "05": {
         "label": "REPLAY AWARDS",
-        "value": 0
-      },
-      "07": {
-        "label": "SPECIAL AWARDS",
         "value": 0
       },
       "09": {
@@ -103,7 +99,8 @@
       },
       "22": {
         "label": "MINUTES ON",
-        "value": 9
+        "units": "minutes",
+        "value": 1
       },
       "23": {
         "label": "BALLS PLAYED",
@@ -147,7 +144,7 @@
       },
       "33": {
         "label": "H.S.T.D. RESET COUNT",
-        "value": 3000
+        "value": 1200
       },
       "34": {
         "label": "BURN-IN TIME",
@@ -165,197 +162,297 @@
     },
     "B.4 FEATURE AUDS.": {
       "01": {
-        "label": "B.K. OPEN (GAMES)",
+        "label": "NOVICE MODES",
         "value": 0
       },
       "02": {
-        "label": "MULTIBALL",
+        "label": "TOTAL MULTIBALLS",
         "value": 0
       },
       "03": {
-        "label": "2ND MULTIBALL",
+        "label": "EXTRA BALLS",
         "value": 0
       },
       "04": {
-        "label": "3RD MULTIBALL",
-        "value": 0
-      },
-      "05": {
-        "label": "REMATCH MADE",
+        "label": "ROOF MULTIBALLS",
         "value": 0
       },
       "06": {
-        "label": "TRAIN JACKPOT",
+        "label": "BUY-IN EX. BALLS",
         "value": 0
       },
       "07": {
-        "label": "RAMP JACKPOTS",
+        "label": "1 BUY-IN GAMES",
         "value": 0
       },
       "08": {
-        "label": "DOUBLE JACKPOT",
+        "label": "2 BUY-IN GAMES",
         "value": 0
       },
       "09": {
-        "label": "TRIPLE JACKPOT",
+        "label": "3 BUY-IN GAMES",
         "value": 0
       },
       "10": {
-        "label": "QUICK MULTIBALL",
+        "label": ">=4 BUY-IN GAMES",
         "value": 0
       },
       "11": {
-        "label": "VAULT MILLIONS",
+        "label": "BALL SAVES",
         "value": 0
       },
       "12": {
-        "label": "H. UP. MULTIBALL",
+        "label": "SUPER SKILL",
         "value": 0
       },
       "13": {
-        "label": "THING VAULT",
+        "label": "SKILL SHOT MADE",
         "value": 0
       },
       "14": {
-        "label": "MANSION AWARDS",
+        "label": "CLUE AWARDED",
         "value": 0
       },
       "15": {
-        "label": "MANSION EX. BALL",
+        "label": "ALL CLUES",
         "value": 0
       },
       "16": {
-        "label": "TOUR THE MANSION",
+        "label": "NEW PHONE LIT",
         "value": 0
       },
       "17": {
-        "label": "RAMP E.B. LIT",
+        "label": "PHONE ANSWERED",
         "value": 0
       },
       "18": {
-        "label": "TRAIN WRECK E.B.",
+        "label": "WHO DUNNITS",
         "value": 0
       },
       "19": {
-        "label": "TRAIN TARGET",
+        "label": "WHO DUNNIT ROOF",
         "value": 0
       },
       "20": {
-        "label": "TRAIN WRECKS",
+        "label": "TOTAL ROOFS",
         "value": 0
       },
       "21": {
-        "label": "SWAMP 1X",
+        "label": "ROOF MULTIBALLS",
         "value": 0
       },
       "22": {
-        "label": "SWAMP 5X",
+        "label": "TOTAL SLOT SPINS",
         "value": 0
       },
       "23": {
-        "label": "SKILL SHOTS",
+        "label": "NUGE SLOTS AWRDS",
         "value": 0
       },
       "24": {
-        "label": "CENTER RAMP",
+        "label": "FREE SPINS",
         "value": 0
       },
       "25": {
-        "label": "SIDE RAMP",
+        "label": "SLOT MULTIBALL",
         "value": 0
       },
       "26": {
-        "label": "CENTER KICKOUT",
+        "label": "SLOT EXTRA BALL",
         "value": 0
       },
       "27": {
-        "label": "RIGHT KICKOUT",
+        "label": "SLOT BAR",
         "value": 0
       },
       "28": {
-        "label": "THING TRIPS",
+        "label": "SLOT MADNESS",
         "value": 0
       },
       "29": {
-        "label": "THING AWARDS",
+        "label": "SLOT JACKPOT",
         "value": 0
       },
       "30": {
-        "label": "THING FLIPS",
+        "label": "SLOT EQUIPMENT",
         "value": 0
       },
       "31": {
-        "label": "THING FLIPS HITS",
+        "label": "SLOT CLUE",
         "value": 0
       },
       "32": {
-        "label": "MANSION SPOTS",
+        "label": "SLOT ROOF",
         "value": 0
       },
       "33": {
-        "label": "SUPER BEAR GAMES",
+        "label": "SLOT CHOICE",
         "value": 0
       },
       "34": {
-        "label": "LEFT FLIPPER",
+        "label": "SLOT SEC. CHANCE",
         "value": 0
       },
       "35": {
-        "label": "RIGHT FLIPPER",
+        "label": "SLOT NOTHING",
+        "value": 0
+      },
+      "36": {
+        "label": "SEC. CHANCE COMP.",
+        "value": 0
+      },
+      "37": {
+        "label": "EXIT BASEMENT",
+        "value": 0
+      },
+      "38": {
+        "label": "EXIT MAIN",
+        "value": 0
+      },
+      "39": {
+        "label": "EXIT 2ND",
+        "value": 0
+      },
+      "40": {
+        "label": "EXIT 3RD",
+        "value": 0
+      },
+      "41": {
+        "label": "EXIT 4TH",
+        "value": 0
+      },
+      "42": {
+        "label": "EXIT 5TH",
+        "value": 0
+      },
+      "43": {
+        "label": "EXIT 6TH",
+        "value": 0
+      },
+      "44": {
+        "label": "EXIT 7TH",
+        "value": 0
+      },
+      "45": {
+        "label": "EXIT 8TH",
+        "value": 0
+      },
+      "46": {
+        "label": "EXIT PENTHOUSE",
+        "value": 0
+      },
+      "47": {
+        "label": "EXIT ROOF",
+        "value": 0
+      },
+      "48": {
+        "label": "EQUIMPENT AWARDS",
+        "value": 0
+      },
+      "49": {
+        "label": "TOTAL MULTIBALLS",
+        "value": 0
+      },
+      "50": {
+        "label": "TOTAL JACKPOTS",
+        "value": 0
+      },
+      "51": {
+        "label": "ROULETTE LIT",
+        "value": 0
+      },
+      "52": {
+        "label": "ROULETTE ASK",
+        "value": 0
+      },
+      "53": {
+        "label": "ROULETTE SPINS",
+        "value": 0
+      },
+      "54": {
+        "label": "ROULETTE WINS",
+        "value": 0
+      },
+      "55": {
+        "label": "TRAIN COMBO LIT",
+        "value": 0
+      },
+      "56": {
+        "label": "TRAIN COMBO L1",
+        "value": 0
+      },
+      "57": {
+        "label": "TRAIN COMBO L2",
+        "value": 0
+      },
+      "58": {
+        "label": "TRAIN COMBO L3",
+        "value": 0
+      },
+      "59": {
+        "label": "TRAIN COMBO L4",
+        "value": 0
+      },
+      "60": {
+        "label": "NEW LOOP CHAMP",
+        "value": 0
+      },
+      "61": {
+        "label": "SPECIAL MODES",
         "value": 0
       }
     },
     "B.5 HISTOGRAMS": {
       "01": {
-        "label": "0-1.9 M. SCORE",
+        "label": "0-39 M. SCORE",
         "value": 0
       },
       "02": {
-        "label": "2-4.9 M. SCORE",
+        "label": "40-59 M. SCORE",
         "value": 0
       },
       "03": {
-        "label": "5-9.9 M. SCORE",
+        "label": "60-79 M. SCORE",
         "value": 0
       },
       "04": {
-        "label": "10-19 M. SCORE",
+        "label": "80-99 M. SCORE",
         "value": 0
       },
       "05": {
-        "label": "20-29 M. SCORE",
-        "value": 0
-      },
-      "06": {
-        "label": "30-39 M. SCORE",
-        "value": 0
-      },
-      "07": {
-        "label": "40-49 M. SCORE",
-        "value": 0
-      },
-      "08": {
-        "label": "50-69 M. SCORE",
-        "value": 0
-      },
-      "09": {
-        "label": "70-99 M. SCORE",
-        "value": 0
-      },
-      "10": {
         "label": "100-149 M. SCORE",
         "value": 0
       },
+      "06": {
+        "label": "150-249 M. SCORE",
+        "value": 0
+      },
+      "07": {
+        "label": "250-399 M. SCORE",
+        "value": 0
+      },
+      "08": {
+        "label": "400-599 M. SCORE",
+        "value": 0
+      },
+      "09": {
+        "label": "600-999 M. SCORE",
+        "value": 0
+      },
+      "10": {
+        "label": "1-1.49 B. SCORE",
+        "value": 0
+      },
       "11": {
-        "label": "150-199 M. SCORE",
+        "label": "1.5-1.9 B. SCORE",
         "value": 0
       },
       "12": {
-        "label": "200-299 M. SCORE",
+        "label": "2-2.9 B. SCORE",
         "value": 0
       },
       "13": {
-        "label": "OVER 300 MILLION",
+        "label": "OVER 3 BILLION",
         "value": 0
       },
       "14": {
@@ -414,51 +511,59 @@
     "B.6 TIME-STAMPS": {
       "02": {
         "label": "TOTALS CLEARED",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:45"
       },
       "03": {
         "label": "CLOCK LAST SET",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:45"
       },
       "04": {
         "label": "AUDITS CLEARED",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:45"
       },
       "05": {
         "label": "COINS CLEARED",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:45"
       },
       "06": {
         "label": "FACTORY SETTING",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:45"
       },
       "07": {
         "label": "LAST GAME START",
-        "value": "2026-09-02 20:30"
+        "value": "2026-10-07 10:45"
       },
       "08": {
         "label": "LAST REPLAY",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:45"
       },
       "09": {
         "label": "LAST HSTD RESET",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:45"
       },
       "10": {
         "label": "CHAMPION RESET",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:45"
       },
       "11": {
         "label": "LAST PRINTOUT",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:45"
       },
       "12": {
         "label": "LAST SERV. CRED",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:45"
       }
     }
   },
   "checksum16": [
+    {
+      "label": "The Roof Champion",
+      "value": "valid"
+    },
+    {
+      "label": "Custom Message (2x32)",
+      "value": "valid"
+    },
     {
       "label": "Adjustments",
       "value": "valid"
@@ -515,7 +620,7 @@
     },
     "credits": {
       "label": "Credits",
-      "value": 1
+      "value": 0
     },
     "current_ball": {
       "label": "Ball",
@@ -539,11 +644,11 @@
     },
     "game_id": {
       "label": "WPC Game ID",
-      "value": "20017"
+      "value": "50044"
     },
     "game_over": {
       "label": "Game Over",
-      "value": false
+      "value": true
     },
     "max_credits": {
       "label": "Maximum Credits",
@@ -551,11 +656,11 @@
     },
     "player_count": {
       "label": "Players",
-      "value": 1
+      "value": 0
     },
     "replay": {
       "label": "Replay",
-      "value": 90000000
+      "value": 1500000000
     },
     "scores": [
       {
@@ -583,56 +688,70 @@
   "high_scores": [
     {
       "initials": {
-        "value": "MAB"
+        "value": "BSO"
       },
       "label": "Grand Champion",
       "score": {
-        "value": 200000000
+        "value": 1750000000
       },
       "short_label": "GC"
     },
     {
       "initials": {
-        "value": "PML"
+        "value": "XAQ"
       },
       "label": "First Place",
       "score": {
-        "value": 150000000
+        "value": 1500000000
       },
       "short_label": "1st"
     },
     {
       "initials": {
-        "value": "VLK"
+        "value": "L D"
       },
       "label": "Second Place",
       "score": {
-        "value": 135000000
+        "value": 1250000000
       },
       "short_label": "2nd"
     },
     {
       "initials": {
-        "value": "J K"
+        "value": "WMN"
       },
       "label": "Third Place",
       "score": {
-        "value": 120000000
+        "value": 1000000000
       },
       "short_label": "3rd"
     },
     {
       "initials": {
-        "value": "CG "
+        "value": "Z B"
       },
       "label": "Fourth Place",
       "score": {
-        "value": 105000000
+        "value": 750000000
       },
       "short_label": "4th"
     }
   ],
   "last_played": {
-    "value": "2026-09-02 00:01"
-  }
+    "value": "2026-10-07 00:01"
+  },
+  "mode_champions": [
+    {
+      "initials": {
+        "value": "XAQ"
+      },
+      "label": "The Roof Champion"
+    },
+    {
+      "initials": {
+        "value": "XAQ"
+      },
+      "label": "Midnight Champ"
+    }
+  ]
 }

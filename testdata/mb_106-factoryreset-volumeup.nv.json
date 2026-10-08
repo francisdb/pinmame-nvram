@@ -4,7 +4,7 @@
     "B.2 EARNINGS AUDS.": {
       "02": {
         "label": "RECENT LEFT SLOT",
-        "value": 4
+        "value": 0
       },
       "03": {
         "label": "RECENT CENT. SLOT",
@@ -20,7 +20,7 @@
       },
       "06": {
         "label": "RECENT PAID CRED",
-        "value": 3
+        "value": 0
       },
       "07": {
         "label": "RECENT SERV. CRED",
@@ -28,7 +28,7 @@
       },
       "09": {
         "label": "TOTAL LEFT SLOT",
-        "value": 4
+        "value": 0
       },
       "10": {
         "label": "TOTAL CENTR. SLOT",
@@ -44,7 +44,7 @@
       },
       "13": {
         "label": "TOTAL PAID CRED.",
-        "value": 3
+        "value": 0
       },
       "14": {
         "label": "TOTAL SERV. CRED.",
@@ -54,7 +54,7 @@
     "B.3 STANDARD AUDS.": {
       "01": {
         "label": "GAMES STARTED",
-        "value": 2
+        "value": 0
       },
       "02": {
         "label": "TOTAL PLAYS",
@@ -103,7 +103,7 @@
       },
       "22": {
         "label": "MINUTES ON",
-        "value": 9
+        "value": 1
       },
       "23": {
         "label": "BALLS PLAYED",
@@ -165,197 +165,173 @@
     },
     "B.4 FEATURE AUDS.": {
       "01": {
-        "label": "B.K. OPEN (GAMES)",
+        "label": "BALL SAVES",
         "value": 0
       },
       "02": {
-        "label": "MULTIBALL",
+        "label": "TOTAL MULTIBALLS",
         "value": 0
       },
       "03": {
-        "label": "2ND MULTIBALL",
+        "label": "CREATURE START",
         "value": 0
       },
       "04": {
-        "label": "3RD MULTIBALL",
+        "label": "CREATURE COMPL.",
         "value": 0
       },
       "05": {
-        "label": "REMATCH MADE",
+        "label": "BALL/CHAIN START",
         "value": 0
       },
       "06": {
-        "label": "TRAIN JACKPOT",
+        "label": "BALL/CHAIN COMPL.",
         "value": 0
       },
       "07": {
-        "label": "RAMP JACKPOTS",
+        "label": "FRANK. M.B. START",
         "value": 0
       },
       "08": {
-        "label": "DOUBLE JACKPOT",
+        "label": "FRANK. M.B. COMPL.",
         "value": 0
       },
       "09": {
-        "label": "TRIPLE JACKPOT",
+        "label": "MAYHEM LIT",
         "value": 0
       },
       "10": {
-        "label": "QUICK MULTIBALL",
+        "label": "MAYHEM START",
         "value": 0
       },
       "11": {
-        "label": "VAULT MILLIONS",
+        "label": "MAYHEM COMPL.",
         "value": 0
       },
       "12": {
-        "label": "H. UP. MULTIBALL",
+        "label": "MOON FEVER START",
         "value": 0
       },
       "13": {
-        "label": "THING VAULT",
+        "label": "MOON FEVER COMPL.",
         "value": 0
       },
       "14": {
-        "label": "MANSION AWARDS",
+        "label": "DRAC-ATK. LIT",
         "value": 0
       },
       "15": {
-        "label": "MANSION EX. BALL",
+        "label": "DRAC-ATK. START",
         "value": 0
       },
       "16": {
-        "label": "TOUR THE MANSION",
+        "label": "DRAC-ATK. COMPL.",
         "value": 0
       },
       "17": {
-        "label": "RAMP E.B. LIT",
+        "label": "MONSTER E.B. LIT",
         "value": 0
       },
       "18": {
-        "label": "TRAIN WRECK E.B.",
+        "label": "INSTRMNT. SPC. LIT",
         "value": 0
       },
       "19": {
-        "label": "TRAIN TARGET",
+        "label": "BASH START",
         "value": 0
       },
       "20": {
-        "label": "TRAIN WRECKS",
+        "label": "ROCK START",
         "value": 0
       },
       "21": {
-        "label": "SWAMP 1X",
+        "label": "ROCK 5X AWARDS",
         "value": 0
       },
       "22": {
-        "label": "SWAMP 5X",
+        "label": "ROCK 7X AWARDS",
         "value": 0
       },
       "23": {
-        "label": "SKILL SHOTS",
+        "label": "ROCK 10X AWARDS",
         "value": 0
       },
       "24": {
-        "label": "CENTER RAMP",
+        "label": "RANDOM AWARD",
         "value": 0
       },
       "25": {
-        "label": "SIDE RAMP",
+        "label": "RANDOM E.B. LIT",
         "value": 0
       },
       "26": {
-        "label": "CENTER KICKOUT",
+        "label": "MOSH M.B. START",
         "value": 0
       },
       "27": {
-        "label": "RIGHT KICKOUT",
+        "label": "C. LOOP E.B. LIT",
         "value": 0
       },
       "28": {
-        "label": "THING TRIPS",
+        "label": "FRANK. L.C. START",
         "value": 0
       },
       "29": {
-        "label": "THING AWARDS",
-        "value": 0
-      },
-      "30": {
-        "label": "THING FLIPS",
-        "value": 0
-      },
-      "31": {
-        "label": "THING FLIPS HITS",
-        "value": 0
-      },
-      "32": {
-        "label": "MANSION SPOTS",
-        "value": 0
-      },
-      "33": {
-        "label": "SUPER BEAR GAMES",
-        "value": 0
-      },
-      "34": {
-        "label": "LEFT FLIPPER",
-        "value": 0
-      },
-      "35": {
-        "label": "RIGHT FLIPPER",
+        "label": "LAMENT START",
         "value": 0
       }
     },
     "B.5 HISTOGRAMS": {
       "01": {
-        "label": "0-1.9 M. SCORE",
+        "label": "0-0.99 M. SCORE",
         "value": 0
       },
       "02": {
-        "label": "2-4.9 M. SCORE",
+        "label": "1-1.99 M. SCORE",
         "value": 0
       },
       "03": {
-        "label": "5-9.9 M. SCORE",
+        "label": "2-4.99 M. SCORE",
         "value": 0
       },
       "04": {
-        "label": "10-19 M. SCORE",
+        "label": "5-9.99 M. SCORE",
         "value": 0
       },
       "05": {
-        "label": "20-29 M. SCORE",
+        "label": "10-19.99 M. SCORE",
         "value": 0
       },
       "06": {
-        "label": "30-39 M. SCORE",
+        "label": "20-29.99 M. SCORE",
         "value": 0
       },
       "07": {
-        "label": "40-49 M. SCORE",
+        "label": "30-39.99 M. SCORE",
         "value": 0
       },
       "08": {
-        "label": "50-69 M. SCORE",
+        "label": "40-49.99 M. SCORE",
         "value": 0
       },
       "09": {
-        "label": "70-99 M. SCORE",
+        "label": "50-59.99 M. SCORE",
         "value": 0
       },
       "10": {
-        "label": "100-149 M. SCORE",
+        "label": "60-69.99 M. SCORE",
         "value": 0
       },
       "11": {
-        "label": "150-199 M. SCORE",
+        "label": "70-79.99 M. SCORE",
         "value": 0
       },
       "12": {
-        "label": "200-299 M. SCORE",
+        "label": "80-89.99 M. SCORE",
         "value": 0
       },
       "13": {
-        "label": "OVER 300 MILLION",
+        "label": "OVER 90 MILLION",
         "value": 0
       },
       "14": {
@@ -414,51 +390,55 @@
     "B.6 TIME-STAMPS": {
       "02": {
         "label": "TOTALS CLEARED",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:55"
       },
       "03": {
         "label": "CLOCK LAST SET",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:55"
       },
       "04": {
         "label": "AUDITS CLEARED",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:55"
       },
       "05": {
         "label": "COINS CLEARED",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:55"
       },
       "06": {
         "label": "FACTORY SETTING",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:55"
       },
       "07": {
         "label": "LAST GAME START",
-        "value": "2026-09-02 20:30"
+        "value": "2026-10-07 10:55"
       },
       "08": {
         "label": "LAST REPLAY",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:55"
       },
       "09": {
         "label": "LAST HSTD RESET",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:55"
       },
       "10": {
         "label": "CHAMPION RESET",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:55"
       },
       "11": {
         "label": "LAST PRINTOUT",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:55"
       },
       "12": {
         "label": "LAST SERV. CRED",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:55"
       }
     }
   },
   "checksum16": [
+    {
+      "label": "Custom Message (2x32)",
+      "value": "valid"
+    },
     {
       "label": "Adjustments",
       "value": "valid"
@@ -500,6 +480,18 @@
     {
       "label": "Custom Message (2x32)",
       "value": "valid"
+    },
+    {
+      "label": "Monster Bash Champion",
+      "value": "valid"
+    },
+    {
+      "label": "Monsters of Rock Champion",
+      "value": "valid"
+    },
+    {
+      "label": "Mosh Multiball Champion",
+      "value": "valid"
     }
   ],
   "checksum8": [
@@ -515,7 +507,7 @@
     },
     "credits": {
       "label": "Credits",
-      "value": 1
+      "value": 0
     },
     "current_ball": {
       "label": "Ball",
@@ -539,11 +531,11 @@
     },
     "game_id": {
       "label": "WPC Game ID",
-      "value": "20017"
+      "value": "50065"
     },
     "game_over": {
       "label": "Game Over",
-      "value": false
+      "value": true
     },
     "max_credits": {
       "label": "Maximum Credits",
@@ -551,11 +543,11 @@
     },
     "player_count": {
       "label": "Players",
-      "value": 1
+      "value": 0
     },
     "replay": {
       "label": "Replay",
-      "value": 90000000
+      "value": 60000000
     },
     "scores": [
       {
@@ -577,62 +569,91 @@
     ],
     "volume": {
       "label": "Volume",
-      "value": 12
+      "value": 13
     }
   },
   "high_scores": [
     {
       "initials": {
-        "value": "MAB"
+        "value": "GAG"
       },
       "label": "Grand Champion",
       "score": {
-        "value": 200000000
+        "value": 150000000
       },
       "short_label": "GC"
     },
     {
       "initials": {
-        "value": "PML"
+        "value": "LFS"
       },
       "label": "First Place",
       "score": {
-        "value": 150000000
+        "value": 125000000
       },
       "short_label": "1st"
     },
     {
       "initials": {
-        "value": "VLK"
+        "value": "CAS"
       },
       "label": "Second Place",
       "score": {
-        "value": 135000000
+        "value": 100000000
       },
       "short_label": "2nd"
     },
     {
       "initials": {
-        "value": "J K"
+        "value": "RCF"
       },
       "label": "Third Place",
       "score": {
-        "value": 120000000
+        "value": 90000000
       },
       "short_label": "3rd"
     },
     {
       "initials": {
-        "value": "CG "
+        "value": "VJP"
       },
       "label": "Fourth Place",
       "score": {
-        "value": 105000000
+        "value": 80000000
       },
       "short_label": "4th"
     }
   ],
   "last_played": {
-    "value": "2026-09-02 00:01"
-  }
+    "value": "2026-10-07 00:01"
+  },
+  "mode_champions": [
+    {
+      "initials": {
+        "value": "K O"
+      },
+      "label": "Monster Bash Champion",
+      "score": {
+        "value": 50000000
+      }
+    },
+    {
+      "initials": {
+        "value": "ASR"
+      },
+      "label": "Monsters of Rock Champion",
+      "score": {
+        "value": 200000000
+      }
+    },
+    {
+      "initials": {
+        "value": "MOO"
+      },
+      "label": "Mosh Multiball Champion",
+      "score": {
+        "value": 25000000
+      }
+    }
+  ]
 }

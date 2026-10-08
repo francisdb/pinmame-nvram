@@ -4,7 +4,7 @@
     "B.2 EARNINGS AUDS.": {
       "02": {
         "label": "RECENT LEFT SLOT",
-        "value": 4
+        "value": 0
       },
       "03": {
         "label": "RECENT CENT. SLOT",
@@ -20,7 +20,7 @@
       },
       "06": {
         "label": "RECENT PAID CRED",
-        "value": 3
+        "value": 0
       },
       "07": {
         "label": "RECENT SERV. CRED",
@@ -28,7 +28,7 @@
       },
       "09": {
         "label": "TOTAL LEFT SLOT",
-        "value": 4
+        "value": 0
       },
       "10": {
         "label": "TOTAL CENTR. SLOT",
@@ -44,7 +44,7 @@
       },
       "13": {
         "label": "TOTAL PAID CRED.",
-        "value": 3
+        "value": 0
       },
       "14": {
         "label": "TOTAL SERV. CRED.",
@@ -54,7 +54,7 @@
     "B.3 STANDARD AUDS.": {
       "01": {
         "label": "GAMES STARTED",
-        "value": 2
+        "value": 0
       },
       "02": {
         "label": "TOTAL PLAYS",
@@ -103,7 +103,8 @@
       },
       "22": {
         "label": "MINUTES ON",
-        "value": 9
+        "units": "minutes",
+        "value": 1
       },
       "23": {
         "label": "BALLS PLAYED",
@@ -165,197 +166,201 @@
     },
     "B.4 FEATURE AUDS.": {
       "01": {
-        "label": "B.K. OPEN (GAMES)",
+        "label": "RETURN TO FACE 1",
         "value": 0
       },
       "02": {
-        "label": "MULTIBALL",
+        "label": "MADE FACE 2",
         "value": 0
       },
       "03": {
-        "label": "2ND MULTIBALL",
+        "label": "MADE FACE 3",
         "value": 0
       },
       "04": {
-        "label": "3RD MULTIBALL",
+        "label": "MADE FACE 4",
         "value": 0
       },
       "05": {
-        "label": "REMATCH MADE",
+        "label": "EX LIT OFF LOOP",
         "value": 0
       },
       "06": {
-        "label": "TRAIN JACKPOT",
+        "label": "EX LIT PINBOT",
         "value": 0
       },
       "07": {
-        "label": "RAMP JACKPOTS",
+        "label": "EX LIT RANDOM",
         "value": 0
       },
       "08": {
-        "label": "DOUBLE JACKPOT",
+        "label": "JACKPOTS",
         "value": 0
       },
       "09": {
-        "label": "TRIPLE JACKPOT",
+        "label": "JACK LIT RANDOM",
         "value": 0
       },
       "10": {
-        "label": "QUICK MULTIBALL",
+        "label": "JACK LIT LOOP",
         "value": 0
       },
       "11": {
-        "label": "VAULT MILLIONS",
+        "label": "SMALL WHEEL SPIN",
         "value": 0
       },
       "12": {
-        "label": "H. UP. MULTIBALL",
+        "label": "BIG WHEEL SPINS",
         "value": 0
       },
       "13": {
-        "label": "THING VAULT",
+        "label": "MULTIBALL",
         "value": 0
       },
       "14": {
-        "label": "MANSION AWARDS",
+        "label": "JETS AT MAXIMUM",
         "value": 0
       },
       "15": {
-        "label": "MANSION EX. BALL",
+        "label": "SKILL SHOT 50K",
         "value": 0
       },
       "16": {
-        "label": "TOUR THE MANSION",
+        "label": "SKILL SHOT 75K",
         "value": 0
       },
       "17": {
-        "label": "RAMP E.B. LIT",
+        "label": "SKILL SHOT 100K",
         "value": 0
       },
       "18": {
-        "label": "TRAIN WRECK E.B.",
+        "label": "SKILL SHOT 200K",
         "value": 0
       },
       "19": {
-        "label": "TRAIN TARGET",
+        "label": "SKILL SHOT 25K",
         "value": 0
       },
       "20": {
-        "label": "TRAIN WRECKS",
+        "label": "PINBOT PLAYFIELD",
         "value": 0
       },
       "21": {
-        "label": "SWAMP 1X",
+        "label": "BONUS MULT LOOP",
         "value": 0
       },
       "22": {
-        "label": "SWAMP 5X",
+        "label": "BONUS MULT. TARGT",
         "value": 0
       },
       "23": {
-        "label": "SKILL SHOTS",
+        "label": "UNLIMIT. MILLION",
         "value": 0
       },
       "24": {
-        "label": "CENTER RAMP",
+        "label": "BILLION",
         "value": 0
       },
       "25": {
-        "label": "SIDE RAMP",
+        "label": "SKILL MULTIPLIER",
         "value": 0
       },
       "26": {
-        "label": "CENTER KICKOUT",
+        "label": "BILLION LIT",
         "value": 0
       },
       "27": {
-        "label": "RIGHT KICKOUT",
+        "label": "WHEEL 50 MILL.",
         "value": 0
       },
       "28": {
-        "label": "THING TRIPS",
+        "label": "WHEEL 10 MILL.",
         "value": 0
       },
       "29": {
-        "label": "THING AWARDS",
+        "label": "WHEEL 1 MILL.",
         "value": 0
       },
       "30": {
-        "label": "THING FLIPS",
+        "label": "POWER CHARGE",
         "value": 0
       },
       "31": {
-        "label": "THING FLIPS HITS",
+        "label": "LOCK 1 IN EYES",
         "value": 0
       },
       "32": {
-        "label": "MANSION SPOTS",
+        "label": "LOCK 1 IN NECK",
         "value": 0
       },
       "33": {
-        "label": "SUPER BEAR GAMES",
+        "label": "LOCK 1 HUMAN",
         "value": 0
       },
       "34": {
-        "label": "LEFT FLIPPER",
+        "label": "MINI EXIT LEFT",
         "value": 0
       },
       "35": {
-        "label": "RIGHT FLIPPER",
+        "label": "MINI EXIT RIGHT",
+        "value": 0
+      },
+      "36": {
+        "label": "OMBINATION LOOPS",
         "value": 0
       }
     },
     "B.5 HISTOGRAMS": {
       "01": {
-        "label": "0-1.9 M. SCORE",
+        "label": "0.0-0.4 MIL. SCORE",
         "value": 0
       },
       "02": {
-        "label": "2-4.9 M. SCORE",
+        "label": "0.5-0.9 MIL. SCORE",
         "value": 0
       },
       "03": {
-        "label": "5-9.9 M. SCORE",
+        "label": "1.0-1.4 MIL. SCORE",
         "value": 0
       },
       "04": {
-        "label": "10-19 M. SCORE",
+        "label": "1.5-1.9 MIL. SCORE",
         "value": 0
       },
       "05": {
-        "label": "20-29 M. SCORE",
+        "label": "2.0-2.9 MIL. SCORE",
         "value": 0
       },
       "06": {
-        "label": "30-39 M. SCORE",
+        "label": "3.0-3.9 MIL. SCORE",
         "value": 0
       },
       "07": {
-        "label": "40-49 M. SCORE",
+        "label": "4.0-4.9 MIL. SCORE",
         "value": 0
       },
       "08": {
-        "label": "50-69 M. SCORE",
+        "label": "5.0-5.9 MIL. SCORE",
         "value": 0
       },
       "09": {
-        "label": "70-99 M. SCORE",
+        "label": "6.0-7.9 MIL. SCORE",
         "value": 0
       },
       "10": {
-        "label": "100-149 M. SCORE",
+        "label": "8.0-9.9 MIL. SCORE",
         "value": 0
       },
       "11": {
-        "label": "150-199 M. SCORE",
+        "label": "10-15 MIL. SCORE",
         "value": 0
       },
       "12": {
-        "label": "200-299 M. SCORE",
+        "label": "15-20 MIL. SCORE",
         "value": 0
       },
       "13": {
-        "label": "OVER 300 MILLION",
+        "label": "OVER 20 MILLION",
         "value": 0
       },
       "14": {
@@ -414,47 +419,47 @@
     "B.6 TIME-STAMPS": {
       "02": {
         "label": "TOTALS CLEARED",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:55"
       },
       "03": {
         "label": "CLOCK LAST SET",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:55"
       },
       "04": {
         "label": "AUDITS CLEARED",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:55"
       },
       "05": {
         "label": "COINS CLEARED",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:55"
       },
       "06": {
         "label": "FACTORY SETTING",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:55"
       },
       "07": {
         "label": "LAST GAME START",
-        "value": "2026-09-02 20:30"
+        "value": "2026-10-07 10:55"
       },
       "08": {
         "label": "LAST REPLAY",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:55"
       },
       "09": {
         "label": "LAST HSTD RESET",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:55"
       },
       "10": {
         "label": "CHAMPION RESET",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:55"
       },
       "11": {
         "label": "LAST PRINTOUT",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:55"
       },
       "12": {
         "label": "LAST SERV. CRED",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:55"
       }
     }
   },
@@ -500,6 +505,10 @@
     {
       "label": "Custom Message (2x32)",
       "value": "valid"
+    },
+    {
+      "label": "Mode Champions",
+      "value": "valid"
     }
   ],
   "checksum8": [
@@ -515,7 +524,7 @@
     },
     "credits": {
       "label": "Credits",
-      "value": 1
+      "value": 0
     },
     "current_ball": {
       "label": "Ball",
@@ -539,11 +548,11 @@
     },
     "game_id": {
       "label": "WPC Game ID",
-      "value": "20017"
+      "value": "50002"
     },
     "game_over": {
       "label": "Game Over",
-      "value": false
+      "value": true
     },
     "max_credits": {
       "label": "Maximum Credits",
@@ -551,11 +560,11 @@
     },
     "player_count": {
       "label": "Players",
-      "value": 1
+      "value": 0
     },
     "replay": {
       "label": "Replay",
-      "value": 90000000
+      "value": 7000000
     },
     "scores": [
       {
@@ -577,62 +586,244 @@
     ],
     "volume": {
       "label": "Volume",
-      "value": 12
+      "value": 13
     }
   },
   "high_scores": [
     {
       "initials": {
-        "value": "MAB"
+        "value": "JT "
       },
       "label": "Grand Champion",
       "score": {
-        "value": 200000000
+        "value": 15000000
       },
       "short_label": "GC"
     },
     {
       "initials": {
-        "value": "PML"
+        "value": "ZB "
       },
       "label": "First Place",
       "score": {
-        "value": 150000000
+        "value": 12000000
       },
       "short_label": "1st"
     },
     {
       "initials": {
-        "value": "VLK"
+        "value": "DWF"
       },
       "label": "Second Place",
       "score": {
-        "value": 135000000
+        "value": 11000000
       },
       "short_label": "2nd"
     },
     {
       "initials": {
-        "value": "J K"
+        "value": "JWH"
       },
       "label": "Third Place",
       "score": {
-        "value": 120000000
+        "value": 10000000
       },
       "short_label": "3rd"
     },
     {
       "initials": {
-        "value": "CG "
+        "value": "RK "
       },
       "label": "Fourth Place",
       "score": {
-        "value": 105000000
+        "value": 9000000
       },
       "short_label": "4th"
     }
   ],
   "last_played": {
-    "value": "2026-09-02 00:01"
-  }
+    "value": "2026-10-07 00:01"
+  },
+  "mode_champions": [
+    {
+      "initials": {
+        "value": "BRE"
+      },
+      "label": "Billionaire #1",
+      "score": {
+        "value": 1004206800
+      }
+    },
+    {
+      "initials": {
+        "value": "SLL"
+      },
+      "label": "Billionaire #2",
+      "score": {
+        "value": 1001005690
+      }
+    },
+    {
+      "initials": {
+        "value": "CCC"
+      },
+      "label": "Billionaire #3",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "DDD"
+      },
+      "label": "Billionaire #4",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "EEE"
+      },
+      "label": "Billionaire #5",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "FFF"
+      },
+      "label": "Billionaire #6",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "GGG"
+      },
+      "label": "Billionaire #7",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "HHH"
+      },
+      "label": "Billionaire #8",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "III"
+      },
+      "label": "Billionaire #9",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "JJJ"
+      },
+      "label": "Billionaire #10",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "KKK"
+      },
+      "label": "Billionaire #11",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "LLL"
+      },
+      "label": "Billionaire #12",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "MMM"
+      },
+      "label": "Billionaire #13",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "NNN"
+      },
+      "label": "Billionaire #14",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "OOO"
+      },
+      "label": "Billionaire #15",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "PPP"
+      },
+      "label": "Billionaire #16",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "QQQ"
+      },
+      "label": "Billionaire #17",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "RRR"
+      },
+      "label": "Billionaire #18",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "SSS"
+      },
+      "label": "Billionaire #19",
+      "score": {
+        "value": 1000000000
+      }
+    },
+    {
+      "initials": {
+        "value": "TTT"
+      },
+      "label": "Billionaire #20",
+      "score": {
+        "value": 1000000000
+      }
+    }
+  ]
 }
