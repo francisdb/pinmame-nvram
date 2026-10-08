@@ -4,7 +4,7 @@
     "B.2 EARNINGS AUDS.": {
       "02": {
         "label": "RECENT LEFT SLOT",
-        "value": 4
+        "value": 0
       },
       "03": {
         "label": "RECENT CENT. SLOT",
@@ -20,7 +20,7 @@
       },
       "06": {
         "label": "RECENT PAID CRED",
-        "value": 3
+        "value": 0
       },
       "07": {
         "label": "RECENT SERV. CRED",
@@ -28,7 +28,7 @@
       },
       "09": {
         "label": "TOTAL LEFT SLOT",
-        "value": 4
+        "value": 0
       },
       "10": {
         "label": "TOTAL CENTR. SLOT",
@@ -44,7 +44,7 @@
       },
       "13": {
         "label": "TOTAL PAID CRED.",
-        "value": 3
+        "value": 0
       },
       "14": {
         "label": "TOTAL SERV. CRED.",
@@ -54,7 +54,7 @@
     "B.3 STANDARD AUDS.": {
       "01": {
         "label": "GAMES STARTED",
-        "value": 2
+        "value": 0
       },
       "02": {
         "label": "TOTAL PLAYS",
@@ -103,7 +103,8 @@
       },
       "22": {
         "label": "MINUTES ON",
-        "value": 9
+        "units": "minutes",
+        "value": 2
       },
       "23": {
         "label": "BALLS PLAYED",
@@ -165,197 +166,265 @@
     },
     "B.4 FEATURE AUDS.": {
       "01": {
-        "label": "B.K. OPEN (GAMES)",
+        "label": "BUY-IN EX. BALLS",
         "value": 0
       },
       "02": {
-        "label": "MULTIBALL",
+        "label": "FINAL DRAW M.B.",
         "value": 0
       },
       "03": {
-        "label": "2ND MULTIBALL",
+        "label": "RAMP M. BALL",
         "value": 0
       },
       "04": {
-        "label": "3RD MULTIBALL",
+        "label": "STRIKER M. BALL",
         "value": 0
       },
       "05": {
-        "label": "REMATCH MADE",
+        "label": "TOTAL MULTIBALL",
         "value": 0
       },
       "06": {
-        "label": "TRAIN JACKPOT",
+        "label": "JACKPOTS",
         "value": 0
       },
       "07": {
-        "label": "RAMP JACKPOTS",
+        "label": "VICTORY LAPS",
         "value": 0
       },
       "08": {
-        "label": "DOUBLE JACKPOT",
+        "label": "REMATCH",
         "value": 0
       },
       "09": {
-        "label": "TRIPLE JACKPOT",
+        "label": "STRIKER LIT",
         "value": 0
       },
       "10": {
-        "label": "QUICK MULTIBALL",
+        "label": "STRIKER AWARDS",
         "value": 0
       },
       "11": {
-        "label": "VAULT MILLIONS",
+        "label": "HIDEOUT STRIKERS",
         "value": 0
       },
       "12": {
-        "label": "H. UP. MULTIBALL",
+        "label": "TV AWARDS",
         "value": 0
       },
       "13": {
-        "label": "THING VAULT",
+        "label": "BIG GOAL ROUND",
         "value": 0
       },
       "14": {
-        "label": "MANSION AWARDS",
+        "label": "EX. BALL ROUND",
         "value": 0
       },
       "15": {
-        "label": "MANSION EX. BALL",
+        "label": "HIT THE GOALIE",
         "value": 0
       },
       "16": {
-        "label": "TOUR THE MANSION",
+        "label": "WHERE IS STRIKER",
         "value": 0
       },
       "17": {
-        "label": "RAMP E.B. LIT",
+        "label": "SKILL SHOT MADE",
         "value": 0
       },
       "18": {
-        "label": "TRAIN WRECK E.B.",
+        "label": "SKILL COMPLETED",
         "value": 0
       },
       "19": {
-        "label": "TRAIN TARGET",
+        "label": "CITIES TRAVELLED",
         "value": 0
       },
       "20": {
-        "label": "TRAIN WRECKS",
+        "label": "BOSTON",
         "value": 0
       },
       "21": {
-        "label": "SWAMP 1X",
+        "label": "WASHINGTON D.C.",
         "value": 0
       },
       "22": {
-        "label": "SWAMP 5X",
+        "label": "LOS ANGELES",
         "value": 0
       },
       "23": {
-        "label": "SKILL SHOTS",
+        "label": "FINAL MATCH",
         "value": 0
       },
       "24": {
-        "label": "CENTER RAMP",
+        "label": "FINL. MATCH GOALS",
         "value": 0
       },
       "25": {
-        "label": "SIDE RAMP",
+        "label": "FINAL MATCH WINS",
         "value": 0
       },
       "26": {
-        "label": "CENTER KICKOUT",
+        "label": "FINAL MATCH LOSS",
         "value": 0
       },
       "27": {
-        "label": "RIGHT KICKOUT",
+        "label": "FIN. MAT. OVERTIME",
         "value": 0
       },
       "28": {
-        "label": "THING TRIPS",
+        "label": "KICKBACKS",
         "value": 0
       },
       "29": {
-        "label": "THING AWARDS",
+        "label": "KICKBACK LIT",
         "value": 0
       },
       "30": {
-        "label": "THING FLIPS",
+        "label": "KICKBACK HIGH",
         "value": 0
       },
       "31": {
-        "label": "THING FLIPS HITS",
+        "label": "MAGNA GOALIE LIT",
         "value": 0
       },
       "32": {
-        "label": "MANSION SPOTS",
+        "label": "MAGNA GOAL USED",
         "value": 0
       },
       "33": {
-        "label": "SUPER BEAR GAMES",
+        "label": "E.B.R. COLLECTED",
         "value": 0
       },
       "34": {
-        "label": "LEFT FLIPPER",
+        "label": "STRIKER E.B.",
         "value": 0
       },
       "35": {
-        "label": "RIGHT FLIPPER",
+        "label": "WASH. D.C. EX. BALL",
+        "value": 0
+      },
+      "36": {
+        "label": "GOAL LIT",
+        "value": 0
+      },
+      "37": {
+        "label": "GOALS",
+        "value": 0
+      },
+      "38": {
+        "label": "ASSIST HOLE",
+        "value": 0
+      },
+      "39": {
+        "label": "LEFT RAMP SHOT",
+        "value": 0
+      },
+      "40": {
+        "label": "RIGHT RAMP SHOT",
+        "value": 0
+      },
+      "41": {
+        "label": "TOP LANE AWARD",
+        "value": 0
+      },
+      "42": {
+        "label": "FREE KICKS",
+        "value": 0
+      },
+      "43": {
+        "label": "RANK 10",
+        "value": 0
+      },
+      "44": {
+        "label": "RANK 6",
+        "value": 0
+      },
+      "45": {
+        "label": "RANK 3",
+        "value": 0
+      },
+      "46": {
+        "label": "RANK 1",
+        "value": 0
+      },
+      "47": {
+        "label": "1 BUY-IN GAMES",
+        "value": 0
+      },
+      "48": {
+        "label": "2 BUY-IN GAMES",
+        "value": 0
+      },
+      "49": {
+        "label": "3 BUY-IN GAMES",
+        "value": 0
+      },
+      "50": {
+        "label": "HEADER SAVES",
+        "value": 0
+      },
+      "51": {
+        "label": "GOAL CHAMP CRED.",
+        "value": 0
+      },
+      "52": {
+        "label": "FREE RIDE BALLS",
         "value": 0
       }
     },
     "B.5 HISTOGRAMS": {
       "01": {
-        "label": "0-1.9 M. SCORE",
+        "label": "0-39 M. SCORE",
         "value": 0
       },
       "02": {
-        "label": "2-4.9 M. SCORE",
+        "label": "40-59 M. SCORE",
         "value": 0
       },
       "03": {
-        "label": "5-9.9 M. SCORE",
+        "label": "60-79 M. SCORE",
         "value": 0
       },
       "04": {
-        "label": "10-19 M. SCORE",
+        "label": "80-99 M. SCORE",
         "value": 0
       },
       "05": {
-        "label": "20-29 M. SCORE",
-        "value": 0
-      },
-      "06": {
-        "label": "30-39 M. SCORE",
-        "value": 0
-      },
-      "07": {
-        "label": "40-49 M. SCORE",
-        "value": 0
-      },
-      "08": {
-        "label": "50-69 M. SCORE",
-        "value": 0
-      },
-      "09": {
-        "label": "70-99 M. SCORE",
-        "value": 0
-      },
-      "10": {
         "label": "100-149 M. SCORE",
         "value": 0
       },
+      "06": {
+        "label": "150-249 M. SCORE",
+        "value": 0
+      },
+      "07": {
+        "label": "250-399 M. SCORE",
+        "value": 0
+      },
+      "08": {
+        "label": "400-599 M. SCORE",
+        "value": 0
+      },
+      "09": {
+        "label": "600-999 M. SCORE",
+        "value": 0
+      },
+      "10": {
+        "label": "1-1.49 B. SCORE",
+        "value": 0
+      },
       "11": {
-        "label": "150-199 M. SCORE",
+        "label": "1.5-1.9 B. SCORE",
         "value": 0
       },
       "12": {
-        "label": "200-299 M. SCORE",
+        "label": "2-2.9 B. SCORE",
         "value": 0
       },
       "13": {
-        "label": "OVER 300 MILLION",
+        "label": "OVER 3 BILLION",
         "value": 0
       },
       "14": {
@@ -414,47 +483,47 @@
     "B.6 TIME-STAMPS": {
       "02": {
         "label": "TOTALS CLEARED",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:56"
       },
       "03": {
         "label": "CLOCK LAST SET",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:56"
       },
       "04": {
         "label": "AUDITS CLEARED",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:56"
       },
       "05": {
         "label": "COINS CLEARED",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:56"
       },
       "06": {
         "label": "FACTORY SETTING",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:56"
       },
       "07": {
         "label": "LAST GAME START",
-        "value": "2026-09-02 20:30"
+        "value": "2026-10-07 10:56"
       },
       "08": {
         "label": "LAST REPLAY",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:56"
       },
       "09": {
         "label": "LAST HSTD RESET",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:56"
       },
       "10": {
         "label": "CHAMPION RESET",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:56"
       },
       "11": {
         "label": "LAST PRINTOUT",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:56"
       },
       "12": {
         "label": "LAST SERV. CRED",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:56"
       }
     }
   },
@@ -500,6 +569,14 @@
     {
       "label": "Custom Message (2x32)",
       "value": "valid"
+    },
+    {
+      "label": "Final Match Goal Champ",
+      "value": "valid"
+    },
+    {
+      "label": "Buy-In High Scores",
+      "value": "valid"
     }
   ],
   "checksum8": [
@@ -515,7 +592,7 @@
     },
     "credits": {
       "label": "Credits",
-      "value": 1
+      "value": 0
     },
     "current_ball": {
       "label": "Ball",
@@ -539,11 +616,11 @@
     },
     "game_id": {
       "label": "WPC Game ID",
-      "value": "20017"
+      "value": "50031"
     },
     "game_over": {
       "label": "Game Over",
-      "value": false
+      "value": true
     },
     "max_credits": {
       "label": "Maximum Credits",
@@ -551,11 +628,11 @@
     },
     "player_count": {
       "label": "Players",
-      "value": 1
+      "value": 0
     },
     "replay": {
       "label": "Replay",
-      "value": 90000000
+      "value": 900000000
     },
     "scores": [
       {
@@ -577,62 +654,109 @@
     ],
     "volume": {
       "label": "Volume",
-      "value": 12
+      "value": 13
     }
   },
   "high_scores": [
     {
       "initials": {
-        "value": "MAB"
+        "value": "MAT"
       },
       "label": "Grand Champion",
       "score": {
-        "value": 200000000
+        "value": 2000000000
       },
       "short_label": "GC"
     },
     {
       "initials": {
-        "value": "PML"
+        "value": "POP"
       },
       "label": "First Place",
       "score": {
-        "value": 150000000
+        "value": 1600000000
       },
       "short_label": "1st"
     },
     {
       "initials": {
-        "value": "VLK"
+        "value": "DAD"
       },
       "label": "Second Place",
       "score": {
-        "value": 135000000
+        "value": 1400000000
       },
       "short_label": "2nd"
     },
     {
       "initials": {
-        "value": "J K"
+        "value": "K O"
       },
       "label": "Third Place",
       "score": {
-        "value": 120000000
+        "value": 1200000000
       },
       "short_label": "3rd"
     },
     {
       "initials": {
-        "value": "CG "
+        "value": "JES"
       },
       "label": "Fourth Place",
       "score": {
-        "value": 105000000
+        "value": 1000000000
       },
       "short_label": "4th"
     }
   ],
   "last_played": {
-    "value": "2026-09-02 00:01"
-  }
+    "value": "2026-10-07 00:01"
+  },
+  "mode_champions": [
+    {
+      "initials": {
+        "value": "V P"
+      },
+      "label": "Final Match Goal Champ",
+      "score": {
+        "value": 6
+      }
+    },
+    {
+      "initials": {
+        "value": "CJS"
+      },
+      "label": "Buy-In High Score #1",
+      "score": {
+        "value": 2600000000
+      }
+    },
+    {
+      "initials": {
+        "value": "VLK"
+      },
+      "label": "Buy-In High Score #2",
+      "score": {
+        "value": 2400000000
+      }
+    },
+    {
+      "initials": {
+        "value": "SAC"
+      },
+      "label": "Buy-In High Score #3",
+      "score": {
+        "value": 2200000000
+      }
+    },
+    {
+      "initials": {
+        "value": "EAE"
+      },
+      "label": "Buy-In High Score #4",
+      "score": {
+        "value": 2000000000
+      }
+    }
+  ]
 }

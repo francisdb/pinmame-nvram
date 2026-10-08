@@ -6,20 +6,30 @@
 # regression - wrong offset/range/encoding, or a corrupt fixture) is caught, and
 # a fixed one must be removed from the list deliberately.
 #
-# The remaining entries are genuinely uninitialised/unset regions: a value and
-# its checksum are both blank because that setting was never written (e.g. WPC
-# Volume never set -> byte 0xff with checksum 0xffff).
+# The remaining entries are either genuinely uninitialised/unset regions (a
+# value and its checksum are both blank because that setting was never written,
+# e.g. WPC Volume never set -> byte 0xff with checksum 0xffff), or records the
+# upstream map marks with a _notes field as failing for that ROM revision
+# (cv_20h and ww_lh5/ww_lh6 Credits, only valid for the "c" variants).
+#
+# Dump naming: <rom>.nv has at least one game played, <rom>-factoryreset.nv was
+# booted to attract mode without playing (coin door closed, balls in the
+# trough, post-reset alert acknowledged with a coin door button),
+# <rom>-factoryreset-volumeup.nv additionally had the volume raised one step
+# with the coin door open, <rom>-uninitialized.nv was quit during the boot
+# sequence.
 #
 # Lines starting with '#' and blank lines are ignored.
 
 bop_l8 | Volume | expected 0xffff calculated 0xff00
 cv_20h | Credits | expected 0xffff calculated 0xf807
 f14_p5 | Credits | expected 0x0 calculated 0xff
+f14_p5-factoryreset | Credits | expected 0x0 calculated 0xff
 mb_106 | Volume | expected 0xffff calculated 0xff00
 t2_p2f | Volume | expected 0xffff calculated 0xff00
 taf_h4 | Volume | expected 0xffff calculated 0xff00
 taf_l4 | Volume | expected 0xffff calculated 0xff00
-taf_l5 | Volume | expected 0xffff calculated 0xff00
+taf_l5-uninitialized | Volume | expected 0xffff calculated 0xff00
 tom_14h | Volume | expected 0xffff calculated 0xff00
 wcs_p3 | Volume | expected 0xffff calculated 0xff00
 wcs_p6 | Volume | expected 0xffff calculated 0xff00

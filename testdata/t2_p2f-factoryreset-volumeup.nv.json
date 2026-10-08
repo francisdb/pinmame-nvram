@@ -4,7 +4,7 @@
     "B.2 EARNINGS AUDS.": {
       "02": {
         "label": "RECENT LEFT SLOT",
-        "value": 4
+        "value": 0
       },
       "03": {
         "label": "RECENT CENT. SLOT",
@@ -20,7 +20,7 @@
       },
       "06": {
         "label": "RECENT PAID CRED",
-        "value": 3
+        "value": 0
       },
       "07": {
         "label": "RECENT SERV. CRED",
@@ -28,7 +28,7 @@
       },
       "09": {
         "label": "TOTAL LEFT SLOT",
-        "value": 4
+        "value": 0
       },
       "10": {
         "label": "TOTAL CENTR. SLOT",
@@ -44,7 +44,7 @@
       },
       "13": {
         "label": "TOTAL PAID CRED.",
-        "value": 3
+        "value": 0
       },
       "14": {
         "label": "TOTAL SERV. CRED.",
@@ -54,7 +54,7 @@
     "B.3 STANDARD AUDS.": {
       "01": {
         "label": "GAMES STARTED",
-        "value": 2
+        "value": 0
       },
       "02": {
         "label": "TOTAL PLAYS",
@@ -97,13 +97,14 @@
         "value": 0
       },
       "21": {
-        "label": "PLAY TIME",
+        "label": "MINUTES OF PLAY",
         "units": "seconds",
         "value": 0
       },
       "22": {
         "label": "MINUTES ON",
-        "value": 9
+        "units": "minutes",
+        "value": 1
       },
       "23": {
         "label": "BALLS PLAYED",
@@ -150,158 +151,161 @@
         "value": 3000
       },
       "34": {
-        "label": "BURN-IN TIME",
-        "units": "seconds",
-        "value": 0
-      },
-      "36": {
-        "label": "LEFT FLIPPER",
-        "value": 0
-      },
-      "37": {
-        "label": "RIGHT FLIPPER",
+        "label": "BURN-IN CYCLES",
         "value": 0
       }
     },
     "B.4 FEATURE AUDS.": {
       "01": {
-        "label": "B.K. OPEN (GAMES)",
-        "value": 0
-      },
-      "02": {
-        "label": "MULTIBALL",
-        "value": 0
-      },
-      "03": {
-        "label": "2ND MULTIBALL",
-        "value": 0
-      },
-      "04": {
-        "label": "3RD MULTIBALL",
-        "value": 0
-      },
-      "05": {
-        "label": "REMATCH MADE",
-        "value": 0
-      },
-      "06": {
-        "label": "TRAIN JACKPOT",
-        "value": 0
-      },
-      "07": {
-        "label": "RAMP JACKPOTS",
-        "value": 0
-      },
-      "08": {
-        "label": "DOUBLE JACKPOT",
-        "value": 0
-      },
-      "09": {
-        "label": "TRIPLE JACKPOT",
-        "value": 0
-      },
-      "10": {
-        "label": "QUICK MULTIBALL",
-        "value": 0
-      },
-      "11": {
-        "label": "VAULT MILLIONS",
-        "value": 0
-      },
-      "12": {
-        "label": "H. UP. MULTIBALL",
-        "value": 0
-      },
-      "13": {
-        "label": "THING VAULT",
-        "value": 0
-      },
-      "14": {
-        "label": "MANSION AWARDS",
-        "value": 0
-      },
-      "15": {
-        "label": "MANSION EX. BALL",
-        "value": 0
-      },
-      "16": {
-        "label": "TOUR THE MANSION",
-        "value": 0
-      },
-      "17": {
-        "label": "RAMP E.B. LIT",
-        "value": 0
-      },
-      "18": {
-        "label": "TRAIN WRECK E.B.",
-        "value": 0
-      },
-      "19": {
-        "label": "TRAIN TARGET",
-        "value": 0
-      },
-      "20": {
-        "label": "TRAIN WRECKS",
-        "value": 0
-      },
-      "21": {
-        "label": "SWAMP 1X",
-        "value": 0
-      },
-      "22": {
-        "label": "SWAMP 5X",
-        "value": 0
-      },
-      "23": {
         "label": "SKILL SHOTS",
         "value": 0
       },
+      "02": {
+        "label": "SECURITY LEVELS",
+        "value": 0
+      },
+      "03": {
+        "label": "PAYBACK TIMES",
+        "value": 0
+      },
+      "04": {
+        "label": "PAYBACK AWARDS",
+        "value": 0
+      },
+      "05": {
+        "label": "DATABASES",
+        "value": 0
+      },
+      "06": {
+        "label": "CHASE LOOP 5 MIL.",
+        "value": 0
+      },
+      "07": {
+        "label": "CHASE LOOP COMBO",
+        "value": 0
+      },
+      "08": {
+        "label": "CHASE LOOPS",
+        "value": 0
+      },
+      "09": {
+        "label": "RAMP COMBOS",
+        "value": 0
+      },
+      "10": {
+        "label": "MULTIPLIERS",
+        "value": 0
+      },
+      "11": {
+        "label": "MULTIPLIER MAXED",
+        "value": 0
+      },
+      "12": {
+        "label": "AUTOFIRE SAVES",
+        "value": 0
+      },
+      "13": {
+        "label": "TOTAL AUTOFIRES",
+        "value": 0
+      },
+      "14": {
+        "label": "1X JACKPOTS",
+        "value": 0
+      },
+      "15": {
+        "label": "2X JACKPOTS",
+        "value": 0
+      },
+      "16": {
+        "label": "3X JACKPOTS",
+        "value": 0
+      },
+      "17": {
+        "label": "SUPER JACKPOTS",
+        "value": 0
+      },
+      "18": {
+        "label": "10 MILLIONS",
+        "value": 0
+      },
+      "19": {
+        "label": "BONUS HELD",
+        "value": 0
+      },
+      "20": {
+        "label": "HURRY UP LIT",
+        "value": 0
+      },
+      "21": {
+        "label": "HURRY UPS",
+        "value": 0
+      },
+      "22": {
+        "label": "HURRY UP AWARDS",
+        "value": 0
+      },
+      "23": {
+        "label": "ADV. ESCAPE ROUTE",
+        "value": 0
+      },
       "24": {
-        "label": "CENTER RAMP",
+        "label": "ESCAPE ROUTES",
         "value": 0
       },
       "25": {
-        "label": "SIDE RAMP",
+        "label": "KICKBACK RELIT",
         "value": 0
       },
       "26": {
-        "label": "CENTER KICKOUT",
+        "label": "KICKBACKS",
         "value": 0
       },
       "27": {
-        "label": "RIGHT KICKOUT",
+        "label": "MULTIBALLS",
         "value": 0
       },
       "28": {
-        "label": "THING TRIPS",
+        "label": "POPPER SHOTS",
         "value": 0
       },
       "29": {
-        "label": "THING AWARDS",
+        "label": "GUN LOADED",
         "value": 0
       },
       "30": {
-        "label": "THING FLIPS",
+        "label": "GUN HITS",
         "value": 0
       },
       "31": {
-        "label": "THING FLIPS HITS",
+        "label": "LIT CONSOL. BALL",
         "value": 0
       },
       "32": {
-        "label": "MANSION SPOTS",
+        "label": "CONSOLATION BALL",
         "value": 0
       },
       "33": {
-        "label": "SUPER BEAR GAMES",
+        "label": "VIDEO MODE LIT",
         "value": 0
       },
       "34": {
-        "label": "LEFT FLIPPER",
+        "label": "VIDEO MODE START",
         "value": 0
       },
       "35": {
-        "label": "RIGHT FLIPPER",
+        "label": "VIDEO MODE END",
+        "value": 0
+      },
+      "36": {
+        "label": "D.BASE EX. BALL",
+        "value": 0
+      },
+      "37": {
+        "label": "D.BASE HURRY UP",
+        "value": 0
+      },
+      "38": {
+        "label": "D.BASE VIDEO MODE",
         "value": 0
       }
     },
@@ -414,47 +418,47 @@
     "B.6 TIME-STAMPS": {
       "02": {
         "label": "TOTALS CLEARED",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:55"
       },
       "03": {
         "label": "CLOCK LAST SET",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:55"
       },
       "04": {
         "label": "AUDITS CLEARED",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:55"
       },
       "05": {
         "label": "COINS CLEARED",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:55"
       },
       "06": {
         "label": "FACTORY SETTING",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:55"
       },
       "07": {
         "label": "LAST GAME START",
-        "value": "2026-09-02 20:30"
+        "value": "2026-10-07 10:55"
       },
       "08": {
         "label": "LAST REPLAY",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:55"
       },
       "09": {
         "label": "LAST HSTD RESET",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:55"
       },
       "10": {
         "label": "CHAMPION RESET",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:55"
       },
       "11": {
         "label": "LAST PRINTOUT",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:55"
       },
       "12": {
         "label": "LAST SERV. CRED",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:55"
       }
     }
   },
@@ -515,14 +519,14 @@
     },
     "credits": {
       "label": "Credits",
-      "value": 1
+      "value": 0
     },
     "current_ball": {
       "label": "Ball",
       "value": 1
     },
     "current_player": {
-      "label": "Current Player",
+      "label": "Player",
       "value": 1
     },
     "eb_on_this_ball": {
@@ -539,23 +543,19 @@
     },
     "game_id": {
       "label": "WPC Game ID",
-      "value": "20017"
+      "value": "50013"
     },
     "game_over": {
       "label": "Game Over",
-      "value": false
+      "value": true
     },
     "max_credits": {
-      "label": "Maximum Credits",
+      "label": "Max Credits",
       "value": 10
     },
     "player_count": {
-      "label": "Players",
-      "value": 1
-    },
-    "replay": {
-      "label": "Replay",
-      "value": 90000000
+      "label": "Player Count",
+      "value": 0
     },
     "scores": [
       {
@@ -577,62 +577,62 @@
     ],
     "volume": {
       "label": "Volume",
-      "value": 12
+      "value": 13
     }
   },
   "high_scores": [
     {
       "initials": {
-        "value": "MAB"
+        "value": "AJA"
       },
       "label": "Grand Champion",
       "score": {
-        "value": 200000000
+        "value": 150000000
       },
       "short_label": "GC"
     },
     {
       "initials": {
-        "value": "PML"
+        "value": "XAQ"
       },
       "label": "First Place",
       "score": {
-        "value": 150000000
+        "value": 90000000
       },
       "short_label": "1st"
     },
     {
       "initials": {
-        "value": "VLK"
+        "value": "DOC"
       },
       "label": "Second Place",
       "score": {
-        "value": 135000000
+        "value": 70000000
       },
       "short_label": "2nd"
     },
     {
       "initials": {
-        "value": "J K"
+        "value": "JAS"
       },
       "label": "Third Place",
       "score": {
-        "value": 120000000
+        "value": 50000000
       },
       "short_label": "3rd"
     },
     {
       "initials": {
-        "value": "CG "
+        "value": "JCS"
       },
       "label": "Fourth Place",
       "score": {
-        "value": 105000000
+        "value": 30000000
       },
       "short_label": "4th"
     }
   ],
   "last_played": {
-    "value": "2026-09-02 00:01"
+    "value": "2026-10-07 00:01"
   }
 }

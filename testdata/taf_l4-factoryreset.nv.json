@@ -4,7 +4,7 @@
     "B.2 EARNINGS AUDS.": {
       "02": {
         "label": "RECENT LEFT SLOT",
-        "value": 4
+        "value": 0
       },
       "03": {
         "label": "RECENT CENT. SLOT",
@@ -20,7 +20,7 @@
       },
       "06": {
         "label": "RECENT PAID CRED",
-        "value": 3
+        "value": 0
       },
       "07": {
         "label": "RECENT SERV. CRED",
@@ -28,7 +28,7 @@
       },
       "09": {
         "label": "TOTAL LEFT SLOT",
-        "value": 4
+        "value": 0
       },
       "10": {
         "label": "TOTAL CENTR. SLOT",
@@ -44,7 +44,7 @@
       },
       "13": {
         "label": "TOTAL PAID CRED.",
-        "value": 3
+        "value": 0
       },
       "14": {
         "label": "TOTAL SERV. CRED.",
@@ -54,7 +54,7 @@
     "B.3 STANDARD AUDS.": {
       "01": {
         "label": "GAMES STARTED",
-        "value": 2
+        "value": 0
       },
       "02": {
         "label": "TOTAL PLAYS",
@@ -97,13 +97,14 @@
         "value": 0
       },
       "21": {
-        "label": "PLAY TIME",
+        "label": "MINUTES OF PLAY",
         "units": "seconds",
         "value": 0
       },
       "22": {
         "label": "MINUTES ON",
-        "value": 9
+        "units": "minutes",
+        "value": 2
       },
       "23": {
         "label": "BALLS PLAYED",
@@ -150,8 +151,7 @@
         "value": 3000
       },
       "34": {
-        "label": "BURN-IN TIME",
-        "units": "seconds",
+        "label": "BURN-IN CYCLES",
         "value": 0
       },
       "36": {
@@ -414,47 +414,47 @@
     "B.6 TIME-STAMPS": {
       "02": {
         "label": "TOTALS CLEARED",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:43"
       },
       "03": {
         "label": "CLOCK LAST SET",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:43"
       },
       "04": {
         "label": "AUDITS CLEARED",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:43"
       },
       "05": {
         "label": "COINS CLEARED",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:43"
       },
       "06": {
         "label": "FACTORY SETTING",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:43"
       },
       "07": {
         "label": "LAST GAME START",
-        "value": "2026-09-02 20:30"
+        "value": "2026-10-07 10:43"
       },
       "08": {
         "label": "LAST REPLAY",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:43"
       },
       "09": {
         "label": "LAST HSTD RESET",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:43"
       },
       "10": {
         "label": "CHAMPION RESET",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:43"
       },
       "11": {
         "label": "LAST PRINTOUT",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:43"
       },
       "12": {
         "label": "LAST SERV. CRED",
-        "value": "2026-06-03 21:17"
+        "value": "2026-10-07 10:43"
       }
     }
   },
@@ -515,14 +515,14 @@
     },
     "credits": {
       "label": "Credits",
-      "value": 1
+      "value": 0
     },
     "current_ball": {
       "label": "Ball",
       "value": 1
     },
     "current_player": {
-      "label": "Current Player",
+      "label": "Player",
       "value": 1
     },
     "eb_on_this_ball": {
@@ -543,19 +543,15 @@
     },
     "game_over": {
       "label": "Game Over",
-      "value": false
+      "value": true
     },
     "max_credits": {
-      "label": "Maximum Credits",
+      "label": "Max Credits",
       "value": 10
     },
     "player_count": {
-      "label": "Players",
-      "value": 1
-    },
-    "replay": {
-      "label": "Replay",
-      "value": 90000000
+      "label": "Player Count",
+      "value": 0
     },
     "scores": [
       {
@@ -633,6 +629,6 @@
     }
   ],
   "last_played": {
-    "value": "2026-09-02 00:01"
+    "value": "2026-10-07 00:01"
   }
 }
