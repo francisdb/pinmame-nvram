@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.19](https://github.com/francisdb/pinmame-nvram/compare/v0.4.18...v0.4.19) - 2026-10-09
+
+### Other
+
+- add played captures for eleven boot-only ROMs ([#165](https://github.com/francisdb/pinmame-nvram/pull/165))
+- add factory-reset and volume-up nvram dump tiers ([#164](https://github.com/francisdb/pinmame-nvram/pull/164))
+- *(deps)* bump pinball-memory-maps from `7e63610` to `68c1b33` ([#162](https://github.com/francisdb/pinmame-nvram/pull/162))
+
 ## [0.4.18](https://github.com/francisdb/pinmame-nvram/compare/v0.4.17...v0.4.18) - 2026-10-06
 
 ### Fixed
