@@ -90,7 +90,6 @@ bop_l3
 bop_l4
 bop_l5
 bop_l6
-bop_l8
 bountgfp
 bounthfp
 br_d1
@@ -212,7 +211,6 @@ evelknic
 excalbfp
 excalffp
 excalgfp
-f14_p5
 fathoma
 fball_ia
 fbclassa
@@ -521,7 +519,6 @@ mav_100
 mav_200
 mav_400
 mb_05
-mb_106
 medusaa
 medusaf
 memlanfp
@@ -865,7 +862,6 @@ t2_l81
 t2_l82
 t2_l83
 t2_l84
-t2_p2f
 t2_p2g
 taf_d1
 taf_d2
@@ -874,12 +870,10 @@ taf_d4
 taf_d5
 taf_d6
 taf_d7
-taf_h4
 taf_i4
 taf_l1
 taf_l2
 taf_l3
-taf_l4
 taf_l5c
 taf_p2
 taf_p3
@@ -937,7 +931,6 @@ tom_121
 tom_12a
 tom_13c
 tom_13f
-tom_14h
 tom_20
 tomy_102
 tomy_102be
@@ -1034,16 +1027,12 @@ wcs_l3c
 wcs_la1
 wcs_la2
 wcs_p2
-wcs_p3
 wcs_p5
 wcs_p6
-wd_03r
 wd_048r
 wd_10f
 wd_10g
 wd_10r
-wd_11
-wd_12g
 wipeouta
 wldcp_l1
 ww_d2
