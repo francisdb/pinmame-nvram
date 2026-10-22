@@ -14,8 +14,6 @@ alpok_l6ff
 amaz3afp
 amazn2fp
 amazn3fp
-amazonh2
-amazonh3
 amazonha
 andrett4
 apollo1
@@ -319,7 +317,6 @@ gprixf
 gprixg
 gprixi
 gprixl
-grand8
 grgar_c1
 grgar_l1ff
 grgar_t1
@@ -637,7 +634,6 @@ pop_pa3
 pop_pa4
 poto_a29
 princefp
-punk
 pwerplab
 pwerplac
 pz_d1
@@ -648,7 +644,6 @@ pz_f5
 pz_l1
 pz_l2
 rab_130
-raimfire
 ravenafp
 ravenfp
 ravengfp
@@ -700,7 +695,6 @@ robo_a30
 robowffp
 robowrfp
 rock_efp
-rock_enc
 rockegfp
 rockfp
 rockgfp
@@ -826,7 +820,6 @@ startred
 stingrfp
 stk_sprb
 stk_sprc
-striker
 strikerf
 strikerg
 strxt_fr
