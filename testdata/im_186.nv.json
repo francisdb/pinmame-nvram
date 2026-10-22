@@ -1,0 +1,269 @@
+{
+  "_fileformat": 0.7,
+  "checksum16": [
+    {
+      "label": "Grand Champion",
+      "value": "valid"
+    },
+    {
+      "label": "High Score #1",
+      "value": "valid"
+    },
+    {
+      "label": "High Score #2",
+      "value": "valid"
+    },
+    {
+      "label": "High Score #3",
+      "value": "valid"
+    },
+    {
+      "label": "High Score #4",
+      "value": "valid"
+    },
+    {
+      "label": "Bogey Champion",
+      "value": "valid"
+    },
+    {
+      "label": "Iron Man Champion",
+      "value": "valid"
+    },
+    {
+      "label": "War Machine Champion",
+      "value": "valid"
+    },
+    {
+      "label": "Iron Monger Champion",
+      "value": "valid"
+    },
+    {
+      "label": "Whiplash Champion",
+      "value": "valid"
+    },
+    {
+      "label": "Drones Champion",
+      "value": "valid"
+    },
+    {
+      "label": "Jericho Champion",
+      "value": "valid"
+    },
+    {
+      "label": "Do Or Die Multiball Champion",
+      "value": "valid"
+    }
+  ],
+  "checksum8": [
+    {
+      "label": "Free Play adjustment",
+      "value": "valid"
+    },
+    {
+      "label": "Balls Per Game adjustment",
+      "value": "valid"
+    },
+    {
+      "label": "Maximum Credits adjustment",
+      "value": "valid"
+    },
+    {
+      "label": "Master Volume",
+      "value": "valid"
+    }
+  ],
+  "game_state": {
+    "ball_count": {
+      "label": "Balls Per Game",
+      "value": 3
+    },
+    "credits": {
+      "label": "Credits",
+      "value": 3
+    },
+    "current_ball": {
+      "label": "Ball",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "current_player": {
+      "label": "Player",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "free_play": {
+      "label": "Free Play",
+      "value": false
+    },
+    "game_over": {
+      "label": "Game Over",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "value": 30
+    },
+    "player_count": {
+      "label": "Player Count",
+      "value": 1
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 25117900
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ],
+    "tilted": {
+      "label": "Tilted",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "volume": {
+      "label": "Master Volume",
+      "value": 40
+    }
+  },
+  "high_scores": [
+    {
+      "initials": {
+        "value": "G S"
+      },
+      "label": "Grand Champion",
+      "score": {
+        "value": 75000000
+      },
+      "short_label": "GC"
+    },
+    {
+      "initials": {
+        "value": "L R"
+      },
+      "label": "High Score #1",
+      "score": {
+        "value": 55000000
+      },
+      "short_label": "#1"
+    },
+    {
+      "initials": {
+        "value": "J R"
+      },
+      "label": "High Score #2",
+      "score": {
+        "value": 40000000
+      },
+      "short_label": "#2"
+    },
+    {
+      "initials": {
+        "value": "D T"
+      },
+      "label": "High Score #3",
+      "score": {
+        "value": 30000000
+      },
+      "short_label": "#3"
+    },
+    {
+      "initials": {
+        "value": "A"
+      },
+      "label": "High Score #4",
+      "score": {
+        "value": 25117900
+      },
+      "short_label": "#4"
+    }
+  ],
+  "mode_champions": [
+    {
+      "initials": {
+        "value": "A"
+      },
+      "label": "Bogey Champion",
+      "score": {
+        "value": 7000000
+      },
+      "short_label": "Bogey"
+    },
+    {
+      "initials": {
+        "value": "ABC"
+      },
+      "label": "Iron Man Champion",
+      "score": {
+        "value": 5000000
+      },
+      "short_label": "Iron Man"
+    },
+    {
+      "initials": {
+        "value": "ABC"
+      },
+      "label": "War Machine Champion",
+      "score": {
+        "value": 5000000
+      },
+      "short_label": "War Mach"
+    },
+    {
+      "initials": {
+        "value": "GSP"
+      },
+      "label": "Iron Monger Champion",
+      "score": {
+        "value": 5000000
+      },
+      "short_label": "Monger"
+    },
+    {
+      "initials": {
+        "value": "ABC"
+      },
+      "label": "Whiplash Champion",
+      "score": {
+        "value": 5000000
+      },
+      "short_label": "Whiplash"
+    },
+    {
+      "initials": {
+        "value": "ABC"
+      },
+      "label": "Drones Champion",
+      "score": {
+        "value": 5000000
+      },
+      "short_label": "Drones"
+    },
+    {
+      "initials": {
+        "value": "ABC"
+      },
+      "label": "Jericho Champion",
+      "score": {
+        "value": 10000000
+      },
+      "short_label": "Jericho"
+    },
+    {
+      "initials": {
+        "value": "ABC"
+      },
+      "label": "Do Or Die Multiball Champion",
+      "score": {
+        "value": 25000000
+      },
+      "short_label": "Do Or Die"
+    }
+  ]
+}

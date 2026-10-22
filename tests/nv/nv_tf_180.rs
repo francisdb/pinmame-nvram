@@ -42,8 +42,9 @@ fn test_transformers() -> io::Result<()> {
             label: Some("Best Combo Champion".into()),
             short_label: Some("Best Combo".into()),
             initials: Some("LON".into()),
-            score: Some(327681),
-            suffix: Some("-WAY".into()),
+            // the map stores this one as a `counter`, which ModeChampion does not expose
+            score: None,
+            suffix: None,
             timestamp: None,
         },
     ];

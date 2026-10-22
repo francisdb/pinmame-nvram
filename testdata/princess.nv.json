@@ -91,6 +91,10 @@
       "label": "Game Over",
       "value": false
     },
+    "ignore_scores": {
+      "label": "Ignore Scores",
+      "value": false
+    },
     "match": {
       "label": "Match",
       "value": 40

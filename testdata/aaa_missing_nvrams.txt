@@ -106,6 +106,8 @@ btmn_g13
 bttf_a21
 bttf_a28
 bttf_g27
+cavnegr1
+cavnegr2
 cc_10
 cc_104
 cc_12
@@ -133,6 +135,7 @@ corv_lx2
 corv_px3
 corv_px4
 corv_px5
+countdwn
 cp_15
 cp_16pfx
 cueball1
@@ -265,6 +268,8 @@ ft_p2
 ft_p4
 ft_p5
 futurspb
+gemini
+gemini1
 genesffp
 genesgfp
 genesifp
@@ -353,6 +358,7 @@ harl_l18
 harl_l30
 harl_l40
 harl_u13
+hawkman1
 hd_d1
 hd_d2
 hd_d3
@@ -438,6 +444,7 @@ kissd
 kisse
 kissf
 kpv106
+ladylukt
 lah_110
 lah_c106
 lah_f104
@@ -526,6 +533,7 @@ meteor
 meteora
 meteora2
 meteorbf
+meteort
 midearta
 mideartf
 midearth
@@ -550,6 +558,7 @@ monopolf
 monopolg
 monopoli
 monopoll
+mrblack1
 mystcast
 nas301
 nas301l
@@ -585,6 +594,8 @@ nightrdb
 nightrdc
 nmovesfp
 nugentfp
+obaoba1
+obaobao
 panthera
 paragonb
 paragonc
@@ -618,6 +629,7 @@ playboyi
 playboyl
 pnkpntr7
 pnkpntrs
+polar
 pop_dx5
 pop_la4
 pop_lx4
@@ -719,6 +731,7 @@ scrpn_t1
 scrpn_t1ff
 sexygirl
 sfight2b
+shock
 shrky207
 shrky_fr
 shrky_gr
@@ -741,6 +754,7 @@ simpprtf
 simpprtg
 simpprti
 simpprtl
+sinbadn
 skatebla
 skateblb
 slbmanic
@@ -796,6 +810,7 @@ ss_11
 ss_11s10
 ss_12
 ss_14
+sshuttl1
 sstc
 sstd
 ssvc_a42
@@ -832,6 +847,7 @@ sttng_l2
 sttng_l3
 sttng_l5
 sttng_l7c
+sttng_la7
 sttng_p4
 sttng_p5
 sttng_p6
@@ -847,6 +863,7 @@ stwr_107s
 stwr_a046
 stwr_e12
 stwr_g11
+sureshot
 swtril30
 swtril41
 t2_d2
@@ -910,6 +927,7 @@ thegamsc
 tim2000f
 time2000
 timelin7
+titan1
 tmac_a18
 tmac_g18
 tmnt_101
@@ -1003,6 +1021,7 @@ tz_p5
 tz_pa1
 tz_pa2
 vectora
+vegast
 victr101
 victr11
 victr12
@@ -1016,6 +1035,7 @@ vlcno_1c
 vlcno_a7
 vlcno_ax
 vlcno_b7
+voleybal
 voltan
 voltanc
 voltand
@@ -1055,3 +1075,4 @@ xfiles2
 xfiles20
 xfiles304
 xfilesf
+zarza1
