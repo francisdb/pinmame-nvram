@@ -3,7 +3,6 @@ aavenger
 abv105
 afm_03
 afm_10
-afm_11
 afm_11pfx
 afm_11u
 algar_l1ff
@@ -50,7 +49,6 @@ blackjcd
 blakpyrb
 blkhol7s
 blkhole2
-blkholea
 blkou_f1
 blkou_f1ff
 blkou_l1ff
@@ -98,11 +96,9 @@ br_l3
 br_p17
 br_p18
 bsv102
-btmn_103
 btmn_f13
 btmn_g13
 bttf_a21
-bttf_a28
 bttf_g27
 cavnegr1
 cavnegr2
@@ -120,11 +116,8 @@ cftbl_l4c
 cftbl_p3
 cheetahb
 cheetahb2
-comet_l4
 congo_11
 congo_13
-congo_20
-congo_20s10k
 corv_dx1
 corv_la1
 corv_la2
@@ -133,7 +126,6 @@ corv_lx2
 corv_px3
 corv_px4
 corv_px5
-countdwn
 cp_15
 cp_16pfx
 cueball1
@@ -166,12 +158,9 @@ dm_pa2
 dm_pa3
 dm_px5
 dm_px6
-dollyptn
 drac_d1
 drac_l2c
-drac_p11
 drac_p12
-dvlsdre2
 dvlsdrea
 dw_d1
 dw_d2
@@ -197,16 +186,12 @@ elv303g
 elv303i
 elv303l
 elv400
-elv400f
 elv400g
 elv400i
 elv400l
 elvisg
-elvisi
-elvisl
 embryona
 esha_la1
-esha_pr4
 evelknib
 evelknic
 excalbfp
@@ -266,7 +251,6 @@ ft_p2
 ft_p4
 ft_p5
 futurspb
-gemini
 gemini1
 genesffp
 genesgfp
@@ -281,7 +265,6 @@ gi_l6
 gi_l8
 gldwgffp
 gldwggfp
-gnr_300d
 gnr_300f
 godz_090
 godz_100
@@ -326,7 +309,6 @@ gw_d2
 gw_d3
 gw_d5
 gw_l1
-gw_l2
 gw_l3
 gw_l5c
 gw_p7
@@ -361,7 +343,6 @@ hd_d2
 hd_d3
 hd_l2
 hercules
-hglbtrtr
 hh7
 hh_1
 hh_3
@@ -441,7 +422,6 @@ kissd
 kisse
 kissf
 kpv106
-ladylukt
 lah_110
 lah_c106
 lah_f104
@@ -490,7 +470,6 @@ lotr_it8
 lotr_it9
 lotr_le
 lotr_s51
-lotr_sp
 lotr_sp4
 lotr_sp5
 lotr_sp6
@@ -519,18 +498,14 @@ marsf
 marsp
 mataharb
 mataharc
-mav_100
-mav_200
 mav_400
 mb_05
 medusaa
 medusaf
 memlanfp
-meteor
 meteora
 meteora2
 meteorbf
-meteort
 midearta
 mideartf
 midearth
@@ -626,7 +601,6 @@ playboyi
 playboyl
 pnkpntr7
 pnkpntrs
-polar
 pop_dx5
 pop_la4
 pop_lx4
@@ -713,7 +687,6 @@ rs_lx2
 rs_lx3
 rs_lx4
 rs_lx5
-rs_pa2
 sc_10
 sc_14
 sc_17
@@ -757,7 +730,6 @@ smanve_100
 smanve_101c
 smb1
 smb2
-smman
 smmand
 sopr107f
 sopr107g
@@ -787,9 +759,7 @@ spcridef
 spcrider
 spirit0
 spirit3
-splitsec
 sprbrafp
-sprbreak
 sprbrffp
 sprbrgfp
 sprbrkfp
@@ -810,12 +780,9 @@ sstd
 ssvc_a42
 ssvc_b26
 ssvc_e40
-st_161hc
 st_162c
 st_162hc
-starrace
 starsfp
-startrec
 startred
 stingrfp
 stk_sprb
@@ -856,7 +823,6 @@ stwr_107s
 stwr_a046
 stwr_e12
 stwr_g11
-sureshot
 swtril30
 swtril41
 t2_d2
@@ -870,7 +836,6 @@ t2_l4
 t2_l6
 t2_l81
 t2_l82
-t2_l83
 t2_l84
 t2_p2g
 taf_d1
@@ -894,7 +859,6 @@ tafg_h3
 tafg_i3
 tafg_la2
 tafg_la3
-tagteam
 tagtem2f
 tagtemfp
 tagtmgfp
@@ -915,8 +879,6 @@ tftc_104
 tftc_200
 tftc_300
 tftc_302
-thegamsb
-thegamsc
 tim2000f
 time2000
 timelin7
@@ -983,7 +945,6 @@ ts_lm6
 ts_lx4
 ts_pa1
 ts_pa2
-twd_156
 twd_156c
 twst_300
 twst_404
@@ -1014,7 +975,6 @@ tz_p5
 tz_pa1
 tz_pa2
 vectora
-vegast
 victr101
 victr11
 victr12
@@ -1023,13 +983,9 @@ victrffp
 victrgfp
 victryfp
 vipr_102
-vlcno_1b
 vlcno_1c
 vlcno_a7
-vlcno_ax
 vlcno_b7
-voleybal
-voltan
 voltanc
 voltand
 waterwl2
@@ -1060,7 +1016,6 @@ ww_lh6c
 ww_p6
 ww_p8
 ww_p9
-wwfr_103
 xenona
 xenonf
 xenonfa
