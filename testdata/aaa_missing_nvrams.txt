@@ -546,8 +546,6 @@ nbaf_21
 nbaf_22
 nbaf_23
 nf_08x
-nf_101
-nf_10f
 nf_11x
 nf_20
 nf_22
@@ -612,7 +610,6 @@ pz_f4pfx
 pz_f5
 pz_l1
 pz_l2
-rab_130
 ravenafp
 ravenfp
 ravengfp
@@ -692,7 +689,6 @@ scrpn_l1ff
 scrpn_t1
 scrpn_t1ff
 sexygirl
-sfight2b
 shock
 shrky207
 shrky_fr
@@ -723,8 +719,6 @@ slbmanic
 slbmanid
 smanve_100
 smanve_101c
-smb1
-smb2
 smmand
 sopr107f
 sopr107g
@@ -792,7 +786,6 @@ strxt_it_101
 strxt_sp
 strxt_uk
 sttng_d1
-sttng_d2
 sttng_d7
 sttng_dx
 sttng_g7
@@ -996,7 +989,6 @@ wd_048r
 wd_10f
 wd_10g
 wd_10r
-wipeouta
 wldcp_l1
 ww_d2
 ww_d3
