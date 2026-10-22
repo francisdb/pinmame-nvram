@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.19](https://github.com/francisdb/pinmame-nvram/compare/v0.4.18...v0.4.19) - 2026-10-22
+
+### Other
+
+- add played dumps for gprixl, sc_17 and stwr_103 ([#171](https://github.com/francisdb/pinmame-nvram/pull/171))
+- add played dumps for eight more ROMs ([#172](https://github.com/francisdb/pinmame-nvram/pull/172))
+- add played dumps for six more ROMs ([#170](https://github.com/francisdb/pinmame-nvram/pull/170))
+- add played dumps for 45 more ROMs ([#169](https://github.com/francisdb/pinmame-nvram/pull/169))
+- add played dumps for seven Gottlieb System 80 ROMs ([#168](https://github.com/francisdb/pinmame-nvram/pull/168))
+- bump pinball-memory-maps to 1255546 and reconcile testdata ([#167](https://github.com/francisdb/pinmame-nvram/pull/167))
+- add played captures for eleven boot-only ROMs ([#165](https://github.com/francisdb/pinmame-nvram/pull/165))
+- add factory-reset and volume-up nvram dump tiers ([#164](https://github.com/francisdb/pinmame-nvram/pull/164))
+- *(deps)* bump pinball-memory-maps from `7e63610` to `68c1b33` ([#162](https://github.com/francisdb/pinmame-nvram/pull/162))
+
 ## [0.4.18](https://github.com/francisdb/pinmame-nvram/compare/v0.4.17...v0.4.18) - 2026-10-06
 
 ### Fixed
