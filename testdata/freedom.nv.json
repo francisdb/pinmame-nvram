@@ -87,6 +87,10 @@
       "label": "Game Over",
       "value": false
     },
+    "ignore_scores": {
+      "label": "Ignore Scores",
+      "value": false
+    },
     "max_credits": {
       "label": "Max Credits",
       "value": 5

@@ -34,7 +34,33 @@
       "value": "valid"
     }
   ],
+  "checksum8": [
+    {
+      "label": "Free Play adjustment",
+      "value": "valid"
+    },
+    {
+      "label": "Balls Per Game adjustment",
+      "value": "valid"
+    },
+    {
+      "label": "Maximum Credits adjustment",
+      "value": "valid"
+    }
+  ],
   "game_state": {
+    "ball_count": {
+      "label": "Balls Per Game",
+      "value": 3
+    },
+    "free_play": {
+      "label": "Free Play",
+      "value": false
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "value": 30
+    },
     "scores": [
       {
         "label": "Player 1",

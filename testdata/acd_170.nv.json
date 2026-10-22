@@ -3,7 +3,7 @@
   "high_scores": [
     {
       "initials": {
-        "value": "LFS"
+        "value": "SSR"
       },
       "label": "Grand Champion",
       "score": {
@@ -13,7 +13,7 @@
     },
     {
       "initials": {
-        "value": "R B"
+        "value": "LFS"
       },
       "label": "First Place",
       "score": {
@@ -23,7 +23,7 @@
     },
     {
       "initials": {
-        "value": "J Y"
+        "value": "R B"
       },
       "label": "Second Place",
       "score": {
@@ -33,7 +33,7 @@
     },
     {
       "initials": {
-        "value": "M G"
+        "value": "J Y"
       },
       "label": "Third Place",
       "score": {
@@ -43,7 +43,7 @@
     },
     {
       "initials": {
-        "value": "ABC"
+        "value": "M G"
       },
       "label": "Fourth Place",
       "score": {

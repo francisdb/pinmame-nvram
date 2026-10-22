@@ -121,12 +121,20 @@
       "label": "Player",
       "warning": "Failed to resolve: Value is stored outside the NVRAM"
     },
+    "extra_balls": {
+      "label": "Extra Ball",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
     "free_play": {
       "label": "Free Play",
       "value": false
     },
     "game_over": {
       "label": "Game Over",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "ignore_scores": {
+      "label": "Ignore Scores",
       "warning": "Failed to resolve: Value is stored outside the NVRAM"
     },
     "max_credits": {

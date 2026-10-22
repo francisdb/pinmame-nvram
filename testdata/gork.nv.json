@@ -1,0 +1,112 @@
+{
+  "_fileformat": 0.8,
+  "adjustments": {
+    "Adjustments": {
+      "01": {
+        "label": "Balls Per Game",
+        "value": 5
+      },
+      "02": {
+        "label": "Coinage (code)",
+        "value": 11
+      },
+      "03": {
+        "label": "Maximum Credits",
+        "value": 6
+      },
+      "04": {
+        "label": "Incentive",
+        "value": 1
+      },
+      "08": {
+        "label": "Specials Per Game",
+        "value": 5
+      },
+      "09": {
+        "label": "Credits For High Score",
+        "value": 1
+      }
+    }
+  },
+  "audits": {
+    "Audits": {
+      "01": {
+        "label": "Play Time (ticks)",
+        "value": 11
+      },
+      "02": {
+        "label": "Powered-On Time (ticks)",
+        "value": 12
+      },
+      "03": {
+        "label": "Coins",
+        "value": 6
+      },
+      "04": {
+        "label": "Games Played",
+        "value": 5
+      }
+    }
+  },
+  "game_state": {
+    "ball_count": {
+      "label": "Balls Per Game",
+      "value": 5
+    },
+    "credits": {
+      "label": "Credits",
+      "value": 1
+    },
+    "current_ball": {
+      "label": "Current Ball",
+      "value": 1
+    },
+    "current_player": {
+      "label": "Current Player",
+      "value": "Bits encoding not implemented"
+    },
+    "game_over": {
+      "label": "Game Over",
+      "value": false
+    },
+    "match": {
+      "label": "Match",
+      "value": 86
+    },
+    "player_count": {
+      "label": "Players",
+      "value": 1
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "value": 0
+      },
+      {
+        "label": "Player 2",
+        "value": 0
+      },
+      {
+        "label": "Player 3",
+        "value": 0
+      },
+      {
+        "label": "Player 4",
+        "value": 0
+      }
+    ],
+    "tilted": {
+      "label": "Tilted",
+      "value": false
+    }
+  },
+  "high_scores": [
+    {
+      "label": "High Score",
+      "score": {
+        "value": 45
+      },
+      "short_label": "HS"
+    }
+  ]
+}

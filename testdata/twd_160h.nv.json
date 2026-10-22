@@ -1,6 +1,32 @@
 {
   "_fileformat": 0.7,
+  "checksum8": [
+    {
+      "label": "Free Play adjustment",
+      "value": "valid"
+    },
+    {
+      "label": "Balls Per Game adjustment",
+      "value": "valid"
+    },
+    {
+      "label": "Maximum Credits adjustment",
+      "value": "valid"
+    },
+    {
+      "label": "Master Volume",
+      "value": "valid"
+    }
+  ],
   "game_state": {
+    "ball_count": {
+      "label": "Balls Per Game",
+      "value": 3
+    },
+    "credits": {
+      "label": "Credits",
+      "value": 21
+    },
     "current_ball": {
       "label": "Ball",
       "warning": "Failed to resolve: Value is stored outside the NVRAM"
@@ -8,6 +34,18 @@
     "current_player": {
       "label": "Player",
       "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "free_play": {
+      "label": "Free Play",
+      "value": false
+    },
+    "game_over": {
+      "label": "Game Over",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "value": 30
     },
     "player_count": {
       "label": "Player Count",
@@ -30,7 +68,15 @@
         "label": "Player 4",
         "value": 0
       }
-    ]
+    ],
+    "tilted": {
+      "label": "Tilted",
+      "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "volume": {
+      "label": "Master Volume",
+      "value": 40
+    }
   },
   "high_scores": [
     {

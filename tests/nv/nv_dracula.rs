@@ -39,6 +39,7 @@ fn test_dracula_last_game() -> io::Result<()> {
         ("match".into(), "70".into()),
         ("game_over".into(), "false".into()),
         ("tilted".into(), "false".into()),
+        ("ignore_scores".into(), "false".into()),
         ("final_scores.0".into(), "32520".into()),
         ("final_scores.1".into(), "22510".into()),
         ("final_scores.2".into(), "0".into()),
