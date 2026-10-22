@@ -297,7 +297,6 @@ gpr400l
 gprixf
 gprixg
 gprixi
-gprixl
 grgar_c1
 grgar_l1ff
 grgar_t1
@@ -681,7 +680,6 @@ rs_lx4
 rs_lx5
 sc_10
 sc_14
-sc_17
 sc_17n
 sc_18ns2
 sc_18pfx
@@ -804,7 +802,6 @@ sttng_x7
 sttng_x8
 stwr_101
 stwr_102
-stwr_103
 stwr_104
 stwr_106
 stwr_107s
