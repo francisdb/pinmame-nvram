@@ -15,6 +15,21 @@ use std::io;
 use std::io::{Read, Seek};
 use std::path::Path;
 
+/// Resolve all descriptors of the map for this `.nv` file to their values.
+///
+/// Returns `Ok(None)` when there is no map for the ROM.
+///
+/// Checksum and mirror results are `"valid"` or `"mismatch"`. Maps at file
+/// format 0.9 and later report them in a top-level `validation` object:
+///
+/// ```json
+/// "validation": {
+///   "checksum": [{ "label": "Adjustments", "value": "valid" }],
+///   "mirror": [{ "label": "Adjustments", "value": "valid" }]
+/// }
+/// ```
+///
+/// Older maps report them in top-level `checksum8` and `checksum16` arrays.
 pub fn resolve(nv_path: &Path) -> io::Result<Option<Value>> {
     let mut map: Option<Value> = open_nvram(nv_path)?;
     let result = if let Some(map) = &mut map {
