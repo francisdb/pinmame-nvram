@@ -127,6 +127,17 @@ pub struct Descriptor {
     pub units: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub invert: Option<bool>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub repeat: Option<Repeat>,
+}
+
+/// Makes `count` copies of a descriptor in an array, adding `step` to the
+/// addresses of each next copy. Expanded when the map is loaded, see
+/// [`crate::repeat::expand_repeats`].
+#[derive(Serialize, Deserialize, Debug, PartialEq, Clone, Copy)]
+pub struct Repeat {
+    pub count: u64,
+    pub step: u64,
 }
 
 #[derive(Serialize, Deserialize, Debug, PartialEq)]
@@ -140,6 +151,54 @@ pub struct Checksum16 {
     pub label: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub _notes: Option<String>,
+}
+
+/// `_metadata.validation` (file format 0.9): how the ROM detects corrupted
+/// memory. Writers update the mirrors first, then the checksums.
+#[derive(Serialize, Deserialize, Default)]
+pub struct Validation {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub checksum: Option<Vec<Checksum>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mirror: Option<Vec<Mirror>>,
+}
+
+/// A memory range whose sum (or its complement) is stored at `checksum`, or
+/// at the end of the range when `checksum` is absent.
+#[derive(Serialize, Deserialize, Debug, PartialEq)]
+pub struct Checksum {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub _notes: Option<Strings>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub label: Option<String>,
+    pub start: HexOrInteger,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub end: Option<HexOrInteger>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub length: Option<HexOrInteger>,
+    /// 4, 8 (default) or 16
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub bits: Option<u8>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub checksum: Option<HexOrInteger>,
+    pub complement: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub repeat: Option<Repeat>,
+}
+
+/// A memory region copied to all `offsets` (relative to `start`).
+#[derive(Serialize, Deserialize, Debug, PartialEq)]
+pub struct Mirror {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub _notes: Option<Strings>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub label: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub start: Option<HexOrInteger>,
+    pub length: HexOrInteger,
+    pub offsets: Vec<HexOrInteger>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub repeat: Option<Repeat>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -217,6 +276,8 @@ pub struct ModeChampion {
     pub counter: Option<Descriptor>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub nth_time: Option<Descriptor>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub repeat: Option<Repeat>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -230,6 +291,8 @@ pub struct HighScore {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub initials: Option<Descriptor>,
     pub score: Descriptor,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub repeat: Option<Repeat>,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -279,7 +342,7 @@ pub enum Endian {
     Little,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, PartialEq)]
 #[serde(untagged)]
 pub enum Strings {
     Single(String),
@@ -376,6 +439,8 @@ pub struct Metadata {
     pub values: Option<HashMap<String, Vec<String>>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub free_only: Option<Vec<String>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub validation: Option<Validation>,
 }
 
 #[derive(Serialize, Deserialize)]

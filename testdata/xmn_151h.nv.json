@@ -1,49 +1,5 @@
 {
-  "_fileformat": 0.7,
-  "checksum16": [
-    {
-      "label": "Grand Champion",
-      "value": "valid"
-    },
-    {
-      "label": "High Score #1",
-      "value": "valid"
-    },
-    {
-      "label": "High Score #2",
-      "value": "valid"
-    },
-    {
-      "label": "High Score #3",
-      "value": "valid"
-    },
-    {
-      "label": "High Score #4",
-      "value": "valid"
-    },
-    {
-      "label": "Combo Champion",
-      "value": "valid"
-    }
-  ],
-  "checksum8": [
-    {
-      "label": "Free Play adjustment",
-      "value": "valid"
-    },
-    {
-      "label": "Balls Per Game adjustment",
-      "value": "valid"
-    },
-    {
-      "label": "Maximum Credits adjustment",
-      "value": "valid"
-    },
-    {
-      "label": "Master Volume",
-      "value": "valid"
-    }
-  ],
+  "_fileformat": 0.9,
   "game_state": {
     "ball_count": {
       "label": "Balls Per Game",
@@ -166,5 +122,49 @@
         "value": 15
       }
     }
-  ]
+  ],
+  "validation": {
+    "checksum": [
+      {
+        "label": "Free Play adjustment",
+        "value": "valid"
+      },
+      {
+        "label": "Balls Per Game adjustment",
+        "value": "valid"
+      },
+      {
+        "label": "Maximum Credits adjustment",
+        "value": "valid"
+      },
+      {
+        "label": "Master Volume",
+        "value": "valid"
+      },
+      {
+        "label": "Grand Champion",
+        "value": "valid"
+      },
+      {
+        "label": "High Score #1",
+        "value": "valid"
+      },
+      {
+        "label": "High Score #2",
+        "value": "valid"
+      },
+      {
+        "label": "High Score #3",
+        "value": "valid"
+      },
+      {
+        "label": "High Score #4",
+        "value": "valid"
+      },
+      {
+        "label": "Combo Champion",
+        "value": "valid"
+      }
+    ]
+  }
 }

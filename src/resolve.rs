@@ -1,4 +1,6 @@
-use crate::checksum::{verify_checksum8, verify_checksum16};
+use crate::checksum::{
+    VALIDATION_FILEFORMAT, verify_checksum, verify_checksum8, verify_checksum16, verify_mirror,
+};
 use crate::encoding::{
     Location, read_bcd, read_bool, read_ch, read_exact_at, read_int, read_wpc_rtc,
 };
@@ -14,8 +16,8 @@ use std::io::{Read, Seek};
 use std::path::Path;
 
 pub fn resolve(nv_path: &Path) -> io::Result<Option<Value>> {
-    let map: Option<Value> = open_nvram(nv_path)?;
-    let result = if let Some(map) = &map {
+    let mut map: Option<Value> = open_nvram(nv_path)?;
+    let result = if let Some(map) = &mut map {
         // TODO how can we do this without cloning the whole object?
         let global_settings: GlobalSettingsImpl =
             serde_json::from_value(map.clone()).map_err(|e| {
@@ -28,7 +30,29 @@ pub fn resolve(nv_path: &Path) -> io::Result<Option<Value>> {
         let platform: Platform = read_platform(global_settings.platform())?;
 
         let mut rom = OpenOptions::new().read(true).open(nv_path)?;
-        match resolve_recursive(map, &global_settings, &platform, &mut rom) {
+        let fileformat = map
+            .get("_fileformat")
+            .and_then(Value::as_f64)
+            .unwrap_or(0.0);
+        let validation = if fileformat >= VALIDATION_FILEFORMAT {
+            // the deprecated checksum8/checksum16 are superseded by _metadata.validation
+            if let Some(map) = map.as_object_mut() {
+                map.remove("checksum8");
+                map.remove("checksum16");
+            }
+            Some(resolve_validation(&global_settings, &platform, &mut rom))
+        } else {
+            None
+        };
+        let resolved = resolve_recursive(map, &global_settings, &platform, &mut rom).and_then(
+            |mut resolved| {
+                if let (Some(validation), Value::Object(resolved)) = (validation, &mut resolved) {
+                    resolved.insert("validation".to_string(), validation?);
+                }
+                Ok(resolved)
+            },
+        );
+        match resolved {
             Ok(resolved) => Some(resolved),
             Err(e) => {
                 return Err(io::Error::new(
@@ -179,6 +203,61 @@ fn validate_range(map: &Map<String, Value>, value: Option<u64>) -> Option<String
         ));
     }
     None
+}
+
+/// Resolve `_metadata.validation` to `{"checksum": [...], "mirror": [...]}`,
+/// each entry `valid` or `mismatch`.
+fn resolve_validation<T: Read + Seek>(
+    global_settings: &GlobalSettingsImpl,
+    platform: &Platform,
+    rom: &mut T,
+) -> io::Result<Value> {
+    let mut result = Map::new();
+    let Some(validation) = &global_settings._metadata.validation else {
+        return Ok(Value::Object(result));
+    };
+    if let Some(checksums) = &validation.checksum {
+        let mut checksum_result: Vec<Value> = Vec::new();
+        for checksum in checksums {
+            let mut map = Map::new();
+            if let Some(label) = &checksum.label {
+                map.insert("label".to_string(), Value::String(label.clone()));
+            }
+            if let Some(mismatch) = verify_checksum(rom, checksum, platform)? {
+                map.insert("value".to_string(), Value::String("mismatch".to_string()));
+                map.insert(
+                    "checksum_mismatch_expected".to_string(),
+                    Value::Number(mismatch.expected.into()),
+                );
+                map.insert(
+                    "checksum_mismatch_calculated".to_string(),
+                    Value::Number(mismatch.calculated.into()),
+                );
+            } else {
+                map.insert("value".to_string(), Value::String("valid".to_string()));
+            }
+            checksum_result.push(Value::Object(map));
+        }
+        result.insert("checksum".to_string(), Value::Array(checksum_result));
+    }
+    if let Some(mirrors) = &validation.mirror {
+        let mut mirror_result: Vec<Value> = Vec::new();
+        for mirror in mirrors {
+            let mut map = Map::new();
+            if let Some(label) = &mirror.label {
+                map.insert("label".to_string(), Value::String(label.clone()));
+            }
+            let value = if verify_mirror(rom, mirror, platform)? {
+                "valid"
+            } else {
+                "mismatch"
+            };
+            map.insert("value".to_string(), Value::String(value.to_string()));
+            mirror_result.push(Value::Object(map));
+        }
+        result.insert("mirror".to_string(), Value::Array(mirror_result));
+    }
+    Ok(Value::Object(result))
 }
 
 fn resolve_checksum16<T: Read + Seek>(
@@ -801,6 +880,12 @@ mod tests {
                     out.push(format!(
                         "{rom} | {label} | expected {exp:#x} calculated {calc:#x}"
                     ));
+                } else if map.get("value").and_then(|v| v.as_str()) == Some("mismatch") {
+                    let label = map
+                        .get("label")
+                        .and_then(|l| l.as_str())
+                        .unwrap_or("(no label)");
+                    out.push(format!("{rom} | {label} | mirror mismatch"));
                 }
                 for v in map.values() {
                     collect_checksum_mismatches(rom, v, out);

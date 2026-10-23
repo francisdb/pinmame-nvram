@@ -3,9 +3,12 @@ pub mod dips;
 mod encoding;
 mod index;
 mod model;
+mod repeat;
 pub mod resolve;
 
-use crate::checksum::{ChecksumMismatch, update_all_checksum16, verify_all_checksum16};
+use crate::checksum::{
+    ChecksumMismatch, update_all_checksums, verify_all_checksum16, verify_all_checksums,
+};
 use crate::dips::{MAX_SWITCH_COUNT, get_dip_switch, set_dip_switch, validate_dip_switch_range};
 use crate::encoding::{
     Location, read_bcd, read_bool, read_ch, read_int, read_wpc_rtc, write_bcd, write_ch,
@@ -136,7 +139,7 @@ impl Nvram {
             self.platform.offset(MemoryLayoutType::NVRam),
             &self.map,
         )?;
-        update_all_checksum16(&mut rw_file, &self.map, &self.platform)
+        update_all_checksums(&mut rw_file, &self.map, &self.platform)
     }
 
     pub fn read_mode_champions(&mut self) -> io::Result<Option<Vec<ModeChampion>>> {
@@ -164,6 +167,12 @@ impl Nvram {
     pub fn verify_all_checksum16(&mut self) -> io::Result<Vec<ChecksumMismatch<u16>>> {
         let mut file = OpenOptions::new().read(true).open(&self.nv_path)?;
         verify_all_checksum16(&mut file, &self.map, &self.platform)
+    }
+
+    /// Verify all checksums of the map, 4, 8 and 16 bits
+    pub fn verify_all_checksums(&mut self) -> io::Result<Vec<ChecksumMismatch<u16>>> {
+        let mut file = OpenOptions::new().read(true).open(&self.nv_path)?;
+        verify_all_checksums(&mut file, &self.map, &self.platform)
     }
 
     // TODO we probably want to remove this
@@ -404,8 +413,8 @@ fn find_map<T: DeserializeOwned>(rom_name: &String) -> io::Result<Option<T>> {
                     format!("File not found: {compressed_map_path}"),
                 )
             })?;
-            let map: T = read_compressed_json(map_file)?;
-            Ok(Some(map))
+            let map: Value = read_compressed_json(map_file)?;
+            Ok(Some(from_map_value(map)?))
         }
         None => Ok(None),
     }
@@ -431,11 +440,17 @@ fn find_map_local<T: DeserializeOwned>(rom_name: &String) -> io::Result<Option<T
                 ));
             }
             let map_file = OpenOptions::new().read(true).open(&map_file)?;
-            let map: T = serde_json::from_reader(map_file)?;
-            Ok(Some(map))
+            let map: Value = serde_json::from_reader(map_file)?;
+            Ok(Some(from_map_value(map)?))
         }
         None => Ok(None),
     }
+}
+
+/// Expand the `repeat` templates of a map before deserializing it.
+fn from_map_value<T: DeserializeOwned>(mut map: Value) -> io::Result<T> {
+    repeat::expand_repeats(&mut map);
+    Ok(serde_json::from_value(map)?)
 }
 
 fn read_compressed_json<T: de::DeserializeOwned>(map_file: &File) -> io::Result<T> {

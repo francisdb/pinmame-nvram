@@ -1,5 +1,5 @@
 {
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "adjustments": {
     "Standard Adjustments": {
       "06": {
@@ -7,15 +7,15 @@
         "value": 0
       },
       "11": {
-        "label": "First High Score",
+        "label": "First Replay Level",
         "value": 0
       },
       "12": {
-        "label": "Second High Score",
+        "label": "Second Replay Level",
         "value": 0
       },
       "13": {
-        "label": "Third High Score",
+        "label": "Third Replay Level",
         "value": 0
       }
     }
@@ -253,5 +253,35 @@
       },
       "short_label": "5th"
     }
-  ]
+  ],
+  "validation": {
+    "checksum": [
+      {
+        "label": "High Score #1",
+        "value": "valid"
+      },
+      {
+        "label": "High Score #2",
+        "value": "valid"
+      },
+      {
+        "label": "High Score #3",
+        "value": "valid"
+      },
+      {
+        "label": "High Score #4",
+        "value": "valid"
+      },
+      {
+        "label": "High Score #5",
+        "value": "valid"
+      }
+    ],
+    "mirror": [
+      {
+        "label": "Adjustments",
+        "value": "valid"
+      }
+    ]
+  }
 }

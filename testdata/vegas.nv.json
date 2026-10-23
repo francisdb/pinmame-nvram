@@ -1,5 +1,5 @@
 {
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "game_state": {
     "ball_count": {
       "label": "Ball Count",
@@ -111,5 +111,17 @@
       },
       "label": "Slot King"
     }
-  ]
+  ],
+  "validation": {
+    "mirror": [
+      {
+        "label": "Working Memory",
+        "value": "valid"
+      },
+      {
+        "label": "Audits/Settings/High Scores",
+        "value": "valid"
+      }
+    ]
+  }
 }

@@ -1,23 +1,5 @@
 {
-  "_fileformat": 0.7,
-  "checksum8": [
-    {
-      "label": "Free Play adjustment",
-      "value": "valid"
-    },
-    {
-      "label": "Balls Per Game adjustment",
-      "value": "valid"
-    },
-    {
-      "label": "Maximum Credits adjustment",
-      "value": "valid"
-    },
-    {
-      "label": "Master Volume",
-      "value": "valid"
-    }
-  ],
+  "_fileformat": 0.9,
   "game_state": {
     "ball_count": {
       "label": "Balls Per Game",
@@ -252,5 +234,25 @@
         "value": 75000000
       }
     }
-  ]
+  ],
+  "validation": {
+    "checksum": [
+      {
+        "label": "Free Play adjustment",
+        "value": "valid"
+      },
+      {
+        "label": "Balls Per Game adjustment",
+        "value": "valid"
+      },
+      {
+        "label": "Maximum Credits adjustment",
+        "value": "valid"
+      },
+      {
+        "label": "Master Volume",
+        "value": "valid"
+      }
+    ]
+  }
 }
