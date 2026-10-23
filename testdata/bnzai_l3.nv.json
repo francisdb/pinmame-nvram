@@ -1,5 +1,5 @@
 {
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "audits": {
     "Audits": {
       "01": {
@@ -160,16 +160,6 @@
       }
     }
   },
-  "checksum8": [
-    {
-      "label": "Audits",
-      "value": "valid"
-    },
-    {
-      "label": "Credits",
-      "value": "valid"
-    }
-  ],
   "game_state": {
     "ball_count": {
       "label": "Ball Count",
@@ -275,5 +265,177 @@
       },
       "short_label": "4th"
     }
-  ]
+  ],
+  "validation": {
+    "checksum": [
+      {
+        "label": "Audits 1",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 2",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 3",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 4",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 5",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 6",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 7",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 8",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 9",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 10",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 11",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 12",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 13",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 14",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 15",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 16",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 17",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 18",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 19",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 20",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 21",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 22",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 23",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 24",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 25",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 26",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 27",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 28",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 29",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 30",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 31",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 32",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 33",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 34",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 35",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 36",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 37",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 38",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 39",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 40",
+        "value": "valid"
+      },
+      {
+        "label": "Credits",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustments",
+        "value": "valid"
+      }
+    ]
+  }
 }

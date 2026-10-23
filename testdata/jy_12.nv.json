@@ -1,5 +1,141 @@
 {
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
+  "adjustments": {
+    "A.1 Standard Adjustments": {
+      "01": {
+        "label": "Balls Per Game",
+        "value": 3
+      },
+      "02": {
+        "label": "Tilt Warnings",
+        "value": 3
+      },
+      "03": {
+        "label": "Max. E.B. Count",
+        "value": 4
+      },
+      "04": {
+        "label": "Max E.B. Per B.I.P.",
+        "value": "OFF"
+      },
+      "05": {
+        "label": "Replay System",
+        "value": "Auto %"
+      },
+      "06": {
+        "label": "Replay Percent",
+        "value": 10
+      },
+      "07": {
+        "label": "Replay Start",
+        "value": 20000000
+      },
+      "08": {
+        "label": "Replay Levels",
+        "value": 1
+      },
+      "09": {
+        "label": "Replay Level 1",
+        "value": 20000000
+      },
+      "10": {
+        "label": "Replay Level 2",
+        "value": "OFF"
+      },
+      "11": {
+        "label": "Replay Level 3",
+        "value": "OFF"
+      },
+      "12": {
+        "label": "Replay Level 4",
+        "value": "OFF"
+      },
+      "13": {
+        "label": "Replay Boost",
+        "value": 1000000
+      },
+      "14": {
+        "label": "Replay Award",
+        "value": "Credit"
+      },
+      "15": {
+        "label": "Special Award",
+        "value": "Credit"
+      },
+      "16": {
+        "label": "Match Award",
+        "value": "Credit"
+      },
+      "17": {
+        "label": "Ex. Ball Ticket",
+        "value": "No"
+      },
+      "18": {
+        "label": "Max. Tick./Player",
+        "value": 25
+      },
+      "19": {
+        "label": "Match Feature",
+        "value": 7
+      },
+      "20": {
+        "label": "Custom Message",
+        "value": "ON"
+      },
+      "21": {
+        "label": "Language",
+        "value": "English"
+      },
+      "22": {
+        "label": "Clock Style",
+        "value": "AM / PM"
+      },
+      "23": {
+        "label": "Date Style",
+        "value": "Mmm. DD, YY"
+      },
+      "24": {
+        "label": "Show Time + Date",
+        "value": "No"
+      },
+      "25": {
+        "label": "Allow Dim Illum.",
+        "value": "Yes"
+      },
+      "26": {
+        "label": "Tournament Play",
+        "value": "No"
+      },
+      "27": {
+        "label": "Euro. Scr. Format",
+        "value": "No"
+      },
+      "28": {
+        "label": "Min. Vol. Override",
+        "value": "No"
+      },
+      "29": {
+        "label": "GI Power Saver",
+        "value": 15
+      },
+      "30": {
+        "label": "Power Save Level",
+        "value": 5
+      },
+      "31": {
+        "label": "Ticket Exp. Board",
+        "value": "No"
+      },
+      "32": {
+        "label": "No Bonus Flips",
+        "value": "Yes"
+      },
+      "33": {
+        "label": "Game Re-Start",
+        "value": "Slow"
+      }
+    }
+  },
   "audits": {
     "B.2 EARNINGS AUDS.": {
       "02": {
@@ -530,60 +666,6 @@
       }
     }
   },
-  "checksum16": [
-    {
-      "label": "Custom Message (2x32)",
-      "value": "valid"
-    },
-    {
-      "label": "Adjustments",
-      "value": "valid"
-    },
-    {
-      "label": "Timestamps",
-      "value": "valid"
-    },
-    {
-      "label": "High Scores",
-      "value": "valid"
-    },
-    {
-      "label": "Grand Champion",
-      "value": "valid"
-    },
-    {
-      "label": "HSTD Reset",
-      "value": "valid"
-    },
-    {
-      "label": "Credits",
-      "value": "valid"
-    },
-    {
-      "label": "Volume",
-      "value": "valid"
-    },
-    {
-      "value": "valid"
-    },
-    {
-      "value": "valid"
-    },
-    {
-      "label": "Custom Message (3x32)",
-      "value": "valid"
-    },
-    {
-      "label": "Custom Message (2x32)",
-      "value": "valid"
-    }
-  ],
-  "checksum8": [
-    {
-      "label": "Audits",
-      "value": "valid"
-    }
-  ],
   "game_state": {
     "ball_count": {
       "label": "Ball Count",
@@ -710,5 +792,635 @@
   ],
   "last_played": {
     "value": "2024-04-09 00:01"
+  },
+  "validation": {
+    "checksum": [
+      {
+        "label": "Audits 1",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 2",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 3",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 4",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 5",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 6",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 7",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 8",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 9",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 10",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 11",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 12",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 13",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 14",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 15",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 16",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 17",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 18",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 19",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 20",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 21",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 22",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 23",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 24",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 25",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 26",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 27",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 28",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 29",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 30",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 31",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 32",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 33",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 34",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 35",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 36",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 37",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 38",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 39",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 40",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 41",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 42",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 43",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 44",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 45",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 46",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 47",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 48",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 49",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 50",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 51",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 52",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 53",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 54",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 55",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 56",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 57",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 58",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 59",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 60",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 61",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 62",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 63",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 64",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 65",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 66",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 67",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 68",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 69",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 70",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 71",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 72",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 73",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 74",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 75",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 76",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 77",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 78",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 79",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 80",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 81",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 82",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 83",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 84",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 85",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 86",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 87",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 88",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 89",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 90",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 91",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 92",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 93",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 94",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 95",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 96",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 97",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 98",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 99",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 100",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 101",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 102",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 103",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 104",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 105",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 106",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 107",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 108",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 109",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 110",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 111",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 112",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 113",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 114",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 115",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 116",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 117",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 118",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 119",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 120",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 121",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 122",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 123",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 124",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 125",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 126",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 127",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 128",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 129",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 130",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 131",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 132",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 133",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 134",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 135",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 136",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 137",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 138",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 139",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 140",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 141",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 142",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 143",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 144",
+        "value": "valid"
+      },
+      {
+        "label": "Audits 145",
+        "value": "valid"
+      },
+      {
+        "label": "Custom Message (2x32)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustments",
+        "value": "valid"
+      },
+      {
+        "label": "Timestamps",
+        "value": "valid"
+      },
+      {
+        "label": "High Scores",
+        "value": "valid"
+      },
+      {
+        "label": "Grand Champion",
+        "value": "valid"
+      },
+      {
+        "label": "HSTD Reset",
+        "value": "valid"
+      },
+      {
+        "label": "Credits",
+        "value": "valid"
+      },
+      {
+        "label": "Volume",
+        "value": "valid"
+      },
+      {
+        "value": "valid"
+      },
+      {
+        "value": "valid"
+      },
+      {
+        "label": "Custom Message (3x32)",
+        "value": "valid"
+      },
+      {
+        "label": "Custom Message (2x32)",
+        "value": "valid"
+      }
+    ]
   }
 }

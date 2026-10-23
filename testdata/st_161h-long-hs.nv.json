@@ -1,5 +1,5 @@
 {
-  "_fileformat": 0.7,
+  "_fileformat": 0.9,
   "adjustments": {
     "A.1 Standard Adjustments": {
       "01": {
@@ -260,302 +260,6 @@
       }
     }
   },
-  "checksum16": [
-    {
-      "label": "Grand Champion",
-      "value": "valid"
-    },
-    {
-      "label": "High Score #1",
-      "value": "valid"
-    },
-    {
-      "label": "High Score #2",
-      "value": "valid"
-    },
-    {
-      "label": "High Score #3",
-      "value": "valid"
-    },
-    {
-      "label": "High Score #4",
-      "value": "valid"
-    },
-    {
-      "label": "Combo Champion",
-      "value": "valid"
-    },
-    {
-      "label": "Warp Champion",
-      "value": "valid"
-    },
-    {
-      "label": "Medals Champion",
-      "value": "valid"
-    }
-  ],
-  "checksum8": [
-    {
-      "label": "Master Volume",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #01 Replay Type",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #02 Replay Percentage",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #03 Replay Award",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #04 Replay Levels",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #05 Auto Replay Start",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #06 Dynamic Replay Start",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #07 Replay Level #1",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #08 Replay Level #2",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #09 Replay Level #3",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #10 Replay Level #4",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #11 Replay Boost",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #12 Special Limit",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #13 Special Percentage",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #14 Special Award",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #15 Free Game Limit",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #16 Extra Ball Limit",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #17 Extra Ball Percentage",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #18 Game Pricing",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #19 Match Percentage",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #20 Match Award",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #21 Balls Per Game",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #22 Tilt Warnings",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #23 Credit Limit",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #24 Allow High Scores",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #25 High Score Award",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #26 Grand Champion Awards",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #27 High Score #1 Awards",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #28 High Score #2 Awards",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #29 High Score #3 Awards",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #30 High Score #4 Awards",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #31 Grand Champion Score",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #32 High Score #1",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #33 High Score #2",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #34 High Score #3",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #35 High Score #4",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #36 HSTD Initials",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #37 HSTD Reset Count",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #38 Free Play",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #39 Language",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #40 Player Language Select",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #41 Custom Message",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #42 Flash Lamp Power",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #43 Coil Pulse Power",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #44 Knocker Volume",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #45 Game Restart",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #46 Bill Validator",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #47 Music Volume",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #48 Ball Save Time",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #49 Timed Plunger",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #50 Flipper Ball Launch",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #51 Coindoor Ball Saver",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #52 Competition Mode",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #53 Consolation Ball",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #54 Fast Boot",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #55 Q24 Option",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #56 Ticket Dispenser",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #57 Player Competition",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #58 Team Scores",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #59 Location ID",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #60 Game ID",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #61 Time Format",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #62 Coin Input Delay",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #63 Lost Ball Recovery",
-      "value": "valid"
-    },
-    {
-      "label": "Std Adj #64 Coin Door Disable Tilt",
-      "value": "valid"
-    }
-  ],
   "game_state": {
     "ball_count": {
       "label": "Balls Per Game",
@@ -696,5 +400,301 @@
         "value": 7
       }
     }
-  ]
+  ],
+  "validation": {
+    "checksum": [
+      {
+        "label": "Master Volume",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #01 Replay Type",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #02 Replay Percentage",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #03 Replay Award",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #04 Replay Levels",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #05 Auto Replay Start",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #06 Dynamic Replay Start",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #07 Replay Level #1",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #08 Replay Level #2",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #09 Replay Level #3",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #10 Replay Level #4",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #11 Replay Boost",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #12 Special Limit",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #13 Special Percentage",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #14 Special Award",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #15 Free Game Limit",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #16 Extra Ball Limit",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #17 Extra Ball Percentage",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #18 Game Pricing",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #19 Match Percentage",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #20 Match Award",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #21 Balls Per Game",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #22 Tilt Warnings",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #23 Credit Limit",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #24 Allow High Scores",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #25 High Score Award",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #26 Grand Champion Awards",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #27 High Score #1 Awards",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #28 High Score #2 Awards",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #29 High Score #3 Awards",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #30 High Score #4 Awards",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #31 Grand Champion Score",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #32 High Score #1",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #33 High Score #2",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #34 High Score #3",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #35 High Score #4",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #36 HSTD Initials",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #37 HSTD Reset Count",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #38 Free Play",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #39 Language",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #40 Player Language Select",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #41 Custom Message",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #42 Flash Lamp Power",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #43 Coil Pulse Power",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #44 Knocker Volume",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #45 Game Restart",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #46 Bill Validator",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #47 Music Volume",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #48 Ball Save Time",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #49 Timed Plunger",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #50 Flipper Ball Launch",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #51 Coindoor Ball Saver",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #52 Competition Mode",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #53 Consolation Ball",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #54 Fast Boot",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #55 Q24 Option",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #56 Ticket Dispenser",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #57 Player Competition",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #58 Team Scores",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #59 Location ID",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #60 Game ID",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #61 Time Format",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #62 Coin Input Delay",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #63 Lost Ball Recovery",
+        "value": "valid"
+      },
+      {
+        "label": "Std Adj #64 Coin Door Disable Tilt",
+        "value": "valid"
+      },
+      {
+        "label": "Grand Champion",
+        "value": "valid"
+      },
+      {
+        "label": "High Score #1",
+        "value": "valid"
+      },
+      {
+        "label": "High Score #2",
+        "value": "valid"
+      },
+      {
+        "label": "High Score #3",
+        "value": "valid"
+      },
+      {
+        "label": "High Score #4",
+        "value": "valid"
+      },
+      {
+        "label": "Combo Champion",
+        "value": "valid"
+      },
+      {
+        "label": "Warp Champion",
+        "value": "valid"
+      },
+      {
+        "label": "Medals Champion",
+        "value": "valid"
+      }
+    ]
+  }
 }

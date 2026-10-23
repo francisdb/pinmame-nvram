@@ -1,13 +1,13 @@
 {
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "adjustments": {
     "Standard Adjustments": {
       "11": {
-        "label": "Regular High Score",
+        "label": "Regular Replay Level",
         "value": 0
       },
       "12": {
-        "label": "Team High Score",
+        "label": "Team Replay Level",
         "value": 0
       }
     }
@@ -255,5 +255,27 @@
       },
       "short_label": "2nd Team"
     }
-  ]
+  ],
+  "validation": {
+    "checksum": [
+      {
+        "label": "High Score #2",
+        "value": "valid"
+      },
+      {
+        "label": "High Score #3",
+        "value": "valid"
+      },
+      {
+        "label": "Team Score #2",
+        "value": "valid"
+      }
+    ],
+    "mirror": [
+      {
+        "label": "Adjustments",
+        "value": "valid"
+      }
+    ]
+  }
 }

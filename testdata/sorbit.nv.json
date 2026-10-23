@@ -1,5 +1,5 @@
 {
-  "_fileformat": 0.8,
+  "_fileformat": 0.9,
   "adjustments": {
     "Standard Adjustments": {
       "11": {
@@ -194,5 +194,13 @@
         "value": 375420
       }
     }
-  ]
+  ],
+  "validation": {
+    "mirror": [
+      {
+        "label": "Adjustments",
+        "value": "valid"
+      }
+    ]
+  }
 }

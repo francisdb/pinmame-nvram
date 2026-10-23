@@ -120,6 +120,18 @@ fn test_johnny_mnemonic() -> io::Result<()> {
             timestamp: None,
         },
     ];
+    // the remaining Masters of Powerdown up to #30 are blank as well
+    let expected: Vec<ModeChampion> = expected
+        .into_iter()
+        .chain((11..=30).map(|n| ModeChampion {
+            label: Some(format!("Masters of Powerdown #{n}")),
+            short_label: Some(format!("Powerdown #{n}")),
+            initials: Some("   ".to_string()),
+            score: Some(100_000_000),
+            suffix: None,
+            timestamp: None,
+        }))
+        .collect();
     assert_eq!(Some(expected), champions);
 
     let scores = nvram.read_highscores()?;

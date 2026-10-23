@@ -1,73 +1,5 @@
 {
-  "_fileformat": 0.7,
-  "checksum16": [
-    {
-      "label": "Grand Champion",
-      "value": "valid"
-    },
-    {
-      "label": "First Place",
-      "value": "valid"
-    },
-    {
-      "label": "Second Place",
-      "value": "valid"
-    },
-    {
-      "label": "Third Place",
-      "value": "valid"
-    },
-    {
-      "label": "Fourth Place",
-      "value": "valid"
-    },
-    {
-      "label": "Combo Champion",
-      "value": "valid"
-    },
-    {
-      "label": "Best Combo Champion",
-      "value": "valid"
-    },
-    {
-      "label": "Spider Champion",
-      "value": "valid"
-    },
-    {
-      "label": "Spider Sense Champion",
-      "value": "valid"
-    },
-    {
-      "label": "Battle Royale Champion",
-      "value": "valid"
-    },
-    {
-      "label": "Super Hero Champion",
-      "value": "valid"
-    },
-    {
-      "label": "Best Bonus Champion",
-      "value": "valid"
-    }
-  ],
-  "checksum8": [
-    {
-      "label": "Free Play adjustment",
-      "value": "valid"
-    },
-    {
-      "label": "Master Volume",
-      "value": "valid"
-    },
-    {
-      "label": "Balls Per Game adjustment",
-      "value": "valid"
-    },
-    {
-      "label": "Maximum Credits adjustment",
-      "value": "valid"
-    }
-  ],
+  "_fileformat": 0.9,
   "game_state": {
     "ball_count": {
       "label": "Balls Per Game",
@@ -239,5 +171,73 @@
         "value": 10000000
       }
     }
-  ]
+  ],
+  "validation": {
+    "checksum": [
+      {
+        "label": "Free Play adjustment",
+        "value": "valid"
+      },
+      {
+        "label": "Master Volume",
+        "value": "valid"
+      },
+      {
+        "label": "Balls Per Game adjustment",
+        "value": "valid"
+      },
+      {
+        "label": "Maximum Credits adjustment",
+        "value": "valid"
+      },
+      {
+        "label": "Grand Champion",
+        "value": "valid"
+      },
+      {
+        "label": "First Place",
+        "value": "valid"
+      },
+      {
+        "label": "Second Place",
+        "value": "valid"
+      },
+      {
+        "label": "Third Place",
+        "value": "valid"
+      },
+      {
+        "label": "Fourth Place",
+        "value": "valid"
+      },
+      {
+        "label": "Combo Champion",
+        "value": "valid"
+      },
+      {
+        "label": "Best Combo Champion",
+        "value": "valid"
+      },
+      {
+        "label": "Spider Champion",
+        "value": "valid"
+      },
+      {
+        "label": "Spider Sense Champion",
+        "value": "valid"
+      },
+      {
+        "label": "Battle Royale Champion",
+        "value": "valid"
+      },
+      {
+        "label": "Super Hero Champion",
+        "value": "valid"
+      },
+      {
+        "label": "Best Bonus Champion",
+        "value": "valid"
+      }
+    ]
+  }
 }

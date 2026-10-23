@@ -1,6 +1,7 @@
 use crate::encoding::read_exact_at;
 use crate::model::{
-    Checksum8, Checksum16, DEFAULT_LENGTH, Endian, MemoryLayoutType, NvramMap, Platform,
+    Checksum, Checksum8, Checksum16, DEFAULT_LENGTH, Endian, MemoryLayoutType, Mirror, Nibble,
+    NvramMap, Platform,
 };
 use std::io;
 use std::io::{Read, Seek, SeekFrom, Write};
@@ -184,6 +185,13 @@ pub(crate) fn verify_all_checksum16<T: Read + Seek>(
     map: &NvramMap,
     platform: &Platform,
 ) -> io::Result<Vec<ChecksumMismatch<u16>>> {
+    if map._fileformat >= VALIDATION_FILEFORMAT {
+        return validation_checksums(map)
+            .filter(|cs| cs.bits == Some(16))
+            .map(|cs| verify_checksum(&mut nvram_file, cs, platform))
+            .filter_map(|r| r.transpose())
+            .collect();
+    }
     let endian = platform.endian;
     let offset = platform.offset(MemoryLayoutType::NVRam);
     map.checksum16
@@ -233,12 +241,249 @@ pub(crate) fn update_all_checksum16<T: Read + Seek + Write>(
     map: &NvramMap,
     platform: &Platform,
 ) -> io::Result<()> {
+    if map._fileformat >= VALIDATION_FILEFORMAT {
+        return validation_checksums(map)
+            .filter(|cs| cs.bits == Some(16))
+            .try_for_each(|cs| update_checksum(&mut nvram_file, cs, platform));
+    }
     let endian = platform.endian;
     let offset = platform.offset(MemoryLayoutType::NVRam);
     map.checksum16
         .iter()
         .flatten()
         .try_for_each(|cs| update_checksum16(&mut nvram_file, cs, endian, offset))
+}
+
+/// Update all checksums, whatever their size.
+pub(crate) fn update_all_checksums<T: Read + Seek + Write>(
+    mut nvram_file: &mut T,
+    map: &NvramMap,
+    platform: &Platform,
+) -> io::Result<()> {
+    if map._fileformat < VALIDATION_FILEFORMAT {
+        // TODO also update the checksum8 records of older maps
+        return update_all_checksum16(nvram_file, map, platform);
+    }
+    validation_checksums(map).try_for_each(|cs| update_checksum(&mut nvram_file, cs, platform))
+}
+
+/// File format from which checksums are described by `_metadata.validation`;
+/// `checksum8` and `checksum16` are then ignored.
+pub(crate) const VALIDATION_FILEFORMAT: f64 = 0.9;
+
+/// A `_metadata.validation.checksum` record resolved to file positions.
+struct ChecksumLocation {
+    data_start: u64,
+    data_length: u64,
+    checksum_position: u64,
+    bits: u8,
+}
+
+fn checksum_location(checksum: &Checksum, offset: u64) -> io::Result<ChecksumLocation> {
+    let invalid = |msg: String| io::Error::new(io::ErrorKind::InvalidData, msg);
+    let label = checksum.label.as_deref().unwrap_or("(no label)");
+    let bits = checksum.bits.unwrap_or(8);
+    let width = match bits {
+        4 | 8 => 1,
+        16 => 2,
+        _ => {
+            return Err(invalid(format!(
+                "Checksum {label}: unsupported bits {bits}"
+            )));
+        }
+    };
+    let start = u64::from(&checksum.start);
+    let length = match (&checksum.end, &checksum.length) {
+        (Some(end), _) => u64::from(end) + 1 - start,
+        (None, Some(length)) => u64::from(length),
+        (None, None) => DEFAULT_LENGTH as u64,
+    };
+    let data_start = start - offset;
+    let location = match &checksum.checksum {
+        Some(address) => ChecksumLocation {
+            data_start,
+            data_length: length,
+            checksum_position: u64::from(address) - offset,
+            bits,
+        },
+        None if length > width => ChecksumLocation {
+            data_start,
+            data_length: length - width,
+            checksum_position: data_start + length - width,
+            bits,
+        },
+        None => {
+            return Err(invalid(format!(
+                "Checksum {label}: length {length} leaves no room for the checksum"
+            )));
+        }
+    };
+    Ok(location)
+}
+
+fn nibble_value(byte: u8, nibble: Nibble) -> u8 {
+    match nibble {
+        Nibble::High => byte >> 4,
+        Nibble::Low | Nibble::Both => byte & 0x0F,
+    }
+}
+
+/// Returns the (stored, calculated) checksum
+fn read_checksum<T: Read + Seek>(
+    nvram_file: &mut T,
+    checksum: &Checksum,
+    platform: &Platform,
+) -> io::Result<(u16, u16)> {
+    let location = checksum_location(checksum, platform.offset(MemoryLayoutType::NVRam))?;
+    let nibble = platform.nibble(MemoryLayoutType::NVRam);
+    let mut data = vec![0; location.data_length as usize];
+    read_exact_at(nvram_file, location.data_start, &mut data)?;
+    let sum = data.iter().fold(0u16, |acc, &b| {
+        let value = if location.bits == 4 {
+            nibble_value(b, nibble)
+        } else {
+            b
+        };
+        acc.wrapping_add(value as u16)
+    });
+    let mask: u16 = match location.bits {
+        4 => 0x000F,
+        8 => 0x00FF,
+        _ => 0xFFFF,
+    };
+    let calculated = if checksum.complement { !sum } else { sum } & mask;
+
+    let stored = match location.bits {
+        16 => {
+            let mut bytes = [0u8; 2];
+            read_exact_at(nvram_file, location.checksum_position, &mut bytes)?;
+            match platform.endian {
+                Endian::Big => u16::from_be_bytes(bytes),
+                Endian::Little => u16::from_le_bytes(bytes),
+            }
+        }
+        bits => {
+            let mut byte = [0u8; 1];
+            read_exact_at(nvram_file, location.checksum_position, &mut byte)?;
+            if bits == 4 {
+                nibble_value(byte[0], nibble) as u16
+            } else {
+                byte[0] as u16
+            }
+        }
+    };
+    Ok((stored, calculated))
+}
+
+pub(crate) fn verify_checksum<T: Read + Seek>(
+    nvram_file: &mut T,
+    checksum: &Checksum,
+    platform: &Platform,
+) -> io::Result<Option<ChecksumMismatch<u16>>> {
+    let (stored, calculated) = read_checksum(nvram_file, checksum, platform)?;
+    if stored != calculated {
+        return Ok(Some(ChecksumMismatch {
+            label: checksum.label.clone(),
+            expected: stored,
+            calculated,
+        }));
+    }
+    Ok(None)
+}
+
+fn update_checksum<T: Read + Seek + Write>(
+    nvram_file: &mut T,
+    checksum: &Checksum,
+    platform: &Platform,
+) -> io::Result<()> {
+    let (_, calculated) = read_checksum(nvram_file, checksum, platform)?;
+    let location = checksum_location(checksum, platform.offset(MemoryLayoutType::NVRam))?;
+    let bytes = match location.bits {
+        16 => match platform.endian {
+            Endian::Big => calculated.to_be_bytes().to_vec(),
+            Endian::Little => calculated.to_le_bytes().to_vec(),
+        },
+        4 => {
+            // keep the other nibble of the byte
+            let mut byte = [0u8; 1];
+            read_exact_at(nvram_file, location.checksum_position, &mut byte)?;
+            let value = calculated as u8;
+            let byte = match platform.nibble(MemoryLayoutType::NVRam) {
+                Nibble::High => (byte[0] & 0x0F) | (value << 4),
+                Nibble::Low | Nibble::Both => (byte[0] & 0xF0) | value,
+            };
+            vec![byte]
+        }
+        _ => vec![calculated as u8],
+    };
+    nvram_file.seek(SeekFrom::Start(location.checksum_position))?;
+    nvram_file.write_all(&bytes)
+}
+
+/// Whether all regions of the mirror hold the same data
+pub(crate) fn verify_mirror<T: Read + Seek>(
+    nvram_file: &mut T,
+    mirror: &Mirror,
+    platform: &Platform,
+) -> io::Result<bool> {
+    let offset = platform.offset(MemoryLayoutType::NVRam);
+    let nibble = platform.nibble(MemoryLayoutType::NVRam);
+    let start = mirror.start.as_ref().map(u64::from).unwrap_or(0);
+    let length = u64::from(&mirror.length) as usize;
+    let mut first: Option<Vec<u8>> = None;
+    for region_offset in &mirror.offsets {
+        let mut region = vec![0; length];
+        read_exact_at(
+            nvram_file,
+            start + u64::from(region_offset) - offset,
+            &mut region,
+        )?;
+        if nibble != Nibble::Both {
+            region
+                .iter_mut()
+                .for_each(|b| *b = nibble_value(*b, nibble));
+        }
+        match &first {
+            None => first = Some(region),
+            Some(first) if *first != region => return Ok(false),
+            Some(_) => {}
+        }
+    }
+    Ok(true)
+}
+
+fn validation_checksums(map: &NvramMap) -> impl Iterator<Item = &Checksum> {
+    map._metadata
+        .validation
+        .iter()
+        .flat_map(|v| v.checksum.iter().flatten())
+}
+
+/// All checksum mismatches, whatever the size of the checksum.
+pub(crate) fn verify_all_checksums<T: Read + Seek>(
+    nvram_file: &mut T,
+    map: &NvramMap,
+    platform: &Platform,
+) -> io::Result<Vec<ChecksumMismatch<u16>>> {
+    if map._fileformat < VALIDATION_FILEFORMAT {
+        let offset = platform.offset(MemoryLayoutType::NVRam);
+        let mut mismatches: Vec<ChecksumMismatch<u16>> = Vec::new();
+        for checksum8 in map.checksum8.iter().flatten() {
+            if let Some(m) = verify_checksum8(nvram_file, checksum8, offset)? {
+                mismatches.push(ChecksumMismatch {
+                    label: m.label,
+                    expected: m.expected as u16,
+                    calculated: m.calculated as u16,
+                });
+            }
+        }
+        mismatches.extend(verify_all_checksum16(nvram_file, map, platform)?);
+        return Ok(mismatches);
+    }
+    validation_checksums(map)
+        .map(|cs| verify_checksum(nvram_file, cs, platform))
+        .filter_map(|r| r.transpose())
+        .collect()
 }
 
 #[cfg(test)]
@@ -464,6 +709,47 @@ mod test {
         let nvram = Nvram::open(Path::new("testdata/dm_lx4.nv"))?.unwrap();
         let checksum_failures = verify_all_checksum16(&mut file, &nvram.map, &nvram.platform)?;
         assert_eq!(Vec::<ChecksumMismatch<u16>>::new(), checksum_failures);
+        Ok(())
+    }
+
+    #[test]
+    fn test_verify_all_checksums_validation() -> io::Result<()> {
+        // SAM 8-bit, WPC 16-bit and Gottlieb System 80B 4-bit checksums
+        for rom in ["acd_170h", "dm_lx4", "arena"] {
+            let mut nvram = Nvram::open(Path::new(&format!("testdata/{rom}.nv")))?.unwrap();
+            assert_eq!(
+                Vec::<ChecksumMismatch<u16>>::new(),
+                nvram.verify_all_checksums()?,
+                "{rom}"
+            );
+        }
+        Ok(())
+    }
+
+    #[test]
+    fn test_update_all_checksums_4bit() -> io::Result<()> {
+        let dir = testdir::testdir!();
+        let nv_path = dir.join("arena.nv");
+        std::fs::copy("testdata/arena.nv", &nv_path)?;
+        let mut data = std::fs::read(&nv_path)?;
+        // first nibble of High Score #1 (0x18B7), its checksum is at 0x18F8
+        data[0xB7] = (data[0xB7] & 0xF0) | ((data[0xB7] + 1) & 0x0F);
+        data[0xF8] |= 0xF0;
+        std::fs::write(&nv_path, &data)?;
+
+        let mut nvram = Nvram::open(&nv_path)?.unwrap();
+        let mismatches = nvram.verify_all_checksums()?;
+        assert_eq!(1, mismatches.len());
+        assert_eq!(Some("High Score #1".to_string()), mismatches[0].label);
+
+        let mut file = OpenOptions::new().read(true).write(true).open(&nv_path)?;
+        update_all_checksums(&mut file, &nvram.map, &nvram.platform)?;
+        assert_eq!(
+            Vec::<ChecksumMismatch<u16>>::new(),
+            nvram.verify_all_checksums()?
+        );
+        // the high nibble is not part of the 4-bit checksum and is kept
+        assert_eq!(0xF0, std::fs::read(&nv_path)?[0xF8] & 0xF0);
         Ok(())
     }
 }
