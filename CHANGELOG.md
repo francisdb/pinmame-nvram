@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.0](https://github.com/francisdb/pinmame-nvram/compare/v0.4.19...v0.5.0) - 2026-10-23
+
+### Added
+
+- [**breaking**] report validation results of 0.9 maps under `validation` ([#176](https://github.com/francisdb/pinmame-nvram/pull/176))
+- support map file format 0.9 and bump pinball-memory-maps to e83cff0 ([#174](https://github.com/francisdb/pinmame-nvram/pull/174))
+
 ## [0.4.19](https://github.com/francisdb/pinmame-nvram/compare/v0.4.18...v0.4.19) - 2026-10-22
 
 ### Other
