@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.1](https://github.com/francisdb/pinmame-nvram/compare/v0.5.0...v0.5.1) - 2026-10-26
+
+### Other
+
+- *(deps)* bump Swatinem/rust-cache from 2.9.2 to 2.9.3 ([#178](https://github.com/francisdb/pinmame-nvram/pull/178))
+
 ## [0.5.0](https://github.com/francisdb/pinmame-nvram/compare/v0.4.19...v0.5.0) - 2026-10-23
 
 ### Added
