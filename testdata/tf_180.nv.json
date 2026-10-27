@@ -201,6 +201,54 @@
       {
         "label": "Master Volume",
         "value": "valid"
+      },
+      {
+        "label": "High Score #1",
+        "value": "valid"
+      },
+      {
+        "label": "High Score #2",
+        "value": "valid"
+      },
+      {
+        "label": "High Score #3",
+        "value": "valid"
+      },
+      {
+        "label": "High Score #4",
+        "value": "valid"
+      },
+      {
+        "label": "High Score #5",
+        "value": "valid"
+      },
+      {
+        "label": "High Score #6",
+        "value": "valid"
+      },
+      {
+        "label": "High Score #7",
+        "value": "valid"
+      },
+      {
+        "label": "High Score #8",
+        "value": "valid"
+      },
+      {
+        "label": "High Score #9",
+        "value": "valid"
+      },
+      {
+        "label": "High Score #10",
+        "value": "valid"
+      },
+      {
+        "label": "Mode Champ #1",
+        "value": "valid"
+      },
+      {
+        "label": "Mode Champ #2",
+        "value": "valid"
       }
     ]
   }

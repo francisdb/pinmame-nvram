@@ -145,6 +145,38 @@
       {
         "label": "Maximum Credits adjustment",
         "value": "valid"
+      },
+      {
+        "label": "High Score #1",
+        "value": "valid"
+      },
+      {
+        "label": "High Score #2",
+        "value": "valid"
+      },
+      {
+        "label": "High Score #3",
+        "value": "valid"
+      },
+      {
+        "label": "High Score #4",
+        "value": "valid"
+      },
+      {
+        "label": "High Score #5",
+        "value": "valid"
+      },
+      {
+        "label": "Mode Champ #1",
+        "value": "valid"
+      },
+      {
+        "label": "Mode Champ #2",
+        "value": "valid"
+      },
+      {
+        "label": "Mode Champ #3",
+        "value": "valid"
       }
     ]
   }

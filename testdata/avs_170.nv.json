@@ -116,6 +116,26 @@
       {
         "label": "Maximum Credits adjustment",
         "value": "valid"
+      },
+      {
+        "label": "High Score #1",
+        "value": "valid"
+      },
+      {
+        "label": "High Score #2",
+        "value": "valid"
+      },
+      {
+        "label": "High Score #3",
+        "value": "valid"
+      },
+      {
+        "label": "High Score #4",
+        "value": "valid"
+      },
+      {
+        "label": "High Score #5",
+        "value": "valid"
       }
     ]
   }
