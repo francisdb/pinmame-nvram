@@ -80,7 +80,7 @@
       },
       "20": {
         "label": "Custom Message",
-        "value": "ON"
+        "value": "On"
       },
       "21": {
         "label": "Language",
@@ -133,6 +133,66 @@
       "33": {
         "label": "Game Re-Start",
         "value": "Slow"
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "Timed Plunger",
+        "units": "seconds",
+        "value": "Off"
+      },
+      "02": {
+        "label": "Flipper Plunger",
+        "value": "No"
+      },
+      "03": {
+        "label": "Outlne. Auto Cast",
+        "value": "Yes"
+      },
+      "04": {
+        "label": "Pct. Extra Balls",
+        "value": 25
+      },
+      "05": {
+        "label": "Ramp Timer",
+        "units": "seconds",
+        "value": 10
+      },
+      "06": {
+        "label": "Fish Finder Time",
+        "units": "seconds",
+        "value": 10
+      },
+      "07": {
+        "label": "Stretch Truth",
+        "units": "seconds",
+        "value": 15
+      },
+      "08": {
+        "label": "Feed Frenzy Time",
+        "value": "Slow"
+      },
+      "09": {
+        "label": "Captv. Ball Lites",
+        "value": 1
+      },
+      "10": {
+        "label": "Lock Difficulty",
+        "value": "Medium"
+      },
+      "11": {
+        "label": "Ball Save Time",
+        "units": "seconds",
+        "value": 7
+      },
+      "12": {
+        "label": "Special Lites At",
+        "value": 4
+      },
+      "13": {
+        "label": "Lock Save Time",
+        "units": "seconds",
+        "value": "Off"
       }
     }
   },

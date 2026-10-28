@@ -80,7 +80,7 @@
       },
       "20": {
         "label": "Custom Message",
-        "value": "ON"
+        "value": "On"
       },
       "21": {
         "label": "Language",
@@ -133,6 +133,93 @@
       "33": {
         "label": "Game Re-Start",
         "value": "Slow"
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "Ex. Ball Count",
+        "value": 6
+      },
+      "02": {
+        "label": "Attract Sounds",
+        "value": "Off"
+      },
+      "03": {
+        "label": "Family Mode",
+        "value": "No"
+      },
+      "04": {
+        "label": "Shots For Mode",
+        "value": 1
+      },
+      "05": {
+        "label": "Ballsave Time",
+        "units": "seconds",
+        "value": 5
+      },
+      "06": {
+        "label": "Manhunt Timer",
+        "units": "seconds",
+        "value": 30
+      },
+      "07": {
+        "label": "Sniper Timer",
+        "units": "seconds",
+        "value": 30
+      },
+      "08": {
+        "label": "Stakeout Timer",
+        "units": "seconds",
+        "value": 30
+      },
+      "09": {
+        "label": "Pursuit Timer",
+        "units": "seconds",
+        "value": 30
+      },
+      "10": {
+        "label": "Safecrackr Timer",
+        "units": "seconds",
+        "value": 30
+      },
+      "11": {
+        "label": "Bad Imper. Timer",
+        "units": "seconds",
+        "value": 30
+      },
+      "12": {
+        "label": "Meltdown Timer",
+        "units": "seconds",
+        "value": 30
+      },
+      "13": {
+        "label": "Battle Tnk Timer",
+        "units": "seconds",
+        "value": 30
+      },
+      "14": {
+        "label": "Super Grnd Champ.",
+        "value": 350000000
+      },
+      "15": {
+        "label": "Super HSTD 1",
+        "value": 320000000
+      },
+      "16": {
+        "label": "Super HSTD 2",
+        "value": 310000000
+      },
+      "17": {
+        "label": "Super HSTD 3",
+        "value": 300000000
+      },
+      "18": {
+        "label": "Super HSTD 4",
+        "value": 290000000
+      },
+      "19": {
+        "label": "Buy Extra Ball",
+        "value": "1 Credit"
       }
     }
   },

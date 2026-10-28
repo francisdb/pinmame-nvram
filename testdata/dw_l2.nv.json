@@ -80,7 +80,7 @@
       },
       "20": {
         "label": "Custom Message",
-        "value": "ON"
+        "value": "On"
       },
       "21": {
         "label": "Language",
@@ -133,6 +133,251 @@
       "33": {
         "label": "Game Re-Start",
         "value": "Slow"
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "Ball Time",
+        "units": "seconds",
+        "value": 35
+      },
+      "02": {
+        "label": "Auto. %Spec.&Match",
+        "value": "Yes"
+      },
+      "03": {
+        "label": "V.Mode Auto.Ex.Ball",
+        "value": 10
+      },
+      "04": {
+        "label": "V. Mode Ex.Ball",
+        "value": 3
+      },
+      "05": {
+        "label": "W.H.O. Auto. Ex.Ball",
+        "value": 10
+      },
+      "06": {
+        "label": "1st Ex.B. Lit At",
+        "value": 2
+      },
+      "07": {
+        "label": "Next Ex.B. Lit At",
+        "value": 4
+      },
+      "08": {
+        "label": "Mem. Extra Ball",
+        "value": "Yes"
+      },
+      "09": {
+        "label": "Mem. W-H-O Timer",
+        "value": "Yes"
+      },
+      "10": {
+        "label": "1st W-H-O Timer",
+        "units": "seconds",
+        "value": 10
+      },
+      "11": {
+        "label": "2nd W-H-O Timer",
+        "units": "seconds",
+        "value": 8
+      },
+      "12": {
+        "label": "3rd W-H-O Timer",
+        "units": "seconds",
+        "value": 7
+      },
+      "13": {
+        "label": "Last W-H-O Timer",
+        "units": "seconds",
+        "value": 6
+      },
+      "14": {
+        "label": "Easy Locks For",
+        "value": 1
+      },
+      "15": {
+        "label": "Easy 3X5 For",
+        "value": 1
+      },
+      "16": {
+        "label": "3b. Jackpt./Davros",
+        "value": 2
+      },
+      "17": {
+        "label": "2b. Jackpt./Davros",
+        "value": 3
+      },
+      "18": {
+        "label": "Rematch 1st Ball",
+        "units": "seconds",
+        "value": 10
+      },
+      "19": {
+        "label": "Rematch 2nd Ball",
+        "units": "seconds",
+        "value": 5
+      },
+      "20": {
+        "label": "Rematch Targ. Add",
+        "units": "seconds",
+        "value": 5
+      },
+      "21": {
+        "label": "Game Over Unlock",
+        "value": "Yes"
+      },
+      "22": {
+        "label": "R.E.P.A.I.R. 1 Lamp",
+        "units": "seconds",
+        "value": 10
+      },
+      "23": {
+        "label": "R.E.P.A.I.R. 2 Lamps",
+        "units": "seconds",
+        "value": 9
+      },
+      "24": {
+        "label": "R.E.P.A.I.R. 3 Lamps",
+        "units": "seconds",
+        "value": 8
+      },
+      "25": {
+        "label": "R.E.P.A.I.R. 4 Lamps",
+        "units": "seconds",
+        "value": 7
+      },
+      "26": {
+        "label": "R.E.P.A.I.R. 5 Lamps",
+        "units": "seconds",
+        "value": 6
+      },
+      "27": {
+        "label": "R.E.P.A.I.R. All Lamps",
+        "units": "seconds",
+        "value": 10
+      },
+      "28": {
+        "label": "Transmat/Doc. Mem.",
+        "value": "Yes"
+      },
+      "29": {
+        "label": "Transmat Spotdoc.",
+        "value": 10
+      },
+      "30": {
+        "label": "Mem. Doctors 1-7",
+        "value": "Add 1"
+      },
+      "31": {
+        "label": "Pre-Lite E.S.C.A.P.E.",
+        "value": 1
+      },
+      "32": {
+        "label": "E.S.C.A.P.E. Targ. Mem.",
+        "value": "Yes"
+      },
+      "33": {
+        "label": "E.S.C.A.P.E. Bonus Mem.",
+        "value": "No"
+      },
+      "34": {
+        "label": "Bonus 'X' Memory",
+        "value": "Yes"
+      },
+      "35": {
+        "label": "Plyfld. X Memory",
+        "value": "Yes"
+      },
+      "36": {
+        "label": "Playfield, 1.5X",
+        "units": "seconds",
+        "value": 10
+      },
+      "37": {
+        "label": "Playfield, 2.0X",
+        "units": "seconds",
+        "value": 9
+      },
+      "38": {
+        "label": "Playfield, 2.5X",
+        "units": "seconds",
+        "value": 8
+      },
+      "39": {
+        "label": "Playfield, 3.0X",
+        "units": "seconds",
+        "value": 7
+      },
+      "40": {
+        "label": "Playfield, 3.5X",
+        "units": "seconds",
+        "value": 6
+      },
+      "41": {
+        "label": "Playfield, 4.0X",
+        "units": "seconds",
+        "value": 10
+      },
+      "42": {
+        "label": "Hang-On Time",
+        "units": "seconds",
+        "value": 2
+      },
+      "43": {
+        "label": "Second Chance",
+        "units": "seconds",
+        "value": 2
+      },
+      "44": {
+        "label": "Video Mode Lit.",
+        "value": "Not Lit"
+      },
+      "45": {
+        "label": "V.Mode Esc. Relit",
+        "value": "Yes"
+      },
+      "46": {
+        "label": "Video Mode Diff.",
+        "value": "Medium"
+      },
+      "47": {
+        "label": "Miniplayfield",
+        "value": "Enabled"
+      },
+      "48": {
+        "label": "Trap Door",
+        "value": "Enabled"
+      },
+      "49": {
+        "label": "Unused",
+        "value": ""
+      },
+      "50": {
+        "label": "Attr. Mode Sounds",
+        "value": "None"
+      },
+      "51": {
+        "label": "Fancy A. Mode G.I.",
+        "value": "Yes"
+      },
+      "52": {
+        "label": "Timed Plunger",
+        "units": "seconds",
+        "value": "Off"
+      },
+      "53": {
+        "label": "Flipper Plunger",
+        "value": "No"
+      },
+      "54": {
+        "label": "Kick Lock Holes",
+        "value": "No"
+      },
+      "55": {
+        "label": "Game Start Doc.",
+        "value": "7"
       }
     }
   },
