@@ -144,6 +144,10 @@
         "label": "Ball Saves",
         "value": "Off"
       },
+      "02": {
+        "label": "Ball Save Time",
+        "value": 3
+      },
       "03": {
         "label": "Ex. Ball Percnt.",
         "value": 30

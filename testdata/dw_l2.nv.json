@@ -264,7 +264,7 @@
       },
       "29": {
         "label": "Transmat Spotdoc.",
-        "value": 10
+        "value": "750,000"
       },
       "30": {
         "label": "Mem. Doctors 1-7",
@@ -351,7 +351,7 @@
         "value": "Enabled"
       },
       "49": {
-        "label": "Unused",
+        "label": "Backbox Head",
         "value": ""
       },
       "50": {
@@ -377,7 +377,7 @@
       },
       "55": {
         "label": "Game Start Doc.",
-        "value": "7"
+        "value": 7
       }
     }
   },
