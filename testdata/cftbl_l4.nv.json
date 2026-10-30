@@ -80,7 +80,7 @@
       },
       "20": {
         "label": "Custom Message",
-        "value": "ON"
+        "value": "On"
       },
       "21": {
         "label": "Language",
@@ -133,6 +133,80 @@
       "33": {
         "label": "Game Re-Start",
         "value": "Slow"
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "Special",
+        "value": 3
+      },
+      "02": {
+        "label": "Lite Special",
+        "value": 3
+      },
+      "03": {
+        "label": "Multiball",
+        "value": 20
+      },
+      "04": {
+        "label": "Extra Ball",
+        "value": 13
+      },
+      "05": {
+        "label": "Attract Sounds",
+        "value": "Off"
+      },
+      "06": {
+        "label": "Sup. Jack. Cnt",
+        "value": 20
+      },
+      "07": {
+        "label": "Ball Save Time",
+        "value": 6
+      },
+      "08": {
+        "label": "Mega Menu Timer",
+        "value": 20
+      },
+      "09": {
+        "label": "Restart M.Ball",
+        "value": 12
+      },
+      "10": {
+        "label": "Spot Targets",
+        "value": "Yes"
+      },
+      "11": {
+        "label": "Big Mill. Timer",
+        "value": 12
+      },
+      "12": {
+        "label": "Big Mill. Limit",
+        "value": 20
+      },
+      "13": {
+        "label": "Video Mode Timer",
+        "value": 12
+      },
+      "14": {
+        "label": "Video K.O. Cnt",
+        "value": 17
+      },
+      "15": {
+        "label": "Reset Kiss",
+        "value": "No"
+      },
+      "16": {
+        "label": "Rotate Lamps",
+        "value": "Yes"
+      },
+      "17": {
+        "label": "Family Mode",
+        "value": "No"
+      },
+      "18": {
+        "label": "Rmp Strt Mde Cnt",
+        "value": 4
       }
     }
   },

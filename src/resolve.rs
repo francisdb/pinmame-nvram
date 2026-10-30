@@ -381,7 +381,11 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
             let location = location_in_nvram_file(nvram_layout, descriptor, length)?;
             let index =
                 read_int(rom, endian, nibble, location, &Number::from(DEFAULT_SCALE))? as usize;
-            let values = descriptor.get("values").unwrap().as_array().unwrap();
+            // Some maps leave out the value names when they are unknown,
+            // fall back to the raw index.
+            let Some(values) = descriptor.get("values").and_then(|v| v.as_array()) else {
+                return Ok((Value::Number(Number::from(index)), Some(index as u64)));
+            };
             match values.get(index) {
                 Some(enum_value) => {
                     // The range (min/max) constrains the raw index, not the label.

@@ -80,7 +80,7 @@
       },
       "20": {
         "label": "Custom Message",
-        "value": "ON"
+        "value": "On"
       },
       "21": {
         "label": "Language",
@@ -137,6 +137,147 @@
       "34": {
         "label": "Allow Chase Ball",
         "value": "Yes"
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "Ball Saves",
+        "value": 1
+      },
+      "02": {
+        "label": "Timed Plunger",
+        "value": "Off"
+      },
+      "03": {
+        "label": "Ball Save Time",
+        "value": 4
+      },
+      "04": {
+        "label": "Mball. Ball Saver",
+        "value": 5
+      },
+      "05": {
+        "label": "R.Mstr. Ball Save",
+        "value": 5
+      },
+      "06": {
+        "label": "Arc Mball. Save",
+        "value": 5
+      },
+      "07": {
+        "label": "Jugle. Mball. Save",
+        "value": 5
+      },
+      "08": {
+        "label": "Neon M.B Saver",
+        "value": 8
+      },
+      "09": {
+        "label": "Rmaster. Ex.Ball",
+        "value": 3
+      },
+      "10": {
+        "label": "\"Boom\" For E.B",
+        "value": 15
+      },
+      "11": {
+        "label": "Ramp Difficulty",
+        "value": "Medium"
+      },
+      "12": {
+        "label": "\"Ring\" Memory",
+        "value": "No"
+      },
+      "13": {
+        "label": "Side Show Lit",
+        "value": "Yes"
+      },
+      "14": {
+        "label": "Super Jets Time",
+        "value": 10
+      },
+      "15": {
+        "label": "Popcorn Time",
+        "value": 20
+      },
+      "16": {
+        "label": "Roonie Timer",
+        "value": 20
+      },
+      "17": {
+        "label": "Hat-Trick Timer",
+        "value": 20
+      },
+      "18": {
+        "label": "Cannon Mode Time",
+        "value": 10
+      },
+      "19": {
+        "label": "M/B Stack Locks",
+        "value": 1
+      },
+      "20": {
+        "label": "Flprs. Abort Anim.",
+        "value": "Instant"
+      },
+      "21": {
+        "label": "Plyr Tournament",
+        "value": "Yes"
+      },
+      "22": {
+        "label": "Magnet Ball Save",
+        "value": "Yes"
+      },
+      "23": {
+        "label": "A.Mode Music",
+        "value": "Off"
+      },
+      "24": {
+        "label": "A.Mode Sounds",
+        "units": "minutes",
+        "value": "Off"
+      },
+      "25": {
+        "label": "A.Mode Flpr. Snds.",
+        "value": "Yes"
+      },
+      "26": {
+        "label": "Coin Start",
+        "value": "No"
+      },
+      "27": {
+        "label": "Neon Off Time",
+        "units": "minutes",
+        "value": 60
+      },
+      "28": {
+        "label": "Neon On Time",
+        "units": "minutes",
+        "value": 5
+      },
+      "29": {
+        "label": "Backbox",
+        "value": "On"
+      },
+      "30": {
+        "label": "Ringmaster",
+        "value": "On"
+      },
+      "31": {
+        "label": "Diverter",
+        "value": "On"
+      },
+      "32": {
+        "label": "\"Knocker\" Volume",
+        "value": 31
+      },
+      "33": {
+        "label": "Low Rm. Batle. Scr.",
+        "value": "No"
+      },
+      "34": {
+        "label": "Gameover Kickout",
+        "value": "Delayed"
       }
     }
   },

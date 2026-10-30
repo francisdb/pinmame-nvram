@@ -80,7 +80,7 @@
       },
       "20": {
         "label": "Custom Message",
-        "value": "ON"
+        "value": "On"
       },
       "21": {
         "label": "Language",
@@ -133,6 +133,116 @@
       "33": {
         "label": "Game Re-Start",
         "value": "Slow"
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "Buy Extra Ball",
+        "value": "1 Credit"
+      },
+      "02": {
+        "label": "Buy In Count",
+        "value": 1
+      },
+      "03": {
+        "label": "Ball Saves",
+        "value": 2
+      },
+      "04": {
+        "label": "Ball Save Time",
+        "value": 6
+      },
+      "05": {
+        "label": "Ex. Ball Percent",
+        "value": 20
+      },
+      "06": {
+        "label": "Extra Ball Level",
+        "value": 2
+      },
+      "07": {
+        "label": "Magazine EB Mem",
+        "value": "Yes"
+      },
+      "08": {
+        "label": "Safehouse EB Mem",
+        "value": "Yes"
+      },
+      "09": {
+        "label": "Feel Luck EB Mem",
+        "value": "Yes"
+      },
+      "10": {
+        "label": "Contra EB Mem",
+        "value": "Yes"
+      },
+      "11": {
+        "label": "A-Mode Music",
+        "value": "No"
+      },
+      "12": {
+        "label": "Def. Aux Champ",
+        "value": 2
+      },
+      "13": {
+        "label": "Cred. Aux Champs",
+        "value": 1
+      },
+      "14": {
+        "label": "Hq Difficulty",
+        "value": "Medium"
+      },
+      "15": {
+        "label": "Badge Difficulty",
+        "value": "Medium"
+      },
+      "16": {
+        "label": "Rank Difficulty",
+        "value": "Medium"
+      },
+      "17": {
+        "label": "Spot Bullets",
+        "value": "Yes"
+      },
+      "18": {
+        "label": "Bull. Difficulty",
+        "value": "Medium"
+      },
+      "19": {
+        "label": "Mag. Difficulty",
+        "value": "Medium"
+      },
+      "20": {
+        "label": "Fl Difficulty",
+        "value": "Medium"
+      },
+      "21": {
+        "label": "Special Mode",
+        "value": "Yes"
+      },
+      "22": {
+        "label": "Timed Plunger",
+        "value": "Off"
+      },
+      "23": {
+        "label": "Flipper Plunger",
+        "value": "No"
+      },
+      "24": {
+        "label": "Gun Disabled",
+        "value": "No"
+      },
+      "25": {
+        "label": "Inst. Speech",
+        "value": "No"
+      },
+      "26": {
+        "label": "Backup Null Champ",
+        "value": 100
+      },
+      "27": {
+        "label": "Gun Speed",
+        "value": "Auto"
       }
     }
   },

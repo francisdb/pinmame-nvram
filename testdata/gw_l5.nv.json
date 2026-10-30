@@ -80,7 +80,7 @@
       },
       "20": {
         "label": "Custom Message",
-        "value": "ON"
+        "value": "On"
       },
       "21": {
         "label": "Language",
@@ -133,6 +133,85 @@
       "33": {
         "label": "Game Re-Start",
         "value": "Slow"
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "Attract Sounds",
+        "value": "Off"
+      },
+      "02": {
+        "label": "Special Percent",
+        "value": 3
+      },
+      "03": {
+        "label": "Extraball Percnt",
+        "value": 12
+      },
+      "04": {
+        "label": "Timed Plunger",
+        "units": "seconds",
+        "value": "Off"
+      },
+      "05": {
+        "label": "Flipper Plunger",
+        "value": "Off"
+      },
+      "06": {
+        "label": "Kickback Setting",
+        "value": "Medium"
+      },
+      "07": {
+        "label": "Extraball Memory",
+        "value": "On"
+      },
+      "08": {
+        "label": "Consolation Ball",
+        "value": "On"
+      },
+      "09": {
+        "label": "Getaway Timer",
+        "units": "seconds",
+        "value": 20
+      },
+      "10": {
+        "label": "Video Mode Timer",
+        "units": "seconds",
+        "value": 14
+      },
+      "11": {
+        "label": "Freeway Timer",
+        "units": "seconds",
+        "value": 8
+      },
+      "12": {
+        "label": "Photo Shoot",
+        "value": "Off"
+      },
+      "13": {
+        "label": "Multiball Percnt",
+        "value": 20
+      },
+      "14": {
+        "label": "S. Charger Timer",
+        "units": "seconds",
+        "value": 20
+      },
+      "15": {
+        "label": "Divertor Broken",
+        "value": "Off"
+      },
+      "16": {
+        "label": "Up/Dn Ramp Broke",
+        "value": "Off"
+      },
+      "17": {
+        "label": "Spot L. On S. Ramp",
+        "value": "On"
+      },
+      "18": {
+        "label": "Use Mars Lamp",
+        "value": "On"
       }
     }
   },

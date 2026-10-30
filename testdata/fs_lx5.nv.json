@@ -80,7 +80,7 @@
       },
       "20": {
         "label": "Custom Message",
-        "value": "ON"
+        "value": "On"
       },
       "21": {
         "label": "Language",
@@ -133,6 +133,62 @@
       "33": {
         "label": "Game Re-Start",
         "value": "Slow"
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "% Random X. Ball",
+        "value": 18
+      },
+      "02": {
+        "label": "Attract Sounds",
+        "value": "Off"
+      },
+      "03": {
+        "label": "Ballsave Time",
+        "units": "seconds",
+        "value": 7
+      },
+      "04": {
+        "label": "Buy Extra Ball",
+        "value": "1 Credit"
+      },
+      "05": {
+        "label": "Timed Plunger",
+        "value": "Off"
+      },
+      "07": {
+        "label": "Bowl. Credits",
+        "value": 1
+      },
+      "08": {
+        "label": "% Multiball",
+        "value": 10
+      },
+      "09": {
+        "label": "% Light X. Ball",
+        "value": 5
+      },
+      "10": {
+        "label": "Drain Save Timer",
+        "units": "seconds",
+        "value": 6
+      },
+      "15": {
+        "label": "Max. Buyins",
+        "value": 3
+      },
+      "16": {
+        "label": "% Bedrock Derby",
+        "value": 40
+      },
+      "17": {
+        "label": "Flipper Plunger",
+        "value": "Off"
+      },
+      "18": {
+        "label": "Amode GI Show",
+        "value": "On"
       }
     }
   },

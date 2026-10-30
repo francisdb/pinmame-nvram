@@ -80,7 +80,7 @@
       },
       "20": {
         "label": "Custom Message",
-        "value": "ON"
+        "value": "On"
       },
       "21": {
         "label": "Language",
@@ -133,6 +133,160 @@
       "33": {
         "label": "Game Re-Start",
         "value": "Slow"
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "Buy Extra Ball",
+        "value": "1 Credit"
+      },
+      "02": {
+        "label": "Ex. Ball Percent",
+        "value": 20
+      },
+      "03": {
+        "label": "1st Ex.Ball Ramps",
+        "value": 9
+      },
+      "04": {
+        "label": "2nd Ex.Ball Ramps",
+        "value": 45
+      },
+      "05": {
+        "label": "Ramp E.B. Memory",
+        "value": "Yes"
+      },
+      "06": {
+        "label": "Dead Ends For E.B.",
+        "value": 3
+      },
+      "07": {
+        "label": "Dead End E.B. Mem.",
+        "value": "No"
+      },
+      "08": {
+        "label": "Spiral E.B. Memory",
+        "value": "No"
+      },
+      "09": {
+        "label": "Door E.B. Memory",
+        "value": "Yes"
+      },
+      "10": {
+        "label": "1st Hard Lock",
+        "value": 2
+      },
+      "11": {
+        "label": "1st Hard Release",
+        "value": 3
+      },
+      "12": {
+        "label": "Last Rmp. Release",
+        "value": 1
+      },
+      "13": {
+        "label": "Last Easy Rel.",
+        "value": 1
+      },
+      "14": {
+        "label": "Door Spots",
+        "value": 1
+      },
+      "15": {
+        "label": "Piano Difficulty",
+        "value": "Easy"
+      },
+      "16": {
+        "label": "Slot Difficulty",
+        "value": "Easy"
+      },
+      "17": {
+        "label": "Spiral Start",
+        "value": "Easy"
+      },
+      "18": {
+        "label": "1st Hard Spiral",
+        "value": 1
+      },
+      "19": {
+        "label": "Spiral Lane Mem.",
+        "value": "No"
+      },
+      "20": {
+        "label": "Ramps For Camera",
+        "value": 10
+      },
+      "21": {
+        "label": "Camera Memory",
+        "value": "Yes"
+      },
+      "22": {
+        "label": "Power At Start",
+        "value": "No"
+      },
+      "23": {
+        "label": "Outlane Diff.",
+        "value": "Hard"
+      },
+      "24": {
+        "label": "Disable Gumball",
+        "value": "No"
+      },
+      "25": {
+        "label": "Disable Clock",
+        "value": "No"
+      },
+      "26": {
+        "label": "No Powerball",
+        "value": "No"
+      },
+      "27": {
+        "label": "Free Ride Time",
+        "value": "Off"
+      },
+      "28": {
+        "label": "Buy-In Free Time",
+        "value": 10
+      },
+      "29": {
+        "label": "Low Line",
+        "value": "No"
+      },
+      "30": {
+        "label": "A-Mode Sound",
+        "value": "Yes"
+      },
+      "31": {
+        "label": "A-Mode Music",
+        "value": "No"
+      },
+      "32": {
+        "label": "Backup L.I.Z. Champ",
+        "value": 300
+      },
+      "33": {
+        "label": "Cred. Champ. Zone",
+        "value": 1
+      },
+      "34": {
+        "label": "A.Mode Clock Time",
+        "value": "Yes"
+      },
+      "35": {
+        "label": "Balls In Gumball",
+        "value": 3
+      },
+      "36": {
+        "label": "Last Free Ride",
+        "value": 1
+      },
+      "37": {
+        "label": "Freeplay Message",
+        "value": 1
+      },
+      "38": {
+        "label": "Buy In Count",
+        "value": 1
       }
     }
   },

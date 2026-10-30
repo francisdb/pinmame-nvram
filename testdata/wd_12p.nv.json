@@ -80,7 +80,7 @@
       },
       "20": {
         "label": "Custom Message",
-        "value": "ON"
+        "value": "On"
       },
       "21": {
         "label": "Language",
@@ -133,6 +133,80 @@
       "33": {
         "label": "Game Re-Start",
         "value": "Slow"
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "Buy Extra Ball",
+        "value": "1 Credit"
+      },
+      "02": {
+        "label": "Buy In Count",
+        "value": 3
+      },
+      "03": {
+        "label": "Ball Saves",
+        "value": 1
+      },
+      "04": {
+        "label": "Ball Save Time",
+        "value": 6
+      },
+      "05": {
+        "label": "Timed Plunger",
+        "value": "Off"
+      },
+      "06": {
+        "label": "Flipper Plunger",
+        "value": "No"
+      },
+      "07": {
+        "label": "Novice Mode",
+        "value": "2 Minutes"
+      },
+      "08": {
+        "label": "Special Mode",
+        "value": "Yes"
+      },
+      "09": {
+        "label": "Plyr Tournament",
+        "value": "Yes"
+      },
+      "10": {
+        "label": "Staged Ball",
+        "value": "On"
+      },
+      "11": {
+        "label": "Amode Bong Snds",
+        "value": "Off"
+      },
+      "12": {
+        "label": "Extraball Percnt",
+        "value": 35
+      },
+      "13": {
+        "label": "Multiball Percnt",
+        "value": 35
+      },
+      "14": {
+        "label": "Extraball Memory",
+        "value": "On"
+      },
+      "15": {
+        "label": "Roof Champ Hard",
+        "value": "Off"
+      },
+      "16": {
+        "label": "Disable Slots",
+        "value": "Off"
+      },
+      "17": {
+        "label": "Disable Ramp",
+        "value": "Off"
+      },
+      "18": {
+        "label": "Disable 3 Bank",
+        "value": "Off"
       }
     }
   },

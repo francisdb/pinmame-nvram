@@ -80,7 +80,7 @@
       },
       "20": {
         "label": "Custom Message",
-        "value": "ON"
+        "value": "On"
       },
       "21": {
         "label": "Language",
@@ -133,6 +133,167 @@
       "33": {
         "label": "Game Re-Start",
         "value": "Slow"
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "Timed Plunger",
+        "units": "seconds",
+        "value": "Off"
+      },
+      "02": {
+        "label": "Flipper Plunger",
+        "value": "Off"
+      },
+      "03": {
+        "label": "Loop Lit Timer",
+        "units": "seconds",
+        "value": 10
+      },
+      "04": {
+        "label": "Ramp Lit Timer",
+        "units": "seconds",
+        "value": 8
+      },
+      "05": {
+        "label": "Ball Save Timer",
+        "units": "seconds",
+        "value": 5
+      },
+      "06": {
+        "label": "Ball Save 3multi",
+        "units": "seconds",
+        "value": 10
+      },
+      "07": {
+        "label": "Ball Save 2multi",
+        "units": "seconds",
+        "value": 3
+      },
+      "08": {
+        "label": "Capt. Multi Start",
+        "value": 3
+      },
+      "09": {
+        "label": "Captive Multi Tm.",
+        "units": "seconds",
+        "value": 20
+      },
+      "10": {
+        "label": "Get The Idol Tm.",
+        "units": "seconds",
+        "value": 30
+      },
+      "11": {
+        "label": "Streets/Cairo Tm.",
+        "units": "seconds",
+        "value": 30
+      },
+      "12": {
+        "label": "Monkey Brains Tm.",
+        "units": "seconds",
+        "value": 30
+      },
+      "13": {
+        "label": "Steal/Stones Tm.",
+        "units": "seconds",
+        "value": 30
+      },
+      "14": {
+        "label": "Rope Bridge Tm.",
+        "units": "seconds",
+        "value": 30
+      },
+      "15": {
+        "label": "Castle Grnwld Tm.",
+        "units": "seconds",
+        "value": 30
+      },
+      "16": {
+        "label": "Tank Chase Tm.",
+        "units": "seconds",
+        "value": 30
+      },
+      "17": {
+        "label": "3 Challenges Tm.",
+        "units": "seconds",
+        "value": 30
+      },
+      "18": {
+        "label": "Raven Bar Level",
+        "value": 1
+      },
+      "19": {
+        "label": "Choose Wise Lev.",
+        "value": 1
+      },
+      "20": {
+        "label": "Jackpot Mult. Tmr.",
+        "units": "seconds",
+        "value": 10
+      },
+      "21": {
+        "label": "Path Start Level",
+        "value": 1
+      },
+      "22": {
+        "label": "Adv. Continue. Tmr.",
+        "units": "seconds",
+        "value": 15
+      },
+      "23": {
+        "label": "Path Ex.Ball-Pit",
+        "value": "Easy"
+      },
+      "24": {
+        "label": "Lower Ex.Ball Hld.",
+        "value": "On"
+      },
+      "25": {
+        "label": "Super Jet Start",
+        "value": 75
+      },
+      "26": {
+        "label": "Hand/Fate Diff.",
+        "value": "Easy"
+      },
+      "27": {
+        "label": "Hand/Fate Timer",
+        "units": "seconds",
+        "value": 10
+      },
+      "28": {
+        "label": "Hold Idol Locks",
+        "value": "Yes"
+      },
+      "29": {
+        "label": "Attract Music",
+        "value": "Off"
+      },
+      "30": {
+        "label": "Attract Sound",
+        "value": "On"
+      },
+      "31": {
+        "label": "Buy Extra Ball",
+        "value": "1 Credit"
+      },
+      "32": {
+        "label": "Buy-In Bl.Save Tm.",
+        "units": "seconds",
+        "value": 10
+      },
+      "33": {
+        "label": "Gun Trig. Buy In",
+        "value": "Nothing"
+      },
+      "34": {
+        "label": "Outlane Bl. Save",
+        "value": "On"
+      },
+      "35": {
+        "label": "Jackpot Diffclty.",
+        "value": "Hard"
       }
     }
   },

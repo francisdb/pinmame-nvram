@@ -220,6 +220,14 @@
         "label": "Eyeball E.B. Mem.",
         "value": "YES"
       },
+      "22": {
+        "label": "Backup Demo Champ",
+        "value": 500
+      },
+      "23": {
+        "label": "Secret Features",
+        "value": 1
+      },
       "24": {
         "label": "Match Speech",
         "value": "ON"

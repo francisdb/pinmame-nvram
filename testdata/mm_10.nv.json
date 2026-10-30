@@ -80,7 +80,7 @@
       },
       "20": {
         "label": "Custom Message",
-        "value": "ON"
+        "value": "On"
       },
       "21": {
         "label": "Language",
@@ -133,6 +133,232 @@
       "33": {
         "label": "Game Re-Start",
         "value": "Slow"
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "Ball Saves",
+        "value": 1
+      },
+      "02": {
+        "label": "Ball Save Time",
+        "value": 4
+      },
+      "03": {
+        "label": "Ex. Ball Percnt.",
+        "value": 25
+      },
+      "04": {
+        "label": "Starting Castle",
+        "value": "Random"
+      },
+      "05": {
+        "label": "Castle Diff.",
+        "value": "Hard"
+      },
+      "06": {
+        "label": "Castle Ex. Ball",
+        "value": 2
+      },
+      "07": {
+        "label": "1st Hard Lock",
+        "value": 2
+      },
+      "08": {
+        "label": "Castle M.B. E.B. Dif.",
+        "value": "Medium"
+      },
+      "09": {
+        "label": "Troll Tgt. Memory",
+        "value": "Yes"
+      },
+      "10": {
+        "label": "Troll Tgt. Count",
+        "value": 8
+      },
+      "11": {
+        "label": "Troll Difficulty",
+        "value": "Medium"
+      },
+      "12": {
+        "label": "Troll Timer",
+        "value": 30
+      },
+      "13": {
+        "label": "Hurry Up E.B. 1",
+        "value": 10
+      },
+      "14": {
+        "label": "Hurry Up E.B. 2",
+        "value": 40
+      },
+      "15": {
+        "label": "R. Madness Save",
+        "value": "Yes"
+      },
+      "16": {
+        "label": "Max. R. Madness E.B.",
+        "value": 4
+      },
+      "17": {
+        "label": "B. King. Start Dif.",
+        "value": "Easy"
+      },
+      "18": {
+        "label": "Lane Video 1",
+        "value": 8
+      },
+      "19": {
+        "label": "Lane Video 2",
+        "value": 50
+      },
+      "20": {
+        "label": "Video E.B.",
+        "value": "Yes"
+      },
+      "21": {
+        "label": "Playr. Tourn. Mode",
+        "value": "Yes"
+      },
+      "22": {
+        "label": "Family Mode",
+        "value": "No"
+      },
+      "23": {
+        "label": "Attract Music",
+        "value": "No"
+      },
+      "24": {
+        "label": "Attract Sounds",
+        "value": "Yes"
+      },
+      "25": {
+        "label": "Timed Plunger",
+        "value": "Off"
+      },
+      "26": {
+        "label": "Flipper Plunger",
+        "value": "No"
+      },
+      "27": {
+        "label": "Disable L. Gate",
+        "value": "No"
+      },
+      "28": {
+        "label": "Disable R. Gate",
+        "value": "No"
+      },
+      "29": {
+        "label": "Disable Twr. Dvt.",
+        "value": "No"
+      },
+      "30": {
+        "label": "Disable Twr. Lock",
+        "value": "No"
+      },
+      "31": {
+        "label": "Disable Drwbrdg.",
+        "value": "No"
+      },
+      "32": {
+        "label": "Disable Cstl. Gt.",
+        "value": "No"
+      },
+      "33": {
+        "label": "Disable Castle",
+        "value": "No"
+      },
+      "34": {
+        "label": "Disable L. Troll",
+        "value": "No"
+      },
+      "35": {
+        "label": "Disable R. Troll",
+        "value": "No"
+      },
+      "36": {
+        "label": "Buy Extra Ball",
+        "value": 0
+      },
+      "37": {
+        "label": "Buy In Count",
+        "value": 1
+      },
+      "38": {
+        "label": "Castle Champion",
+        "value": 6
+      },
+      "39": {
+        "label": "Castle Credits",
+        "value": 0
+      },
+      "40": {
+        "label": "Joust Champion",
+        "value": 5
+      },
+      "41": {
+        "label": "Joust Credits",
+        "value": 0
+      },
+      "42": {
+        "label": "Catapult Champ.",
+        "value": 5
+      },
+      "43": {
+        "label": "Catapult Credits",
+        "value": 0
+      },
+      "44": {
+        "label": "Peasant Champion",
+        "value": 5
+      },
+      "45": {
+        "label": "Peasant Credits",
+        "value": 0
+      },
+      "46": {
+        "label": "Damsel Champion",
+        "value": 5
+      },
+      "47": {
+        "label": "Damsel Credits",
+        "value": 0
+      },
+      "48": {
+        "label": "Troll Champion",
+        "value": 32
+      },
+      "49": {
+        "label": "Troll Credits",
+        "value": 0
+      },
+      "50": {
+        "label": "Madness Champion",
+        "value": 32
+      },
+      "51": {
+        "label": "Madness Credits",
+        "value": 0
+      },
+      "52": {
+        "label": "Battle Credits",
+        "value": 0
+      },
+      "53": {
+        "label": "Battle Champ. 1",
+        "value": 1
+      },
+      "54": {
+        "label": "Battle Champ. 2",
+        "value": 0
+      },
+      "55": {
+        "label": "Battle Champ. 3",
+        "value": 0
+      },
+      "56": {
+        "label": "Battle Champ. 4",
+        "value": 0
       }
     }
   },

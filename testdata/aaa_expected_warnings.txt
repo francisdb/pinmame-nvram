@@ -34,3 +34,70 @@ flashgdv | Sound Option | Failed to resolve: Index 15 out of bounds for enum wit
 flashgdv | Special/Extra Ball Awards | Failed to resolve: Index 15 out of bounds for enum with 4 values
 ratrc_l1 | Replay Award | Failed to resolve: Index 85 out of bounds for enum with 2 values
 tsptr_l3 | Replay Start | Value out of range: 8 ≤ 25 ≤ 20
+
+# NOTE: taf_h4/taf_l6, congo_20 and ww_p9 share the taf_l5, congo_21 and ww_l5
+# maps, but their A.2 adjustment tables sit at other addresses.
+congo_20 | Ball Save Time | Value out of range: 2 ≤ 29 ≤ 15
+congo_20 | Ex. Ball Memory | Failed to resolve: Index 2 out of bounds for enum with 2 values
+congo_20 | Ex. Ball Percent | Value out of range: 10 ≤ 5 ≤ 40
+congo_20 | Extra Ball Level | Value out of range: 3 ≤ 1 ≤ 55
+congo_20 | Flipper Plunger | Failed to resolve: Index 20 out of bounds for enum with 2 values
+congo_20 | Timed Plunger | Value out of range: 29 ≤ 0 ≤ 90
+congo_20s10k | Ball Save Time | Value out of range: 2 ≤ 29 ≤ 15
+congo_20s10k | Ex. Ball Memory | Failed to resolve: Index 2 out of bounds for enum with 2 values
+congo_20s10k | Ex. Ball Percent | Value out of range: 10 ≤ 5 ≤ 40
+congo_20s10k | Extra Ball Level | Value out of range: 3 ≤ 1 ≤ 55
+congo_20s10k | Flipper Plunger | Failed to resolve: Index 20 out of bounds for enum with 2 values
+congo_20s10k | Timed Plunger | Value out of range: 29 ≤ 0 ≤ 90
+taf_h4 | Bear Ex. B. Memory | Failed to resolve: Index 4 out of bounds for enum with 2 values
+taf_h4 | Bear Kick Ex. B. 1 | Value out of range: 4 ≤ 25 ≤ 12
+taf_h4 | Bear Kick Ex. B. 2 | Failed to resolve: Index 8 out of bounds for enum with 2 values
+taf_h4 | Ex. Ball Percent | Value out of range: 14 ≤ 0 ≤ 40
+taf_h4 | House From Swamp | Failed to resolve: Index 21 out of bounds for enum with 2 values
+taf_h4 | Jakpot Carryover | Failed to resolve: Index 2 out of bounds for enum with 2 values
+taf_h4 | Mil. Plus Max. | Value out of range: 5 ≤ 0 ≤ 20
+taf_h4 | Special Memory | Failed to resolve: Index 2 out of bounds for enum with 2 values
+taf_h4 | Tour Difficulty | Value out of range: 1 ≤ 0 ≤ 2
+taf_h4-factoryreset | Bear Ex. B. Memory | Failed to resolve: Index 4 out of bounds for enum with 2 values
+taf_h4-factoryreset | Bear Kick Ex. B. 1 | Value out of range: 4 ≤ 25 ≤ 12
+taf_h4-factoryreset | Bear Kick Ex. B. 2 | Failed to resolve: Index 8 out of bounds for enum with 2 values
+taf_h4-factoryreset | Ex. Ball Percent | Value out of range: 14 ≤ 0 ≤ 40
+taf_h4-factoryreset | House From Swamp | Failed to resolve: Index 21 out of bounds for enum with 2 values
+taf_h4-factoryreset | Jakpot Carryover | Failed to resolve: Index 2 out of bounds for enum with 2 values
+taf_h4-factoryreset | Mil. Plus Max. | Value out of range: 5 ≤ 0 ≤ 20
+taf_h4-factoryreset | Special Memory | Failed to resolve: Index 2 out of bounds for enum with 2 values
+taf_h4-factoryreset | Tour Difficulty | Value out of range: 1 ≤ 0 ≤ 2
+taf_h4-factoryreset-volumeup | Bear Ex. B. Memory | Failed to resolve: Index 4 out of bounds for enum with 2 values
+taf_h4-factoryreset-volumeup | Bear Kick Ex. B. 1 | Value out of range: 4 ≤ 25 ≤ 12
+taf_h4-factoryreset-volumeup | Bear Kick Ex. B. 2 | Failed to resolve: Index 8 out of bounds for enum with 2 values
+taf_h4-factoryreset-volumeup | Ex. Ball Percent | Value out of range: 14 ≤ 0 ≤ 40
+taf_h4-factoryreset-volumeup | House From Swamp | Failed to resolve: Index 21 out of bounds for enum with 2 values
+taf_h4-factoryreset-volumeup | Jakpot Carryover | Failed to resolve: Index 2 out of bounds for enum with 2 values
+taf_h4-factoryreset-volumeup | Mil. Plus Max. | Value out of range: 5 ≤ 0 ≤ 20
+taf_h4-factoryreset-volumeup | Special Memory | Failed to resolve: Index 2 out of bounds for enum with 2 values
+taf_h4-factoryreset-volumeup | Tour Difficulty | Value out of range: 1 ≤ 0 ≤ 2
+taf_h4-uninitialized | Bear Ex. B. Memory | Failed to resolve: Index 4 out of bounds for enum with 2 values
+taf_h4-uninitialized | Bear Kick Ex. B. 1 | Value out of range: 4 ≤ 25 ≤ 12
+taf_h4-uninitialized | Bear Kick Ex. B. 2 | Failed to resolve: Index 8 out of bounds for enum with 2 values
+taf_h4-uninitialized | Ex. Ball Percent | Value out of range: 14 ≤ 0 ≤ 40
+taf_h4-uninitialized | House From Swamp | Failed to resolve: Index 21 out of bounds for enum with 2 values
+taf_h4-uninitialized | Jakpot Carryover | Failed to resolve: Index 2 out of bounds for enum with 2 values
+taf_h4-uninitialized | Mil. Plus Max. | Value out of range: 5 ≤ 0 ≤ 20
+taf_h4-uninitialized | Special Memory | Failed to resolve: Index 2 out of bounds for enum with 2 values
+taf_h4-uninitialized | Tour Difficulty | Value out of range: 1 ≤ 0 ≤ 2
+taf_l6 | Bear Ex. B. Memory | Failed to resolve: Index 4 out of bounds for enum with 2 values
+taf_l6 | Bear Kick Ex. B. 1 | Value out of range: 4 ≤ 25 ≤ 12
+taf_l6 | Bear Kick Ex. B. 2 | Failed to resolve: Index 8 out of bounds for enum with 2 values
+taf_l6 | Ex. Ball Percent | Value out of range: 14 ≤ 0 ≤ 40
+taf_l6 | House From Swamp | Failed to resolve: Index 21 out of bounds for enum with 2 values
+taf_l6 | Jakpot Carryover | Failed to resolve: Index 2 out of bounds for enum with 2 values
+taf_l6 | Mil. Plus Max. | Value out of range: 5 ≤ 0 ≤ 20
+taf_l6 | Special Memory | Failed to resolve: Index 2 out of bounds for enum with 2 values
+taf_l6 | Tour Difficulty | Value out of range: 1 ≤ 0 ≤ 2
+ww_p9-uninitialized | Ex. Ball Percent | Value out of range: 14 ≤ 12 ≤ 40
+ww_p9-uninitialized | Hot Foot Count | Value out of range: 2 ≤ 0 ≤ 33
+ww_p9-uninitialized | Hot Foot Percent | Value out of range: 14 ≤ 4 ≤ 40
+ww_p9-uninitialized | Kickback Memory | Failed to resolve: Index 12 out of bounds for enum with 2 values
+ww_p9-uninitialized | Mystery E.B.Memory | Failed to resolve: Index 32 out of bounds for enum with 2 values
+ww_p9-uninitialized | Percent Special | Value out of range: 1 ≤ 0 ≤ 50
+ww_p9-uninitialized | Ramp Ex. Ball 1 | Value out of range: 10 ≤ 1 ≤ 15

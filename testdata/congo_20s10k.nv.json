@@ -80,7 +80,7 @@
       },
       "20": {
         "label": "Custom Message",
-        "value": "ON"
+        "value": "On"
       },
       "21": {
         "label": "Language",
@@ -133,6 +133,96 @@
       "33": {
         "label": "Game Re-Start",
         "value": "Slow"
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "Ball Saves",
+        "value": 4
+      },
+      "02": {
+        "label": "Ball Save Time",
+        "value": 29,
+        "warning": "Value out of range: 2 ≤ 29 ≤ 15"
+      },
+      "03": {
+        "label": "Timed Plunger",
+        "value": 0,
+        "warning": "Value out of range: 29 ≤ 0 ≤ 90"
+      },
+      "04": {
+        "label": "Flipper Plunger",
+        "warning": "Failed to resolve: Index 20 out of bounds for enum with 2 values"
+      },
+      "05": {
+        "label": "Ex. Ball Percent",
+        "value": 5,
+        "warning": "Value out of range: 10 ≤ 5 ≤ 40"
+      },
+      "06": {
+        "label": "Extra Ball Level",
+        "value": 1,
+        "warning": "Value out of range: 3 ≤ 1 ≤ 55"
+      },
+      "07": {
+        "label": "Ex. Ball Memory",
+        "warning": "Failed to resolve: Index 2 out of bounds for enum with 2 values"
+      },
+      "08": {
+        "label": "Kickback Diff.",
+        "value": "Medium"
+      },
+      "09": {
+        "label": "Amy Difficulty",
+        "value": "Medium"
+      },
+      "10": {
+        "label": "Multiball Diff.",
+        "value": "Medium"
+      },
+      "11": {
+        "label": "Mystery Diff.",
+        "value": "Medium"
+      },
+      "12": {
+        "label": "Gray Diff.",
+        "value": "Medium"
+      },
+      "13": {
+        "label": "Bonus X Diff.",
+        "value": "Easy"
+      },
+      "14": {
+        "label": "Special Mode",
+        "value": "Yes"
+      },
+      "15": {
+        "label": "Plyr Tournament",
+        "value": "No"
+      },
+      "16": {
+        "label": "A-Mode Music",
+        "value": "Yes"
+      },
+      "17": {
+        "label": "Endgame Lock Rel.",
+        "value": "No"
+      },
+      "18": {
+        "label": "Buy Extra Ball",
+        "value": "1/2 Cred."
+      },
+      "20": {
+        "label": "Novice Mode",
+        "value": "Off"
+      },
+      "21": {
+        "label": "Dis. Amy Feed",
+        "value": "No"
+      },
+      "22": {
+        "label": "Mini Pf. Disabled",
+        "value": "Yes"
       }
     }
   },

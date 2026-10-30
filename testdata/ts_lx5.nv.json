@@ -80,7 +80,7 @@
       },
       "20": {
         "label": "Custom Message",
-        "value": "ON"
+        "value": "On"
       },
       "21": {
         "label": "Language",
@@ -133,6 +133,171 @@
       "33": {
         "label": "Game Re-Start",
         "value": "Slow"
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "Buy Extra Ball",
+        "value": "1 Credit"
+      },
+      "02": {
+        "label": "Max. Buyin Balls",
+        "value": 1
+      },
+      "03": {
+        "label": "Attract Music",
+        "value": "Off"
+      },
+      "04": {
+        "label": "Attract Sound",
+        "value": "On"
+      },
+      "05": {
+        "label": "Timed Plunger",
+        "units": "seconds",
+        "value": "Off"
+      },
+      "06": {
+        "label": "Flipper Plunger",
+        "value": "Off"
+      },
+      "07": {
+        "label": "Ball Save Timer",
+        "units": "seconds",
+        "value": 5
+      },
+      "08": {
+        "label": "Shadow Ball Save",
+        "units": "seconds",
+        "value": 12
+      },
+      "09": {
+        "label": "Khan Ball Save",
+        "units": "seconds",
+        "value": 6
+      },
+      "10": {
+        "label": "Hotel Ball Save",
+        "units": "seconds",
+        "value": 9
+      },
+      "11": {
+        "label": "Cntr. Hit Bl. Save",
+        "value": "No"
+      },
+      "12": {
+        "label": "Farley Scene Tm.",
+        "value": 30
+      },
+      "13": {
+        "label": "Guilty Scene Tm.",
+        "value": 30
+      },
+      "14": {
+        "label": "Sphere Scene Tm.",
+        "value": 30
+      },
+      "15": {
+        "label": "Escape Doom Max",
+        "value": 30000000
+      },
+      "16": {
+        "label": "Vengeance Timer",
+        "value": 30
+      },
+      "17": {
+        "label": "Multi Lock Timer",
+        "units": "seconds",
+        "value": 10
+      },
+      "18": {
+        "label": "Ex. Ball Percent",
+        "value": 20
+      },
+      "19": {
+        "label": "Who Knw. E.B.Memory",
+        "value": "Yes"
+      },
+      "20": {
+        "label": "Skill Shot E.B.Mem.",
+        "value": "Yes"
+      },
+      "21": {
+        "label": "Battle E.B. Memory",
+        "value": "Yes"
+      },
+      "22": {
+        "label": "Loop E.B. Memory",
+        "value": "Yes"
+      },
+      "23": {
+        "label": "Loop E.B. Start",
+        "value": 3
+      },
+      "24": {
+        "label": "Khan Lit Memory",
+        "value": "Yes"
+      },
+      "25": {
+        "label": "Khan Start Timer",
+        "units": "seconds",
+        "value": 15
+      },
+      "26": {
+        "label": "Hold Locks",
+        "value": "No"
+      },
+      "27": {
+        "label": "Mongol Hurry Up",
+        "value": "Medium"
+      },
+      "28": {
+        "label": "Family Mode",
+        "value": "Off"
+      },
+      "29": {
+        "label": "Left Divertor",
+        "value": "On"
+      },
+      "30": {
+        "label": "Right Divertor",
+        "value": "On"
+      },
+      "31": {
+        "label": "Mini Playfield",
+        "value": "On"
+      },
+      "32": {
+        "label": "Autofire Locks",
+        "value": "No"
+      },
+      "33": {
+        "label": "Battlefld. Level",
+        "value": 3
+      },
+      "34": {
+        "label": "Sdw. Loop Default",
+        "value": 2
+      },
+      "35": {
+        "label": "Bckup Aux Grand",
+        "value": 900
+      },
+      "36": {
+        "label": "Bckup Aux HSTD 1",
+        "value": 850
+      },
+      "37": {
+        "label": "Bckup Aux HSTD 2",
+        "value": 800
+      },
+      "38": {
+        "label": "Bckup Aux HSTD 3",
+        "value": 750
+      },
+      "39": {
+        "label": "Bckup Aux HSTD 4",
+        "value": 700
       }
     }
   },

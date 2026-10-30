@@ -80,7 +80,7 @@
       },
       "20": {
         "label": "Custom Message",
-        "value": "ON"
+        "value": "On"
       },
       "21": {
         "label": "Language",
@@ -133,6 +133,116 @@
       "33": {
         "label": "Game Re-Start",
         "value": "Slow"
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "Buy Extra Ball",
+        "value": "1 Credit"
+      },
+      "02": {
+        "label": "Buy In Count",
+        "value": 3
+      },
+      "03": {
+        "label": "Ball Saves",
+        "value": 1
+      },
+      "04": {
+        "label": "Ball Save Time",
+        "value": 6
+      },
+      "05": {
+        "label": "Timed Plunger",
+        "value": "Off"
+      },
+      "06": {
+        "label": "Kickback Memory",
+        "value": "Medium"
+      },
+      "07": {
+        "label": "Kickback Relight",
+        "value": "Easy"
+      },
+      "08": {
+        "label": "Raceway Holdover",
+        "value": "Hard"
+      },
+      "09": {
+        "label": "Raceway E.B. Mem.",
+        "value": "Yes"
+      },
+      "10": {
+        "label": "First Raceway",
+        "value": "Auto"
+      },
+      "11": {
+        "label": "Cliff Award At",
+        "value": 4
+      },
+      "12": {
+        "label": "Cliff Memory",
+        "value": "Yes"
+      },
+      "13": {
+        "label": "First Payback",
+        "value": "Both"
+      },
+      "14": {
+        "label": "Payback Memory",
+        "value": "Yes"
+      },
+      "15": {
+        "label": "Lock Difficulty",
+        "value": "Easy"
+      },
+      "16": {
+        "label": "Inst. Speech",
+        "value": "Yes"
+      },
+      "17": {
+        "label": "A-Mode Music",
+        "value": "No"
+      },
+      "18": {
+        "label": "Staged Ball",
+        "value": "Yes"
+      },
+      "19": {
+        "label": "Flipper Plunger",
+        "value": "No"
+      },
+      "20": {
+        "label": "Disable Jaw",
+        "value": "No"
+      },
+      "21": {
+        "label": "Disable L. Magnt.",
+        "value": "No"
+      },
+      "22": {
+        "label": "Disable C. Magnt.",
+        "value": "No"
+      },
+      "23": {
+        "label": "Disable R. Magnt.",
+        "value": "No"
+      },
+      "24": {
+        "label": "Accel. Difficulty",
+        "value": "Medium"
+      },
+      "25": {
+        "label": "Mk3 Codes Shown",
+        "value": "Yes"
+      },
+      "26": {
+        "label": "Attr. Mode Sounds",
+        "value": "Yes"
+      },
+      "27": {
+        "label": "Dice Match",
+        "value": "Yes"
       }
     }
   },

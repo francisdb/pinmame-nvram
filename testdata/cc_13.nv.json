@@ -80,7 +80,7 @@
       },
       "20": {
         "label": "Custom Message",
-        "value": "ON"
+        "value": "On"
       },
       "21": {
         "label": "Language",
@@ -136,6 +136,88 @@
       },
       "34": {
         "label": "Allow Chase Ball",
+        "value": "Yes"
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "Plyr Tournament",
+        "value": "Yes"
+      },
+      "02": {
+        "label": "Ball Saves",
+        "value": 1
+      },
+      "03": {
+        "label": "Ball Save Time",
+        "value": 4
+      },
+      "04": {
+        "label": "A-Mode Music",
+        "value": "No"
+      },
+      "05": {
+        "label": "Timed Plunger",
+        "value": "Off"
+      },
+      "06": {
+        "label": "Flipper Plunger",
+        "value": "No"
+      },
+      "07": {
+        "label": "Q.Draw Difficulty",
+        "value": "Ex. Easy"
+      },
+      "08": {
+        "label": "Light Q.Drw Diff.",
+        "value": "Easy"
+      },
+      "09": {
+        "label": "Q.Draws At Start",
+        "value": 0
+      },
+      "10": {
+        "label": "Q.Draws For EB",
+        "value": 4
+      },
+      "11": {
+        "label": "Starting Rank",
+        "value": "Stranger"
+      },
+      "12": {
+        "label": "Combos For Star",
+        "value": 10
+      },
+      "13": {
+        "label": "Num Bart Bros.",
+        "value": 3
+      },
+      "14": {
+        "label": "Train Mechanism",
+        "value": "Enabled"
+      },
+      "15": {
+        "label": "Polly EB Avail.",
+        "value": "Yes"
+      },
+      "16": {
+        "label": "Polly Awd. Shots",
+        "value": 5
+      },
+      "17": {
+        "label": "Gunft. Time (Sec)",
+        "value": 6
+      },
+      "18": {
+        "label": "Bounty Lit Ball1",
+        "value": "No"
+      },
+      "19": {
+        "label": "Special Carry",
+        "value": "No"
+      },
+      "20": {
+        "label": "L Outlane Carry",
         "value": "Yes"
       }
     }
