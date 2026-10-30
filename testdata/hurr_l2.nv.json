@@ -80,7 +80,7 @@
       },
       "20": {
         "label": "Custom Message",
-        "value": "ON"
+        "value": "On"
       },
       "21": {
         "label": "Language",
@@ -129,6 +129,92 @@
       "32": {
         "label": "No Bonus Flips",
         "value": "No"
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "Pct. Extra Balls",
+        "value": 25
+      },
+      "02": {
+        "label": "Pct. Special",
+        "value": 4
+      },
+      "03": {
+        "label": "E.B. Lights At",
+        "value": 3
+      },
+      "04": {
+        "label": "Sp. Lights At",
+        "value": 3
+      },
+      "05": {
+        "label": "Multiball Diff.",
+        "value": "Easy"
+      },
+      "06": {
+        "label": "Ferris Diff.",
+        "value": "Medium"
+      },
+      "07": {
+        "label": "Dummy Timer",
+        "units": "seconds",
+        "value": 18
+      },
+      "08": {
+        "label": "Hurricane Diff.",
+        "value": "Medium"
+      },
+      "09": {
+        "label": "Hurricane Timer",
+        "units": "seconds",
+        "value": 13
+      },
+      "10": {
+        "label": "Hurricane Mill.",
+        "value": 3
+      },
+      "11": {
+        "label": "Comet Diff.",
+        "value": "Easy"
+      },
+      "12": {
+        "label": "Comet Timer",
+        "units": "seconds",
+        "value": 10
+      },
+      "13": {
+        "label": "Comet Start",
+        "value": "50,000"
+      },
+      "14": {
+        "label": "Palace Timer",
+        "units": "seconds",
+        "value": 8
+      },
+      "15": {
+        "label": "Palace Start",
+        "value": "Pal"
+      },
+      "16": {
+        "label": "Palace Lights",
+        "value": "Always"
+      },
+      "17": {
+        "label": "Jackpot Timer",
+        "value": "Slow"
+      },
+      "18": {
+        "label": "Clown Lights",
+        "value": "Always"
+      },
+      "19": {
+        "label": "Family Mode",
+        "value": "No"
+      },
+      "20": {
+        "label": "Match Effect",
+        "value": "Short"
       }
     }
   },

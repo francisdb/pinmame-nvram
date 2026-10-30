@@ -80,7 +80,7 @@
       },
       "20": {
         "label": "Custom Message",
-        "value": "ON"
+        "value": "On"
       },
       "21": {
         "label": "Language",
@@ -133,6 +133,112 @@
       "33": {
         "label": "Game Re-Start",
         "value": "Slow"
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "Blink Eyes",
+        "value": "No"
+      },
+      "02": {
+        "label": "Special Percent",
+        "value": 8
+      },
+      "03": {
+        "label": "Extraball Percnt",
+        "value": 20
+      },
+      "04": {
+        "label": "Extraball Memory",
+        "value": "On"
+      },
+      "05": {
+        "label": "Buy Extra Ball",
+        "value": "1/2 Cred."
+      },
+      "06": {
+        "label": "Buy In Count",
+        "value": 4
+      },
+      "07": {
+        "label": "Attract Sounds",
+        "value": "Off"
+      },
+      "08": {
+        "label": "Starting Day",
+        "value": "Monday"
+      },
+      "09": {
+        "label": "Weeks To Lock 2",
+        "value": "0 Weeks"
+      },
+      "10": {
+        "label": "Br.Outs For Wheel",
+        "value": "0 Bridges"
+      },
+      "11": {
+        "label": "Skill Shot Award",
+        "value": "Souvenir"
+      },
+      "12": {
+        "label": "Game Over Effect",
+        "value": "Off"
+      },
+      "13": {
+        "label": "Wheel Lamps Mem.",
+        "value": "Yes"
+      },
+      "14": {
+        "label": "Wheel In Memory",
+        "value": "Yes"
+      },
+      "15": {
+        "label": "M. Between Cities",
+        "value": "400 Miles"
+      },
+      "16": {
+        "label": "Longer Path",
+        "value": "On"
+      },
+      "17": {
+        "label": "Ball Save Timer",
+        "value": "On"
+      },
+      "18": {
+        "label": "Outlane Serving",
+        "value": "Off"
+      },
+      "19": {
+        "label": "Default E.B. Blast",
+        "value": "EB Blast 7"
+      },
+      "20": {
+        "label": "Disable \"Ted\"",
+        "value": "Off"
+      },
+      "21": {
+        "label": "Disable \"Red\"",
+        "value": "Off"
+      },
+      "22": {
+        "label": "Dis. L. Ramp Div.",
+        "value": "Off"
+      },
+      "23": {
+        "label": "Dis. R. Ramp Div.",
+        "value": "Off"
+      },
+      "24": {
+        "label": "Dis. L. Lower Div.",
+        "value": "Off"
+      },
+      "25": {
+        "label": "Shaker Motor",
+        "value": "Normal"
+      },
+      "26": {
+        "label": "Buyin Aft. W.Coast",
+        "value": "Off"
       }
     }
   },

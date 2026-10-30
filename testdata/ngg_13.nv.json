@@ -80,7 +80,7 @@
       },
       "20": {
         "label": "Custom Message",
-        "value": "ON"
+        "value": "On"
       },
       "21": {
         "label": "Language",
@@ -137,6 +137,136 @@
       "34": {
         "label": "Allow Chase Ball",
         "value": "Yes"
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "A-Mode Sound",
+        "value": "No"
+      },
+      "02": {
+        "label": "A-Mode Music",
+        "value": "No"
+      },
+      "03": {
+        "label": "German Speech",
+        "value": "No"
+      },
+      "04": {
+        "label": "Plyr Tournament",
+        "value": "Yes"
+      },
+      "05": {
+        "label": "Ball Saves",
+        "value": 1
+      },
+      "06": {
+        "label": "Ball Save Time",
+        "value": 6
+      },
+      "07": {
+        "label": "Timed Plunger",
+        "value": "Off"
+      },
+      "08": {
+        "label": "Save After Ball1",
+        "value": "Yes"
+      },
+      "09": {
+        "label": "Disable Motor",
+        "value": "No"
+      },
+      "10": {
+        "label": "Disable Lft Ramp",
+        "value": "No"
+      },
+      "11": {
+        "label": "Disable Rgt Ramp",
+        "value": "No"
+      },
+      "12": {
+        "label": "Disable L Gofer",
+        "value": "No"
+      },
+      "13": {
+        "label": "Disable R Gofer",
+        "value": "No"
+      },
+      "14": {
+        "label": "Jets Diff.",
+        "value": "Medium"
+      },
+      "15": {
+        "label": "H-In-1 Reset",
+        "value": "No"
+      },
+      "16": {
+        "label": "Trap E.B. Mem.",
+        "value": "Yes"
+      },
+      "17": {
+        "label": "Golf EB At Hole",
+        "value": "Auto %"
+      },
+      "18": {
+        "label": "Golf E.B. Mem.",
+        "value": "Yes"
+      },
+      "19": {
+        "label": "Wheel E.B. Mem.",
+        "value": "No"
+      },
+      "20": {
+        "label": "Cart E.B. Mem.",
+        "value": "Yes"
+      },
+      "21": {
+        "label": "Kickback Diff.",
+        "value": "Medium"
+      },
+      "22": {
+        "label": "K-I-C-K Starts",
+        "value": "Off"
+      },
+      "23": {
+        "label": "Stack Kickbacks",
+        "value": "Yes"
+      },
+      "24": {
+        "label": "Max Kb Stack",
+        "value": 1
+      },
+      "25": {
+        "label": "First Cart Awd",
+        "value": 3
+      },
+      "26": {
+        "label": "Cart Award Intvl",
+        "value": 5
+      },
+      "27": {
+        "label": "Gofer Attitude",
+        "value": "Very Rude"
+      },
+      "28": {
+        "label": "Jet Kickback",
+        "value": "Yes"
+      },
+      "29": {
+        "label": "Volume Interlock",
+        "value": "No"
+      },
+      "30": {
+        "label": "Cart Path Reset",
+        "value": "Yes"
+      },
+      "31": {
+        "label": "Daily H.S. Cred",
+        "value": 0
+      },
+      "32": {
+        "label": "Kick Down Middle",
+        "value": "No"
       }
     }
   },

@@ -80,7 +80,7 @@
       },
       "20": {
         "label": "Custom Message",
-        "value": "ON"
+        "value": "On"
       },
       "21": {
         "label": "Language",
@@ -133,6 +133,158 @@
       "33": {
         "label": "Game Re-Start",
         "value": "Slow"
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "Lock Timer",
+        "units": "seconds",
+        "value": 20
+      },
+      "02": {
+        "label": "Right Ramp Time",
+        "units": "seconds",
+        "value": 20
+      },
+      "03": {
+        "label": "Ramp Open Start",
+        "value": 2
+      },
+      "04": {
+        "label": "Ramp Open Max",
+        "value": 6
+      },
+      "05": {
+        "label": "Combo 1st Timer",
+        "units": "seconds",
+        "value": 5
+      },
+      "06": {
+        "label": "Combo 2nd Timer",
+        "units": "seconds",
+        "value": 5
+      },
+      "07": {
+        "label": "Reload Timer",
+        "units": "seconds",
+        "value": 20
+      },
+      "08": {
+        "label": "Mid. Ramp Timer",
+        "units": "seconds",
+        "value": 6
+      },
+      "09": {
+        "label": "Extra Ball Pct",
+        "value": 20
+      },
+      "10": {
+        "label": "Jackpot Lit Pct",
+        "value": 15
+      },
+      "11": {
+        "label": "Random Award",
+        "value": "Medium"
+      },
+      "12": {
+        "label": "Skill Shot",
+        "value": "Easy"
+      },
+      "13": {
+        "label": "Hidden Treasure",
+        "value": "Always"
+      },
+      "14": {
+        "label": "Jewel Reset",
+        "value": 6
+      },
+      "15": {
+        "label": "Millions Timer",
+        "units": "seconds",
+        "value": 30
+      },
+      "16": {
+        "label": "Enable Lock",
+        "value": "Hard"
+      },
+      "17": {
+        "label": "Broadside Bonus",
+        "value": "Easy"
+      },
+      "18": {
+        "label": "Can. Shots Reset.",
+        "value": "Easy"
+      },
+      "19": {
+        "label": "Attract Sound",
+        "value": "Off"
+      },
+      "20": {
+        "label": "Special Pct",
+        "value": 7
+      },
+      "21": {
+        "label": "Special Lt. After",
+        "value": 2
+      },
+      "22": {
+        "label": "Swing Rig. Start",
+        "value": 1
+      },
+      "23": {
+        "label": "Walk Plank Start",
+        "value": 1
+      },
+      "24": {
+        "label": "Knife Thrw Start",
+        "value": 1
+      },
+      "25": {
+        "label": "Video Gm. Levels",
+        "value": "On"
+      },
+      "26": {
+        "label": "Cannon Levels",
+        "value": "On"
+      },
+      "27": {
+        "label": "Cannon Lev. Start",
+        "value": 1
+      },
+      "28": {
+        "label": "Double Brdsde. Tm.",
+        "units": "seconds",
+        "value": 30
+      },
+      "29": {
+        "label": "Ball Saver",
+        "units": "seconds",
+        "value": 7
+      },
+      "30": {
+        "label": "Consl. Ramp/Ball",
+        "units": "seconds",
+        "value": 60
+      },
+      "31": {
+        "label": "Multiball Bonus",
+        "value": "Easy"
+      },
+      "32": {
+        "label": "Sinkship Start",
+        "value": "Sink"
+      },
+      "33": {
+        "label": "Ship Sunk Backup",
+        "value": 2
+      },
+      "34": {
+        "label": "Sinkship Letters",
+        "value": "Easy"
+      },
+      "35": {
+        "label": "Vid. Mode Flipper",
+        "value": "On"
       }
     }
   },

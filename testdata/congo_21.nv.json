@@ -80,7 +80,7 @@
       },
       "20": {
         "label": "Custom Message",
-        "value": "ON"
+        "value": "On"
       },
       "21": {
         "label": "Language",
@@ -133,6 +133,92 @@
       "33": {
         "label": "Game Re-Start",
         "value": "Slow"
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "Ball Saves",
+        "value": 1
+      },
+      "02": {
+        "label": "Ball Save Time",
+        "value": 4
+      },
+      "03": {
+        "label": "Timed Plunger",
+        "value": "Off"
+      },
+      "04": {
+        "label": "Flipper Plunger",
+        "value": "No"
+      },
+      "05": {
+        "label": "Ex. Ball Percent",
+        "value": 20
+      },
+      "06": {
+        "label": "Extra Ball Level",
+        "value": 5
+      },
+      "07": {
+        "label": "Ex. Ball Memory",
+        "value": "Yes"
+      },
+      "08": {
+        "label": "Kickback Diff.",
+        "value": "Medium"
+      },
+      "09": {
+        "label": "Amy Difficulty",
+        "value": "Medium"
+      },
+      "10": {
+        "label": "Multiball Diff.",
+        "value": "Medium"
+      },
+      "11": {
+        "label": "Mystery Diff.",
+        "value": "Medium"
+      },
+      "12": {
+        "label": "Gray Diff.",
+        "value": "Medium"
+      },
+      "13": {
+        "label": "Bonus X Diff.",
+        "value": "Medium"
+      },
+      "14": {
+        "label": "Special Mode",
+        "value": "Yes"
+      },
+      "15": {
+        "label": "Plyr Tournament",
+        "value": "Yes"
+      },
+      "16": {
+        "label": "A-Mode Music",
+        "value": "No"
+      },
+      "17": {
+        "label": "Endgame Lock Rel.",
+        "value": "Yes"
+      },
+      "18": {
+        "label": "Buy Extra Ball",
+        "value": "Off"
+      },
+      "20": {
+        "label": "Novice Mode",
+        "value": "Off"
+      },
+      "21": {
+        "label": "Dis. Amy Feed",
+        "value": "No"
+      },
+      "22": {
+        "label": "Mini Pf. Disabled",
+        "value": "No"
       }
     }
   },

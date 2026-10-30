@@ -80,7 +80,7 @@
       },
       "20": {
         "label": "Custom Message",
-        "value": "ON"
+        "value": "On"
       },
       "21": {
         "label": "Language",
@@ -133,6 +133,122 @@
       "33": {
         "label": "Game Re-Start",
         "value": "Slow"
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "Special Percent",
+        "value": 3
+      },
+      "02": {
+        "label": "Extraball Percnt",
+        "value": 20
+      },
+      "03": {
+        "label": "Timed Plunger",
+        "units": "seconds",
+        "value": "Off"
+      },
+      "04": {
+        "label": "Kickback Setting",
+        "value": "Hard"
+      },
+      "05": {
+        "label": "Extraball Memory",
+        "value": "On"
+      },
+      "06": {
+        "label": "Multiball Percnt",
+        "value": 20
+      },
+      "07": {
+        "label": "Command Reruns",
+        "value": "One"
+      },
+      "08": {
+        "label": "Ferengi Time",
+        "units": "seconds",
+        "value": 10
+      },
+      "09": {
+        "label": "Skill Lock Count",
+        "value": "Two"
+      },
+      "10": {
+        "label": "Buy Extra Ball",
+        "value": "1 Credit"
+      },
+      "11": {
+        "label": "Buy In Count",
+        "value": "3 Buy Ins"
+      },
+      "12": {
+        "label": "Return To Duty",
+        "value": "On"
+      },
+      "13": {
+        "label": "Attract Sounds",
+        "value": "Off"
+      },
+      "14": {
+        "label": "Video On",
+        "value": "Off"
+      },
+      "15": {
+        "label": "Video Attrct",
+        "value": "Off"
+      },
+      "16": {
+        "label": "Flipper Plunger",
+        "value": "Off"
+      },
+      "17": {
+        "label": "Lt Launchr Brokn",
+        "value": "No"
+      },
+      "18": {
+        "label": "Rt Launchr Brokn",
+        "value": "No"
+      },
+      "19": {
+        "label": "Bckup Aux HSTD 1",
+        "value": 5000000000
+      },
+      "20": {
+        "label": "Bckup Aux HSTD 2",
+        "value": 2000000000
+      },
+      "21": {
+        "label": "Bckup Aux HSTD 3",
+        "value": 1000000000
+      },
+      "22": {
+        "label": "Bckup Aux HSTD 4",
+        "value": 500000000
+      },
+      "23": {
+        "label": "Post Game Show",
+        "value": "Normal"
+      },
+      "24": {
+        "label": "Skill Holodeck",
+        "value": "No"
+      },
+      "25": {
+        "label": "Restrt Aftr Warp",
+        "value": "No"
+      },
+      "26": {
+        "label": "Super Spinner",
+        "value": "Off"
+      },
+      "27": {
+        "label": "Poker Knight",
+        "value": "Off"
+      },
+      "28": {
+        "label": "Special Speech",
+        "value": 0
       }
     }
   },

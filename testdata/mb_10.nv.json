@@ -80,7 +80,7 @@
       },
       "20": {
         "label": "Custom Message",
-        "value": "ON"
+        "value": "On"
       },
       "21": {
         "label": "Language",
@@ -137,6 +137,128 @@
       "34": {
         "label": "Allow Chase Ball",
         "value": "Yes"
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "Ball Saves",
+        "value": "Off"
+      },
+      "03": {
+        "label": "Ex. Ball Percnt.",
+        "value": 30
+      },
+      "04": {
+        "label": "Creature Timer",
+        "value": 20
+      },
+      "05": {
+        "label": "Ball/Chain Timer",
+        "value": 30
+      },
+      "06": {
+        "label": "Frank. B.P. Spot/B.S.",
+        "value": "No"
+      },
+      "07": {
+        "label": "Mayhem Timer",
+        "value": 45
+      },
+      "08": {
+        "label": "Drac. Letters",
+        "value": 3
+      },
+      "09": {
+        "label": "Drac-Atk. Timer",
+        "value": 30
+      },
+      "10": {
+        "label": "Monsters Ex. Ball",
+        "value": 3
+      },
+      "11": {
+        "label": "Instr. Spec.",
+        "value": 4
+      },
+      "12": {
+        "label": "Max. Instr. Spec.",
+        "value": 1
+      },
+      "13": {
+        "label": "C. Loop Ex. Ball 1",
+        "value": 12
+      },
+      "14": {
+        "label": "C. Loop Ex. Ball 2",
+        "value": 30
+      },
+      "15": {
+        "label": "Special Memory",
+        "value": "No"
+      },
+      "16": {
+        "label": "Knocker Sound",
+        "value": "Yes"
+      },
+      "17": {
+        "label": "Plyr Tournament",
+        "value": "Yes"
+      },
+      "18": {
+        "label": "Family Mode",
+        "value": "No"
+      },
+      "19": {
+        "label": "Attract Music",
+        "value": "No"
+      },
+      "20": {
+        "label": "Attract Sounds",
+        "value": "Yes"
+      },
+      "21": {
+        "label": "Timed Plunger",
+        "value": "Off"
+      },
+      "22": {
+        "label": "Flipper Plunger",
+        "value": "No"
+      },
+      "23": {
+        "label": "Disbale P-Flip",
+        "value": "No"
+      },
+      "24": {
+        "label": "Disable Bride",
+        "value": "No"
+      },
+      "25": {
+        "label": "Disable U/D Bnk.",
+        "value": "No"
+      },
+      "26": {
+        "label": "Disable Frank.",
+        "value": "No"
+      },
+      "27": {
+        "label": "Disable Rmp. Lok.",
+        "value": "No"
+      },
+      "29": {
+        "label": "Disable Mummy",
+        "value": "No"
+      },
+      "30": {
+        "label": "Disable L. Gate",
+        "value": "No"
+      },
+      "31": {
+        "label": "Disable R. Gate",
+        "value": "No"
+      },
+      "32": {
+        "label": "Disable Dracula",
+        "value": "No"
       }
     }
   },

@@ -80,7 +80,7 @@
       },
       "20": {
         "label": "Custom Message",
-        "value": "ON"
+        "value": "On"
       },
       "21": {
         "label": "Language",
@@ -133,6 +133,151 @@
       "33": {
         "label": "Game Re-Start",
         "value": "Slow"
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "Buy Extra Ball",
+        "value": "1 Credit"
+      },
+      "02": {
+        "label": "Buy In Count",
+        "value": 3
+      },
+      "03": {
+        "label": "Attract Sounds",
+        "value": "Off"
+      },
+      "04": {
+        "label": "Flipper Sounds",
+        "value": "On"
+      },
+      "05": {
+        "label": "Timed Plunger",
+        "value": "Off"
+      },
+      "06": {
+        "label": "Flipper Plunger",
+        "value": "No"
+      },
+      "07": {
+        "label": "Ball Save Time",
+        "value": 6
+      },
+      "08": {
+        "label": "Ball Saves",
+        "value": 1
+      },
+      "09": {
+        "label": "Turbo Ball Save",
+        "units": "seconds",
+        "value": 9
+      },
+      "10": {
+        "label": "Boost Ball Save",
+        "units": "seconds",
+        "value": 9
+      },
+      "11": {
+        "label": "Pit Ball Save",
+        "units": "seconds",
+        "value": 7
+      },
+      "12": {
+        "label": "Ex. Ball Percent",
+        "value": 20
+      },
+      "13": {
+        "label": "Ramp E.B. Start",
+        "value": 8
+      },
+      "14": {
+        "label": "Ramp Ex. Ball 2",
+        "value": "On"
+      },
+      "15": {
+        "label": "Autofire Locks",
+        "value": "No"
+      },
+      "16": {
+        "label": "Race Difficulty",
+        "value": "Medium"
+      },
+      "17": {
+        "label": "Spdway EB Memory",
+        "value": "Yes"
+      },
+      "18": {
+        "label": "Ramp EB Memory",
+        "value": "Yes"
+      },
+      "19": {
+        "label": "Setup EB Memory",
+        "value": "Yes"
+      },
+      "20": {
+        "label": "Liteup EB Memory",
+        "value": "Yes"
+      },
+      "21": {
+        "label": "Pit Stop Time",
+        "value": 25
+      },
+      "22": {
+        "label": "Duel Mode Time",
+        "value": 30
+      },
+      "23": {
+        "label": "3X Mode Time",
+        "value": 30
+      },
+      "24": {
+        "label": "W. Turn Mode Time",
+        "value": 30
+      },
+      "25": {
+        "label": "Pole Mode Time",
+        "value": 20
+      },
+      "26": {
+        "label": "Gas Alley Time",
+        "value": 30
+      },
+      "27": {
+        "label": "Change Set. Time",
+        "value": 5
+      },
+      "28": {
+        "label": "Plyr Tournament",
+        "value": "Yes"
+      },
+      "29": {
+        "label": "German Speech",
+        "value": 0
+      },
+      "30": {
+        "label": "Pit Record",
+        "value": 15
+      },
+      "31": {
+        "label": "Bckup Aux Grand",
+        "value": 900
+      },
+      "32": {
+        "label": "Bckup Aux HSTD 1",
+        "value": 900
+      },
+      "33": {
+        "label": "Bckup Aux HSTD 2",
+        "value": 850
+      },
+      "34": {
+        "label": "Bckup Aux HSTD 3",
+        "value": 800
+      },
+      "35": {
+        "label": "Bckup Aux HSTD 4",
+        "value": 750
       }
     }
   },

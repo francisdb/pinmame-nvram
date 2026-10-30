@@ -80,7 +80,7 @@
       },
       "20": {
         "label": "Custom Message",
-        "value": "ON"
+        "value": "On"
       },
       "21": {
         "label": "Language",
@@ -133,6 +133,116 @@
       "33": {
         "label": "Game Re-Start",
         "value": "Slow"
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "Buy Extra Ball",
+        "value": "Off"
+      },
+      "02": {
+        "label": "Buy In Count",
+        "value": 1
+      },
+      "03": {
+        "label": "A-Mode Sound",
+        "value": "Yes"
+      },
+      "04": {
+        "label": "A-Mode Music",
+        "value": "No"
+      },
+      "05": {
+        "label": "German Speech",
+        "value": 0
+      },
+      "06": {
+        "label": "Free Ride Time",
+        "value": 5
+      },
+      "07": {
+        "label": "Shoot Star Diff.",
+        "value": "Medium"
+      },
+      "08": {
+        "label": "Shoot Star Mem.",
+        "value": "No"
+      },
+      "09": {
+        "label": "Tiger Loop Diff",
+        "value": "Medium"
+      },
+      "10": {
+        "label": "Ex. Ball Percent",
+        "value": 25
+      },
+      "11": {
+        "label": "Tiger Loop E.B. 1",
+        "value": 6
+      },
+      "12": {
+        "label": "Tiger Loop E.B. 2",
+        "value": "On"
+      },
+      "13": {
+        "label": "Bazaar Adv. Diff",
+        "value": "Medium"
+      },
+      "14": {
+        "label": "Multiball Diff",
+        "value": "Medium"
+      },
+      "15": {
+        "label": "Tiger E.B. Mem.",
+        "value": "Yes"
+      },
+      "16": {
+        "label": "Wish E.B. Mem.",
+        "value": "Yes"
+      },
+      "17": {
+        "label": "Tale E.B. Mem.",
+        "value": "Yes"
+      },
+      "18": {
+        "label": "Tale Light E.B.",
+        "value": 4
+      },
+      "19": {
+        "label": "Disable Ramp Div.",
+        "value": "No"
+      },
+      "20": {
+        "label": "Disable Vanish",
+        "value": "No"
+      },
+      "21": {
+        "label": "Disable Ramp Mag.",
+        "value": "No"
+      },
+      "22": {
+        "label": "Genie Ball Save",
+        "value": "No"
+      },
+      "23": {
+        "label": "Star Ball Save",
+        "value": "Yes"
+      },
+      "24": {
+        "label": "Volume Interlock",
+        "value": "No"
+      },
+      "25": {
+        "label": "Plyr Tournament",
+        "value": "Yes"
+      },
+      "26": {
+        "label": "Smoke Carryover",
+        "value": "No"
+      },
+      "27": {
+        "label": "Magnet Throw",
+        "value": 1
       }
     }
   },

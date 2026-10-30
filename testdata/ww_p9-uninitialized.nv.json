@@ -80,7 +80,7 @@
       },
       "20": {
         "label": "Custom Message",
-        "value": "ON"
+        "value": "On"
       },
       "21": {
         "label": "Language",
@@ -133,6 +133,73 @@
       "33": {
         "label": "Game Re-Start",
         "value": "Slow"
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "Ex. Ball Percent",
+        "value": 12,
+        "warning": "Value out of range: 14 ≤ 12 ≤ 40"
+      },
+      "02": {
+        "label": "Ramp Ex. Ball 1",
+        "value": 1,
+        "warning": "Value out of range: 10 ≤ 1 ≤ 15"
+      },
+      "03": {
+        "label": "Ramp Ex. Ball 2",
+        "value": "On"
+      },
+      "04": {
+        "label": "Bldr. Ex.B. Memory",
+        "value": "Yes"
+      },
+      "05": {
+        "label": "Ramp Ex. B. Memory",
+        "value": "Yes"
+      },
+      "06": {
+        "label": "Mystery E.B.Memory",
+        "warning": "Failed to resolve: Index 32 out of bounds for enum with 2 values"
+      },
+      "07": {
+        "label": "Hurry Up Start",
+        "value": 19000000
+      },
+      "08": {
+        "label": "Hot Foot Percent",
+        "value": 4,
+        "warning": "Value out of range: 14 ≤ 4 ≤ 40"
+      },
+      "09": {
+        "label": "Hot Foot Count",
+        "value": 0,
+        "warning": "Value out of range: 2 ≤ 0 ≤ 33"
+      },
+      "10": {
+        "label": "Kickback Memory",
+        "warning": "Failed to resolve: Index 12 out of bounds for enum with 2 values"
+      },
+      "11": {
+        "label": "Insanity Record",
+        "value": 5
+      },
+      "12": {
+        "label": "Percent Special",
+        "value": 0,
+        "warning": "Value out of range: 1 ≤ 0 ≤ 50"
+      },
+      "13": {
+        "label": "Disable Bigfoot",
+        "value": "No"
+      },
+      "14": {
+        "label": "Attract Sounds",
+        "value": "On"
+      },
+      "15": {
+        "label": "Flipper Sounds",
+        "value": "Off"
       }
     }
   },

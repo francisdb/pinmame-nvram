@@ -80,7 +80,7 @@
       },
       "20": {
         "label": "Custom Message",
-        "value": "ON"
+        "value": "On"
       },
       "21": {
         "label": "Language",
@@ -133,6 +133,98 @@
       "33": {
         "label": "Game Re-Start",
         "value": "Slow"
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "Special Percent",
+        "value": 3
+      },
+      "02": {
+        "label": "Extraball Percnt",
+        "value": 10
+      },
+      "03": {
+        "label": "Extraball Memory",
+        "value": "On"
+      },
+      "04": {
+        "label": "Consolation Ball",
+        "value": "On"
+      },
+      "05": {
+        "label": "Drop Targt Count",
+        "value": 1
+      },
+      "06": {
+        "label": "Three Bank Count",
+        "value": 2
+      },
+      "07": {
+        "label": "Kickback Setting",
+        "value": "Medium"
+      },
+      "08": {
+        "label": "Skill Shot Timer",
+        "value": "Medium"
+      },
+      "09": {
+        "label": "Drop Targt Timer",
+        "units": "seconds",
+        "value": 11
+      },
+      "10": {
+        "label": "Three Bank Timer",
+        "units": "seconds",
+        "value": 15
+      },
+      "11": {
+        "label": "Hurry Up Timer",
+        "units": "seconds",
+        "value": 15
+      },
+      "12": {
+        "label": "Payback Timer",
+        "units": "seconds",
+        "value": 20
+      },
+      "13": {
+        "label": "Jackpot Timer",
+        "units": "seconds",
+        "value": 12
+      },
+      "14": {
+        "label": "Millions Plus",
+        "value": "On"
+      },
+      "15": {
+        "label": "Timed Plunger",
+        "units": "seconds",
+        "value": "Off"
+      },
+      "16": {
+        "label": "Attract Sounds",
+        "value": "Off"
+      },
+      "17": {
+        "label": "Drp Tgt Autofire",
+        "value": "Off"
+      },
+      "18": {
+        "label": "T2 Fan Club",
+        "value": "On"
+      },
+      "19": {
+        "label": "Flipper Trigger",
+        "value": "Off"
+      },
+      "20": {
+        "label": "Drop Trgt. Broken",
+        "value": "Off"
+      },
+      "21": {
+        "label": "Drptrgt Dwn Mlti",
+        "value": "Off"
       }
     }
   },

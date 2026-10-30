@@ -80,7 +80,7 @@
       },
       "20": {
         "label": "Custom Message",
-        "value": "ON"
+        "value": "On"
       },
       "21": {
         "label": "Language",
@@ -133,6 +133,136 @@
       "33": {
         "label": "Game Re-Start",
         "value": "Slow"
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "Ex. Ball Percent",
+        "value": 25
+      },
+      "02": {
+        "label": "Bear Kick Ex. B. 1",
+        "value": 8
+      },
+      "03": {
+        "label": "Bear Kick Ex. B. 2",
+        "value": "On"
+      },
+      "04": {
+        "label": "Train Wreck E.B.",
+        "value": 4
+      },
+      "05": {
+        "label": "Bear Ex. B. Memory",
+        "value": "Yes"
+      },
+      "06": {
+        "label": "House Ex.B. Memory",
+        "value": "Yes"
+      },
+      "07": {
+        "label": "Train Ex.B. Memory",
+        "value": "Yes"
+      },
+      "08": {
+        "label": "Last Thing Lock",
+        "value": 1
+      },
+      "09": {
+        "label": "Last Swamp Lock",
+        "value": 1
+      },
+      "10": {
+        "label": "Last Chair Rel.",
+        "value": 2
+      },
+      "11": {
+        "label": "Jakpot Carryover",
+        "value": "Yes"
+      },
+      "12": {
+        "label": "Mil. Plus Memory",
+        "value": "No"
+      },
+      "13": {
+        "label": "Mil. Plus Max.",
+        "value": 10000000
+      },
+      "14": {
+        "label": "Hurry Up Start",
+        "value": 15000000
+      },
+      "15": {
+        "label": "House From Swamp",
+        "value": "Yes"
+      },
+      "16": {
+        "label": "Free Thing Lamps",
+        "value": 3
+      },
+      "17": {
+        "label": "Raise Dead Hits",
+        "value": 4
+      },
+      "18": {
+        "label": "Train Wreck Hits",
+        "value": 2
+      },
+      "19": {
+        "label": "Special Memory",
+        "value": "No"
+      },
+      "20": {
+        "label": "Disable Thing",
+        "value": "No"
+      },
+      "21": {
+        "label": "Disable Bookcase",
+        "value": "No"
+      },
+      "22": {
+        "label": "Trn. Wreck Memory",
+        "value": "Yes"
+      },
+      "23": {
+        "label": "Q. Multi Memory",
+        "value": "Yes"
+      },
+      "24": {
+        "label": "Green Lock Lamp",
+        "value": "Yes"
+      },
+      "25": {
+        "label": "Tour Ex.B. Memory",
+        "value": "No"
+      },
+      "26": {
+        "label": "Tour Difficulty",
+        "value": "Medium"
+      },
+      "27": {
+        "label": "A-Mode Sound",
+        "value": "Yes"
+      },
+      "28": {
+        "label": "A-Mode Music",
+        "value": "No"
+      },
+      "29": {
+        "label": "Gameover Kickout",
+        "value": "No"
+      },
+      "30": {
+        "label": "Spot Greed/Ball",
+        "value": "Yes"
+      },
+      "31": {
+        "label": "Freeplay Message",
+        "value": "On"
+      },
+      "32": {
+        "label": "Spot T-H-I-N-G",
+        "value": "Left Ramp"
       }
     }
   },

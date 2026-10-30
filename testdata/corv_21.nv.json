@@ -80,7 +80,7 @@
       },
       "20": {
         "label": "Custom Message",
-        "value": "ON"
+        "value": "On"
       },
       "21": {
         "label": "Language",
@@ -133,6 +133,100 @@
       "33": {
         "label": "Game Re-Start",
         "value": "Slow"
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "Buy Extra Ball",
+        "value": "1 Credit"
+      },
+      "02": {
+        "label": "Ex. Ball Memory",
+        "value": "Yes"
+      },
+      "03": {
+        "label": "Ex. Ball Percent",
+        "value": 20
+      },
+      "04": {
+        "label": "Ex. Ball Level",
+        "value": 7
+      },
+      "05": {
+        "label": "Ball Saves",
+        "value": 1
+      },
+      "06": {
+        "label": "Ball Save Time",
+        "value": 5
+      },
+      "07": {
+        "label": "Lock Difficulty",
+        "value": "Medium"
+      },
+      "08": {
+        "label": "Race Difficulty",
+        "value": "Medium"
+      },
+      "09": {
+        "label": "Catch Difficulty",
+        "value": "Medium"
+      },
+      "10": {
+        "label": "Chal. Difficulty",
+        "value": "Easy"
+      },
+      "11": {
+        "label": "Super Skill Shot",
+        "value": "Yes"
+      },
+      "12": {
+        "label": "Challenge Flips",
+        "value": "Yes"
+      },
+      "13": {
+        "label": "Endgame Lock Rel.",
+        "value": "Yes"
+      },
+      "14": {
+        "label": "Enable Def Saver",
+        "value": "No"
+      },
+      "15": {
+        "label": "Enable Censor",
+        "value": "No"
+      },
+      "16": {
+        "label": "Disable Zr1-Lt5",
+        "value": "No"
+      },
+      "17": {
+        "label": "A-Mode Music",
+        "value": "No"
+      },
+      "18": {
+        "label": "Kick. Difficulty",
+        "value": "Medium"
+      },
+      "19": {
+        "label": "No Match Speech",
+        "value": "Off"
+      },
+      "20": {
+        "label": "Def. Speed Champ",
+        "value": 3
+      },
+      "21": {
+        "label": "Def. Corner Champ",
+        "value": 3
+      },
+      "22": {
+        "label": "Cred. Loop Champs",
+        "value": 1
+      },
+      "23": {
+        "label": "Backup Null Champ",
+        "value": 100
       }
     }
   },
