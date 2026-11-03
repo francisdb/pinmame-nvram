@@ -58,6 +58,10 @@
         "label": "Replay",
         "value": "Credit"
       },
+      "15": {
+        "label": "Special Award",
+        "value": "Credit"
+      },
       "16": {
         "label": "Match Award",
         "value": "Credit"

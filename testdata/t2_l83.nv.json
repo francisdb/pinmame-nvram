@@ -225,6 +225,46 @@
       "21": {
         "label": "Drptrgt Dwn Mlti",
         "value": "Off"
+      },
+      "22": {
+        "label": "Profanity",
+        "value": "Off"
+      },
+      "23": {
+        "label": "Attract Mode",
+        "value": "L8.3"
+      },
+      "24": {
+        "label": "Animation Code",
+        "value": "Corrected"
+      },
+      "25": {
+        "label": "Lamp Driver",
+        "value": "Original"
+      },
+      "26": {
+        "label": "Mb Start Dt Actn",
+        "value": "None"
+      },
+      "27": {
+        "label": "Timed 3bank Lamp",
+        "value": "Original"
+      },
+      "28": {
+        "label": "Null",
+        "value": 0
+      },
+      "29": {
+        "label": "Null",
+        "value": 0
+      },
+      "30": {
+        "label": "Null",
+        "value": 0
+      },
+      "31": {
+        "label": "Null",
+        "value": 0
       }
     }
   },

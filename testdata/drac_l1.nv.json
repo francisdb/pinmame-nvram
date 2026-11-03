@@ -34,6 +34,22 @@
         "label": "Replay Levels",
         "value": 1
       },
+      "09": {
+        "label": "Replay Level 1",
+        "value": 200
+      },
+      "10": {
+        "label": "Replay Level 2",
+        "value": "OFF"
+      },
+      "11": {
+        "label": "Replay Level 3",
+        "value": "OFF"
+      },
+      "12": {
+        "label": "Replay Level 4",
+        "value": "OFF"
+      },
       "13": {
         "label": "Replay Boost",
         "value": 50
@@ -55,7 +71,7 @@
         "value": "NO"
       },
       "18": {
-        "label": "Max. Tick,/Player",
+        "label": "Max. Tick./Player",
         "value": 25
       },
       "19": {
