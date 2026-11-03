@@ -229,26 +229,6 @@
       "23": {
         "label": "Post Game Show",
         "value": "Normal"
-      },
-      "24": {
-        "label": "Skill Holodeck",
-        "value": "No"
-      },
-      "25": {
-        "label": "Restrt Aftr Warp",
-        "value": "No"
-      },
-      "26": {
-        "label": "Super Spinner",
-        "value": "Off"
-      },
-      "27": {
-        "label": "Poker Knight",
-        "value": "Off"
-      },
-      "28": {
-        "label": "Special Speech",
-        "value": 0
       }
     }
   },

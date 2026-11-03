@@ -226,7 +226,7 @@
       },
       "23": {
         "label": "Secret Features",
-        "value": 1
+        "value": "On"
       },
       "24": {
         "label": "Match Speech",

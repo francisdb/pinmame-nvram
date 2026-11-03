@@ -282,7 +282,7 @@
       },
       "37": {
         "label": "Freeplay Message",
-        "value": 1
+        "value": "On"
       },
       "38": {
         "label": "Buy In Count",
