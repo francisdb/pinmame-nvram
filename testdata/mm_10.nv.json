@@ -284,66 +284,6 @@
         "label": "Buy In Count",
         "value": 1
       },
-      "38": {
-        "label": "Castle Champion",
-        "value": 6
-      },
-      "39": {
-        "label": "Castle Credits",
-        "value": 0
-      },
-      "40": {
-        "label": "Joust Champion",
-        "value": 5
-      },
-      "41": {
-        "label": "Joust Credits",
-        "value": 0
-      },
-      "42": {
-        "label": "Catapult Champ.",
-        "value": 5
-      },
-      "43": {
-        "label": "Catapult Credits",
-        "value": 0
-      },
-      "44": {
-        "label": "Peasant Champion",
-        "value": 5
-      },
-      "45": {
-        "label": "Peasant Credits",
-        "value": 0
-      },
-      "46": {
-        "label": "Damsel Champion",
-        "value": 5
-      },
-      "47": {
-        "label": "Damsel Credits",
-        "value": 0
-      },
-      "48": {
-        "label": "Troll Champion",
-        "value": 32
-      },
-      "49": {
-        "label": "Troll Credits",
-        "value": 0
-      },
-      "50": {
-        "label": "Madness Champion",
-        "value": 32
-      },
-      "51": {
-        "label": "Madness Credits",
-        "value": 0
-      },
-      "52": {
-        "label": "Battle Credits",
-        "value": 0
-      },
       "53": {
         "label": "Battle Champ. 1",
         "value": 1

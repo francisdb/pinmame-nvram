@@ -224,14 +224,6 @@
         "label": "Mini Pf. Disabled",
         "value": "No"
       },
-      "23": {
-        "label": "Diamd Champ Cred.",
-        "value": 1
-      },
-      "24": {
-        "label": "Def. Diamd Champ",
-        "value": 100
-      },
       "25": {
         "label": "Backup Null Champ",
         "value": 100

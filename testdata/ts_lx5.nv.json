@@ -274,30 +274,6 @@
       "33": {
         "label": "Battlefld. Level",
         "value": 3
-      },
-      "34": {
-        "label": "Sdw. Loop Default",
-        "value": 2
-      },
-      "35": {
-        "label": "Bckup Aux Grand",
-        "value": 900
-      },
-      "36": {
-        "label": "Bckup Aux HSTD 1",
-        "value": 850
-      },
-      "37": {
-        "label": "Bckup Aux HSTD 2",
-        "value": 800
-      },
-      "38": {
-        "label": "Bckup Aux HSTD 3",
-        "value": 750
-      },
-      "39": {
-        "label": "Bckup Aux HSTD 4",
-        "value": 700
       }
     }
   },

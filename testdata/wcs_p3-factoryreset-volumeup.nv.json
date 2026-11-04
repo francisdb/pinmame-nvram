@@ -271,30 +271,6 @@
       "34": {
         "label": "Goalie Cnt. Delay",
         "value": 12
-      },
-      "35": {
-        "label": "Backup Goal Chmp.",
-        "value": 6
-      },
-      "36": {
-        "label": "Goal Champ Cred.",
-        "value": 1
-      },
-      "37": {
-        "label": "Bckup Aux HSTD 1",
-        "value": 2600
-      },
-      "38": {
-        "label": "Bckup Aux HSTD 2",
-        "value": 2400
-      },
-      "39": {
-        "label": "Bckup Aux HSTD 3",
-        "value": 2200
-      },
-      "40": {
-        "label": "Bckup Aux HSTD 4",
-        "value": 2000
       }
     }
   },
