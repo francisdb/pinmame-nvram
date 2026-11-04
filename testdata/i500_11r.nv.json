@@ -254,30 +254,6 @@
       "29": {
         "label": "German Speech",
         "value": "Off"
-      },
-      "30": {
-        "label": "Pit Record",
-        "value": 15
-      },
-      "31": {
-        "label": "Bckup Aux Grand",
-        "value": 900
-      },
-      "32": {
-        "label": "Bckup Aux HSTD 1",
-        "value": 900
-      },
-      "33": {
-        "label": "Bckup Aux HSTD 2",
-        "value": 850
-      },
-      "34": {
-        "label": "Bckup Aux HSTD 3",
-        "value": 800
-      },
-      "35": {
-        "label": "Bckup Aux HSTD 4",
-        "value": 750
       }
     }
   },

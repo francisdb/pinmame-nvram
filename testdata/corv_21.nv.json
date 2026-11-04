@@ -212,18 +212,6 @@
         "label": "No Match Speech",
         "value": "Off"
       },
-      "20": {
-        "label": "Def. Speed Champ",
-        "value": 3
-      },
-      "21": {
-        "label": "Def. Corner Champ",
-        "value": 3
-      },
-      "22": {
-        "label": "Cred. Loop Champs",
-        "value": 1
-      },
       "23": {
         "label": "Backup Null Champ",
         "value": 100
