@@ -66,7 +66,7 @@
       "warning": "Failed to resolve: Value is stored outside the NVRAM"
     },
     "extra_balls": {
-      "label": "Extra Balls",
+      "label": "Extra Ball",
       "warning": "Failed to resolve: Value is stored outside the NVRAM"
     },
     "game_over": {
