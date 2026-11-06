@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.5](https://github.com/francisdb/pinmame-nvram/compare/v0.5.4...v0.5.5) - 2026-11-06
+
+### Other
+
+- bump pinball-memory-maps to eba9020 and reconcile testdata ([#196](https://github.com/francisdb/pinmame-nvram/pull/196))
+- *(deps)* bump pinball-memory-maps from `2129712` to `d574fff` ([#194](https://github.com/francisdb/pinmame-nvram/pull/194))
+- bump pinball-memory-maps to 2129712 and reconcile testdata ([#192](https://github.com/francisdb/pinmame-nvram/pull/192))
+
 ## [0.5.4](https://github.com/francisdb/pinmame-nvram/compare/v0.5.3...v0.5.4) - 2026-11-03
 
 ### Other
