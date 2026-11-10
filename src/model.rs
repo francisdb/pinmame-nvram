@@ -103,6 +103,8 @@ pub struct Descriptor {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub length: Option<usize>,
     #[serde(skip_serializing_if = "Option::is_none")]
+    pub prefix: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub suffix: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     // replacement is usually a string (e.g. "OFF") but can also be a number
