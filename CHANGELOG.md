@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.6](https://github.com/francisdb/pinmame-nvram/compare/v0.5.5...v0.5.6) - 2026-11-22
+
+### Other
+
+- bump pinball-memory-maps to d391bc4 and reconcile testdata ([#202](https://github.com/francisdb/pinmame-nvram/pull/202))
+
 ## [0.5.5](https://github.com/francisdb/pinmame-nvram/compare/v0.5.4...v0.5.5) - 2026-11-10
 
 ### Other
