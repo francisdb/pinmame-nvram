@@ -2,7 +2,7 @@ use crate::checksum::{
     VALIDATION_FILEFORMAT, verify_checksum, verify_checksum8, verify_checksum16, verify_mirror,
 };
 use crate::encoding::{
-    Location, read_bcd, read_bool, read_ch, read_exact_at, read_int, read_wpc_rtc,
+    Location, read_bcd, read_bool, read_ch, read_exact_at, read_int, read_signed_int, read_wpc_rtc,
 };
 use crate::model::{
     Checksum8, Checksum16, DEFAULT_INVERT, DEFAULT_LENGTH, DEFAULT_SCALE, Encoding, Endian,
@@ -182,6 +182,12 @@ fn special_value(descriptor: &Map<String, Value>, value: i128) -> Option<Value> 
         .cloned()
 }
 
+fn json_i128(v: &Value) -> Option<i128> {
+    v.as_i64()
+        .map(i128::from)
+        .or_else(|| v.as_u64().map(i128::from))
+}
+
 fn number_from_i128(v: i128) -> Number {
     if (0..=u64::MAX as i128).contains(&v) {
         Number::from(v as u64)
@@ -197,21 +203,21 @@ fn number_from_i128(v: i128) -> Number {
 /// encodings, or the selected index for `enum` encodings. Encodings that do not
 /// produce a number pass `None` and are never range-checked (they also never
 /// carry min/max).
-fn validate_range(map: &Map<String, Value>, value: Option<u64>) -> Option<String> {
+fn validate_range(map: &Map<String, Value>, value: Option<i128>) -> Option<String> {
     let (Some(min), Some(max)) = (map.get("min"), map.get("max")) else {
         return None;
     };
     let number_value = value?;
     // min and max are unscaled values so we need to unscale the value first
     let unscaled_value = if let Some(scale) = map.get("scale") {
-        let scale = scale.as_u64().unwrap();
-        number_value / scale
+        number_value / scale.as_u64().unwrap() as i128
     } else {
         number_value
     };
 
-    let min = min.as_u64().unwrap();
-    let max = max.as_u64().unwrap();
+    let (Some(min), Some(max)) = (json_i128(min), json_i128(max)) else {
+        return Some(format!("Invalid range: min {min}, max {max}"));
+    };
     if unscaled_value < min || unscaled_value > max {
         return Some(format!(
             "Value out of range: {min} ≤ {unscaled_value} ≤ {max}"
@@ -351,7 +357,7 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
     encoding: Encoding,
     global_settings: &U,
     platform: &Platform,
-) -> io::Result<(Value, Option<u64>)> {
+) -> io::Result<(Value, Option<i128>)> {
     // we only have access to nvram files and cannot access the RAM.
     let nvram_layout = platform.layout(MemoryLayoutType::NVRam);
     let nibble = nvram_layout.nibble();
@@ -360,7 +366,7 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
         .get("length")
         .map_or(DEFAULT_LENGTH, |v| v.as_u64().unwrap() as usize);
     // The raw numeric value the descriptor's min/max range applies to, if any.
-    let mut range_value: Option<u64> = None;
+    let mut range_value: Option<i128> = None;
     let value = match encoding {
         Encoding::Int => {
             let scale = descriptor
@@ -369,8 +375,17 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
                 .cloned()
                 .unwrap_or(Number::from(DEFAULT_SCALE));
             let location = location_in_nvram_file(nvram_layout, descriptor, length)?;
-            let value = read_int(rom, endian, nibble, location, &scale)?;
-            let display = value as i128 + value_offset(descriptor);
+            // A negative minimum means the ROM stores a two's complement value.
+            let signed = descriptor
+                .get("min")
+                .and_then(|m| m.as_i64())
+                .is_some_and(|m| m < 0);
+            let value: i128 = if signed {
+                read_signed_int(rom, endian, nibble, location, &scale)? as i128
+            } else {
+                read_int(rom, endian, nibble, location, &scale)? as i128
+            };
+            let display = value + value_offset(descriptor);
             if let Some(replacement) = special_value(descriptor, display) {
                 return Ok((replacement, None));
             }
@@ -384,12 +399,12 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
             // Some maps leave out the value names when they are unknown,
             // fall back to the raw index.
             let Some(values) = descriptor.get("values").and_then(|v| v.as_array()) else {
-                return Ok((Value::Number(Number::from(index)), Some(index as u64)));
+                return Ok((Value::Number(Number::from(index)), Some(index as i128)));
             };
             match values.get(index) {
                 Some(enum_value) => {
                     // The range (min/max) constrains the raw index, not the label.
-                    range_value = Some(index as u64);
+                    range_value = Some(index as i128);
                     enum_value.clone()
                 }
                 None => {
@@ -422,7 +437,7 @@ fn resolve_value<T: Read + Seek, U: GlobalSettings>(
             if let Some(replacement) = special_value(descriptor, display) {
                 return Ok((replacement, None));
             }
-            range_value = Some(value);
+            range_value = Some(value as i128);
             Value::Number(number_from_i128(display))
         }
         Encoding::Ch => {
@@ -631,6 +646,18 @@ mod tests {
     fn test_validate_range_no_bounds() {
         // a descriptor without min/max is never range-checked
         assert_eq!(validate_range(&Map::new(), Some(255)), None);
+    }
+
+    #[test]
+    fn test_validate_range_negative() {
+        let mut map = Map::new();
+        map.insert("min".to_string(), Value::from(-6));
+        map.insert("max".to_string(), Value::from(0));
+        assert_eq!(validate_range(&map, Some(-6)), None);
+        assert_eq!(
+            validate_range(&map, Some(-7)),
+            Some("Value out of range: -6 ≤ -7 ≤ 0".to_string())
+        );
     }
 
     #[test]

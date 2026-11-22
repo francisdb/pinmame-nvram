@@ -1,5 +1,473 @@
 {
   "_fileformat": 0.9,
+  "adjustments": {
+    "A.1 Standard Adjustments": {
+      "01": {
+        "label": "Replay Type",
+        "value": "AUTO"
+      },
+      "02": {
+        "label": "Replay Percentage",
+        "value": 10
+      },
+      "03": {
+        "label": "Replay Award",
+        "value": "CREDIT"
+      },
+      "04": {
+        "label": "Replay Levels",
+        "value": 1
+      },
+      "05": {
+        "label": "Auto Replay Start",
+        "value": 20000000
+      },
+      "06": {
+        "label": "Dynamic Replay Start",
+        "value": 60000000
+      },
+      "07": {
+        "label": "Replay Level #1",
+        "value": 15000000
+      },
+      "08": {
+        "label": "Replay Level #2",
+        "value": 30000000
+      },
+      "09": {
+        "label": "Replay Level #3",
+        "value": 45000000
+      },
+      "10": {
+        "label": "Replay Level #4",
+        "value": 60000000
+      },
+      "11": {
+        "label": "Replay Boost",
+        "value": 1
+      },
+      "12": {
+        "label": "Special Limit",
+        "value": 1
+      },
+      "13": {
+        "label": "Special Percentage",
+        "value": 10
+      },
+      "14": {
+        "label": "Special Award",
+        "value": "CREDIT"
+      },
+      "15": {
+        "label": "Free Game Limit",
+        "value": 5
+      },
+      "16": {
+        "label": "Extra Ball Limit",
+        "value": 5
+      },
+      "17": {
+        "label": "Extra Ball Percentage",
+        "value": 25
+      },
+      "18": {
+        "label": "Game Pricing",
+        "value": "USA 11"
+      },
+      "19": {
+        "label": "Match Percentage",
+        "value": 9
+      },
+      "20": {
+        "label": "Match Award",
+        "value": 0
+      },
+      "21": {
+        "label": "Balls Per Game",
+        "value": 3
+      },
+      "22": {
+        "label": "Tilt Warnings",
+        "value": 2
+      },
+      "23": {
+        "label": "Credit Limit",
+        "value": 30
+      },
+      "24": {
+        "label": "Allow High Scores",
+        "value": 1
+      },
+      "25": {
+        "label": "High Score Award",
+        "value": 0
+      },
+      "26": {
+        "label": "Grand Champion Awards",
+        "value": 1
+      },
+      "27": {
+        "label": "High Score #1 Awards",
+        "value": 1
+      },
+      "28": {
+        "label": "High Score #2 Awards",
+        "value": 0
+      },
+      "29": {
+        "label": "High Score #3 Awards",
+        "value": 0
+      },
+      "30": {
+        "label": "High Score #4 Awards",
+        "value": 0
+      },
+      "31": {
+        "label": "Grand Champion Score",
+        "value": 75000000
+      },
+      "32": {
+        "label": "High Score #1",
+        "value": 55000000
+      },
+      "33": {
+        "label": "High Score #2",
+        "value": 40000000
+      },
+      "34": {
+        "label": "High Score #3",
+        "value": 30000000
+      },
+      "35": {
+        "label": "High Score #4",
+        "value": 25000000
+      },
+      "36": {
+        "label": "HSTD Initials",
+        "value": "3 INITIALS"
+      },
+      "37": {
+        "label": "HSTD Reset Count",
+        "value": 2000
+      },
+      "38": {
+        "label": "Free Play",
+        "value": 0
+      },
+      "39": {
+        "label": "Language",
+        "value": "ENGLISH"
+      },
+      "40": {
+        "label": "Player Language Select",
+        "value": 1
+      },
+      "41": {
+        "label": "Custom Message",
+        "value": "ON"
+      },
+      "42": {
+        "label": "Flash Lamp Power",
+        "value": "NORMAL"
+      },
+      "43": {
+        "label": "Coil Pulse Power",
+        "value": "NORMAL"
+      },
+      "44": {
+        "label": "Knocker Volume",
+        "value": "NORMAL"
+      },
+      "45": {
+        "label": "Game Restart",
+        "value": 1
+      },
+      "46": {
+        "label": "Bill Validator",
+        "value": 0
+      },
+      "47": {
+        "label": "Music Volume",
+        "value": 1
+      },
+      "48": {
+        "label": "Ball Save Time",
+        "units": "seconds",
+        "value": 5
+      },
+      "49": {
+        "label": "Timed Plunger",
+        "units": "seconds",
+        "value": "OFF"
+      },
+      "50": {
+        "label": "Flipper Ball Launch",
+        "value": "BOTH FLIPPERS"
+      },
+      "51": {
+        "label": "Coindoor Ball Saver",
+        "value": 0
+      },
+      "52": {
+        "label": "Competition Mode",
+        "value": 0
+      },
+      "53": {
+        "label": "Consolation Ball",
+        "value": 1
+      },
+      "54": {
+        "label": "Fast Boot",
+        "value": 1
+      },
+      "55": {
+        "label": "Q24 Option",
+        "value": "COIN METER"
+      },
+      "56": {
+        "label": "Ticket Dispenser",
+        "value": "NONE"
+      },
+      "57": {
+        "label": "Player Competition",
+        "value": 1
+      },
+      "58": {
+        "label": "Team Scores",
+        "value": 0
+      },
+      "59": {
+        "label": "Location ID",
+        "value": 0
+      },
+      "60": {
+        "label": "Game ID",
+        "value": 0
+      },
+      "61": {
+        "label": "Time Format",
+        "value": "12-HOUR"
+      },
+      "62": {
+        "label": "Coin Input Delay",
+        "value": 30
+      },
+      "63": {
+        "label": "Lost Ball Recovery",
+        "value": 1
+      },
+      "64": {
+        "label": "Coin Door Disable Tilt",
+        "value": 0
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "Disable Laser Motor",
+        "value": 0
+      },
+      "02": {
+        "label": "Disable Drop Target",
+        "value": 0
+      },
+      "03": {
+        "label": "Disable Center Magnet",
+        "value": 0
+      },
+      "04": {
+        "label": "Disable Left Orbit Control Gate",
+        "value": 0
+      },
+      "05": {
+        "label": "Disable Right Orbit Control Gate",
+        "value": 0
+      },
+      "06": {
+        "label": "Disable Vengeance Ship Coil",
+        "value": 0
+      },
+      "07": {
+        "label": "Disable Vengeance",
+        "value": 0
+      },
+      "08": {
+        "label": "Vengeance Difficulty",
+        "value": 1
+      },
+      "09": {
+        "label": "Ball Save Timer: Ven. Multiball",
+        "value": 15
+      },
+      "10": {
+        "label": "Klingon M.B. Lock Difficulty",
+        "value": "MEDIUM"
+      },
+      "11": {
+        "label": "Ball Save Timer: K.M. Multiball",
+        "value": 30
+      },
+      "12": {
+        "label": "Enable Virtual Locks Only",
+        "value": 0
+      },
+      "13": {
+        "label": "Punch It Button Ball Launch",
+        "value": 1
+      },
+      "14": {
+        "label": "Combo Champion",
+        "value": 12
+      },
+      "15": {
+        "label": "Combo Champion Award",
+        "value": 0
+      },
+      "16": {
+        "label": "Combo Champion Awards",
+        "value": 0
+      },
+      "17": {
+        "label": "Warp Champion",
+        "value": 6
+      },
+      "18": {
+        "label": "Warp Champion Award",
+        "value": 0
+      },
+      "19": {
+        "label": "Warp Champion Awards",
+        "value": 0
+      },
+      "20": {
+        "label": "Medals Champion",
+        "value": 5
+      },
+      "21": {
+        "label": "Medals Champion Award",
+        "value": 0
+      },
+      "22": {
+        "label": "Medals Champion Awards",
+        "value": 0
+      },
+      "23": {
+        "label": "Warp Extra Ball",
+        "value": 19
+      },
+      "24": {
+        "label": "Combo Jackpot Lit Every",
+        "value": 20
+      },
+      "25": {
+        "label": "Best Combo Champion Award",
+        "value": 0
+      },
+      "26": {
+        "label": "Mission Start Difficulty",
+        "value": 0
+      },
+      "27": {
+        "label": "Prime Directive Timer",
+        "value": 30
+      },
+      "28": {
+        "label": "Klingon Battle I Timer",
+        "value": 30
+      },
+      "29": {
+        "label": "Klingon Battle II Timer",
+        "value": 30
+      },
+      "30": {
+        "label": "Klingon Battle III Timer",
+        "value": 45
+      },
+      "31": {
+        "label": "Space Jump Timer",
+        "value": 30
+      },
+      "32": {
+        "label": "Destroy the Drill Timer",
+        "value": 30
+      },
+      "33": {
+        "label": "Destroy the Drill II Timer",
+        "value": 45
+      },
+      "34": {
+        "label": "Destroy the Drill 3 Timer",
+        "value": 55
+      },
+      "35": {
+        "label": "Nero 1 Timer",
+        "value": 30
+      },
+      "36": {
+        "label": "Nero 2 Timer",
+        "value": 30
+      },
+      "37": {
+        "label": "Nero 3 Timer",
+        "value": 55
+      },
+      "38": {
+        "label": "Save the Enterprise Timer",
+        "value": 30
+      },
+      "39": {
+        "label": "Save the Enterprise III Timer",
+        "value": 30
+      },
+      "40": {
+        "label": "Shots to Light Away Team",
+        "value": 1
+      },
+      "41": {
+        "label": "Allow Inactivity to Pause Timers",
+        "value": 1
+      },
+      "42": {
+        "label": "Gold Medal Ends Level I Missions",
+        "value": 1
+      },
+      "43": {
+        "label": "Allow Only G-Rated Speech",
+        "value": 0
+      },
+      "44": {
+        "label": "Reset Multipliers at Ball Start",
+        "value": 0
+      },
+      "45": {
+        "label": "Double Scoring Timer",
+        "value": 60
+      },
+      "46": {
+        "label": "Slingshot Power",
+        "value": 32
+      },
+      "47": {
+        "label": "Left Eject Power",
+        "value": 28
+      },
+      "48": {
+        "label": "Rescue Difficulty",
+        "value": "EASY"
+      },
+      "49": {
+        "label": "Shaker Motor (Optional)",
+        "value": "MAXIMAL USE"
+      },
+      "50": {
+        "label": "Music Attenuation",
+        "value": 0
+      },
+      "51": {
+        "label": "Speech Attenuation",
+        "value": 0
+      }
+    }
+  },
   "game_state": {
     "ball_count": {
       "label": "Balls Per Game",
@@ -54,6 +522,10 @@
     "tilted": {
       "label": "Tilted",
       "warning": "Failed to resolve: Value is stored outside the NVRAM"
+    },
+    "volume": {
+      "label": "Master Volume",
+      "value": 40
     }
   },
   "high_scores": [
@@ -905,6 +1377,10 @@
       },
       {
         "label": "Champion record 8 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Master Volume",
         "value": "valid"
       }
     ],
