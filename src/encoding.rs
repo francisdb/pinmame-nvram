@@ -14,6 +14,13 @@ pub(crate) enum Location {
 /// A `Scattered` location reads a single byte from each offset, in order. This
 /// is used by platforms like Capcom where the 8-bit NVRAM is mapped on a 16-bit
 /// bus, so the bytes that make up a value live at non-consecutive file offsets.
+fn location_length(location: &Location) -> usize {
+    match location {
+        Location::Continuous { length, .. } => *length,
+        Location::Scattered { offsets } => offsets.len(),
+    }
+}
+
 fn read_location<A: Read + Seek>(stream: &mut A, location: &Location) -> io::Result<Vec<u8>> {
     match location {
         Location::Continuous { start, length } => {
@@ -301,6 +308,38 @@ pub(crate) fn read_int<T: Read + Seek>(
     Ok(apply_scale(scale, score))
 }
 
+/// Like [`read_int`], but the value is a two's complement signed integer as
+/// wide as the location (8 bits per byte, 4 when only a nibble is used).
+pub(crate) fn read_signed_int<T: Read + Seek>(
+    nvram_file: &mut T,
+    endian: Endian,
+    nibble: Nibble,
+    location: Location,
+    scale: &Number,
+) -> io::Result<i64> {
+    let bits_per_byte = if nibble == Nibble::Both { 8 } else { 4 };
+    let bits = location_length(&location) as u32 * bits_per_byte;
+    let raw = read_int(
+        nvram_file,
+        endian,
+        nibble,
+        location,
+        &Number::from(DEFAULT_SCALE),
+    )?;
+    let value = sign_extend(raw, bits);
+    let factor = scale.as_f64().unwrap_or(DEFAULT_SCALE as f64);
+    Ok((value as f64 * factor) as i64)
+}
+
+/// Interpret the lowest `bits` bits of `raw` as a two's complement integer.
+pub(crate) fn sign_extend(raw: u64, bits: u32) -> i64 {
+    if bits == 0 || bits >= 64 {
+        return raw as i64;
+    }
+    let shift = 64 - bits;
+    ((raw << shift) as i64) >> shift
+}
+
 pub(crate) fn read_exact_at<A: Seek + Read>(
     stream: &mut A,
     offset: u64,
@@ -372,6 +411,33 @@ mod tests {
     use crate::encoding::*;
     use crate::model::{DEFAULT_SCALE, Endian, Nibble};
     use std::io;
+
+    #[test]
+    fn test_sign_extend() {
+        assert_eq!(sign_extend(0xFFFF_FFFA, 32), -6);
+        assert_eq!(sign_extend(0x0000_003C, 32), 60);
+        assert_eq!(sign_extend(0xFF, 8), -1);
+        assert_eq!(sign_extend(0x7F, 8), 127);
+        assert_eq!(sign_extend(0x8, 4), -8);
+    }
+
+    #[test]
+    fn test_read_signed_int_little_endian() -> io::Result<()> {
+        let mut cursor = io::Cursor::new(vec![0xFA, 0xFF, 0xFF, 0xFF]);
+        let location = Location::Continuous {
+            start: 0,
+            length: 4,
+        };
+        let value = read_signed_int(
+            &mut cursor,
+            Endian::Little,
+            Nibble::Both,
+            location,
+            &Number::from(DEFAULT_SCALE),
+        )?;
+        assert_eq!(value, -6);
+        Ok(())
+    }
 
     #[test]
     fn test_read_bcd() -> io::Result<()> {

@@ -44,7 +44,7 @@
       },
       "11": {
         "label": "Replay Boost",
-        "value": true
+        "value": 1
       },
       "12": {
         "label": "Special Limit",
@@ -72,7 +72,7 @@
       },
       "18": {
         "label": "Game Pricing",
-        "value": "USA 10"
+        "value": "USA 11"
       },
       "19": {
         "label": "Match Percentage",
@@ -80,7 +80,7 @@
       },
       "20": {
         "label": "Match Award",
-        "value": "CREDIT"
+        "value": 0
       },
       "21": {
         "label": "Balls Per Game",
@@ -96,11 +96,11 @@
       },
       "24": {
         "label": "Allow High Scores",
-        "value": true
+        "value": 1
       },
       "25": {
         "label": "High Score Award",
-        "value": "CREDIT"
+        "value": 0
       },
       "26": {
         "label": "Grand Champion Awards",
@@ -152,7 +152,7 @@
       },
       "38": {
         "label": "Free Play",
-        "value": false
+        "value": 0
       },
       "39": {
         "label": "Language",
@@ -160,7 +160,7 @@
       },
       "40": {
         "label": "Player Language Select",
-        "value": false
+        "value": 1
       },
       "41": {
         "label": "Custom Message",
@@ -180,11 +180,11 @@
       },
       "45": {
         "label": "Game Restart",
-        "value": true
+        "value": 1
       },
       "46": {
         "label": "Bill Validator",
-        "value": false
+        "value": 0
       },
       "47": {
         "label": "Music Volume",
@@ -192,31 +192,33 @@
       },
       "48": {
         "label": "Ball Save Time",
+        "units": "seconds",
         "value": 5
       },
       "49": {
         "label": "Timed Plunger",
+        "units": "seconds",
         "value": "OFF"
       },
       "50": {
         "label": "Flipper Ball Launch",
-        "value": "OFF"
+        "value": "BOTH FLIPPERS"
       },
       "51": {
         "label": "Coindoor Ball Saver",
-        "value": false
+        "value": 0
       },
       "52": {
         "label": "Competition Mode",
-        "value": false
+        "value": 0
       },
       "53": {
         "label": "Consolation Ball",
-        "value": true
+        "value": 1
       },
       "54": {
         "label": "Fast Boot",
-        "value": true
+        "value": 1
       },
       "55": {
         "label": "Q24 Option",
@@ -224,15 +226,15 @@
       },
       "56": {
         "label": "Ticket Dispenser",
-        "value": false
+        "value": "NONE"
       },
       "57": {
         "label": "Player Competition",
-        "value": true
+        "value": 1
       },
       "58": {
         "label": "Team Scores",
-        "value": false
+        "value": 0
       },
       "59": {
         "label": "Location ID",
@@ -252,11 +254,217 @@
       },
       "63": {
         "label": "Lost Ball Recovery",
-        "value": true
+        "value": 1
       },
       "64": {
         "label": "Coin Door Disable Tilt",
-        "value": false
+        "value": 0
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "Disable Laser Motor",
+        "value": 0
+      },
+      "02": {
+        "label": "Disable Drop Target",
+        "value": 0
+      },
+      "03": {
+        "label": "Disable Center Magnet",
+        "value": 0
+      },
+      "04": {
+        "label": "Disable Left Orbit Control Gate",
+        "value": 0
+      },
+      "05": {
+        "label": "Disable Right Orbit Control Gate",
+        "value": 0
+      },
+      "06": {
+        "label": "Disable Vengeance Ship Coil",
+        "value": 0
+      },
+      "07": {
+        "label": "Disable Vengeance",
+        "value": 0
+      },
+      "08": {
+        "label": "Vengeance Difficulty",
+        "value": 1
+      },
+      "09": {
+        "label": "Ball Save Timer: Ven. Multiball",
+        "value": 15
+      },
+      "10": {
+        "label": "Klingon M.B. Lock Difficulty",
+        "value": "MEDIUM"
+      },
+      "11": {
+        "label": "Ball Save Timer: K.M. Multiball",
+        "value": 30
+      },
+      "12": {
+        "label": "Enable Virtual Locks Only",
+        "value": 0
+      },
+      "13": {
+        "label": "Punch It Button Ball Launch",
+        "value": 1
+      },
+      "14": {
+        "label": "Combo Champion",
+        "value": 12
+      },
+      "15": {
+        "label": "Combo Champion Award",
+        "value": 0
+      },
+      "16": {
+        "label": "Combo Champion Awards",
+        "value": 0
+      },
+      "17": {
+        "label": "Warp Champion",
+        "value": 6
+      },
+      "18": {
+        "label": "Warp Champion Award",
+        "value": 0
+      },
+      "19": {
+        "label": "Warp Champion Awards",
+        "value": 0
+      },
+      "20": {
+        "label": "Medals Champion",
+        "value": 5
+      },
+      "21": {
+        "label": "Medals Champion Award",
+        "value": 0
+      },
+      "22": {
+        "label": "Medals Champion Awards",
+        "value": 0
+      },
+      "23": {
+        "label": "Warp Extra Ball",
+        "value": "AUTO"
+      },
+      "24": {
+        "label": "Combo Jackpot Lit Every",
+        "value": 20
+      },
+      "25": {
+        "label": "Best Combo Champion Award",
+        "value": 0
+      },
+      "26": {
+        "label": "Mission Start Difficulty",
+        "value": 0
+      },
+      "27": {
+        "label": "Prime Directive Timer",
+        "value": 30
+      },
+      "28": {
+        "label": "Klingon Battle I Timer",
+        "value": 30
+      },
+      "29": {
+        "label": "Klingon Battle II Timer",
+        "value": 30
+      },
+      "30": {
+        "label": "Klingon Battle III Timer",
+        "value": 45
+      },
+      "31": {
+        "label": "Space Jump Timer",
+        "value": 30
+      },
+      "32": {
+        "label": "Destroy the Drill Timer",
+        "value": 30
+      },
+      "33": {
+        "label": "Destroy the Drill II Timer",
+        "value": 45
+      },
+      "34": {
+        "label": "Destroy the Drill 3 Timer",
+        "value": 55
+      },
+      "35": {
+        "label": "Nero 1 Timer",
+        "value": 30
+      },
+      "36": {
+        "label": "Nero 2 Timer",
+        "value": 30
+      },
+      "37": {
+        "label": "Nero 3 Timer",
+        "value": 55
+      },
+      "38": {
+        "label": "Save the Enterprise Timer",
+        "value": 30
+      },
+      "39": {
+        "label": "Save the Enterprise III Timer",
+        "value": 30
+      },
+      "40": {
+        "label": "Shots to Light Away Team",
+        "value": 1
+      },
+      "41": {
+        "label": "Allow Inactivity to Pause Timers",
+        "value": 1
+      },
+      "42": {
+        "label": "Gold Medal Ends Level I Missions",
+        "value": 1
+      },
+      "43": {
+        "label": "Allow Only G-Rated Speech",
+        "value": 0
+      },
+      "44": {
+        "label": "Reset Multipliers at Ball Start",
+        "value": 0
+      },
+      "45": {
+        "label": "Double Scoring Timer",
+        "value": 60
+      },
+      "46": {
+        "label": "Slingshot Power",
+        "value": 32
+      },
+      "47": {
+        "label": "Left Eject Power",
+        "value": 28
+      },
+      "48": {
+        "label": "Rescue Difficulty",
+        "value": "EASY"
+      },
+      "49": {
+        "label": "Shaker Motor (Optional)",
+        "value": "MAXIMAL USE"
+      },
+      "50": {
+        "label": "Music Volume",
+        "value": 0
+      },
+      "51": {
+        "label": "Speech Volume",
+        "value": 0
       }
     }
   },
@@ -408,291 +616,503 @@
         "value": "valid"
       },
       {
-        "label": "Std Adj #01 Replay Type",
+        "label": "Adjustment 1 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #02 Replay Percentage",
+        "label": "Adjustment 2 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #03 Replay Award",
+        "label": "Adjustment 3 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #04 Replay Levels",
+        "label": "Adjustment 4 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #05 Auto Replay Start",
+        "label": "Adjustment 5 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #06 Dynamic Replay Start",
+        "label": "Adjustment 6 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #07 Replay Level #1",
+        "label": "Adjustment 7 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #08 Replay Level #2",
+        "label": "Adjustment 8 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #09 Replay Level #3",
+        "label": "Adjustment 9 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #10 Replay Level #4",
+        "label": "Adjustment 10 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #11 Replay Boost",
+        "label": "Adjustment 11 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #12 Special Limit",
+        "label": "Adjustment 12 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #13 Special Percentage",
+        "label": "Adjustment 13 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #14 Special Award",
+        "label": "Adjustment 14 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #15 Free Game Limit",
+        "label": "Adjustment 15 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #16 Extra Ball Limit",
+        "label": "Adjustment 16 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #17 Extra Ball Percentage",
+        "label": "Adjustment 17 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #18 Game Pricing",
+        "label": "Adjustment 18 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #19 Match Percentage",
+        "label": "Adjustment 19 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #20 Match Award",
+        "label": "Adjustment 20 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #21 Balls Per Game",
+        "label": "Adjustment 21 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #22 Tilt Warnings",
+        "label": "Adjustment 22 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #23 Credit Limit",
+        "label": "Adjustment 23 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #24 Allow High Scores",
+        "label": "Adjustment 24 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #25 High Score Award",
+        "label": "Adjustment 25 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #26 Grand Champion Awards",
+        "label": "Adjustment 26 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #27 High Score #1 Awards",
+        "label": "Adjustment 27 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #28 High Score #2 Awards",
+        "label": "Adjustment 28 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #29 High Score #3 Awards",
+        "label": "Adjustment 29 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #30 High Score #4 Awards",
+        "label": "Adjustment 30 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #31 Grand Champion Score",
+        "label": "Adjustment 31 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #32 High Score #1",
+        "label": "Adjustment 32 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #33 High Score #2",
+        "label": "Adjustment 33 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #34 High Score #3",
+        "label": "Adjustment 34 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #35 High Score #4",
+        "label": "Adjustment 35 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #36 HSTD Initials",
+        "label": "Adjustment 36 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #37 HSTD Reset Count",
+        "label": "Adjustment 37 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #38 Free Play",
+        "label": "Adjustment 38 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #39 Language",
+        "label": "Adjustment 39 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #40 Player Language Select",
+        "label": "Adjustment 40 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #41 Custom Message",
+        "label": "Adjustment 41 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #42 Flash Lamp Power",
+        "label": "Adjustment 42 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #43 Coil Pulse Power",
+        "label": "Adjustment 43 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #44 Knocker Volume",
+        "label": "Adjustment 44 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #45 Game Restart",
+        "label": "Adjustment 45 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #46 Bill Validator",
+        "label": "Adjustment 46 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #47 Music Volume",
+        "label": "Adjustment 47 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #48 Ball Save Time",
+        "label": "Adjustment 48 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #49 Timed Plunger",
+        "label": "Adjustment 49 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #50 Flipper Ball Launch",
+        "label": "Adjustment 50 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #51 Coindoor Ball Saver",
+        "label": "Adjustment 51 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #52 Competition Mode",
+        "label": "Adjustment 52 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #53 Consolation Ball",
+        "label": "Adjustment 53 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #54 Fast Boot",
+        "label": "Adjustment 54 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #55 Q24 Option",
+        "label": "Adjustment 55 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #56 Ticket Dispenser",
+        "label": "Adjustment 56 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #57 Player Competition",
+        "label": "Adjustment 57 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #58 Team Scores",
+        "label": "Adjustment 58 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #59 Location ID",
+        "label": "Adjustment 59 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #60 Game ID",
+        "label": "Adjustment 60 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #61 Time Format",
+        "label": "Adjustment 61 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #62 Coin Input Delay",
+        "label": "Adjustment 62 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #63 Lost Ball Recovery",
+        "label": "Adjustment 63 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Std Adj #64 Coin Door Disable Tilt",
+        "label": "Adjustment 64 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Grand Champion",
+        "label": "Adjustment 65 (checksum)",
         "value": "valid"
       },
       {
-        "label": "High Score #1",
+        "label": "Adjustment 66 (checksum)",
         "value": "valid"
       },
       {
-        "label": "High Score #2",
+        "label": "Adjustment 67 (checksum)",
         "value": "valid"
       },
       {
-        "label": "High Score #3",
+        "label": "Adjustment 68 (checksum)",
         "value": "valid"
       },
       {
-        "label": "High Score #4",
+        "label": "Adjustment 69 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Combo Champion",
+        "label": "Adjustment 70 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Warp Champion",
+        "label": "Adjustment 71 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Medals Champion",
+        "label": "Adjustment 72 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 73 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 74 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 75 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 76 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 77 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 78 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 79 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 80 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 81 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 82 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 83 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 84 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 85 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 86 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 87 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 88 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 89 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 90 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 91 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 92 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 93 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 94 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 95 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 96 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 97 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 98 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 99 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 100 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 101 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 102 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 103 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 104 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 105 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 106 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 107 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 108 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 109 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 110 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 111 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 112 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 113 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 114 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 115 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 116 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 117 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Champion record 1 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Champion record 2 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Champion record 3 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Champion record 4 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Champion record 5 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Champion record 6 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Champion record 7 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Champion record 8 (checksum)",
         "value": "valid"
       }
     ]

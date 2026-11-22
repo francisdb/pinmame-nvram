@@ -95,9 +95,9 @@ pub struct Descriptor {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub values: Option<ValuesOrReference>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub min: Option<u64>,
+    pub min: Option<i64>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub max: Option<u64>,
+    pub max: Option<i64>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub multiple_of: Option<i64>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -415,7 +415,7 @@ pub enum StateOrStateList {
 #[serde(untagged)]
 pub enum StringOrNumber {
     String(String),
-    Number(u64),
+    Number(Number),
 }
 
 #[derive(Serialize, Deserialize)]

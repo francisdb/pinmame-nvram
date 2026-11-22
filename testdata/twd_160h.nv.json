@@ -1,5 +1,953 @@
 {
   "_fileformat": 0.9,
+  "adjustments": {
+    "A.1 Standard Adjustments": {
+      "01": {
+        "label": "Replay Type",
+        "value": "AUTO"
+      },
+      "02": {
+        "label": "Replay Percentage",
+        "value": 10
+      },
+      "03": {
+        "label": "Replay Award",
+        "value": "CREDIT"
+      },
+      "04": {
+        "label": "Replay Levels",
+        "value": 1
+      },
+      "05": {
+        "label": "Auto Replay Start",
+        "value": 20000000
+      },
+      "06": {
+        "label": "Dynamic Replay Start",
+        "value": 60000000
+      },
+      "07": {
+        "label": "Replay Level #1",
+        "value": 15000000
+      },
+      "08": {
+        "label": "Replay Level #2",
+        "value": 30000000
+      },
+      "09": {
+        "label": "Replay Level #3",
+        "value": 45000000
+      },
+      "10": {
+        "label": "Replay Level #4",
+        "value": 60000000
+      },
+      "11": {
+        "label": "Replay Boost",
+        "value": 1
+      },
+      "12": {
+        "label": "Special Limit",
+        "value": 1
+      },
+      "13": {
+        "label": "Special Percentage",
+        "value": 10
+      },
+      "14": {
+        "label": "Special Award",
+        "value": "CREDIT"
+      },
+      "15": {
+        "label": "Free Game Limit",
+        "value": 5
+      },
+      "16": {
+        "label": "Extra Ball Limit",
+        "value": 5
+      },
+      "17": {
+        "label": "Extra Ball Percentage",
+        "value": 25
+      },
+      "18": {
+        "label": "Game Pricing",
+        "value": "USA 11"
+      },
+      "19": {
+        "label": "Match Percentage",
+        "value": 9
+      },
+      "20": {
+        "label": "Match Award",
+        "value": 0
+      },
+      "21": {
+        "label": "Balls Per Game",
+        "value": 3
+      },
+      "22": {
+        "label": "Tilt Warnings",
+        "value": 2
+      },
+      "23": {
+        "label": "Credit Limit",
+        "value": 30
+      },
+      "24": {
+        "label": "Allow High Scores",
+        "value": 1
+      },
+      "25": {
+        "label": "High Score Award",
+        "value": 0
+      },
+      "26": {
+        "label": "Grand Champion Awards",
+        "value": 1
+      },
+      "27": {
+        "label": "High Score #1 Awards",
+        "value": 1
+      },
+      "28": {
+        "label": "High Score #2 Awards",
+        "value": 0
+      },
+      "29": {
+        "label": "High Score #3 Awards",
+        "value": 0
+      },
+      "30": {
+        "label": "High Score #4 Awards",
+        "value": 0
+      },
+      "31": {
+        "label": "Grand Champion Score",
+        "value": 75000000
+      },
+      "32": {
+        "label": "High Score #1",
+        "value": 55000000
+      },
+      "33": {
+        "label": "High Score #2",
+        "value": 40000000
+      },
+      "34": {
+        "label": "High Score #3",
+        "value": 30000000
+      },
+      "35": {
+        "label": "High Score #4",
+        "value": 25000000
+      },
+      "36": {
+        "label": "HSTD Initials",
+        "value": "3 INITIALS"
+      },
+      "37": {
+        "label": "HSTD Reset Count",
+        "value": 2000
+      },
+      "38": {
+        "label": "Free Play",
+        "value": 0
+      },
+      "39": {
+        "label": "Language",
+        "value": "ENGLISH"
+      },
+      "40": {
+        "label": "Player Language Select",
+        "value": 1
+      },
+      "41": {
+        "label": "Custom Message",
+        "value": "ON"
+      },
+      "42": {
+        "label": "Flash Lamp Power",
+        "value": "NORMAL"
+      },
+      "43": {
+        "label": "Coil Pulse Power",
+        "value": "NORMAL"
+      },
+      "44": {
+        "label": "Knocker Volume",
+        "value": "NORMAL"
+      },
+      "45": {
+        "label": "Game Restart",
+        "value": 1
+      },
+      "46": {
+        "label": "Bill Validator",
+        "value": 0
+      },
+      "47": {
+        "label": "Music Volume",
+        "value": 1
+      },
+      "48": {
+        "label": "Ball Save Time",
+        "units": "seconds",
+        "value": 5
+      },
+      "49": {
+        "label": "Timed Plunger",
+        "units": "seconds",
+        "value": "OFF"
+      },
+      "50": {
+        "label": "Flipper Ball Launch",
+        "value": "OFF"
+      },
+      "51": {
+        "label": "Coindoor Ball Saver",
+        "value": 0
+      },
+      "52": {
+        "label": "Competition Mode",
+        "value": 0
+      },
+      "53": {
+        "label": "Consolation Ball",
+        "value": 1
+      },
+      "54": {
+        "label": "Fast Boot",
+        "value": 1
+      },
+      "55": {
+        "label": "Q24 Option",
+        "value": "COIN METER"
+      },
+      "56": {
+        "label": "Ticket Dispenser",
+        "value": "NONE"
+      },
+      "57": {
+        "label": "Player Competition",
+        "value": 1
+      },
+      "58": {
+        "label": "Team Scores",
+        "value": 0
+      },
+      "59": {
+        "label": "Location ID",
+        "value": 0
+      },
+      "60": {
+        "label": "Game ID",
+        "value": 0
+      },
+      "61": {
+        "label": "Time Format",
+        "value": "12-HOUR"
+      },
+      "62": {
+        "label": "Coin Input Delay",
+        "value": 30
+      },
+      "63": {
+        "label": "Lost Ball Recovery",
+        "value": 1
+      },
+      "64": {
+        "label": "Coin Door Disable Tilt",
+        "value": 0
+      }
+    },
+    "A.2 Feature Adjustments": {
+      "01": {
+        "label": "Adult Content",
+        "value": 1
+      },
+      "02": {
+        "label": "Pop Bumper Difficulty",
+        "value": "MEDIUM"
+      },
+      "03": {
+        "label": "Combos for M.KILL",
+        "value": 10
+      },
+      "04": {
+        "label": "Supplies for M.KILL",
+        "value": 10
+      },
+      "05": {
+        "label": "Bicycle Girl Shots for M.KILL",
+        "value": 3
+      },
+      "06": {
+        "label": "Fish Tanks for M.KILL",
+        "value": 3
+      },
+      "07": {
+        "label": "Barn Shots for M.KILL",
+        "value": 3
+      },
+      "08": {
+        "label": "CDC Shots for M.KILL",
+        "value": 3
+      },
+      "09": {
+        "label": "Riot Shots for M.KILL",
+        "value": 2
+      },
+      "10": {
+        "label": "Tunnel Shots for M.KILL",
+        "value": 2
+      },
+      "100": {
+        "label": "Horde Walker Kills/Level Max.",
+        "value": 10
+      },
+      "101": {
+        "label": "Horde Walker Kill Backfill",
+        "value": 1
+      },
+      "102": {
+        "label": "Horde Zombie Bombs Init.",
+        "value": 1
+      },
+      "103": {
+        "label": "Horde Levels to Light Escape",
+        "value": 3
+      },
+      "104": {
+        "label": "Horde Escape/Select Adv. Walkers",
+        "value": 0
+      },
+      "105": {
+        "label": "Horde Lost Advances B.I.P.",
+        "value": 0
+      },
+      "106": {
+        "label": "1ST Y. Walker Kills Siege Lit",
+        "value": 12
+      },
+      "107": {
+        "label": "2ND+ Y. Walker Kills Siege Lit",
+        "value": 18
+      },
+      "108": {
+        "label": "L.M.S. Autofire Timer",
+        "units": "seconds",
+        "value": 30
+      },
+      "109": {
+        "label": "L.M.S. A.A.B. Autofire Timer",
+        "units": "seconds",
+        "value": 5
+      },
+      "11": {
+        "label": "Arena Shots for M.KILL",
+        "value": 3
+      },
+      "110": {
+        "label": "L.M.S. A.A.B. Lit Every",
+        "value": 10
+      },
+      "111": {
+        "label": "Zombie Kills Champion",
+        "value": 25
+      },
+      "112": {
+        "label": "Zombie Kills Champion Award",
+        "value": 0
+      },
+      "113": {
+        "label": "Zombie Kills Champion Awards",
+        "value": 0
+      },
+      "114": {
+        "label": "Combo Champion",
+        "value": 2500000
+      },
+      "115": {
+        "label": "Combo Champion Award",
+        "value": 0
+      },
+      "116": {
+        "label": "Combo Champion Awards",
+        "value": 0
+      },
+      "117": {
+        "label": "Bicycle Girl Champion",
+        "value": 5000000
+      },
+      "118": {
+        "label": "Bicycle Girl Champion Award",
+        "value": 0
+      },
+      "119": {
+        "label": "Bicycle Girl Champion Awards",
+        "value": 0
+      },
+      "12": {
+        "label": "Blood Bath M.B. Shots for M.KILL",
+        "value": 3
+      },
+      "120": {
+        "label": "Barn Champion",
+        "value": 15000000
+      },
+      "121": {
+        "label": "Barn Champion Award",
+        "value": 0
+      },
+      "122": {
+        "label": "Barn Champion Awards",
+        "value": 0
+      },
+      "123": {
+        "label": "CDC Champion",
+        "value": 15000000
+      },
+      "124": {
+        "label": "CDC Champion Award",
+        "value": 0
+      },
+      "125": {
+        "label": "CDC Champion Awards",
+        "value": 0
+      },
+      "126": {
+        "label": "Riot Champion",
+        "value": 15000000
+      },
+      "127": {
+        "label": "Riot Champion Award",
+        "value": 0
+      },
+      "128": {
+        "label": "Riot Champion Awards",
+        "value": 0
+      },
+      "129": {
+        "label": "Tunnel Champion",
+        "value": 15000000
+      },
+      "13": {
+        "label": "X-bow Kills for M.KILL",
+        "value": 3
+      },
+      "130": {
+        "label": "Tunnel Champion Award",
+        "value": 0
+      },
+      "131": {
+        "label": "Tunnel Champion Awards",
+        "value": 0
+      },
+      "132": {
+        "label": "Arena Champion",
+        "value": 15000000
+      },
+      "133": {
+        "label": "Arena Champion Award",
+        "value": 0
+      },
+      "134": {
+        "label": "Arena Champion Awards",
+        "value": 0
+      },
+      "135": {
+        "label": "Terminus Champion",
+        "value": 25000000
+      },
+      "136": {
+        "label": "Terminus Champion Award",
+        "value": 0
+      },
+      "137": {
+        "label": "Terminus Champion Awards",
+        "value": 0
+      },
+      "138": {
+        "label": "Blood Bath Champion",
+        "value": 7500000
+      },
+      "139": {
+        "label": "Blood Bath Champion Award",
+        "value": 0
+      },
+      "14": {
+        "label": "Prison M.B. Shots for M.KILL",
+        "value": 4
+      },
+      "140": {
+        "label": "Blood Bath Champion Awards",
+        "value": 0
+      },
+      "141": {
+        "label": "Crossbow Champion",
+        "value": 10000000
+      },
+      "142": {
+        "label": "Crossbow Champion Award",
+        "value": 0
+      },
+      "143": {
+        "label": "Crossbow Champion Awards",
+        "value": 0
+      },
+      "144": {
+        "label": "X Champion",
+        "value": 25000000
+      },
+      "145": {
+        "label": "X Champion Award",
+        "value": 0
+      },
+      "146": {
+        "label": "X Champion Awards",
+        "value": 0
+      },
+      "147": {
+        "label": "Horde Champion",
+        "value": 50000000
+      },
+      "148": {
+        "label": "Horde Champion Award",
+        "value": 0
+      },
+      "149": {
+        "label": "Horde Champion Awards",
+        "value": 0
+      },
+      "15": {
+        "label": "Well M.B. Shots for M.KILL",
+        "value": 3
+      },
+      "150": {
+        "label": "Last Man Stand. Champion",
+        "value": 75000000
+      },
+      "151": {
+        "label": "Last Man Stand. Champion Award",
+        "value": 0
+      },
+      "152": {
+        "label": "Last Man Stand. Champion Awards",
+        "value": 0
+      },
+      "153": {
+        "label": "Disable Left Drop Targets",
+        "value": 0
+      },
+      "154": {
+        "label": "Disable Prison Doors",
+        "value": 0
+      },
+      "155": {
+        "label": "Disable Prison Magnet",
+        "value": 0
+      },
+      "156": {
+        "label": "Disable Ramp Magnet Diverter",
+        "value": 0
+      },
+      "157": {
+        "label": "Disable Crossbow Motor",
+        "value": 0
+      },
+      "158": {
+        "label": "Crossbow Motor Sw. Lockout",
+        "value": 750
+      },
+      "159": {
+        "label": "Disable Bicycle Girl Ramp",
+        "value": 0
+      },
+      "16": {
+        "label": "Woodbury S.S. for M.KILL",
+        "value": 2
+      },
+      "160": {
+        "label": "Bic. Grl. Rmp. Behav. W/ X.BOW",
+        "value": "ALWAYS UP"
+      },
+      "161": {
+        "label": "Disable Well Magnet",
+        "value": 0
+      },
+      "162": {
+        "label": "Disable Right Drop Target",
+        "value": 0
+      },
+      "163": {
+        "label": "Shaker Motor (Optional)",
+        "value": "MAXIMAL USE"
+      },
+      "164": {
+        "label": "Abort Animations",
+        "value": "ONE"
+      },
+      "165": {
+        "label": "Slingshot Power",
+        "value": 32
+      },
+      "166": {
+        "label": "1 SW.+ Trough = End of Ball",
+        "value": 0
+      },
+      "167": {
+        "label": "Fire Button Ball Launch",
+        "value": 1
+      },
+      "168": {
+        "label": "Music Attenuation",
+        "value": 0
+      },
+      "169": {
+        "label": "Speech Attenuation",
+        "value": 0
+      },
+      "17": {
+        "label": "Walker Kills Add Shot X Every",
+        "value": 2
+      },
+      "18": {
+        "label": "1ST Walker Kills E.B.",
+        "value": 26
+      },
+      "19": {
+        "label": "2ND Walker Kills E.B.",
+        "value": 60
+      },
+      "20": {
+        "label": "1ST Walker Kills B.G. Lit",
+        "value": 5
+      },
+      "21": {
+        "label": "2ND+ Walker Kills B.G. Lit Every",
+        "value": 20
+      },
+      "22": {
+        "label": "Walker Kills L.M.S. Lit",
+        "value": 115
+      },
+      "23": {
+        "label": "Walkers Lit (Init. Value)",
+        "value": 6
+      },
+      "24": {
+        "label": "Walkers Init. At",
+        "value": "BALL START"
+      },
+      "25": {
+        "label": "Walkers Lit (Min. Value)",
+        "value": 4
+      },
+      "26": {
+        "label": "Bicycle Girl Lit at Game Start",
+        "value": 1
+      },
+      "27": {
+        "label": "1ST # Sup. for Modes Lit",
+        "value": 1
+      },
+      "28": {
+        "label": "2ND+ # Sup. for Modes Lit",
+        "value": 1
+      },
+      "29": {
+        "label": "Max. # Sup. for Modes Lit",
+        "value": 2
+      },
+      "30": {
+        "label": "Sup. Compl. B.B. M.B. Lit Start.",
+        "value": 1
+      },
+      "31": {
+        "label": "Sup. Compl. B.B. M.B. Lit Inc.",
+        "value": 1
+      },
+      "32": {
+        "label": "Sup. Compl. B.B. M.B. Lit Max.",
+        "value": 2
+      },
+      "33": {
+        "label": "Shot Modes Lit Carry. Ball/Ball",
+        "value": 0
+      },
+      "34": {
+        "label": "Shot Modes Light/Start W/ M.B.",
+        "value": "LIGHT+START"
+      },
+      "35": {
+        "label": "Barn Timer",
+        "value": 40
+      },
+      "36": {
+        "label": "Barn Timer Reset",
+        "value": 10
+      },
+      "37": {
+        "label": "CDC Timer",
+        "value": 40
+      },
+      "38": {
+        "label": "CDC Timer Reset",
+        "value": 10
+      },
+      "39": {
+        "label": "CDC Reset Shots Compl.",
+        "value": 1
+      },
+      "40": {
+        "label": "Riot Timer",
+        "value": 40
+      },
+      "41": {
+        "label": "Riot Timer Reset",
+        "value": 10
+      },
+      "42": {
+        "label": "Tunnel Timer",
+        "value": 40
+      },
+      "43": {
+        "label": "Tunnel Timer Reset",
+        "value": 10
+      },
+      "44": {
+        "label": "Tunnel Reset Shots Compl.",
+        "value": 1
+      },
+      "45": {
+        "label": "Arena Timer",
+        "value": 40
+      },
+      "46": {
+        "label": "Arena Timer Reset",
+        "value": 10
+      },
+      "47": {
+        "label": "Terminus Timer",
+        "value": 40
+      },
+      "48": {
+        "label": "Terminus Timer Reset",
+        "value": 10
+      },
+      "49": {
+        "label": "Prison Starting Letters",
+        "value": 5
+      },
+      "50": {
+        "label": "Prison Additional Letters",
+        "value": -6
+      },
+      "51": {
+        "label": "Prison Tgt. Carry. Ball/Ball",
+        "value": 0
+      },
+      "52": {
+        "label": "Prison M.B. Autofire Timer",
+        "units": "seconds",
+        "value": 20
+      },
+      "53": {
+        "label": "Prison M.B. Progress Carry.",
+        "value": 1
+      },
+      "54": {
+        "label": "Prison M.B. S.J. W/Bomb",
+        "value": 1
+      },
+      "55": {
+        "label": "Well Walker Starting Hits",
+        "value": 5
+      },
+      "56": {
+        "label": "Well Walker Addl. Hits",
+        "value": 2
+      },
+      "57": {
+        "label": "Well Walker M.B. Autofire Timer",
+        "units": "seconds",
+        "value": 20
+      },
+      "58": {
+        "label": "Well M.B. Progress Carry.",
+        "value": 1
+      },
+      "59": {
+        "label": "Well M.B. S.J. W/Bomb",
+        "value": 1
+      },
+      "60": {
+        "label": "Bld. Bth. M.B. Autofire Timer",
+        "units": "seconds",
+        "value": 20
+      },
+      "61": {
+        "label": "Bld. Bth. M.B. A.A.B. Limit",
+        "value": 2
+      },
+      "62": {
+        "label": "Bld. Bth. M.B. Sup. Compl. A.A.B.",
+        "value": 1
+      },
+      "63": {
+        "label": "Bld. Bth. M.B. A.A.B. Autofire Timer",
+        "units": "seconds",
+        "value": 5
+      },
+      "64": {
+        "label": "Bicycle Girl Timer",
+        "value": 30
+      },
+      "65": {
+        "label": "Bicycle Girl Shots to Finish",
+        "value": 4
+      },
+      "66": {
+        "label": "Tower JP. Carryover Ball/Ball",
+        "value": 0
+      },
+      "67": {
+        "label": "1ST Tower E.B.",
+        "value": 10
+      },
+      "68": {
+        "label": "2ND+ Tower E.B. Every",
+        "value": 30
+      },
+      "69": {
+        "label": "2X Scoring Timer Base",
+        "value": 30
+      },
+      "70": {
+        "label": "2X Scoring Timer Inc.",
+        "value": 10
+      },
+      "71": {
+        "label": "2X Scoring Timer Carry. Ball/Ball",
+        "value": 0
+      },
+      "72": {
+        "label": "# Fish Tank Heads at Game Start",
+        "value": 2
+      },
+      "73": {
+        "label": "Stack Woodbury Skill Shot Lit",
+        "value": 1
+      },
+      "74": {
+        "label": "Wdbry. S.S. Lit Carry. B. to B.",
+        "value": 0
+      },
+      "75": {
+        "label": "Woodbury S.S. Select Lock/Plunge",
+        "value": 1
+      },
+      "76": {
+        "label": "Woodbury S.S. Lockout Psns./Awd.",
+        "value": 0
+      },
+      "77": {
+        "label": "Stack X-Bows Lit",
+        "value": 1
+      },
+      "78": {
+        "label": "X-bow Lit at Game Start",
+        "value": 1
+      },
+      "79": {
+        "label": "X-bow Scores Carry. Ball/Ball",
+        "value": 0
+      },
+      "80": {
+        "label": "X-bow Kills Starting Kills",
+        "value": 3
+      },
+      "81": {
+        "label": "X-bow Kills Addl. Kills",
+        "value": 1
+      },
+      "82": {
+        "label": "X-bow Kills Max. Kills",
+        "value": 5
+      },
+      "83": {
+        "label": "X-bow Mode Timer",
+        "value": 30
+      },
+      "84": {
+        "label": "Right Target Starting Hits",
+        "value": 1
+      },
+      "85": {
+        "label": "Right Target Addl. Hits",
+        "value": 1
+      },
+      "86": {
+        "label": "Right Target Max. Hits",
+        "value": 3
+      },
+      "87": {
+        "label": "M.KILL Shot Sequencing",
+        "value": "RANDOM"
+      },
+      "88": {
+        "label": "M.KILL Walker Kills Multiplier",
+        "value": 2
+      },
+      "89": {
+        "label": "M.KILL Scores Carry. Horde Start",
+        "value": 0
+      },
+      "90": {
+        "label": "Horde Autofire Timer",
+        "units": "seconds",
+        "value": 20
+      },
+      "91": {
+        "label": "Horde A.A.B. Autofire Timer",
+        "units": "seconds",
+        "value": 5
+      },
+      "92": {
+        "label": "Horde Walker Advance Timer Init",
+        "value": 5
+      },
+      "93": {
+        "label": "Horde Walker Advance Timer Dec.",
+        "value": -1
+      },
+      "94": {
+        "label": "Horde Walker Advance Timer Min.",
+        "value": 2
+      },
+      "95": {
+        "label": "Horde Starting # of Walkers",
+        "value": 7
+      },
+      "96": {
+        "label": "Horde Inc. # of Walkers",
+        "value": 1
+      },
+      "97": {
+        "label": "Horde Walkers Max.",
+        "value": 15
+      },
+      "98": {
+        "label": "Horde Walker Kills/Level Init",
+        "value": 3
+      },
+      "99": {
+        "label": "Horde Walker Kills/Level Inc.",
+        "value": 1
+      }
+    }
+  },
   "game_state": {
     "ball_count": {
       "label": "Balls Per Game",
@@ -238,15 +1186,943 @@
   "validation": {
     "checksum": [
       {
-        "label": "Free Play adjustment",
+        "label": "Adjustment 1 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Balls Per Game adjustment",
+        "label": "Adjustment 2 (checksum)",
         "value": "valid"
       },
       {
-        "label": "Maximum Credits adjustment",
+        "label": "Adjustment 3 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 4 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 5 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 6 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 7 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 8 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 9 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 10 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 11 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 12 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 13 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 14 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 15 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 16 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 17 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 18 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 19 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 20 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 21 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 22 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 23 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 24 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 25 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 26 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 27 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 28 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 29 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 30 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 31 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 32 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 33 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 34 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 35 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 36 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 37 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 38 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 39 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 40 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 41 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 42 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 43 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 44 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 45 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 46 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 47 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 48 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 49 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 50 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 51 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 52 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 53 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 54 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 55 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 56 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 57 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 58 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 59 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 60 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 61 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 62 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 63 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 64 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 65 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 66 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 67 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 68 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 69 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 70 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 71 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 72 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 73 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 74 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 75 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 76 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 77 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 78 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 79 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 80 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 81 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 82 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 83 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 84 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 85 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 86 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 87 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 88 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 89 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 90 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 91 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 92 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 93 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 94 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 95 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 96 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 97 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 98 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 99 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 100 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 101 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 102 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 103 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 104 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 105 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 106 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 107 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 108 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 109 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 110 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 111 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 112 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 113 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 114 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 115 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 116 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 117 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 118 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 119 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 120 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 121 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 122 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 123 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 124 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 125 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 126 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 127 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 128 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 129 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 130 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 131 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 132 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 133 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 134 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 135 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 136 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 137 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 138 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 139 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 140 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 141 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 142 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 143 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 144 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 145 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 146 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 147 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 148 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 149 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 150 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 151 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 152 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 153 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 154 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 155 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 156 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 157 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 158 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 159 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 160 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 161 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 162 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 163 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 164 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 165 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 166 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 167 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 168 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 169 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 170 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 171 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 172 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 173 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 174 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 175 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 176 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 177 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 178 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 179 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 180 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 181 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 182 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 183 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 184 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 185 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 186 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 187 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 188 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 189 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 190 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 191 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 192 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 193 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 194 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 195 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 196 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 197 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 198 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 199 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 200 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 201 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 202 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 203 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 204 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 205 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 206 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 207 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 208 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 209 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 210 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 211 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 212 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 213 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 214 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 215 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 216 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 217 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 218 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 219 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 220 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 221 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 222 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 223 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 224 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 225 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 226 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 227 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 228 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 229 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 230 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 231 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 232 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 233 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 234 (checksum)",
+        "value": "valid"
+      },
+      {
+        "label": "Adjustment 235 (checksum)",
         "value": "valid"
       },
       {
